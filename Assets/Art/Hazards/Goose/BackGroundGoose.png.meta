@@ -1,0 +1,639 @@
+fileFormatVersion: 2
+guid: 949300d068078654fbb3ebb50edbf367
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: 0
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: BackGroundGoose_0
+      rect:
+        serializedVersion: 2
+        x: 14
+        y: 29
+        width: 36
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b995bf92259af1347a9aef057a00e76c
+      internalID: -1233931887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_1
+      rect:
+        serializedVersion: 2
+        x: 78
+        y: 29
+        width: 36
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad3cec8aac85bcb46b88d1422e9a8e51
+      internalID: -41703916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_2
+      rect:
+        serializedVersion: 2
+        x: 142
+        y: 29
+        width: 36
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4df86329a1f8424ea22d9b53b800a58
+      internalID: -1649532237
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_3
+      rect:
+        serializedVersion: 2
+        x: 206
+        y: 29
+        width: 36
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e01cf678c740174ebcb622bfb964735
+      internalID: -1523875429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_4
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 29
+        width: 36
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27463275f484965408eeca9aa419b184
+      internalID: 2027998727
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_5
+      rect:
+        serializedVersion: 2
+        x: 334
+        y: 31
+        width: 36
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b101120033b65a419702b19eac509d1
+      internalID: 879791295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_6
+      rect:
+        serializedVersion: 2
+        x: 398
+        y: 31
+        width: 36
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4b8973edca5afd44bae6159b2b7ecf6
+      internalID: -876766095
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_7
+      rect:
+        serializedVersion: 2
+        x: 462
+        y: 28
+        width: 36
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a4868ef235373364e9070337e7b57ad1
+      internalID: -1900883047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_8
+      rect:
+        serializedVersion: 2
+        x: 526
+        y: 24
+        width: 36
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b64c0d4a7d043148978ced380afae14
+      internalID: 599411418
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_9
+      rect:
+        serializedVersion: 2
+        x: 590
+        y: 28
+        width: 36
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 98299d437d3c95e4ab656f66e50bb1eb
+      internalID: 1906856158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_10
+      rect:
+        serializedVersion: 2
+        x: 654
+        y: 31
+        width: 36
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7cc915afe6d75394793d6112ffeaed14
+      internalID: 241891281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_11
+      rect:
+        serializedVersion: 2
+        x: 718
+        y: 31
+        width: 36
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6a467b72db92104eb98f4f8715d906e
+      internalID: -1690226081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_12
+      rect:
+        serializedVersion: 2
+        x: 782
+        y: 29
+        width: 36
+        height: 11
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 304be667169a55a4da04c17494bf9547
+      internalID: -1333786738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_13
+      rect:
+        serializedVersion: 2
+        x: 846
+        y: 29
+        width: 36
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d07c7f5fd0715844dbd45d589b69a5b7
+      internalID: -1931089300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_14
+      rect:
+        serializedVersion: 2
+        x: 910
+        y: 29
+        width: 36
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08a59eab1eddd0d418b48bf84bfce138
+      internalID: 1537447496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_15
+      rect:
+        serializedVersion: 2
+        x: 974
+        y: 29
+        width: 36
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42d1fa41cfca9f141a0083498087490f
+      internalID: 1612795933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: BackGroundGoose_16
+      rect:
+        serializedVersion: 2
+        x: 1038
+        y: 29
+        width: 36
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b76da52d840abe34fb2aca287354cd85
+      internalID: 1532750099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline:
+    - - {x: -10, y: 10}
+      - {x: -20, y: 7}
+      - {x: -20, y: -5}
+      - {x: -1, y: -10}
+      - {x: 18, y: -10}
+      - {x: 20, y: -2}
+      - {x: 20, y: 7}
+      - {x: 17, y: 10}
+    - - {x: -84, y: 10}
+      - {x: -84, y: 1}
+      - {x: -77, y: -4}
+      - {x: -60, y: -6}
+      - {x: -50, y: -6}
+      - {x: -44, y: 2}
+      - {x: -44, y: 7}
+      - {x: -45, y: 10}
+    - - {x: 58, y: 10}
+      - {x: 51, y: 9}
+      - {x: 44, y: 4}
+      - {x: 44, y: 2}
+      - {x: 45, y: -1}
+      - {x: 63, y: -6}
+      - {x: 80, y: -6}
+      - {x: 84, y: 0}
+      - {x: 84, y: 7}
+      - {x: 78, y: 10}
+    - - {x: -492, y: 18}
+      - {x: -517, y: 18}
+      - {x: -532, y: 13}
+      - {x: -532, y: -2}
+      - {x: -522, y: -5}
+      - {x: -497, y: -5}
+      - {x: -492, y: 1}
+      - {x: -493, y: 4}
+      - {x: -492, y: 16}
+    - - {x: -432, y: 16}
+      - {x: -445, y: 16}
+      - {x: -468, y: 9}
+      - {x: -468, y: -4}
+      - {x: -464, y: -5}
+      - {x: -433, y: -5}
+      - {x: -428, y: 1}
+      - {x: -429, y: 4}
+      - {x: -430, y: 14}
+    - - {x: -396, y: 14}
+      - {x: -404, y: 7}
+      - {x: -404, y: -3}
+      - {x: -394, y: -5}
+      - {x: -369, y: -5}
+      - {x: -364, y: 1}
+      - {x: -364, y: 14}
+    - - {x: -337, y: 12}
+      - {x: -340, y: 8}
+      - {x: -340, y: -3}
+      - {x: -330, y: -5}
+      - {x: -305, y: -5}
+      - {x: -300, y: 1}
+      - {x: -300, y: 12}
+    - - {x: -268, y: 10}
+      - {x: -276, y: 8}
+      - {x: -276, y: -2}
+      - {x: -265, y: -5}
+      - {x: -247, y: -5}
+      - {x: -236, y: 0}
+      - {x: -236, y: 9}
+      - {x: -238, y: 10}
+    - - {x: 240, y: 10}
+      - {x: 236, y: 7}
+      - {x: 236, y: -4}
+      - {x: 242, y: -5}
+      - {x: 271, y: -5}
+      - {x: 276, y: 1}
+      - {x: 275, y: 10}
+    - - {x: 303, y: 12}
+      - {x: 300, y: 7}
+      - {x: 300, y: -4}
+      - {x: 302, y: -5}
+      - {x: 340, y: -5}
+      - {x: 340, y: 12}
+    - - {x: 401, y: 14}
+      - {x: 383, y: 14}
+      - {x: 375, y: 11}
+      - {x: 364, y: 6}
+      - {x: 364, y: -1}
+      - {x: 376, y: -5}
+      - {x: 393, y: -5}
+      - {x: 404, y: 1}
+      - {x: 404, y: 13}
+    - - {x: 464, y: 16}
+      - {x: 451, y: 16}
+      - {x: 428, y: 9}
+      - {x: 428, y: -4}
+      - {x: 432, y: -5}
+      - {x: 463, y: -5}
+      - {x: 468, y: 1}
+      - {x: 467, y: 4}
+      - {x: 466, y: 14}
+    - - {x: 492, y: -1}
+      - {x: 503, y: -5}
+      - {x: 528, y: -5}
+      - {x: 532, y: 0}
+      - {x: 532, y: 18}
+      - {x: 503, y: 18}
+      - {x: 492, y: 14}
+    - - {x: -202, y: 10}
+      - {x: -212, y: 7}
+      - {x: -212, y: -2}
+      - {x: -210, y: -3}
+      - {x: -175, y: -3}
+      - {x: -172, y: 1}
+      - {x: -172, y: 9}
+      - {x: -174, y: 10}
+    - - {x: -138, y: 10}
+      - {x: -148, y: 7}
+      - {x: -148, y: -2}
+      - {x: -146, y: -3}
+      - {x: -111, y: -3}
+      - {x: -108, y: 1}
+      - {x: -108, y: 9}
+      - {x: -110, y: 10}
+    - - {x: 123, y: 10}
+      - {x: 115, y: 9}
+      - {x: 108, y: 4}
+      - {x: 108, y: 1}
+      - {x: 111, y: -3}
+      - {x: 140, y: -3}
+      - {x: 148, y: -2}
+      - {x: 148, y: 6}
+      - {x: 142, y: 10}
+    - - {x: 187, y: 10}
+      - {x: 179, y: 9}
+      - {x: 172, y: 4}
+      - {x: 172, y: 1}
+      - {x: 175, y: -3}
+      - {x: 204, y: -3}
+      - {x: 212, y: -2}
+      - {x: 212, y: 6}
+      - {x: 206, y: 10}
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 1537655665
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      BackGroundGoose_0: -1233931887
+      BackGroundGoose_1: -41703916
+      BackGroundGoose_10: 241891281
+      BackGroundGoose_11: -1690226081
+      BackGroundGoose_12: -1333786738
+      BackGroundGoose_13: -1931089300
+      BackGroundGoose_14: 1537447496
+      BackGroundGoose_15: 1612795933
+      BackGroundGoose_16: 1532750099
+      BackGroundGoose_2: -1649532237
+      BackGroundGoose_3: -1523875429
+      BackGroundGoose_4: 2027998727
+      BackGroundGoose_5: 879791295
+      BackGroundGoose_6: -876766095
+      BackGroundGoose_7: -1900883047
+      BackGroundGoose_8: 599411418
+      BackGroundGoose_9: 1906856158
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

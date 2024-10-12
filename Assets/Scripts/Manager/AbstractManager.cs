@@ -2,17 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AbstractManager : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+public abstract class AbstractManager : MonoBehaviour
+{
+
+    public abstract void StartHazard();
+    public abstract void StopHazard();
+    public abstract bool CanProgress();
 }

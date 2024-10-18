@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UIElements;
+using UnityEngine.UI;
 // Jack Ratermann
 // Main Internet Task 1 Script
 // Depends on Abstract Task
@@ -14,7 +14,7 @@ public class InternetTaskOne : AbstractTask
     [SerializeField] GameObject diagnosisMenu;
 
     // More Closely Related References to Task 
-    ProgressBar progBar;
+    [SerializeField] Image progBarMask;
 
     // Booleans for when to allow menus to show
     bool wifiPopUp = false;
@@ -64,7 +64,7 @@ public class InternetTaskOne : AbstractTask
     // Start Internet Task 1
     public override void startTask()
     {
-        Debug.Log("my Progress is so high %!");
+        StartCoroutine(WifiDiagnosisTimer());
     }
 
     // Ask the hazard manager if our task can progress
@@ -82,5 +82,15 @@ public class InternetTaskOne : AbstractTask
     public override void startHazards()
     {
 
+    }
+
+    private IEnumerator WifiDiagnosisTimer()
+    {
+        while (progBarMask.fillAmount < 1)
+        {
+            yield return new WaitForSeconds(0.05f);
+            progBarMask.fillAmount += 0.001f;
+
+        }
     }
 }

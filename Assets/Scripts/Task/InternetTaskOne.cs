@@ -9,50 +9,64 @@ using UnityEngine.UIElements;
 
 public class InternetTaskOne : AbstractTask
 {
+    // References to the extended wifi pop up menu, and the diagnosis menu.
     [SerializeField] GameObject wifiPopUpMenu;
     [SerializeField] GameObject diagnosisMenu;
-    bool i = false;
 
+    // More Closely Related References to Task 
+    ProgressBar progBar;
+
+    // Booleans for when to allow menus to show
+    bool wifiPopUp = false;
+    bool diagnoseWindow = false;
+
+    // Initialization
     public void Start()
     {
         wifiPopUpMenu.SetActive(false);
         diagnosisMenu.SetActive(false);
     }
 
+    // Toggle Visibility Of Wifi Pop Up Menu
     public void OnWifiBtnClick()
     {
         // Toggles Visibility With Button Press
-        if ( i == false ) {
+        if (wifiPopUp == false && !diagnosisMenu.activeSelf ) {
             wifiPopUpMenu.SetActive(true);
-            i = true;
+            wifiPopUp = true;
         }
         else
         {
             wifiPopUpMenu.SetActive(false);
-            i = false;
+            wifiPopUp = false;
         }
     }
 
+    // Pull up diagnosis menu
     public void OnDiagnosisBtnClick()
     {
         // Toggles Visibility With Button Press
-        if (i == false)
+        if (diagnoseWindow == false)
         {
             diagnosisMenu.SetActive(true);
-            i = true;
+            wifiPopUp = false;
+            wifiPopUpMenu.SetActive(false);
+            diagnoseWindow = true;
         }
         else
         {
             diagnosisMenu.SetActive(false);
-            i = false;
+            diagnoseWindow = false;
         }
+        startTask();
     }
 
-    // Initiates a task
+    // Start Internet Task 1
     public override void startTask()
     {
-
+        Debug.Log("my Progress is so high %!");
     }
+
     // Ask the hazard manager if our task can progress
     // Idea use a percentage to slow down the task progress instead of completely stopping it
     public override void checkHazards()

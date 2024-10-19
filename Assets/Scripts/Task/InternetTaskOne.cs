@@ -88,7 +88,7 @@ public class InternetTaskOne : AbstractTask
     {
         while (progBarMask.fillAmount < 1)
         {
-            yield return new WaitForSeconds(0.05f);
+            yield return new WaitForSeconds(0.007f);
             progBarMask.fillAmount += 0.001f;
 
         }

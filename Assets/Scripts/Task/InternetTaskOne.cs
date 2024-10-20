@@ -13,8 +13,8 @@ public class InternetTaskOne : AbstractTask
     [SerializeField] GameObject wifiPopUpMenu;
     [SerializeField] GameObject diagnosisMenu;
 
-    // More Closely Related References to Task 
-    [SerializeField] Image progBarMask;
+    // Reference To Progress Bar Script
+    [SerializeField] LoadingScript loadingBarScript;
 
     // Booleans for when to allow menus to show
     bool wifiPopUp = false;
@@ -64,7 +64,7 @@ public class InternetTaskOne : AbstractTask
     // Start Internet Task 1
     public override void startTask()
     {
-        StartCoroutine(WifiDiagnosisTimer());
+        loadingBarScript.StartLoading();
     }
 
     // Ask the hazard manager if our task can progress
@@ -84,13 +84,4 @@ public class InternetTaskOne : AbstractTask
 
     }
 
-    private IEnumerator WifiDiagnosisTimer()
-    {
-        while (progBarMask.fillAmount < 1)
-        {
-            yield return new WaitForSeconds(0.007f);
-            progBarMask.fillAmount += 0.001f;
-
-        }
-    }
 }

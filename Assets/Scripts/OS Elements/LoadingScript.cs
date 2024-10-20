@@ -4,9 +4,11 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // Jack Ratermann
-// Loading Script For Progress Bar
+// Loading Script For Progress Bar, Updates a boolean when bar is full
 // Depends on nothing
 // {speed} variable can be changed to change the speed of the progress bar
+
+// To implement a progress bar, one simply needs a reference/variable of type LoadingScript, and then call StartLoading() on it.
 
 public class LoadingScript : MonoBehaviour
 {
@@ -26,6 +28,7 @@ public class LoadingScript : MonoBehaviour
     }
 
     // The enumerator to fill the progress bar.
+    // isLoaded will return true when bar has filled.
     private IEnumerator LoadingBarCRT()
     {
         while (progBar.fillAmount < 1 && canContinue)

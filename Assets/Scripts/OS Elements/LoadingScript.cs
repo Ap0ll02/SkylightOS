@@ -24,7 +24,11 @@ public class LoadingScript : MonoBehaviour
     // Start the loading bar, rather than making IEnum public
     public void StartLoading()
     {
-        StartCoroutine(LoadingBarCRT());
+        if (!isLoaded) 
+        {
+            StartCoroutine(LoadingBarCRT());
+        }
+        
     }
 
     // The enumerator to fill the progress bar.

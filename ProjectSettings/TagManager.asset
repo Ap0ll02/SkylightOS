@@ -14,8 +14,8 @@ TagManager:
   - UI
   - Background
   - 
-  - 
-  - 
+  - StandardWindow
+  - FocusedWindow
   - 
   - 
   - 
@@ -41,4 +41,10 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: StandardWindow
+    uniqueID: 3965869937
+    locked: 0
+  - name: FocusedWindow
+    uniqueID: 2611914385
     locked: 0

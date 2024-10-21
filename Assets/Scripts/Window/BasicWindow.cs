@@ -5,8 +5,14 @@ using UnityEngine.EventSystems;
 
 public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
 {
+    // Enable/Disable dragging for the window. Set in inherited class or editor if you want the window to always stay at the spawn.
+    public bool isDraggable = true;
+
+    // Enable/Disable closing for the window. Set in inherited class or editor if you want the window to not be closable by the user. 
+    public bool isClosable = true;
+
     // The start position of the mouse when it starts dragging. 
-    Vector3 MouseDragStartPos;
+    private Vector3 MouseDragStartPos;
 
     // Left mouse button, so that user cant drag with right mouse
     public PointerEventData.InputButton leftMouse;
@@ -20,11 +26,11 @@ public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
         rectTransform = (RectTransform)transform;
     }
 
-    // Used for dragging functionality, required for 'DragHandler'.
+    // Used for dragging functionality, required for 'IDragHandler'.
     // Override - Can make a tab undraggable 
     public void OnDrag(PointerEventData eventData)
     {
-        if (eventData.button == leftMouse)
+        if (eventData.button == leftMouse && isDraggable)
         {
             transform.localPosition = Input.mousePosition - MouseDragStartPos;
             TrapToScreen();
@@ -32,10 +38,10 @@ public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     }
 
-    // Used for dragging the window aswell, makes it work properly somehow
+    // Used for dragging the window aswell, required for 'IPointerDownHandler'
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (eventData.button == leftMouse)
+        if (eventData.button == leftMouse && isDraggable)
         {
             MouseDragStartPos = Input.mousePosition - transform.localPosition;
 
@@ -43,13 +49,13 @@ public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
             transform.SetAsLastSibling();
         }
 
-
     }
 
     // Used for closing the window.
     // Override - Make the Window Unclosable by user or to make something happen on close
     public void Close()
     {
+        if(isClosable)
         gameObject.SetActive(false);
     }
 

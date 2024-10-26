@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_abstract_task" xml:lang="en-US">
+<title>AbstractTask Class Reference</title>
+<indexterm><primary>AbstractTask</primary></indexterm>
+Inheritance diagram for AbstractTask:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_abstract_task__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for AbstractTask:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_abstract_task__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_abstract_task_1a5cc5d477e1dfdf31c5f9074ce4e597c9"/>void <emphasis role="strong">startTask</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_abstract_task_1ad709f14325d3f83e239b67a3bc57c792"/>void <emphasis role="strong">checkHazards</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_abstract_task_1a051beab009a2718d24a3fdd757371d03"/>void <emphasis role="strong">stopHazards</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_abstract_task_1a734a080e2365a122df23d22bf418ebf7"/>void <emphasis role="strong">startHazards</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_abstract_task_1ab819517881c174048908ba7d1fcde5f8"/>List&lt; <link linkend="_class_abstract_manager">AbstractManager</link> &gt; <emphasis role="strong">hazardManagers</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+Assets/Scripts/Task/AbstractTask.cs</section>

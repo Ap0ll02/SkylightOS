@@ -1,0 +1,23 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<book xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_index" xml:lang="en-US">
+    <info>
+    <title>Windows Project</title>
+    </info>
+<chapter>
+    <title>Class Documentation</title>
+    <xi:include href="class_abstract_manager.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_abstract_task.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_basic_window.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_goose_grab.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_goose_manager.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_goose_move.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_hazards.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_internet_task_one.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_loading_script.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_o_s_manager.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_popup_manager.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_popups.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+    <xi:include href="class_vanilla_popup.xml" xmlns:xi="http://www.w3.org/2001/XInclude"/>
+</chapter>
+<index/>
+</book>

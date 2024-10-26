@@ -10,6 +10,11 @@ using UnityEngine.UI;
 
 // To implement a progress bar, one simply needs a reference/variable of type LoadingScript, and then call StartLoading() on it.
 
+/**
+ * <summary> Loading Script For Progress Bar, Updates a boolean when bar is full </summary>
+ * <remarks> Depends on nothing </remarks>
+ * <remarks> {speed} variable can be changed to change the speed of the progress bar </remarks>
+ */
 public class LoadingScript : MonoBehaviour
 {
     // Ref to the progress bar and a state variable, as well as a can continue

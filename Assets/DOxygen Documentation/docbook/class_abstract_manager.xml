@@ -1,0 +1,36 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_abstract_manager" xml:lang="en-US">
+<title>AbstractManager Class Reference</title>
+<indexterm><primary>AbstractManager</primary></indexterm>
+Inheritance diagram for AbstractManager:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_abstract_manager__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for AbstractManager:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_abstract_manager__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_abstract_manager_1a49dc7b5366048dcee1ed7c0fea9e0a13"/>void <emphasis role="strong">StartHazard</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_abstract_manager_1ab69cc69fbb53143a9a963458b05b5a4d"/>void <emphasis role="strong">StopHazard</emphasis> ()</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_abstract_manager_1a282fe4211763537df5900b998e69b760"/>bool <emphasis role="strong">CanProgress</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+Assets/Scripts/Manager/AbstractManager.cs</section>

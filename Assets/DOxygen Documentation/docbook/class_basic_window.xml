@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' standalone='no'?>
+<section xmlns="http://docbook.org/ns/docbook" version="5.0" xmlns:xlink="http://www.w3.org/1999/xlink" xml:id="_class_basic_window" xml:lang="en-US">
+<title>BasicWindow Class Reference</title>
+<indexterm><primary>BasicWindow</primary></indexterm>
+Inheritance diagram for BasicWindow:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_basic_window__inherit__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+Collaboration diagram for BasicWindow:<para>
+    <informalfigure>
+        <mediaobject>
+            <imageobject>
+                <imagedata width="50%" align="center" valign="middle" scalefit="0" fileref="class_basic_window__coll__graph.png"></imagedata>
+            </imageobject>
+        </mediaobject>
+    </informalfigure>
+</para>
+<simplesect>
+    <title>Public Member Functions    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_basic_window_1a83a6370327ad7f559f2dda7b8a374bf2"/>void <emphasis role="strong">OnDrag</emphasis> (PointerEventData eventData)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_basic_window_1a6bd8b20ff6d6cb62f4cbd8d69d35f84f"/>void <emphasis role="strong">OnPointerDown</emphasis> (PointerEventData eventData)</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_basic_window_1a68af91b73e74f586ede83aaae9ec8ea6"/>void <emphasis role="strong">Close</emphasis> ()</para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<simplesect>
+    <title>Public Attributes    </title>
+        <itemizedlist>
+            <listitem><para><anchor xml:id="_class_basic_window_1a02498ae0a3ca7018abcd50e0456eb42d"/>bool <emphasis role="strong">isDraggable</emphasis> = true</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_basic_window_1ae08a9d7f5e293eddc4721f52ef875b4c"/>bool <emphasis role="strong">isClosable</emphasis> = true</para>
+</listitem>
+            <listitem><para><anchor xml:id="_class_basic_window_1ad80a0270a46a9be0146db8259bb04fd5"/>PointerEventData.InputButton <emphasis role="strong">leftMouse</emphasis></para>
+</listitem>
+        </itemizedlist>
+</simplesect>
+<para>
+The documentation for this class was generated from the following file:</para>
+Assets/Scripts/Window/BasicWindow.cs</section>

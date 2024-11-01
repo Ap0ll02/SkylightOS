@@ -11,7 +11,7 @@ public class InternetTaskOne : AbstractTask
 {
     // References to the extended wifi pop up menu, and the diagnosis menu.
     [SerializeField] GameObject wifiPopUpMenu;
-    [SerializeField] GameObject diagnosisMenu;
+    [SerializeField] GameObject diagnosisWindow;
 
     // Reference To Progress Bar Script
     [SerializeField] LoadingScript loadingBarScript;
@@ -24,14 +24,14 @@ public class InternetTaskOne : AbstractTask
     public void Start()
     {
         wifiPopUpMenu.SetActive(false);
-        diagnosisMenu.SetActive(false);
+        diagnosisWindow.SetActive(false);
     }
 
     // Toggle Visibility Of Wifi Pop Up Menu
     public void OnWifiBtnClick()
     {
         // Toggles Visibility With Button Press
-        if (wifiPopUp == false && !diagnosisMenu.activeSelf ) {
+        if (wifiPopUp == false && !diagnosisWindow.activeSelf ) {
             wifiPopUpMenu.SetActive(true);
             wifiPopUp = true;
         }
@@ -48,14 +48,14 @@ public class InternetTaskOne : AbstractTask
         // Toggles Visibility With Button Press
         if (diagnoseWindow == false)
         {
-            diagnosisMenu.SetActive(true);
+            diagnosisWindow.SetActive(true);
             wifiPopUp = false;
             wifiPopUpMenu.SetActive(false);
             diagnoseWindow = true;
         }
         else
         {
-            diagnosisMenu.SetActive(false);
+            diagnosisWindow.SetActive(false);
             diagnoseWindow = false;
         }
         startTask();

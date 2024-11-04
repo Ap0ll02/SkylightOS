@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 // Depends on the animation to call the function.
 public class SceneChange : MonoBehaviour
 {
+    // Can be called even priavte, its' called within the Image.
     private void LoadLevel1()
     {
         SceneManager.LoadScene("Level1");

@@ -23,7 +23,9 @@ public class InternetTaskOne : AbstractTask
     // Initialization
     public void Start()
     {
+        wifiPopUpMenu = FindObjectOfType<ExpandedWifiMenu>().gameObject;
         wifiPopUpMenu.SetActive(false);
+        diagnosisWindow = FindObjectOfType<DiagnosisWindow>().gameObject;
         diagnosisWindow.SetActive(false);
     }
 

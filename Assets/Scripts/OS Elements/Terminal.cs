@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+using TMPro;
 /**
  * @author Jack Ratermann
  * @date 11/03/2024
@@ -11,41 +13,42 @@ using UnityEngine;
  */
 
 /// Commands Available:
-/// @code {ls} - Lists all files in the current directory
-/// @code {cd} - Changes the current directory
-/// @code {cat} - Displays the contents of a file
-/// @code {clear} - Clears the terminal
-/// @code {help} - Displays all available commands
 
-public class Terminal : MonoBehaviour
+public class Terminal : AbstractTask
 {
+    /// @var TInstructionTxt The text that covers the terminal that can be used to show instructions or text.
+    [SerializeField] TMP_Text TInstructionTxt;
+
+    /// @var TInputHeading Standard Terminal Header Prior To Input (ex: user@computer >)
+    [SerializeField] TMP_Text TInputHeading;
+
+    /// @var TInput The input field to get user input.
+    [SerializeField] GameObject TInput;
+
+    /// @var IntroText A String to be displayed upoon start for terminal. 
+    private string FirstText = "Welcome to ClearSky Console.\n We are testing multi-line editing tbh.";
     void Start()
     {
-        /// Prints first console line
-        Debug.Log("user@computer:~$");
+        TInstructionTxt.text = FirstText;
     }
 
-    /// @brief This function will parse the input from the user
-    /// @param input The users input to be parsed
-    /// @return 0 if successful
-    int ParseInput(string input)
+    public override void startTask()
     {
-        Debug.Log("user@computer:~$ " + input);
-        return 0;
+
     }
 
-    /// @brief This function will run the command given by the user <summary>
-    /// @param command The command without arguments
-    /// @param args The argument array for the command
-    /// @return 0 if successful
-    int RunCommand(string command, string[] args)
+    public override void startHazards()
     {
-        if (args.Length == 0)
-        {
-            Debug.Log("No arguments provided.");
-        }
 
-        Debug.Log("user@computer:~$ " + command + args[0]);
-        return 0;
+    }
+
+    public override void stopHazards()
+    {
+
+    }
+
+    public override void checkHazards()
+    {
+
     }
 }

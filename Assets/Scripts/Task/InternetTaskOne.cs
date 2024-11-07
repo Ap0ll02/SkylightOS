@@ -6,6 +6,7 @@ using UnityEngine.UI;
 // Main Internet Task 1 Script
 // Depends on Abstract Task
 // Interacts with multiple UI elements
+// Modified heavily by Garrett
 
 public class InternetTaskOne : AbstractTask
 {
@@ -27,6 +28,13 @@ public class InternetTaskOne : AbstractTask
         wifiPopUpMenu.SetActive(false);
         diagnosisWindow = FindObjectOfType<DiagnosisWindow>().gameObject;
         diagnosisWindow.SetActive(false);
+        loadingBarScript = diagnosisWindow.GetComponentInChildren<LoadingScript>();
+    }
+
+    // Update is called once per frame
+    public void Update()
+    {
+        checkHazards();
     }
 
     // Toggle Visibility Of Wifi Pop Up Menu
@@ -61,6 +69,7 @@ public class InternetTaskOne : AbstractTask
             diagnoseWindow = false;
         }
         startTask();
+        startHazards();
     }
 
     // Start Internet Task 1
@@ -73,17 +82,34 @@ public class InternetTaskOne : AbstractTask
     // Idea use a percentage to slow down the task progress instead of completely stopping it
     public override void checkHazards()
     {
-
+        foreach (var hazardManager in hazardManagers)
+        {
+            if (!hazardManager.CanProgress())
+            {
+                loadingBarScript.canContinue = false;
+            }
+            else
+            {
+                loadingBarScript.canContinue = true;
+            }
+        }
     }
     // This will request the manager to stop / end a hazard
     public override void stopHazards()
     {
-
+        foreach (var hazardManager in hazardManagers)
+        {
+            hazardManager.StopHazard();
+        }
     }
+
     // this will request our manager to start making hazards
     public override void startHazards()
     {
-
+        foreach (var hazardManager in hazardManagers)
+        {
+            hazardManager.StartHazard();
+        }
     }
 
 }

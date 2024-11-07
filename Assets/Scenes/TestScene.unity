@@ -423,17 +423,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1315519223194759151, guid: e9e3394e049c74149a21eafd82b82ae2, type: 3}
   m_PrefabInstance: {fileID: 238173464}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &518405033 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6910765548980201232, guid: e9e3394e049c74149a21eafd82b82ae2, type: 3}
-  m_PrefabInstance: {fileID: 238173464}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6f58fc5fcd08f454ea7e13105a38e845, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &681195747
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,6 +882,61 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c34747cae8df0684095ed3b149fbcfc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1063481221
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1063481222}
+  - component: {fileID: 1063481223}
+  m_Layer: 0
+  m_Name: PopupManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1063481222
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063481221}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1157.7852, y: 533.7273, z: -4.4603806}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1149938844}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1063481223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1063481221}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95f0029e4f3ac0a408576612f19c5a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  popupList:
+  - {fileID: 4936913323952420332, guid: 9c6856fe978e64c45a353210b769b859, type: 3}
+  spawnedWindows: []
+  maxWindows: 5
+  spawnIntervalMin: 1
+  spawnIntervalMax: 5
+  xRangeMin: -5
+  xRangeMax: 5
+  yRangeMin: -3
+  yRangeMax: 3
+  canvas: {fileID: 1848633632}
 --- !u!1 &1071357775
 GameObject:
   m_ObjectHideFlags: 0
@@ -937,10 +981,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 63d19c3c649ad89438e1e81ff1200a9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazardManagers: []
+  hazardManagers:
+  - {fileID: 1063481223}
   wifiPopUpMenu: {fileID: 0}
   diagnosisWindow: {fileID: 0}
-  loadingBarScript: {fileID: 518405033}
+  loadingBarScript: {fileID: 0}
 --- !u!1 &1149938843
 GameObject:
   m_ObjectHideFlags: 0
@@ -976,6 +1021,7 @@ Transform:
   - {fileID: 1848633633}
   - {fileID: 950750489}
   - {fileID: 1071357776}
+  - {fileID: 1063481222}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180199214

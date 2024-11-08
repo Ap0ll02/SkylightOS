@@ -1,7 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Garrett Sharp
+/// Popup Manager
+/// Give it the list of popup prefabs, and then assign the tasks the reference to the manager.
+/// </summary>
 public class PopupManager : AbstractManager
 {
     // The window prefabs that can be spawned
@@ -10,10 +14,13 @@ public class PopupManager : AbstractManager
     // The list of spawned windows
     public List<GameObject> spawnedWindows = new List<GameObject>();
 
+    // Max windows
     public int maxWindows = 5;
 
+    // Minumum spawn interval, so atleast 3 'secs' (idk if its actually seconds) between spawns
     public int spawnIntervalMin = 3;
     
+    // Maximum spawn interval
     public int spawnIntervalMax = 10;
 
     // The range of the spawn position
@@ -25,17 +32,21 @@ public class PopupManager : AbstractManager
     // The canvas to spawn the windows on
     public Canvas canvas;
 
+    // Getting rid of disabled windows.
+    // Calling this method in update is kinda stupid will probably change later
     public void Update()
     {
         CleanUpDisabledWindows();
     }
 
+    // Starts the hazard, to be called by the task
     public override void StartHazard()
     {
         Debug.Log("Starting Popup Manager");
         StartCoroutine(SpawnWindow());
     }
 
+    // Spawns the window based off of the IEnumerator
     IEnumerator SpawnWindow()
     {
         while (true)
@@ -46,12 +57,14 @@ public class PopupManager : AbstractManager
         }
     }
 
+    // Stops the hazard, to be called by task
     public override void StopHazard()
     {
         Debug.Log("Stopping Popup Manager");
         StopAllCoroutines();
     }
 
+    // Checks if any windows are spawned, called by task
     public override bool CanProgress()
     {
         if(spawnedWindows.Count == 0)

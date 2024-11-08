@@ -2,7 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
-
+/// <summary>
+/// Garrett Sharp
+/// The functionality for a basic window
+/// Currently has flags for drag, closable, etc
+/// </summary>
 public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
 {
     // Enable/Disable dragging for the window. Set in inherited class or editor if you want the window to always stay at the spawn.

@@ -48,6 +48,28 @@ public class IconManager : MonoBehaviour
         }
         // root then style then how that style is displayed then we set the Display style as none in order to turn it off 
         pauseMenu.rootVisualElement.style.display = DisplayStyle.None;
+
+        // Here we are collecting each button in order to program their funcitonality
+        var buttonPlay = pauseMenu.rootVisualElement.Q<Button>("Play");
+        if(buttonPlay == null)
+             Debug.Log("Reference to button is missing");
+        var buttonMenu = pauseMenu.rootVisualElement.Q<Button>("Menu");
+        if(buttonMenu == null)
+            Debug.Log("Reference to button is missing");
+        var buttonQuit = pauseMenu.rootVisualElement.Q<Button>("Quit");
+        if(buttonQuit == null)
+            Debug.Log("Reference to button is missing");
+
+        // These are the call backs which will actual interact with the references of the buttons we just collected
+        // This is the play button so we will want to close the menu and then make the menu unpaused and hide the pause mennu
+        buttonPlay.RegisterCallback<ClickEvent>((evt) =>
+        {
+            TogglePauseMenu();
+        });
+        // This is to set the menu behavior 
+        buttonMenu.RegisterCallback<ClickEvent>((evt) => { Debug.Log("we are atttt a menuuuuuuu");});
+        // This is to set the Quit behavior 
+        buttonQuit.RegisterCallback<ClickEvent>((evt => { Application.Quit();}));
     }
 
     // This is the function that will actually pause the game and then call the pause menu

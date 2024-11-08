@@ -14,7 +14,7 @@ using TMPro;
 
 /// Commands Available:
 
-public class Terminal : AbstractTask
+public class Terminal : MonoBehaviour
 {
     /// @var TInstructionTxt The text that covers the terminal that can be used to show instructions or text.
     [SerializeField] TMP_Text TInstructionTxt;
@@ -22,33 +22,26 @@ public class Terminal : AbstractTask
     /// @var TInputHeading Standard Terminal Header Prior To Input (ex: user@computer >)
     [SerializeField] TMP_Text TInputHeading;
 
-    /// @var TInput The input field to get user input.
-    [SerializeField] GameObject TInput;
-
     /// @var IntroText A String to be displayed upoon start for terminal. 
     private string FirstText = "Welcome to ClearSky Console.\n We are testing multi-line editing tbh.";
+
     void Start()
     {
         TInstructionTxt.text = FirstText;
     }
 
-    public override void startTask()
+    public void ListFilesExec()
     {
-
+        TInstructionTxt.text = "Files: \n";
     }
 
-    public override void startHazards()
+    public void AntiVirusExec()
     {
-
+        TInstructionTxt.text = "AntiVirus: \n";
     }
 
-    public override void stopHazards()
+    public void NMapExec()
     {
-
-    }
-
-    public override void checkHazards()
-    {
-
+        TInstructionTxt.text = "Mapping Ports : -----\n";
     }
 }

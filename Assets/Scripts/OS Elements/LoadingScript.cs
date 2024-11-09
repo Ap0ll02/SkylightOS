@@ -40,12 +40,19 @@ public class LoadingScript : MonoBehaviour
     // isLoaded will return true when bar has filled.
     private IEnumerator LoadingBarCRT()
     {
-        while (progBar.fillAmount < 1 && canContinue)
+        while (progBar.fillAmount < 1)
         {
             // WaitForSeconds time is 144hz, so try not to change this value for smoothness
             // If you need to change the speed of the progress bar, change the speed variable
+            if (canContinue)
+            {
             yield return new WaitForSeconds(0.007f);
             progBar.fillAmount += speed;
+            }
+            else
+            {
+                yield return new WaitForSeconds(0.007f);
+            }
         }
         isLoaded = true;
     }

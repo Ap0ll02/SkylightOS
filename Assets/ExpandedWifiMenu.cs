@@ -3,7 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using System;
-
+/// <summary>
+/// Garrett Sharp
+/// The wifi menu that is expanded when the wifi button is pressed
+/// Used to show the status of the wifi
+/// </summary>
 public class ExpandedWifiMenu : MonoBehaviour
 {
     // Used to open the diagnosis window
@@ -25,6 +29,7 @@ public class ExpandedWifiMenu : MonoBehaviour
     // Current state of the wifi
     public WifiState currentWifiState;
 
+    // Getting references to the diagnosis window and setting the default state
     void Awake()
     {
         diagnosisWindow = FindObjectOfType<DiagnosisWindow>().gameObject;
@@ -32,6 +37,7 @@ public class ExpandedWifiMenu : MonoBehaviour
         UpdateWifiState();
     }
 
+    // Disabling the game object on start
     void Start()
     {
         gameObject.SetActive(false);
@@ -71,6 +77,7 @@ public class ExpandedWifiMenu : MonoBehaviour
         return currentWifiState;
     }
 
+    // Method to set the wifi state
     public void SetWifiState(WifiState state)
     {
         currentWifiState = state;

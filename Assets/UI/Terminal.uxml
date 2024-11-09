@@ -1,0 +1,8 @@
+<ui:UXML xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" xsi="http://www.w3.org/2001/XMLSchema-instance" engine="UnityEngine.UIElements" editor="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/termstyles.uss?fileID=7433441132597879392&amp;guid=b087de4120523944cb4a1781e68d095d&amp;type=3#termstyles" />
+    <ui:VisualElement name="VisualElement" class="terminal-ui" style="flex-grow: 1; width: auto; max-width: 1280px; max-height: 720px; padding-top: 20px; padding-right: 20px; padding-bottom: 20px; padding-left: 20px; flex-direction: column;">
+        <ui:ListView style="height: 489px; width: 1233px;" />
+        <ui:Label tabindex="-1" text="Label" parse-escape-sequences="true" display-tooltip-when-elided="true" style="color: rgb(255, 255, 255); height: 127px; width: 1226px;" />
+        <ui:TextField picking-mode="Ignore" label="User@Computer:$" value="Enter Command Here" name="UserInputField" style="height: 55px; margin-right: 4px; font-size: 14px; color: rgb(255, 255, 255); background-color: rgba(0, 0, 0, 0); -unity-background-image-tint-color: rgb(255, 255, 255); align-self: center; justify-content: flex-start; align-items: center; width: 1221px;" />
+    </ui:VisualElement>
+</ui:UXML>

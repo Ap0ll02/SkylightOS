@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 /// <summary>
 /// Garrett Sharp
 /// Diagnosis window
@@ -9,5 +10,22 @@ using UnityEngine;
 /// </summary>
 public class DiagnosisWindow : MonoBehaviour
 {
+    // Starting disabled
+    void Start()
+    {
+        gameObject.SetActive(false);
+    }
 
+    public static event Action OnDiagnosisWindowOpened;
+
+    void OnEnable()
+    {
+        OnDiagnosisWindowOpened?.Invoke();
+    }
+
+    public void OpenWindow()
+    {
+        gameObject.SetActive(true);
+        OnDiagnosisWindowOpened?.Invoke();
+    }
 }

@@ -18,11 +18,6 @@ public class DiagnosisWindow : MonoBehaviour
 
     public static event Action OnDiagnosisWindowOpened;
 
-    void OnEnable()
-    {
-        OnDiagnosisWindowOpened?.Invoke();
-    }
-
     public void OpenWindow()
     {
         gameObject.SetActive(true);

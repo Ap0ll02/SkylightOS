@@ -549,10 +549,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 4826310643824066200, guid: e9e3394e049c74149a21eafd82b82ae2, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 1138956528}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e9e3394e049c74149a21eafd82b82ae2, type: 3}
 --- !u!224 &238173465 stripped
 RectTransform:
@@ -1107,23 +1104,6 @@ MonoBehaviour:
   wifiPopUpMenuWifiState: {fileID: 0}
   diagnosisWindow: {fileID: 0}
   loadingBarScript: {fileID: 0}
---- !u!1 &1138956524 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4826310643824066200, guid: e9e3394e049c74149a21eafd82b82ae2, type: 3}
-  m_PrefabInstance: {fileID: 238173464}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1138956528
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1138956524}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c34747cae8df0684095ed3b149fbcfc1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1149938843
 GameObject:
   m_ObjectHideFlags: 0

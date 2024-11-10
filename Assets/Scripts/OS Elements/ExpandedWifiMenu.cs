@@ -11,7 +11,7 @@ using System;
 public class ExpandedWifiMenu : MonoBehaviour
 {
     // Used to open the diagnosis window
-    [SerializeField] GameObject diagnosisWindow;
+    [SerializeField] DiagnosisWindow diagnosisWindow;
 
     // TextMeshPro object to display the wifi state
     [SerializeField] TMP_Text wifiStateText;
@@ -32,7 +32,7 @@ public class ExpandedWifiMenu : MonoBehaviour
     // Getting references to the diagnosis window and setting the default state
     void Awake()
     {
-        diagnosisWindow = FindObjectOfType<DiagnosisWindow>().gameObject;
+        diagnosisWindow = FindObjectOfType<DiagnosisWindow>();
         currentWifiState = WifiState.Connected; // Default state
         UpdateWifiState();
     }
@@ -66,7 +66,7 @@ public class ExpandedWifiMenu : MonoBehaviour
     // When you press the 'run diagnossis' button
     public void RunDiagnosisPressed()
     {
-        diagnosisWindow.SetActive(true);
+        diagnosisWindow.OpenWindow();
         gameObject.SetActive(true);
     }
 

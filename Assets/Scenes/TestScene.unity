@@ -424,56 +424,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1315519223194759151, guid: e9e3394e049c74149a21eafd82b82ae2, type: 3}
   m_PrefabInstance: {fileID: 238173464}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &461615153
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 461615154}
-  - component: {fileID: 461615155}
-  m_Layer: 0
-  m_Name: Task2
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &461615154
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461615153}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.84344596, y: -0.1663588, z: 4696.934}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1149938844}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &461615155
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 461615153}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63d19c3c649ad89438e1e81ff1200a9c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hazardManagers:
-  - {fileID: 1063481223}
-  wifiPopUpMenu: {fileID: 0}
-  wifiPopUpMenuWifiState: {fileID: 0}
-  diagnosisWindow: {fileID: 0}
-  loadingBarScript: {fileID: 0}
 --- !u!1 &681195747
 GameObject:
   m_ObjectHideFlags: 0
@@ -571,54 +521,6 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 4985135885990256120, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
   m_PrefabInstance: {fileID: 1195544039}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &806861875
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 806861876}
-  - component: {fileID: 806861877}
-  m_Layer: 0
-  m_Name: OSManager
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!4 &806861876
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 806861875}
-  serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.19326854, y: -0.45659986, z: 4682.1855}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 1149938844}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &806861877
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 806861875}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c4be66d9961a345499ada282c70dec4a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tasks:
-  - {fileID: 1071357777}
-  buttonPrefab: {fileID: 0}
-  buttonContainer: {fileID: 0}
 --- !u!1 &807972724
 GameObject:
   m_ObjectHideFlags: 0
@@ -1109,10 +1011,8 @@ Transform:
   - {fileID: 1916755334}
   - {fileID: 1848633633}
   - {fileID: 1071357776}
-  - {fileID: 461615154}
   - {fileID: 1063481222}
   - {fileID: 950750489}
-  - {fileID: 806861876}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1180199214
@@ -1456,7 +1356,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tasks:
   - {fileID: 1071357777}
-  - {fileID: 461615155}
   buttonPrefab: {fileID: 1462099745475122951, guid: eb21ec5b5d7221145a4fd1777fe1917f, type: 3}
   buttonContainer: {fileID: 1763194259}
 --- !u!1 &1384283203

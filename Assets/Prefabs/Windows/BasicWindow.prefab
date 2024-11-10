@@ -89,6 +89,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9783ccd866ae124e8522c5e72231e24, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isDraggable: 1
+  isClosable: 1
   leftMouse: 0
 --- !u!1 &8393124648718493194
 GameObject:
@@ -125,7 +127,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -153.304, y: -146.272}
+  m_AnchoredPosition: {x: -153.30469, y: -146.27197}
   m_SizeDelta: {x: 175.471, y: 171.549}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7028706308496228776

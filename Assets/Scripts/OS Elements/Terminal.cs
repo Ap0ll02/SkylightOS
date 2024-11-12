@@ -19,6 +19,9 @@ public class Terminal : MonoBehaviour
     /// @var TInstructionTxt The text that covers the terminal that can be used to show instructions or text.
     [SerializeField] TMP_Text TInstructionTxt;
 
+    /// @var TWindow The terminal window variant, so it may be inactive upon start.
+    public GameObject TWindow;
+
     /// @var TInputHeading Standard Terminal Header Prior To Input (ex: user@computer >)
     [SerializeField] TMP_Text TInputHeading;
 
@@ -28,6 +31,7 @@ public class Terminal : MonoBehaviour
     void Start()
     {
         TInstructionTxt.text = FirstText;
+        TWindow.SetActive(false);
     }
 
     public void ListFilesExec()

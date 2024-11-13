@@ -28,20 +28,18 @@ public class TerminalTask : AbstractTask
     public GameObject avBtn;
     public GameObject nmapBtn;
     private State termState;
+    public GameObject terminalPanel;
 
 
     /// @brief Assign all of the terminal objects in the scene.
     public void Awake() {
-        terminal = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel");
+        terminal = GameObject.Find("WindowCanvas/TerminalWindow");
+        terminalPanel = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel");
         terminalText = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel/TInstructionTxt").GetComponent<TMP_Text>();
         lsBtn = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel/LSButton");
         avBtn = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel/antiviralBtn");
         nmapBtn = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel/nmapBtn");
-    }
-
-    public void Start()
-    {
-        this.gameObject.SetActive(false);
+        termState = State.Off;
     }
 
     public override void checkHazards()
@@ -49,8 +47,10 @@ public class TerminalTask : AbstractTask
         Debug.Log("This Exists");
     }
 
+    /// @brief Changes terminal information prompt and terminal state.
     public override void startTask()
     {
+        // Terminal Task Start, Prompts User To Use The AntiVirus installation tool. Changes terminal state to On.
         string termText = "Welcome To The Console, Let's get you started installing some software\n"
             + "The AntiVirus toolkit is a helpful addition for getting rid of pesky malware!\n";
         termState = State.On;
@@ -67,7 +67,36 @@ public class TerminalTask : AbstractTask
         Debug.Log("This Exists");
     }
 
-    public void AVDownload()
+    /// @brief Subscription handling to all 3 button events from the terminal.
+    void OnEnable()
+    {
+        Terminal.OnAVPressed += AVTask;
+        Terminal.OnLSPressed += LSTask;
+        Terminal.OnNMAPPressed += NMAPTask;
+    }
+
+    void OnDisable()
+    {
+        Terminal.OnAVPressed -= AVTask;
+        Terminal.OnLSPressed -= LSTask;
+        Terminal.OnNMAPPressed -= NMAPTask;
+    }
+
+    /// @brief 3 Functions To Handle When The Terminal Buttons Are Pressed.
+    void AVTask()
+    {
+        if(termState == State.On)
+        {
+            terminalText.text = "The Task Started Bitch.";
+        }
+    }
+
+    void LSTask()
+    {
+
+    }
+
+    void NMAPTask()
     {
 
     }

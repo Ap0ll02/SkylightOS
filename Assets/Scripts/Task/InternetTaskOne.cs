@@ -32,6 +32,7 @@ public class InternetTaskOne : AbstractTask
     public void Start()
     {
         // Automatically turn off the game object at the start of the scene.
+        base.Start();
         gameObject.SetActive(false);
     }
 
@@ -42,6 +43,7 @@ public class InternetTaskOne : AbstractTask
         if(loadingBarScript.isLoaded)
         {
             stopHazards();
+            CompleteTask();
         }
     }
 

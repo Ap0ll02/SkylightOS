@@ -28,7 +28,12 @@ public class Terminal : MonoBehaviour
     /// @var IntroText A String to be displayed upoon start for terminal. 
     private string FirstText = "Welcome to ClearSky Console.\n We are testing multi-line editing tbh.";
 
-    void Start()
+    public void Awake()
+    {
+        TWindow.SetActive(true);
+    }
+
+    public void Start()
     {
         TInstructionTxt.text = FirstText;
         TWindow.SetActive(false);

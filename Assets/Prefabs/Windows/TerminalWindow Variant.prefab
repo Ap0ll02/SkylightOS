@@ -113,6 +113,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
   m_PrefabInstance: {fileID: 3442709812622692419}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &7703465405051882939 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4985135885990256120, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
+  m_PrefabInstance: {fileID: 3442709812622692419}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7607089981114379818
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -305,6 +310,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TerminalPanel
       objectReference: {fileID: 0}
+    - target: {fileID: 8401654361862022143, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: TWindow
+      value: 
+      objectReference: {fileID: 7703465405051882939}
     - target: {fileID: 8663722734042380848, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
       propertyPath: m_fontSize
       value: 120.4

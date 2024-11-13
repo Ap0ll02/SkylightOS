@@ -3,7 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-
+/// <summary>
+/// Garrett Sharp
+/// OS Manager
+/// Basically manages the tasks and buttons to start those tasks
+/// Will also manage the boss fight after the tasks are completed
+/// </summary>
 public class OSManager : MonoBehaviour
 {
     // List to hold the tasks

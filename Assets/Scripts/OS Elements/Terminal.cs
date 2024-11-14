@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using System;
 using TMPro;
 /**
  * @author Jack Ratermann
@@ -12,12 +13,15 @@ using TMPro;
  * @note This class will not have all actual terminal commands.
  */
 
-/// Commands Available:
+/// Commands Available: LS, apt-install, NMAP
 
 public class Terminal : MonoBehaviour
 {
     /// @var TInstructionTxt The text that covers the terminal that can be used to show instructions or text.
     [SerializeField] TMP_Text TInstructionTxt;
+
+    /// @var TWindow The terminal window variant, so it may be inactive upon start.
+    public GameObject TWindow;
 
     /// @var TInputHeading Standard Terminal Header Prior To Input (ex: user@computer >)
     [SerializeField] TMP_Text TInputHeading;
@@ -25,23 +29,46 @@ public class Terminal : MonoBehaviour
     /// @var IntroText A String to be displayed upoon start for terminal. 
     private string FirstText = "Welcome to ClearSky Console.\n We are testing multi-line editing tbh.";
 
-    void Start()
+    /// @var OnAVPressed event and Action delegate variable setup.
+    public static event Action OnAVPressed;
+    public static event Action OnNMAPPressed;
+    public static event Action OnLSPressed;
+
+    public void Awake()
+    {
+        TWindow.SetActive(true);
+    }
+
+    public void Start()
     {
         TInstructionTxt.text = FirstText;
+        TWindow.SetActive(false);
     }
 
     public void ListFilesExec()
     {
+        // All code above the invoke line is what happens if the terminal task does not override.
         TInstructionTxt.text = "Files: \n";
+
+        // Allows the TerminalTask to modify terminal commands if Task State is On
+        OnLSPressed?.Invoke();
     }
 
     public void AntiVirusExec()
     {
+        // All code above the invoke line is what happens if the terminal task does not override.
         TInstructionTxt.text = "AntiVirus: \n";
+
+        // Allows the TerminalTask to modify terminal commands if Task State is On
+        OnAVPressed?.Invoke();
     }
 
     public void NMapExec()
     {
+        // All code above the invoke line is what happens if the terminal task does not override.
         TInstructionTxt.text = "Mapping Ports : -----\n";
+
+        // Allows the TerminalTask to modify terminal commands if Task State is On
+        OnNMAPPressed?.Invoke();
     }
 }

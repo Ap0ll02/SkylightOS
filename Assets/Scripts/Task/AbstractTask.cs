@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
+using System;
 // Garrett Sharp
 // to create a cool ass abstract task manager
 // this is dependent on nothing
@@ -11,8 +13,14 @@ public abstract class AbstractTask : MonoBehaviour
     //dont forget to state your purpose
     public List<AbstractManager> hazardManagers;
 
+    // Boolean checking if the task is complete or not
+    public bool isComplete;
+
+    // Event to notify when the task is completed
+    public static event Action OnTaskCompleted;
+
     // Start is called before the first frame update
-    void Start()
+    public void Start()
     {
         if (hazardManagers == null)
             Debug.Log("No Hazard Managers");
@@ -34,5 +42,9 @@ public abstract class AbstractTask : MonoBehaviour
     // this will request our manager to start making hazards
     public abstract void startHazards();
 
-
+    // Method to complete the task
+    protected void CompleteTask()
+    {
+        OnTaskCompleted?.Invoke();
+    }
 }

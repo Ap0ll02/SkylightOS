@@ -85,15 +85,22 @@ public class TerminalTask : AbstractTask
     /// @brief 3 Functions To Handle When The Terminal Buttons Are Pressed.
     void AVTask()
     {
-        if(termState == State.On)
+        /// @var termLoadBar will be used for arrow game, how the loading progresses. 
+        /// Different process and visual than the prefab loading bar.
+        string termLoadBar = "--------------------------------";
+        if (termState == State.On)
         {
-            terminalText.text = "The Task Started Bitch.";
+            terminalText.text = "AntiVirus Toolkit Downloading:\n";
+            terminalText.text += termLoadBar;
         }
     }
 
     void LSTask()
     {
-
+        if(termState == State.On)
+        {
+            terminalText.text = "Scanning Files: Maze Game Initiate!";
+        }
     }
 
     void NMAPTask()

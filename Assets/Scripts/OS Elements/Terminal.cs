@@ -47,19 +47,28 @@ public class Terminal : MonoBehaviour
 
     public void ListFilesExec()
     {
+        // All code above the invoke line is what happens if the terminal task does not override.
         TInstructionTxt.text = "Files: \n";
+
+        // Allows the TerminalTask to modify terminal commands if Task State is On
         OnLSPressed?.Invoke();
     }
 
     public void AntiVirusExec()
     {
+        // All code above the invoke line is what happens if the terminal task does not override.
         TInstructionTxt.text = "AntiVirus: \n";
+
+        // Allows the TerminalTask to modify terminal commands if Task State is On
         OnAVPressed?.Invoke();
     }
 
     public void NMapExec()
     {
+        // All code above the invoke line is what happens if the terminal task does not override.
         TInstructionTxt.text = "Mapping Ports : -----\n";
+
+        // Allows the TerminalTask to modify terminal commands if Task State is On
         OnNMAPPressed?.Invoke();
     }
 }

@@ -31,10 +31,11 @@ public class RainbowArrow : Arrows
     // This function will make sure the keypress is only considered when close to the check arrow, nya~
     // We want to be kind to our new players, grandmas, and game journalists at innovation day, nya!
     // HELP I am mentally ill and its 2:30AM at the WPEB
-    public void PositionCheck(Vector3 check)
+    public void positionCheck()
     {
         // Math Abs ensures it will always be a postive number so we still check our two cases, if its above or below  
-        float distance = Mathf.Abs(transform.position.y - check.y);
+        // arrowCheckMeasument is the Y position of the check arrow and inherated from the Parent class Arrows
+        float distance = Mathf.Abs(transform.position.y - arrowCheckMeasument);
         
         if (distance <= 0.5f)
         {

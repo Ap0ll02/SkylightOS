@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -20,7 +21,6 @@ public class NyanceNyanceRevalution : AbstractBossTask
     private int arrowCount = 0;
     // This is where the different types of arrow prefabs will be held.This will be invoked to give a new arrow its prefab before instanction 
     public GameObject[] arrowsTypesArray = new GameObject[4];
-    public GameObject[] CheckTypesArray = new GameObject[4];
     private GameObject newArrow;
 
     
@@ -29,16 +29,12 @@ public class NyanceNyanceRevalution : AbstractBossTask
     {
 
     }
-    void Start()
+    public void Start()
     {
         StartCoroutine("spawnArrows");
+        
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public override void startTask()
     {
@@ -73,5 +69,15 @@ public class NyanceNyanceRevalution : AbstractBossTask
         yield break;
     }
 
-   
+    public void inputChecker(Arrows arrow)
+    {
+        // This will check if the player has pressed the correct key
+        // We will subscribe the arrow to the event and then check if the player has pressed the correct key
+    }
+
+    UnityEvent upArrowPressed = new UnityEvent();
+    UnityEvent downArrowPressed = new UnityEvent();
+    UnityEvent rightArrowPressed = new UnityEvent();
+    UnityEvent leftArrowPressed = new UnityEvent();
+
 }

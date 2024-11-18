@@ -13,6 +13,7 @@ using UnityEngine;
 public class Arrows : MonoBehaviour
 {
     public float speed;
+    public float arrowCheckMeasument = 4.5f;
 
     // Fucking amazing brain moment just make a function in the parent class that checks if its position is greater then 7 Y. If so BYE BYE OBJECT
     public void checkDeystroy()

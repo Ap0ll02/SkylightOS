@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8678513436782558100}
   - component: {fileID: 2072580866736769906}
   m_Layer: 0
-  m_Name: NyanceNyanceRevalution
+  m_Name: NyanBossTask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 4366849566078826834}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.20261872, y: -2.7509046, z: -2.9153666}
+  m_LocalPosition: {x: -0.22755155, y: 23.036684, z: -3.0188031}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -44,3 +44,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92024d02b9c3a4743ad938e01b04ffd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hazardManagers: []
+  isComplete: 0
+  arrowsTypesArray:
+  - {fileID: 3032773568380443419, guid: 25dba5cbe3a2fd942a0903706a4812b9, type: 3}
+  - {fileID: 7079046897199327444, guid: 2721f0c38e750f44abdf7c8e75aa17ad, type: 3}
+  - {fileID: 7513995205878027671, guid: 9ab176843c3a06d44bda3c5673b2d211, type: 3}
+  - {fileID: 6709330442854701224, guid: d210199823ef33d448253aef33430a36, type: 3}

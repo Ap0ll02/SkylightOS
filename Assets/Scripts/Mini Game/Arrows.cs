@@ -13,9 +13,9 @@ using UnityEngine;
 public class Arrows : MonoBehaviour
 {
     public float speed;
-    
+
     // Fucking amazing brain moment just make a function in the parent class that checks if its position is greater then 7 Y. If so BYE BYE OBJECT
-   public void checkDeystroy()
+    public void checkDeystroy()
     {
         // The arrows only move up so we just compare its Y location 
         if (transform.position.y > 8)

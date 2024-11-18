@@ -20,8 +20,10 @@ public class NyanceNyanceRevalution : AbstractBossTask
     private int arrowCount = 0;
     // This is where the different types of arrow prefabs will be held.This will be invoked to give a new arrow its prefab before instanction 
     public GameObject[] arrowsTypesArray = new GameObject[4];
+    public GameObject[] CheckTypesArray = new GameObject[4];
     private GameObject newArrow;
 
+    
     // Start is called before the first frame update
     public void Awake()
     {
@@ -30,7 +32,6 @@ public class NyanceNyanceRevalution : AbstractBossTask
     void Start()
     {
         StartCoroutine("spawnArrows");
-        CheckLocation();
     }
 
     // Update is called once per frame
@@ -72,11 +73,5 @@ public class NyanceNyanceRevalution : AbstractBossTask
         yield break;
     }
 
-    public void CheckLocation()
-    {
-        if (newArrow.transform.position.y > 7)
-        {
-            newArrow.gameObject.IsDestroyed();
-        }
-    }
+   
 }

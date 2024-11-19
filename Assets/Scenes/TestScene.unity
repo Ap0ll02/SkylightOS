@@ -1284,6 +1284,9 @@ MonoBehaviour:
   GPUStatusText: {fileID: 680532034}
   CPUStatusText: {fileID: 534790978}
   RAMStatusText: {fileID: 522282366}
+  GPUButton: {fileID: 2004270370}
+  CPUButton: {fileID: 1599308256}
+  RAMButton: {fileID: 1826830301}
 --- !u!1 &635946166
 GameObject:
   m_ObjectHideFlags: 0
@@ -3549,7 +3552,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 77, y: 331}
+  m_AnchoredPosition: {x: 414, y: 331}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1599308258
@@ -4084,7 +4087,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 77, y: 120}
+  m_AnchoredPosition: {x: 408, y: 120}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1826830303
@@ -4478,7 +4481,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 64, y: 573}
+  m_AnchoredPosition: {x: 383, y: 573}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2004270372

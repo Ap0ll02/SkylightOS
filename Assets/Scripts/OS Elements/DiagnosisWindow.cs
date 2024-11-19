@@ -41,6 +41,11 @@ public class DiagnosisWindow : MonoBehaviour
         StartLoadingBar();
     }
 
+    public void OnDisable()
+    {
+        ResetLoadingBar();
+        gameObject.SetActive(false);
+    }
     // Starting the loading bar
     public void StartLoadingBar()
     {
@@ -60,10 +65,16 @@ public class DiagnosisWindow : MonoBehaviour
         loadingBarScript.canContinue = false;
     }
 
+    public static event Action LoadingDoneNotify;
+
     public void LoadingDone()
     {
+        Debug.Log("LoadingDone");
         window.isClosable = true;
+        LoadingDoneNotify?.Invoke();
     }
+
+
 
     // Coroutine to update the diagnosis window when the loading bar is loaded
     private IEnumerator UpdateDiagnosisWindow()
@@ -74,5 +85,10 @@ public class DiagnosisWindow : MonoBehaviour
         }
         // Update the diagnosis window here
         LoadingDone();
+    }
+
+    public void ResetLoadingBar()
+    {
+        loadingBarScript.Reset();
     }
 }

@@ -100,4 +100,11 @@ public class LoadingScript : MonoBehaviour
         }
         isLoaded = true;
     }
+
+    /// @brief Reset the progress bar to 0
+    public void Reset()
+    {
+        progBar.fillAmount = 0;
+        isLoaded = false;
+    }
 }

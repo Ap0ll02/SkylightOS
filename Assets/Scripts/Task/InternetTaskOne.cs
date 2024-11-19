@@ -40,23 +40,20 @@ public class InternetTaskOne : AbstractTask
     public void Update()
     {
         checkHazards();
-        if(loadingBarScript.isLoaded)
-        {
-            stopHazards();
-            CompleteTask();
-        }
     }
 
     // Message handler for opening the diagnosis window
     void OnEnable()
     {
         DiagnosisWindow.OnDiagnosisWindowOpened += HandleDiagnosisWindowOpened;
+        DiagnosisWindow.LoadingDoneNotify += CompleteTask;
     }
 
     // Removing message handler?
     void OnDisable()
     {
         DiagnosisWindow.OnDiagnosisWindowOpened -= HandleDiagnosisWindowOpened;
+        DiagnosisWindow.LoadingDoneNotify -= CompleteTask;
     }
 
     // When the diagnosis window is opened, start the hazards and loading bar

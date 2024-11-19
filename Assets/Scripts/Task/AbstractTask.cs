@@ -45,6 +45,7 @@ public abstract class AbstractTask : MonoBehaviour
     // Method to complete the task
     protected void CompleteTask()
     {
+        stopHazards();
         OnTaskCompleted?.Invoke();
     }
 }

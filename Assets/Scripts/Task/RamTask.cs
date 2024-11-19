@@ -12,10 +12,13 @@ public class RamTask : AbstractTask
 
     [SerializeField] SystemResourcesWindow systemResourcesWindow;
 
+    [SerializeField] DiagnosisWindow diagnosisWindow;
+
     // 
     private void Awake()
     {
         systemResourcesWindow = FindObjectOfType<SystemResourcesWindow>();
+        diagnosisWindow = FindObjectOfType<DiagnosisWindow>();
     }
 
     // Start is called before the first frame update
@@ -55,7 +58,7 @@ public class RamTask : AbstractTask
         {
             if (!hazardManager.CanProgress())
             {
-
+                
             }
             else
             {

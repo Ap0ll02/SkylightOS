@@ -575,6 +575,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckArrowUp
       objectReference: {fileID: 0}
+    - target: {fileID: 7985134549211643970, guid: eb9936bce8d88d64e91d400c9b2da4ab, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -2125475745, guid: a2634ac0c3d35734ebc53a5e2efb139a, type: 3}
+    - target: {fileID: 9164603686749555952, guid: eb9936bce8d88d64e91d400c9b2da4ab, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9164603686749555952, guid: eb9936bce8d88d64e91d400c9b2da4ab, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.53
@@ -633,6 +641,10 @@ PrefabInstance:
       value: CheckArrowRight
       objectReference: {fileID: 0}
     - target: {fileID: 3493681931070410302, guid: 270e627e8aef302498150bf15229fbfe, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3493681931070410302, guid: 270e627e8aef302498150bf15229fbfe, type: 3}
       propertyPath: m_LocalPosition.x
       value: 2.37
       objectReference: {fileID: 0}
@@ -689,6 +701,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: CheckArrowDown
       objectReference: {fileID: 0}
+    - target: {fileID: 7234504239791254663, guid: 82c2deeb492cb97488a6d7c3564b92ff, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -440695256, guid: a2634ac0c3d35734ebc53a5e2efb139a, type: 3}
+    - target: {fileID: 7447696649970616647, guid: 82c2deeb492cb97488a6d7c3564b92ff, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7447696649970616647, guid: 82c2deeb492cb97488a6d7c3564b92ff, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.28
@@ -742,6 +762,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2554849449028137758, guid: 6054dfc197e5c344bb02a85d428a10f6, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2554849449028137758, guid: 6054dfc197e5c344bb02a85d428a10f6, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.98

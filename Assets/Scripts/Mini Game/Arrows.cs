@@ -16,12 +16,4 @@ public class Arrows : MonoBehaviour
     public float arrowCheckMeasument = 4.5f;
 
     // Fucking amazing brain moment just make a function in the parent class that checks if its position is greater then 7 Y. If so BYE BYE OBJECT
-    public void checkDeystroy()
-    {
-        // The arrows only move up so we just compare its Y location 
-        if (transform.position.y > 8)
-        {
-            Destroy(gameObject);
-        }
-    }
 }

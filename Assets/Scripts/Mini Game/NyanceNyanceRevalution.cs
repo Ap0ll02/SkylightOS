@@ -16,13 +16,14 @@ using Random = UnityEngine.Random;
 public class NyanceNyanceRevalution : AbstractBossTask
 {
     // This will change the amount of arrows that will spawn  
-    public static int max = 72;
+    public static int max = 75;
     // Makes sure we dont exceed our arrow count  
     private int arrowCount = 0;
     // This is where the different types of arrow prefabs will be held.This will be invoked to give a new arrow its prefab before instanction 
     public GameObject[] arrowsTypesArray = new GameObject[4];
-    private GameObject newArrow;
-
+    // This creates a public event 
+    public static event Action<KeyCode> OnKeyPress;
+    // This is the method to trigger the event
     
     // Start is called before the first frame update
     public void Awake()
@@ -32,9 +33,13 @@ public class NyanceNyanceRevalution : AbstractBossTask
     public void Start()
     {
         StartCoroutine("spawnArrows");
-        
+
     }
 
+    public void Update()
+    {
+        CheckForKeyPresses();
+    }
 
     public override void startTask()
     {
@@ -62,22 +67,34 @@ public class NyanceNyanceRevalution : AbstractBossTask
         while(arrowCount < max)
         {
             // Unity Random.Range function is exclusive thus we have to add +1 then the amount of arrows we have
-            newArrow = Instantiate(arrowsTypesArray[(Random.Range(0,arrowsTypesArray.Length))]);
+            // Randomizes arrow spawns
+            GameObject newArrow = Instantiate(arrowsTypesArray[((Random.Range(0,arrowsTypesArray.Length)))]);
             arrowCount++;
             yield return new WaitForSeconds(0.83f);
         }
         yield break;
     }
-
-    public void inputChecker(Arrows arrow)
+    //Creats callback functions for key presses that will be defined in the arrow class 
+    private void CheckForKeyPresses()
     {
-        // This will check if the player has pressed the correct key
-        // We will subscribe the arrow to the event and then check if the player has pressed the correct key
+        if (Input.GetKeyDown(KeyCode.W) || Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            OnKeyPress?.Invoke(KeyCode.W);
+        }
+        if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
+            OnKeyPress?.Invoke(KeyCode.A);
+        }
+        if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            OnKeyPress?.Invoke(KeyCode.S);
+        }
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            OnKeyPress?.Invoke(KeyCode.D);
+        }
     }
 
-    UnityEvent upArrowPressed = new UnityEvent();
-    UnityEvent downArrowPressed = new UnityEvent();
-    UnityEvent rightArrowPressed = new UnityEvent();
-    UnityEvent leftArrowPressed = new UnityEvent();
+
 
 }

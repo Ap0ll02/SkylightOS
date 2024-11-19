@@ -13,21 +13,20 @@ public class DiagnosisWindow : MonoBehaviour
     // Loading bar script reference
     [SerializeField] LoadingScript loadingBarScript;
 
+    // Reference to window script
+    [SerializeField] BasicWindow window;
+
     // Getting the loading bar script reference
     void Awake()
     {
         loadingBarScript = GetComponentInChildren<LoadingScript>();
+        window = GetComponent<BasicWindow>();
     }
 
     // Starting disabled
     void Start()
     {
         gameObject.SetActive(false);
-    }
-
-    void Update()
-    {
-
     }
 
     public static event Action OnDiagnosisWindowOpened;
@@ -38,6 +37,7 @@ public class DiagnosisWindow : MonoBehaviour
         gameObject.SetActive(true);
         gameObject.transform.SetAsLastSibling();
         OnDiagnosisWindowOpened?.Invoke();
+        window.isClosable = false;
         StartLoadingBar();
     }
 
@@ -45,6 +45,7 @@ public class DiagnosisWindow : MonoBehaviour
     public void StartLoadingBar()
     {
         loadingBarScript.StartLoading();
+        StartCoroutine(UpdateDiagnosisWindow());
     }
 
     // Continuing the loading bar
@@ -59,5 +60,19 @@ public class DiagnosisWindow : MonoBehaviour
         loadingBarScript.canContinue = false;
     }
 
+    public void LoadingDone()
+    {
+        window.isClosable = true;
+    }
 
+    // Coroutine to update the diagnosis window when the loading bar is loaded
+    private IEnumerator UpdateDiagnosisWindow()
+    {
+        while (!loadingBarScript.isLoaded)
+        {
+            yield return null;
+        }
+        // Update the diagnosis window here
+        LoadingDone();
+    }
 }

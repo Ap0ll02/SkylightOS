@@ -48,10 +48,22 @@ MonoBehaviour:
   hazardManagers: []
   isComplete: 1
   arrowsTypesArray:
-  - {fileID: 3032773568380443419, guid: 25dba5cbe3a2fd942a0903706a4812b9, type: 3}
-  - {fileID: 7079046897199327444, guid: 2721f0c38e750f44abdf7c8e75aa17ad, type: 3}
-  - {fileID: 7513995205878027671, guid: 9ab176843c3a06d44bda3c5673b2d211, type: 3}
-  - {fileID: 6709330442854701224, guid: d210199823ef33d448253aef33430a36, type: 3}
+  - {fileID: 7937669890406625025, guid: 5bb32642f73a98f41bc7b6d8465bbf9d, type: 3}
+  - {fileID: 6013189756746450149, guid: b4145c399d9662343906e5b0ae2ee086, type: 3}
+  - {fileID: 8853377128816972480, guid: d4fe287864b37f14bb1ad7130a6a9f44, type: 3}
+  - {fileID: 9064558564187166855, guid: 5a817428239d55545a036d89e9d0e66a, type: 3}
+  UpArrow:
+    m_PersistentCalls:
+      m_Calls: []
+  DownArrow:
+    m_PersistentCalls:
+      m_Calls: []
+  LeftArrow:
+    m_PersistentCalls:
+      m_Calls: []
+  RightArrow:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!82 &5823024392941548495
 AudioSource:
   m_ObjectHideFlags: 0

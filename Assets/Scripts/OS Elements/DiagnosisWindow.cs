@@ -16,6 +16,9 @@ public class DiagnosisWindow : MonoBehaviour
     // Reference to window script
     [SerializeField] BasicWindow window;
 
+    // Button that appears after loading bar, used for finishing the diagnosis
+    [SerializeField] GameObject finishDiagButton;
+
     // Getting the loading bar script reference
     void Awake()
     {
@@ -27,6 +30,7 @@ public class DiagnosisWindow : MonoBehaviour
     void Start()
     {
         gameObject.SetActive(false);
+        finishDiagButton.SetActive(false);
     }
 
     public static event Action OnDiagnosisWindowOpened;
@@ -70,10 +74,14 @@ public class DiagnosisWindow : MonoBehaviour
     public void LoadingDone()
     {
         Debug.Log("LoadingDone");
+        finishDiagButton.SetActive(true);
+    }
+
+    public void FinishDiagnosis()
+    {
         window.isClosable = true;
         LoadingDoneNotify?.Invoke();
     }
-
 
 
     // Coroutine to update the diagnosis window when the loading bar is loaded

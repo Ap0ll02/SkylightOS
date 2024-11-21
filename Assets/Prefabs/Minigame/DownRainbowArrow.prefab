@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6965888148771120829}
   - component: {fileID: 5346467476497741191}
-  - component: {fileID: 6865538058930631142}
-  - component: {fileID: 5423451387707789736}
+  - component: {fileID: 5354952124674257775}
+  - component: {fileID: 3925049341693405182}
   m_Layer: 0
   m_Name: DownRainbowArrow
   m_TagString: Untagged
@@ -52,7 +52,7 @@ MonoBehaviour:
   arrowEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &6865538058930631142
+--- !u!95 &5354952124674257775
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ Animator:
   m_GameObject: {fileID: 6013189756746450149}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7042b81b2d2644e40869c6ea9eeab71b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 5ac51b9df4de4554e8c463bae0838f75, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -73,7 +73,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!212 &5423451387707789736
+--- !u!212 &3925049341693405182
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -117,7 +117,7 @@ SpriteRenderer:
   m_Sprite: {fileID: 1096696739, guid: a2634ac0c3d35734ebc53a5e2efb139a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
-  m_FlipY: 0
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 0.12, y: 0.12}
   m_AdaptiveModeThreshold: 0.5

@@ -15,9 +15,12 @@ using Random = UnityEngine.Random;
 public class NyanceNyanceRevalution : AbstractBossTask
 {
     // This will change the amount of arrows that will spawn  
-    public static int max = 75;
+    public static int max = 70;
     // Makes sure we dont exceed our arrow count  
     private int arrowCount = 0;
+    // We Have to score the player!
+    public int playerScore = 0;
+    // Currently we are using 4 different types of arrows
     // This is where the different types of arrow prefabs will be held.This will be invoked to give a new arrow its prefab before instanction 
     public GameObject[] arrowsTypesArray = new GameObject[4];
     // This creates a public event 

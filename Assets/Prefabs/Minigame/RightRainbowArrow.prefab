@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1571929157895162539}
   - component: {fileID: 4556599373510701181}
-  - component: {fileID: 1222511858171892329}
-  - component: {fileID: 4265971277859785807}
+  - component: {fileID: 9017652999473509239}
+  - component: {fileID: 6289001858447201597}
   m_Layer: 0
   m_Name: RightRainbowArrow
   m_TagString: Untagged
@@ -52,7 +52,7 @@ MonoBehaviour:
   arrowEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &1222511858171892329
+--- !u!95 &9017652999473509239
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ Animator:
   m_GameObject: {fileID: 9064558564187166855}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cb5a2394ff1b6fa448f20a925d496436, type: 2}
+  m_Controller: {fileID: 9100000, guid: c268e4323258c6b498e847331b647914, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -73,7 +73,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!212 &4265971277859785807
+--- !u!212 &6289001858447201597
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

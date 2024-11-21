@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 232612051122770795}
   - component: {fileID: 4144473317158381712}
-  - component: {fileID: 6493741769356466456}
-  - component: {fileID: 8755936370926139893}
+  - component: {fileID: 5084869523395941971}
+  - component: {fileID: 5525024750547324286}
   m_Layer: 0
   m_Name: UpRainbowArrow
   m_TagString: Untagged
@@ -52,7 +52,7 @@ MonoBehaviour:
   arrowEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &6493741769356466456
+--- !u!95 &5084869523395941971
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ Animator:
   m_GameObject: {fileID: 7937669890406625025}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7042b81b2d2644e40869c6ea9eeab71b, type: 2}
+  m_Controller: {fileID: 9100000, guid: 3364df259d0c69d469c9b095c5259ca0, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -73,7 +73,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!212 &8755936370926139893
+--- !u!212 &5525024750547324286
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

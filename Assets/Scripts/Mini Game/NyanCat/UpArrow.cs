@@ -21,10 +21,6 @@ public class ArrowUp : Arrows
     {
         // We need to be moving our arrow, This is defined in parent Class
         Move();
-
-        if(OutOfBounds())
-            //If we are our of bounds we should explode our arrows 
-            Destroy();
     }
 
     // This is keeping track of the 
@@ -32,12 +28,12 @@ public class ArrowUp : Arrows
     {
         switch (transform.position.y)
         {
-            case float y when (y > 4 & y < 5)
+            case float y when (y > 4.2 & y < 4.5)
                 : Debug.Log("PERFECT UP ARROW");
                 Destroy();
                 break;
             // We need the range below and above 
-            case float y when (y > 3.5 & y <= 4 || y >= 5 & y < 5.5)
+            case float y when (y > 3.8 & y <= 4.2)
                 : Debug.Log("Great UP ARROW");
                 Destroy();
                 break; 

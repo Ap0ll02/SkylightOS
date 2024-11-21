@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 6253943453664759178}
   - component: {fileID: 2830126458405229886}
-  - component: {fileID: 7719593641574394999}
-  - component: {fileID: 3275962921983222705}
+  - component: {fileID: 5403784742355504528}
+  - component: {fileID: 3470565199069638431}
   m_Layer: 0
   m_Name: LeftRainbowArrow
   m_TagString: Untagged
@@ -52,7 +52,7 @@ MonoBehaviour:
   arrowEvent:
     m_PersistentCalls:
       m_Calls: []
---- !u!95 &7719593641574394999
+--- !u!95 &5403784742355504528
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -62,7 +62,7 @@ Animator:
   m_GameObject: {fileID: 8853377128816972480}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: cb5a2394ff1b6fa448f20a925d496436, type: 2}
+  m_Controller: {fileID: 9100000, guid: e70db94216b9a774786113e31b80ce5a, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -73,7 +73,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!212 &3275962921983222705
+--- !u!212 &3470565199069638431
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

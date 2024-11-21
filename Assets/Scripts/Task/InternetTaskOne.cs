@@ -59,7 +59,7 @@ public class InternetTaskOne : AbstractTask
     // When the diagnosis window is opened, start the hazards and loading bar
     void HandleDiagnosisWindowOpened()
     {
-        loadingBarScript.StartLoading();
+        //loadingBarScript.StartLoading();
         startHazards();
     }
 
@@ -67,6 +67,13 @@ public class InternetTaskOne : AbstractTask
     public override void startTask()
     {
         wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Disconnected);
+    }
+
+    public override void CompleteTask()
+    {
+        wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Connected);
+        stopHazards();
+        base.CompleteTask();
     }
 
     // Ask the hazard manager if our task can progress

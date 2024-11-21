@@ -80,6 +80,7 @@ public class DiagnosisWindow : MonoBehaviour
     public void FinishDiagnosis()
     {
         window.isClosable = true;
+        finishDiagButton.SetActive(false);
         LoadingDoneNotify?.Invoke();
     }
 

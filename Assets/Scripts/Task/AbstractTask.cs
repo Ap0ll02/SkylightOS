@@ -34,6 +34,11 @@ public abstract class AbstractTask : MonoBehaviour
 
     // initiate our task
     public abstract void startTask();
+    // Method to complete the task
+    public virtual void CompleteTask()
+    {
+        OnTaskCompleted?.Invoke();
+    }
     // Ask the hazard manager if our task can progress
     // Idea use a percentage to slow down the task progress instead of completely stopping it
     public abstract void checkHazards();
@@ -42,10 +47,5 @@ public abstract class AbstractTask : MonoBehaviour
     // this will request our manager to start making hazards
     public abstract void startHazards();
 
-    // Method to complete the task
-    protected void CompleteTask()
-    {
-        stopHazards();
-        OnTaskCompleted?.Invoke();
-    }
+
 }

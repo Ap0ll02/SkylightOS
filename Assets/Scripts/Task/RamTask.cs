@@ -39,6 +39,35 @@ public class RamTask : AbstractTask
         systemResourcesWindow.currentRAMStatus = SystemResourcesWindow.RAMStatus.CRITICAL;
     }
 
+    public override void CompleteTask()
+    {
+        systemResourcesWindow.currentRAMStatus = SystemResourcesWindow.RAMStatus.OK;
+        systemResourcesWindow.UpdateSystemResourcesText();
+        stopHazards();
+        base.CompleteTask();
+    }
+
+    // Message handler for opening the diagnosis window
+    void OnEnable()
+    {
+        DiagnosisWindow.OnDiagnosisWindowOpened += HandleDiagnosisWindowOpened;
+        DiagnosisWindow.LoadingDoneNotify += CompleteTask;
+    }
+
+    // Removing message handler?
+    void OnDisable()
+    {
+        DiagnosisWindow.OnDiagnosisWindowOpened -= HandleDiagnosisWindowOpened;
+        DiagnosisWindow.LoadingDoneNotify -= CompleteTask;
+    }
+
+    // When the diagnosis window is opened, start the hazards and loading bar
+    void HandleDiagnosisWindowOpened()
+    {
+        //loadingBarScript.StartLoading();
+        startHazards();
+    }
+
     // This will request the manager to start a hazard
     public override void startHazards()
     {

@@ -466,7 +466,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 291888521250411721, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -74.640015
+      value: -74.63989
       objectReference: {fileID: 0}
     - target: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_Pivot.x
@@ -665,10 +665,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3297824757407807983, guid: e9e3394e049c74149a21eafd82b82ae2, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -710
-      objectReference: {fileID: 0}
     - target: {fileID: 4826310643824066200, guid: e9e3394e049c74149a21eafd82b82ae2, type: 3}
       propertyPath: m_Name
       value: DiagnosticsWindow
@@ -864,6 +860,7 @@ MonoBehaviour:
   hazardManagers: []
   isComplete: 0
   systemResourcesWindow: {fileID: 0}
+  diagnosisWindow: {fileID: 0}
 --- !u!1 &522282364
 GameObject:
   m_ObjectHideFlags: 0

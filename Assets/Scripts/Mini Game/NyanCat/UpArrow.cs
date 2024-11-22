@@ -13,12 +13,16 @@ public class ArrowUp : Arrows
     // Start is called before the first frame update
     void Start()
     {
-        
+        NyanceNyanceRevolutionSingleton = NyanceNyanceRevolution.GetInstance();
     }
 
     // Update is called once per frame
     void Update()
     {
+        if (ArrowEvent == null)
+        {
+            Debug.Log("we got a problem in RIGHT arrow");
+        }
         // We need to be moving our arrow, This is defined in parent Class
         Move();
     }
@@ -28,15 +32,27 @@ public class ArrowUp : Arrows
     {
         switch (transform.position.y)
         {
-            case float y when (y > 4.2 & y < 4.5)
-                : Debug.Log("PERFECT UP ARROW");
-                Destroy();
+            case float y when (y > 4.4 & y <= 4.6)
+                : NyanceNyanceRevolutionSingleton.playerScore += 105;
+                Debug.Log(NyanceNyanceRevolutionSingleton.playerScore);
+                
+                DestroyArrow();
                 break;
             // We need the range below and above 
-            case float y when (y > 3.8 & y <= 4.2)
-                : Debug.Log("Great UP ARROW");
-                Destroy();
-                break; 
+            case float y when (y > 4.2 & y <= 4.4)
+                : NyanceNyanceRevolutionSingleton.playerScore += 70;
+                Debug.Log(NyanceNyanceRevolutionSingleton.playerScore);
+                DestroyArrow();
+                break;
+            case float y when (y > 4.0 & y <= 4.2)
+                : NyanceNyanceRevolutionSingleton.playerScore += 10;
+                Debug.Log(NyanceNyanceRevolutionSingleton.playerScore);
+                DestroyArrow();
+                break;
+            case float y when (y > outOfBounds)
+                :
+                DestroyArrow();
+                break;
             default
                 :
                 break;

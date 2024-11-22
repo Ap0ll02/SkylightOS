@@ -10,7 +10,7 @@ public class RightArrow : Arrows
     // Start is called before the first frame update
     void Start()
     {
-        
+        NyanceNyanceRevolutionSingleton = NyanceNyanceRevolution.GetInstance();
     }
 
     // Update is called once per frame
@@ -18,10 +18,13 @@ public class RightArrow : Arrows
     {
         // We need to be moving our arrow, This is defined in parent Class
         Move();
-
         //if(OutOfBounds())
             // If we are our of bounds we should explode our arrows 
             //Destroy();
+            if (ArrowEvent == null)
+            {
+                Debug.Log("we got a problem in RIGHT arrow");
+            }
     }
 
     // This is keeping track of the 
@@ -29,18 +32,32 @@ public class RightArrow : Arrows
     {
         switch (transform.position.y)
         {
-            case float y when (y > 4.2 & y < 4.5)
-                : Debug.Log("PERFECT Right ARROW");
-                Destroy();
+            case float y when (y > 4.4 & y <= 4.6)
+                : NyanceNyanceRevolutionSingleton.playerScore += 100;
+                Debug.Log(NyanceNyanceRevolutionSingleton.playerScore);
+                DestroyArrow();
                 break;
             // We need the range below and above 
-            case float y when (y > 3.8 & y <= 4.2)
-                : Debug.Log("Great Right ARROW");
-                Destroy();
-                break; 
+            case float y when (y > 4.2 & y <= 4.4)
+                : NyanceNyanceRevolutionSingleton.playerScore += 50;
+                Debug.Log(NyanceNyanceRevolutionSingleton.playerScore);
+                DestroyArrow();
+                break;
+            case float y when (y > 4.0 & y <= 4.2)
+                : NyanceNyanceRevolutionSingleton.playerScore += 25;
+                Debug.Log(NyanceNyanceRevolutionSingleton.playerScore);
+                DestroyArrow();
+                
+                break;
+            case float y when (y > outOfBounds)
+                :
+                DestroyArrow();
+                break;
             default
                 :
                 break;
         }
+
     }
+
 }

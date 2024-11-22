@@ -41,8 +41,7 @@ public class Arrowgame : AbstractMinigame
     }
 
     public void Start() {
-        //gameObject.SetActive(false);
-        StartGame();
+        gameObject.SetActive(false);
     }
 
     public void SpawnArrow(int numToSpawn) {

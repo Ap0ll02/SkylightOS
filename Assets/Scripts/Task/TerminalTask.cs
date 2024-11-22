@@ -29,10 +29,13 @@ public class TerminalTask : AbstractTask
     public GameObject nmapBtn;
     private State termState;
     public GameObject terminalPanel;
+    public GameObject arrowGame;
+    public Arrowgame ag;
 
 
     /// @brief Assign all of the terminal objects in the scene.
     public void Awake() {
+        arrowGame = GameObject.Find("ArrowGame");
         terminal = GameObject.Find("WindowCanvas/TerminalWindow");
         terminalPanel = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel");
         terminalText = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel/TInstructionTxt").GetComponent<TMP_Text>();
@@ -40,6 +43,12 @@ public class TerminalTask : AbstractTask
         avBtn = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel/antiviralBtn");
         nmapBtn = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel/nmapBtn");
         termState = State.Off;
+        ag = arrowGame.GetComponent<Arrowgame>();
+    }
+
+    public new void Start() {
+        base.Start();
+        gameObject.SetActive(false);
     }
 
     public override void checkHazards()
@@ -52,7 +61,7 @@ public class TerminalTask : AbstractTask
     {
         // Terminal Task Start, Prompts User To Use The AntiVirus installation tool. Changes terminal state to On.
         string termText = "Welcome To The Console, Let's get you started installing some software\n"
-            + "The AntiVirus toolkit is a helpful addition for getting rid of pesky malware!\n";
+            + "The AntiVirus toolkit is a helpful addition for getting rid of pesky malware!\n" + "Click On The Anti-Virus Installation to setup the connection address.";
         termState = State.On;
         terminalText.text = termText;
     }
@@ -90,8 +99,9 @@ public class TerminalTask : AbstractTask
         string termLoadBar = "--------------------------------";
         if (termState == State.On)
         {
-            terminalText.text = "AntiVirus Toolkit Downloading:\n";
-            terminalText.text += termLoadBar;
+            terminalText.text = termLoadBar;
+            arrowGame.SetActive(true);
+            ag.StartGame();
         }
     }
 

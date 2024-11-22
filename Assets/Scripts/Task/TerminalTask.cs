@@ -18,7 +18,9 @@ public class TerminalTask : AbstractTask
     private enum State
     {
         On,
-        Off
+        Off,
+        StageOne,
+        StageTwo
     }
 
     /// @var Terminal Variables that get references in awake() to the scene's terminal
@@ -31,6 +33,7 @@ public class TerminalTask : AbstractTask
     public GameObject terminalPanel;
     public GameObject arrowGame;
     public Arrowgame ag;
+    public DrawMaze drawMaze;
 
 
     /// @brief Assign all of the terminal objects in the scene.
@@ -96,12 +99,17 @@ public class TerminalTask : AbstractTask
     {
         /// @var termLoadBar will be used for arrow game, how the loading progresses. 
         /// Different process and visual than the prefab loading bar.
-        string termLoadBar = "--------------------------------";
+        //string termLoadBar = "--------------------------------";
         if (termState == State.On)
         {
-            terminalText.text = termLoadBar;
+            terminalText.text = "";
+            termState = State.StageOne;
             arrowGame.SetActive(true);
             ag.StartGame();
+            termState = State.On;
+        }
+        if (termState == State.StageOne) {
+            terminalText.text = "";
         }
     }
 
@@ -109,12 +117,33 @@ public class TerminalTask : AbstractTask
     {
         if(termState == State.On)
         {
+            termState = State.StageTwo;
             terminalText.text = "Scanning Files: Maze Game Initiate!";
+            StartCoroutine(Timer(7));
+            terminalText.text = "------| A |------| B |------| C |------\n";
+            terminalText.text += "---------------------------------------\n";
+            terminalText.text += "---------------------------------------\n";
+            terminalText.text += "---------------------------------------\n";
+
+            if(true) {
+                terminalText.text = drawMaze.DrawA();
+            }
+            else {
+                terminalText.text = drawMaze.DrawB();
+            }
+        }
+        if (termState == State.StageOne) {
+            terminalText.text = "";
         }
     }
 
     void NMAPTask()
     {
 
+    }
+
+    // Variable second timer
+    private IEnumerator Timer(int x) {
+        yield return new WaitForSeconds(x);
     }
 }

@@ -1,20 +1,22 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Numerics;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Arrowgame : AbstractMinigame
 {
+    // CLEANUP NOTES: Make it get from task bro
+
     /// @var arrow & arrowDir, leave these alone, references to scene GameObjects
     /// and components.
-    public GameObject arrow;
+    [SerializeField] GameObject arrow;
+
+    public GameObject taskScript;
+
+    public Transform spawnArea;
     public Transform arrowDir;
     public RawImage arrowColor;
-    public Transform parent;
     public PlayerInput pInput;
     public int curArrow = 0;
     public enum Direction {
@@ -30,14 +32,9 @@ public class Arrowgame : AbstractMinigame
     public readonly int numArrows = 20;
 
     public void Awake() {
-        arrow = GameObject.Find("Arrow");
-        arrowDir = arrow.GetComponent<Transform>();
-        parent = GameObject.Find("ArrowGame").GetComponent<Transform>();
-        arrowDirs.Insert(0, Direction.Right);
-        arrowColor = arrow.GetComponent<RawImage>();
+        // Not hardcode Terminal
+        spawnArea = FindObjectOfType<Terminal>().GetComponentInChildren<GridLayoutGroup>().gameObject.GetComponent<Transform>();
         pInput = new PlayerInput();
-        arrowColors.Insert(0, arrowColor);
-        arrowColors[0].color = Color.white;
     }
 
     public void Start() {
@@ -48,7 +45,7 @@ public class Arrowgame : AbstractMinigame
         int[] dir = new int[]{0, 90, 180, 270};
 
         UnityEngine.Random.InitState(System.Environment.TickCount);
-        for(int i = 1; i <= numToSpawn; i++) {
+        for(int i = 0; i <= numToSpawn; i++) {
             int dirNum = UnityEngine.Random.Range(0, 4);
 
             static Direction P(int dir) => 
@@ -60,7 +57,7 @@ public class Arrowgame : AbstractMinigame
                     _ => throw new ArgumentException("Invalid Random Number Cannot Match Enum", nameof(dir)),
                 };
 
-            GameObject newArrow = Instantiate(arrow, parent);
+            GameObject newArrow = Instantiate(arrow, spawnArea);
             RectTransform rt = newArrow.GetComponent<RectTransform>();
             rt.localPosition = UnityEngine.Vector3.zero;
             rt.localRotation = UnityEngine.Quaternion.Euler(0, 0, dir[dirNum]);
@@ -74,14 +71,20 @@ public class Arrowgame : AbstractMinigame
         SpawnArrow(numArrows);
     }
 
-    public override bool CanContinue() {
+    public void EndGame() {
+        foreach (RawImage arrow in arrowColors) {
+            Destroy(arrow.gameObject);
+        }
+    }
 
+    public override bool CanContinue() {
         return true;
     }
 
     public void HandleInput(InputAction.CallbackContext context) {
         if(curArrow > numArrows) {
             Debug.Log("Completed Task!");
+            spawnArea.gameObject.SetActive(false);
         }
         else {
             // Right Arrow

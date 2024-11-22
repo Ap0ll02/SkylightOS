@@ -28,7 +28,7 @@ public class LoadingScript : MonoBehaviour
     public bool clickToLoad = false;
 
     /// @var Change This Variable To Change Speed Of Progress Bar (Default 0.001f)
-    float speed = 0.001f;
+    float speed = 0.1f;
 
     /// @var clickFillSpeed Changes the amount the bar fills on one click
     /// @var clickModifier Mainly for performance thief, this variable allows a multiplied increase or decrease
@@ -91,7 +91,7 @@ public class LoadingScript : MonoBehaviour
             if (canContinue)
             {
                 yield return new WaitForSeconds(0.007f);
-                progBar.fillAmount += speed;
+                progBar.fillAmount += speed * Time.deltaTime;
             }
             else
             {
@@ -99,5 +99,12 @@ public class LoadingScript : MonoBehaviour
             }
         }
         isLoaded = true;
+    }
+
+    /// @brief Reset the progress bar to 0
+    public void Reset()
+    {
+        progBar.fillAmount = 0;
+        isLoaded = false;
     }
 }

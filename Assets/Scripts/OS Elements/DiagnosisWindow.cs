@@ -10,17 +10,94 @@ using System;
 /// </summary>
 public class DiagnosisWindow : MonoBehaviour
 {
+    // Loading bar script reference
+    [SerializeField] LoadingScript loadingBarScript;
+
+    // Reference to window script
+    [SerializeField] BasicWindow window;
+
+    // Button that appears after loading bar, used for finishing the diagnosis
+    [SerializeField] GameObject finishDiagButton;
+
+    // Getting the loading bar script reference
+    void Awake()
+    {
+        loadingBarScript = GetComponentInChildren<LoadingScript>();
+        window = GetComponent<BasicWindow>();
+    }
+
     // Starting disabled
     void Start()
     {
         gameObject.SetActive(false);
+        finishDiagButton.SetActive(false);
     }
 
     public static event Action OnDiagnosisWindowOpened;
 
+    // Called when the diagnosis window is opened
     public void OpenWindow()
     {
         gameObject.SetActive(true);
+        gameObject.transform.SetAsLastSibling();
         OnDiagnosisWindowOpened?.Invoke();
+        window.isClosable = false;
+        StartLoadingBar();
+    }
+
+    public void OnDisable()
+    {
+        ResetLoadingBar();
+        gameObject.SetActive(false);
+    }
+    // Starting the loading bar
+    public void StartLoadingBar()
+    {
+        loadingBarScript.StartLoading();
+        StartCoroutine(UpdateDiagnosisWindow());
+    }
+
+    // Continuing the loading bar
+    public void ContinueLoadingBar()
+    {
+        loadingBarScript.canContinue = true;
+    }
+
+    // Stopping the loading bar
+    public void StopLoadingBar()
+    {
+        loadingBarScript.canContinue = false;
+    }
+
+    public static event Action LoadingDoneNotify;
+
+    public void LoadingDone()
+    {
+        Debug.Log("LoadingDone");
+        finishDiagButton.SetActive(true);
+    }
+
+    public void FinishDiagnosis()
+    {
+        window.isClosable = true;
+        finishDiagButton.SetActive(false);
+        LoadingDoneNotify?.Invoke();
+    }
+
+
+    // Coroutine to update the diagnosis window when the loading bar is loaded
+    private IEnumerator UpdateDiagnosisWindow()
+    {
+        while (!loadingBarScript.isLoaded)
+        {
+            yield return null;
+        }
+        // Update the diagnosis window here
+        LoadingDone();
+    }
+
+    public void ResetLoadingBar()
+    {
+        loadingBarScript.Reset();
     }
 }

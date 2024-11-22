@@ -40,29 +40,26 @@ public class InternetTaskOne : AbstractTask
     public void Update()
     {
         checkHazards();
-        if(loadingBarScript.isLoaded)
-        {
-            stopHazards();
-            CompleteTask();
-        }
     }
 
     // Message handler for opening the diagnosis window
     void OnEnable()
     {
         DiagnosisWindow.OnDiagnosisWindowOpened += HandleDiagnosisWindowOpened;
+        DiagnosisWindow.LoadingDoneNotify += CompleteTask;
     }
 
     // Removing message handler?
     void OnDisable()
     {
         DiagnosisWindow.OnDiagnosisWindowOpened -= HandleDiagnosisWindowOpened;
+        DiagnosisWindow.LoadingDoneNotify -= CompleteTask;
     }
 
     // When the diagnosis window is opened, start the hazards and loading bar
     void HandleDiagnosisWindowOpened()
     {
-        loadingBarScript.StartLoading();
+        //loadingBarScript.StartLoading();
         startHazards();
     }
 
@@ -70,6 +67,13 @@ public class InternetTaskOne : AbstractTask
     public override void startTask()
     {
         wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Disconnected);
+    }
+
+    public override void CompleteTask()
+    {
+        wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Connected);
+        stopHazards();
+        base.CompleteTask();
     }
 
     // Ask the hazard manager if our task can progress

@@ -12,5 +12,5 @@ public abstract class AbstractMinigame : MonoBehaviour
     /// </summary>
     public abstract void StartGame();
 
-    public abstract void CanContinue();
+    public abstract bool CanContinue();
 }

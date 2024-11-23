@@ -11,14 +11,12 @@ public class Arrowgame : AbstractMinigame
     /// @var arrow & arrowDir, leave these alone, references to scene GameObjects
     /// and components.
     [SerializeField] GameObject arrow;
-
-    public GameObject taskScript;
-
+    public static event Action OnGameEnd;
     public Transform spawnArea;
-    public Transform arrowDir;
-    public RawImage arrowColor;
     public PlayerInput pInput;
     public int curArrow = 0;
+    public TerminalTask taskCheckHaz;
+    public bool GameOver = true;
     public enum Direction {
         Up,
         Down,
@@ -38,6 +36,7 @@ public class Arrowgame : AbstractMinigame
     }
 
     public void Start() {
+        GameOver = true;
         gameObject.SetActive(false);
     }
 
@@ -65,73 +64,82 @@ public class Arrowgame : AbstractMinigame
             arrowColors.Insert(i, newArrow.GetComponent<RawImage>());
             arrowColors[i].color = Color.white;
         }
+        curArrow = 0;
     }
 
     public override void StartGame() {
-        SpawnArrow(numArrows);
+        Debug.Log(GameOver);
+        if(GameOver == true) {
+            SpawnArrow(numArrows);
+            GameOver = false;
+        }
+        else {
+            Debug.Log("Game is already playing.");
+        }
+        
     }
 
     public void EndGame() {
         foreach (RawImage arrow in arrowColors) {
             Destroy(arrow.gameObject);
         }
+        OnGameEnd?.Invoke();
     }
 
-    public override bool CanContinue() {
-        return true;
-    }
 
     public void HandleInput(InputAction.CallbackContext context) {
-        if(curArrow > numArrows) {
+        if(curArrow > numArrows && GameOver == false) {
             Debug.Log("Completed Task!");
+            GameOver = true;
             spawnArea.gameObject.SetActive(false);
+            EndGame();
         }
         else {
             // Right Arrow
             if(context.action.ReadValue<float>() == 1 && context.phase == InputActionPhase.Performed) {
-                if(CanContinue() && arrowDirs[curArrow] == Direction.Right) {
-                    Debug.Log("Correct Arrow");
+                if(CanContinue && arrowDirs[curArrow] == Direction.Right) {
+                    Debug.Log("Correct Arrow " + context.action.ReadValue<float>());
                     arrowColors[curArrow].color = Color.green;
                     curArrow++;
                 }
-                else {
-                    Debug.Log("Wrong Arrow"); 
+                else if(CanContinue){
+                    Debug.Log("Wrong Arrow" + context.action.ReadValue<float>()); 
                     arrowColors[curArrow].color = Color.red;
                 }
             }
             // Left Arrow
             if(context.action.ReadValue<float>() == -1 && context.phase == InputActionPhase.Performed) {
-                if(CanContinue() && arrowDirs[curArrow] == Direction.Left) {
-                    Debug.Log("Correct Arrow");
+                if(CanContinue && arrowDirs[curArrow] == Direction.Left) {
+                    Debug.Log("Correct Arrow " + context.action.ReadValue<float>());
                     arrowColors[curArrow].color = Color.green;
                     curArrow++;
                 }
-                else {
-                    Debug.Log("Wrong Arrow");
+                else if(CanContinue){
+                    Debug.Log("Wrong Arrow" + context.action.ReadValue<float>());
                     arrowColors[curArrow].color = Color.red;
                 }
             }
             // Up Arrow
-            if(context.action.ReadValue<float>() == 25 && context.phase == InputActionPhase.Performed) {
-                if(CanContinue() && arrowDirs[curArrow] == Direction.Up) {
-                    Debug.Log("Correct Arrow");
+            if(context.action.ReadValue<float>() > 1 && context.phase == InputActionPhase.Performed) {
+                if(CanContinue && arrowDirs[curArrow] == Direction.Up) {
+                    Debug.Log("Correct Arrow" + context.action.ReadValue<float>());
                     arrowColors[curArrow].color = Color.green;
                     curArrow++;
                 }
-                else {
-                    Debug.Log("Wrong Arrow");
+                else if(CanContinue){
+                    Debug.Log("Wrong Arrow" + context.action.ReadValue<float>());
                     arrowColors[curArrow].color = Color.red;
                 }       
             }
             // Down Arrow
-            if(context.action.ReadValue<float>() == -25 && context.phase == InputActionPhase.Performed) {
-                if(CanContinue() && arrowDirs[curArrow] == Direction.Down) {
-                    Debug.Log("Correct Arrow");
+            if(context.action.ReadValue<float>() < -1 && context.phase == InputActionPhase.Performed) {
+                if(CanContinue && arrowDirs[curArrow] == Direction.Down) {
+                    Debug.Log("Correct Arrow" + context.action.ReadValue<float>());
                     arrowColors[curArrow].color = Color.green;
                     curArrow++; 
                 }
-                else {
-                    Debug.Log("Wrong Arrow");
+                else if(CanContinue){
+                    Debug.Log("Wrong Arrow" + context.action.ReadValue<float>());
                     arrowColors[curArrow].color = Color.red;
                 }           
             }

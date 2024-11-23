@@ -10,7 +10,6 @@ public abstract class AbstractMinigame : MonoBehaviour
     /// Dependent On Nothing
     /// Have minigames inherit from this for enforcing structure.
     /// </summary>
+    public bool CanContinue;
     public abstract void StartGame();
-
-    public abstract bool CanContinue();
 }

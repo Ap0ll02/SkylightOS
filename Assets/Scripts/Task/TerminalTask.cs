@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.Analytics;
 
 /**
  * @Author Jack Ratermann
@@ -31,14 +32,21 @@ public class TerminalTask : AbstractTask
     public GameObject nmapBtn;
     private State termState;
     public GameObject terminalPanel;
+
+    // References to the arrow game to control its start and stop from the task
     public GameObject arrowGame;
     public Arrowgame ag;
+
+    // Draw the maze for the LS Maze Game
     public DrawMaze drawMaze;
+
+    // Audio source reference on TerminalWindow to play music on games.
+    public AudioSource musicAG;
 
 
     /// @brief Assign all of the terminal objects in the scene.
     public void Awake() {
-        arrowGame = GameObject.Find("ArrowGame");
+        arrowGame = FindObjectOfType<Arrowgame>().gameObject;
         terminal = GameObject.Find("WindowCanvas/TerminalWindow");
         terminalPanel = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel");
         terminalText = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel/TInstructionTxt").GetComponent<TMP_Text>();
@@ -47,6 +55,8 @@ public class TerminalTask : AbstractTask
         nmapBtn = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel/nmapBtn");
         termState = State.Off;
         ag = arrowGame.GetComponent<Arrowgame>();
+        drawMaze = GetComponent<DrawMaze>();
+        musicAG = FindObjectOfType<Terminal>().GetComponentInParent<AudioSource>();
     }
 
     public new void Start() {
@@ -54,9 +64,24 @@ public class TerminalTask : AbstractTask
         gameObject.SetActive(false);
     }
 
+    // FIXME: Make this happen on input events instead. but another time I too tired now.
+    public void Update() {
+        checkHazards();
+    }
+
     public override void checkHazards()
     {
-        Debug.Log("This Exists");
+        foreach (var hazardManager in hazardManagers)
+        {
+            if (!hazardManager.CanProgress())
+            {
+                ag.CanContinue = false;
+            }
+            else
+            {
+                ag.CanContinue = true;
+            }
+        }
     }
 
     /// @brief Changes terminal information prompt and terminal state.
@@ -71,17 +96,22 @@ public class TerminalTask : AbstractTask
 
     public override void stopHazards()
     {
-        Debug.Log("This Exists");
+        foreach (var hazardManager in hazardManagers) {
+            hazardManager.StopHazard();
+        }
     }
 
     public override void startHazards()
     {
-        Debug.Log("This Exists");
+        foreach (var hazardManager in hazardManagers) {
+            hazardManager.StartHazard();
+        }
     }
 
     /// @brief Subscription handling to all 3 button events from the terminal.
     void OnEnable()
     {
+        Arrowgame.OnGameEnd += AVTaskP2;
         Terminal.OnAVPressed += AVTask;
         Terminal.OnLSPressed += LSTask;
         Terminal.OnNMAPPressed += NMAPTask;
@@ -89,6 +119,7 @@ public class TerminalTask : AbstractTask
 
     void OnDisable()
     {
+        Arrowgame.OnGameEnd -= AVTaskP2;
         Terminal.OnAVPressed -= AVTask;
         Terminal.OnLSPressed -= LSTask;
         Terminal.OnNMAPPressed -= NMAPTask;
@@ -106,11 +137,18 @@ public class TerminalTask : AbstractTask
             termState = State.StageOne;
             arrowGame.SetActive(true);
             ag.StartGame();
-            termState = State.On;
+            if(!musicAG.isPlaying) {
+                musicAG.Play();
+            }
         }
         if (termState == State.StageOne) {
             terminalText.text = "";
         }
+    }
+
+    void AVTaskP2() {
+        StartCoroutine(FadeOut(5));
+        termState = State.On;
     }
 
     void LSTask()
@@ -120,11 +158,12 @@ public class TerminalTask : AbstractTask
             termState = State.StageTwo;
             terminalText.text = "Scanning Files: Maze Game Initiate!";
             StartCoroutine(Timer(7));
-            terminalText.text = "------| A |------| B |------| C |------\n";
-            terminalText.text += "---------------------------------------\n";
-            terminalText.text += "---------------------------------------\n";
-            terminalText.text += "---------------------------------------\n";
-
+            terminalText.text = "----| A |------| B |------| C |----\n";
+            terminalText.text += "-----------------------------------\n";
+            terminalText.text += "-----------------------------------\n";
+            terminalText.text += "-----------------------------------\n";
+            // TODO: Update maze game to work with input
+            // Also have the else statement lead anywhere lol
             if(true) {
                 terminalText.text = drawMaze.DrawA();
             }
@@ -143,7 +182,16 @@ public class TerminalTask : AbstractTask
     }
 
     // Variable second timer
-    private IEnumerator Timer(int x) {
+    private IEnumerator Timer(float x) {
         yield return new WaitForSeconds(x);
+    }
+
+    // Fades out music, passed in parameter is number of seconds to fadeout
+    private IEnumerator FadeOut(float x) {
+        while(musicAG.volume > 0) {
+            musicAG.volume -= 1/(x*10);
+            yield return new WaitForSeconds(0.1f);
+        }
+        if(musicAG.volume < 0) musicAG.Stop();  
     }
 }

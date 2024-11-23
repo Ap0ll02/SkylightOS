@@ -3,14 +3,30 @@ using System.Collections.Generic;
 using UnityEngine;
 /// <summary>
 /// Author Quinn Contaldi
-/// 
+/// We want this child object to just focus on Right Arrow specific logic
 /// </summary>
 public class RightArrow : Arrows
 {
+    public GameObject explosionPrefab;
+    public Animator explosionAnimator;
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        NyanceNyanceRevolutionSingleton = NyanceNyanceRevolution.GetInstance();
+        base.Start();
+
+        // Ensure the explosionAnimator is assigned
+        if (explosionPrefab != null)
+        {
+            explosionAnimator = explosionPrefab.GetComponent<Animator>();
+            if (explosionAnimator.runtimeAnimatorController == null)
+            {
+                Debug.LogError("AnimatorController is not assigned to the explosionAnimator.");
+            }
+        }
+        else
+        {
+            Debug.LogError("Explosion prefab is not assigned.");
+        }
     }
 
     // Update is called once per frame
@@ -18,36 +34,29 @@ public class RightArrow : Arrows
     {
         // We need to be moving our arrow, This is defined in parent Class
         Move();
-        //if(OutOfBounds())
-            // If we are our of bounds we should explode our arrows 
-            //Destroy();
-            if (ArrowEvent == null)
-            {
-                Debug.Log("we got a problem in RIGHT arrow");
-            }
     }
 
-    // This is keeping track of the 
+    // This is keeping track of the Score
     public override void ScoreCheck()
     {
         switch (transform.position.y)
         {
             case float y when (y > 4.4 & y <= 4.6)
-                : NyanceNyanceRevolutionSingleton.playerScore += 100;
-                Debug.Log(NyanceNyanceRevolutionSingleton.playerScore);
+                : explosionAnimator.SetBool("Perfect",true );
+                NyanceNyanceRevolutionSingleton.playerScore += 100;
                 DestroyArrow();
                 break;
             // We need the range below and above 
             case float y when (y > 4.2 & y <= 4.4)
-                : NyanceNyanceRevolutionSingleton.playerScore += 50;
-                Debug.Log(NyanceNyanceRevolutionSingleton.playerScore);
+                : explosionAnimator.SetBool("Great",true );
+                NyanceNyanceRevolutionSingleton.playerScore += 50;
                 DestroyArrow();
                 break;
             case float y when (y > 4.0 & y <= 4.2)
-                : NyanceNyanceRevolutionSingleton.playerScore += 25;
-                Debug.Log(NyanceNyanceRevolutionSingleton.playerScore);
+                :
+                explosionAnimator.SetBool("Good",true );
+                NyanceNyanceRevolutionSingleton.playerScore += 25;
                 DestroyArrow();
-                
                 break;
             case float y when (y > outOfBounds)
                 :

@@ -49,9 +49,13 @@ MonoBehaviour:
   speed: 3
   arrowCheckMeasument: 4.5
   outOfBounds: 8
-  arrowEvent:
+  score: 0
+  ArrowEvent:
     m_PersistentCalls:
       m_Calls: []
+  NyanceNyanceRevolutionSingleton: {fileID: 2157510721454017225, guid: 9295c4f61eebdc44999dd9b5dd93cee0, type: 3}
+  explosionPrefab: {fileID: 347949734643571413, guid: 5fe11e642460d9f4d99b35f2ce2e91ee, type: 3}
+  explosionAnimator: {fileID: 1762565529881119851, guid: 5fe11e642460d9f4d99b35f2ce2e91ee, type: 3}
 --- !u!95 &9017652999473509239
 Animator:
   serializedVersion: 5

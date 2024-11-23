@@ -17,7 +17,7 @@ using Random = UnityEngine.Random;
 public class NyanceNyanceRevolution : AbstractBossTask
 {
     // This will change the amount of arrows that will spawn  
-    public static int max = 70;
+    public static int max = 142;
     // Makes sure we dont exceed our arrow count  
     private int arrowCount = 0;
     // We Have to score the player!
@@ -124,7 +124,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
             }
 
             arrowCount++;
-            yield return new WaitForSeconds(0.83f);
+            yield return new WaitForSeconds(0.43f);
         }
         Debug.Log("FinalSCORE: " + NyanceNyanceRevolutionSingleton.playerScore);
         yield break;

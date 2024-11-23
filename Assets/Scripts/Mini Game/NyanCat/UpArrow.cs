@@ -7,23 +7,44 @@ using UnityEngine;
 /// The reason being is that I want to define different graphics based on different arrows.
 /// So making different arrows have their own class and be extendable is important.
 /// Anyways, enough yapping, this is the up arrow class.
+/// We want this child object to just focus on Right Arrow specific logic
 /// </summary>
 public class ArrowUp : Arrows
 {
+    public GameObject explosionPrefab;
+    public RuntimeAnimatorController rightArrowAnimatorController;
+    private Animator explosionAnimator; // Add this line to declare explosionAnimator
+
     // Start is called before the first frame update
-    void Start()
+    protected override void Start()
     {
-        NyanceNyanceRevolutionSingleton = NyanceNyanceRevolution.GetInstance();
+        base.Start();
+
+        // Ensure the explosionAnimator is assigned
+        if (explosionPrefab != null)
+        {
+            explosionAnimator = explosionPrefab.GetComponent<Animator>();
+            if (explosionAnimator.runtimeAnimatorController == null)
+            {
+                if (rightArrowAnimatorController != null)
+                {
+                    explosionAnimator.runtimeAnimatorController = rightArrowAnimatorController;
+                }
+                else
+                {
+                    Debug.LogError("AnimatorController is not assigned to the explosionAnimator.");
+                }
+            }
+        }
+        else
+        {
+            Debug.LogError("Explosion prefab is not assigned.");
+        }
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (ArrowEvent == null)
-        {
-            Debug.Log("we got a problem in RIGHT arrow");
-        }
-        // We need to be moving our arrow, This is defined in parent Class
         Move();
     }
 
@@ -33,20 +54,22 @@ public class ArrowUp : Arrows
         switch (transform.position.y)
         {
             case float y when (y > 4.4 & y <= 4.6)
-                : NyanceNyanceRevolutionSingleton.playerScore += 105;
-                Debug.Log(NyanceNyanceRevolutionSingleton.playerScore);
-                
+                :
+                explosionAnimator.SetBool("PerfectArrow", true);
+                NyanceNyanceRevolutionSingleton.playerScore += 105;
                 DestroyArrow();
                 break;
             // We need the range below and above 
             case float y when (y > 4.2 & y <= 4.4)
-                : NyanceNyanceRevolutionSingleton.playerScore += 70;
-                Debug.Log(NyanceNyanceRevolutionSingleton.playerScore);
+                :
+                explosionAnimator.SetBool("GreatArrow", true);
+                NyanceNyanceRevolutionSingleton.playerScore += 70;
                 DestroyArrow();
                 break;
             case float y when (y > 4.0 & y <= 4.2)
-                : NyanceNyanceRevolutionSingleton.playerScore += 10;
-                Debug.Log(NyanceNyanceRevolutionSingleton.playerScore);
+                :
+                explosionAnimator.SetBool("GoodArrow", true);
+                NyanceNyanceRevolutionSingleton.playerScore += 10;
                 DestroyArrow();
                 break;
             case float y when (y > outOfBounds)

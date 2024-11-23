@@ -17,7 +17,7 @@ using static NyanceNyanceRevolution;
 public class Arrows : MonoBehaviour
 {
     //current speed of the Arrows 
-    public float speed = 8;
+    public float speed = 1;
     // This is where our current arrow check is located at 
     public float arrowCheckMeasument = 4.5f;
     // Simply checks if we are out of bounds
@@ -30,7 +30,12 @@ public class Arrows : MonoBehaviour
     public NyanceNyanceRevolution NyanceNyanceRevolutionSingleton;
 
 
-
+    // Why not just use start in all the children? we want common initialization logic! thats pretty cool!
+    protected virtual void Start()
+    {
+        // We need to get a reference to our singleton 
+        NyanceNyanceRevolutionSingleton = NyanceNyanceRevolution.GetInstance();
+    }
     public void Move()
     {
         transform.position += Vector3.up * speed * Time.deltaTime;
@@ -43,13 +48,15 @@ public class Arrows : MonoBehaviour
     {
         Debug.Log("Hey Boss we are for some reason in the parent arrow class. Something is wrong");
     }
+    // This function will destroy our arrow
     public void DestroyArrow()
     {
-        // We unsubscribe from the proper event 
+        // We unsubscribe from the proper event, which we stored in the arrow event variable. This works with any arrow
         ArrowEvent.RemoveListener(ScoreCheck);
         // We poof the game object
         Destroy(gameObject);
     }
+
 }
 
 

@@ -25,6 +25,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
     // Currently we are using 4 different types of arrows
     // This is where the different types of arrow prefabs will be held.This will be invoked to give a new arrow its prefab before instanction 
     public GameObject[] arrowsTypesArray = new GameObject[4];
+    public Animator[] explosionAnimators = new Animator[4];
     // This creates a public event for all of our keys
     public UnityEvent UpArrow;
     public UnityEvent DownArrow;
@@ -102,21 +103,25 @@ public class NyanceNyanceRevolution : AbstractBossTask
                 case 0:
                     Debug.Log("Spawning UpArrow");
                     newArrow.ArrowEvent = UpArrow;
+                    newArrow.explosionAnimator = explosionAnimators[0];
                     UpArrow.AddListener(newArrow.ScoreCheck);
                     break;
                 case 1:
                     Debug.Log("Spawning DownArrow");
                     newArrow.ArrowEvent = DownArrow;
+                    newArrow.explosionAnimator = explosionAnimators[1];
                     DownArrow.AddListener(newArrow.ScoreCheck);
                     break;
                 case 2:
                     Debug.Log("Spawning LeftArrow");
                     newArrow.ArrowEvent = LeftArrow;
+                    newArrow.explosionAnimator = explosionAnimators[2];
                     LeftArrow.AddListener(newArrow.ScoreCheck);
                     break;
                 case 3:
                     Debug.Log("Spawning RightArrow");
                     newArrow.ArrowEvent = RightArrow;
+                    newArrow.explosionAnimator = explosionAnimators[3];
                     RightArrow.AddListener(newArrow.ScoreCheck);
                     break;
                 default:

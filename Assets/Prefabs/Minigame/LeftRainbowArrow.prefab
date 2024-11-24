@@ -28,7 +28,7 @@ Transform:
   m_GameObject: {fileID: 8853377128816972480}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.98, y: -5, z: -2.9268413}
+  m_LocalPosition: {x: 0.7, y: -5, z: -2.9268413}
   m_LocalScale: {x: 10, y: 9, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -53,9 +53,8 @@ MonoBehaviour:
   ArrowEvent:
     m_PersistentCalls:
       m_Calls: []
-  NyanceNyanceRevolutionSingleton: {fileID: 2157510721454017225, guid: 9295c4f61eebdc44999dd9b5dd93cee0, type: 3}
-  explosionPrefab: {fileID: 8845406813476558856, guid: 3466e70ddd0dd2b4a870f8d4588a0e23, type: 3}
   explosionAnimator: {fileID: 6010841361242045915, guid: 3466e70ddd0dd2b4a870f8d4588a0e23, type: 3}
+  NyanceNyanceRevolutionSingleton: {fileID: 2157510721454017225, guid: 9295c4f61eebdc44999dd9b5dd93cee0, type: 3}
 --- !u!95 &5403784742355504528
 Animator:
   serializedVersion: 5

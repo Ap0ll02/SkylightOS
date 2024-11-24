@@ -26,8 +26,17 @@ public class Arrows : MonoBehaviour
     public int score = 0;
     // Holds the arrow events we want to unsubscribe too
     public UnityEvent ArrowEvent;
+    // This holds the animator for the explosion!
+    public Animator explosionAnimator;
     // Holds the NyanceNyanceReveloution singelton class so we can update score and do other sick shit
     public NyanceNyanceRevolution NyanceNyanceRevolutionSingleton;
+    // This all the variables that control the scoring range, they can be adjusted in the child start classes UNDER base.start() 
+    public float perfectTop = 4.6f;
+    public float perfectBottom = 4.5f;
+    public float greatTop = 4.5f;
+    public float greatBottom = 4.2f;
+    public float goodTop = 4.2f;
+    public float goodBottom = 4.0f;
 
 
     // Why not just use start in all the children? we want common initialization logic! thats pretty cool!
@@ -44,9 +53,37 @@ public class Arrows : MonoBehaviour
 
     // This virtual method allows the game to default to this implementation if derived classes fail to override it.
     // Ensure to override this method in derived classes if you need to change the behavior for score checking.
-    public virtual void ScoreCheck()
+    public void ScoreCheck()
     {
-        Debug.Log("Hey Boss we are for some reason in the parent arrow class. Something is wrong");
+        switch (transform.position.y)
+        {
+            case float y when (y > perfectBottom && y <= perfectTop)
+                :
+                explosionAnimator.SetTrigger("Perfect");
+                NyanceNyanceRevolutionSingleton.playerScore += 100;
+                DestroyArrow();
+                break;
+            // We need the range below and above 
+            case float y when (y > greatBottom && y <= greatTop)
+                :
+                explosionAnimator.SetTrigger("Great");
+                NyanceNyanceRevolutionSingleton.playerScore += 50;
+                DestroyArrow();
+                break;
+            case float y when (y > goodBottom && y <= goodTop)
+                :
+                explosionAnimator.SetTrigger("Good");
+                NyanceNyanceRevolutionSingleton.playerScore += 25;
+                DestroyArrow();
+                break;
+            case float y when (y > outOfBounds)
+                :
+                DestroyArrow();
+                break;
+            default
+                :
+                break;
+        }
     }
     // This function will destroy our arrow
     public void DestroyArrow()

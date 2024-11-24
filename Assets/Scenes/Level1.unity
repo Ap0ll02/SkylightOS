@@ -807,13 +807,45 @@ PrefabInstance:
       propertyPath: m_Name
       value: Canvas (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2378294601218389388, guid: a0245a407fca88343a888662704e7148, type: 3}
+      propertyPath: m_margin.w
+      value: 1.5826721
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378294601218389388, guid: a0245a407fca88343a888662704e7148, type: 3}
+      propertyPath: m_margin.x
+      value: -229.39816
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378294601218389388, guid: a0245a407fca88343a888662704e7148, type: 3}
+      propertyPath: m_margin.z
+      value: -225.75046
+      objectReference: {fileID: 0}
+    - target: {fileID: 2378294601218389388, guid: a0245a407fca88343a888662704e7148, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 52180da4d46b96d4aa42a83d7c1470b2, type: 2}
+    - target: {fileID: 2378294601218389388, guid: a0245a407fca88343a888662704e7148, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -4202423924150976573, guid: 52180da4d46b96d4aa42a83d7c1470b2, type: 2}
+    - target: {fileID: 2378294601218389388, guid: a0245a407fca88343a888662704e7148, type: 3}
+      propertyPath: m_hasFontAssetChanged
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072841667037061720, guid: a0245a407fca88343a888662704e7148, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: -229.36
+      objectReference: {fileID: 0}
+    - target: {fileID: 4072841667037061720, guid: a0245a407fca88343a888662704e7148, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -359.4593
+      objectReference: {fileID: 0}
     - target: {fileID: 4072841667037061720, guid: a0245a407fca88343a888662704e7148, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -710
+      value: -296
       objectReference: {fileID: 0}
     - target: {fileID: 4072841667037061720, guid: a0245a407fca88343a888662704e7148, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 384
+      value: 140
       objectReference: {fileID: 0}
     - target: {fileID: 4867241529803141659, guid: a0245a407fca88343a888662704e7148, type: 3}
       propertyPath: m_Pivot.x
@@ -1678,7 +1710,7 @@ Transform:
   m_GameObject: {fileID: 1778065572}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -4.7700005, y: 3.32, z: -3.0029755}
+  m_LocalPosition: {x: -4.8, y: 1.4, z: -3.0029755}
   m_LocalScale: {x: 0.28081146, y: 0.20830646, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []

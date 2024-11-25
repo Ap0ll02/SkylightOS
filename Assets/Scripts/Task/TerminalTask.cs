@@ -58,6 +58,7 @@ public class TerminalTask : AbstractTask
         terminal = FindObjectOfType<Terminal>().gameObject.GetComponentInParent<BasicWindow>().gameObject;
         terminalPanel = FindObjectOfType<Terminal>().gameObject;
         terminalText = terminalPanel.GetComponentInChildren<TMP_Text>();
+        hGroup = FindObjectOfType<Terminal>().gameObject.GetComponentInChildren<HorizontalLayoutGroup>().gameObject;
         // lsBtn = GameObject.Find("LSBtn");
         // avBtn = GameObject.Find("antiviralBtn");
         // nmapBtn = GameObject.Find("nmapBtn");
@@ -112,6 +113,8 @@ public class TerminalTask : AbstractTask
     /// @brief Changes terminal information prompt and terminal state.
     public override void startTask()
     {
+        // TODO: Rename so maze game is the install file and arrow game is the download.
+
         // Terminal Task Start, Prompts User To Use The AntiVirus installation tool. Changes terminal state to On.
         string termText = "Welcome To The Console, Let's get you started installing some software\n"
             + "The AntiVirus toolkit is a helpful addition for getting rid of pesky malware!\n" + "Click On The Anti-Virus Installation to setup the connection address.";
@@ -152,8 +155,8 @@ public class TerminalTask : AbstractTask
         else if (termState == State.ArrowGameOn) {
             terminalText.text = "";
         }
-        else if(termState == State.MazeGameOn) {
-            terminalText.text = "";
+        else if (termState == State.MazeGameOn) {
+            terminalText.text = terminalText.text;
         }
     }
 
@@ -171,23 +174,33 @@ public class TerminalTask : AbstractTask
         {
             termState = State.MazeGameOn;
             terminalText.text = "Scanning Files: Maze Game Initiate!";
-            StartCoroutine(Timer(7));
-            terminalText.text = "----| A |------| B |------| C |----\n";
+            terminalText.text += "Click A, B, C, or D for your options.";
+            StartCoroutine(Timer(7f));
+            terminalText.text = "---| A |---| B |---| C |---|D|---\n";
+            terminalText.text += "Example Maze Stage, The Paths Correspond To A, B, C & D.\n";
+            terminalText.text += "Please Press Any Key To Continue Into The Maze\n";
             terminalText.text += "-----------------------------------\n";
-            terminalText.text += "-----------------------------------\n";
-            terminalText.text += "-----------------------------------\n";
-            // TODO: Update maze game to work with input
-            // Also have the else statement lead anywhere lol
+            hGroup.SetActive(false);
             dm.StartGame();
         }
         else if (termState == State.ArrowGameOn) {
             terminalText.text = "";
         }
+        else if (termState == State.MazeGameOn) {
+            terminalText.text = terminalText.text;
+        }
+        // TODO: Make hgroup buttons active again AFTER mazegame ends.
+        // TODO: Do it with event like the Arrowgame does to signify end.
     }
 
     void NMAPTask()
     {
-
+        if (termState == State.MazeGameOn) {
+            terminalText.text = terminalText.text;
+        }
+        else if (termState == State.ArrowGameOn) {
+            terminalText.text = "";
+        }
     }
 
     // Variable second timer

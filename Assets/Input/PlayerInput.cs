@@ -80,6 +80,15 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChoiceBack"",
+                    ""type"": ""Button"",
+                    ""id"": ""851a3133-f259-4b1f-9269-6d5c45832920"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,28 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""ChoiceD"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d7f3d2b6-6a75-41c3-bf72-16b9652de684"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChoiceBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e50c4898-ee48-440d-8087-88721c8a8c95"",
+                    ""path"": ""<Keyboard>/period"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChoiceBack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -206,6 +237,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_User_ChoiceB = m_User.FindAction("ChoiceB", throwIfNotFound: true);
         m_User_ChoiceC = m_User.FindAction("ChoiceC", throwIfNotFound: true);
         m_User_ChoiceD = m_User.FindAction("ChoiceD", throwIfNotFound: true);
+        m_User_ChoiceBack = m_User.FindAction("ChoiceBack", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -278,6 +310,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private readonly InputAction m_User_ChoiceB;
     private readonly InputAction m_User_ChoiceC;
     private readonly InputAction m_User_ChoiceD;
+    private readonly InputAction m_User_ChoiceBack;
     public struct UserActions
     {
         private @PlayerInput m_Wrapper;
@@ -288,6 +321,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         public InputAction @ChoiceB => m_Wrapper.m_User_ChoiceB;
         public InputAction @ChoiceC => m_Wrapper.m_User_ChoiceC;
         public InputAction @ChoiceD => m_Wrapper.m_User_ChoiceD;
+        public InputAction @ChoiceBack => m_Wrapper.m_User_ChoiceBack;
         public InputActionMap Get() { return m_Wrapper.m_User; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -315,6 +349,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @ChoiceD.started += instance.OnChoiceD;
             @ChoiceD.performed += instance.OnChoiceD;
             @ChoiceD.canceled += instance.OnChoiceD;
+            @ChoiceBack.started += instance.OnChoiceBack;
+            @ChoiceBack.performed += instance.OnChoiceBack;
+            @ChoiceBack.canceled += instance.OnChoiceBack;
         }
 
         private void UnregisterCallbacks(IUserActions instance)
@@ -337,6 +374,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @ChoiceD.started -= instance.OnChoiceD;
             @ChoiceD.performed -= instance.OnChoiceD;
             @ChoiceD.canceled -= instance.OnChoiceD;
+            @ChoiceBack.started -= instance.OnChoiceBack;
+            @ChoiceBack.performed -= instance.OnChoiceBack;
+            @ChoiceBack.canceled -= instance.OnChoiceBack;
         }
 
         public void RemoveCallbacks(IUserActions instance)
@@ -362,5 +402,6 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         void OnChoiceB(InputAction.CallbackContext context);
         void OnChoiceC(InputAction.CallbackContext context);
         void OnChoiceD(InputAction.CallbackContext context);
+        void OnChoiceBack(InputAction.CallbackContext context);
     }
 }

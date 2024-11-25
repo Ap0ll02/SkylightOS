@@ -19,6 +19,12 @@ public abstract class AbstractTask : MonoBehaviour
     // Event to notify when the task is completed
     public static event Action OnTaskCompleted;
 
+    // Default title, should be given a better title for OS manager
+    public string taskTitle = "Default title, please set in task";
+
+    // Default description, should be changed
+    public string taskDescription = "Default Description, please set in task";
+
     // Start is called before the first frame update
     public void Start()
     {

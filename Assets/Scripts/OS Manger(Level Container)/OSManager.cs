@@ -26,6 +26,12 @@ public class OSManager : MonoBehaviour
     // List to hold the task buttons
     private List<Button> taskButtons = new List<Button>();
 
+    // Reference to the boss task
+    [SerializeField] public AbstractBossTask bossTask;
+
+    // Reference to the boss task button
+    private Button bossTaskButton;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -60,6 +66,22 @@ public class OSManager : MonoBehaviour
         }
     }
 
+    // Method to start the boss task
+    public void StartBossTask()
+    {
+        if(bossTask == null)
+        {
+            Debug.LogError("Boss task is null, you need to set the boss task");
+            return;
+        }
+        currentTask = bossTask;
+        bossTask.gameObject.SetActive(true);
+        bossTask.startTask();
+
+        // Disable the boss task button
+        bossTaskButton.interactable = false;
+    }
+
     // Method to finish a task based on an index
     public void FinishTask()
     {
@@ -72,6 +94,12 @@ public class OSManager : MonoBehaviour
             for (int i = 0; i < taskButtons.Count; i++)
             {
                 taskButtons[i].interactable = !tasks[i].isComplete;
+            }
+
+            // Check if all tasks are complete
+            if (AllTasksComplete())
+            {
+                CreateBossTaskButton();
             }
         }
     }
@@ -88,7 +116,7 @@ public class OSManager : MonoBehaviour
         for (int i = 0; i < tasks.Count; i++)
         {
             GameObject taskButton = Instantiate(buttonPrefab, buttonContainer);
-            taskButton.GetComponentInChildren<TMP_Text>().text = "Task " + (i + 1);
+            taskButton.GetComponentInChildren<TMP_Text>().text = tasks[i].taskTitle;
 
             // Find the TaskButton script on the child object and set the task index
             TaskButton taskButtonScript = taskButton.GetComponentInChildren<TaskButton>();
@@ -98,6 +126,31 @@ public class OSManager : MonoBehaviour
             Button buttonComponent = taskButton.GetComponentInChildren<Button>();
             taskButtons.Add(buttonComponent);
         }
+    }
+
+    // Method to create the boss task button
+    void CreateBossTaskButton()
+    {
+        GameObject bossButton = Instantiate(buttonPrefab, buttonContainer);
+        bossButton.GetComponentInChildren<TMP_Text>().text = "Boss Task";
+
+        // Add the button to the list of task buttons
+        bossTaskButton = bossButton.GetComponentInChildren<Button>();
+        bossTaskButton.onClick.AddListener(StartBossTask);
+        bossTaskButton.interactable = true;
+    }
+
+    // Method to check if all tasks are complete
+    bool AllTasksComplete()
+    {
+        foreach (var task in tasks)
+        {
+            if (!task.isComplete)
+            {
+                return false;
+            }
+        }
+        return true;
     }
 
     // Method to subscribe to task events

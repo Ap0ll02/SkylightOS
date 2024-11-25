@@ -40,11 +40,10 @@ public class DrawMaze : AbstractMinigame
     public override void StartGame(){
         gameObject.SetActive(true);
     }
+    public int fileNameCounter = 0;
     public string DrawLevel(MazeProg lvl, int numPaths) {
         string level= "";
         char[] selector = new char[] {'A', 'B', 'C', 'D'};
-        // TODO: Route Path To Install File. See What Happens With That
-        // TODO EXTRA STEPS: C1 (4) -> C2 (2) -> B3 (4) -> C4 (1, the install).
         // TODO: If above is good route path to evidence and password help
         // TODO: Route Other Paths To Dead Ends
         // TODO: Ensure Going Backwards Works
@@ -53,17 +52,60 @@ public class DrawMaze : AbstractMinigame
                 level += "-|";
                 level += selector[i] + ": " + dirNames[i];
                 level += "|-";
+                fileNameCounter++;
             }
             level += "\n";
         }
-        else if(mp == MazeProg.C1) {
-            for(int i = 3; i < 3+numPaths; i++) {
-                level += "---|";
-                level += dirNames[i];
-                level += "|---";
+        // Path To I
+        else if(mp == MazeProg.C1 && lvl == MazeProg.Begin) {
+            for(int i = 0; i < numPaths; i++) {
+                level += "-|";
+                level += selector[i] + ": " + dirNames[i+fileNameCounter];
+                level += "|-";
+                fileNameCounter++;
             }
             level += "\n";
         }
+        else if(mp == MazeProg.C2 && lvl == MazeProg.C1) {
+            for(int i = 0; i < 2; i++) {
+                fileNameCounter++;
+                level += "-|";
+                level += selector[i] + ": " + dirNames[i+fileNameCounter];
+                level += "|-";
+                fileNameCounter++;
+            }
+        }
+        else if(mp == MazeProg.B3 && lvl == MazeProg.C2) {
+            for(int i = 0; i < 4; i++) {
+                fileNameCounter++;
+                level += "-|";
+                level += selector[i] + ": " + dirNames[i+fileNameCounter];
+                level += "|-";
+                fileNameCounter++;
+            }
+        }
+        else if(mp == MazeProg.C4 && lvl == MazeProg.B3) {
+            level = "-----|";
+            level += "AntiVirus Installer Application";
+            level += "|-----";
+        }
+
+        // // Path To E
+        // else if(mp == MazeProg && lvl == MazeProg) {
+            
+        // }
+        // else if(mp == MazeProg && lvl == MazeProg) {
+            
+        // }
+        // else if(mp == MazeProg && lvl == MazeProg) {
+            
+        // }
+        // else if(mp == MazeProg && lvl == MazeProg) {
+            
+        // }
+        // else if(mp == MazeProg && lvl == MazeProg) {
+            
+        // }
         return level;
     }
 

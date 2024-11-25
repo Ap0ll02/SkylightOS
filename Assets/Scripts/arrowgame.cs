@@ -12,10 +12,10 @@ public class Arrowgame : AbstractMinigame
     /// and components.
     [SerializeField] GameObject arrow;
     public static event Action OnGameEnd;
+    public static event Action OnArrowPress;
     public Transform spawnArea;
     public PlayerInput pInput;
     public int curArrow = 0;
-    public TerminalTask taskCheckHaz;
     public bool GameOver = true;
     public enum Direction {
         Up,
@@ -88,6 +88,7 @@ public class Arrowgame : AbstractMinigame
 
 
     public void HandleInput(InputAction.CallbackContext context) {
+        OnArrowPress?.Invoke();
         if(curArrow > numArrows && GameOver == false) {
             Debug.Log("Completed Task!");
             GameOver = true;

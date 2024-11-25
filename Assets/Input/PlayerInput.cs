@@ -44,6 +44,42 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ChoiceA"",
+                    ""type"": ""Button"",
+                    ""id"": ""4edcb19e-7b47-4229-8002-a713d09bf3fe"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChoiceB"",
+                    ""type"": ""Button"",
+                    ""id"": ""7a342f3e-7892-435a-ad9b-d5d94c2311b2"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChoiceC"",
+                    ""type"": ""Button"",
+                    ""id"": ""4de37784-0f36-436f-afc5-3e8961badb56"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ChoiceD"",
+                    ""type"": ""Button"",
+                    ""id"": ""1443b075-ab16-4f48-9c46-18c9fef84510"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -112,6 +148,50 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""action"": ""Vertical"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3b134f43-c895-4767-9a43-39fbf4eb6ea9"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChoiceA"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7450d530-fa2e-4ca2-aab5-b2e064c84f57"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChoiceB"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a0c6711c-6176-449b-8565-b241fa266817"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChoiceC"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0748776f-167c-47be-ae4c-793654144701"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ChoiceD"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -122,6 +202,10 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
         m_User = asset.FindActionMap("User", throwIfNotFound: true);
         m_User_Vertical = m_User.FindAction("Vertical", throwIfNotFound: true);
         m_User_Horizontal = m_User.FindAction("Horizontal", throwIfNotFound: true);
+        m_User_ChoiceA = m_User.FindAction("ChoiceA", throwIfNotFound: true);
+        m_User_ChoiceB = m_User.FindAction("ChoiceB", throwIfNotFound: true);
+        m_User_ChoiceC = m_User.FindAction("ChoiceC", throwIfNotFound: true);
+        m_User_ChoiceD = m_User.FindAction("ChoiceD", throwIfNotFound: true);
     }
 
     ~@PlayerInput()
@@ -190,12 +274,20 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     private List<IUserActions> m_UserActionsCallbackInterfaces = new List<IUserActions>();
     private readonly InputAction m_User_Vertical;
     private readonly InputAction m_User_Horizontal;
+    private readonly InputAction m_User_ChoiceA;
+    private readonly InputAction m_User_ChoiceB;
+    private readonly InputAction m_User_ChoiceC;
+    private readonly InputAction m_User_ChoiceD;
     public struct UserActions
     {
         private @PlayerInput m_Wrapper;
         public UserActions(@PlayerInput wrapper) { m_Wrapper = wrapper; }
         public InputAction @Vertical => m_Wrapper.m_User_Vertical;
         public InputAction @Horizontal => m_Wrapper.m_User_Horizontal;
+        public InputAction @ChoiceA => m_Wrapper.m_User_ChoiceA;
+        public InputAction @ChoiceB => m_Wrapper.m_User_ChoiceB;
+        public InputAction @ChoiceC => m_Wrapper.m_User_ChoiceC;
+        public InputAction @ChoiceD => m_Wrapper.m_User_ChoiceD;
         public InputActionMap Get() { return m_Wrapper.m_User; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -211,6 +303,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Horizontal.started += instance.OnHorizontal;
             @Horizontal.performed += instance.OnHorizontal;
             @Horizontal.canceled += instance.OnHorizontal;
+            @ChoiceA.started += instance.OnChoiceA;
+            @ChoiceA.performed += instance.OnChoiceA;
+            @ChoiceA.canceled += instance.OnChoiceA;
+            @ChoiceB.started += instance.OnChoiceB;
+            @ChoiceB.performed += instance.OnChoiceB;
+            @ChoiceB.canceled += instance.OnChoiceB;
+            @ChoiceC.started += instance.OnChoiceC;
+            @ChoiceC.performed += instance.OnChoiceC;
+            @ChoiceC.canceled += instance.OnChoiceC;
+            @ChoiceD.started += instance.OnChoiceD;
+            @ChoiceD.performed += instance.OnChoiceD;
+            @ChoiceD.canceled += instance.OnChoiceD;
         }
 
         private void UnregisterCallbacks(IUserActions instance)
@@ -221,6 +325,18 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
             @Horizontal.started -= instance.OnHorizontal;
             @Horizontal.performed -= instance.OnHorizontal;
             @Horizontal.canceled -= instance.OnHorizontal;
+            @ChoiceA.started -= instance.OnChoiceA;
+            @ChoiceA.performed -= instance.OnChoiceA;
+            @ChoiceA.canceled -= instance.OnChoiceA;
+            @ChoiceB.started -= instance.OnChoiceB;
+            @ChoiceB.performed -= instance.OnChoiceB;
+            @ChoiceB.canceled -= instance.OnChoiceB;
+            @ChoiceC.started -= instance.OnChoiceC;
+            @ChoiceC.performed -= instance.OnChoiceC;
+            @ChoiceC.canceled -= instance.OnChoiceC;
+            @ChoiceD.started -= instance.OnChoiceD;
+            @ChoiceD.performed -= instance.OnChoiceD;
+            @ChoiceD.canceled -= instance.OnChoiceD;
         }
 
         public void RemoveCallbacks(IUserActions instance)
@@ -242,5 +358,9 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
     {
         void OnVertical(InputAction.CallbackContext context);
         void OnHorizontal(InputAction.CallbackContext context);
+        void OnChoiceA(InputAction.CallbackContext context);
+        void OnChoiceB(InputAction.CallbackContext context);
+        void OnChoiceC(InputAction.CallbackContext context);
+        void OnChoiceD(InputAction.CallbackContext context);
     }
 }

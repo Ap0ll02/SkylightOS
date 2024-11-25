@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Analytics;
+using UnityEngine.InputSystem;
+using Unity.VisualScripting;
 
 /**
  * @Author Jack Ratermann
@@ -20,14 +22,19 @@ public class TerminalTask : AbstractTask
     {
         On,
         Off,
-        StageOne,
+        ArrowGameOn,
+        ArrowGameOff,
+        MazeGameOn,
+        MazeGameOff,
         StageTwo
     }
 
     /// @var Terminal Variables that get references in awake() to the scene's terminal
     public GameObject terminal;
+    private List<bool> tasksDone = new List<bool>();
     public TMP_Text terminalText;
     public GameObject lsBtn;
+    public GameObject hGroup;
     public GameObject avBtn;
     public GameObject nmapBtn;
     private State termState;
@@ -38,7 +45,8 @@ public class TerminalTask : AbstractTask
     public Arrowgame ag;
 
     // Draw the maze for the LS Maze Game
-    public DrawMaze drawMaze;
+    public GameObject drawMaze;
+    public DrawMaze dm;
 
     // Audio source reference on TerminalWindow to play music on games.
     public AudioSource musicAG;
@@ -47,16 +55,19 @@ public class TerminalTask : AbstractTask
     /// @brief Assign all of the terminal objects in the scene.
     public void Awake() {
         arrowGame = FindObjectOfType<Arrowgame>().gameObject;
-        terminal = GameObject.Find("WindowCanvas/TerminalWindow");
-        terminalPanel = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel");
-        terminalText = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel/TInstructionTxt").GetComponent<TMP_Text>();
-        lsBtn = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel/LSButton");
-        avBtn = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel/antiviralBtn");
-        nmapBtn = GameObject.Find("WindowCanvas/TerminalWindow/TerminalPanel/nmapBtn");
+        terminal = FindObjectOfType<Terminal>().gameObject.GetComponentInParent<BasicWindow>().gameObject;
+        terminalPanel = FindObjectOfType<Terminal>().gameObject;
+        terminalText = terminalPanel.GetComponentInChildren<TMP_Text>();
+        // lsBtn = GameObject.Find("LSBtn");
+        // avBtn = GameObject.Find("antiviralBtn");
+        // nmapBtn = GameObject.Find("nmapBtn");
         termState = State.Off;
         ag = arrowGame.GetComponent<Arrowgame>();
-        drawMaze = GetComponent<DrawMaze>();
+        drawMaze = FindObjectOfType<DrawMaze>().gameObject;
+        dm = drawMaze.GetComponent<DrawMaze>();
         musicAG = FindObjectOfType<Terminal>().GetComponentInParent<AudioSource>();
+        tasksDone.Add(false);
+        tasksDone.Add(false);
     }
 
     public new void Start() {
@@ -64,9 +75,23 @@ public class TerminalTask : AbstractTask
         gameObject.SetActive(false);
     }
 
-    // FIXME: Make this happen on input events instead. but another time I too tired now.
-    public void Update() {
-        checkHazards();
+    /// @brief Subscription handling to all 3 button events from the terminal.
+    public void OnEnable()
+    {
+        Arrowgame.OnArrowPress += checkHazards;
+        Arrowgame.OnGameEnd += AVTaskP2;
+        Terminal.OnAVPressed += AVTask;
+        Terminal.OnLSPressed += LSTask;
+        Terminal.OnNMAPPressed += NMAPTask;
+    }
+
+    public void OnDisable()
+    {
+        Arrowgame.OnArrowPress -= checkHazards;
+        Arrowgame.OnGameEnd -= AVTaskP2;
+        Terminal.OnAVPressed -= AVTask;
+        Terminal.OnLSPressed -= LSTask;
+        Terminal.OnNMAPPressed -= NMAPTask;
     }
 
     public override void checkHazards()
@@ -108,54 +133,43 @@ public class TerminalTask : AbstractTask
         }
     }
 
-    /// @brief Subscription handling to all 3 button events from the terminal.
-    void OnEnable()
-    {
-        Arrowgame.OnGameEnd += AVTaskP2;
-        Terminal.OnAVPressed += AVTask;
-        Terminal.OnLSPressed += LSTask;
-        Terminal.OnNMAPPressed += NMAPTask;
-    }
-
-    void OnDisable()
-    {
-        Arrowgame.OnGameEnd -= AVTaskP2;
-        Terminal.OnAVPressed -= AVTask;
-        Terminal.OnLSPressed -= LSTask;
-        Terminal.OnNMAPPressed -= NMAPTask;
-    }
-
     /// @brief 3 Functions To Handle When The Terminal Buttons Are Pressed.
-    void AVTask()
+    public void AVTask()
     {
         /// @var termLoadBar will be used for arrow game, how the loading progresses. 
         /// Different process and visual than the prefab loading bar.
-        //string termLoadBar = "--------------------------------";
         if (termState == State.On)
         {
             terminalText.text = "";
-            termState = State.StageOne;
+            termState = State.ArrowGameOn;
             arrowGame.SetActive(true);
+            startHazards();
             ag.StartGame();
             if(!musicAG.isPlaying) {
                 musicAG.Play();
             }
         }
-        if (termState == State.StageOne) {
+        else if (termState == State.ArrowGameOn) {
+            terminalText.text = "";
+        }
+        else if(termState == State.MazeGameOn) {
             terminalText.text = "";
         }
     }
 
-    void AVTaskP2() {
+    public void AVTaskP2() {
         StartCoroutine(FadeOut(5));
-        termState = State.On;
+        stopHazards();
+        termState = State.ArrowGameOff;
+        // TODO: Ensure LS Task works
     }
 
-    void LSTask()
+    public void LSTask()
     {
-        if(termState == State.On)
+        Debug.Log(termState);
+        if(termState == State.On || termState == State.ArrowGameOff)
         {
-            termState = State.StageTwo;
+            termState = State.MazeGameOn;
             terminalText.text = "Scanning Files: Maze Game Initiate!";
             StartCoroutine(Timer(7));
             terminalText.text = "----| A |------| B |------| C |----\n";
@@ -164,14 +178,9 @@ public class TerminalTask : AbstractTask
             terminalText.text += "-----------------------------------\n";
             // TODO: Update maze game to work with input
             // Also have the else statement lead anywhere lol
-            if(true) {
-                terminalText.text = drawMaze.DrawA();
-            }
-            else {
-                terminalText.text = drawMaze.DrawB();
-            }
+            dm.StartGame();
         }
-        if (termState == State.StageOne) {
+        else if (termState == State.ArrowGameOn) {
             terminalText.text = "";
         }
     }

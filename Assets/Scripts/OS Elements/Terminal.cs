@@ -40,13 +40,13 @@ public class Terminal : MonoBehaviour
     public void Awake()
     {
         TWindow = GameObject.Find(twinName);
-        TWindow.SetActive(true);
+        //TWindow.SetActive(true);
     }
 
     public void Start()
     {
         TInstructionTxt.text = FirstText;
-        TWindow.SetActive(false);
+        //TWindow.SetActive(false);
     }
 
     public void ListFilesExec()

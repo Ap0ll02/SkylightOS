@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using TMPro;
 using UnityEngine;
 /// <summary>
 /// Author L:ord Quinn Barron of catgirls
@@ -14,6 +15,7 @@ public class DownArrow : Arrows
     protected override void Start()
     {
         base.Start();
+
     }
 
     // Update is called once per frame

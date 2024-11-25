@@ -122,27 +122,27 @@ public class NyanceNyanceRevolution : AbstractBossTask
             switch (randIndex)
             {
                 case 0:
-                    Debug.Log("Spawning UpArrow");
                     newArrow.ArrowEvent = UpArrow;
                     newArrow.explosionAnimator = explosionAnimators[0];
+                    newArrow.scoringTextPrefab = scoreTextPrefab[0];
                     UpArrow.AddListener(newArrow.ScoreCheck);
                     break;
                 case 1:
-                    Debug.Log("Spawning DownArrow");
                     newArrow.ArrowEvent = DownArrow;
                     newArrow.explosionAnimator = explosionAnimators[1];
+                    newArrow.scoringTextPrefab = scoreTextPrefab[1];
                     DownArrow.AddListener(newArrow.ScoreCheck);
                     break;
                 case 2:
-                    Debug.Log("Spawning LeftArrow");
                     newArrow.ArrowEvent = LeftArrow;
                     newArrow.explosionAnimator = explosionAnimators[2];
+                    newArrow.scoringTextPrefab = scoreTextPrefab[2];
                     LeftArrow.AddListener(newArrow.ScoreCheck);
                     break;
                 case 3:
-                    Debug.Log("Spawning RightArrow");
                     newArrow.ArrowEvent = RightArrow;
                     newArrow.explosionAnimator = explosionAnimators[3];
+                    newArrow.scoringTextPrefab = scoreTextPrefab[3];
                     RightArrow.AddListener(newArrow.ScoreCheck);
                     break;
                 default:
@@ -190,7 +190,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
         {
             for (int n = 0; n < lazerLines.Length; n++)
             {
-                lazerLines[n].SetTrigger("intenselazer");
+                lazerLines[n].SetTrigger("GreatLazer");
             }
         }
     }

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 /// <summary>
 /// Author Quinn Contaldi
@@ -11,6 +12,7 @@ public class RightArrow : Arrows
     protected override void Start()
     {
         base.Start();
+
     }
 
     // Update is called once per frame

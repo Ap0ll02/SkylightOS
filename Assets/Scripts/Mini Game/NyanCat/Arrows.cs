@@ -1,8 +1,5 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
-using UnityEditor;
+
+using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
 using static NyanceNyanceRevolution;
@@ -22,7 +19,7 @@ public class Arrows : MonoBehaviour
     //current speed of the Arrows 
     public float speed = 1;
     // Simply checks if we are out of bounds
-    public float outOfBounds = 8;
+    public float outOfBounds = 4.8f;
     // our arrows need to have a score for them to return 
     public int highScore = 100;
     public int greatscore = 50;
@@ -31,6 +28,10 @@ public class Arrows : MonoBehaviour
     public UnityEvent ArrowEvent;
     // This holds the animator for the explosion!
     public Animator explosionAnimator;
+    // Will be given associated scoring text that will pop up during the game
+    public GameObject scoringTextPrefab;
+    public TextMeshProUGUI scoringText;
+    public Animator ScoringTextAnimator;
     // Holds the NyanceNyanceReveloution singelton class so we can update score and do other sick shit
     public NyanceNyanceRevolution NyanceNyanceRevolutionSingleton;
     // This all the variables that control the scoring range, they can be adjusted in the child start classes UNDER base.start() 
@@ -47,6 +48,8 @@ public class Arrows : MonoBehaviour
     {
         // We need to get a reference to our singleton 
         NyanceNyanceRevolutionSingleton = NyanceNyanceRevolution.GetInstance();
+        ScoringTextAnimator = scoringTextPrefab.GetComponent<Animator>();
+        scoringText = scoringTextPrefab.GetComponent<TextMeshProUGUI>();
     }
     public void Move()
     {
@@ -62,6 +65,8 @@ public class Arrows : MonoBehaviour
         {
             case float y when (y > perfectBottom && y <= perfectTop)
                 :
+                scoringText = NyanceNyanceRevolutionSingleton.TextMeshs[0];
+                ScoringTextAnimator.SetTrigger("Perfect");
                 explosionAnimator.SetTrigger("Perfect");
                 NyanceNyanceRevolutionSingleton.playerScore += highScore;
                 DestroyArrow();
@@ -69,18 +74,24 @@ public class Arrows : MonoBehaviour
             // We need the range below and above 
             case float y when (y > greatBottom && y <= greatTop)
                 :
+                scoringText = NyanceNyanceRevolutionSingleton.TextMeshs[1];
+                ScoringTextAnimator.SetTrigger("Great");
                 explosionAnimator.SetTrigger("Great");
                 NyanceNyanceRevolutionSingleton.playerScore += greatscore;
                 DestroyArrow();
                 break;
             case float y when (y > goodBottom && y <= goodTop)
                 :
+                scoringText = NyanceNyanceRevolutionSingleton.TextMeshs[2];
+                ScoringTextAnimator.SetTrigger("Good");
                 explosionAnimator.SetTrigger("Good");
                 NyanceNyanceRevolutionSingleton.playerScore += goodscore;
                 DestroyArrow();
                 break;
             case float y when (y > outOfBounds)
                 :
+                scoringText = NyanceNyanceRevolutionSingleton.TextMeshs[3];
+                ScoringTextAnimator.SetTrigger("Miss");
                 DestroyArrow();
                 break;
             default

@@ -19,8 +19,4 @@ public class LeftArrow : Arrows
     {
         Move();
     }
-    
-    // This is keeping track of the 
-    
-
 }

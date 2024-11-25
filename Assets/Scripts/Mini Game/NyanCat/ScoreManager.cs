@@ -20,4 +20,6 @@ public class ScoreManager : MonoBehaviour
     {
         scoreText.text = NyanceNyanceRevolutionSingelton.playerScore.ToString();
     }
+
+
 }

@@ -10,20 +10,23 @@ using static NyanceNyanceRevolution;
 /// <summary>
 /// Author Quinn Contaldi
 /// This will serve as the parent class for all fucking arrows.
-/// I'm not quite sure if I want to eventually turn this thing into an abstract base class.
-/// Currently, arrows don't have different implementations for the same methods.
-/// Thus, having just a parent class and allowing the child arrow objects to extend their behavior is good enough.
+/// You may look at the arrow classes and be like wait... they are all the same can I just get ride of them?
+/// Dont do that you will break the game. The arrows are all the same but they have different variables since they are inherited from the parent class.
+/// They also have different behavior for their respective event and animator triggers set by NyanceNyanceRevolution to create different arrows. 
+/// Also the child classes have different start methods that can set the variables for different scoring range, scoring values, animations, and arrow types.
+/// If you want to change the scoring range, scoring values, animations, and arrow types you can do so in the child classes. just set them after the base.start() call.
+/// Also this design allows our game to be closed to modification but open to extension. you can define more behaviors for the children in their respective class
 /// </summary>
 public class Arrows : MonoBehaviour
 {
     //current speed of the Arrows 
     public float speed = 1;
-    // This is where our current arrow check is located at 
-    public float arrowCheckMeasument = 4.5f;
     // Simply checks if we are out of bounds
     public float outOfBounds = 8;
     // our arrows need to have a score for them to return 
-    public int score = 0;
+    public int highScore = 100;
+    public int greatscore = 50;
+    public int goodscore = 25;
     // Holds the arrow events we want to unsubscribe too
     public UnityEvent ArrowEvent;
     // This holds the animator for the explosion!
@@ -50,9 +53,9 @@ public class Arrows : MonoBehaviour
         transform.position += Vector3.up * speed * Time.deltaTime;
     }
 
-
-    // This virtual method allows the game to default to this implementation if derived classes fail to override it.
-    // Ensure to override this method in derived classes if you need to change the behavior for score checking.
+    // This is the function that is evoked by the unity event as it is a subscriber to the input function. 
+    // This function will also call the associated explosion animatior which provides player feedback
+    // This will be called in the children and the child objects will provide the respective values for the shared varibles
     public void ScoreCheck()
     {
         switch (transform.position.y)
@@ -60,20 +63,20 @@ public class Arrows : MonoBehaviour
             case float y when (y > perfectBottom && y <= perfectTop)
                 :
                 explosionAnimator.SetTrigger("Perfect");
-                NyanceNyanceRevolutionSingleton.playerScore += 100;
+                NyanceNyanceRevolutionSingleton.playerScore += highScore;
                 DestroyArrow();
                 break;
             // We need the range below and above 
             case float y when (y > greatBottom && y <= greatTop)
                 :
                 explosionAnimator.SetTrigger("Great");
-                NyanceNyanceRevolutionSingleton.playerScore += 50;
+                NyanceNyanceRevolutionSingleton.playerScore += greatscore;
                 DestroyArrow();
                 break;
             case float y when (y > goodBottom && y <= goodTop)
                 :
                 explosionAnimator.SetTrigger("Good");
-                NyanceNyanceRevolutionSingleton.playerScore += 25;
+                NyanceNyanceRevolutionSingleton.playerScore += goodscore;
                 DestroyArrow();
                 break;
             case float y when (y > outOfBounds)

@@ -5,6 +5,7 @@ using JetBrains.Annotations;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using TMPro;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -18,27 +19,42 @@ public class NyanceNyanceRevolution : AbstractBossTask
 {
     // This will change the amount of arrows that will spawn  
     public static int max = 142;
+
     // Makes sure we dont exceed our arrow count  
     private int arrowCount = 0;
+
     // We Have to score the player!
     public int playerScore;
+
     // Currently we are using 4 different types of arrows
     // This is where the different types of arrow prefabs will be held.This will be invoked to give a new arrow its prefab before instanction 
     public GameObject[] arrowsTypesArray = new GameObject[4];
+    // This is what plays the cool explosions when the player hits the arrow. We got different types so they are shoved in an array
     public Animator[] explosionAnimators = new Animator[4];
+    // This will be the animator for the lines that will be spawned and will be used to show progression of the level
+    public Animator[] lazerLines = new Animator[5];
+    // Score Text Prefabs that will allow us to 
+    public GameObject[] scoreTextPrefab = new GameObject[4];
+    // This is so we can switch out our score text
+    public TextMeshProUGUI[] TextMeshs = new TextMeshProUGUI[4]; 
     // This creates a public event for all of our keys
     public UnityEvent UpArrow;
     public UnityEvent DownArrow;
     public UnityEvent LeftArrow;
     public UnityEvent RightArrow;
+
     // We create a static variable so it only holds one NyanceNyanceRevalution variable at a time 
     private static NyanceNyanceRevolution NyanceNyanceRevolutionSingleton;
+
     // Its Contstructor is private so we can present others from instantiating the object.
-    private NyanceNyanceRevolution() {}
+    private NyanceNyanceRevolution()
+    {
+    }
+
     // We have a method that will enable others to get our singleton instance 
     public static NyanceNyanceRevolution GetInstance()
     {
-        if(NyanceNyanceRevolutionSingleton == null)
+        if (NyanceNyanceRevolutionSingleton == null)
             NyanceNyanceRevolutionSingleton = FindObjectOfType<NyanceNyanceRevolution>();
         // if a NyanceNyanceRevalution has not been made yet we simply instantiate one
         if (NyanceNyanceRevolutionSingleton == null)
@@ -48,6 +64,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
             NyanceNyanceRevolutionSingleton = singletonNyanCat.AddComponent<NyanceNyanceRevolution>();
             singletonNyanCat.name = typeof(NyanceNyanceRevolution).ToString();
         }
+
         // else we return the single instance we have 
         return NyanceNyanceRevolutionSingleton;
     }
@@ -67,23 +84,27 @@ public class NyanceNyanceRevolution : AbstractBossTask
     public void Update()
     {
         CheckForKeyPresses();
+        CheckMidLevel();
     }
 
     public override void startTask()
     {
         //meow
     }
+
     // Ask the hazard manager if our task can progress
     // Idea use a percentage to slow down the task progress instead of completely stopping it
     public override void checkHazards()
     {
         //meow
     }
+
     // This will request the manager to stop / end a hazard
     public override void stopHazards()
     {
         //meow 
     }
+
     // this will request our manager to start making hazards
     public override void startHazards()
     {
@@ -131,6 +152,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
             arrowCount++;
             yield return new WaitForSeconds(0.43f);
         }
+
         Debug.Log("FinalSCORE: " + NyanceNyanceRevolutionSingleton.playerScore);
         yield break;
     }
@@ -142,14 +164,17 @@ public class NyanceNyanceRevolution : AbstractBossTask
         {
             UpArrow.Invoke();
         }
+
         if (Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.DownArrow))
         {
             DownArrow.Invoke();
         }
+
         if (Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
         {
             LeftArrow.Invoke();
         }
+
         if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
         {
             RightArrow.Invoke();
@@ -158,4 +183,15 @@ public class NyanceNyanceRevolution : AbstractBossTask
 
     //Creates callback functions for key presses that will be defined in the arrow class 
     // Burnice Burnice Burnice Burnice GO GO, Burnice Burnice Burnice Burnice let them watch it burn!
+
+    void CheckMidLevel()
+    {
+        if (NyanceNyanceRevolutionSingleton.playerScore > 1000)
+        {
+            for (int n = 0; n < lazerLines.Length; n++)
+            {
+                lazerLines[n].SetTrigger("intenselazer");
+            }
+        }
+    }
 }

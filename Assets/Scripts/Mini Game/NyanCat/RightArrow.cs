@@ -20,8 +20,4 @@ public class RightArrow : Arrows
         Move();
     }
 
-    // This is keeping track of the Score
-  
-
-
 }

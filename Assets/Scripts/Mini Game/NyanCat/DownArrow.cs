@@ -22,7 +22,4 @@ public class DownArrow : Arrows
         // We need to be moving our arrow, This is defined in parent Class
         Move();
     }
-
-    // This is keeping track of the 
-    
 }

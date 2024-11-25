@@ -23,8 +23,4 @@ public class ArrowUp : Arrows
     {
         Move();
     }
-
-    // This is keeping track of the 
-    
-
 }

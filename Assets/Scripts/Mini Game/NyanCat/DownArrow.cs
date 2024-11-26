@@ -23,5 +23,6 @@ public class DownArrow : Arrows
     {
         // We need to be moving our arrow, This is defined in parent Class
         Move();
+        OutOfBounds(transform.position.y);
     }
 }

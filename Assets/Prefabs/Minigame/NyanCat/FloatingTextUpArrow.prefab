@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Perfect!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52180da4d46b96d4aa42a83d7c1470b2, type: 2}
   m_sharedMaterial: {fileID: -4202423924150976573, guid: 52180da4d46b96d4aa42a83d7c1470b2, type: 2}
@@ -75,8 +75,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 55295
-  m_fontColor: {r: 1, g: 0.84313726, b: 0, a: 0}
+    rgba: 4278255360
+  m_fontColor: {r: 0, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -145,7 +145,7 @@ Animator:
   m_GameObject: {fileID: 886656938950707768}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 6569fa059d686474ca160fa3e5b51205, type: 2}
+  m_Controller: {fileID: 9100000, guid: d5cc16f149ee9ab45a35b37ecd74cc85, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

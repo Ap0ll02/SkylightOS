@@ -24,5 +24,6 @@ public class ArrowUp : Arrows
     void Update()
     {
         Move();
+        OutOfBounds(transform.position.y);
     }
 }

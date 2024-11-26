@@ -47,14 +47,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
-  arrowCheckMeasument: 4.5
   outOfBounds: 8
-  score: 0
+  highScore: 100
+  greatscore: 50
+  goodscore: 25
   ArrowEvent:
     m_PersistentCalls:
       m_Calls: []
-  explosionAnimator: {fileID: 1762565529881119851, guid: 5fe11e642460d9f4d99b35f2ce2e91ee, type: 3}
+  explosionPrefab: {fileID: 0}
+  scoringTextPrefab: {fileID: 0}
   NyanceNyanceRevolutionSingleton: {fileID: 2157510721454017225, guid: 9295c4f61eebdc44999dd9b5dd93cee0, type: 3}
+  perfectTop: 4.6
+  perfectBottom: 4.5
+  greatTop: 4.5
+  greatBottom: 4.2
+  goodTop: 4.2
+  goodBottom: 4
 --- !u!95 &9017652999473509239
 Animator:
   serializedVersion: 5

@@ -19,5 +19,6 @@ public class LeftArrow : Arrows
     void Update()
     {
         Move();
+        OutOfBounds(transform.position.y);
     }
 }

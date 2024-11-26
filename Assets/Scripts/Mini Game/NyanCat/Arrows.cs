@@ -18,29 +18,35 @@ public class Arrows : MonoBehaviour
 {
     //current speed of the Arrows 
     public float speed = 1;
+
     // Simply checks if we are out of bounds
     public float outOfBounds = 4.8f;
+
     // our arrows need to have a score for them to return 
     public int highScore = 100;
     public int greatscore = 50;
+
     public int goodscore = 25;
+
     // Holds the arrow events we want to unsubscribe too
     public UnityEvent ArrowEvent;
+
     // This holds the animator for the explosion!
-    public Animator explosionAnimator;
+    public GameObject explosionPrefab;
+
     // Will be given associated scoring text that will pop up during the game
     public GameObject scoringTextPrefab;
-    public TextMeshProUGUI scoringText;
-    public Animator ScoringTextAnimator;
+
     // Holds the NyanceNyanceReveloution singelton class so we can update score and do other sick shit
     public NyanceNyanceRevolution NyanceNyanceRevolutionSingleton;
+
     // This all the variables that control the scoring range, they can be adjusted in the child start classes UNDER base.start() 
     public float perfectTop = 4.6f;
-    public float perfectBottom = 4.5f;
-    public float greatTop = 4.5f;
+    public float perfectBottom = 4.4f;
+    public float greatTop = 4.4f;
     public float greatBottom = 4.2f;
-    public float goodTop = 4.2f;
-    public float goodBottom = 4.0f;
+    public float goodTop = 4.1f;
+    public float goodBottom = 3.9f;
 
 
     // Why not just use start in all the children? we want common initialization logic! thats pretty cool!
@@ -48,9 +54,8 @@ public class Arrows : MonoBehaviour
     {
         // We need to get a reference to our singleton 
         NyanceNyanceRevolutionSingleton = NyanceNyanceRevolution.GetInstance();
-        ScoringTextAnimator = scoringTextPrefab.GetComponent<Animator>();
-        scoringText = scoringTextPrefab.GetComponent<TextMeshProUGUI>();
     }
+
     public void Move()
     {
         transform.position += Vector3.up * speed * Time.deltaTime;
@@ -61,44 +66,31 @@ public class Arrows : MonoBehaviour
     // This will be called in the children and the child objects will provide the respective values for the shared varibles
     public void ScoreCheck()
     {
-        switch (transform.position.y)
+        float y = transform.position.y;
+
+        if (y > perfectBottom && y <= perfectTop)
         {
-            case float y when (y > perfectBottom && y <= perfectTop)
-                :
-                scoringText = NyanceNyanceRevolutionSingleton.TextMeshs[0];
-                ScoringTextAnimator.SetTrigger("Perfect");
-                explosionAnimator.SetTrigger("Perfect");
-                NyanceNyanceRevolutionSingleton.playerScore += highScore;
-                DestroyArrow();
-                break;
-            // We need the range below and above 
-            case float y when (y > greatBottom && y <= greatTop)
-                :
-                scoringText = NyanceNyanceRevolutionSingleton.TextMeshs[1];
-                ScoringTextAnimator.SetTrigger("Great");
-                explosionAnimator.SetTrigger("Great");
-                NyanceNyanceRevolutionSingleton.playerScore += greatscore;
-                DestroyArrow();
-                break;
-            case float y when (y > goodBottom && y <= goodTop)
-                :
-                scoringText = NyanceNyanceRevolutionSingleton.TextMeshs[2];
-                ScoringTextAnimator.SetTrigger("Good");
-                explosionAnimator.SetTrigger("Good");
-                NyanceNyanceRevolutionSingleton.playerScore += goodscore;
-                DestroyArrow();
-                break;
-            case float y when (y > outOfBounds)
-                :
-                scoringText = NyanceNyanceRevolutionSingleton.TextMeshs[3];
-                ScoringTextAnimator.SetTrigger("Miss");
-                DestroyArrow();
-                break;
-            default
-                :
-                break;
+            NyanceNyanceRevolutionSingleton.UpdateText("Perfect", scoringTextPrefab);
+            NyanceNyanceRevolutionSingleton.UpdateExplosion("Perfect", explosionPrefab);
+            NyanceNyanceRevolutionSingleton.playerScore += highScore;
+            DestroyArrow();
+        }
+        else if (y > greatBottom && y <= greatTop)
+        {
+            NyanceNyanceRevolutionSingleton.UpdateText("Great", scoringTextPrefab);
+            NyanceNyanceRevolutionSingleton.UpdateExplosion("Great", explosionPrefab);
+            NyanceNyanceRevolutionSingleton.playerScore += greatscore;
+            DestroyArrow();
+        }
+        else if (y > goodBottom && y <= goodTop)
+        {
+            NyanceNyanceRevolutionSingleton.UpdateText("Good", scoringTextPrefab);
+            NyanceNyanceRevolutionSingleton.UpdateExplosion("Good", explosionPrefab);
+            NyanceNyanceRevolutionSingleton.playerScore += goodscore;
+            DestroyArrow();
         }
     }
+
     // This function will destroy our arrow
     public void DestroyArrow()
     {
@@ -106,6 +98,16 @@ public class Arrows : MonoBehaviour
         ArrowEvent.RemoveListener(ScoreCheck);
         // We poof the game object
         Destroy(gameObject);
+    }
+
+    // We need to seperate the out of bound function, if not it will only check out of bound when a key is pressed. That is not good
+    public void OutOfBounds(float position)
+    {
+        if (position > outOfBounds)
+        {
+            NyanceNyanceRevolutionSingleton.UpdateText("Miss", scoringTextPrefab);
+            DestroyArrow();
+        }
     }
 
 }

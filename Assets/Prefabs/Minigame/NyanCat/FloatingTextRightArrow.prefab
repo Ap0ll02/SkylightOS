@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: GOOD!
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52180da4d46b96d4aa42a83d7c1470b2, type: 2}
   m_sharedMaterial: {fileID: -4202423924150976573, guid: 52180da4d46b96d4aa42a83d7c1470b2, type: 2}
@@ -75,8 +75,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 13081417
-  m_fontColor: {r: 0.28693473, g: 0.6065232, b: 0.7798742, a: 0}
+    rgba: 4278255360
+  m_fontColor: {r: 0, g: 1, b: 0, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -129,7 +129,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 0, y: -1.4984131, z: 0.00012207031, w: 3.3771896}
+  m_margin: {x: 0, y: -0.34875488, z: 0.00012207031, w: -0.07190704}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0
@@ -145,7 +145,7 @@ Animator:
   m_GameObject: {fileID: 213004873024307639}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: f1f2cf51a206eb64085e7bf67252c292, type: 2}
+  m_Controller: {fileID: 9100000, guid: d5cc16f149ee9ab45a35b37ecd74cc85, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

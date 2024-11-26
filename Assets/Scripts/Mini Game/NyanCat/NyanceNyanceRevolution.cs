@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using JetBrains.Annotations;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
@@ -29,20 +27,28 @@ public class NyanceNyanceRevolution : AbstractBossTask
     // Currently we are using 4 different types of arrows
     // This is where the different types of arrow prefabs will be held.This will be invoked to give a new arrow its prefab before instanction 
     public GameObject[] arrowsTypesArray = new GameObject[4];
+
     // This is what plays the cool explosions when the player hits the arrow. We got different types so they are shoved in an array
-    public Animator[] explosionAnimators = new Animator[4];
+    public GameObject[] ExplosionFeedbackPrefab = new GameObject[4];
+
     // This will be the animator for the lines that will be spawned and will be used to show progression of the level
-    public Animator[] lazerLines = new Animator[5];
+    public GameObject[] LazerPrefab = new GameObject[5];
+
     // Score Text Prefabs that will allow us to 
     public GameObject[] scoreTextPrefab = new GameObject[4];
-    // This is so we can switch out our score text
-    public TextMeshProUGUI[] TextMeshs = new TextMeshProUGUI[4]; 
+
+
     // This creates a public event for all of our keys
     public UnityEvent UpArrow;
     public UnityEvent DownArrow;
     public UnityEvent LeftArrow;
     public UnityEvent RightArrow;
 
+
+    [SerializeField] public Color perfectColor;
+    [SerializeField] public Color greatColor;
+    [SerializeField] public Color goodColor;
+    [SerializeField] public Color missColor;
     // We create a static variable so it only holds one NyanceNyanceRevalution variable at a time 
     private static NyanceNyanceRevolution NyanceNyanceRevolutionSingleton;
 
@@ -84,7 +90,6 @@ public class NyanceNyanceRevolution : AbstractBossTask
     public void Update()
     {
         CheckForKeyPresses();
-        CheckMidLevel();
     }
 
     public override void startTask()
@@ -123,25 +128,25 @@ public class NyanceNyanceRevolution : AbstractBossTask
             {
                 case 0:
                     newArrow.ArrowEvent = UpArrow;
-                    newArrow.explosionAnimator = explosionAnimators[0];
+                    newArrow.explosionPrefab = ExplosionFeedbackPrefab[0];
                     newArrow.scoringTextPrefab = scoreTextPrefab[0];
                     UpArrow.AddListener(newArrow.ScoreCheck);
                     break;
                 case 1:
                     newArrow.ArrowEvent = DownArrow;
-                    newArrow.explosionAnimator = explosionAnimators[1];
+                    newArrow.explosionPrefab = ExplosionFeedbackPrefab[1];
                     newArrow.scoringTextPrefab = scoreTextPrefab[1];
                     DownArrow.AddListener(newArrow.ScoreCheck);
                     break;
                 case 2:
                     newArrow.ArrowEvent = LeftArrow;
-                    newArrow.explosionAnimator = explosionAnimators[2];
+                    newArrow.explosionPrefab = ExplosionFeedbackPrefab[2];
                     newArrow.scoringTextPrefab = scoreTextPrefab[2];
                     LeftArrow.AddListener(newArrow.ScoreCheck);
                     break;
                 case 3:
                     newArrow.ArrowEvent = RightArrow;
-                    newArrow.explosionAnimator = explosionAnimators[3];
+                    newArrow.explosionPrefab = ExplosionFeedbackPrefab[3];
                     newArrow.scoringTextPrefab = scoreTextPrefab[3];
                     RightArrow.AddListener(newArrow.ScoreCheck);
                     break;
@@ -184,13 +189,88 @@ public class NyanceNyanceRevolution : AbstractBossTask
     //Creates callback functions for key presses that will be defined in the arrow class 
     // Burnice Burnice Burnice Burnice GO GO, Burnice Burnice Burnice Burnice let them watch it burn!
 
-    void CheckMidLevel()
+        public void UpdateText(string scoreCondition, GameObject TextPrefab)
     {
-        if (NyanceNyanceRevolutionSingleton.playerScore > 1000)
+        if (TextPrefab == null)
         {
-            for (int n = 0; n < lazerLines.Length; n++)
+            Debug.LogWarning("Trying to pull from a text prefab, not a instantated object, Have you tried putting the prefab in the scene?");
+        }
+        else
+        {
+            var textMesh = TextPrefab.GetComponent<TextMeshProUGUI>();
+            var ScoringTextAnimator = TextPrefab.GetComponent<Animator>();
+            switch (scoreCondition)
             {
-                lazerLines[n].SetTrigger("GreatLazer");
+                case "Perfect":
+                    textMesh.text = "PERFECT!";
+                    textMesh.color = perfectColor;
+                    ScoringTextAnimator.SetTrigger("Perfect");
+                    break;
+                case "Great":
+                    textMesh.text = "GREAT";
+                    textMesh.color = greatColor;
+                    ScoringTextAnimator.SetTrigger("Great");
+                    break;
+                case "Good":
+                    textMesh.text = "GOOD";
+                    textMesh.color = goodColor;
+                    ScoringTextAnimator.SetTrigger("Good");
+                    break;
+                case "Miss":
+                    textMesh.text = "MISS";
+                    textMesh.color = missColor;
+                    ScoringTextAnimator.SetTrigger("Miss");
+                    break;
+
+            }
+        }
+    }
+
+    public void UpdateExplosion(string explosionCondition, GameObject ExplosionPrefab)
+    {
+        if (ExplosionPrefab == null)
+        {
+            Debug.LogWarning("Trying to pull from a Explosion prefab, not a instantated object, Have you tried putting the prefab in the scene?");
+        }
+        else
+        {
+            var explosionAnimator = ExplosionPrefab.GetComponent<Animator>();
+            switch (explosionCondition)
+            {
+                case "Perfect":
+                    explosionAnimator.SetTrigger("Perfect");
+                    break;
+                case "Great":
+                    explosionAnimator.SetTrigger("Great");
+                    break;
+                case "Good":
+                    explosionAnimator.SetTrigger("Good");
+                    break;
+                default:
+                    break;
+            }
+        }
+    }
+
+    public void UpdateLazers(string LazerCondition, GameObject LazerPrefab)
+    {
+        if (LazerPrefab == null)
+        {
+            Debug.LogWarning("Trying to pull from a Lazer prefab, not a instantated object, Have you tried putting the prefab in the scene?");
+        }
+        else
+        {
+            var lazerAnimator =  LazerPrefab.GetComponent<Animator>();
+            switch (LazerCondition)
+            {
+                case "Basic" :
+                    break;
+                case "Strong":
+                    break;
+                case "Intense":
+                    break;
+                case "NYANMEGAEXTREME":
+                    break;
             }
         }
     }

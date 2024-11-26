@@ -1,11 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 using System;
-using Unity.VisualScripting;
-using System.Linq;
 
 public class DrawMaze : AbstractMinigame
 {
@@ -14,7 +11,11 @@ public class DrawMaze : AbstractMinigame
     public string[] dirNames = new string[] {"Documents", "Pictures", "Movies", "SkylightOS", "NorthstarAI", 
     "Homework", "Emails", "Passwords", "Birds", "Shopping Lists", "Batteries", "Grandchildren", "Fruit", "Browsers", "Money", "Football", "School", "College", "Reward",
     "Work", "Risk", "Portrait", "Refrigerator", "Home", "Repairs", "Warranty Information", "Cleaning Supplies", "Share", "Cool Apps", "Extra Folder", "Songs", "Music", "Dubstep",
-    "Country", "Banana"};
+    "Country", "Banana", "Aurora", "Cascade", "Nebula", "Eclipse", "Horizon", "Vortex", "Zephyr", "Solace", "Mirage", "Nimbus", 
+    "Tempest", "Luminous", "Serenity", "Ethereal", "Haven", "Harbor", "Glacier", "Echo", "Nova", "Celestial", 
+    "Radiant", "Verdant", "Aurorae", "Halcyon", "Ember", "Quasar", "Aether", "Boreal", "Frost", "Prism", 
+    "Torrent", "Zenith", "Chroma", "Lumina", "Cascade2", "Wanderer", "Eclipse2", "Sequoia", "Sylvan", 
+    "Equinox", "Eldritch", "Drift", "Summit", "Verdure", "Crystalline", "Solstice", "Vale", "Mariner", "Nocturne"};
 
     public enum MazeProg {
         Begin, 
@@ -26,6 +27,9 @@ public class DrawMaze : AbstractMinigame
     }
     MazeProg mp = MazeProg.Begin;
     public List<char> path = new();
+    public int[,] entryMatrix = {{2, 4, 1, 1, 1, 1, 4, 1, 1, 1, 1, 0, 0, 0, 0, 0, 0, 0, 0}, 
+                                {3, 2, 3, 2, 1, 1, 1, 1, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1}, 
+                                {4, 3, 1, 2, 1, 1, 1, 1, 3, 4, 1, 1, 1, 1, 1, 1, 1, 0, 0}};
     
     public void Awake() {
         //path.Add('X');
@@ -47,10 +51,12 @@ public class DrawMaze : AbstractMinigame
         // TODO: If above is good route path to evidence and password help
         // TODO: Route Other Paths To Dead Ends
         // TODO: Ensure Going Backwards Works
+        Debug.Log("Previous: " + lvl);
+        Debug.Log("Current: " + mp);
         if(lvl == MazeProg.Begin && mp == MazeProg.Begin) {
-            for(int i = 0; i < numPaths; i++) {
+            for(int i = 0; i < 3; i++) {
                 level += "-|";
-                level += selector[i] + ": " + dirNames[i];
+                level += selector[i % 4] + ": " + dirNames[i];
                 level += "|-";
                 fileNameCounter++;
             }
@@ -58,28 +64,28 @@ public class DrawMaze : AbstractMinigame
         }
         // Path To I
         else if(mp == MazeProg.C1 && lvl == MazeProg.Begin) {
-            for(int i = 0; i < numPaths; i++) {
+            for(int i = 0; i < entryMatrix[2,0]; i++) {
                 level += "-|";
-                level += selector[i] + ": " + dirNames[i+fileNameCounter];
+                level += selector[i % 4] + ": " + dirNames[i+fileNameCounter];
                 level += "|-";
                 fileNameCounter++;
             }
             level += "\n";
         }
         else if(mp == MazeProg.C2 && lvl == MazeProg.C1) {
-            for(int i = 0; i < 2; i++) {
+            for(int i = 0; i < entryMatrix[2,3]; i++) {
                 fileNameCounter++;
                 level += "-|";
-                level += selector[i] + ": " + dirNames[i+fileNameCounter];
+                level += selector[i % 4] + ": " + dirNames[i+fileNameCounter];
                 level += "|-";
                 fileNameCounter++;
             }
         }
         else if(mp == MazeProg.B3 && lvl == MazeProg.C2) {
-            for(int i = 0; i < 4; i++) {
+            for(int i = 0; i < entryMatrix[2,9]; i++) {
                 fileNameCounter++;
                 level += "-|";
-                level += selector[i] + ": " + dirNames[i+fileNameCounter];
+                level += selector[i % 4] + ": " + dirNames[i+fileNameCounter];
                 level += "|-";
                 fileNameCounter++;
             }
@@ -90,22 +96,73 @@ public class DrawMaze : AbstractMinigame
             level += "|-----";
         }
 
-        // // Path To E
-        // else if(mp == MazeProg && lvl == MazeProg) {
-            
-        // }
-        // else if(mp == MazeProg && lvl == MazeProg) {
-            
-        // }
-        // else if(mp == MazeProg && lvl == MazeProg) {
-            
-        // }
-        // else if(mp == MazeProg && lvl == MazeProg) {
-            
-        // }
-        // else if(mp == MazeProg && lvl == MazeProg) {
-            
-        // }
+        // Path To E
+        else if(mp == MazeProg.B1 && lvl == MazeProg.Begin) {
+            for(int i = 0; i < entryMatrix[1,0]; i++) {
+                fileNameCounter++;
+                level += "-|";
+                level += selector[i % 4] + ": " + dirNames[i+fileNameCounter];
+                level += "|-";
+                fileNameCounter++;
+            }
+        }
+        else if(mp == MazeProg.B2 && lvl == MazeProg.B1) {
+            for(int i = 0; i < entryMatrix[1,2]; i++) {
+                fileNameCounter++;
+                level += "-|";
+                level += selector[i % 4] + ": " + dirNames[i+fileNameCounter];
+                level += "|-";
+                fileNameCounter++;
+            }
+        }
+        else if(mp == MazeProg.C3 && lvl == MazeProg.B2) {
+            for(int i = 0; i < entryMatrix[1,8]; i++) {
+                fileNameCounter++;
+                level += "-|";
+                level += selector[i % 4] + ": " + dirNames[i+fileNameCounter];
+                level += "|-";
+                fileNameCounter++;
+            }
+        }
+        else if(mp == MazeProg.A4 && lvl == MazeProg.C3) {
+            level = "-----|";
+            level += "Evidence File Here, TBD";
+            level += "|-----";
+        }
+
+        // Path to P
+        else if(mp == MazeProg.B1 && lvl == MazeProg.Begin) {
+            for(int i = 0; i < entryMatrix[1,0]; i++) {
+                fileNameCounter++;
+                level += "-|";
+                level += selector[i % 4] + ": " + dirNames[i+fileNameCounter];
+                level += "|-";
+                fileNameCounter++;
+            }
+        }
+        else if(mp == MazeProg.C2 && lvl == MazeProg.B1) {
+            for(int i = 0; i < entryMatrix[1,3]; i++) {
+                fileNameCounter++;
+                level += "-|";
+                level += selector[i % 4] + ": " + dirNames[i+fileNameCounter];
+                level += "|-";
+                fileNameCounter++;
+            }
+        }
+        else if(mp == MazeProg.A3 && lvl == MazeProg.C2) {
+            for(int i = 0; i < entryMatrix[1,9]; i++) {
+                fileNameCounter++;
+                level += "-|";
+                level += selector[i % 4] + ": " + dirNames[i+fileNameCounter];
+                level += "|-";
+                fileNameCounter++;
+            }
+        }
+        else if(mp == MazeProg.D4 && lvl == MazeProg.A3) {
+            level = "-----|";
+            level += "Password Help Here.";
+            level += "|-----";
+        }
         return level;
     }
 
@@ -139,12 +196,24 @@ public class DrawMaze : AbstractMinigame
             Draw();
         }
     }
-
+    public int CalcPathEntries(MazeProg[] mpArr) {
+        return 0;
+    }
+    // public MazeProg Draw(int preLvl, char preDir, int curLvl, char curDir) {
+    //     // TODO: Find a way to get the previous and current MazeProg returned as a tuple or out to handleBack
+    //     return CheckProgress(preLvl, preDir);
+    // }
     public void HandleBack(InputAction.CallbackContext context) {
         if(context.phase == InputActionPhase.Performed) {
-             Debug.Log("INPUT: BACK");
+            Debug.Log("INPUT: BACK");
             if(path.Count - 1 > 1) path.RemoveAt(path.Count - 1);
-            Draw();
+            // int preLvl;
+            // char preDir;
+            // int curLvl;
+            // char curDir;
+            // Draw(preLvl, preDir, curLvl, curDir);
+            MazeProg[] backUpProg = new MazeProg[] {MazeProg.Begin, MazeProg.Begin};
+            fileNameCounter -= CalcPathEntries(backUpProg);
         }
     }
 
@@ -222,6 +291,7 @@ public class DrawMaze : AbstractMinigame
             return MazeProg.Begin;
         }
     }
+
     // NOTES: 
     // Evidence Located At B1-B2-C3-A4
     // Password Help At B1-C2-A3-D4
@@ -230,12 +300,12 @@ public class DrawMaze : AbstractMinigame
         MazeProg prevLvl;
         // Determine maze progress before sending draw function request
         int level = path.Count-1;
-        char direction = path[^1];
+        char direction = path[path.Count - 1];
         int preLevel;
         char preDirection;
         try{
             preLevel = path.Count-2;
-            preDirection = path[^2];
+            preDirection = path[path.Count - 2];
         } catch (Exception e) when (e is ArgumentOutOfRangeException) {
             Debug.Log("First Time Around Here, Huh?");
             preLevel = 0;

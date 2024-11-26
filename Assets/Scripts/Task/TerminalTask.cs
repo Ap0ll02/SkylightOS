@@ -160,13 +160,17 @@ public class TerminalTask : AbstractTask
         }
     }
 
+    // Used for when the AV Task arrow game is done. 
     public void AVTaskP2() {
         StartCoroutine(FadeOut(5));
         stopHazards();
         termState = State.ArrowGameOff;
+        tasksDone[0] = true;
         // TODO: Ensure LS Task works
     }
 
+    // Start of the maze game task with state checking so the LS can be used in multiple ways, further
+    // decoupling the task from the OS element to enforce reusability & individuality of tasks and components
     public void LSTask()
     {
         Debug.Log(termState);
@@ -203,9 +207,9 @@ public class TerminalTask : AbstractTask
         }
     }
 
-    // Variable second timer
+    // Variable second timer for allowing text to read, or whichever your heart desires
     private IEnumerator Timer(float x) {
-        yield return new WaitForSeconds(x);
+        while(true) yield return new WaitForSeconds(x);
     }
 
     // Fades out music, passed in parameter is number of seconds to fadeout

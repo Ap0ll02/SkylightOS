@@ -18,11 +18,26 @@ public class Inode : MonoBehaviour
     public Inode iParent;
     /// @var numEntries The number of children in the inode
     public int numEntries = 0; 
-
+    /// @var iChildren a list of all children inodes. Essentially the inodetable wihtin the inodetable
     public List<Inode> iChildren = new();
 
-    public void Start() {
-
+    /// @brief Shows files from the specified, and includes the children.
+    // NOTE: This DOES NOT recursively show children
+    public void ShowFile(Inode i) {
+        i.gameObject.SetActive(true);
+        foreach (var file in i.iChildren)
+        {
+            file.gameObject.SetActive(true);
+        }
     }
 
+    /// @brief Hides files from the specified file, and includes the children.
+    // NOTE: This DOES NOT recursively hide children
+    public void HideFile(Inode i) {
+        foreach (var file in i.iChildren)
+        {
+            file.gameObject.SetActive(false);
+        }
+        i.gameObject.SetActive(false);
+    }
 }

@@ -315,9 +315,6 @@ public class DrawMaze : AbstractMinigame
         prevLvl = CheckProgress(preLevel, preDirection);
         mp = CheckProgress(level, direction);
         // Request a level to be drawn depending on the level and direction, or MazeProg
-        // FIXME: Just ensure this is correct, I THINK it is fully correct and all the fucntionality relies
-        // on the DrawLevel(stage, numPaths) function. Just ensure it does and these numpaths being passed are
-        // handled properly.
         switch(mp) {
             case MazeProg.Begin: {
                 terminalText.text = DrawLevel(MazeProg.Begin, 3);

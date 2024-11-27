@@ -12,7 +12,7 @@ using System.Linq;
 /// </summary>
 public class DrawMaze : AbstractMinigame
 {
-    public new static event Action OnGameEnd;
+    public static event Action OnGameEnd;
     public PlayerInput pInput;
     // 0 = Not Allowed, 1 = Allowed, 2+ = Not Allowed Except Backspace
     public int inputAllowed = 0;

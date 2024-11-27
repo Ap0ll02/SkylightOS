@@ -82,6 +82,7 @@ public class TerminalTask : AbstractTask
     {
         Arrowgame.OnArrowPress += checkHazards;
         Arrowgame.OnGameEnd += GameEnd;
+        DrawMaze.OnGameEnd += GameEnd;
         Terminal.OnAVPressed += AVTask;
         Terminal.OnLSPressed += LSTask;
         Terminal.OnNMAPPressed += NMAPTask;
@@ -91,6 +92,7 @@ public class TerminalTask : AbstractTask
     {
         Arrowgame.OnArrowPress -= checkHazards;
         Arrowgame.OnGameEnd -= GameEnd;
+        DrawMaze.OnGameEnd -= GameEnd;
         Terminal.OnAVPressed -= AVTask;
         Terminal.OnLSPressed -= LSTask;
         Terminal.OnNMAPPressed -= NMAPTask;
@@ -114,8 +116,6 @@ public class TerminalTask : AbstractTask
     /// @brief Changes terminal information prompt and terminal state.
     public override void startTask()
     {
-        // TODO: Rename so maze game is the install file and arrow game is the download.
-
         // Terminal Task Start, Prompts User To Use The AntiVirus installation tool. Changes terminal state to On.
         string termText = "Welcome To The Console, Let's get you started installing some software\n"
             + "The AntiVirus toolkit is a helpful addition for getting rid of pesky malware!\n" + "Click On The Anti-Virus Installation to setup the connection address.";
@@ -161,19 +161,23 @@ public class TerminalTask : AbstractTask
         }
     }
 
-    // Used for when the AV Task arrow game is done. 
+    // Used for when the games are done
     public void GameEnd() {
+        Debug.Log("I heard you bitch");
         if(termState == State.ArrowGameOn) {
             StartCoroutine(FadeOut(5));
+            termState = State.ArrowGameOff;
         }
         else if(termState == State.MazeGameOn) {
+            termState = State.MazeGameOff;
             hGroup.SetActive(true);
             terminalText.text = "Installing File, Congratulations!";
-            Instantiate(dw, FindObjectOfType<Terminal>().GetComponentInParent<BasicWindow>().gameObject.transform);
+            GameObject termLoad = Instantiate(dw, FindObjectOfType<Terminal>().GetComponentInParent<BasicWindow>().gameObject.transform);
+            termLoad.SetActive(true);
+            termLoad.GetComponent<LoadingScript>().StartLoading();
         }
         stopHazards();
-
-        termState = termState == State.ArrowGameOn ? State.ArrowGameOff : termState == State.MazeGameOn ? State.MazeGameOff : State.Off;
+        
         int getInd(State t) =>
             t switch
             {
@@ -183,7 +187,6 @@ public class TerminalTask : AbstractTask
             };
 
         tasksDone[getInd(termState)] = true;
-        // TODO: Ensure LS Task works
     }
 
     // Start of the maze game task with state checking so the LS can be used in multiple ways, further
@@ -210,8 +213,6 @@ public class TerminalTask : AbstractTask
         else if (termState == State.MazeGameOn) {
             terminalText.text = terminalText.text;
         }
-        // TODO: Make hgroup buttons active again AFTER mazegame ends.
-        // TODO: Do it with event like the Arrowgame does to signify end.
     }
 
     void NMAPTask()

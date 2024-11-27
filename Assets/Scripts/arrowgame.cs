@@ -20,7 +20,7 @@ public class Arrowgame : AbstractMinigame
     // Events for the arrow to broadcast for the task to do things. {End game and checkHazards()}
     //public static event Action OnGameEnd;
     public static event Action OnArrowPress;
-    public new static event Action OnGameEnd;
+    public static event Action OnGameEnd;
     // Where to spawn the arrows
     public Transform spawnArea;
     public PlayerInput pInput;

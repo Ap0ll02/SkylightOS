@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -37,6 +38,9 @@ public class NyanceNyanceRevolution : AbstractBossTask
     // Score Text Prefabs that will allow us to 
     public GameObject[] scoreTextPrefab = new GameObject[4];
 
+    public GameObject damageTextPrefab;
+
+    public GameObject NyanCat;
 
     // This creates a public event for all of our keys
     public UnityEvent UpArrow;
@@ -90,6 +94,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
     public void Update()
     {
         CheckForKeyPresses();
+        UpdateLazers();
     }
 
     public override void startTask()
@@ -252,7 +257,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
         }
     }
 
-    public void UpdateLazers(string LazerCondition, GameObject LazerPrefab)
+    public void FirstPower()
     {
         if (LazerPrefab == null)
         {
@@ -260,18 +265,91 @@ public class NyanceNyanceRevolution : AbstractBossTask
         }
         else
         {
-            var lazerAnimator =  LazerPrefab.GetComponent<Animator>();
-            switch (LazerCondition)
+            foreach (var Lazer in LazerPrefab)
             {
-                case "Basic" :
-                    break;
-                case "Strong":
-                    break;
-                case "Intense":
-                    break;
-                case "NYANMEGAEXTREME":
-                    break;
+                var lazerAnimator =  Lazer.GetComponent<Animator>();
+                lazerAnimator.SetBool("Basic1",true);
             }
         }
+    }
+    public void SecondPower()
+    {
+        if (LazerPrefab == null)
+        {
+            Debug.LogWarning("Trying to pull from a Lazer prefab, not a instantated object, Have you tried putting the prefab in the scene?");
+        }
+        else
+        {
+            foreach (var Lazer in LazerPrefab)
+            {
+                var lazerAnimator =  Lazer.GetComponent<Animator>();
+                lazerAnimator.SetBool("Basic1",false);
+                lazerAnimator.SetBool("Basic2",true);
+            }
+        }
+    }
+
+    public void ThirdPower()
+    {
+        if (LazerPrefab == null)
+        {
+            Debug.LogWarning("Trying to pull from a Lazer prefab, not a instantated object, Have you tried putting the prefab in the scene?");
+        }
+        else
+        {
+            foreach (var Lazer in LazerPrefab)
+            {
+                var lazerAnimator =  Lazer.GetComponent<Animator>();
+                lazerAnimator.SetBool("Basic2",false);
+                lazerAnimator.SetBool("GreatLazer",true);
+            }
+        }
+    }
+
+    public void FullPower()
+    {
+        if (LazerPrefab == null)
+        {
+            Debug.LogWarning("Trying to pull from a Lazer prefab, not a instantated object, Have you tried putting the prefab in the scene?");
+        }
+        else
+        {
+            foreach (var Lazer in LazerPrefab)
+            {
+                var lazerAnimator =  Lazer.GetComponent<Animator>();
+                lazerAnimator.SetBool("GreatLazer",false);
+                lazerAnimator.SetBool("NyanLazer",true);
+            }
+        }
+    }
+
+    public void UpdateLazers()
+    {
+        switch (arrowCount)
+        {
+            case 5:
+
+            case 40:
+                SecondPower();
+                break;
+            case 70:
+                ThirdPower();
+                break;
+            case 100:
+                FullPower();
+                break;
+        }
+    }
+
+    public void showDamageText(int value)
+    {
+        if (damageTextPrefab == null)
+        {
+            Debug.LogError("We are trying to call componentes from an uninstantated object. Drag it onto NyanBossTask");
+        }
+        var textMesh = damageTextPrefab.GetComponent<TextMeshPro>();
+        textMesh.text = value.ToString();
+        //textMesh.color = color;
+        Instantiate(damageTextPrefab, NyanCat.transform);
     }
 }

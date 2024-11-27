@@ -73,6 +73,7 @@ public class Arrows : MonoBehaviour
             NyanceNyanceRevolutionSingleton.UpdateText("Perfect", scoringTextPrefab);
             NyanceNyanceRevolutionSingleton.UpdateExplosion("Perfect", explosionPrefab);
             NyanceNyanceRevolutionSingleton.playerScore += highScore;
+            NyanceNyanceRevolutionSingleton.showDamageText(highScore);
             DestroyArrow();
         }
         else if (y > greatBottom && y <= greatTop)
@@ -80,6 +81,7 @@ public class Arrows : MonoBehaviour
             NyanceNyanceRevolutionSingleton.UpdateText("Great", scoringTextPrefab);
             NyanceNyanceRevolutionSingleton.UpdateExplosion("Great", explosionPrefab);
             NyanceNyanceRevolutionSingleton.playerScore += greatscore;
+            NyanceNyanceRevolutionSingleton.showDamageText(greatscore);
             DestroyArrow();
         }
         else if (y > goodBottom && y <= goodTop)
@@ -87,6 +89,7 @@ public class Arrows : MonoBehaviour
             NyanceNyanceRevolutionSingleton.UpdateText("Good", scoringTextPrefab);
             NyanceNyanceRevolutionSingleton.UpdateExplosion("Good", explosionPrefab);
             NyanceNyanceRevolutionSingleton.playerScore += goodscore;
+            NyanceNyanceRevolutionSingleton.showDamageText(goodscore);
             DestroyArrow();
         }
     }

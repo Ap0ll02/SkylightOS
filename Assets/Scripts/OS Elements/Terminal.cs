@@ -17,6 +17,9 @@ using TMPro;
 
 public class Terminal : MonoBehaviour
 {
+    /// @var twinName The name of the terminal window, change here if you did change your window name.
+    string twinName = "TerminalWindow";
+
     /// @var TInstructionTxt The text that covers the terminal that can be used to show instructions or text.
     [SerializeField] TMP_Text TInstructionTxt;
 
@@ -36,6 +39,7 @@ public class Terminal : MonoBehaviour
 
     public void Awake()
     {
+        TWindow = GameObject.Find(twinName);
         TWindow.SetActive(true);
     }
 

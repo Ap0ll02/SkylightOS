@@ -1,5 +1,5 @@
+using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public abstract class AbstractMinigame : MonoBehaviour
@@ -11,5 +11,6 @@ public abstract class AbstractMinigame : MonoBehaviour
     /// Have minigames inherit from this for enforcing structure.
     /// </summary>
     public bool CanContinue;
+    public static event Action OnGameEnd;
     public abstract void StartGame();
 }

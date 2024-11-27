@@ -21,6 +21,8 @@ public class Inode : MonoBehaviour
     /// @var iChildren a list of all children inodes. Essentially the inodetable wihtin the inodetable
     public List<Inode> iChildren = new();
 
+    public List<Data> iData = new();
+
     /// @brief Shows files from the specified, and includes the children.
     // NOTE: This DOES NOT recursively show children
     public void ShowFile(Inode i) {

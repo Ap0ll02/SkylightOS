@@ -574,6 +574,7 @@ MonoBehaviour:
   - {fileID: 1063481223}
   isComplete: 0
   terminal: {fileID: 0}
+  dw: {fileID: 4826310643824066200, guid: e9e3394e049c74149a21eafd82b82ae2, type: 3}
   terminalText: {fileID: 0}
   lsBtn: {fileID: 0}
   hGroup: {fileID: 0}
@@ -832,14 +833,6 @@ PrefabInstance:
     - target: {fileID: 6177301862696512204, guid: 1631e06a4fa5ddf708a4ba8c3950f0be, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7885522754084457447, guid: 1631e06a4fa5ddf708a4ba8c3950f0be, type: 3}
-      propertyPath: m_fontSize
-      value: 35
-      objectReference: {fileID: 0}
-    - target: {fileID: 7885522754084457447, guid: 1631e06a4fa5ddf708a4ba8c3950f0be, type: 3}
-      propertyPath: m_fontSizeBase
-      value: 35
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2650,145 +2643,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!1 &2058977357 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2858680687749397595, guid: 0abe564c295f556349ba67f58ce788e9, type: 3}
-  m_PrefabInstance: {fileID: 7660551691473572504}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &2058977358 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1203320177309795791, guid: 0abe564c295f556349ba67f58ce788e9, type: 3}
   m_PrefabInstance: {fileID: 7660551691473572504}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2058977359 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2333111304329633965, guid: 0abe564c295f556349ba67f58ce788e9, type: 3}
-  m_PrefabInstance: {fileID: 7660551691473572504}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058977357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 49bc6c0929d746804b289c106d14e829, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2058977360
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2058977357}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: a0f0b761a8b1ae095a74208ee20ef5b4, type: 3}
-  m_NotificationBehavior: 2
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents:
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 244443a1-82c1-4345-9048-b181e7428799
-    m_ActionName: User/Vertical[/Keyboard/downArrow,/Keyboard/upArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 5e8ef40b-02a2-410e-a977-e00d7ddbb452
-    m_ActionName: User/Horizontal[/Keyboard/leftArrow,/Keyboard/rightArrow]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2058977359}
-        m_TargetAssemblyTypeName: DrawMaze, Assembly-CSharp
-        m_MethodName: HandleA
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 4edcb19e-7b47-4229-8002-a713d09bf3fe
-    m_ActionName: User/ChoiceA[/Keyboard/a]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2058977359}
-        m_TargetAssemblyTypeName: DrawMaze, Assembly-CSharp
-        m_MethodName: HandleB
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 7a342f3e-7892-435a-ad9b-d5d94c2311b2
-    m_ActionName: User/ChoiceB[/Keyboard/b]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2058977359}
-        m_TargetAssemblyTypeName: DrawMaze, Assembly-CSharp
-        m_MethodName: HandleC
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 4de37784-0f36-436f-afc5-3e8961badb56
-    m_ActionName: User/ChoiceC[/Keyboard/c]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2058977359}
-        m_TargetAssemblyTypeName: DrawMaze, Assembly-CSharp
-        m_MethodName: HandleD
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 1443b075-ab16-4f48-9c46-18c9fef84510
-    m_ActionName: User/ChoiceD[/Keyboard/d]
-  - m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2058977359}
-        m_TargetAssemblyTypeName: DrawMaze, Assembly-CSharp
-        m_MethodName: HandleBack
-        m_Mode: 0
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-    m_ActionId: 851a3133-f259-4b1f-9269-6d5c45832920
-    m_ActionName: User/ChoiceBack[/Keyboard/backspace,/Keyboard/period]
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: User
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!1001 &4476751553023106683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2901,10 +2760,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 2858680687749397595, guid: 0abe564c295f556349ba67f58ce788e9, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2058977360}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0abe564c295f556349ba67f58ce788e9, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

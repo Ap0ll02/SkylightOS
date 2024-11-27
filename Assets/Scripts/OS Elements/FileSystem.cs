@@ -13,7 +13,8 @@ public class FileSystem : MonoBehaviour
     Transform parentInitial;
     public List<Inode> inodeTable = new();
     public List<List<Inode>> inodeChildrenManagerList = new();
-    // Awake initializes entire filsystem
+
+    // Awake initializes entire filesystem
     public void Awake() {
         parentInitial = FindObjectOfType<FileSystem>().GetComponent<Transform>();
         // [0]

@@ -31,6 +31,7 @@ public class TerminalTask : AbstractTask
 
     /// @var Terminal Variables that get references in awake() to the scene's terminal
     public GameObject terminal;
+    [SerializeField] GameObject dw;
     private List<bool> tasksDone = new List<bool>();
     public TMP_Text terminalText;
     public GameObject lsBtn;
@@ -80,7 +81,7 @@ public class TerminalTask : AbstractTask
     public void OnEnable()
     {
         Arrowgame.OnArrowPress += checkHazards;
-        Arrowgame.OnGameEnd += AVTaskP2;
+        Arrowgame.OnGameEnd += GameEnd;
         Terminal.OnAVPressed += AVTask;
         Terminal.OnLSPressed += LSTask;
         Terminal.OnNMAPPressed += NMAPTask;
@@ -89,7 +90,7 @@ public class TerminalTask : AbstractTask
     public void OnDisable()
     {
         Arrowgame.OnArrowPress -= checkHazards;
-        Arrowgame.OnGameEnd -= AVTaskP2;
+        Arrowgame.OnGameEnd -= GameEnd;
         Terminal.OnAVPressed -= AVTask;
         Terminal.OnLSPressed -= LSTask;
         Terminal.OnNMAPPressed -= NMAPTask;
@@ -161,11 +162,27 @@ public class TerminalTask : AbstractTask
     }
 
     // Used for when the AV Task arrow game is done. 
-    public void AVTaskP2() {
-        StartCoroutine(FadeOut(5));
+    public void GameEnd() {
+        if(termState == State.ArrowGameOn) {
+            StartCoroutine(FadeOut(5));
+        }
+        else if(termState == State.MazeGameOn) {
+            hGroup.SetActive(true);
+            terminalText.text = "Installing File, Congratulations!";
+            Instantiate(dw, FindObjectOfType<Terminal>().GetComponentInParent<BasicWindow>().gameObject.transform);
+        }
         stopHazards();
-        termState = State.ArrowGameOff;
-        tasksDone[0] = true;
+
+        termState = termState == State.ArrowGameOn ? State.ArrowGameOff : termState == State.MazeGameOn ? State.MazeGameOff : State.Off;
+        int getInd(State t) =>
+            t switch
+            {
+                State.MazeGameOff => 1,
+                State.ArrowGameOff => 0,
+                _ => -1
+            };
+
+        tasksDone[getInd(termState)] = true;
         // TODO: Ensure LS Task works
     }
 
@@ -181,8 +198,8 @@ public class TerminalTask : AbstractTask
             terminalText.text += "Click A, B, C, or D for your options.";
             StartCoroutine(Timer(7f));
             terminalText.text = "---| A |---| B |---| C |---|D|---\n";
-            terminalText.text += "Example Maze Stage, The Paths Correspond To A, B, C & D.\n";
-            terminalText.text += "Please Press Any Key To Continue Into The Maze\n";
+            terminalText.text += "Example Stage, The Paths Correspond To A, B, C & D.\n";
+            terminalText.text += "Please Press (A, B, C, or D) To Continue Into The File System\n";
             terminalText.text += "-----------------------------------\n";
             hGroup.SetActive(false);
             dm.StartGame();

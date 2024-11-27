@@ -3,6 +3,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.InputSystem;
 using System;
+using System.Linq;
 /// <summary>
 /// Jack Ratermann
 /// Creates a maze drawn based on the filesystem. 
@@ -11,32 +12,26 @@ using System;
 /// </summary>
 public class DrawMaze : AbstractMinigame
 {
+    public new static event Action OnGameEnd;
     public PlayerInput pInput;
+    // 0 = Not Allowed, 1 = Allowed, 2+ = Not Allowed Except Backspace
+    public int inputAllowed = 0;
+    public int curNode = 0;
     public FileSystem fs;
     public List<Inode> iMap;
     public TMP_Text terminalText;
-    public string[] dirNames = new string[] {"Documents", "Pictures", "Movies", "SkylightOS", "NorthstarAI", 
-    "Homework", "Emails", "Passwords", "Birds", "Shopping Lists", "Batteries", "Grandchildren", "Fruit", "Browsers", "Money", "Football", "School", "College", "Reward",
-    "Work", "Risk", "Portrait", "Refrigerator", "Home", "Repairs", "Warranty Information", "Cleaning Supplies", "Share", "Cool Apps", "Extra Folder", "Songs", "Music", "Dubstep",
-    "Country", "Banana", "Aurora", "Cascade", "Nebula", "Eclipse", "Horizon", "Vortex", "Zephyr", "Solace", "Mirage", "Nimbus", 
-    "Tempest", "Luminous", "Serenity", "Ethereal", "Haven", "Harbor", "Glacier", "Echo", "Nova", "Celestial", 
-    "Radiant", "Verdant", "Aurorae", "Halcyon", "Ember", "Quasar", "Aether", "Boreal", "Frost", "Prism", 
-    "Torrent", "Zenith", "Chroma", "Lumina", "Cascade2", "Wanderer", "Eclipse2", "Sequoia", "Sylvan", 
-    "Equinox", "Eldritch", "Drift", "Summit", "Verdure", "Crystalline", "Solstice", "Vale", "Mariner", "Nocturne"};
 
     public enum MazeProg {
-        Begin, 
+        Confirm, Begin, 
         A1, A2, A3, A4, A5,
         B1, B2, B3, B4, B5, 
         C1, C2, C3, C4, C5,
         D1, D2, D3, D4, D5,
         Ev, End
     }
-    MazeProg mp = MazeProg.Begin;
-    public List<char> path = new();
+    MazeProg mp = MazeProg.Confirm;
     
     public void Awake() {
-        //path.Add('X');
         pInput = new PlayerInput();
         terminalText = GameObject.Find("TInstructionTxt").GetComponent<TMP_Text>();
         fs = FindObjectOfType<FileSystem>();
@@ -49,489 +44,200 @@ public class DrawMaze : AbstractMinigame
 
     public override void StartGame(){
         gameObject.SetActive(true);
+        inputAllowed = 1;
     }
-    public int fileNameCounter = 0;
-    public string DrawLevel(MazeProg lvl) {
+    // Final Nodes So We Can Lock Input
+    public List<int> finalNodes = new List<int>() {5, 6, 7, 8, 10, 11, 12, 13,
+                    24, 25, 26, 27, 28, 29, 
+                    30, 31, 32, 33, 34, 35, 36, 37, 
+                    41, 42, 43, 44, 47, 48, 49, 
+                    50, 51, 52, 53, 54};
+    public string DrawLevel() {
         string level= "";
+        int counter = 0;
         char[] selector = new char[] {'A', 'B', 'C', 'D'};
-        // TODO: If above is good route path to evidence and password help
-        // TODO: Route Other Paths To Dead Ends
         // TODO: Ensure Going Backwards Works
-        Debug.Log("Previous: " + lvl);
-        Debug.Log("Current: " + mp);
-        if(lvl == MazeProg.Begin && mp == MazeProg.Begin) {
-            for(int i = 0; i < iMap[0].numEntries; i++) {
-                level += "-|";
-                level += selector[i % 4] + ": " + iMap[0].iChildren[i].iName;
-                level += "|-";
-                fileNameCounter++;
+        if (finalNodes.Contains(curNode)) {
+            inputAllowed = 0;
+            level += "FINAL DESTINATION";
+            if(curNode == 53) {
+                OnGameEnd?.Invoke();
             }
-            level += "\n";
         }
-        // Path To I
-        else if(mp == MazeProg.C1 && lvl == MazeProg.Begin) {
-            for(int i = 0; i < iMap[3].numEntries; i++) {
+        else { 
+            inputAllowed = 1;
+            foreach(var child in iMap[curNode].iChildren) {
                 level += "-|";
-                level += selector[i % 4] + ": " + iMap[3].iChildren[i].iName;
+                level += selector[counter % 4] + ": " + child.iName;
                 level += "|-";
-                fileNameCounter++;
+                level += "\n";
+                counter++;
             }
-            level += "\n";
+            
         }
-        else if(mp == MazeProg.C2 && lvl == MazeProg.C1) {
-            for(int i = 0; i < iMap[40].numEntries; i++) {
-                level += "-|";
-                level += selector[i % 4] + ": " + iMap[40].iChildren[i].iName;
-                level += "|-";
-                fileNameCounter++;
-            }
-            level += "\n";
-        }
-        else if(mp == MazeProg.B3 && lvl == MazeProg.C2) {
-            for(int i = 0; i < iMap[46].numEntries; i++) {
-                level += "-|";
-                level += selector[i % 4] + ": " + iMap[46].iChildren[i].iName;
-                level += "|-";
-                fileNameCounter++;
-            }
-            level += "\n";
-        }
-        // ANY: else if that has this form (No Loop) could have the level += iMap[ind].iName changed.
-        // This is a lone file page so it could choose to display the file instead. This is the general idea
-        // to update to once the routing has been finished.
-        // TODO: Update All These File Displays Once Routing Is Finished
-        else if(mp == MazeProg.C4 && lvl == MazeProg.B3) {
-            level = "-----|";
-            level += iMap[53].iName;
-            level += "|-----";
-        }
-
-        // Path To E
-        else if(mp == MazeProg.B1 && lvl == MazeProg.Begin) {
-            for(int i = 0; i < iMap[2].numEntries; i++) {
-                level += "-|";
-                level += selector[i % 4] + ": " + iMap[2].iChildren[i].iName;
-                level += "|-";
-                fileNameCounter++;
-            }
-            level += "\n";
-        }
-        else if(mp == MazeProg.B2 && lvl == MazeProg.B1) {
-            for(int i = 0; i < iMap[15].numEntries; i++) {
-                level += "-|";
-                level += selector[i % 4] + ": " + iMap[15].iChildren[i].iName;
-                level += "|-";
-                fileNameCounter++;
-            }
-            level += "\n";
-        }
-        else if(mp == MazeProg.C3 && lvl == MazeProg.B2) {
-            for(int i = 0; i < iMap[21].numEntries; i++) {
-                level += "-|";
-                level += selector[i % 4] + ": " + iMap[21].iChildren[i].iName;
-                level += "|-";
-                fileNameCounter++;
-            }
-            level += "\n";
-        }
-        else if(mp == MazeProg.A4 && lvl == MazeProg.C3) {
-            level = "-----|";
-            level += iMap[29].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.B4 && lvl == MazeProg.C3) {
-            level = "-----|";
-            level += iMap[30].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.C4 && lvl == MazeProg.C3) {
-            level = "-----|";
-            level += iMap[31].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.D4 && lvl == MazeProg.C3) {
-            level = "-----|";
-            level += iMap[32].iName;
-            level += "|-----";
-        }
-
-        // Path to P
-        else if(mp == MazeProg.B1 && lvl == MazeProg.Begin) {
-            for(int i = 0; i < iMap[2].numEntries; i++) {
-                level += "-|";
-                level += selector[i % 4] + ": " + iMap[2].iChildren[i].iName;
-                level += "|-";
-                fileNameCounter++;
-            }
-            level += "\n";
-        }
-        else if(mp == MazeProg.C2 && lvl == MazeProg.B1) {
-            for(int i = 0; i < iMap[16].numEntries; i++) {
-                level += "-|";
-                level += selector[i % 4] + ": " + iMap[16].iChildren[i].iName;
-                level += "|-";
-                fileNameCounter++;
-            }
-            level += "\n";
-        }
-        else if(mp == MazeProg.B3 && lvl == MazeProg.C2) {
-            level = "-----|";
-            level += iMap[23].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.A3 && lvl == MazeProg.C2) {
-            for(int i = 0; i < iMap[22].numEntries; i++) {
-                level += "-|";
-                level += selector[i % 4] + ": " + iMap[22].iChildren[i].iName;
-                level += "|-";
-                fileNameCounter++;
-            }
-            level += "\n";
-        }
-        else if(mp == MazeProg.A4 && lvl == MazeProg.A3) {
-            level = "-----|";
-            level += iMap[33].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.B4 && lvl == MazeProg.A3) {
-            level = "-----|";
-            level += iMap[34].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.C4 && lvl == MazeProg.A3) {
-            level = "-----|";
-            level += iMap[35].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.D4 && lvl == MazeProg.A3) {
-            level = "-----|";
-            level += iMap[36].iName;
-            level += "|-----";
-        }
-        // Other Paths. Starting With A: User
-        else if(mp == MazeProg.A1 && lvl == MazeProg.Begin) {
-            for(int i = 0; i < iMap[0].numEntries; i++) {
-                level += "-|";
-                level += selector[i % 4] + ": " + iMap[0].iChildren[i].iName;
-                level += "|-";
-                fileNameCounter++;
-            }
-            level += "\n";
-        }
-        // Settings & Theme
-        else if(mp == MazeProg.A2 && lvl == MazeProg.A1) {
-            for(int i = 0; i < iMap[4].numEntries; i++) {
-                level += "-|";
-                level += selector[i % 4] + ": " + iMap[4].iChildren[i].iName;
-                level += "|-";
-                fileNameCounter++;
-            }
-            level += "\n";
-        }
-        else if(mp == MazeProg.B2 && lvl == MazeProg.A1) {
-            level = "-----|";
-            level += iMap[5].iName;
-            level += "|-----";
-        }
-        // Cursors, Languages, Keyboard, Network
-        else if(mp == MazeProg.A3 && lvl == MazeProg.A2) {
-            level = "-----|";
-            level += iMap[6].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.B3 && lvl == MazeProg.A2) {
-            level = "-----|";
-            level += iMap[7].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.C3 && lvl == MazeProg.A2) {
-            level = "-----|";
-            level += iMap[8].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.D3 && lvl == MazeProg.A2) {
-            for(int i = 0; i < iMap[9].numEntries; i++) {
-                level += "-|";
-                level += selector[i % 4] + ": " + iMap[9].iChildren[i].iName;
-                level += "|-";
-                fileNameCounter++;
-            }
-            level += "\n";
-        }
-        // Servers, Wi-FI, Ethernet, Advanced
-        else if(mp == MazeProg.A4 && lvl == MazeProg.D3) {
-            level = "-----|";
-            level += iMap[10].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.B4 && lvl == MazeProg.D3) {
-            level = "-----|";
-            level += iMap[11].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.C4 && lvl == MazeProg.D3) {
-            level = "-----|";
-            level += iMap[12].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.D4 && lvl == MazeProg.D3) {
-            level = "-----|";
-            level += iMap[13].iName;
-            level += "|-----";
-        }
-        // Perry Music {Classical, Dubstep}
-        else if(mp == MazeProg.A2 && lvl == MazeProg.B1) {
-            for(int i = 0; i < iMap[14].numEntries; i++) {
-                level += "-|";
-                level += selector[i % 4] + ": " + iMap[14].iChildren[i].iName;
-                level += "|-";
-                fileNameCounter++;
-            }
-            level += "\n";
-        }
-        else if(mp == MazeProg.A3 && lvl == MazeProg.A2) {
-            level = "-----|";
-            level += iMap[17].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.B3 && lvl == MazeProg.A2) {
-            level = "-----|";
-            level += iMap[18].iName;
-            level += "|-----";
-        }
-        // Perry: Taxes, Venture Ideas
-        else if(mp == MazeProg.A3 && lvl == MazeProg.B2) {
-            for(int i = 0; i < iMap[19].numEntries; i++) {
-                level += "-|";
-                level += selector[i % 4] + ": " + iMap[19].iChildren[i].iName;
-                level += "|-";
-                fileNameCounter++;
-            }
-            level += "\n";
-        }
-        else if(mp == MazeProg.A4 && lvl == MazeProg.A3) {
-            level = "-----|";
-            level += iMap[26].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.B4 && lvl == MazeProg.A3) {
-            level = "-----|";
-            level += iMap[27].iName;
-            level += "|-----";
-        }
-        else if(mp == MazeProg.B3 && lvl == MazeProg.B2) {
-            level = "-----|";
-            level += iMap[28].iName;
-            level += "|-----";
-        }
-
         return level;
     }
 
     public void HandleA(InputAction.CallbackContext context) {
-        if(context.phase == InputActionPhase.Performed) {
-            Debug.Log("INPUT: A");
-            path.Add('a');
-            Draw();
+        if(inputAllowed == 1) {
+            if(context.phase == InputActionPhase.Performed) {
+                Debug.Log("INPUT: A " + curNode + " " + mp);
+                mp = CheckProgress(curNode, 'a');
+                Draw();
+            }
         }
+        
     }
 
     public void HandleB(InputAction.CallbackContext context) {
-        if(context.phase == InputActionPhase.Performed) {
-             Debug.Log("INPUT: B");
-            path.Add('b');
-            Draw();
+        if(inputAllowed == 1) {
+            if(context.phase == InputActionPhase.Performed) {
+                mp = CheckProgress(curNode, 'b');
+                Draw();
+            }
         }
     }
 
     public void HandleC(InputAction.CallbackContext context) {
-        if(context.phase == InputActionPhase.Performed) {
-             Debug.Log("INPUT: C");
-            path.Add('c');
-            Draw();
+        if(inputAllowed == 1) {
+            if(context.phase == InputActionPhase.Performed) {
+                mp = CheckProgress(curNode, 'c');
+                Draw();
+            }
         }
     }
     public void HandleD(InputAction.CallbackContext context) {
-        if(context.phase == InputActionPhase.Performed) {
-            Debug.Log("INPUT: D");
-            path.Add('d');
-            Draw();
+        if(inputAllowed == 1) {
+            if(context.phase == InputActionPhase.Performed) {
+                mp = CheckProgress(curNode, 'd');
+                Draw();
+            }
         }
     }
 
     public void HandleBack(InputAction.CallbackContext context) {
-        if(context.phase == InputActionPhase.Performed) {
-            if(path.Count > 0) {
-                path.Remove(path[^1]);
+        if(inputAllowed >= 1) {
+            if(context.phase == InputActionPhase.Performed) {
+                if(iMap[curNode].iParent != null){ 
+                    Debug.Log("Current iNode Parent: " + curNode);
+                    curNode = iMap.IndexOf(iMap[curNode].iParent);
+                    Debug.Log("New iNode Parent: " + curNode);
+                }
+                else curNode = 0;
+                CheckProgress(curNode, 'x');
                 Draw();
             }
-            Draw();
         }
     }
 
-    public MazeProg CheckProgress(int level, char direction) {
-        if(direction == 'a') {
-            if(level == 1) {
-                return MazeProg.A1;
-            }
-            else if(level == 2) {
-                return MazeProg.A2;
-            }
-            else if(level == 3) {
-                return MazeProg.A3;
-            }
-            else if(level == 4) {
-                return MazeProg.A4;
-            }
-            else {
-                return MazeProg.Begin;
-            }
+    public MazeProg CheckProgress(int cNode, char c) {
+        (int, MazeProg) checkNodeA(int cNode) =>
+            cNode switch
+            {
+                0 => (cNode = 1, MazeProg.A1),
+                1 => (cNode = 4, MazeProg.A2),
+                4 => (cNode = 6, MazeProg.A3),
+                6 => (cNode = 6, MazeProg.A3),
+                9 => (cNode = 10, MazeProg.A4),
+                2 => (cNode = 14, MazeProg.A2),
+                14 => (cNode = 17, MazeProg.A3),
+                15 => (cNode = 19, MazeProg.A3),
+                17 => (cNode = 24, MazeProg.A4),
+                18 => (cNode = 25, MazeProg.B4),
+                19 => (cNode = 26, MazeProg.A4),
+                20 => (cNode = 28, MazeProg.A4),
+                21 => (cNode = 29, MazeProg.A4),
+                29 => (cNode = 29, MazeProg.A4),
+                16 => (cNode = 22, MazeProg.A3),
+                22 => (cNode = 33, MazeProg.A4),
+                3 => (cNode = 38, MazeProg.A2),
+                30 => (cNode = 30, MazeProg.B4),
+                31 => (cNode = 31, MazeProg.C4),
+                32 => (cNode = 32, MazeProg.D4),
+                38 => (cNode = 41, MazeProg.A3),
+                40 => (cNode = 45, MazeProg.A3),
+                45 => (cNode = 48, MazeProg.A4),
+                46 => (cNode = 51, MazeProg.A4),
+                _ => (cNode = 0, MazeProg.Begin)
+            };
+        (int, MazeProg) checkNodeB(int cNode) =>
+            cNode switch
+            {
+                0 => (cNode = 2, MazeProg.B1),
+                1 => (cNode = 5, MazeProg.B2),
+                5 => (cNode = 5, MazeProg.B2),
+                4 => (cNode = 7, MazeProg.B3),
+                7 => (cNode = 7, MazeProg.B3),
+                9 => (cNode = 11, MazeProg.B4),
+                11 => (cNode = 11, MazeProg.B4),
+                2 => (cNode = 15, MazeProg.B2),
+                14 => (cNode = 18, MazeProg.B3),
+                15 => (cNode = 20, MazeProg.B3),
+                19 => (cNode = 27, MazeProg.B4),
+                21 => (cNode = 30, MazeProg.B4),
+                30 => (cNode = 30, MazeProg.B4),
+                16 => (cNode = 23, MazeProg.B3),
+                22 => (cNode = 34, MazeProg.B4),
+                3 => (cNode = 39, MazeProg.B2),
+                38 => (cNode = 42, MazeProg.B3),
+                39 => (cNode = 44, MazeProg.B3),
+                40 => (cNode = 46, MazeProg.B3),
+                45 => (cNode = 49, MazeProg.B4),
+                46 => (cNode = 52, MazeProg.B4),
+                _ => (cNode = 0, MazeProg.Begin)
+            };
+        (int, MazeProg) checkNodeC(int cNode) =>
+            cNode switch
+            {
+                0 => (cNode = 3, MazeProg.C1),
+                4 => (cNode = 8, MazeProg.C3),
+                8 => (cNode = 8, MazeProg.C3),
+                9 => (cNode = 12, MazeProg.C4),
+                12 => (cNode = 12, MazeProg.C4),
+                2 => (cNode = 16, MazeProg.C2),
+                15 => (cNode = 21, MazeProg.C3),
+                21 => (cNode = 31, MazeProg.C4),
+                31 => (cNode = 31, MazeProg.C4),
+                22 => (cNode = 35, MazeProg.C4),
+                3 => (cNode = 40, MazeProg.C2),
+                38 => (cNode = 43, MazeProg.C3),
+                45 => (cNode = 50, MazeProg.C4),
+                46 => (cNode = 53, MazeProg.C4),
+                _ => (cNode = 0, MazeProg.Begin)
+            };
+        (int, MazeProg) checkNodeD(int cNode) =>
+            cNode switch
+            {
+                4 => (cNode = 9, MazeProg.D3),
+                9 => (cNode = 13, MazeProg.D4),
+                21 => (cNode = 32, MazeProg.D4),
+                32 => (cNode = 32, MazeProg.D4),
+                22 => (cNode = 36, MazeProg.D4),
+                3 => (cNode = 41, MazeProg.D2),
+                46 => (cNode = 54, MazeProg.D4),
+                41 => (cNode = 47, MazeProg.D3),
+                _ => (cNode = 0, MazeProg.Begin)
+            };
+        if(mp == MazeProg.Confirm) return MazeProg.Begin;
+        else if(c == 'a') {
+            (curNode, mp) = checkNodeA(cNode);
         }
-        else if(direction == 'b') {
-            if(level == 1) {
-                return MazeProg.B1;
-            }
-            else if(level == 2) {
-                return MazeProg.B2;
-            }
-            else if(level == 3) {
-                return MazeProg.B3;
-            }
-            else if(level == 4) {
-                return MazeProg.B4;
-            }
-            else {
-                return MazeProg.Begin;
-            }
+        else if(c == 'b') {
+            (curNode, mp) = checkNodeB(cNode);
         }
-        else if(direction == 'c') {
-            if(level == 1) {
-                return MazeProg.C1;
-            }
-            else if(level == 2) {
-                return MazeProg.C2;
-            }
-            else if(level == 3) {
-                return MazeProg.C3;
-            }
-            else if(level == 4) {
-                return MazeProg.C4;
-            }
-            else {
-                return MazeProg.Begin;
-            }
+        else if(c == 'c') {
+            (curNode, mp) = checkNodeC(cNode);
         }
-        else if(direction == 'd') {
-            if(level == 1) {
-                return MazeProg.D1;
-            }
-            else if(level == 2) {
-                return MazeProg.D2;
-            }
-            else if(level == 3) {
-                return MazeProg.D3;
-            }
-            else if(level == 4) {
-                return MazeProg.D4;
-            }
-            else {
-                return MazeProg.Begin;
-            }
+        else if(c == 'd') {
+            (curNode, mp) = checkNodeD(cNode);
         }
-        else {
-            Debug.Log("didn't work right");
-            return MazeProg.Begin;
-        }
+
+        return mp;
     }
 
-    // NOTES: 
-    // Evidence Located At B1-B2-C3-A4
-    // Password Help At B1-C2-A3-D4
-    // Install At C1-C2-B3-C4
     public void Draw() {
-        MazeProg prevLvl;
         // Determine maze progress before sending draw function request
-        int level = path.Count-1;
-        char direction = path[path.Count - 1];
-        int preLevel;
-        char preDirection;
-        try{
-            preLevel = path.Count-2;
-            preDirection = path[path.Count - 2];
-        } catch (Exception e) when (e is ArgumentOutOfRangeException) {
-            Debug.Log("First Time Around Here, Huh?");
-            preLevel = 0;
-            preDirection = '\0';
-        }
-
-        prevLvl = CheckProgress(preLevel, preDirection);
-        mp = CheckProgress(level, direction);
         // Request a level to be drawn depending on the level and direction, or MazeProg
-        switch(mp) {
-            case MazeProg.Begin: {
-                terminalText.text = DrawLevel(MazeProg.Begin);
-                break;
-            }
-            case MazeProg.A1: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-            case MazeProg.A2: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-            case MazeProg.A3: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-            case MazeProg.A4: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-            case MazeProg.B1: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-            case MazeProg.B2: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-            case MazeProg.B3: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-            case MazeProg.C1: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-            case MazeProg.C2: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-            case MazeProg.C3: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-            case MazeProg.C4: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-            case MazeProg.D1: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-            case MazeProg.D2: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-            case MazeProg.D3: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-            case MazeProg.D4: {
-                terminalText.text = DrawLevel(prevLvl);
-                break;
-            }
-        }
+        terminalText.text = DrawLevel();
     }
 }

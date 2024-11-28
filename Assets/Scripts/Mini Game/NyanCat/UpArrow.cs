@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
 /// <summary>
 /// Author Quinn Contaldi
 /// Don't yell at me for all the similarities between these classes; the object-oriented programmer in me needs to make these separate.

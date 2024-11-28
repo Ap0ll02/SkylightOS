@@ -1,11 +1,4 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
-using System.Runtime.InteropServices;
-using static UnityEngine.GraphicsBuffer;
-
-
 
 public class NyanCatMove : MonoBehaviour
 {
@@ -47,7 +40,7 @@ public class NyanCatMove : MonoBehaviour
     // Helper roam functions
     void NewPoint(float minX, float maxX,float minY, float maxY)
     {
-        // Just creates a new fucking random ass position
+        // Just creates a new Point
         targetRoam = new Vector3(Random.Range(minX, maxX),Random.Range(minY, maxY), -1);
     }
 

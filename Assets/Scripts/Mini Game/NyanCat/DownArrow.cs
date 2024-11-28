@@ -1,8 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics.CodeAnalysis;
-using TMPro;
-using UnityEngine;
 /// <summary>
 /// Author L:ord Quinn Barron of catgirls
 /// Down arrow to hold our specific down arrow features

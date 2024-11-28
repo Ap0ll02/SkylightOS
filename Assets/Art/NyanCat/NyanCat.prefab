@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6036075054730905643}
   - component: {fileID: 8923219121192913734}
   - component: {fileID: -5339932001327062505}
+  - component: {fileID: 2483011033152246656}
   m_Layer: 0
   m_Name: NyanCat
   m_TagString: Untagged
@@ -74,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1851997842, guid: d57d5fa63f0b5b3428147728778d393a, type: 3}
+  m_Sprite: {fileID: -1623954423235272517, guid: 2adacd4eed60e4f42adfddadf3840e77, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -106,3 +107,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &2483011033152246656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8256621503873153215}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3020d4cf8474e2d4db572a5a617906ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 5
+  acceleration: 1.1
+  rotation: 100
+  PopUp: {fileID: 0}

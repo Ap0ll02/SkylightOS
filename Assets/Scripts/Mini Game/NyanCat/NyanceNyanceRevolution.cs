@@ -1,6 +1,4 @@
-using System;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
@@ -38,9 +36,9 @@ public class NyanceNyanceRevolution : AbstractBossTask
     // Score Text Prefabs that will allow us to 
     public GameObject[] scoreTextPrefab = new GameObject[4];
 
-    public GameObject damageTextPrefab;
-
+    public GameObject damageTextPrefab; 
     public GameObject NyanCat;
+
 
     // This creates a public event for all of our keys
     public UnityEvent UpArrow;
@@ -345,11 +343,22 @@ public class NyanceNyanceRevolution : AbstractBossTask
     {
         if (damageTextPrefab == null)
         {
-            Debug.LogError("We are trying to call componentes from an uninstantated object. Drag it onto NyanBossTask");
+            Debug.LogError("We are trying to call componentes from an uninstantated object. Drag DamageText prefab into scene then into our damaged text object into nyancatbosstask");
         }
-        var textMesh = damageTextPrefab.GetComponent<TextMeshPro>();
+        var textMesh = damageTextPrefab.GetComponent<TextMeshProUGUI>();
         textMesh.text = value.ToString();
-        //textMesh.color = color;
-        Instantiate(damageTextPrefab, NyanCat.transform);
+        switch (value)
+        {
+            case 25:
+                textMesh.color = goodColor;
+                break;
+            case 50:
+                textMesh.color = greatColor;
+                break;
+            case 100:
+                textMesh.color = perfectColor;
+                break;
+        }
+        Instantiate(damageTextPrefab, NyanCat.transform.position, Quaternion.identity, NyanCat.transform);
     }
 }

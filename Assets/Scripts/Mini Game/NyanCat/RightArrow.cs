@@ -1,7 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
 /// <summary>
 /// Author Quinn Contaldi
 /// We want this child object to just focus on Right Arrow specific logic

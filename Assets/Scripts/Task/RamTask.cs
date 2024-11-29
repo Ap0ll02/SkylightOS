@@ -24,6 +24,9 @@ public class RamTask : AbstractTask
     // Start is called before the first frame update
     void Start()
     {
+        // Set the task title and description
+        taskTitle = "Fix Ram";
+        taskDescription = "Your computer is running low on RAM, open the diagnosis window to install ram";
         gameObject.SetActive(false);
     }
 

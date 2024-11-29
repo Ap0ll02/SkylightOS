@@ -31,8 +31,10 @@ public class InternetTaskOne : AbstractTask
 
     public void Start()
     {
+        // Set the task title and description
+        taskTitle = "Fix wifi";
+        taskDescription = "Connect to the wifi by opening the wifi menu and connecting to the wifi";
         // Automatically turn off the game object at the start of the scene.
-        base.Start();
         gameObject.SetActive(false);
     }
 

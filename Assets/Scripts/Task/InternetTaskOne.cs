@@ -62,6 +62,7 @@ public class InternetTaskOne : AbstractTask
     void HandleDiagnosisWindowOpened()
     {
         //loadingBarScript.StartLoading();
+        loadingBarScript.perthiefTime = perthiefTime;
         startHazards();
     }
 

@@ -16,6 +16,8 @@ public abstract class AbstractTask : MonoBehaviour
     // Boolean checking if the task is complete or not
     public bool isComplete;
 
+    public float perthiefTime = 1f;
+
     // Event to notify when the task is completed
     public static event Action OnTaskCompleted;
 

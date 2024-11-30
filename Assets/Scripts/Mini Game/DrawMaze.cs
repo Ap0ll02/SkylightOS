@@ -99,7 +99,7 @@ public class DrawMaze : AbstractMinigame
         if(inputAllowed == 1) {
             if(context.phase == InputActionPhase.Performed) {
                 mp = CheckProgress(curNode, 'b');
-                Draw();
+                Draw(); 
             }
         }
     }

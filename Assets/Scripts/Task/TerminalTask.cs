@@ -52,9 +52,10 @@ public class TerminalTask : AbstractTask
     // Audio source reference on TerminalWindow to play music on games.
     public AudioSource musicAG;
 
-
     /// @brief Assign all of the terminal objects in the scene.
     public void Awake() {
+        taskTitle = "Download and Install Antivirus";
+        taskDescription = "Click to download the Antivirus Toolkit, and then access the files to install it.";
         arrowGame = FindObjectOfType<Arrowgame>().gameObject;
         terminal = FindObjectOfType<Terminal>().gameObject.GetComponentInParent<BasicWindow>().gameObject;
         terminalPanel = FindObjectOfType<Terminal>().gameObject;
@@ -148,6 +149,7 @@ public class TerminalTask : AbstractTask
             termState = State.ArrowGameOn;
             arrowGame.SetActive(true);
             startHazards();
+            //hGroup.SetActive(false);
             ag.StartGame();
             if(!musicAG.isPlaying) {
                 musicAG.Play();
@@ -167,18 +169,22 @@ public class TerminalTask : AbstractTask
         if(termState == State.ArrowGameOn) {
             StartCoroutine(FadeOut(5));
             termState = State.ArrowGameOff;
+            arrowGame.SetActive(false);
+            hGroup.SetActive(true);
         }
         else if(termState == State.MazeGameOn) {
             termState = State.MazeGameOff;
             hGroup.SetActive(true);
+            dm.gameObject.SetActive(false);
             terminalText.text = "Installing File, Congratulations!";
+
             GameObject termLoad = Instantiate(dw, FindObjectOfType<Terminal>().GetComponentInParent<BasicWindow>().gameObject.transform);
             termLoad.SetActive(true);
             termLoad.GetComponent<LoadingScript>().StartLoading();
         }
         stopHazards();
-        
-        int getInd(State t) =>
+
+        static int getInd(State t) =>
             t switch
             {
                 State.MazeGameOff => 1,
@@ -194,8 +200,9 @@ public class TerminalTask : AbstractTask
     public void LSTask()
     {
         Debug.Log(termState);
-        if(termState == State.On || termState == State.ArrowGameOff)
+        if(termState == State.ArrowGameOff)
         {
+            dm.gameObject.SetActive(true);
             termState = State.MazeGameOn;
             terminalText.text = "Scanning Files: Maze Game Initiate!";
             terminalText.text += "Click A, B, C, or D for your options.";
@@ -223,6 +230,11 @@ public class TerminalTask : AbstractTask
         else if (termState == State.ArrowGameOn) {
             terminalText.text = "";
         }
+    }
+
+    public new void CompleteTask() {
+        termState = State.Off;
+        base.CompleteTask();
     }
 
     // Variable second timer for allowing text to read, or whichever your heart desires

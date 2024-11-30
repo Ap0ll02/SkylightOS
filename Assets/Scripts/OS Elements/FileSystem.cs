@@ -136,6 +136,8 @@ public class FileSystem : MonoBehaviour
         return l[^1];
     }
 
+
+
     public Inode DelFile(Inode i) {
         return null;
     }

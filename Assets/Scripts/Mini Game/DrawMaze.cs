@@ -53,13 +53,20 @@ public class DrawMaze : AbstractMinigame
                     41, 42, 43, 44, 47, 48, 49, 
                     50, 51, 52, 53, 54};
     public string DrawLevel() {
-        string level= "";
+        string level = "--- SKYLIGHT FILES ---\n\n\n\n";
         int counter = 0;
         char[] selector = new char[] {'A', 'B', 'C', 'D'};
         // TODO: Ensure Going Backwards Works
         if (finalNodes.Contains(curNode)) {
             inputAllowed = 0;
             level += "FINAL DESTINATION";
+            if(curNode == 53) {
+                OnGameEnd?.Invoke();
+            }
+        }
+        else if(iMap[curNode].numEntries == 0) {
+            inputAllowed = 2;
+            level += iMap[curNode].iName;
             if(curNode == 53) {
                 OnGameEnd?.Invoke();
             }
@@ -73,7 +80,6 @@ public class DrawMaze : AbstractMinigame
                 level += "\n";
                 counter++;
             }
-            
         }
         return level;
     }

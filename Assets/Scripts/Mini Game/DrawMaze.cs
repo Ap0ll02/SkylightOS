@@ -56,14 +56,6 @@ public class DrawMaze : AbstractMinigame
         string level = "--- SKYLIGHT FILES ---\n\n\n\n";
         int counter = 0;
         char[] selector = new char[] {'A', 'B', 'C', 'D'};
-        // TODO: Ensure Going Backwards Works
-        // if (finalNodes.Contains(curNode)) {
-        //     inputAllowed = 0;
-        //     level += "FINAL DESTINATION";
-        //     if(curNode == 53) {
-        //         OnGameEnd?.Invoke();
-        //     }
-        // }
         if(iMap[curNode].numEntries == 0) {
             inputAllowed = 2;
             level += iMap[curNode].iName;

@@ -19,6 +19,8 @@ public class InternetTaskOne : AbstractTask
     // Reference To Progress Bar Script
     [SerializeField] LoadingScript loadingBarScript;
 
+    public float perthiefTime = 1f;
+
     // Initialization
     public void Awake()
     {
@@ -27,6 +29,7 @@ public class InternetTaskOne : AbstractTask
         wifiPopUpMenuWifiState = wifiPopUpMenu.GetComponent<ExpandedWifiMenu>();
         diagnosisWindow = FindObjectOfType<DiagnosisWindow>().gameObject;
         loadingBarScript = diagnosisWindow.GetComponentInChildren<LoadingScript>();
+        perthiefTime = FindObjectOfType<PerformanceThiefManager>().pTime;
     }
 
     public void Start()
@@ -49,6 +52,8 @@ public class InternetTaskOne : AbstractTask
     {
         DiagnosisWindow.OnDiagnosisWindowOpened += HandleDiagnosisWindowOpened;
         DiagnosisWindow.LoadingDoneNotify += CompleteTask;
+        PerformanceThiefManager.PThiefEnded += PerformanceThiefStart;
+        PerformanceThiefManager.PThiefStarted += PerformanceThiefEnd;
     }
 
     // Removing message handler?
@@ -56,6 +61,8 @@ public class InternetTaskOne : AbstractTask
     {
         DiagnosisWindow.OnDiagnosisWindowOpened -= HandleDiagnosisWindowOpened;
         DiagnosisWindow.LoadingDoneNotify -= CompleteTask;
+        PerformanceThiefManager.PThiefStarted -= PerformanceThiefStart;
+        PerformanceThiefManager.PThiefEnded += PerformanceThiefEnd;
     }
 
     // When the diagnosis window is opened, start the hazards and loading bar
@@ -64,6 +71,14 @@ public class InternetTaskOne : AbstractTask
         //loadingBarScript.StartLoading();
         loadingBarScript.perthiefTime = perthiefTime;
         startHazards();
+    }
+
+    void PerformanceThiefStart() {
+        loadingBarScript.perthiefTime = perthiefTime;
+    }
+
+    void PerformanceThiefEnd() {
+        loadingBarScript.perthiefTime = 1f;
     }
 
     // Actually starting the task, this shoud be called from the OS Manager
@@ -88,9 +103,11 @@ public class InternetTaskOne : AbstractTask
             if (!hazardManager.CanProgress())
             {
                 loadingBarScript.canContinue = false;
+                break;
             }
             else
             {
+                loadingBarScript.perthiefTime = perthiefTime;
                 loadingBarScript.canContinue = true;
             }
         }

@@ -1118,7 +1118,6 @@ MonoBehaviour:
   hazardManagers:
   - {fileID: 1063481223}
   isComplete: 0
-  perthiefTime: 1
   taskTitle: Default title, please set in task
   taskDescription: Default Description, please set in task
   terminal: {fileID: 0}
@@ -2283,14 +2282,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hazardManagers:
   - {fileID: 1063481223}
+  - {fileID: 545308509}
   isComplete: 0
-  perthiefTime: 1
   taskTitle: Default title, please set in task
   taskDescription: Default Description, please set in task
   wifiPopUpMenu: {fileID: 0}
   wifiPopUpMenuWifiState: {fileID: 0}
   diagnosisWindow: {fileID: 0}
   loadingBarScript: {fileID: 0}
+  perthiefTime: 1
 --- !u!1 &1149938843
 GameObject:
   m_ObjectHideFlags: 0

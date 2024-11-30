@@ -4,12 +4,6 @@ using UnityEngine;
 using UnityEngine.UI;
 
 // Jack Ratermann
-// Loading Script For Progress Bar, Updates a boolean when bar is full
-// Depends on nothing
-// {speed} variable can be changed to change the speed of the progress bar
-
-// To implement a progress bar, one simply needs a reference/variable of type LoadingScript, and then call StartLoading() on it.
-
 /**
  * @brief Loading Script For Progress Bar, Updates a boolean when bar is full
  * <remarks> Depends on nothing </remarks>
@@ -28,6 +22,7 @@ public class LoadingScript : MonoBehaviour
     public bool clickToLoad = false;
 
     /// @var Change This Variable To Change Speed Of Progress Bar (Default 0.001f)
+    // Note: Changed 0.1f -> 0.7f
     float speed = 0.1f;
 
     /// @var clickFillSpeed Changes the amount the bar fills on one click

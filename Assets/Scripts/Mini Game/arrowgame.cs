@@ -23,7 +23,7 @@ public class Arrowgame : AbstractMinigame
     public static event Action OnGameEnd;
     // Where to spawn the arrows
     public Transform spawnArea;
-    public PlayerInput pInput;
+    public InputSystem_Actions pInput;
     public int curArrow = 0;
     public bool GameOver = true;
     // easier readability enum
@@ -42,12 +42,13 @@ public class Arrowgame : AbstractMinigame
     public void Awake() {
         // Not hardcode Terminal
         spawnArea = FindObjectOfType<Terminal>().GetComponentInChildren<GridLayoutGroup>().gameObject.GetComponent<Transform>();
-        pInput = new PlayerInput();
+        pInput = new InputSystem_Actions();
     }
 
     public void Start() {
         GameOver = true;
         gameObject.SetActive(false);
+        CanContinue = true;
     }
 
     public void SpawnArrow(int numToSpawn) {
@@ -112,7 +113,9 @@ public class Arrowgame : AbstractMinigame
         }
         else {
             // Right Arrow
-            if(context.action.ReadValue<float>() == 1 && context.phase == InputActionPhase.Performed) {
+            Debug.Log(context.action.ReadValue<float>());
+            if(context.action.ReadValue<float>() == 5 && context.phase == InputActionPhase.Performed) {
+                Debug.Log("Right Arrow");
                 if(CanContinue && arrowDirs[curArrow] == Direction.Right) {
                     Debug.Log("Correct Arrow " + context.action.ReadValue<float>());
                     arrowColors[curArrow].color = Color.green;
@@ -124,7 +127,8 @@ public class Arrowgame : AbstractMinigame
                 }
             }
             // Left Arrow
-            if(context.action.ReadValue<float>() == -1 && context.phase == InputActionPhase.Performed) {
+            if(context.action.ReadValue<float>() == -5 && context.phase == InputActionPhase.Performed) {
+                Debug.Log("Left Arrow");
                 if(CanContinue && arrowDirs[curArrow] == Direction.Left) {
                     Debug.Log("Correct Arrow " + context.action.ReadValue<float>());
                     arrowColors[curArrow].color = Color.green;
@@ -136,7 +140,8 @@ public class Arrowgame : AbstractMinigame
                 }
             }
             // Up Arrow
-            if(context.action.ReadValue<float>() > 1 && context.phase == InputActionPhase.Performed) {
+            if(context.action.ReadValue<float>() == 1 && context.phase == InputActionPhase.Performed) {
+                Debug.Log("Up Arrow");
                 if(CanContinue && arrowDirs[curArrow] == Direction.Up) {
                     Debug.Log("Correct Arrow" + context.action.ReadValue<float>());
                     arrowColors[curArrow].color = Color.green;
@@ -148,7 +153,8 @@ public class Arrowgame : AbstractMinigame
                 }       
             }
             // Down Arrow
-            if(context.action.ReadValue<float>() < -1 && context.phase == InputActionPhase.Performed) {
+            if(context.action.ReadValue<float>() == -1 && context.phase == InputActionPhase.Performed) {
+                Debug.Log("Down Arrow");
                 if(CanContinue && arrowDirs[curArrow] == Direction.Down) {
                     Debug.Log("Correct Arrow" + context.action.ReadValue<float>());
                     arrowColors[curArrow].color = Color.green;

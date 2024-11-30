@@ -4,12 +4,9 @@ using UnityEngine;
 
 public class Data : MonoBehaviour
 {
-    public List<Data> iData = new();
+    // public List<Data> iData = new();
     public enum DataType {
-
+        text, video, audio, picture, spreadsheet, hybrid
     }
-
-    public virtual void Start() {
-        
-    }
+    public string textContent;
 }

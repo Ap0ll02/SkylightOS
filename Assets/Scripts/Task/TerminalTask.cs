@@ -167,10 +167,12 @@ public class TerminalTask : AbstractTask
     public void GameEnd() {
         Debug.Log("I heard you bitch");
         if(termState == State.ArrowGameOn) {
-            StartCoroutine(FadeOut(5));
             termState = State.ArrowGameOff;
             arrowGame.SetActive(false);
             hGroup.SetActive(true);
+            StartCoroutine(FadeOut(5));
+            terminalText.text = "Download Complete. Please Locate The Installer In The Filesystem.\n";
+            terminalText.text += "Try our new file browser with the button below!\n";
         }
         else if(termState == State.MazeGameOn) {
             termState = State.MazeGameOff;
@@ -180,7 +182,7 @@ public class TerminalTask : AbstractTask
 
             GameObject termLoad = Instantiate(dw, FindObjectOfType<Terminal>().GetComponentInParent<BasicWindow>().gameObject.transform);
             termLoad.SetActive(true);
-            termLoad.GetComponent<LoadingScript>().StartLoading();
+            termLoad.GetComponentInChildren<LoadingScript>().StartLoading();
         }
         stopHazards();
 

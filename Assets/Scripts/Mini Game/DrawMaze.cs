@@ -13,7 +13,7 @@ using System.Linq;
 public class DrawMaze : AbstractMinigame
 {
     public static event Action OnGameEnd;
-    public PlayerInput pInput;
+    public InputSystem_Actions pInput;
     // 0 = Not Allowed, 1 = Allowed, 2+ = Not Allowed Except Backspace
     public int inputAllowed = 0;
     public int curNode = 0;
@@ -32,7 +32,7 @@ public class DrawMaze : AbstractMinigame
     MazeProg mp = MazeProg.Confirm;
     
     public void Awake() {
-        pInput = new PlayerInput();
+        pInput = new InputSystem_Actions();
         terminalText = GameObject.Find("TInstructionTxt").GetComponent<TMP_Text>();
         fs = FindObjectOfType<FileSystem>();
         iMap = fs.inodeTable;
@@ -53,13 +53,20 @@ public class DrawMaze : AbstractMinigame
                     41, 42, 43, 44, 47, 48, 49, 
                     50, 51, 52, 53, 54};
     public string DrawLevel() {
-        string level= "";
+        string level = "--- SKYLIGHT FILES ---\n\n\n\n";
         int counter = 0;
         char[] selector = new char[] {'A', 'B', 'C', 'D'};
         // TODO: Ensure Going Backwards Works
-        if (finalNodes.Contains(curNode)) {
-            inputAllowed = 0;
-            level += "FINAL DESTINATION";
+        // if (finalNodes.Contains(curNode)) {
+        //     inputAllowed = 0;
+        //     level += "FINAL DESTINATION";
+        //     if(curNode == 53) {
+        //         OnGameEnd?.Invoke();
+        //     }
+        // }
+        if(iMap[curNode].numEntries == 0) {
+            inputAllowed = 2;
+            level += iMap[curNode].iName;
             if(curNode == 53) {
                 OnGameEnd?.Invoke();
             }
@@ -73,7 +80,6 @@ public class DrawMaze : AbstractMinigame
                 level += "\n";
                 counter++;
             }
-            
         }
         return level;
     }

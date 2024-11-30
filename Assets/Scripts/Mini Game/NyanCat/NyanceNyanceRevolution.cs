@@ -15,8 +15,13 @@ using Random = UnityEngine.Random;
 public class NyanceNyanceRevolution : AbstractBossTask
 {
     // This will change the amount of arrows that will spawn  
-    public static int max = 142;
+    public static int max = 135;
+    public int destroyedArrows;
+    public int winGood = 4000;
+    public int winGreat = 6000;
+    public int winPerfect = 7000;
 
+    public bool isFlying;
     // Makes sure we dont exceed our arrow count  
     private int arrowCount = 0;
 
@@ -36,9 +41,15 @@ public class NyanceNyanceRevolution : AbstractBossTask
     // Score Text Prefabs that will allow us to 
     public GameObject[] scoreTextPrefab = new GameObject[4];
 
-    public GameObject damageTextPrefab; 
+    public GameObject[] checkArrowsPrefab = new GameObject[4];
+
+    public GameObject endConditionPrefab;
+
+    public GameObject damageTextPrefab;
+    
     public GameObject NyanCat;
 
+    public AudioSource nyanCatSong;
 
     // This creates a public event for all of our keys
     public UnityEvent UpArrow;
@@ -55,9 +66,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
     private static NyanceNyanceRevolution NyanceNyanceRevolutionSingleton;
 
     // Its Contstructor is private so we can present others from instantiating the object.
-    private NyanceNyanceRevolution()
-    {
-    }
+    private NyanceNyanceRevolution() {}
 
     // We have a method that will enable others to get our singleton instance 
     public static NyanceNyanceRevolution GetInstance()
@@ -80,12 +89,14 @@ public class NyanceNyanceRevolution : AbstractBossTask
     private void Awake()
     {
         NyanceNyanceRevolutionSingleton = GetInstance();
+        nyanCatSong = GetComponent<AudioSource>();
     }
 
     // Start is called before the first frame update
     public void Start()
     {
-        StartCoroutine("SpawnArrows");
+        StartCoroutine(SpawnArrows());
+        StartCoroutine(PlayMusic());
 
     }
 
@@ -97,7 +108,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
 
     public override void startTask()
     {
-        //meow
+
     }
 
     // Ask the hazard manager if our task can progress
@@ -161,7 +172,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
             yield return new WaitForSeconds(0.43f);
         }
 
-        Debug.Log("FinalSCORE: " + NyanceNyanceRevolutionSingleton.playerScore);
+        StartCoroutine(ShowWinText());
         yield break;
     }
 
@@ -231,6 +242,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
 
     public void UpdateExplosion(string explosionCondition, GameObject ExplosionPrefab)
     {
+        
         if (ExplosionPrefab == null)
         {
             Debug.LogWarning("Trying to pull from a Explosion prefab, not a instantated object, Have you tried putting the prefab in the scene?");
@@ -251,6 +263,24 @@ public class NyanceNyanceRevolution : AbstractBossTask
                     break;
                 default:
                     break;
+            }
+        }
+    }
+    public void NoPower()
+    {
+        if (LazerPrefab == null)
+        {
+            Debug.LogWarning("Trying to pull from a Lazer prefab, not a instantated object, Have you tried putting the prefab in the scene?");
+        }
+        else
+        {
+            foreach (var Lazer in LazerPrefab)
+            {
+                var lazerAnimator =  Lazer.GetComponent<Animator>();
+                //lazerAnimator.SetBool("Basic1",false);
+                //lazerAnimator.SetBool("Basic2",false);
+                //lazerAnimator.SetBool("GreatLazer",false);
+                lazerAnimator.SetBool("NyanLazer",false);
             }
         }
     }
@@ -333,7 +363,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
             case 70:
                 ThirdPower();
                 break;
-            case 100:
+            case 120:
                 FullPower();
                 break;
         }
@@ -347,6 +377,9 @@ public class NyanceNyanceRevolution : AbstractBossTask
         }
         var textMesh = damageTextPrefab.GetComponent<TextMeshProUGUI>();
         textMesh.text = value.ToString();
+        // Assign the new material to the TextMeshProUGUI component
+
+        // Set the alpha value of the text color
         switch (value)
         {
             case 25:
@@ -361,4 +394,66 @@ public class NyanceNyanceRevolution : AbstractBossTask
         }
         Instantiate(damageTextPrefab, NyanCat.transform.position, Quaternion.identity, NyanCat.transform);
     }
+    public void ArrowsOff()
+    {
+        foreach (var checkArrow in checkArrowsPrefab)
+        {
+            checkArrow.SetActive(false);
+        }
+    }
+    void CheckWin()
+    {
+        if (endConditionPrefab == null)
+        {
+            Debug.LogError("I would Recommend you put the textPrefab in the scene, just set it inactive");
+        }
+        else
+        {
+            var text = endConditionPrefab.GetComponent<TextMeshPro>();
+            if (playerScore >= winGood && playerScore < winGreat)
+            {
+                text.text = "<shake a=0.05>GOOD</shake>";
+                text.color = goodColor;
+                endConditionPrefab.SetActive(true);
+            }
+            else if(playerScore >= winGreat && playerScore <= winPerfect)
+            {
+                text.text = "<shake a=0.2>GREAT</shake>";
+                text.color = greatColor;
+                endConditionPrefab.SetActive(true);
+            }
+            else if (playerScore >= winPerfect)
+            {
+                text.text = "<Incr a=0.5><shake a=0.2>PERFECT</shake></incr>";
+                text.color = perfectColor;
+                endConditionPrefab.SetActive(true);
+            }
+            else
+            {
+                text.text = "<bounce a=0.02>Game Over!!!!</bounce>";
+                text.color = missColor;
+                endConditionPrefab.SetActive(true);
+            }
+        }
+        NoPower();
+        ArrowsOff();
+    }
+
+    IEnumerator PlayMusic()
+    {
+        yield return new WaitForSeconds(2.5f);
+        nyanCatSong.Play();
+    }
+
+    IEnumerator ShowWinText()
+    {
+        yield return new WaitForSeconds(4f);
+        CheckWin();
+    }
+
+    public void startGame()
+    {
+
+    }
+    
 }

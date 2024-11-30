@@ -41,11 +41,11 @@ public class Arrows : MonoBehaviour
 
     // This all the variables that control the scoring range, they can be adjusted in the child start classes UNDER base.start() 
     public float perfectTop = 4.6f;
-    public float perfectBottom = 4.4f;
-    public float greatTop = 4.4f;
+    public float perfectBottom = 4.3f;
+    public float greatTop = 4.3f;
     public float greatBottom = 4.2f;
-    public float goodTop = 4.1f;
-    public float goodBottom = 3.9f;
+    public float goodTop = 4.2f;
+    public float goodBottom = 3.8f;
 
 
     // Why not just use start in all the children? we want common initialization logic! thats pretty cool!
@@ -72,7 +72,8 @@ public class Arrows : MonoBehaviour
             NyanceNyanceRevolutionSingleton.UpdateText("Perfect", scoringTextPrefab);
             NyanceNyanceRevolutionSingleton.UpdateExplosion("Perfect", explosionPrefab);
             NyanceNyanceRevolutionSingleton.playerScore += highScore;
-            NyanceNyanceRevolutionSingleton.showDamageText(highScore);
+            NyanceNyanceRevolutionSingleton.destroyedArrows += 1;
+            //NyanceNyanceRevolutionSingleton.showDamageText(highScore);
             DestroyArrow();
         }
         else if (y > greatBottom && y <= greatTop)
@@ -80,7 +81,8 @@ public class Arrows : MonoBehaviour
             NyanceNyanceRevolutionSingleton.UpdateText("Great", scoringTextPrefab);
             NyanceNyanceRevolutionSingleton.UpdateExplosion("Great", explosionPrefab);
             NyanceNyanceRevolutionSingleton.playerScore += greatscore;
-            NyanceNyanceRevolutionSingleton.showDamageText(greatscore);
+            NyanceNyanceRevolutionSingleton.destroyedArrows += 1;
+            //NyanceNyanceRevolutionSingleton.showDamageText(greatscore);
             DestroyArrow();
         }
         else if (y > goodBottom && y <= goodTop)
@@ -88,7 +90,8 @@ public class Arrows : MonoBehaviour
             NyanceNyanceRevolutionSingleton.UpdateText("Good", scoringTextPrefab);
             NyanceNyanceRevolutionSingleton.UpdateExplosion("Good", explosionPrefab);
             NyanceNyanceRevolutionSingleton.playerScore += goodscore;
-            NyanceNyanceRevolutionSingleton.showDamageText(goodscore);
+            NyanceNyanceRevolutionSingleton.destroyedArrows += 1;
+            //NyanceNyanceRevolutionSingleton.showDamageText(goodscore);
             DestroyArrow();
         }
     }
@@ -108,6 +111,7 @@ public class Arrows : MonoBehaviour
         if (position > outOfBounds)
         {
             NyanceNyanceRevolutionSingleton.UpdateText("Miss", scoringTextPrefab);
+            NyanceNyanceRevolutionSingleton.destroyedArrows += 1;
             DestroyArrow();
         }
     }

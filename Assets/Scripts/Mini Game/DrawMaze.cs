@@ -57,14 +57,14 @@ public class DrawMaze : AbstractMinigame
         int counter = 0;
         char[] selector = new char[] {'A', 'B', 'C', 'D'};
         // TODO: Ensure Going Backwards Works
-        if (finalNodes.Contains(curNode)) {
-            inputAllowed = 0;
-            level += "FINAL DESTINATION";
-            if(curNode == 53) {
-                OnGameEnd?.Invoke();
-            }
-        }
-        else if(iMap[curNode].numEntries == 0) {
+        // if (finalNodes.Contains(curNode)) {
+        //     inputAllowed = 0;
+        //     level += "FINAL DESTINATION";
+        //     if(curNode == 53) {
+        //         OnGameEnd?.Invoke();
+        //     }
+        // }
+        if(iMap[curNode].numEntries == 0) {
             inputAllowed = 2;
             level += iMap[curNode].iName;
             if(curNode == 53) {

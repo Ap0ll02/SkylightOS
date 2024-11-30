@@ -13,7 +13,7 @@ using System.Linq;
 public class DrawMaze : AbstractMinigame
 {
     public static event Action OnGameEnd;
-    public PlayerInput pInput;
+    public InputSystem_Actions pInput;
     // 0 = Not Allowed, 1 = Allowed, 2+ = Not Allowed Except Backspace
     public int inputAllowed = 0;
     public int curNode = 0;
@@ -32,7 +32,7 @@ public class DrawMaze : AbstractMinigame
     MazeProg mp = MazeProg.Confirm;
     
     public void Awake() {
-        pInput = new PlayerInput();
+        pInput = new InputSystem_Actions();
         terminalText = GameObject.Find("TInstructionTxt").GetComponent<TMP_Text>();
         fs = FindObjectOfType<FileSystem>();
         iMap = fs.inodeTable;

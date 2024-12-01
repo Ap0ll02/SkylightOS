@@ -48,7 +48,7 @@ public class InternetTaskOne : AbstractTask
     }
 
     // Message handler for opening the diagnosis window
-    void OnEnable()
+    public void OnEnable()
     {
         DiagnosisWindow.OnDiagnosisWindowOpened += HandleDiagnosisWindowOpened;
         DiagnosisWindow.LoadingDoneNotify += CompleteTask;
@@ -57,7 +57,7 @@ public class InternetTaskOne : AbstractTask
     }
 
     // Removing message handler?
-    void OnDisable()
+    public void OnDisable()
     {
         DiagnosisWindow.OnDiagnosisWindowOpened -= HandleDiagnosisWindowOpened;
         DiagnosisWindow.LoadingDoneNotify -= CompleteTask;
@@ -92,6 +92,8 @@ public class InternetTaskOne : AbstractTask
         wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Connected);
         stopHazards();
         base.CompleteTask();
+        // FIXME This line was added for debug purposes
+        gameObject.SetActive(false);
     }
 
     // Ask the hazard manager if our task can progress

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using UnityEngine.InputSystem;
 
 /**
  * @Author Jack Ratermann
@@ -50,7 +51,7 @@ public class TerminalTask : AbstractTask
 
     // Audio source reference on TerminalWindow to play music on games.
     public AudioSource musicAG;
-    public Coroutine iTimer;
+    public bool iTimer = false;
 
     /// @brief Assign all of the terminal objects in the scene.
     public void Awake() {
@@ -88,8 +89,8 @@ public class TerminalTask : AbstractTask
         Terminal.OnAVPressed += AVTask;
         Terminal.OnLSPressed += LSTask;
         Terminal.OnNMAPPressed += NMAPTask;
+        PerformanceThiefManager.PThiefStarted += TimerOn;
         PerformanceThiefManager.PThiefIDisable += StopInput;
-        PerformanceThiefManager.PThiefEnded += StopPT;
     }
 
     public void OnDisable()
@@ -100,8 +101,12 @@ public class TerminalTask : AbstractTask
         Terminal.OnAVPressed -= AVTask;
         Terminal.OnLSPressed -= LSTask;
         Terminal.OnNMAPPressed -= NMAPTask;
+        PerformanceThiefManager.PThiefStarted -= TimerOn;
         PerformanceThiefManager.PThiefIDisable -= StopInput;
-        PerformanceThiefManager.PThiefEnded -= StopPT;
+    }
+
+    void TimerOn() {
+        iTimer = false;
     }
 
     public override void checkHazards()
@@ -119,19 +124,12 @@ public class TerminalTask : AbstractTask
             }
         }
     }
-    void StopPT() {
-        if(termState != State.Off) {
-            // StopCoroutine(StopInputTimer());
-            agInput.User.Arrows.Enable();
-        }
-    }
-
 
     void StopInput() {
-        if(iTimer == null) {
-            iTimer = StartCoroutine(StopInputTimer());
+        if(iTimer == false) {
+            iTimer = true;
+            StartCoroutine(StopInputTimer());
         }
-        agInput.User.Arrows.Enable();
     }
 
     /// @brief Changes terminal information prompt and terminal state.
@@ -275,9 +273,11 @@ public class TerminalTask : AbstractTask
     }
 
     public IEnumerator StopInputTimer() {
-        while(true) {
-            agInput.User.Arrows.Disable();
-            yield return new WaitForSeconds(2.5f);
-        }
+        Debug.Log("Input Disabled");
+        agInput.User.Arrows.Disable();
+        yield return new WaitForSeconds(4.5f);
+        agInput.User.Arrows.Enable();
+        Debug.Log("Input Re-Enabled");
+        iTimer = false;
     }
 }

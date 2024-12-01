@@ -41,7 +41,7 @@ public class PerformanceThiefManager : AbstractManager
             Debug.Log("Performance Thief Ended.");
             PThiefEnded?.Invoke();
             timerCR = null;
-            StopAllCoroutines();
+            //StopAllCoroutines();
             isActive = false;
         }
         else {

@@ -23,7 +23,7 @@ public class LoadingScript : MonoBehaviour
 
     /// @var Change This Variable To Change Speed Of Progress Bar (Default 0.001f)
     // Note: Changed 0.1f -> 0.7f
-    float speed = 0.1f;
+    float speed = 1f;
 
     /// @var clickFillSpeed Changes the amount the bar fills on one click
     /// @var clickModifier Mainly for performance thief, this variable allows a multiplied increase or decrease

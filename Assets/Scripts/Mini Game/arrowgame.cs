@@ -41,8 +41,9 @@ public class Arrowgame : AbstractMinigame
 
     public void Awake() {
         // Not hardcode Terminal
+        gameObject.SetActive(true);
+        pInput = new();
         spawnArea = FindObjectOfType<Terminal>().GetComponentInChildren<GridLayoutGroup>().gameObject.GetComponent<Transform>();
-        pInput = new InputSystem_Actions();
     }
 
     public void Start() {

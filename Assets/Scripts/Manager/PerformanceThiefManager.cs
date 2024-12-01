@@ -8,35 +8,64 @@ public class PerformanceThiefManager : AbstractManager
     public static event Action PThiefEnded;
     public float pTime = 1f;
     private Coroutine timerCR;
+    public static event Action PThiefIDisable;
+    public bool isActive = false;
+
+    public void Awake() {
+        gameObject.SetActive(true);
+    }
+
     public override bool CanProgress()
     {
         UnityEngine.Random.InitState(System.Environment.TickCount);
-        if(timerCR == null) {
+        if(isActive && timerCR == null) {
             timerCR = StartCoroutine(Timer());
+        }
+        if(isActive && UnityEngine.Random.Range(0, 2) == 1) {
+            Debug.Log("Stopping Input!");
+            PThiefIDisable?.Invoke();
         }
         return true;
     }
 
     public override void StartHazard()
     {
-        // TODO : Just broadcast event, have tasks listen to it.
+        isActive = true;
         Debug.Log("Performance Thief Started.");
         PThiefStarted?.Invoke();
     }
 
     public override void StopHazard()
     {
-        // TODO This will need to implement some condition to stop, from when the CPU
-        // gets overclocked
-        Debug.Log("Performance Thief Ended.");
-        PThiefEnded?.Invoke();
+        if(isActive){
+            Debug.Log("Performance Thief Ended.");
+            PThiefEnded?.Invoke();
+            timerCR = null;
+            StopAllCoroutines();
+            isActive = false;
+        }
+        else {
+            Debug.Log("Performance Thief Already Stopped");
+        }
     }
 
-    public IEnumerator Timer() {
+    public IEnumerator Timer(float x = 4f) {
         while(true) {
-            yield return new WaitForSeconds(4f);
+            yield return new WaitForSeconds(x);
             // Debug.Log("Performance Modifier: " + pTime);
-            pTime = UnityEngine.Random.Range(0.01f, 0.9f);
+            pTime = UnityEngine.Random.Range(0.01f, 0.4f);
+        }
+    }
+
+    public void BIOSPerformanceHandler(int index) {
+        switch (index) {
+            case 0: Debug.Log("Case 0"); break;
+            case 1: Debug.Log("Case 1"); break;
+            case 2: {
+                StopHazard(); 
+                break;
+            }
+            default: break;
         }
     }
 }

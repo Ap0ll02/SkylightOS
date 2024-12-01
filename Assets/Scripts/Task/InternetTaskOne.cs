@@ -81,7 +81,7 @@ public class InternetTaskOne : AbstractTask
         loadingBarScript.perthiefTime = 1f;
     }
 
-    // Actually starting the task, this shoud be called from the OS Manager
+    // Actually starting the task, this should be called from the OS Manager
     public override void startTask()
     {
         wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Disconnected);

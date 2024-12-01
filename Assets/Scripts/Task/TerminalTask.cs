@@ -120,6 +120,10 @@ public class TerminalTask : AbstractTask
             }
             else
             {
+                if(iTimer == true) {
+                    ag.CanContinue = false;
+                    break;
+                }
                 ag.CanContinue = true;
             }
         }
@@ -129,6 +133,8 @@ public class TerminalTask : AbstractTask
         if(iTimer == false) {
             iTimer = true;
             StartCoroutine(StopInputTimer());
+        } else {
+            return;
         }
     }
 
@@ -274,9 +280,7 @@ public class TerminalTask : AbstractTask
 
     public IEnumerator StopInputTimer() {
         Debug.Log("Input Disabled");
-        agInput.User.Arrows.Disable();
-        yield return new WaitForSeconds(4.5f);
-        agInput.User.Arrows.Enable();
+        yield return new WaitForSeconds(2.5f);
         Debug.Log("Input Re-Enabled");
         iTimer = false;
     }

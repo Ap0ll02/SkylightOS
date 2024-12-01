@@ -10,20 +10,27 @@ public class PerformanceThiefManager : AbstractManager
     private Coroutine timerCR;
     public static event Action PThiefIDisable;
     public bool isActive = false;
+    public int random;
 
     public void Awake() {
         gameObject.SetActive(true);
+        UnityEngine.Random.InitState(System.Environment.TickCount);
+        random = UnityEngine.Random.Range(0, 10);
     }
 
     public override bool CanProgress()
-    {
-        UnityEngine.Random.InitState(System.Environment.TickCount);
+    {   
+        Debug.Log("RANDOM NUMBER: " + random);
         if(isActive && timerCR == null) {
             timerCR = StartCoroutine(Timer());
         }
-        if(isActive && UnityEngine.Random.Range(0, 2) == 1) {
-            Debug.Log("Stopping Input!");
+        if(isActive && random == 6) {
+            //Debug.Log("Stopping Input!");
             PThiefIDisable?.Invoke();
+            random = UnityEngine.Random.Range(0, 10);
+        }
+        else if(isActive && random != 6) {
+            random = UnityEngine.Random.Range(0, 10);
         }
         return true;
     }
@@ -62,7 +69,7 @@ public class PerformanceThiefManager : AbstractManager
             case 0: Debug.Log("Case 0"); break;
             case 1: Debug.Log("Case 1"); break;
             case 2: {
-                StopHazard(); 
+                StopHazard();
                 break;
             }
             default: break;

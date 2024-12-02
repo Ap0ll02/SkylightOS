@@ -9,6 +9,7 @@ public class PerformanceThiefManager : AbstractManager
     public float pTime = 1f;
     private Coroutine timerCR;
     public static event Action PThiefIDisable;
+    public static event Action PThiefUpdateDelay;
     public bool isActive = false;
     public int random;
 
@@ -20,9 +21,10 @@ public class PerformanceThiefManager : AbstractManager
 
     public override bool CanProgress()
     {   
-        Debug.Log("RANDOM NUMBER: " + random);
-        if(isActive && timerCR == null) {
-            timerCR = StartCoroutine(Timer());
+        // Debug.Log("RANDOM NUMBER: " + random);
+        if(isActive) {
+            PThiefUpdateDelay?.Invoke();
+            //timerCR = StartCoroutine(Timer());
         }
         if(isActive && random == 6) {
             //Debug.Log("Stopping Input!");
@@ -56,13 +58,12 @@ public class PerformanceThiefManager : AbstractManager
         }
     }
 
-    public IEnumerator Timer(float x = 4f) {
-        while(true) {
-            yield return new WaitForSeconds(x);
-            // Debug.Log("Performance Modifier: " + pTime);
-            pTime = UnityEngine.Random.Range(0.01f, 0.4f);
-        }
-    }
+    // public IEnumerator Timer(float x = 4f) {
+    //     yield return new WaitForSeconds(x);
+    //     // Debug.Log("Performance Modifier: " + pTime);
+    //     pTime = UnityEngine.Random.Range(0.01f, 0.09f);
+
+    // }
 
     public void BIOSPerformanceHandler(int index) {
         switch (index) {

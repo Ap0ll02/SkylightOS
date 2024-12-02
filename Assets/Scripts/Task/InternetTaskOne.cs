@@ -19,7 +19,7 @@ public class InternetTaskOne : AbstractTask
     // Reference To Progress Bar Script
     [SerializeField] LoadingScript loadingBarScript;
 
-    public float perthiefTime = 1f;
+    public float perTime = 1f;
 
     // Initialization
     public void Awake()
@@ -29,7 +29,6 @@ public class InternetTaskOne : AbstractTask
         wifiPopUpMenuWifiState = wifiPopUpMenu.GetComponent<ExpandedWifiMenu>();
         diagnosisWindow = FindObjectOfType<DiagnosisWindow>().gameObject;
         loadingBarScript = diagnosisWindow.GetComponentInChildren<LoadingScript>();
-        perthiefTime = FindObjectOfType<PerformanceThiefManager>().pTime;
     }
 
     public void Start()
@@ -52,8 +51,9 @@ public class InternetTaskOne : AbstractTask
     {
         DiagnosisWindow.OnDiagnosisWindowOpened += HandleDiagnosisWindowOpened;
         DiagnosisWindow.LoadingDoneNotify += CompleteTask;
-        PerformanceThiefManager.PThiefEnded += PerformanceThiefStart;
-        PerformanceThiefManager.PThiefStarted += PerformanceThiefEnd;
+        PerformanceThiefManager.PThiefEnded += PerformanceThiefEnd;
+        PerformanceThiefManager.PThiefStarted += PerformanceThiefStart;
+        PerformanceThiefManager.PThiefUpdateDelay += DelayHandler;
     }
 
     // Removing message handler?
@@ -62,19 +62,24 @@ public class InternetTaskOne : AbstractTask
         DiagnosisWindow.OnDiagnosisWindowOpened -= HandleDiagnosisWindowOpened;
         DiagnosisWindow.LoadingDoneNotify -= CompleteTask;
         PerformanceThiefManager.PThiefStarted -= PerformanceThiefStart;
-        PerformanceThiefManager.PThiefEnded += PerformanceThiefEnd;
+        PerformanceThiefManager.PThiefEnded -= PerformanceThiefEnd;
+        PerformanceThiefManager.PThiefUpdateDelay -= DelayHandler;
+    }
+
+    void DelayHandler() {
+        loadingBarScript.perthiefTime = UnityEngine.Random.Range(0.01f, 0.09f);
     }
 
     // When the diagnosis window is opened, start the hazards and loading bar
     void HandleDiagnosisWindowOpened()
     {
         //loadingBarScript.StartLoading();
-        loadingBarScript.perthiefTime = perthiefTime;
+        //loadingBarScript.perthiefTime = perTime;
         startHazards();
     }
 
     void PerformanceThiefStart() {
-        loadingBarScript.perthiefTime = perthiefTime;
+        //loadingBarScript.perthiefTime = perTime;
     }
 
     void PerformanceThiefEnd() {
@@ -92,7 +97,8 @@ public class InternetTaskOne : AbstractTask
         wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Connected);
         stopHazards();
         base.CompleteTask();
-        // FIXME This line was added for debug purposes
+        // TODO: Note, this line below is the only way input works for the next task
+        // I have no idea why yet.
         gameObject.SetActive(false);
     }
 
@@ -109,7 +115,7 @@ public class InternetTaskOne : AbstractTask
             }
             else
             {
-                loadingBarScript.perthiefTime = perthiefTime;
+                //loadingBarScript.perthiefTime = perTime;
                 loadingBarScript.canContinue = true;
             }
         }
@@ -132,5 +138,5 @@ public class InternetTaskOne : AbstractTask
             hazardManager.StopHazard();
         }
     }
-
+    
 }

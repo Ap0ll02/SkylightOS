@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -41,8 +42,9 @@ public class Arrowgame : AbstractMinigame
 
     public void Awake() {
         // Not hardcode Terminal
+        gameObject.SetActive(true);
+        pInput = new();
         spawnArea = FindObjectOfType<Terminal>().GetComponentInChildren<GridLayoutGroup>().gameObject.GetComponent<Transform>();
-        pInput = new InputSystem_Actions();
     }
 
     public void Start() {
@@ -105,6 +107,9 @@ public class Arrowgame : AbstractMinigame
         // Updates colors for more fun experience, broadcasts to allow for input validation to be done
         // in an event based fashion, instead of in Update().
         OnArrowPress?.Invoke();
+        if(!CanContinue){
+            return;
+        }
         if(curArrow > numArrows && GameOver == false) {
             Debug.Log("Completed Task!");
             GameOver = true;

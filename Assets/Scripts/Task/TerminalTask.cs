@@ -3,9 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.Analytics;
 using UnityEngine.InputSystem;
-using Unity.VisualScripting;
 
 /**
  * @Author Jack Ratermann
@@ -49,8 +47,11 @@ public class TerminalTask : AbstractTask
     public GameObject drawMaze;
     public DrawMaze dm;
 
+    public InputSystem_Actions agInput;
+
     // Audio source reference on TerminalWindow to play music on games.
     public AudioSource musicAG;
+    public bool iTimer = false;
 
     /// @brief Assign all of the terminal objects in the scene.
     public void Awake() {
@@ -71,6 +72,7 @@ public class TerminalTask : AbstractTask
         musicAG = FindObjectOfType<Terminal>().GetComponentInParent<AudioSource>();
         tasksDone.Add(false);
         tasksDone.Add(false);
+        agInput = ag.pInput;
     }
 
     public new void Start() {
@@ -87,6 +89,8 @@ public class TerminalTask : AbstractTask
         Terminal.OnAVPressed += AVTask;
         Terminal.OnLSPressed += LSTask;
         Terminal.OnNMAPPressed += NMAPTask;
+        PerformanceThiefManager.PThiefStarted += TimerOn;
+        PerformanceThiefManager.PThiefIDisable += StopInput;
     }
 
     public void OnDisable()
@@ -97,6 +101,12 @@ public class TerminalTask : AbstractTask
         Terminal.OnAVPressed -= AVTask;
         Terminal.OnLSPressed -= LSTask;
         Terminal.OnNMAPPressed -= NMAPTask;
+        PerformanceThiefManager.PThiefStarted -= TimerOn;
+        PerformanceThiefManager.PThiefIDisable -= StopInput;
+    }
+
+    void TimerOn() {
+        iTimer = false;
     }
 
     public override void checkHazards()
@@ -106,11 +116,25 @@ public class TerminalTask : AbstractTask
             if (!hazardManager.CanProgress())
             {
                 ag.CanContinue = false;
+                break;
             }
             else
             {
+                if(iTimer == true) {
+                    ag.CanContinue = false;
+                    break;
+                }
                 ag.CanContinue = true;
             }
+        }
+    }
+
+    void StopInput() {
+        if(iTimer == false) {
+            iTimer = true;
+            StartCoroutine(StopInputTimer());
+        } else {
+            return;
         }
     }
 
@@ -118,8 +142,8 @@ public class TerminalTask : AbstractTask
     public override void startTask()
     {
         // Terminal Task Start, Prompts User To Use The AntiVirus installation tool. Changes terminal state to On.
-        string termText = "Welcome To The Console, Let's get you started installing some software\n"
-            + "The AntiVirus toolkit is a helpful addition for getting rid of pesky malware!\n" + "Click On The Anti-Virus Installation to setup the connection address.";
+        string termText = "Welcome To The Console, Let's get you started downloading some software\n"
+            + "The AntiVirus toolkit is a helpful addition for getting rid of pesky malware!\n" + "Click On The Anti-Virus Download to start.";
         termState = State.On;
         terminalText.text = termText;
     }
@@ -151,6 +175,7 @@ public class TerminalTask : AbstractTask
             startHazards();
             //hGroup.SetActive(false);
             ag.StartGame();
+            agInput = ag.pInput;
             if(!musicAG.isPlaying) {
                 musicAG.Play();
             }
@@ -251,5 +276,12 @@ public class TerminalTask : AbstractTask
             yield return new WaitForSeconds(0.1f);
         }
         if(musicAG.volume < 0) musicAG.Stop();  
+    }
+
+    public IEnumerator StopInputTimer() {
+        Debug.Log("Input Disabled");
+        yield return new WaitForSeconds(2.5f);
+        Debug.Log("Input Re-Enabled");
+        iTimer = false;
     }
 }

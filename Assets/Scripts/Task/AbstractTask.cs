@@ -32,12 +32,6 @@ public abstract class AbstractTask : MonoBehaviour
             Debug.Log("No Hazard Managers");
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     // initiate our task
     public abstract void startTask();
     // Method to complete the task

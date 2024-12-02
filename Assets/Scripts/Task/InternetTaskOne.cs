@@ -19,6 +19,8 @@ public class InternetTaskOne : AbstractTask
     // Reference To Progress Bar Script
     [SerializeField] LoadingScript loadingBarScript;
 
+    public float perTime = 1f;
+
     // Initialization
     public void Awake()
     {
@@ -45,27 +47,46 @@ public class InternetTaskOne : AbstractTask
     }
 
     // Message handler for opening the diagnosis window
-    void OnEnable()
+    public void OnEnable()
     {
         DiagnosisWindow.OnDiagnosisWindowOpened += HandleDiagnosisWindowOpened;
         DiagnosisWindow.LoadingDoneNotify += CompleteTask;
+        PerformanceThiefManager.PThiefEnded += PerformanceThiefEnd;
+        PerformanceThiefManager.PThiefStarted += PerformanceThiefStart;
+        PerformanceThiefManager.PThiefUpdateDelay += DelayHandler;
     }
 
     // Removing message handler?
-    void OnDisable()
+    public void OnDisable()
     {
         DiagnosisWindow.OnDiagnosisWindowOpened -= HandleDiagnosisWindowOpened;
         DiagnosisWindow.LoadingDoneNotify -= CompleteTask;
+        PerformanceThiefManager.PThiefStarted -= PerformanceThiefStart;
+        PerformanceThiefManager.PThiefEnded -= PerformanceThiefEnd;
+        PerformanceThiefManager.PThiefUpdateDelay -= DelayHandler;
+    }
+
+    void DelayHandler() {
+        loadingBarScript.perthiefTime = UnityEngine.Random.Range(0.01f, 0.09f);
     }
 
     // When the diagnosis window is opened, start the hazards and loading bar
     void HandleDiagnosisWindowOpened()
     {
         //loadingBarScript.StartLoading();
+        //loadingBarScript.perthiefTime = perTime;
         startHazards();
     }
 
-    // Actually starting the task, this shoud be called from the OS Manager
+    void PerformanceThiefStart() {
+        //loadingBarScript.perthiefTime = perTime;
+    }
+
+    void PerformanceThiefEnd() {
+        loadingBarScript.perthiefTime = 1f;
+    }
+
+    // Actually starting the task, this should be called from the OS Manager
     public override void startTask()
     {
         wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Disconnected);
@@ -76,6 +97,9 @@ public class InternetTaskOne : AbstractTask
         wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Connected);
         stopHazards();
         base.CompleteTask();
+        // TODO: Note, this line below is the only way input works for the next task
+        // I have no idea why yet.
+        gameObject.SetActive(false);
     }
 
     // Ask the hazard manager if our task can progress
@@ -87,9 +111,11 @@ public class InternetTaskOne : AbstractTask
             if (!hazardManager.CanProgress())
             {
                 loadingBarScript.canContinue = false;
+                break;
             }
             else
             {
+                //loadingBarScript.perthiefTime = perTime;
                 loadingBarScript.canContinue = true;
             }
         }
@@ -112,5 +138,5 @@ public class InternetTaskOne : AbstractTask
             hazardManager.StopHazard();
         }
     }
-
+    
 }

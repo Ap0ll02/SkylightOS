@@ -19,6 +19,7 @@ public class Northstar : MonoBehaviour
     public GameObject icon;
     public List<AbstractTask> taskList = new();
     public GameObject osmanager;
+    public GameObject compEffect;
 
     public TypewriterByCharacter tw;
     public TMP_Text nsText;
@@ -33,14 +34,22 @@ public class Northstar : MonoBehaviour
         nsText = GetComponentInChildren<TMP_Text>();
         // osmanager = GetComponent<OSManager>().gameObject;
     }
-
+    Coroutine pd;
     public void Start() {
-        persona.SetActive(false);
+        persona.SetActive(true);
+        canClose = false;
+        string[] dialogue = new string[] {"Welcome To Skylight OS!", "I am your AI assistant Northstar! I am here to help at any time!", 
+                      "Lets start getting to work, click my compass when you need me. Now, start by selecting a task!"};
+
+        if(pd == null) {
+            pd = StartCoroutine(PlayDialogue(dialogue, 2f));
+        }
+        
     }
 
     public void OnUserSummon() {
         tw.StartShowingText();
-        canClose = false;
+        canClose = true;
     }
 
     public void OnAutoSummon() {
@@ -106,25 +115,33 @@ public class Northstar : MonoBehaviour
         yield return new WaitForSeconds(x);
     }
 
-    IEnumerator PlayDialogue(string[] dialogueLines)
+    IEnumerator PlayDialogue(string[] dialogueLines, float t = 1f)
     {
+        int count = 0;
         // Go into each string in the dialogueLines array
         foreach (var line in dialogueLines)
         {
+            count++;
             // check if the line in the array is null 
             if (line != null)
             {
                 // Have our typewriter start typing our each word
                 tw.ShowText(line);
+                if(count == 3) compEffect.GetComponent<ParticleSystem>().Play();
                 // This function will continue and wait until the type writer is done showing text
                 // It is asking its self are we still typing? if so continue the function
                 // once it reaches the end it will return false and break our statement 
                 yield return new WaitUntil(()=> tw.isShowingText == false);
                 // We then wait for a couple of seconds before loading in the next string
-                yield return new WaitForSeconds(0.5f);
+                yield return new WaitForSeconds(t);
+                if(count == 3){
+                    yield return new WaitForSeconds(2f);
+                    compEffect.GetComponent<ParticleSystem>().Stop();
+                } 
             }
 
         }
+        tw.StartDisappearingText();
         canClose = true;
     }
 }

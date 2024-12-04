@@ -18,6 +18,7 @@ public class InternetTaskOne : AbstractTask
 
     // Reference To Progress Bar Script
     [SerializeField] LoadingScript loadingBarScript;
+    public Northstar northstar;
 
     public float perTime = 1f;
 
@@ -29,6 +30,7 @@ public class InternetTaskOne : AbstractTask
         wifiPopUpMenuWifiState = wifiPopUpMenu.GetComponent<ExpandedWifiMenu>();
         diagnosisWindow = FindObjectOfType<DiagnosisWindow>().gameObject;
         loadingBarScript = diagnosisWindow.GetComponentInChildren<LoadingScript>();
+        northstar = GameObject.Find("WindowCanvas").GetComponentInChildren<Northstar>();
     }
 
     public void Start()
@@ -90,6 +92,7 @@ public class InternetTaskOne : AbstractTask
     public override void startTask()
     {
         wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Disconnected);
+        northstar.WriteHint("Let's Diagnose This Wifi Issue, Perhaps Go To The Button Below?", Northstar.Style.hot);
     }
 
     public override void CompleteTask()

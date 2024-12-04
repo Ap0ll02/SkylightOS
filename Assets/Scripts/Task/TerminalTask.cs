@@ -42,6 +42,7 @@ public class TerminalTask : AbstractTask
     // References to the arrow game to control its start and stop from the task
     public GameObject arrowGame;
     public Arrowgame ag;
+    public Northstar northstar;
 
     // Draw the maze for the LS Maze Game
     public GameObject drawMaze;
@@ -73,6 +74,7 @@ public class TerminalTask : AbstractTask
         tasksDone.Add(false);
         tasksDone.Add(false);
         agInput = ag.pInput;
+        northstar = GameObject.Find("WindowCanvas").GetComponentInChildren<Northstar>();
     }
 
     public new void Start() {
@@ -144,6 +146,7 @@ public class TerminalTask : AbstractTask
         // Terminal Task Start, Prompts User To Use The AntiVirus installation tool. Changes terminal state to On.
         string termText = "Welcome To The Console, Let's get you started downloading some software\n"
             + "The AntiVirus toolkit is a helpful addition for getting rid of pesky malware!\n" + "Click On The Anti-Virus Download to start.";
+        northstar.WriteHint("Let's try clicking the Down Anti-Virus button", Northstar.Style.chilly);
         termState = State.On;
         terminalText.text = termText;
     }

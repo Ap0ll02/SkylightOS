@@ -2,6 +2,8 @@ using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 using TMPro;
+using Febucci.UI; 
+using Febucci.UI.Core;
 using Random = UnityEngine.Random;
 
 /// <summary>
@@ -13,6 +15,7 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class NyanceNyanceRevolution : AbstractBossTask
 {
+    public int Stage;
     // This will change the amount of arrows that will spawn  
     public static int max = 135;
     // This controls the scoring variables, which will affect how many items you can shake out of Nyan cat 
@@ -45,6 +48,45 @@ public class NyanceNyanceRevolution : AbstractBossTask
     // We need to spawn in our Check Arrows Prefab so the players can reference the arrows for score i.e these are the arrows used to compare for scoring metric 
     public GameObject[] checkArrowsPrefab = new GameObject[4];
     public GameObject[] checkArrows = new GameObject[4];
+    
+    // This is the item list we use to shake all the items out of Nyan Cat
+    public GameObject[] NyanCatItems = new GameObject[40];
+    // This is the Nyan Cat that we use 
+    public GameObject nyanCatIdlePrefab;
+    public GameObject nyanCatIdle;
+    public GameObject nyanCatFlyingPrefab;
+    public GameObject nyanCatFlying;
+    public GameObject nyanCatStrugglingPrefab;
+    public GameObject nyanCatStruggling;
+    public GameObject textBoxPrefab;
+    public GameObject textBox;
+    public TextAnimator_TMP text; 
+    public GameObject Line1Prefab;
+    public GameObject Line1;
+    public Vector3 Line1Position;
+    public bool Line1On = false;
+    public GameObject Line2Prefab;
+    public GameObject Line2;
+    public Vector3 Line2Position;
+    public bool Line2On = false;
+    public int index = 0;
+    public int itemsCanAccess = 10;
+    public GameObject trashCan;
+    public GameObject newTrashCan;
+    bool isTrashCanSpawned = false;
+    //public string textOne = "<rainb><shake a=0.5>MUHAHAHAHA!</rainb></shake><waitfor=0.5> I have been here since 2008. You know how many IT persons have tried... and <incr>failed!!!</incr> to remove me ";
+    public string textOne = "a";
+    //public string textTwo = "Seriously<waitfor=0.5>, You know how rude it is to try and close a process! The <rainb>Rainbow Sprinkle Gall</rainb> of you people. YOU shall face my <bounce a=0.05>revenge!</bounce>";
+    public string textTwo = "b";
+    //public string textThree = "..... AND YOU WILL FACE MY REVENGE!";
+    public string textThree = "C";
+    //public string textFour = "....Really? come on... Why are the LAZERS NOT TURNING ON ...";
+    public string textFour = "D";
+    //public string textFive = "... THERE WE GO!... AS I WAS SAYING MUHAHAHA AND YOU WILL FACE MY REVENGE";
+    public string textFive = "E";
+
+    public TypewriterByCharacter typewriter; 
+    public string[] dialogueLines = new string[5];
 
     public GameObject canvasPrefab;
     public GameObject canvas;
@@ -105,29 +147,33 @@ public class NyanceNyanceRevolution : AbstractBossTask
     private void Awake()
     {
         NyanceNyanceRevolutionSingleton = GetInstance();
-        nyanCatSong = GetComponent<AudioSource>();
-        // All these for loops spawn in the game items
-        SpawnLazers();
-        SpawnCheckArrows();
-        SpawnExplosionFeedback();
-        SpawnScoreText();
-        endCondition = Instantiate(endConditionPrefab);
-        NyanCat = Instantiate(NyanCatPrefab);
-        canvas = Instantiate(canvasPrefab);
-        CanvasTransform = canvas.transform;
     }
 
     // Start is called before the first frame update
-    public void Start()
-    {
-        StartCoroutine(SpawnArrows());
-        StartCoroutine(PlayMusic());
-    }
 
     public void Update()
     {
-        CheckForKeyPresses();
-        UpdateLazers();
+
+        switch (Stage)
+        {
+            case 1:
+                StartCoroutine(playDialogue());
+                break;
+            case 2:
+                StartCoroutine(SpawnArrows());
+                StartCoroutine(PlayMusic());
+                CheckForKeyPresses();
+                UpdateLazers();
+                break;
+            case 3:
+                StartCoroutine(ShakeNyanCat());
+                FollowMouse();
+                dropItem();
+                break;
+            case 4:
+                Destroy(gameObject);
+                break;
+        }
     }
 
     public override void startTask()
@@ -145,13 +191,68 @@ public class NyanceNyanceRevolution : AbstractBossTask
     // This will request the manager to stop / end a hazard
     public override void stopHazards()
     {
-        //meow 
+        Stage = 4;
     }
 
     // this will request our manager to start making hazards
     public override void startHazards()
+    { 
+        Stage = 1;
+        StageOne();
+    }
+    public void StageOne()
     {
-        //meow
+        if (nyanCatIdle == null)
+            nyanCatIdle = Instantiate(nyanCatIdlePrefab);
+        if(nyanCatIdle == null)
+            Debug.LogError("cant instantiate NyanCatIdle");
+        if(textBox == null)
+            textBox = Instantiate(textBoxPrefab);
+        if(textBox == null)
+            Debug.LogError("cant instantiate textbox");
+        text = GetComponent<TextAnimator_TMP>();
+        if (text == null)
+            Debug.Log("put the text box prefab on NyanCatBossFight Prefab");
+        if (typewriter == null)
+        {
+            typewriter = GetComponent<TypewriterByCharacter>();
+            if (typewriter == null)
+            {
+                Debug.LogError("TypewriterByCharacter component is not assigned or missing, put it on Dialogue object!");
+            }
+        }
+    }
+
+    //Only Needs To be called once 
+    public void StageTwo()
+    {
+        Stage = 2;
+        nyanCatSong = GetComponent<AudioSource>();
+        SpawnLazers();
+        SpawnCheckArrows();
+        SpawnExplosionFeedback();
+        SpawnScoreText();
+        endCondition = Instantiate(endConditionPrefab);
+        NyanCat = Instantiate(NyanCatPrefab);
+        canvas = Instantiate(canvasPrefab);
+        CanvasTransform = canvas.transform;
+    }
+    public void StageThree()
+    {
+        Line1 = Instantiate(Line1Prefab);
+        Line2 = Instantiate(Line2Prefab);
+        if (Line1 == null || Line2 == null)
+        {
+            Debug.LogError("Lazer1 or Lazer2 GameObject is not assigned in the Inspector!");
+        }
+        var Lazer1transform = Line1.GetComponent<Transform>();
+        var Lazer2transform = Line2.GetComponent<Transform>();
+        Line1Position = Lazer1transform.position;
+        Line2Position = Lazer2transform.position;
+        //Destroy(NyanCat);
+        //Destroy(endCondition);
+        //Instantiate(struggleNyanCat);
+        //gameObject.SetActive(false);
     }
 
     // This spawns in our prefabs and sets the checkArrows array equal to the instantiated object 
@@ -470,7 +571,79 @@ public class NyanceNyanceRevolution : AbstractBossTask
         // Spawns damage text where Nyan Cat is currently located 
         Instantiate(damageTextPrefab, NyanCat.transform.position, Quaternion.identity, NyanCat.transform);
     }
-    
+
+    void FollowMouse()
+    {
+        // His line retrieves the current position of the mouse cursor in screen space (measured in pixels). The Input.mousePosition property returns a Vector3 
+        Vector3 mousePosition = Input.mousePosition;
+        // We need to set the z Coordinante since its set to 0 thus we find the closest distance from the camera in which objects can be rendered aka nearClipPlane
+        mousePosition.z = Camera.main.nearClipPlane; // Set this to the distance from the camera to the object
+        // This line converts the mousePosition from screen space to world space. The ScreenToWorldPoint method takes a Vector3 is screen space and returns a Vector 3 in world space 
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        // This just places our Nyan Cat in the correct place 
+        transform.position = worldPosition;
+    }
+
+    public void dropItem()
+    {
+        // (index < itemsCanAccess): Check if the current index is less than the number of items that can be accessed.
+        // Check if the y-coordinate of the NyanCatStrugglingScript GameObject's position is greater than the y-coordinate of the lazer1 GameObject's position.
+        // •(Lazer1On == false): Check if Lazer1On is false (i.e., the first laser is not on).
+        if ((index < itemsCanAccess) && (transform.position.y > Line1Position.y) && (Line1On == false))
+        {
+            var spawnedItem = Instantiate(NyanCatItems[index]);
+            spawnedItem.SetActive(true);
+            Destroy(spawnedItem,5.0f);
+            index++;
+            Line1On = true;
+            Line2On = false;
+        }
+
+        // Since Laser2 is at a negative y thus we need to check if the position is less then this y
+        // 
+        if ((index < itemsCanAccess) && (transform.position.y < Line2Position.y) && (Line2On == false))
+        {
+            var spawnedItem = Instantiate(NyanCatItems[index]);
+            spawnedItem.SetActive(true);
+            Destroy(spawnedItem,5.0f);
+            index++;
+            Line1On = false;
+            Line2On = true;
+        }
+
+        if (index == itemsCanAccess)
+        {
+            Debug.Log("activate trash cat");
+            TrashCat();
+        }
+    }
+
+    public void TrashCat()
+    {
+        if (isTrashCanSpawned == false)
+        {
+            isTrashCanSpawned = true;
+            newTrashCan = Instantiate(trashCan);
+        }
+        else
+        {
+            // Calculate the distance for x and y coordinates only
+            float distanceX = transform.position.x - newTrashCan.transform.position.x;
+            float distanceY = transform.position.y - newTrashCan.transform.position.y;
+            float distance = Mathf.Sqrt(distanceX * distanceX + distanceY * distanceY);
+            if (distance <= 2.0f)
+            {
+                EndGame();
+            }
+        }
+    }
+    public void EndGame()
+    {
+        Destroy(Line1);
+        Destroy(Line2);
+        Destroy(newTrashCan);
+        Destroy(gameObject);
+    }
     // This function simply sets all of the Arrows off 
 
     public void LazerOff()
@@ -503,6 +676,15 @@ public class NyanceNyanceRevolution : AbstractBossTask
             Destroy(text);
         }
     }
+
+    public void TurnOff()
+    {
+        Destroy(nyanCatIdle);
+        Destroy(textBox);
+        text.textFull = " ";
+        //Destroy(typewriter);
+    }
+
     // This function checks for the win condition and spawns the corresponding text based on score 
     void CheckWin()
     {
@@ -522,6 +704,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
                 text.text = "<shake a=0.05>GOOD</shake>";
                 text.color = goodColor;
                 endConditionPrefab.SetActive(true);
+
             }
             // Check if player score is between winGreat and winPerfect
             else if(playerScore >= winGreat && playerScore <= winPerfect)
@@ -550,7 +733,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
         CheckArrowsOff();
         ExplosionFeedbackOff();
         ScoreTextOff();
-        StartCoroutine(ShakeNyanCat());
+        StageThree();
     }
 
     // A simple coroutine to play are music
@@ -572,13 +755,28 @@ public class NyanceNyanceRevolution : AbstractBossTask
         yield return new WaitForSeconds(4f);
 
     }
-
-    public void StruggleCat()
+    //Create a coroutine that will be used to itterate through each dialogue line 
+    IEnumerator playDialogue()
     {
-        Destroy(NyanCat);
-        Destroy(endCondition);
-        Instantiate(struggleNyanCat);
-        gameObject.SetActive(false);
+        // Go into each string in the dialogueLines array
+        foreach (var line in dialogueLines)
+        {
+            // check if the line in the array is null 
+            if (line != null)
+            {
+                // Have our typewriter start typing our each word
+                typewriter.ShowText(line);
+                // This function will continue and wait until the type writer is done showing text
+                // It is asking its self are we still typing? if so continue the function
+                // once it reaches the end it will return false and break our statement 
+                yield return new WaitUntil(()=> typewriter.isShowingText == false);
+                // We then wait for a couple of seconds before loading in the next string
+                yield return new WaitForSeconds(0.5f);
+            }
+            
+        }
+        TurnOff();
+        StageTwo();
     }
     
 }

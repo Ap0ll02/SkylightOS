@@ -143,6 +143,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hazardManagers: []
   isComplete: 0
+  taskTitle: Default title, please set in task
+  taskDescription: Default Description, please set in task
+  Stage: 0
   winGood: 4000
   winGreat: 6000
   winPerfect: 7000
@@ -194,8 +197,84 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  NyanCatItems:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  NyanceNyanceSingleton: {fileID: 0}
+  nyanCatIdlePrefab: {fileID: 3803836691575881888, guid: a938d6496a296e144969fc6fa2a31985, type: 3}
+  nyanCatIdle: {fileID: 0}
+  nyanCatFlyingPrefab: {fileID: 4160345928628560801, guid: 85b49388cb5194a4ba8cf3af30bfde15, type: 3}
+  nyanCatFlying: {fileID: 0}
+  nyanCatStrugglingPrefab: {fileID: 71555937651404543, guid: 2242f5c92b0ed4b4e8107500765d0abe, type: 3}
+  nyanCatStruggling: {fileID: 0}
+  textBoxPrefab: {fileID: 766649028720904973, guid: fce12bfaa9905244dad4098da17cf83e, type: 3}
+  textBox: {fileID: 0}
+  text: {fileID: 0}
+  Line1Prefab: {fileID: 4535001159234487534, guid: 7bbc62b686c330b4e90ebef4184df8c6, type: 3}
+  Line1: {fileID: 0}
+  Line1Position: {x: 0, y: 0, z: 0}
+  Line1On: 0
+  Line2Prefab: {fileID: 3908712225027853214, guid: 80a997f1b01a50041a0ab98ae156c44c, type: 3}
+  Line2: {fileID: 0}
+  Line2Position: {x: 0, y: 0, z: 0}
+  Line2On: 0
+  index: 0
+  itemsCanAccess: 10
+  trashCan: {fileID: 0}
+  newTrashCan: {fileID: 0}
+  textOne: a
+  textTwo: b
+  textThree: C
+  textFour: D
+  textFive: E
+  typewriter: {fileID: 0}
+  dialogueLines:
+  - 
+  - 
+  - 
+  - 
+  - 
   canvasPrefab: {fileID: 876771724478496166, guid: a0245a407fca88343a888662704e7148, type: 3}
   canvas: {fileID: 0}
+  CanvasTransform: {fileID: 0}
   endConditionPrefab: {fileID: 5106710413530386401, guid: 37d4b3b66dc0663499303b90c7264b2d, type: 3}
   endCondition: {fileID: 0}
   damageTextPrefab: {fileID: 5106710413530386401, guid: 37d4b3b66dc0663499303b90c7264b2d, type: 3}

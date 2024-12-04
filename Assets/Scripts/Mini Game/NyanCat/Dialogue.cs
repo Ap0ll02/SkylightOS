@@ -18,16 +18,11 @@ public class Dialogue : MonoBehaviour
     public GameObject textBox;
     public TextAnimator_TMP text; 
 
-    //public string textOne = "<rainb><shake a=0.5>MUHAHAHAHA!</rainb></shake><waitfor=0.5> I have been here since 2008. You know how many IT persons have tried... and <incr>failed!!!</incr> to remove me ";
-    public string textOne = "a";
-    //public string textTwo = "Seriously<waitfor=0.5>, You know how rude it is to try and close a process! The <rainb>Rainbow Sprinkle Gall</rainb> of you people. YOU shall face my <bounce a=0.05>revenge!</bounce>";
-    public string textTwo = "b";
-    //public string textThree = "..... AND YOU WILL FACE MY REVENGE!";
-    public string textThree = "C";
-    //public string textFour = "....Really? come on... Why are the LAZERS NOT TURNING ON ...";
-    public string textFour = "D";
-    //public string textFive = "... THERE WE GO!... AS I WAS SAYING MUHAHAHA AND YOU WILL FACE MY REVENGE";
-    public string textFive = "E";
+    public string textOne = "<rainb><shake a=0.5>MUHAHAHAHA!</rainb></shake><waitfor=0.5> I have been here since 2008. You know how many IT persons have tried... and <incr>failed!!!</incr> to remove me ";
+    public string textTwo = "Seriously<waitfor=0.5>, You know how rude it is to try and close a process! The <rainb>Rainbow Sprinkle Gall</rainb> of you people. YOU shall face my <bounce a=0.05>revenge!</bounce>";
+    public string textThree = "..... AND YOU WILL FACE MY REVENGE!";
+    public string textFour = "....Really? come on... Why are the LAZERS NOT TURNING ON ...";
+    public string textFive = "... THERE WE GO!... AS I WAS SAYING MUHAHAHA AND YOU WILL FACE MY REVENGE";
 
     public TypewriterByCharacter typewriter; 
     public string[] dialogueLines = new string[5];

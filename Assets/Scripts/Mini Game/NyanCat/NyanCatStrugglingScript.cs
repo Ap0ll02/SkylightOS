@@ -28,6 +28,8 @@ public class NyanCatStrugglingScript : MonoBehaviour
 
     void Start()
     {
+        Line1 = Instantiate(Line1Prefab);
+        Line2 = Instantiate(Line2Prefab);
         if (Line1 == null || Line2 == null)
         {
             Debug.LogError("Lazer1 or Lazer2 GameObject is not assigned in the Inspector!");

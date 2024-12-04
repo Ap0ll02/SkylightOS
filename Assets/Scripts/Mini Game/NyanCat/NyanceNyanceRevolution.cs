@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
@@ -22,45 +23,43 @@ public class NyanceNyanceRevolution : AbstractBossTask
     public int winGood = 4000;
     public int winGreat = 6000;
     public int winPerfect = 7000;
-
     // Makes sure we dont exceed our arrow count  
     private int arrowCount = 0;
-
     // We Have to score the player!
     public int playerScore;
-
     // Currently we are using 4 different types of arrows
     // This is where the different types of arrow prefabs will be held.This will be invoked to give a new arrow its prefab before instanction 
     public GameObject[] arrowsTypesArray = new GameObject[4];
-
     // This is what plays the cool explosions when the player hits the arrow. We got different types so they are shoved in an array
     public GameObject[] ExplosionFeedbackPrefab = new GameObject[4];
     public GameObject[] ExplosionFeedback = new GameObject[4];
-
     // This will be the animator for the lines that will be spawned and will be used to show progression of the level
     public GameObject[] LazerPrefab = new GameObject[5];
     public GameObject[] Lazer = new GameObject[5];
-
     // Score Text Prefabs that will allow us to give some cool player feedback! Very important for the juice
     public GameObject[] scoreTextPrefab = new GameObject[4];
     public GameObject[] scoreText = new GameObject[4];
-
     // We need to spawn in our Check Arrows Prefab so the players can reference the arrows for score i.e these are the arrows used to compare for scoring metric 
     public GameObject[] checkArrowsPrefab = new GameObject[4];
     public GameObject[] checkArrows = new GameObject[4];
-    
+    // An array of all the dialogues Lines
+    public string[] dialogueLines = new string[5];
     // This is the item list we use to shake all the items out of Nyan Cat
     public GameObject[] NyanCatItems = new GameObject[40];
-    // This is the Nyan Cat that we use 
+    // This is the Nyan Cats that we will be using for our game
+    // The Nyan Cat Idle is used for the first stage
     public GameObject nyanCatIdlePrefab;
     public GameObject nyanCatIdle;
-    public GameObject nyanCatFlyingPrefab;
-    public GameObject nyanCatFlying;
-    public GameObject nyanCatStrugglingPrefab;
-    public GameObject nyanCatStruggling;
     public GameObject textBoxPrefab;
     public GameObject textBox;
     public TextAnimator_TMP text; 
+    // The Flying Nyan Cat is for the second stage of our level
+    public GameObject nyanCatFlyingPrefab;
+    public GameObject nyanCatFlying;
+    // The Struggling Nyan Cat is for the third and final stage where you shake out all his loot!
+    public GameObject nyanCatStrugglingPrefab;
+    public GameObject nyanCatStruggling;
+    // These are the lines that you must cross to shake out that Nyan cat loot! 
     public GameObject Line1Prefab;
     public GameObject Line1;
     public Vector3 Line1Position;
@@ -69,50 +68,40 @@ public class NyanceNyanceRevolution : AbstractBossTask
     public GameObject Line2;
     public Vector3 Line2Position;
     public bool Line2On = false;
+    // The index  into the Nyan Cat item array
     public int index = 0;
-    public int itemsCanAccess = 10;
+    // The amount of items that can be accessed this is set based on player performance 
+    public int itemsCanAccess;
+    public int itemsCanAccessPerfect = 40;
+    public int itemsCanAccessGreat = 20;
+    public int itemsCanAccessGood = 10;
+    public int itemsCanAccessFail = 0;
+    // The trash can used to dump nyan cat
     public GameObject trashCan;
     public GameObject newTrashCan;
     bool isTrashCanSpawned = false;
-    //public string textOne = "<rainb><shake a=0.5>MUHAHAHAHA!</rainb></shake><waitfor=0.5> I have been here since 2008. You know how many IT persons have tried... and <incr>failed!!!</incr> to remove me ";
-    public string textOne = "a";
-    //public string textTwo = "Seriously<waitfor=0.5>, You know how rude it is to try and close a process! The <rainb>Rainbow Sprinkle Gall</rainb> of you people. YOU shall face my <bounce a=0.05>revenge!</bounce>";
-    public string textTwo = "b";
-    //public string textThree = "..... AND YOU WILL FACE MY REVENGE!";
-    public string textThree = "C";
-    //public string textFour = "....Really? come on... Why are the LAZERS NOT TURNING ON ...";
-    public string textFour = "D";
-    //public string textFive = "... THERE WE GO!... AS I WAS SAYING MUHAHAHA AND YOU WILL FACE MY REVENGE";
-    public string textFive = "E";
-
+    // Different dialogues we use through out the first stage thus we have strings we are going to pass to our dialogue function 
+    public string textOne = "<rainb><shake a=0.5>MUHAHAHAHA!</rainb></shake><waitfor=0.5> I have been here since 2008. You know how many IT persons have tried... and <incr>failed!!!</incr> to remove me ";
+    public string textTwo = "Seriously<waitfor=0.5>, You know how rude it is to try and close a process! The <rainb>Rainbow Sprinkle Gall</rainb> of you people. YOU shall face my <bounce a=0.05>revenge!</bounce>";
+    public string textThree = "..... AND YOU WILL FACE MY REVENGE!";
+    public string textFour = "....Really? come on... Why are the LAZERS NOT TURNING ON ...";
+    public string textFive = "... THERE WE GO!... AS I WAS SAYING MUHAHAHA AND YOU WILL FACE MY REVENGE";
+    // The typewriter refference used to control the typewriter
     public TypewriterByCharacter typewriter; 
-    public string[] dialogueLines = new string[5];
-
-    public GameObject canvasPrefab;
     public GameObject canvas;
-    public Transform CanvasTransform;
     // This provides us with the ending text once we beat Nyan Cat. 
     public GameObject endConditionPrefab;
     public GameObject endCondition = null;
     // Currently not used 
     public GameObject damageTextPrefab;
-    
-    // This is for our flying Nyan Cat how cool!
-    public GameObject NyanCatPrefab;
-    public GameObject NyanCat = null;
-
-    // This will start the next stage of our game
-    public GameObject struggleNyanCat;
-
-    // This is the wonderful nyan cat music we play
+    public GameObject damageText;
+    // Nyan Cat song
     public AudioSource nyanCatSong;
-
     // This creates a public event for all of our keys
     public UnityEvent UpArrow;
     public UnityEvent DownArrow;
     public UnityEvent LeftArrow;
     public UnityEvent RightArrow;
-
     // All the colors we will use for scoring and end game condition text
     [SerializeField] public Color perfectColor;
     [SerializeField] public Color greatColor;
@@ -120,10 +109,8 @@ public class NyanceNyanceRevolution : AbstractBossTask
     [SerializeField] public Color missColor;
     // We create a static variable so it only holds one NyanceNyanceRevalution variable at a time 
     private static NyanceNyanceRevolution NyanceNyanceRevolutionSingleton;
-
     // Its Contstructor is private so we can present others from instantiating the object.
     private NyanceNyanceRevolution() {}
-
     // We have a method that will enable others to get our singleton instance If you want to know how a singleton works let me know
     // Its hard to describe its behavior in comments, however it just ensures only one instance of it exist at a time!
     public static NyanceNyanceRevolution GetInstance()
@@ -178,7 +165,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
 
     public override void startTask()
     {
-
+        throw new Exception("The start task is not implimented for the Nyan Cat mini game");
     }
 
     // Ask the hazard manager if our task can progress
@@ -197,11 +184,12 @@ public class NyanceNyanceRevolution : AbstractBossTask
     // this will request our manager to start making hazards
     public override void startHazards()
     { 
-        Stage = 1;
         StageOne();
     }
+    // This is stage one set up which will spawn all the items we need for the first stage 
     public void StageOne()
     {
+        Stage = 1;
         if (nyanCatIdle == null)
             nyanCatIdle = Instantiate(nyanCatIdlePrefab);
         if(nyanCatIdle == null)
@@ -221,38 +209,44 @@ public class NyanceNyanceRevolution : AbstractBossTask
                 Debug.LogError("TypewriterByCharacter component is not assigned or missing, put it on Dialogue object!");
             }
         }
+        if (dialogueLines == null || dialogueLines.Length == 0)
+        {
+            dialogueLines = new string[] { textOne, textTwo, textThree, textFour, textFive };
+        }
     }
 
-    //Only Needs To be called once 
+    // This is the set up for stage two it only needs to be called once
     public void StageTwo()
     {
         Stage = 2;
+        StageOneOff();
         nyanCatSong = GetComponent<AudioSource>();
+        if (nyanCatSong == null)
+            Debug.LogError("we cant instantiate nyanCatSong");
         SpawnLazers();
         SpawnCheckArrows();
         SpawnExplosionFeedback();
         SpawnScoreText();
-        endCondition = Instantiate(endConditionPrefab);
-        NyanCat = Instantiate(NyanCatPrefab);
-        canvas = Instantiate(canvasPrefab);
-        CanvasTransform = canvas.transform;
+        nyanCatFlying = Instantiate(nyanCatFlyingPrefab);
     }
+    // This is the set up for the stage three it only needs to be called once 
     public void StageThree()
     {
+        Stage = 3;
+        StageTwoOff();
+        nyanCatStruggling = Instantiate(nyanCatStrugglingPrefab);
+        if (nyanCatStruggling == null)
+            Debug.LogError("Cant instantiate NyanCatStruggling");
         Line1 = Instantiate(Line1Prefab);
+        if (Line1 == null)
+            Debug.LogError("Cant Instantiate Line 1");
         Line2 = Instantiate(Line2Prefab);
-        if (Line1 == null || Line2 == null)
-        {
-            Debug.LogError("Lazer1 or Lazer2 GameObject is not assigned in the Inspector!");
-        }
+        if (Line2 == null)
+            Debug.LogError("Cant instantiate Line 2!");
         var Lazer1transform = Line1.GetComponent<Transform>();
         var Lazer2transform = Line2.GetComponent<Transform>();
         Line1Position = Lazer1transform.position;
         Line2Position = Lazer2transform.position;
-        //Destroy(NyanCat);
-        //Destroy(endCondition);
-        //Instantiate(struggleNyanCat);
-        //gameObject.SetActive(false);
     }
 
     // This spawns in our prefabs and sets the checkArrows array equal to the instantiated object 
@@ -278,7 +272,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
     {
         for (int i = 0; i < scoreTextPrefab.Length; i++)
         {
-            scoreText[i] = Instantiate(scoreTextPrefab[i],CanvasTransform);
+            scoreText[i] = Instantiate(scoreTextPrefab[i],canvas.transform);
         }
     }
 
@@ -551,6 +545,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
         {
             Debug.LogError("We are trying to call componentes from an uninstantated object. Drag DamageText prefab into scene then into our damaged text object into nyancatbosstask");
         }
+
         var textMesh = damageTextPrefab.GetComponent<TextMeshProUGUI>();
         textMesh.text = value.ToString();
         // Assign the new material to the TextMeshProUGUI component
@@ -569,9 +564,9 @@ public class NyanceNyanceRevolution : AbstractBossTask
                 break;
         }
         // Spawns damage text where Nyan Cat is currently located 
-        Instantiate(damageTextPrefab, NyanCat.transform.position, Quaternion.identity, NyanCat.transform);
+        //Instantiate(damageTextPrefab, NyanCat.transform.position, Quaternion.identity, NyanCat.transform);
     }
-
+    // This snaps nyan cat to our mouse 
     void FollowMouse()
     {
         // His line retrieves the current position of the mouse cursor in screen space (measured in pixels). The Input.mousePosition property returns a Vector3 
@@ -581,9 +576,9 @@ public class NyanceNyanceRevolution : AbstractBossTask
         // This line converts the mousePosition from screen space to world space. The ScreenToWorldPoint method takes a Vector3 is screen space and returns a Vector 3 in world space 
         Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
         // This just places our Nyan Cat in the correct place 
-        transform.position = worldPosition;
+        nyanCatStruggling.transform.position = worldPosition;
     }
-
+    // We use this function to drop items from Nyan Cat 
     public void dropItem()
     {
         // (index < itemsCanAccess): Check if the current index is less than the number of items that can be accessed.
@@ -617,7 +612,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
             TrashCat();
         }
     }
-
+    // Used to put the cat in the trash! that is pretty cool
     public void TrashCat()
     {
         if (isTrashCanSpawned == false)
@@ -633,19 +628,12 @@ public class NyanceNyanceRevolution : AbstractBossTask
             float distance = Mathf.Sqrt(distanceX * distanceX + distanceY * distanceY);
             if (distance <= 2.0f)
             {
-                EndGame();
+                // This will set the case equal to four which will be the ending case for the game. 
+                Stage = 4; 
             }
         }
     }
-    public void EndGame()
-    {
-        Destroy(Line1);
-        Destroy(Line2);
-        Destroy(newTrashCan);
-        Destroy(gameObject);
-    }
     // This function simply sets all of the Arrows off 
-
     public void LazerOff()
     {
         foreach (var laser in Lazer)
@@ -653,6 +641,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
             Destroy(laser);
         }
     }
+    // Turns off our check arrows
     public void CheckArrowsOff()
     {
         foreach (var checkArrow in checkArrows)
@@ -660,7 +649,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
             Destroy(checkArrow);
         }
     }
-
+    // Turns off the explosion feed back 
     public void ExplosionFeedbackOff()
     {
         foreach (var explosionFeedback in ExplosionFeedback)
@@ -668,7 +657,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
             Destroy(explosionFeedback);
         }
     }
-
+    // Turns off the score text
     public void ScoreTextOff()
     {
         foreach (var text in scoreText)
@@ -676,49 +665,40 @@ public class NyanceNyanceRevolution : AbstractBossTask
             Destroy(text);
         }
     }
-
-    public void TurnOff()
-    {
-        Destroy(nyanCatIdle);
-        Destroy(textBox);
-        text.textFull = " ";
-        //Destroy(typewriter);
-    }
-
     // This function checks for the win condition and spawns the corresponding text based on score 
     void CheckWin()
     {
+        endCondition = Instantiate(endConditionPrefab);
         // If it is Null we have a Problem
-        if (endConditionPrefab == null)
+        if (endCondition == null)
         {
             Debug.LogError("I would Recommend you put the textPrefab in the scene, just set it inactive");
         }
         else
         {
             // We need to grab the relevant text component from the Instantiated prefab 
-            var text = endConditionPrefab.GetComponent<TextMeshPro>();
+            var text = endCondition.GetComponent<TextMeshPro>();
             // Check if player score is between winGood and winGreat
             if (playerScore >= winGood && playerScore < winGreat)
             {
                 // the tags like shake and a are behavior tags shake causes text to shake a is the amplitude of the shake
                 text.text = "<shake a=0.05>GOOD</shake>";
                 text.color = goodColor;
-                endConditionPrefab.SetActive(true);
-
+                itemsCanAccess = itemsCanAccessPerfect;
             }
             // Check if player score is between winGreat and winPerfect
             else if(playerScore >= winGreat && playerScore <= winPerfect)
             {
                 text.text = "<shake a=0.2>GREAT</shake>";
                 text.color = greatColor;
-                endConditionPrefab.SetActive(true);
+                itemsCanAccess = itemsCanAccessGreat;
             }
             // Check if player score is greater than or equal to winPerfect
             else if (playerScore >= winPerfect)
             {
                 text.text = "<Incr a=0.5><shake a=0.2>PERFECT</shake></incr>";
                 text.color = perfectColor;
-                endConditionPrefab.SetActive(true);
+                itemsCanAccess = itemsCanAccessGood;
             }
             // If player score is less than winGood then we lose
             else
@@ -726,16 +706,12 @@ public class NyanceNyanceRevolution : AbstractBossTask
                 text.text = "<bounce a=0.02>Game Over!!!!</bounce>";
                 text.color = missColor;
                 endConditionPrefab.SetActive(true);
+                itemsCanAccess = itemsCanAccessFail;
             }
         }
-        // destroy all of our game objects 
-        LazerOff();
-        CheckArrowsOff();
-        ExplosionFeedbackOff();
-        ScoreTextOff();
+        // Start Stage Three
         StageThree();
     }
-
     // A simple coroutine to play are music
     IEnumerator PlayMusic()
     {
@@ -749,13 +725,13 @@ public class NyanceNyanceRevolution : AbstractBossTask
         yield return new WaitForSeconds(4f);
         CheckWin();
     }
-
+    // Corutine that will be used for the shake cat
     IEnumerator ShakeNyanCat()
     {
         yield return new WaitForSeconds(4f);
 
     }
-    //Create a coroutine that will be used to itterate through each dialogue line 
+    // Create a coroutine that will be used to itterate through each dialogue line 
     IEnumerator playDialogue()
     {
         // Go into each string in the dialogueLines array
@@ -773,10 +749,38 @@ public class NyanceNyanceRevolution : AbstractBossTask
                 // We then wait for a couple of seconds before loading in the next string
                 yield return new WaitForSeconds(0.5f);
             }
-            
         }
-        TurnOff();
+        // Start stage two after the end of stage one
         StageTwo();
     }
-    
+    // Destroy all of the stage one game objects
+    public void StageOneOff()
+    {
+        Destroy(nyanCatIdle);
+        Destroy(textBox);
+    }
+    // Destroy all of the stage two game objects
+    public void StageTwoOff()
+    {
+        StageOneOff();
+        LazerOff();
+        CheckArrowsOff();
+        ExplosionFeedbackOff();
+        ScoreTextOff();
+        Destroy(nyanCatFlying);
+    }
+    // Destroy all of the stage three game objects 
+    public void StageThreeOff()
+    {
+        StageTwoOff();
+    }
+    // Destroy all of the stage four game objects
+    public void EndGame()
+    {
+        Destroy(Line1);
+        Destroy(Line2);
+        Destroy(newTrashCan);
+        Destroy(gameObject);
+    }
 }
+

@@ -11,13 +11,18 @@ public class LockdownCanvas : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(CheckLoadingComplete());
+        isComplete = false;
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    void OnEnable()
+    {
+        StartCoroutine(CheckLoadingComplete());
     }
 
     private IEnumerator CheckLoadingComplete()
@@ -29,5 +34,12 @@ public class LockdownCanvas : MonoBehaviour
         // Loading is complete, you can add additional actions here if needed
         Debug.Log("Loading complete.");
         isComplete = true;
+    }
+
+    public void ResetLoading()
+    {
+        isComplete = false;
+        loadingScript.isLoaded = false;
+        loadingScript.Reset();
     }
 }

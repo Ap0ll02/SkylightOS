@@ -56,6 +56,7 @@ public class LockdownManager : AbstractManager
         {
             yield return new WaitForSeconds(0.5f); // Check every 0.5 seconds
         }
+        lockdownCanvas.ResetLoading();
         StopHazard();
     }
 

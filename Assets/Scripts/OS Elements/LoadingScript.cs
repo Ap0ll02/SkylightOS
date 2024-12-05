@@ -33,7 +33,7 @@ public class LoadingScript : MonoBehaviour
     readonly float clickModifier = 1f;
     readonly float drainSpeed = 0.0005f;
 
-    public float perthiefTime;
+    public float perthiefTime = 1;
 
     /// @brief Start the loading bar, rather than making IEnum public
     public void StartLoading()
@@ -55,7 +55,7 @@ public class LoadingScript : MonoBehaviour
         {
             progBar.fillAmount += (clickFillSpeed * clickModifier);
         }
-        else if(canContinue && progBar.fillAmount > 1)
+        else if(canContinue && progBar.fillAmount >= 1)
         {
             progBar.fillAmount = 1;
             isLoaded = true;

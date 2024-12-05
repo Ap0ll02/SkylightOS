@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8678513436782558100
 RectTransform:
   m_ObjectHideFlags: 0
@@ -28,7 +28,7 @@ RectTransform:
   m_GameObject: {fileID: 4366849566078826834}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -3.0188031}
-  m_LocalScale: {x: 108, y: 108, z: 108}
+  m_LocalScale: {x: 11663.999, y: 11663.999, z: 11663.999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -146,15 +146,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92024d02b9c3a4743ad938e01b04ffd5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hazardManagers: []
-  isComplete: 0
-  taskTitle: Default title, please set in task
-  taskDescription: Default Description, please set in task
-  Stage: 1
-  winGood: 4000
-  winGreat: 6000
-  winPerfect: 7000
-  playerScore: 0
+  canvas: {fileID: 0}
   arrowsTypesArray:
   - {fileID: 7937669890406625025, guid: 5bb32642f73a98f41bc7b6d8465bbf9d, type: 3}
   - {fileID: 6013189756746450149, guid: b4145c399d9662343906e5b0ae2ee086, type: 3}
@@ -209,46 +201,51 @@ MonoBehaviour:
   - 
   - 
   NyanCatItems:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 6431475270784175736, guid: f82fc45eee16661418fdf6c98c34b1e6, type: 3}
+  - {fileID: 136571087018354393, guid: d0d0e595071a13f49a87c8d4631865d2, type: 3}
+  - {fileID: 6604241166471846565, guid: 61ed6c50f0d3c7646b9ece72c9db1f6e, type: 3}
+  - {fileID: 1204202907997971572, guid: 38cf127dc6ae86c429c1d03d5a6b238f, type: 3}
+  - {fileID: 2989332442074911233, guid: 6b4288366bebccf4698dccb442783c56, type: 3}
+  - {fileID: 8528735114839552378, guid: 6d016da76fa7922448b243adca5a06fa, type: 3}
+  - {fileID: 7148222438295352094, guid: 077855a045c9b7d4a9c24367bd29c2d8, type: 3}
+  - {fileID: 7569944740088301223, guid: fb2afcf9c72e088409783bb2ec899f89, type: 3}
+  - {fileID: 4717955936380214076, guid: db2aefc84518f55468a699890d4dd22b, type: 3}
+  - {fileID: 9074733778819533889, guid: 85f342febfc190e49835b616e2a6f685, type: 3}
+  - {fileID: 5018686148733293688, guid: d0e6eba042b84d2499d537d27cf03f1d, type: 3}
+  - {fileID: 6850701040307439531, guid: 530c7f5b6b2296f4db70e1a6cf7b2003, type: 3}
+  - {fileID: 2185963372796771219, guid: e2fb40ca42c155142be3a64fb6d8642f, type: 3}
+  - {fileID: 6416602637727982235, guid: 78624844e951985408b39695b825db17, type: 3}
+  - {fileID: 1510802327522339087, guid: 6e33d3043c889454280c99ae2a312c90, type: 3}
+  - {fileID: 3615795275554535417, guid: 8622eaca186e17646a56637c9efe31b4, type: 3}
+  - {fileID: 751208265395183240, guid: f964d62daf379e544bc1803052a3b521, type: 3}
+  - {fileID: 3900797194378480880, guid: 0453c2b76f4b248458c59fe9daff695d, type: 3}
+  - {fileID: 7355900771787277915, guid: fa8cabfcccc4e774b9e284fc842664d2, type: 3}
+  - {fileID: 8802547284444666936, guid: 0f8fa377b9a26dc44a645cf4421e9386, type: 3}
+  - {fileID: 3737632841978174538, guid: f0cbcdfe318406d41b1694c6c73b7053, type: 3}
+  - {fileID: 4522567208871890398, guid: c5e1c2cac62324c449be088e17dc43f0, type: 3}
+  - {fileID: 5520458278864751481, guid: 3422f77a26bf20046973f5239bdbc779, type: 3}
+  - {fileID: 815811639468402285, guid: 7b065ce0e06dd6f40afcef1c1642ef04, type: 3}
+  - {fileID: 7589792764213209809, guid: 902f66005e2080040b5d8d766c8a835f, type: 3}
+  - {fileID: 213307643693193007, guid: 697f5651438e75a45a6678f60b8fbb8a, type: 3}
+  - {fileID: 7462746016043658971, guid: 2096733cd7a6d244e9075b265fab85fb, type: 3}
+  - {fileID: 416008198222009538, guid: e3e32de2fbd8b5f4cab95ac2494b2ae5, type: 3}
+  - {fileID: 6024271271209638091, guid: 0ab401b8ae535664cbec646592406479, type: 3}
+  - {fileID: 7265230721059562822, guid: e2eaa8353fa204e4ca32699c0e95dbca, type: 3}
+  - {fileID: 2610890036288022398, guid: d6e144764ec2d884ca6df7b66ebe7b33, type: 3}
+  - {fileID: 4598042697962496500, guid: e12be1ff106c87c47b179782caa9e35c, type: 3}
+  - {fileID: 4113228686936540173, guid: 1811d1df18cd29649948c07e1a9fad4d, type: 3}
+  - {fileID: 2607509422511722784, guid: f48c9720508a5f94292ed01d9ff221ab, type: 3}
+  - {fileID: 2607509422511722784, guid: f48c9720508a5f94292ed01d9ff221ab, type: 3}
+  - {fileID: 3540133357477195961, guid: 9892a0b7cb95d5c42b8b618540ebf5e3, type: 3}
+  - {fileID: 1158412644151240586, guid: 2069d8199b87abc45ac9d41e019fe88f, type: 3}
+  - {fileID: 3639537945923414112, guid: 92b9ed0d560caf04fad3956a839839f9, type: 3}
+  - {fileID: 2282382417136026312, guid: 004232322f4d44c4f95e34e1854e9d7a, type: 3}
+  - {fileID: 6431475270784175736, guid: f82fc45eee16661418fdf6c98c34b1e6, type: 3}
+  Stage: 1
+  winGood: 4000
+  winGreat: 6000
+  winPerfect: 7000
+  playerScore: 0
   textOne: <rainb><shake a=0.5>MUHAHAHAHA!</rainb></shake><waitfor=0.5> I have been
     here since 2008. You know how many IT people have tried and <incr>failed</incr>
     to remove me!
@@ -259,13 +256,13 @@ MonoBehaviour:
     Then use  <incr>LAZERS</incr> to blow up your anti virus software
   textFive: 'Now watch <waitfor=0.5> as I remove your silly anti virus software.<rainb><waitfor=0.5><shake
     a=0.5>Then take over Dorthys computer!</shake><rainb> '
-  nyanCatIdlePrefab: {fileID: 3803836691575881888, guid: a938d6496a296e144969fc6fa2a31985, type: 3}
-  nyanCatIdle: {fileID: 0}
   textBoxPrefab: {fileID: 766649028720904973, guid: fce12bfaa9905244dad4098da17cf83e, type: 3}
   textBox: {fileID: 0}
   bossTextPrefab: {fileID: 4451863288882869826, guid: b4918809e0f11d94fa2047427be7b2f5, type: 3}
   bossText: {fileID: 0}
   text: {fileID: 0}
+  nyanCatIdlePrefab: {fileID: 3803836691575881888, guid: a938d6496a296e144969fc6fa2a31985, type: 3}
+  nyanCatIdle: {fileID: 0}
   nyanCatFlyingPrefab: {fileID: 4160345928628560801, guid: 85b49388cb5194a4ba8cf3af30bfde15, type: 3}
   nyanCatFlying: {fileID: 0}
   nyanCatStrugglingPrefab: {fileID: 71555937651404543, guid: 2242f5c92b0ed4b4e8107500765d0abe, type: 3}
@@ -287,7 +284,6 @@ MonoBehaviour:
   trashCan: {fileID: 744738323277329013, guid: 032fef27f0c74864dbc9b977871aba85, type: 3}
   newTrashCan: {fileID: 0}
   typewriter: {fileID: 0}
-  canvas: {fileID: 0}
   endConditionPrefab: {fileID: 5106710413530386401, guid: 37d4b3b66dc0663499303b90c7264b2d, type: 3}
   endCondition: {fileID: 0}
   damageTextPrefab: {fileID: 5106710413530386401, guid: 37d4b3b66dc0663499303b90c7264b2d, type: 3}

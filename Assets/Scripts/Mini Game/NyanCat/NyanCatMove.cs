@@ -1,7 +1,7 @@
 using UnityEngine;
+
 public class NyanCatMove : MonoBehaviour
 {
-
     // The speed of the goose which is randomized between 1 and 6
     [SerializeField] private float speed = 5;
     // The acceleration which only applies to the gooses speed during the attack state
@@ -14,18 +14,9 @@ public class NyanCatMove : MonoBehaviour
 
     public int index;
 
-    public Vector3[] positionArray = new Vector3[4];
     void Start()
     {
-        positionArray = new Vector3[4] 
-        {
-           new Vector3(21f,-12.85f,1f),
-           new Vector3(-28,12.85f,1),
-           new Vector3(21,-6.09f,1),
-           new Vector3(-28,6.09f,1), 
-        };
-        index = 0;
-        targetRoam = positionArray[index];
+        SetNewTarget();
     }
 
     // Update is called once per frame
@@ -39,18 +30,24 @@ public class NyanCatMove : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, targetRoam, speed * Time.deltaTime);
         if (Vector3.Distance(transform.position, targetRoam) <= 0.1f)
         {
-            position();
+            SetNewTarget();
         }
     }
 
-// Helper roam functions
-
-    public void position()
+    void SetNewTarget()
     {
-        index++;
-        if (index == 4)
-            index = 0;
-        targetRoam = positionArray[index];
+        float newX;
+        float newY = Random.Range(-8f, 5f);
+        if (transform.position.x > 0)
+            newX = -13.0f;
+        else
+        {
+            newX = 13.0f;
+        }
+        targetRoam = new Vector3(newX, newY, 1f);
+        // Flip the sprite based on the direction
+        Vector3 localScale = transform.localScale;
+        localScale.x = (newX < 0) ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
+        transform.localScale = localScale;
     }
 }
-

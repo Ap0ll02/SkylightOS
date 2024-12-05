@@ -10,11 +10,19 @@ using Random = UnityEngine.Random;
 /// <summary>
 /// Author Quinn Contaldi
 /// FIRST NOTE!!!!!!! THIS IS A SINGLETON CLASS. There should only be one!
-/// Nyan cat boss is a rhythem game and the short version of the song will be used
-/// Thus the arrows will spawn on half the nyan cat BPM 72 arrows per minute for game jurnalisim mode but 142 for real gamers
-/// Different Types of arrows will be spawned thus a generic arrow class is used
+/// This Singleton class is massive, The reason it packs so much inside of it, instead of creating a bunch of different classes is for several reasons
+/// 1. We want to create a mini game that is as "drag and drop" as possible. The Singleton design pattern is perfect for this job
+/// 2. We want to make sure that the boss is closed for modification, but open to extension. THe core functionality of stages are containined in Nyan cat
+/// However it is very easy to add additional class references to the boss fight allowing for easy extension
+/// 3. This one class should be the manager for each stage of the boss fight. All auxillary mechanics should be implimented in their own classes and referenced
+/// here. Meaning this is the class that should be controlling all of the logic for the nyan cat boss fight. For Example the arrow class!
+/// The arrows class is a generic class that will handle arrows spawning and behavior. However NyanceNyanceRevolution uses this arrow abstraction
+/// for the logic of its game. Arrows will spawn half the nyan cat BPM 72 arrows per minute for baby waaaaaaa waaaaaa mode but 142 for real chad gamers
+/// Different Types of arrows will be spawned, which have their own specific behavior, Nyan cat does not care about the specific implimentation
+/// All it cares about is the generic abstracted arrow behavior, that an arrow exist, the arrow subscribes a key input event, and it has a score method.
+/// TLDR NyanceNyanceRevolution should impliment abstract game logic, axulliary classes should impliment specific behavior.
 /// </summary>
-public class NyanceNyanceRevolution : AbstractBossTask
+public class NyanceNyanceRevolution : MonoBehaviour
 {
     // Must be assigned so different prefabs can be spawned in
     public GameObject canvas;
@@ -163,30 +171,6 @@ public class NyanceNyanceRevolution : AbstractBossTask
                 Destroy(gameObject);
                 break;
         }
-    }
-
-    public override void startTask()
-    {
-        throw new Exception("The start task is not implimented for the Nyan Cat mini game");
-    }
-
-    // Ask the hazard manager if our task can progress
-    // Idea use a percentage to slow down the task progress instead of completely stopping it
-    public override void checkHazards()
-    {
-        //meow
-    }
-
-    // This will request the manager to stop / end a hazard
-    public override void stopHazards()
-    {
-        Stage = 4;
-    }
-
-    // this will request our manager to start making hazards
-    public override void startHazards()
-    { 
-        StageOne();
     }
     // This is stage one set up which will spawn all the items we need for the first stage 
     public void StageOne()
@@ -586,7 +570,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
         // (index < itemsCanAccess): Check if the current index is less than the number of items that can be accessed.
         // Check if the y-coordinate of the NyanCatStrugglingScript GameObject's position is greater than the y-coordinate of the lazer1 GameObject's position.
         // •(Lazer1On == false): Check if Lazer1On is false (i.e., the first laser is not on).
-        if ((index < itemsCanAccess) && (transform.position.y > Line1Position.y) && (Line1On == false))
+        if ((index < itemsCanAccess) && (nyanCatStruggling.transform.position.y > Line1Position.y) && (Line1On == false))
         {
             var spawnedItem = Instantiate(NyanCatItems[index]);
             spawnedItem.SetActive(true);
@@ -598,7 +582,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
 
         // Since Laser2 is at a negative y thus we need to check if the position is less then this y
         // 
-        if ((index < itemsCanAccess) && (transform.position.y < Line2Position.y) && (Line2On == false))
+        if ((index < itemsCanAccess) && (nyanCatStruggling.transform.position.y < Line2Position.y) && (Line2On == false))
         {
             var spawnedItem = Instantiate(NyanCatItems[index]);
             spawnedItem.SetActive(true);
@@ -670,7 +654,7 @@ public class NyanceNyanceRevolution : AbstractBossTask
     // This function checks for the win condition and spawns the corresponding text based on score 
     void CheckWin()
     {
-        endCondition = Instantiate(endConditionPrefab);
+        endCondition = Instantiate(endConditionPrefab, canvas.transform);
         // If it is Null we have a Problem
         if (endCondition == null)
         {

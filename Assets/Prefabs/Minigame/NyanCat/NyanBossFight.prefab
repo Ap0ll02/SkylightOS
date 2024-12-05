@@ -11,28 +11,33 @@ GameObject:
   - component: {fileID: 8678513436782558100}
   - component: {fileID: 5823024392941548495}
   - component: {fileID: 2157510721454017225}
-  m_Layer: 0
+  - component: {fileID: 4531514230799709005}
+  m_Layer: 9
   m_Name: NyanBossFight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &8678513436782558100
-Transform:
+--- !u!224 &8678513436782558100
+RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4366849566078826834}
-  serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.22755155, y: 23.036684, z: -3.0188031}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -3.0188031}
+  m_LocalScale: {x: 108, y: 108, z: 108}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.22755155, y: 23.036684}
+  m_SizeDelta: {x: 20, y: 5}
+  m_Pivot: {x: 0.5, y: 0.5}
 --- !u!82 &5823024392941548495
 AudioSource:
   m_ObjectHideFlags: 0
@@ -145,7 +150,7 @@ MonoBehaviour:
   isComplete: 0
   taskTitle: Default title, please set in task
   taskDescription: Default Description, please set in task
-  Stage: 0
+  Stage: 1
   winGood: 4000
   winGreat: 6000
   winPerfect: 7000
@@ -197,6 +202,12 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  dialogueLines:
+  - 
+  - 
+  - 
+  - 
+  - 
   NyanCatItems:
   - {fileID: 0}
   - {fileID: 0}
@@ -238,16 +249,27 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  NyanceNyanceSingleton: {fileID: 0}
+  textOne: <rainb><shake a=0.5>MUHAHAHAHA!</rainb></shake><waitfor=0.5> I have been
+    here since 2008. You know how many IT people have tried and <incr>failed</incr>
+    to remove me!
+  textTwo: Seriously<waitfor=0.5>, You know how rude it is to try and close a process!<waitfor=0.5>
+    The <rainb>Rainbow Sprinkle Gall</rainb> of you people!
+  textThree: 'NOW YOU WILL FACE THE JUDGEMENT OF NYAN CAT! '
+  textFour: I will use my <rainb>rainbow arrows</rainb>to break through your security.
+    Then use  <incr>LAZERS</incr> to blow up your anti virus software
+  textFive: 'Now watch <waitfor=0.5> as I remove your silly anti virus software.<rainb><waitfor=0.5><shake
+    a=0.5>Then take over Dorthys computer!</shake><rainb> '
   nyanCatIdlePrefab: {fileID: 3803836691575881888, guid: a938d6496a296e144969fc6fa2a31985, type: 3}
   nyanCatIdle: {fileID: 0}
+  textBoxPrefab: {fileID: 766649028720904973, guid: fce12bfaa9905244dad4098da17cf83e, type: 3}
+  textBox: {fileID: 0}
+  bossTextPrefab: {fileID: 4451863288882869826, guid: b4918809e0f11d94fa2047427be7b2f5, type: 3}
+  bossText: {fileID: 0}
+  text: {fileID: 0}
   nyanCatFlyingPrefab: {fileID: 4160345928628560801, guid: 85b49388cb5194a4ba8cf3af30bfde15, type: 3}
   nyanCatFlying: {fileID: 0}
   nyanCatStrugglingPrefab: {fileID: 71555937651404543, guid: 2242f5c92b0ed4b4e8107500765d0abe, type: 3}
   nyanCatStruggling: {fileID: 0}
-  textBoxPrefab: {fileID: 766649028720904973, guid: fce12bfaa9905244dad4098da17cf83e, type: 3}
-  textBox: {fileID: 0}
-  text: {fileID: 0}
   Line1Prefab: {fileID: 4535001159234487534, guid: 7bbc62b686c330b4e90ebef4184df8c6, type: 3}
   Line1: {fileID: 0}
   Line1Position: {x: 0, y: 0, z: 0}
@@ -258,29 +280,18 @@ MonoBehaviour:
   Line2On: 0
   index: 0
   itemsCanAccess: 10
-  trashCan: {fileID: 0}
+  itemsCanAccessPerfect: 40
+  itemsCanAccessGreat: 20
+  itemsCanAccessGood: 10
+  itemsCanAccessFail: 0
+  trashCan: {fileID: 744738323277329013, guid: 032fef27f0c74864dbc9b977871aba85, type: 3}
   newTrashCan: {fileID: 0}
-  textOne: a
-  textTwo: b
-  textThree: C
-  textFour: D
-  textFive: E
   typewriter: {fileID: 0}
-  dialogueLines:
-  - 
-  - 
-  - 
-  - 
-  - 
-  canvasPrefab: {fileID: 876771724478496166, guid: a0245a407fca88343a888662704e7148, type: 3}
   canvas: {fileID: 0}
-  CanvasTransform: {fileID: 0}
   endConditionPrefab: {fileID: 5106710413530386401, guid: 37d4b3b66dc0663499303b90c7264b2d, type: 3}
   endCondition: {fileID: 0}
   damageTextPrefab: {fileID: 5106710413530386401, guid: 37d4b3b66dc0663499303b90c7264b2d, type: 3}
-  NyanCatPrefab: {fileID: 4160345928628560801, guid: 85b49388cb5194a4ba8cf3af30bfde15, type: 3}
-  NyanCat: {fileID: 0}
-  struggleNyanCat: {fileID: 71555937651404543, guid: 2242f5c92b0ed4b4e8107500765d0abe, type: 3}
+  damageText: {fileID: 0}
   nyanCatSong: {fileID: 5823024392941548495}
   UpArrow:
     m_PersistentCalls:
@@ -298,3 +309,45 @@ MonoBehaviour:
   greatColor: {r: 0, g: 0.14500093, b: 1, a: 1}
   goodColor: {r: 0, g: 1, b: 0.18419456, a: 1}
   missColor: {r: 1, g: 0.04185652, b: 0, a: 1}
+--- !u!23 &4531514230799709005
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4366849566078826834}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -4202423924150976573, guid: 52180da4d46b96d4aa42a83d7c1470b2, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

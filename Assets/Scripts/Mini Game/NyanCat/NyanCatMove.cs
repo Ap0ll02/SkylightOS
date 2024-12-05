@@ -48,7 +48,7 @@ public class NyanCatMove : MonoBehaviour
     public void position()
     {
         index++;
-        if (index == 5)
+        if (index == 4)
             index = 0;
         targetRoam = positionArray[index];
     }

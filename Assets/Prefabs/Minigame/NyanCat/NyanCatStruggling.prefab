@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3370299055043961783}
   - component: {fileID: 4289791415878387912}
   - component: {fileID: 8943109483797065182}
-  - component: {fileID: 2765537501908533144}
   m_Layer: 0
   m_Name: NyanCatStruggling
   m_TagString: Untagged
@@ -93,8 +92,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1862737011
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 2143135839, guid: 25209b9a27fff49439f124395e2b3911, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -107,59 +106,3 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!114 &2765537501908533144
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 71555937651404543}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 75a84663b5d2fc24ba9821cc1ec33886, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Line1Prefab: {fileID: 4535001159234487534, guid: 7bbc62b686c330b4e90ebef4184df8c6, type: 3}
-  Line1: {fileID: 0}
-  Line1Position: {x: 0, y: 0, z: 0}
-  Line1On: 0
-  Line2Prefab: {fileID: 3908712225027853214, guid: 80a997f1b01a50041a0ab98ae156c44c, type: 3}
-  Line2: {fileID: 0}
-  Line2Position: {x: 0, y: 0, z: 0}
-  Line2On: 0
-  NyanCatItems:
-  - {fileID: 9074733778819533889, guid: 85f342febfc190e49835b616e2a6f685, type: 3}
-  - {fileID: 5018686148733293688, guid: d0e6eba042b84d2499d537d27cf03f1d, type: 3}
-  - {fileID: 6850701040307439531, guid: 530c7f5b6b2296f4db70e1a6cf7b2003, type: 3}
-  - {fileID: 6416602637727982235, guid: 78624844e951985408b39695b825db17, type: 3}
-  - {fileID: 2185963372796771219, guid: e2fb40ca42c155142be3a64fb6d8642f, type: 3}
-  - {fileID: 4717955936380214076, guid: db2aefc84518f55468a699890d4dd22b, type: 3}
-  - {fileID: 1510802327522339087, guid: 6e33d3043c889454280c99ae2a312c90, type: 3}
-  - {fileID: 3615795275554535417, guid: 8622eaca186e17646a56637c9efe31b4, type: 3}
-  - {fileID: 751208265395183240, guid: f964d62daf379e544bc1803052a3b521, type: 3}
-  - {fileID: 3900797194378480880, guid: 0453c2b76f4b248458c59fe9daff695d, type: 3}
-  - {fileID: 7355900771787277915, guid: fa8cabfcccc4e774b9e284fc842664d2, type: 3}
-  - {fileID: 8802547284444666936, guid: 0f8fa377b9a26dc44a645cf4421e9386, type: 3}
-  - {fileID: 3737632841978174538, guid: f0cbcdfe318406d41b1694c6c73b7053, type: 3}
-  - {fileID: 4522567208871890398, guid: c5e1c2cac62324c449be088e17dc43f0, type: 3}
-  - {fileID: 5520458278864751481, guid: 3422f77a26bf20046973f5239bdbc779, type: 3}
-  - {fileID: 815811639468402285, guid: 7b065ce0e06dd6f40afcef1c1642ef04, type: 3}
-  - {fileID: 7569944740088301223, guid: fb2afcf9c72e088409783bb2ec899f89, type: 3}
-  - {fileID: 815811639468402285, guid: 7b065ce0e06dd6f40afcef1c1642ef04, type: 3}
-  - {fileID: 7589792764213209809, guid: 902f66005e2080040b5d8d766c8a835f, type: 3}
-  - {fileID: 213307643693193007, guid: 697f5651438e75a45a6678f60b8fbb8a, type: 3}
-  - {fileID: 416008198222009538, guid: e3e32de2fbd8b5f4cab95ac2494b2ae5, type: 3}
-  - {fileID: 213307643693193007, guid: 697f5651438e75a45a6678f60b8fbb8a, type: 3}
-  - {fileID: 7265230721059562822, guid: e2eaa8353fa204e4ca32699c0e95dbca, type: 3}
-  - {fileID: 6024271271209638091, guid: 0ab401b8ae535664cbec646592406479, type: 3}
-  - {fileID: 6431475270784175736, guid: f82fc45eee16661418fdf6c98c34b1e6, type: 3}
-  - {fileID: 8528735114839552378, guid: 6d016da76fa7922448b243adca5a06fa, type: 3}
-  - {fileID: 7148222438295352094, guid: 077855a045c9b7d4a9c24367bd29c2d8, type: 3}
-  - {fileID: 6416602637727982235, guid: 78624844e951985408b39695b825db17, type: 3}
-  - {fileID: 6604241166471846565, guid: 61ed6c50f0d3c7646b9ece72c9db1f6e, type: 3}
-  - {fileID: 6431475270784175736, guid: f82fc45eee16661418fdf6c98c34b1e6, type: 3}
-  - {fileID: 5018686148733293688, guid: d0e6eba042b84d2499d537d27cf03f1d, type: 3}
-  index: 0
-  itemsCanAccess: 29
-  trashCan: {fileID: 744738323277329013, guid: 032fef27f0c74864dbc9b977871aba85, type: 3}
-  newTrashCan: {fileID: 0}

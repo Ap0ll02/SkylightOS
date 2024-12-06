@@ -57,12 +57,12 @@ MonoBehaviour:
   explosionPrefab: {fileID: 1162446017367265732, guid: d36fc54163117b24bb7b30918b994057, type: 3}
   scoringTextPrefab: {fileID: 718052308284639182, guid: d954b36fa6a72134689704308f9a99b3, type: 3}
   NyanceNyanceRevolutionSingleton: {fileID: 2157510721454017225, guid: 9295c4f61eebdc44999dd9b5dd93cee0, type: 3}
-  perfectTop: 4.6
-  perfectBottom: 4.5
-  greatTop: 4.5
-  greatBottom: 4.2
-  goodTop: 4.2
-  goodBottom: 4
+  perfectTop: 0
+  perfectBottom: 0
+  greatTop: 0
+  greatBottom: 0
+  goodTop: 0
+  goodBottom: 0
 --- !u!95 &5354952124674257775
 Animator:
   serializedVersion: 5
@@ -122,8 +122,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 1862737011
+  m_SortingLayer: 2
   m_SortingOrder: 0
   m_Sprite: {fileID: 1096696739, guid: a2634ac0c3d35734ebc53a5e2efb139a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

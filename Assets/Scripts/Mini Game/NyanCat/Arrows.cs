@@ -40,17 +40,23 @@ public class Arrows : MonoBehaviour
     public NyanceNyanceRevolution NyanceNyanceRevolutionSingleton;
 
     // This all the variables that control the scoring range, they can be adjusted in the child start classes UNDER base.start() 
-    public float perfectTop = 4.6f;
-    public float perfectBottom = 4.3f;
-    public float greatTop = 4.3f;
-    public float greatBottom = 4.2f;
-    public float goodTop = 4.2f;
-    public float goodBottom = 3.8f;
+    public float perfectTop;
+    public float perfectBottom;
+    public float greatTop;
+    public float greatBottom;
+    public float goodTop;
+    public float goodBottom;
 
 
     // Why not just use start in all the children? we want common initialization logic! thats pretty cool!
     protected virtual void Start()
-    {
+    {    
+        perfectTop = 4.0f;
+        perfectBottom = 3.7f; 
+        greatTop = 3.7f;
+        greatBottom = 3.4f;
+        goodTop = 3.4f;
+        goodBottom = 3.0f;
         // We need to get a reference to our singleton 
         NyanceNyanceRevolutionSingleton = NyanceNyanceRevolution.GetInstance();
     }

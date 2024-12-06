@@ -67,14 +67,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3020d4cf8474e2d4db572a5a617906ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 5
+  speed: 10
   acceleration: 1.1
   index: 0
-  positionArray:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
 --- !u!212 &5457800316309350142
 SpriteRenderer:
   m_ObjectHideFlags: 0

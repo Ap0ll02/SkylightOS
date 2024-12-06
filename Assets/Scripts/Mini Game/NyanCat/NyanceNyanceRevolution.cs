@@ -100,7 +100,8 @@ public class NyanceNyanceRevolution : MonoBehaviour
     public GameObject newTrashCan;
     bool isTrashCanSpawned = false;
     // The typewriter refference used to control the typewriter
-    public TypewriterByCharacter typewriter; 
+    public TypewriterByCharacter typewriter;
+    
     // This provides us with the ending text once we beat Nyan Cat. 
     public GameObject endConditionPrefab;
     public GameObject endCondition = null;
@@ -168,7 +169,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
                 dropItem();
                 break;
             case 4:
-                Destroy(gameObject);
+                EndGame();
                 break;
         }
     }
@@ -374,6 +375,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
         }
         else
         {
+
             var textMesh = TextPrefab.GetComponent<TextMeshProUGUI>();
             var ScoringTextAnimator = TextPrefab.GetComponent<Animator>();
             switch (scoreCondition)
@@ -609,8 +611,8 @@ public class NyanceNyanceRevolution : MonoBehaviour
         else
         {
             // Calculate the distance for x and y coordinates only
-            float distanceX = transform.position.x - newTrashCan.transform.position.x;
-            float distanceY = transform.position.y - newTrashCan.transform.position.y;
+            float distanceX = nyanCatStruggling.transform.position.x - newTrashCan.transform.position.x;
+            float distanceY = nyanCatStruggling.transform.position.y - newTrashCan.transform.position.y;
             float distance = Mathf.Sqrt(distanceX * distanceX + distanceY * distanceY);
             if (distance <= 2.0f)
             {
@@ -643,6 +645,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
             Destroy(explosionFeedback);
         }
     }
+
     // Turns off the score text
     public void ScoreTextOff()
     {
@@ -655,47 +658,52 @@ public class NyanceNyanceRevolution : MonoBehaviour
     void CheckWin()
     {
         endCondition = Instantiate(endConditionPrefab, canvas.transform);
-        // If it is Null we have a Problem
-        if (endCondition == null)
+        if (endConditionPrefab == null)
         {
-            Debug.LogError("I would Recommend you put the textPrefab in the scene, just set it inactive");
+            Debug.LogError("Failed to instantiate endConditionPrefab.");
+            return;
         }
         else
         {
             // We need to grab the relevant text component from the Instantiated prefab 
-            var text = endCondition.GetComponent<TextMeshPro>();
+            var endText = endCondition.GetComponent<TextMeshProUGUI>();
+            
+            if (endText == null)
+            {
+                Debug.Log("endText right");
+            }
             // Check if player score is between winGood and winGreat
             if (playerScore >= winGood && playerScore < winGreat)
             {
                 // the tags like shake and a are behavior tags shake causes text to shake a is the amplitude of the shake
-                text.text = "<shake a=0.05>GOOD</shake>";
-                text.color = goodColor;
-                itemsCanAccess = itemsCanAccessPerfect;
+                endText.text = "<shake a=0.05>GOOD</shake>";
+                endText.color = goodColor;
+                itemsCanAccess = itemsCanAccessGood;
             }
             // Check if player score is between winGreat and winPerfect
             else if(playerScore >= winGreat && playerScore <= winPerfect)
             {
-                text.text = "<shake a=0.2>GREAT</shake>";
-                text.color = greatColor;
+                endText.text = "<shake a=0.2>GREAT</shake>";
+                endText.color = greatColor;
                 itemsCanAccess = itemsCanAccessGreat;
             }
             // Check if player score is greater than or equal to winPerfect
             else if (playerScore >= winPerfect)
             {
-                text.text = "<Incr a=0.5><shake a=0.2>PERFECT</shake></incr>";
-                text.color = perfectColor;
-                itemsCanAccess = itemsCanAccessGood;
+                endText.text = "<Incr a=0.5><shake a=0.2>PERFECT</shake></incr>";
+                endText.color = perfectColor;
+                itemsCanAccess = itemsCanAccessPerfect;
             }
             // If player score is less than winGood then we lose
             else
             {
-                text.text = "<bounce a=0.02>Game Over!!!!</bounce>";
-                text.color = missColor;
-                endConditionPrefab.SetActive(true);
+                endText.text = "<bounce a=0.02>Game Over!!!!</bounce>";
+                endText.color = missColor;
                 itemsCanAccess = itemsCanAccessFail;
             }
         }
         // Start Stage Three
+        WaitWinText();
         StageThree();
     }
     // A simple coroutine to play are music
@@ -711,10 +719,15 @@ public class NyanceNyanceRevolution : MonoBehaviour
         yield return new WaitForSeconds(4f);
         CheckWin();
     }
+
+    IEnumerator WaitWinText()
+    {
+        yield return new WaitForSeconds(3f);
+    }
     // Corutine that will be used for the shake cat
     IEnumerator ShakeNyanCat()
     {
-        yield return new WaitForSeconds(4f);
+        yield return new WaitForSeconds(3f);
 
     }
     // Create a coroutine that will be used to itterate through each dialogue line 
@@ -768,6 +781,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
         Destroy(Line1);
         Destroy(Line2);
         Destroy(newTrashCan);
+        Destroy(nyanCatStruggling);
         Destroy(gameObject);
     }
 }

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
-using UnityEngine.InputSystem;
 
 /**
  * @Author Jack Ratermann
@@ -29,12 +28,12 @@ public class TerminalTask : AbstractTask
 
     /// @var Terminal Variables that get references in awake() to the scene's terminal
     public GameObject terminal;
-    [SerializeField] GameObject dw;
     private List<bool> tasksDone = new List<bool>();
     public TMP_Text terminalText;
     public GameObject lsBtn;
     public GameObject hGroup;
     public GameObject avBtn;
+    public GameObject installBtn;
     public GameObject nmapBtn;
     private State termState;
     public GameObject terminalPanel;
@@ -75,10 +74,12 @@ public class TerminalTask : AbstractTask
         tasksDone.Add(false);
         agInput = ag.pInput;
         northstar = GameObject.Find("WindowCanvas").GetComponentInChildren<Northstar>();
+        installBtn = GameObject.Find("InstallBtn");
     }
 
     public new void Start() {
         base.Start();
+        installBtn.SetActive(false);
         gameObject.SetActive(false);
     }
 
@@ -193,7 +194,6 @@ public class TerminalTask : AbstractTask
 
     // Used for when the games are done
     public void GameEnd() {
-        Debug.Log("I heard you bitch");
         if(termState == State.ArrowGameOn) {
             termState = State.ArrowGameOff;
             arrowGame.SetActive(false);
@@ -206,11 +206,10 @@ public class TerminalTask : AbstractTask
             termState = State.MazeGameOff;
             hGroup.SetActive(true);
             dm.gameObject.SetActive(false);
-            terminalText.text = "Installing File, Congratulations!";
-
-            GameObject termLoad = Instantiate(dw, FindObjectOfType<Terminal>().GetComponentInParent<BasicWindow>().gameObject.transform);
-            termLoad.SetActive(true);
-            termLoad.GetComponentInChildren<LoadingScript>().StartLoading();
+            terminalText.text = "Installing File!";
+            installBtn.GetComponentInChildren<TMP_Text>().text = "Install Program";
+            installBtn.SetActive(true);
+            terminal.GetComponent<BasicWindow>().isClosable = true;
         }
         stopHazards();
 
@@ -227,6 +226,7 @@ public class TerminalTask : AbstractTask
 
     // Start of the maze game task with state checking so the LS can be used in multiple ways, further
     // decoupling the task from the OS element to enforce reusability & individuality of tasks and components
+    Coroutine info;
     public void LSTask()
     {
         Debug.Log(termState);
@@ -235,10 +235,10 @@ public class TerminalTask : AbstractTask
             dm.gameObject.SetActive(true);
             termState = State.MazeGameOn;
             terminalText.text = "Scanning Files: Maze Game Initiate!";
-            terminalText.text += "Click A, B, C, or D for your options.";
-            StartCoroutine(Timer(7f));
+            terminalText.text += "You Will Be Able To Type A, B, C, or D for your options.";
+            info ??= StartCoroutine(Timer(3f));
             terminalText.text = "---| A |---| B |---| C |---|D|---\n";
-            terminalText.text += "Example Stage, The Paths Correspond To A, B, C & D.\n";
+            terminalText.text += "Example Stage, The Paths Correspond To Typing A, B, C & D.\n";
             terminalText.text += "Please Press (A, B, C, or D) To Continue Into The File System\n";
             terminalText.text += "-----------------------------------\n";
             hGroup.SetActive(false);

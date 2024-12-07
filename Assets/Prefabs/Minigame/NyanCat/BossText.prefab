@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 95.104, y: 116.08}
-  m_SizeDelta: {x: 97.21, y: 40.19}
+  m_AnchoredPosition: {x: -184, y: 31.21}
+  m_SizeDelta: {x: 70.63, y: 29.77}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &4008911797013475738
 CanvasRenderer:
@@ -68,7 +68,9 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 
+  m_text: <rainb><shake a=0.5>MUHAHAHAHA!</rainb></shake><waitfor=0.5> I have been
+    here since 2008. You know how many IT people have tried and <incr>failed</incr>
+    to remove me!
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 52180da4d46b96d4aa42a83d7c1470b2, type: 2}
   m_sharedMaterial: {fileID: -4202423924150976573, guid: 52180da4d46b96d4aa42a83d7c1470b2, type: 2}
@@ -77,8 +79,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4287664272
-  m_fontColor: {r: 0.14716971, g: 0.13856167, b: 0.13856167, a: 1}
+    rgba: 4281348270
+  m_fontColor: {r: 0.6830188, g: 0.18944106, b: 0.18944106, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -95,8 +97,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 5
-  m_fontSizeBase: 5
+  m_fontSize: 4
+  m_fontSizeBase: 4
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -131,7 +133,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: -0.39060402, y: 0.12395191, z: -0.19799423, w: -0.13339233}
+  m_margin: {x: -0.062135667, y: 0.12395191, z: -0.6907196, w: -0.46188164}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

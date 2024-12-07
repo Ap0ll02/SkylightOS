@@ -68,6 +68,8 @@ public class NyanceNyanceRevolution : MonoBehaviour
     public GameObject bossTextPrefab;
     public GameObject bossText;
     public TextAnimator_TMP text;
+    // This is the icon on the tool bar how cool!
+    public GameObject nyanCatIcon;
     // This is the Nyan Cats that we will be using for our game
     // The Nyan Cat Idle is used for the first stage
     public GameObject nyanCatIdlePrefab;
@@ -101,7 +103,9 @@ public class NyanceNyanceRevolution : MonoBehaviour
     bool isTrashCanSpawned = false;
     // The typewriter refference used to control the typewriter
     public TypewriterByCharacter typewriter;
-    
+    // We want our wonderful AI to provide commentary 
+    public GameObject NorthStar;
+    public Northstar northstar;
     // This provides us with the ending text once we beat Nyan Cat. 
     public GameObject endConditionPrefab;
     public GameObject endCondition = null;
@@ -147,6 +151,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
     private void Awake()
     {
         NyanceNyanceRevolutionSingleton = GetInstance();
+        northstar = NorthStar.GetComponent<Northstar>();
         StageOne();
     }
 
@@ -177,6 +182,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
     public void StageOne()
     {
         Stage = 1;
+        northstar.WriteHint("Oh no... this is not good!!! You have to stop him",Northstar.Style.warm,true);
         bossText = Instantiate(bossTextPrefab, canvas.transform);
         if(bossText == null)
             Debug.LogError("Cant instantiate bossText");
@@ -205,6 +211,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
     public void StageTwo()
     {
         Stage = 2;
+        northstar.WriteHint("Hes is <incr>FIRING</incr> HIS <shake> LAZERS</shake> <waitfor=0.5> We got to stop those arrows from hitting our CPU",Northstar.Style.cold,true);
         StageOneOff();
         nyanCatSong = GetComponent<AudioSource>();
         if (nyanCatSong == null)
@@ -220,6 +227,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
     // This is the set up for the stage three it only needs to be called once 
     public void StageThree()
     {
+        northstar.WriteHint("<bounce a=0.5>TAKE THAT CAT!</bounce> Now lets see what files this pesky cat has been stealing.<waitfor=0.5> Shake him across the red lines",Northstar.Style.cold,true);
         Stage = 3;
         StageTwoOff();
         nyanCatStruggling = Instantiate(nyanCatStrugglingPrefab);
@@ -533,11 +541,9 @@ public class NyanceNyanceRevolution : MonoBehaviour
         {
             Debug.LogError("We are trying to call componentes from an uninstantated object. Drag DamageText prefab into scene then into our damaged text object into nyancatbosstask");
         }
-
         var textMesh = damageTextPrefab.GetComponent<TextMeshProUGUI>();
         textMesh.text = value.ToString();
         // Assign the new material to the TextMeshProUGUI component
-
         // Set the alpha value of the text color
         switch (value)
         {
@@ -596,7 +602,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
 
         if (index == itemsCanAccess)
         {
-            Debug.Log("activate trash cat");
+            northstar.WriteHint("Ha Now time to take out the <incr a=1.2>trash</incr>");
             TrashCat();
         }
     }
@@ -690,7 +696,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
             // Check if player score is greater than or equal to winPerfect
             else if (playerScore >= winPerfect)
             {
-                endText.text = "<Incr a=0.5><shake a=0.2>PERFECT</shake></incr>";
+                endText.text = "<incr a=0.5><shake a=0.2>PERFECT</shake></incr>";
                 endText.color = perfectColor;
                 itemsCanAccess = itemsCanAccessPerfect;
             }
@@ -731,6 +737,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
 
     }
     // Create a coroutine that will be used to itterate through each dialogue line 
+    
     IEnumerator playDialogue()
     {
         dialogueLines = new string[] { textOne, textTwo, textThree, textFour, textFive };
@@ -781,7 +788,9 @@ public class NyanceNyanceRevolution : MonoBehaviour
         Destroy(Line1);
         Destroy(Line2);
         Destroy(newTrashCan);
+        Destroy(endCondition);
         Destroy(nyanCatStruggling);
+        Destroy(nyanCatIcon);
         Destroy(gameObject);
     }
 }

@@ -69,7 +69,7 @@ public class InternetTaskOne : AbstractTask
     }
 
     void DelayHandler() {
-        loadingBarScript.perthiefTime = UnityEngine.Random.Range(0.01f, 0.09f);
+        loadingBarScript.perthiefTime = UnityEngine.Random.Range(0.01f, 0.29f);
     }
 
     // When the diagnosis window is opened, start the hazards and loading bar

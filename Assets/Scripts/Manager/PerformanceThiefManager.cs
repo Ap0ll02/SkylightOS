@@ -40,14 +40,14 @@ public class PerformanceThiefManager : AbstractManager
     public override void StartHazard()
     {
         isActive = true;
-        Debug.Log("Performance Thief Started.");
+        // Debug.Log("Performance Thief Started.");
         PThiefStarted?.Invoke();
     }
 
     public override void StopHazard()
     {
         if(isActive){
-            Debug.Log("Performance Thief Ended.");
+            // Debug.Log("Performance Thief Ended.");
             PThiefEnded?.Invoke();
             timerCR = null;
             //StopAllCoroutines();

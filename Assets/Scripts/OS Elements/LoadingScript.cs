@@ -88,7 +88,7 @@ public class LoadingScript : MonoBehaviour
             if (canContinue)
             {
                 yield return new WaitForSeconds(0.007f);
-                Debug.Log("SPEED: " + perthiefTime * speed);
+                // Debug.Log("SPEED: " + perthiefTime * speed);
                 progBar.fillAmount += (float)(speed * Time.deltaTime * perthiefTime);
             }
             else

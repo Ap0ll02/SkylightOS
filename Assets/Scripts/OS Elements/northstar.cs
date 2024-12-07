@@ -54,7 +54,9 @@ public class Northstar : MonoBehaviour
     }
 
     public void OnAutoSummon() {
-        tw.StartShowingText();
+        if(persona.activeSelf == true) {
+            tw.StartShowingText();
+        }
         canClose = true;
     }
     public enum Style {
@@ -87,7 +89,6 @@ public class Northstar : MonoBehaviour
             }
             default: break;
         }
-
         if(autoSpeak) {
             persona.SetActive(true);
         } else {
@@ -102,19 +103,18 @@ public class Northstar : MonoBehaviour
         
         if(persona.activeSelf == false) {
             persona.SetActive(true);
+            transform.SetAsLastSibling();
             OnUserSummon();
         }
         else if(canClose == true && persona.activeSelf == true){
             tw.StopShowingText();
             tw.StartDisappearingText();
-
             if (isAct == null) {
                 try {
                     StartCoroutine(Timer(3f));
                 } catch {
                     isAct = null;
                 }
-                
             }
             persona.SetActive(false);
         }
@@ -124,7 +124,6 @@ public class Northstar : MonoBehaviour
         if (effect) {
             compEffect.Play();
         }
-
         yield return new WaitForSeconds(x);
     }
 

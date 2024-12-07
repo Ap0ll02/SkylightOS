@@ -19,7 +19,7 @@ public class Northstar : MonoBehaviour
     public GameObject icon;
     public List<AbstractTask> taskList = new();
     public GameObject osmanager;
-    public GameObject compEffect;
+    public ParticleSystem compEffect;
 
     public TypewriterByCharacter tw;
     public TMP_Text nsText;
@@ -33,6 +33,7 @@ public class Northstar : MonoBehaviour
         tw = GetComponentInChildren<TypewriterByCharacter>();
         nsText = GetComponentInChildren<TMP_Text>();
         // osmanager = GetComponent<OSManager>().gameObject;
+        compEffect = compEffect.GetComponent<ParticleSystem>();
     }
     Coroutine pd;
     public void Start() {
@@ -59,6 +60,7 @@ public class Northstar : MonoBehaviour
     public enum Style {
         cold, chilly, mid, warm, hot
     }
+    public Coroutine twh;
 
     public void WriteHint(string hint, Style s = Style.cold) {
         canClose = false;
@@ -85,6 +87,9 @@ public class Northstar : MonoBehaviour
             }
             default: break;
         }
+        compEffect.Play();
+        twh ??= StartCoroutine(Timer(2f));
+        compEffect.Stop();
         OnAutoSummon();
     }
 
@@ -127,7 +132,7 @@ public class Northstar : MonoBehaviour
             {
                 // Have our typewriter start typing our each word
                 tw.ShowText(line);
-                if(count == 3) compEffect.GetComponent<ParticleSystem>().Play();
+                if(count == 3) compEffect.Play();
                 // This function will continue and wait until the type writer is done showing text
                 // It is asking its self are we still typing? if so continue the function
                 // once it reaches the end it will return false and break our statement 
@@ -136,10 +141,9 @@ public class Northstar : MonoBehaviour
                 yield return new WaitForSeconds(t);
                 if(count == 3){
                     yield return new WaitForSeconds(2f);
-                    compEffect.GetComponent<ParticleSystem>().Stop();
+                    compEffect.Stop();
                 } 
             }
-
         }
         tw.StartDisappearingText();
         canClose = true;

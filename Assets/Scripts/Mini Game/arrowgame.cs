@@ -36,6 +36,7 @@ public class Arrowgame : AbstractMinigame
     }
     public List<Direction> arrowDirs = new();
     public List<RawImage> arrowColors = new();
+    public AudioSource effect;
 
     /// @var numArrows is the number of arrows to spawn on the screen.
     public readonly int numArrows = 20;
@@ -45,6 +46,7 @@ public class Arrowgame : AbstractMinigame
         gameObject.SetActive(true);
         pInput = new();
         spawnArea = FindObjectOfType<Terminal>().GetComponentInChildren<GridLayoutGroup>().gameObject.GetComponent<Transform>();
+        effect = GetComponent<AudioSource>();
     }
 
     public void Start() {
@@ -107,6 +109,8 @@ public class Arrowgame : AbstractMinigame
         // Updates colors for more fun experience, broadcasts to allow for input validation to be done
         // in an event based fashion, instead of in Update().
         OnArrowPress?.Invoke();
+        // effect.pitch = UnityEngine.Random.Range(0.98f, 1.02f);
+        effect.panStereo = 0;
         if(!CanContinue){
             return;
         }
@@ -123,6 +127,8 @@ public class Arrowgame : AbstractMinigame
                 Debug.Log("Right Arrow");
                 if(CanContinue && arrowDirs[curArrow] == Direction.Right) {
                     Debug.Log("Correct Arrow " + context.action.ReadValue<float>());
+                    effect.panStereo = 1;
+                    effect.Play();
                     arrowColors[curArrow].color = Color.green;
                     curArrow++;
                 }
@@ -137,6 +143,8 @@ public class Arrowgame : AbstractMinigame
                 if(CanContinue && arrowDirs[curArrow] == Direction.Left) {
                     Debug.Log("Correct Arrow " + context.action.ReadValue<float>());
                     arrowColors[curArrow].color = Color.green;
+                    effect.panStereo = -1;
+                    effect.Play();
                     curArrow++;
                 }
                 else if(CanContinue){
@@ -150,6 +158,7 @@ public class Arrowgame : AbstractMinigame
                 if(CanContinue && arrowDirs[curArrow] == Direction.Up) {
                     Debug.Log("Correct Arrow" + context.action.ReadValue<float>());
                     arrowColors[curArrow].color = Color.green;
+                    effect.Play();
                     curArrow++;
                 }
                 else if(CanContinue){
@@ -163,6 +172,7 @@ public class Arrowgame : AbstractMinigame
                 if(CanContinue && arrowDirs[curArrow] == Direction.Down) {
                     Debug.Log("Correct Arrow" + context.action.ReadValue<float>());
                     arrowColors[curArrow].color = Color.green;
+                    effect.Play();
                     curArrow++; 
                 }
                 else if(CanContinue){

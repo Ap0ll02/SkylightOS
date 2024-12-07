@@ -54,7 +54,9 @@ public class Northstar : MonoBehaviour
     }
 
     public void OnAutoSummon() {
-        tw.StartShowingText();
+        if(persona.activeSelf == true) {
+            tw.StartShowingText();
+        }
         canClose = true;
     }
     public enum Style {
@@ -102,6 +104,7 @@ public class Northstar : MonoBehaviour
         
         if(persona.activeSelf == false) {
             persona.SetActive(true);
+            transform.SetAsLastSibling();
             OnUserSummon();
         }
         else if(canClose == true && persona.activeSelf == true){

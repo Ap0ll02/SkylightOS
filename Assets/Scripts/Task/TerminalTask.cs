@@ -147,7 +147,7 @@ public class TerminalTask : AbstractTask
         // Terminal Task Start, Prompts User To Use The AntiVirus installation tool. Changes terminal state to On.
         string termText = "Welcome To The Console, Let's get you started downloading some software\n"
             + "The AntiVirus toolkit is a helpful addition for getting rid of pesky malware!\n" + "Click On The Anti-Virus Download to start.";
-        northstar.WriteHint("Let's try clicking the Down Anti-Virus button", Northstar.Style.chilly);
+        northstar.WriteHint("Let's try clicking the Download Anti-Virus button, open up the terminal first!", Northstar.Style.chilly);
         termState = State.On;
         terminalText.text = termText;
     }

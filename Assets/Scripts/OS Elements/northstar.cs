@@ -62,7 +62,7 @@ public class Northstar : MonoBehaviour
     }
     public Coroutine twh;
 
-    public void WriteHint(string hint, Style s = Style.cold) {
+    public void WriteHint(string hint, Style s = Style.cold, bool autoSpeak = false) {
         canClose = false;
         switch (s) {
             case Style.chilly: {
@@ -87,9 +87,13 @@ public class Northstar : MonoBehaviour
             }
             default: break;
         }
-        compEffect.Play();
-        twh ??= StartCoroutine(Timer(2f));
-        compEffect.Stop();
+
+        if(autoSpeak) {
+            persona.SetActive(true);
+        } else {
+            twh ??= StartCoroutine(Timer(2f, true));
+            compEffect.Stop();
+        }
         OnAutoSummon();
     }
 
@@ -116,7 +120,11 @@ public class Northstar : MonoBehaviour
         }
     }
 
-    private IEnumerator Timer(float x = 2f) {
+    private IEnumerator Timer(float x = 2f, bool effect = false) {
+        if (effect) {
+            compEffect.Play();
+        }
+
         yield return new WaitForSeconds(x);
     }
 

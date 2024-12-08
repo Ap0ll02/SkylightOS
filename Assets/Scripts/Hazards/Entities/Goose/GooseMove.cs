@@ -31,6 +31,7 @@ public class GooseBehavior : MonoBehaviour
         Roam,
         Chaos,
         Attack,
+        Grab,
         Flee
     }
 
@@ -54,6 +55,8 @@ public class GooseBehavior : MonoBehaviour
                 break;
             case GooseState.Attack:
                 Attack();
+                break;
+            case GooseState.Grab:
                 break;
             case GooseState.Flee:
                 Flee();

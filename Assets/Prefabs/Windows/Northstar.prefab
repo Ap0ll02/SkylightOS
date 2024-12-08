@@ -473,7 +473,7 @@ MonoBehaviour:
   icon: {fileID: 1980806390605352321}
   taskList: []
   osmanager: {fileID: 0}
-  compEffect: {fileID: 3290918748393903618}
+  compEffect: {fileID: 1534645613191836707}
   tw: {fileID: 160845477248581230}
   nsText: {fileID: 5004605810210201867}
   canClose: 1
@@ -647,13 +647,13 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 5ad33d58a66ab154a89c9e88255601e5, type: 3}
+--- !u!198 &1534645613191836707 stripped
+ParticleSystem:
+  m_CorrespondingSourceObject: {fileID: 8724466350249207100, guid: 5ad33d58a66ab154a89c9e88255601e5, type: 3}
+  m_PrefabInstance: {fileID: 7809153682252681503}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &3240279260647819191 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4659087304275547816, guid: 5ad33d58a66ab154a89c9e88255601e5, type: 3}
-  m_PrefabInstance: {fileID: 7809153682252681503}
-  m_PrefabAsset: {fileID: 0}
---- !u!1 &3290918748393903618 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4752457369876416285, guid: 5ad33d58a66ab154a89c9e88255601e5, type: 3}
   m_PrefabInstance: {fileID: 7809153682252681503}
   m_PrefabAsset: {fileID: 0}

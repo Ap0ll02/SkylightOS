@@ -48,6 +48,7 @@ public class ExpandedWifiMenu : MonoBehaviour
     {
         CheckWifiState();
         UpdateWifiState();
+        transform.SetAsLastSibling();
     }
 
     // Called by the wifi button

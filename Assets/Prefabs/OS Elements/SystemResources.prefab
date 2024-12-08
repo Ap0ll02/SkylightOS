@@ -122,9 +122,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ExpandedWifiMenu, Assembly-CSharp
-        m_MethodName: RunDiagnosisPressed
+      - m_Target: {fileID: 1981145172111937133}
+        m_TargetAssemblyTypeName: SystemResourcesWindow, Assembly-CSharp
+        m_MethodName: OpenDiagnosisWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -405,9 +405,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ExpandedWifiMenu, Assembly-CSharp
-        m_MethodName: RunDiagnosisPressed
+      - m_Target: {fileID: 1981145172111937133}
+        m_TargetAssemblyTypeName: SystemResourcesWindow, Assembly-CSharp
+        m_MethodName: OpenDiagnosisWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1740,9 +1740,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ExpandedWifiMenu, Assembly-CSharp
-        m_MethodName: RunDiagnosisPressed
+      - m_Target: {fileID: 1981145172111937133}
+        m_TargetAssemblyTypeName: SystemResourcesWindow, Assembly-CSharp
+        m_MethodName: OpenDiagnosisWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1919,3 +1919,4 @@ MonoBehaviour:
   GPUButton: {fileID: 1033138973140088946}
   CPUButton: {fileID: 9026533589024120080}
   RAMButton: {fileID: 3928467211372714520}
+  diagnosisWindow: {fileID: 0}

@@ -82,6 +82,7 @@ public class DiagnosisWindow : MonoBehaviour
         window.isClosable = true;
         finishDiagButton.SetActive(false);
         LoadingDoneNotify?.Invoke();
+        gameObject.SetActive(false);
     }
 
 

@@ -29,8 +29,8 @@ public class OSManager : MonoBehaviour
     // Reference to the boss task
     [SerializeField] public AbstractBossTask bossTask;
 
-    // Reference to the boss task button
-    private Button bossTaskButton;
+    // Reference to boss task button (temporary)
+    [SerializeField] public Button bossTaskButton;
 
     // Start is called before the first frame update
     void Start()
@@ -131,13 +131,12 @@ public class OSManager : MonoBehaviour
     // Method to create the boss task button
     void CreateBossTaskButton()
     {
-        GameObject bossButton = Instantiate(buttonPrefab, buttonContainer);
-        bossButton.GetComponentInChildren<TMP_Text>().text = "Boss Task";
+        bossTaskButton.gameObject.SetActive(true);
 
         // Add the button to the list of task buttons
-        bossTaskButton = bossButton.GetComponentInChildren<Button>();
-        bossTaskButton.onClick.AddListener(StartBossTask);
-        bossTaskButton.interactable = true;
+        //bossTaskButton = bossButton.GetComponentInChildren<Button>();
+        //bossTaskButton.onClick.AddListener(StartBossTask);
+        //bossTaskButton.interactable = true;
     }
 
     // Method to check if all tasks are complete

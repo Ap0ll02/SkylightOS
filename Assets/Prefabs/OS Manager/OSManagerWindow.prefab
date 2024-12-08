@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6.1000977, y: -311.30005}
-  m_SizeDelta: {x: -96.7, y: -706.9}
+  m_AnchoredPosition: {x: 6.1000977, y: -359.547}
+  m_SizeDelta: {x: -96.7, y: -803.393}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7679420057326672391
 CanvasRenderer:
@@ -365,7 +365,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4985135885990256120, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_Name
-      value: OSManagerWindow Variant
+      value: OSManagerWindow
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

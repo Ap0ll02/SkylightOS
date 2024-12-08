@@ -25,6 +25,9 @@ public class InternetTaskOne : AbstractTask
     // Initialization
     public void Awake()
     {
+        // Set the task title and description
+        taskTitle = "Fix wifi";
+        taskDescription = "Connect to the wifi by opening the wifi menu and connecting to the wifi";
         // Assigning all of the references must be done on awake so that they actually work
         wifiPopUpMenu = FindObjectOfType<ExpandedWifiMenu>().gameObject;
         wifiPopUpMenuWifiState = wifiPopUpMenu.GetComponent<ExpandedWifiMenu>();
@@ -33,11 +36,8 @@ public class InternetTaskOne : AbstractTask
         northstar = GameObject.Find("WindowCanvas").GetComponentInChildren<Northstar>();
     }
 
-    public void Start()
+    public new void Start()
     {
-        // Set the task title and description
-        taskTitle = "Fix wifi";
-        taskDescription = "Connect to the wifi by opening the wifi menu and connecting to the wifi";
         // Automatically turn off the game object at the start of the scene.
         gameObject.SetActive(false);
     }

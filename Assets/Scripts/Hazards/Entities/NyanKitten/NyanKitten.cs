@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
 using Febucci.UI.Examples;
 using UnityEditor;
 using UnityEngine;
@@ -22,7 +23,9 @@ public class NyanKitten : Hazards
     public Vector3 offset;
     // This is so we don't keep calling the grab coroutine
     public bool hazGrabbed = false;
-    // 
+    // This is the variable that keeps track of generating points 
+    public bool generateNewPoint = true;
+    // This contains all off the audio sources for our nyan kitten 
     public AudioSource[] meowSounds = new AudioSource[2];
     public enum NyanKittenState
     {
@@ -39,7 +42,7 @@ public class NyanKitten : Hazards
         // This just sets the random range 
         speed = Random.Range(2,4);
         // We want the cat to be roaming around and just kinda being annoying nothing crazy
-        currentState = NyanKittenState.Attack;
+        currentState = NyanKittenState.Roam;
     }
 
     // Update is called once per frame
@@ -107,7 +110,11 @@ public class NyanKitten : Hazards
 
     public void Flee()
     {
-        NewPoint(-12,12,-5,5);
+        if (generateNewPoint == true)
+        {
+            NewPoint(-12f,12f,-5f,5f); 
+            generateNewPoint = false;
+        }
         transform.position = Vector3.MoveTowards(transform.position, targetRoam, speed * Time.deltaTime);
         if (Vector3.Distance(transform.position, targetRoam) <= 0.1f)
         {
@@ -118,14 +125,14 @@ public class NyanKitten : Hazards
     // Sets a new roam point once the previous one is reached
     void NewPoint(float minX, float maxX,float minY, float maxY)
     {
-        // Just creates a new fucking random ass position
-        targetRoam = new Vector3(Random.Range(minX, maxX),Random.Range(minY, maxY), 0);
-        Vector3 localScale = transform.localScale;
-        Vector3 direction = (targetRoam - transform.position);
-        // Depending on the X value we will flip our sprite appropriately
-        localScale.x = ( direction.x > 0) ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
-        // We use local scale to edit the local scale... not really anything cool here 
-        transform.localScale = localScale;
+            // Just creates a new fucking random ass position
+            targetRoam = new Vector3(Random.Range(minX, maxX),Random.Range(minY, maxY), 0);
+            Vector3 localScale = transform.localScale;
+            Vector3 direction = (targetRoam - transform.position);
+            // Depending on the X value we will flip our sprite appropriately
+            localScale.x = ( direction.x > 0) ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
+            // We use local scale to edit the local scale... not really anything cool here 
+            transform.localScale = localScale;
     }
 
     IEnumerator GrabCursor()
@@ -138,7 +145,7 @@ public class NyanKitten : Hazards
         while (elapsedTime < 2f)
         {
             // Move the Nyan kitten towards the target roam point
-            transform.position = Vector3.MoveTowards(transform.position, targetRoam, Time.deltaTime * speed);
+            transform.position = Vector3.MoveTowards(transform.position, targetRoam + offset, Time.deltaTime * speed);
             // Convert the Nyan kitten's position to screen coordinates
             Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
             // This will set the cursor's position to Nyan kitten
@@ -148,7 +155,5 @@ public class NyanKitten : Hazards
             // Wait for the next frame
             yield return null;
         }
-        // Change state to Flee
-        currentState = NyanKittenState.Roam;
     }
 }

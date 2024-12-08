@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3967964477794126303}
   - component: {fileID: 8533026311684054357}
   - component: {fileID: 5261969578494339837}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NyanKitten
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -4.0929, y: 1.1966, z: -2.9779272}
-  m_LocalScale: {x: 0.74606794, y: 0.57483435, z: 1}
+  m_LocalScale: {x: 0.9138064, y: 0.72810143, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -126,6 +126,7 @@ MonoBehaviour:
   acceleration: 1.1
   offset: {x: 0, y: 0, z: 0}
   hazGrabbed: 0
+  generateNewPoint: 1
   meowSounds:
   - {fileID: 8533026311684054357}
   - {fileID: 5261969578494339837}

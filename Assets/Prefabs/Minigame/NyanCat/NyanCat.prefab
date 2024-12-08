@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 8923219121192913734}
   - component: {fileID: -5339932001327062505}
   - component: {fileID: 2483011033152246656}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: NyanCat
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -122,8 +122,3 @@ MonoBehaviour:
   speed: 5
   acceleration: 1.1
   index: 0
-  positionArray:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}

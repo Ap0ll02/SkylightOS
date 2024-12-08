@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 5823024392941548495}
   - component: {fileID: 2157510721454017225}
   - component: {fileID: 4531514230799709005}
-  m_Layer: 9
+  m_Layer: 10
   m_Name: NyanBossFight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -261,6 +261,7 @@ MonoBehaviour:
   bossTextPrefab: {fileID: 4451863288882869826, guid: b4918809e0f11d94fa2047427be7b2f5, type: 3}
   bossText: {fileID: 0}
   text: {fileID: 0}
+  nyanCatIcon: {fileID: 0}
   nyanCatIdlePrefab: {fileID: 3803836691575881888, guid: a938d6496a296e144969fc6fa2a31985, type: 3}
   nyanCatIdle: {fileID: 0}
   nyanCatFlyingPrefab: {fileID: 4160345928628560801, guid: 85b49388cb5194a4ba8cf3af30bfde15, type: 3}

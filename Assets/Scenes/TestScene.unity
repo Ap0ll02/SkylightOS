@@ -393,7 +393,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 803093847729059577, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -710
+      value: -710.00006
       objectReference: {fileID: 0}
     - target: {fileID: 1209730670344386363, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -403,6 +403,14 @@ PrefabInstance:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 2106532936}
+    - target: {fileID: 1942570945267953927, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: isComplete
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2155303652598247350, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: isComplete
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2155303652598247350, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: hazardManagers.Array.size
       value: 3
@@ -415,6 +423,14 @@ PrefabInstance:
       propertyPath: canvas
       value: 
       objectReference: {fileID: 519387565}
+    - target: {fileID: 2947260722977953631, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3072924759574344599, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: isComplete
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3180148586829915697, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -439,6 +455,10 @@ PrefabInstance:
       propertyPath: diagnosisWindow
       value: 
       objectReference: {fileID: 1871246615}
+    - target: {fileID: 5178576261004458347, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -514.99994
+      objectReference: {fileID: 0}
     - target: {fileID: 6074580081977407537, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_Name
       value: LevelContainer
@@ -502,6 +522,10 @@ PrefabInstance:
     - target: {fileID: 7390432032338304555, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7489929843487417096, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7817070531446463311, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: lockdownCanvas

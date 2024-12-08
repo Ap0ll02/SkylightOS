@@ -30,6 +30,12 @@ public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
         rectTransform = (RectTransform)transform;
     }
 
+    private void OnEnable()
+    {
+        // Set the window to the top when enabled
+        transform.SetAsLastSibling();
+    }
+
     // Used for dragging functionality, required for 'IDragHandler'.
     // Override - Can make a tab undraggable 
     public void OnDrag(PointerEventData eventData)

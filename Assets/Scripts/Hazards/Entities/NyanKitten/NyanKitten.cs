@@ -1,32 +1,45 @@
 using System.Collections;
 using System.Collections.Generic;
+using Febucci.UI.Examples;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.Controls;
 
 public class NyanKitten : Hazards
 {
     // This will control the current state of our nyan kitten
     public NyanKittenState currentState;
-    // The speed of the goose which is randomized between 1 and 6
-    [SerializeField] private float speed = 5;
-    // The acceleration which only applies to the gooses speed during the attack state
-    [SerializeField] private float acceleration = 1.1f;
-    // The randomized points on the map the goose will fly too
+    // The speed of the Kitten which is randomized between 1 and 6
+    [SerializeField] private float speed;
+    // The randomized points on the map the Kitten will fly too
+    [SerializeField] private float acceleration;
+    // The random point in which in the nyan kitten will travel 
     private Vector3 targetRoam;
-    // The point the goose will take the mouse point
+    // The point the Nyan Kitten will travel
     private Vector3 AttackPoint;
-    // The current state the goose is set too 
+    // The current state the Nyan Kitten is set too 
+    public Vector3 offset;
+    // This is so we don't keep calling the grab coroutine
+    public bool hazGrabbed = false;
+    // 
+    public AudioSource[] meowSounds = new AudioSource[2];
     public enum NyanKittenState
     {
         Roam,
         Chaos,
-        Attack,
+        Attack, 
+        Grab,
         Flee
     }
     // Start is called before the first frame update
     void Start()
     {
+        meowSounds[0].Play();
+        // This just sets the random range 
+        speed = Random.Range(2,4);
         // We want the cat to be roaming around and just kinda being annoying nothing crazy
-        currentState = NyanKittenState.Roam;
+        currentState = NyanKittenState.Attack;
     }
 
     // Update is called once per frame
@@ -44,6 +57,8 @@ public class NyanKitten : Hazards
             case NyanKittenState.Attack:
                 Attack();
                 break;
+            case NyanKittenState.Grab:
+                break;
             case NyanKittenState.Flee:
                 Flee();
                 break;
@@ -51,9 +66,10 @@ public class NyanKitten : Hazards
                 break;
         }
     }
-
+    // So our Nyan Cat will float around and go from point to point
     public void Roam()
     {
+        hazGrabbed = false;
         transform.position = Vector3.MoveTowards(transform.position, targetRoam, speed * Time.deltaTime);
         if (Vector3.Distance(transform.position, targetRoam) <= 0.1f)
         {
@@ -72,16 +88,27 @@ public class NyanKitten : Hazards
         Vector3 mousePos = Input.mousePosition;
         mousePos = Camera.main.ScreenToWorldPoint(mousePos);
         mousePos.z = 0;
-        transform.position = Vector3.MoveTowards(transform.position, mousePos, Time.deltaTime * speed * acceleration);
-        // I want the goose to be able to follow the cursor. However, It should not snap to the cursor 
-        // First we find the fucking direction or whatever the fuck and normalize this Mother Fucker
         Vector3 direction = (mousePos - transform.position);
-        // Then we fucking find the God Damn desired rotation or whatever the fucking shit. Unity 2d rotation is a bit off so -90f
+        // condition ? true Result : false Result
+        offset = direction.x > 0 ? new Vector3(-1.3f, -0.2f, 0) : new Vector3(1.3f, -0.2f, 0);
+        Vector3 localScale = transform.localScale;
+        localScale.x = ( direction.x > 0) ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
+        transform.localScale = localScale;
+        transform.position = Vector3.MoveTowards(transform.position, mousePos + offset, Time.deltaTime * speed);
+        if ((Vector3.Distance(transform.position, mousePos + offset) <= 0.2f) && hazGrabbed == false)
+        {
+            meowSounds[1].Play();
+            hazGrabbed = true;
+            StartCoroutine(GrabCursor());
+        }
+        // I want the cat to be able to follow the cursor. However, It should not snap to the cursor 
+        // First we find the fucking direction or whatever the fuck and normalize this Mother Fucker
     }
 
     public void Flee()
     {
-        transform.position = Vector3.MoveTowards(transform.position, targetRoam, speed* Time.deltaTime );
+        NewPoint(-12,12,-5,5);
+        transform.position = Vector3.MoveTowards(transform.position, targetRoam, speed * Time.deltaTime);
         if (Vector3.Distance(transform.position, targetRoam) <= 0.1f)
         {
             gameObject.SetActive(false);
@@ -103,35 +130,25 @@ public class NyanKitten : Hazards
 
     IEnumerator GrabCursor()
     {
-        // Lock the cursor to the center of the screen
-        Cursor.lockState = CursorLockMode.Locked;
-        Cursor.visible = false;
-
-        // Wait for a second
-        yield return new WaitForSeconds(1f);
-
-        // Move the cursor to a new position
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
-        Vector3 newCursorPos = new Vector3(Screen.width / 2, Screen.height / 2, 0);
-        Cursor.SetCursor(null, newCursorPos, CursorMode.Auto);
-
+        // Random point we want to move to
+        NewPoint(-9f, 9f, -8f, 5f);
+        // We need to create a variable to keep track of time
+        float elapsedTime = 0f;
+        // A while loop is needed to ensure that the mouse and Nyan kitten's position is updated every frame
+        while (elapsedTime < 2f)
+        {
+            // Move the Nyan kitten towards the target roam point
+            transform.position = Vector3.MoveTowards(transform.position, targetRoam, Time.deltaTime * speed);
+            // Convert the Nyan kitten's position to screen coordinates
+            Vector3 screenPos = Camera.main.WorldToScreenPoint(transform.position);
+            // This will set the cursor's position to Nyan kitten
+            Mouse.current.WarpCursorPosition(screenPos);
+            // Update the elapsed time
+            elapsedTime += Time.deltaTime;
+            // Wait for the next frame
+            yield return null;
+        }
         // Change state to Flee
-        currentState = NyanKittenState.Flee;
-    }
-    void SetNewTarget()
-    {
-        // We generate a random X
-        float newX= Random.Range(-9,9);
-        // We also generate a random Y
-        float newY = Random.Range(-8f,5f);
-        // Then we set our target variable based on the new x and y components we generated. Keep 1 for the z value so our object appears
-        targetRoam = new Vector3(newX, newY, 1f);
-        // Flip the sprite based on the direction
-        Vector3 localScale = transform.localScale;
-        // Depending on the X value we will flip our sprite appropriately
-        localScale.x = (newX > 0) ? Mathf.Abs(localScale.x) : -Mathf.Abs(localScale.x);
-        // We use local scale to edit the local scale... not really anything cool here 
-        transform.localScale = localScale;
+        currentState = NyanKittenState.Roam;
     }
 }

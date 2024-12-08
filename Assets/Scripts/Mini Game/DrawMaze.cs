@@ -64,12 +64,13 @@ public class DrawMaze : AbstractMinigame
             level = iMap[curNode].iName + "\n\n\n\n\n\n\n";
             evidenceImage.SetActive(true);
         }
+        if(curNode == 53) {
+            level = "AntiVirus Installer.install";
+            OnGameEnd?.Invoke();
+        }
         else if(iMap[curNode].numEntries == 0) {
             inputAllowed = 2;
             level += iMap[curNode].iName;
-            if(curNode == 53) {
-                OnGameEnd?.Invoke();
-            }
         }
         else { 
             inputAllowed = 1;

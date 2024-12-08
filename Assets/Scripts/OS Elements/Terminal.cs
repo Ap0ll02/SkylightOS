@@ -51,6 +51,7 @@ public class Terminal : MonoBehaviour
 
     public void ListFilesExec()
     {
+        StopCoroutine(TerminalLoading());
         // All code above the invoke line is what happens if the terminal task does not override.
         TInstructionTxt.text = "Files: \n";
 
@@ -60,19 +61,42 @@ public class Terminal : MonoBehaviour
 
     public void AntiVirusExec()
     {
+        StopCoroutine(TerminalLoading());
         // All code above the invoke line is what happens if the terminal task does not override.
         TInstructionTxt.text = "AntiVirus: \n";
 
         // Allows the TerminalTask to modify terminal commands if Task State is On
         OnAVPressed?.Invoke();
     }
-
+    Coroutine lbp;
     public void NMapExec()
     {
         // All code above the invoke line is what happens if the terminal task does not override.
-        TInstructionTxt.text = "Mapping Ports : -----\n";
-
+        TInstructionTxt.text = "Mapping Ports on Local Network\n";
+        lbp ??= StartCoroutine(TerminalLoading());
+        TInstructionTxt.text = "Starting Nmap on Your Local Network:\n";
+        TInstructionTxt.text += "Ports Scanned:\n";
+        TInstructionTxt.text += "PORT       STATE     SERVICE\n";
+        TInstructionTxt.text += "21/tcp     closed    ftp\n";
+        TInstructionTxt.text += "80/tcp     open      http\n";
+        TInstructionTxt.text += "121/tcp    open      SkyFile\n";
+        TInstructionTxt.text += "145/tcp    closed    Normal Service :D\n";
+        TInstructionTxt.text += "456/tcp    closed    CompanyLunch Server\n";
+        TInstructionTxt.text += "3421/tcp   open      Ok\n";
         // Allows the TerminalTask to modify terminal commands if Task State is On
         OnNMAPPressed?.Invoke();
+    }
+    int count = 0;
+    int iterCount = UnityEngine.Random.Range(1, 5)
+    public IEnumerator TerminalLoading() {
+        while(count < 20 * iterCount) {
+            count++;
+            TInstructionTxt.text += "*";
+            if(count % 20 == 0) {
+                TInstructionTxt.text = "Mapping Ports on Local Network\n";
+                TInstructionTxt.text += "*";
+            }
+            yield return new WaitForSeconds(UnityEngine.Random.Range(0.005f, 0.65f));
+        }
     }
 }

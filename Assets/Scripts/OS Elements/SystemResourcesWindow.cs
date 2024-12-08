@@ -2,6 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
+/// <summary>
+/// System resources, can be used for multiple different tasks. All you gotta do is set the states and it should run everything else basically
+/// Garrett Sharp
+/// </summary>
 public class SystemResourcesWindow : MonoBehaviour
 {
     // Enum to track the state of the GPU
@@ -51,12 +56,16 @@ public class SystemResourcesWindow : MonoBehaviour
     [SerializeField] GameObject CPUButton;
     [SerializeField] GameObject RAMButton;
 
+    // Reference to the DiagnosisWindow
+    [SerializeField] DiagnosisWindow diagnosisWindow;
+
     // Set the default status of the system resources
     public void awake()
     {
         currentGPUStatus = GPUStatus.OK;
         currentCPUStatus = CPUStatus.OK;
         currentRAMStatus = RAMStatus.OK;
+        diagnosisWindow = FindObjectOfType<DiagnosisWindow>();
     }
 
     // Start is called before the first frame update
@@ -64,13 +73,17 @@ public class SystemResourcesWindow : MonoBehaviour
     {
         UpdateSystemResourcesText();
         gameObject.SetActive(false);
+
+        // Add button listeners
+        GPUButton.GetComponent<Button>().onClick.AddListener(OpenDiagnosisWindow);
+        CPUButton.GetComponent<Button>().onClick.AddListener(OpenDiagnosisWindow);
+        RAMButton.GetComponent<Button>().onClick.AddListener(OpenDiagnosisWindow);
     }
 
     // When the window is enabled, update the text
     public void OnEnable()
     {
         UpdateSystemResourcesText();
-
     }
 
     public void ToggleMenu()
@@ -98,7 +111,7 @@ public class SystemResourcesWindow : MonoBehaviour
     {
         switch (currentGPUStatus)
         {
-            case(GPUStatus.OK):
+            case (GPUStatus.OK):
                 GPUStatusText.text = "OK";
                 GPUButton.SetActive(false);
                 break;
@@ -126,7 +139,7 @@ public class SystemResourcesWindow : MonoBehaviour
                 break;
         }
 
-        switch(currentRAMStatus)
+        switch (currentRAMStatus)
         {
             case (RAMStatus.OK):
                 RAMStatusText.text = "OK";
@@ -140,5 +153,11 @@ public class SystemResourcesWindow : MonoBehaviour
                 RAMButton.SetActive(true);
                 break;
         }
+    }
+
+    // Method to open the DiagnosisWindow
+    public void OpenDiagnosisWindow()
+    {
+        diagnosisWindow.OpenWindow();
     }
 }

@@ -1,17 +1,23 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+/// <summary>
+/// Garrett Sharp
+/// Some of the lockdown canvas functionality
+/// </summary>
 public class LockdownCanvas : MonoBehaviour
 {
     public LoadingScript loadingScript; // Reference to LoadingScript
 
     public bool isComplete; // Flag to check if loading is complete
 
+    public GameObject canvas; // Reference to the canvas
+
     // Start is called before the first frame update
     void Start()
     {
         isComplete = false;
+        canvas.SetActive(false); // Enable the canvas
     }
 
     // Update is called once per frame

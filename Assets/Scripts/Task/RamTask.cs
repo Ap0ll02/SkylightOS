@@ -14,11 +14,16 @@ public class RamTask : AbstractTask
 
     [SerializeField] DiagnosisWindow diagnosisWindow;
 
+    [SerializeField] LoadingScript loadingBarScript;
+
+    public float perTime = 1f;
+
     // 
     private void Awake()
     {
         systemResourcesWindow = FindObjectOfType<SystemResourcesWindow>();
         diagnosisWindow = FindObjectOfType<DiagnosisWindow>();
+        loadingBarScript = diagnosisWindow.GetComponentInChildren<LoadingScript>();
     }
 
     // Start is called before the first frame update
@@ -55,6 +60,9 @@ public class RamTask : AbstractTask
     {
         DiagnosisWindow.OnDiagnosisWindowOpened += HandleDiagnosisWindowOpened;
         DiagnosisWindow.LoadingDoneNotify += CompleteTask;
+        PerformanceThiefManager.PThiefEnded += PerformanceThiefEnd;
+        PerformanceThiefManager.PThiefStarted += PerformanceThiefStart;
+        PerformanceThiefManager.PThiefUpdateDelay += DelayHandler;
     }
 
     // Removing message handler?
@@ -62,25 +70,48 @@ public class RamTask : AbstractTask
     {
         DiagnosisWindow.OnDiagnosisWindowOpened -= HandleDiagnosisWindowOpened;
         DiagnosisWindow.LoadingDoneNotify -= CompleteTask;
+        PerformanceThiefManager.PThiefStarted -= PerformanceThiefStart;
+        PerformanceThiefManager.PThiefEnded -= PerformanceThiefEnd;
+        PerformanceThiefManager.PThiefUpdateDelay -= DelayHandler;
+    }
+
+    void PerformanceThiefStart()
+    {
+        //loadingBarScript.perthiefTime = perTime;
+    }
+
+    void PerformanceThiefEnd()
+    {
+        loadingBarScript.perthiefTime = 1f;
+    }
+
+    void DelayHandler()
+    {
+        loadingBarScript.perthiefTime = UnityEngine.Random.Range(0.01f, 0.29f);
     }
 
     // When the diagnosis window is opened, start the hazards and loading bar
     void HandleDiagnosisWindowOpened()
     {
-        //loadingBarScript.StartLoading();
         startHazards();
     }
 
     // This will request the manager to start a hazard
     public override void startHazards()
     {
-        
+        foreach (var hazardManager in hazardManagers)
+        {
+            hazardManager.StartHazard();
+        }
     }
 
     // This will request the manager to stop a hazard
     public override void stopHazards()
     {
-        
+        foreach (var hazardManager in hazardManagers)
+        {
+            hazardManager.StopHazard();
+        }
     }
 
     // Ask the hazard manager if our task can progress
@@ -90,11 +121,12 @@ public class RamTask : AbstractTask
         {
             if (!hazardManager.CanProgress())
             {
-                
+                diagnosisWindow.StopLoadingBar();
+                break;
             }
             else
             {
-
+                diagnosisWindow.ContinueLoadingBar();
             }
         }
     }

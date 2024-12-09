@@ -151,9 +151,9 @@ public class NyanceNyanceRevolution : MonoBehaviour
     private void Awake()
     {
         NyanceNyanceRevolutionSingleton = GetInstance();
-        NorthStar = GameObject.Find("NorthStar");
+        NorthStar = GameObject.Find("Northstar");
         northstar = NorthStar.GetComponent<Northstar>();
-        canvas = GameObject.Find("BossCanvas");
+        //canvas = GameObject.Find("BossCanvas");
         StageOne();
     }
 

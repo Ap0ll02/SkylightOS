@@ -6,13 +6,20 @@ using UnityEngine;
 
 public class NyanCatTask : AbstractBossTask
 {
-    public GameObject NyanCatBossFightPrefab;
-    
+    public GameObject NyanCatBossFight;
+    public GameObject BossCanvas;
+    public GameObject OsManagerWindow;
+    public GameObject SKYBIOSWINDOW;
     // Start is called before the first frame update
     public override void startTask()
     {
-        NyanCatBossFightPrefab.SetActive(true);
-    }
+        //NyanCatBossFight = GameObject.Find("NyanBossFight");
+        //BossCanvas = GameObject.Find("BossCanvas");
+        NyanCatBossFight.SetActive(true);
+        BossCanvas.SetActive(true);
+        OsManagerWindow.SetActive(false);
+        SKYBIOSWINDOW.SetActive(false);
+}
 
     public override void startHazards()
     {
@@ -20,7 +27,8 @@ public class NyanCatTask : AbstractBossTask
     }
     public override void stopHazards()
     {
-        NyanCatBossFightPrefab.SetActive(false);
+        NyanCatBossFight.SetActive(false);
+        BossCanvas.SetActive(false);
     }
 
     public override void checkHazards()

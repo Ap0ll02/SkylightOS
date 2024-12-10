@@ -58,13 +58,6 @@ public class PerformanceThiefManager : AbstractManager
         }
     }
 
-    // public IEnumerator Timer(float x = 4f) {
-    //     yield return new WaitForSeconds(x);
-    //     // Debug.Log("Performance Modifier: " + pTime);
-    //     pTime = UnityEngine.Random.Range(0.01f, 0.09f);
-
-    // }
-
     public void BIOSPerformanceHandler(int index) {
         switch (index) {
             case 0: Debug.Log("Case 0"); break;

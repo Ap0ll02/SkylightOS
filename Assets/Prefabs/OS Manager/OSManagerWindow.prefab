@@ -261,7 +261,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 291888521250411721, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -197
+      value: -116
       objectReference: {fileID: 0}
     - target: {fileID: 291888521250411721, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -405,6 +405,7 @@ MonoBehaviour:
   buttonContainer: {fileID: 8691355661483237393}
   currentTask: {fileID: 0}
   bossTask: {fileID: 0}
+  bossTaskButton: {fileID: 0}
 --- !u!224 &4656347351973318508 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}

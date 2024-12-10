@@ -18,6 +18,9 @@ public class RamTask : AbstractTask
     // Shouldnt be here (performance thief shit)
     [SerializeField] LoadingScript loadingBarScript;
 
+    // 
+    public bool canProgress;
+
     // Reference to nord stard
     public Northstar northstar;
 
@@ -45,7 +48,7 @@ public class RamTask : AbstractTask
     // Update is called once per frame
     void Update()
     {
-
+        checkHazards();
     }
 
     // Method to start the task
@@ -129,14 +132,17 @@ public class RamTask : AbstractTask
     {
         foreach (var hazardManager in hazardManagers)
         {
+            canProgress = hazardManager.CanProgress();
             if (!hazardManager.CanProgress())
             {
                 diagnosisWindow.StopLoadingBar();
                 break;
+                //loadingBarScript.canContinue = false;
             }
             else
             {
                 diagnosisWindow.ContinueLoadingBar();
+                //loadingBarScript.canContinue = true;
             }
         }
     }

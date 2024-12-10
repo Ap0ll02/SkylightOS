@@ -116,13 +116,13 @@ public class InternetTaskOne : AbstractTask
         {
             if (!hazardManager.CanProgress())
             {
-                loadingBarScript.canContinue = false;
+                diagnosisWindowScript.StopLoadingBar();
                 break;
             }
             else
             {
                 //loadingBarScript.perthiefTime = perTime;
-                loadingBarScript.canContinue = true;
+                diagnosisWindowScript.ContinueLoadingBar();
             }
         }
     }

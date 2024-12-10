@@ -611,6 +611,7 @@ MonoBehaviour:
   loadingBarScript: {fileID: 0}
   window: {fileID: 0}
   finishDiagButton: {fileID: 7518493944420112578}
+  headerText: {fileID: 0}
 --- !u!1001 &1519429737100019343
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -629,11 +630,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1043756135970272815, guid: fbb264a6591859a45aee5bd2a268f3ee, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 8923.7
+      value: 8781.7
       objectReference: {fileID: 0}
     - target: {fileID: 1043756135970272815, guid: fbb264a6591859a45aee5bd2a268f3ee, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 4261.6
+      value: 4262
       objectReference: {fileID: 0}
     - target: {fileID: 1043756135970272815, guid: fbb264a6591859a45aee5bd2a268f3ee, type: 3}
       propertyPath: m_LocalScale.x
@@ -649,7 +650,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1043756135970272815, guid: fbb264a6591859a45aee5bd2a268f3ee, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.02059
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 1043756135970272815, guid: fbb264a6591859a45aee5bd2a268f3ee, type: 3}
       propertyPath: m_AnchoredPosition.y

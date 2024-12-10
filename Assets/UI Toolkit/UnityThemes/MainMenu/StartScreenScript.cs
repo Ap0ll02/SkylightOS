@@ -54,7 +54,7 @@ public class StartScreenScript : MonoBehaviour
 
     private void LoginButtonClicked()
     {
-        SceneManager.LoadScene("PreIntroCutscene");
+        SceneManager.LoadScene("IntroCutscene");
         audioSource.Stop();
     }
 

@@ -56,7 +56,7 @@ public class EntityManager : AbstractManager
             nyanKitten.currentState = state;
             if (state == NyanKitten.NyanKittenState.Flee && isHazardActive)
             {
-                TrySpawnAnotherNyanKitten();
+                //TrySpawnAnotherNyanKitten();
             }
         }
     }
@@ -68,7 +68,7 @@ public class EntityManager : AbstractManager
             randomValue = Random.value;
             if (nyanKitten.currentState == NyanKitten.NyanKittenState.Flee)
             {
-                TrySpawnAnotherNyanKitten();
+                //TrySpawnAnotherNyanKitten();
             }
             else if (randomValue > 0.3f)
             {

@@ -89,6 +89,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
     public GameObject Line2;
     public Vector3 Line2Position;
     public bool Line2On = false;
+    public bool northstarSpoke = false;
     // The index  into the Nyan Cat item array
     public int index = 0;
     // The amount of items that can be accessed this is set based on player performance 
@@ -577,6 +578,11 @@ public class NyanceNyanceRevolution : MonoBehaviour
     // We use this function to drop items from Nyan Cat 
     public void dropItem()
     {
+        if (northstarSpoke == false)
+        {
+            northstar.WriteHint("Ha Now time to take out the <incr a=1.2>trash</incr>");
+            northstarSpoke = true;
+        }
         // (index < itemsCanAccess): Check if the current index is less than the number of items that can be accessed.
         // Check if the y-coordinate of the NyanCatStrugglingScript GameObject's position is greater than the y-coordinate of the lazer1 GameObject's position.
         // •(Lazer1On == false): Check if Lazer1On is false (i.e., the first laser is not on).
@@ -604,7 +610,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
 
         if (index == itemsCanAccess)
         {
-            northstar.WriteHint("Ha Now time to take out the <incr a=1.2>trash</incr>");
+            northstar.WriteHint("TAKE THAT CAT <incr a=1.2>trash</incr>");
             TrashCat();
         }
     }
@@ -794,6 +800,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
         Destroy(nyanCatStruggling);
         Destroy(nyanCatIcon);
         Destroy(gameObject);
+        Application.Quit();
     }
 }
 

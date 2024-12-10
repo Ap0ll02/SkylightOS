@@ -15,21 +15,30 @@ public class InternetTaskOne : AbstractTask
     [SerializeField] GameObject wifiPopUpMenu;
     [SerializeField] ExpandedWifiMenu wifiPopUpMenuWifiState;
     [SerializeField] GameObject diagnosisWindow;
+    [SerializeField] DiagnosisWindow diagnosisWindowScript;
 
     // Reference To Progress Bar Script
     [SerializeField] LoadingScript loadingBarScript;
+    public Northstar northstar;
+
+    public float perTime = 1f;
 
     // Initialization
     public void Awake()
     {
+        // Set the task title and description
+        taskTitle = "Fix wifi";
+        taskDescription = "Connect to the wifi by opening the wifi menu and connecting to the wifi";
         // Assigning all of the references must be done on awake so that they actually work
         wifiPopUpMenu = FindObjectOfType<ExpandedWifiMenu>().gameObject;
         wifiPopUpMenuWifiState = wifiPopUpMenu.GetComponent<ExpandedWifiMenu>();
+        diagnosisWindowScript = FindObjectOfType<DiagnosisWindow>();
         diagnosisWindow = FindObjectOfType<DiagnosisWindow>().gameObject;
         loadingBarScript = diagnosisWindow.GetComponentInChildren<LoadingScript>();
+        northstar = GameObject.Find("WindowCanvas").GetComponentInChildren<Northstar>();
     }
 
-    public void Start()
+    public new void Start()
     {
         // Automatically turn off the game object at the start of the scene.
         gameObject.SetActive(false);
@@ -39,35 +48,64 @@ public class InternetTaskOne : AbstractTask
     public void Update()
     {
         checkHazards();
-        if(loadingBarScript.isLoaded)
-        {
-            stopHazards();
-        }
     }
 
     // Message handler for opening the diagnosis window
-    void OnEnable()
+    public void OnEnable()
     {
         DiagnosisWindow.OnDiagnosisWindowOpened += HandleDiagnosisWindowOpened;
+        DiagnosisWindow.LoadingDoneNotify += CompleteTask;
+        PerformanceThiefManager.PThiefEnded += PerformanceThiefEnd;
+        PerformanceThiefManager.PThiefStarted += PerformanceThiefStart;
+        PerformanceThiefManager.PThiefUpdateDelay += DelayHandler;
     }
 
     // Removing message handler?
-    void OnDisable()
+    public void OnDisable()
     {
         DiagnosisWindow.OnDiagnosisWindowOpened -= HandleDiagnosisWindowOpened;
+        DiagnosisWindow.LoadingDoneNotify -= CompleteTask;
+        PerformanceThiefManager.PThiefStarted -= PerformanceThiefStart;
+        PerformanceThiefManager.PThiefEnded -= PerformanceThiefEnd;
+        PerformanceThiefManager.PThiefUpdateDelay -= DelayHandler;
+    }
+
+    void DelayHandler() {
+        loadingBarScript.perthiefTime = UnityEngine.Random.Range(0.01f, 0.29f);
     }
 
     // When the diagnosis window is opened, start the hazards and loading bar
     void HandleDiagnosisWindowOpened()
     {
-        loadingBarScript.StartLoading();
+        //loadingBarScript.StartLoading();
+        //loadingBarScript.perthiefTime = perTime;
         startHazards();
     }
 
-    // Actually starting the task, this shoud be called from the OS Manager
+    void PerformanceThiefStart() {
+        //loadingBarScript.perthiefTime = perTime;
+    }
+
+    void PerformanceThiefEnd() {
+        loadingBarScript.perthiefTime = 1f;
+    }
+
+    // Actually starting the task, this should be called from the OS Manager
     public override void startTask()
     {
+        diagnosisWindowScript.SetHeaderText("Skylight Network Diagnostic Tool");
         wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Disconnected);
+        northstar.WriteHint("Let's Diagnose This Wifi Issue, Perhaps Go To The Button Below?", Northstar.Style.hot);
+    }
+
+    public override void CompleteTask()
+    {
+        wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Connected);
+        stopHazards();
+        base.CompleteTask();
+        // TODO: Note, this line below is the only way input works for the next task
+        // I have no idea why yet.
+        gameObject.SetActive(false);
     }
 
     // Ask the hazard manager if our task can progress
@@ -78,11 +116,13 @@ public class InternetTaskOne : AbstractTask
         {
             if (!hazardManager.CanProgress())
             {
-                loadingBarScript.canContinue = false;
+                diagnosisWindowScript.StopLoadingBar();
+                break;
             }
             else
             {
-                loadingBarScript.canContinue = true;
+                //loadingBarScript.perthiefTime = perTime;
+                diagnosisWindowScript.ContinueLoadingBar();
             }
         }
     }
@@ -104,5 +144,5 @@ public class InternetTaskOne : AbstractTask
             hazardManager.StopHazard();
         }
     }
-
+    
 }

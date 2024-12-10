@@ -1,0 +1,352 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &4366849566078826834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8678513436782558100}
+  - component: {fileID: 5823024392941548495}
+  - component: {fileID: 2157510721454017225}
+  - component: {fileID: 4531514230799709005}
+  m_Layer: 10
+  m_Name: NyanBossFight
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!224 &8678513436782558100
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4366849566078826834}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -3.0188031}
+  m_LocalScale: {x: 11663.999, y: 11663.999, z: 11663.999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -0.22755155, y: 23.036684}
+  m_SizeDelta: {x: 20, y: 5}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &5823024392941548495
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4366849566078826834}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 6beb9761a35a92d42b3511ad4c6402f3, type: 2}
+  m_audioClip: {fileID: 8300000, guid: 6e6605073424b114f8a55a19d9b8886c, type: 3}
+  m_PlayOnAwake: 0
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+--- !u!114 &2157510721454017225
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4366849566078826834}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92024d02b9c3a4743ad938e01b04ffd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  canvas: {fileID: 0}
+  arrowsTypesArray:
+  - {fileID: 7937669890406625025, guid: 5bb32642f73a98f41bc7b6d8465bbf9d, type: 3}
+  - {fileID: 6013189756746450149, guid: b4145c399d9662343906e5b0ae2ee086, type: 3}
+  - {fileID: 8853377128816972480, guid: d4fe287864b37f14bb1ad7130a6a9f44, type: 3}
+  - {fileID: 9064558564187166855, guid: 5a817428239d55545a036d89e9d0e66a, type: 3}
+  ExplosionFeedbackPrefab:
+  - {fileID: 6149267475139314171, guid: 0419d97d00e21b24da55acae9c9f4d05, type: 3}
+  - {fileID: 1162446017367265732, guid: d36fc54163117b24bb7b30918b994057, type: 3}
+  - {fileID: 8845406813476558856, guid: 3466e70ddd0dd2b4a870f8d4588a0e23, type: 3}
+  - {fileID: 347949734643571413, guid: 5fe11e642460d9f4d99b35f2ce2e91ee, type: 3}
+  ExplosionFeedback:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  LazerPrefab:
+  - {fileID: 8802519583893694509, guid: 449a03de04a28614da75c652e1fd3447, type: 3}
+  - {fileID: 6751665465147711603, guid: 830f5abe7900f50448e2c65a1b01a0f4, type: 3}
+  - {fileID: 574918220597810944, guid: cc92f77ecac9f1740a80a5b226ca4317, type: 3}
+  - {fileID: 716149824991083663, guid: 1de947d4603acee44995105b8668b493, type: 3}
+  - {fileID: 3774605810376329117, guid: 42944ed1dad92ab4a95eeb875fac8919, type: 3}
+  Lazer:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  scoreTextPrefab:
+  - {fileID: 886656938950707768, guid: a03be6eee2ead85488f9fe1e61715e43, type: 3}
+  - {fileID: 718052308284639182, guid: d954b36fa6a72134689704308f9a99b3, type: 3}
+  - {fileID: 870853811071525337, guid: 336a60835edfacc438e5e8390353edb3, type: 3}
+  - {fileID: 213004873024307639, guid: f8102edbca6176a43b19588fabfeeca4, type: 3}
+  scoreText:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  checkArrowsPrefab:
+  - {fileID: 7567771175323771642, guid: eb9936bce8d88d64e91d400c9b2da4ab, type: 3}
+  - {fileID: 1934235686718969738, guid: 82c2deeb492cb97488a6d7c3564b92ff, type: 3}
+  - {fileID: 8228258878469659682, guid: 6054dfc197e5c344bb02a85d428a10f6, type: 3}
+  - {fileID: 2585933768569587209, guid: 270e627e8aef302498150bf15229fbfe, type: 3}
+  checkArrows:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  dialogueLines:
+  - 
+  - 
+  - 
+  - 
+  - 
+  NyanCatItems:
+  - {fileID: 6431475270784175736, guid: f82fc45eee16661418fdf6c98c34b1e6, type: 3}
+  - {fileID: 136571087018354393, guid: d0d0e595071a13f49a87c8d4631865d2, type: 3}
+  - {fileID: 6604241166471846565, guid: 61ed6c50f0d3c7646b9ece72c9db1f6e, type: 3}
+  - {fileID: 1204202907997971572, guid: 38cf127dc6ae86c429c1d03d5a6b238f, type: 3}
+  - {fileID: 2989332442074911233, guid: 6b4288366bebccf4698dccb442783c56, type: 3}
+  - {fileID: 8528735114839552378, guid: 6d016da76fa7922448b243adca5a06fa, type: 3}
+  - {fileID: 7148222438295352094, guid: 077855a045c9b7d4a9c24367bd29c2d8, type: 3}
+  - {fileID: 7569944740088301223, guid: fb2afcf9c72e088409783bb2ec899f89, type: 3}
+  - {fileID: 4717955936380214076, guid: db2aefc84518f55468a699890d4dd22b, type: 3}
+  - {fileID: 9074733778819533889, guid: 85f342febfc190e49835b616e2a6f685, type: 3}
+  - {fileID: 5018686148733293688, guid: d0e6eba042b84d2499d537d27cf03f1d, type: 3}
+  - {fileID: 6850701040307439531, guid: 530c7f5b6b2296f4db70e1a6cf7b2003, type: 3}
+  - {fileID: 2185963372796771219, guid: e2fb40ca42c155142be3a64fb6d8642f, type: 3}
+  - {fileID: 6416602637727982235, guid: 78624844e951985408b39695b825db17, type: 3}
+  - {fileID: 1510802327522339087, guid: 6e33d3043c889454280c99ae2a312c90, type: 3}
+  - {fileID: 3615795275554535417, guid: 8622eaca186e17646a56637c9efe31b4, type: 3}
+  - {fileID: 751208265395183240, guid: f964d62daf379e544bc1803052a3b521, type: 3}
+  - {fileID: 3900797194378480880, guid: 0453c2b76f4b248458c59fe9daff695d, type: 3}
+  - {fileID: 7355900771787277915, guid: fa8cabfcccc4e774b9e284fc842664d2, type: 3}
+  - {fileID: 8802547284444666936, guid: 0f8fa377b9a26dc44a645cf4421e9386, type: 3}
+  - {fileID: 3737632841978174538, guid: f0cbcdfe318406d41b1694c6c73b7053, type: 3}
+  - {fileID: 4522567208871890398, guid: c5e1c2cac62324c449be088e17dc43f0, type: 3}
+  - {fileID: 5520458278864751481, guid: 3422f77a26bf20046973f5239bdbc779, type: 3}
+  - {fileID: 815811639468402285, guid: 7b065ce0e06dd6f40afcef1c1642ef04, type: 3}
+  - {fileID: 7589792764213209809, guid: 902f66005e2080040b5d8d766c8a835f, type: 3}
+  - {fileID: 213307643693193007, guid: 697f5651438e75a45a6678f60b8fbb8a, type: 3}
+  - {fileID: 7462746016043658971, guid: 2096733cd7a6d244e9075b265fab85fb, type: 3}
+  - {fileID: 416008198222009538, guid: e3e32de2fbd8b5f4cab95ac2494b2ae5, type: 3}
+  - {fileID: 6024271271209638091, guid: 0ab401b8ae535664cbec646592406479, type: 3}
+  - {fileID: 7265230721059562822, guid: e2eaa8353fa204e4ca32699c0e95dbca, type: 3}
+  - {fileID: 2610890036288022398, guid: d6e144764ec2d884ca6df7b66ebe7b33, type: 3}
+  - {fileID: 4598042697962496500, guid: e12be1ff106c87c47b179782caa9e35c, type: 3}
+  - {fileID: 4113228686936540173, guid: 1811d1df18cd29649948c07e1a9fad4d, type: 3}
+  - {fileID: 2607509422511722784, guid: f48c9720508a5f94292ed01d9ff221ab, type: 3}
+  - {fileID: 2607509422511722784, guid: f48c9720508a5f94292ed01d9ff221ab, type: 3}
+  - {fileID: 3540133357477195961, guid: 9892a0b7cb95d5c42b8b618540ebf5e3, type: 3}
+  - {fileID: 1158412644151240586, guid: 2069d8199b87abc45ac9d41e019fe88f, type: 3}
+  - {fileID: 3639537945923414112, guid: 92b9ed0d560caf04fad3956a839839f9, type: 3}
+  - {fileID: 2282382417136026312, guid: 004232322f4d44c4f95e34e1854e9d7a, type: 3}
+  - {fileID: 6431475270784175736, guid: f82fc45eee16661418fdf6c98c34b1e6, type: 3}
+  Stage: 1
+  winGood: 4000
+  winGreat: 6000
+  winPerfect: 7000
+  playerScore: 0
+  textOne: <rainb><shake a=0.5>MUHAHAHAHA!</rainb></shake><waitfor=0.5> I have been
+    here since 2008. You know how many IT people have tried and <incr>failed</incr>
+    to remove me!
+  textTwo: Seriously<waitfor=0.5>, You know how rude it is to try and close a process!<waitfor=0.5>
+    The <rainb>Rainbow Sprinkle Gall</rainb> of you people!
+  textThree: 'NOW YOU WILL FACE THE JUDGEMENT OF NYAN CAT! '
+  textFour: I will use my <rainb>rainbow arrows</rainb> to break through your security.
+    Then use  <incr>LAZERS</incr> to blow up your anti virus software
+  textFive: 'Now watch <waitfor=0.5> as I remove your silly anti virus software.<rainb><waitfor=0.5><shake
+    a=0.5>Then take over Dorthys computer!</shake><rainb> '
+  textBoxPrefab: {fileID: 766649028720904973, guid: fce12bfaa9905244dad4098da17cf83e, type: 3}
+  textBox: {fileID: 0}
+  bossTextPrefab: {fileID: 4451863288882869826, guid: b4918809e0f11d94fa2047427be7b2f5, type: 3}
+  bossText: {fileID: 0}
+  text: {fileID: 0}
+  nyanCatIcon: {fileID: 0}
+  nyanCatIdlePrefab: {fileID: 3803836691575881888, guid: a938d6496a296e144969fc6fa2a31985, type: 3}
+  nyanCatIdle: {fileID: 0}
+  nyanCatFlyingPrefab: {fileID: 4160345928628560801, guid: 85b49388cb5194a4ba8cf3af30bfde15, type: 3}
+  nyanCatFlying: {fileID: 0}
+  nyanCatStrugglingPrefab: {fileID: 71555937651404543, guid: 2242f5c92b0ed4b4e8107500765d0abe, type: 3}
+  nyanCatStruggling: {fileID: 0}
+  Line1Prefab: {fileID: 4535001159234487534, guid: 7bbc62b686c330b4e90ebef4184df8c6, type: 3}
+  Line1: {fileID: 0}
+  Line1Position: {x: 0, y: 0, z: 0}
+  Line1On: 0
+  Line2Prefab: {fileID: 3908712225027853214, guid: 80a997f1b01a50041a0ab98ae156c44c, type: 3}
+  Line2: {fileID: 0}
+  Line2Position: {x: 0, y: 0, z: 0}
+  Line2On: 0
+  index: 0
+  itemsCanAccess: 10
+  itemsCanAccessPerfect: 40
+  itemsCanAccessGreat: 20
+  itemsCanAccessGood: 10
+  itemsCanAccessFail: 0
+  trashCan: {fileID: 744738323277329013, guid: 032fef27f0c74864dbc9b977871aba85, type: 3}
+  newTrashCan: {fileID: 0}
+  typewriter: {fileID: 0}
+  NorthStar: {fileID: 0}
+  northstar: {fileID: 0}
+  endConditionPrefab: {fileID: 5106710413530386401, guid: 37d4b3b66dc0663499303b90c7264b2d, type: 3}
+  endCondition: {fileID: 0}
+  damageTextPrefab: {fileID: 0}
+  damageText: {fileID: 0}
+  nyanCatSong: {fileID: 5823024392941548495}
+  UpArrow:
+    m_PersistentCalls:
+      m_Calls: []
+  DownArrow:
+    m_PersistentCalls:
+      m_Calls: []
+  LeftArrow:
+    m_PersistentCalls:
+      m_Calls: []
+  RightArrow:
+    m_PersistentCalls:
+      m_Calls: []
+  perfectColor: {r: 1, g: 0.99224085, b: 0, a: 1}
+  greatColor: {r: 0, g: 0.14500093, b: 1, a: 1}
+  goodColor: {r: 0, g: 1, b: 0.18419456, a: 1}
+  missColor: {r: 1, g: 0.04185652, b: 0, a: 1}
+--- !u!23 &4531514230799709005
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4366849566078826834}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: -4202423924150976573, guid: 52180da4d46b96d4aa42a83d7c1470b2, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}

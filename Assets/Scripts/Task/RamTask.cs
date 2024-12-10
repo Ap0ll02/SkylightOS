@@ -9,21 +9,28 @@ using TMPro;
 /// </summary>
 public class RamTask : AbstractTask
 {
-
+    // The system resources window
     [SerializeField] SystemResourcesWindow systemResourcesWindow;
 
+    // The diagnosis window
     [SerializeField] DiagnosisWindow diagnosisWindow;
 
+    // Shouldnt be here (performance thief shit)
     [SerializeField] LoadingScript loadingBarScript;
 
+    // Reference to nord stard
+    public Northstar northstar;
+
+    // Crack (cocainia)
     public float perTime = 1f;
 
-    // 
+    // Awake my child
     private void Awake()
     {
         systemResourcesWindow = FindObjectOfType<SystemResourcesWindow>();
         diagnosisWindow = FindObjectOfType<DiagnosisWindow>();
         loadingBarScript = diagnosisWindow.GetComponentInChildren<LoadingScript>();
+        northstar = FindObjectOfType<Northstar>();
     }
 
     // Start is called before the first frame update
@@ -44,7 +51,9 @@ public class RamTask : AbstractTask
     // Method to start the task
     public override void startTask()
     {
+        diagnosisWindow.SetHeaderText("Skylight RAM Downloader");
         systemResourcesWindow.currentRAMStatus = SystemResourcesWindow.RAMStatus.CRITICAL;
+        northstar.WriteHint("Let's Diagnose This RAM Issue, Perhaps Go To The Process Manager Button Below?", Northstar.Style.warm);
     }
 
     public override void CompleteTask()
@@ -94,6 +103,7 @@ public class RamTask : AbstractTask
     void HandleDiagnosisWindowOpened()
     {
         startHazards();
+        northstar.WriteHint("OH SHIT WE GOTTA WAIT FOR THE BAR TO LOAD", Northstar.Style.warm);
     }
 
     // This will request the manager to start a hazard

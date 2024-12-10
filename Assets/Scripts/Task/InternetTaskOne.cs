@@ -15,6 +15,7 @@ public class InternetTaskOne : AbstractTask
     [SerializeField] GameObject wifiPopUpMenu;
     [SerializeField] ExpandedWifiMenu wifiPopUpMenuWifiState;
     [SerializeField] GameObject diagnosisWindow;
+    [SerializeField] DiagnosisWindow diagnosisWindowScript;
 
     // Reference To Progress Bar Script
     [SerializeField] LoadingScript loadingBarScript;
@@ -31,6 +32,7 @@ public class InternetTaskOne : AbstractTask
         // Assigning all of the references must be done on awake so that they actually work
         wifiPopUpMenu = FindObjectOfType<ExpandedWifiMenu>().gameObject;
         wifiPopUpMenuWifiState = wifiPopUpMenu.GetComponent<ExpandedWifiMenu>();
+        diagnosisWindowScript = FindObjectOfType<DiagnosisWindow>();
         diagnosisWindow = FindObjectOfType<DiagnosisWindow>().gameObject;
         loadingBarScript = diagnosisWindow.GetComponentInChildren<LoadingScript>();
         northstar = GameObject.Find("WindowCanvas").GetComponentInChildren<Northstar>();
@@ -91,6 +93,7 @@ public class InternetTaskOne : AbstractTask
     // Actually starting the task, this should be called from the OS Manager
     public override void startTask()
     {
+        diagnosisWindowScript.SetHeaderText("Skylight Network Diagnostic Tool");
         wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Disconnected);
         northstar.WriteHint("Let's Diagnose This Wifi Issue, Perhaps Go To The Button Below?", Northstar.Style.hot);
     }

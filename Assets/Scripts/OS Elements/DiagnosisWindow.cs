@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using TMPro;
 /// <summary>
 /// Garrett Sharp
 /// Diagnosis window
@@ -18,6 +19,9 @@ public class DiagnosisWindow : MonoBehaviour
 
     // Button that appears after loading bar, used for finishing the diagnosis
     [SerializeField] GameObject finishDiagButton;
+
+    // Reference to header text component
+    [SerializeField] TMP_Text headerText;
 
     // Getting the loading bar script reference
     void Awake()
@@ -50,6 +54,7 @@ public class DiagnosisWindow : MonoBehaviour
         ResetLoadingBar();
         gameObject.SetActive(false);
     }
+
     // Starting the loading bar
     public void StartLoadingBar()
     {
@@ -85,7 +90,6 @@ public class DiagnosisWindow : MonoBehaviour
         gameObject.SetActive(false);
     }
 
-
     // Coroutine to update the diagnosis window when the loading bar is loaded
     private IEnumerator UpdateDiagnosisWindow()
     {
@@ -100,5 +104,14 @@ public class DiagnosisWindow : MonoBehaviour
     public void ResetLoadingBar()
     {
         loadingBarScript.Reset();
+    }
+
+    // Method to set the header text
+    public void SetHeaderText(string text)
+    {
+        if (headerText != null)
+        {
+            headerText.text = text;
+        }
     }
 }

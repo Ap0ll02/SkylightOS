@@ -465,6 +465,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: BossCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 871252762713740074, guid: 13f4770f2241e22409b18847c80f2239, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 871252762713740074, guid: 13f4770f2241e22409b18847c80f2239, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 871252762713740074, guid: 13f4770f2241e22409b18847c80f2239, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 1080
+      objectReference: {fileID: 0}
     - target: {fileID: 6859363960420816989, guid: 13f4770f2241e22409b18847c80f2239, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -875,7 +887,7 @@ PrefabInstance:
       objectReference: {fileID: 4323852002756923911}
     - target: {fileID: 1725461343474941827, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3188086117797493081, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -1295,6 +1307,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2676724649693332734, guid: d2c217198dab76b4e89547d72d1626d6, type: 3}
   m_PrefabInstance: {fileID: 7239649442134751626}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6986425593468051660 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 327816920950085958, guid: d2c217198dab76b4e89547d72d1626d6, type: 3}
+  m_PrefabInstance: {fileID: 7239649442134751626}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dcf9474b4533ea940a67d244420569d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7286139018935045683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2972,7 +2995,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6929458332772738277, guid: 1895651be963302408e99be90bedf326, type: 3}
       propertyPath: hazardManagers.Array.size
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6929458332772738277, guid: 1895651be963302408e99be90bedf326, type: 3}
       propertyPath: hazardManagers.Array.data[0]
@@ -2986,6 +3009,10 @@ PrefabInstance:
       propertyPath: hazardManagers.Array.data[2]
       value: 
       objectReference: {fileID: 6175026116250837524}
+    - target: {fileID: 6929458332772738277, guid: 1895651be963302408e99be90bedf326, type: 3}
+      propertyPath: hazardManagers.Array.data[3]
+      value: 
+      objectReference: {fileID: 6986425593468051660}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

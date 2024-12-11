@@ -155,5 +155,6 @@ public class NyanKitten : Hazards
             // Wait for the next frame
             yield return null;
         }
+        //hazGrabbed = false;
     }
 }

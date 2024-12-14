@@ -949,6 +949,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "ctrlCQuit",
+                    "type": "Button",
+                    "id": "e55f7ba9-9378-4c1c-9674-f880366499ff",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1083,6 +1092,39 @@
                     "action": "ChoiceBACK",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "ctrlc",
+                    "id": "127ad53d-2769-487b-bedc-c06f63567cba",
+                    "path": "OneModifier",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ctrlCQuit",
+                    "isComposite": true,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "modifier",
+                    "id": "ae9adfbd-a059-4146-ac3c-43fea7e29e45",
+                    "path": "<Keyboard>/ctrl",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ctrlCQuit",
+                    "isComposite": false,
+                    "isPartOfComposite": true
+                },
+                {
+                    "name": "binding",
+                    "id": "0d1807f1-b001-4375-b1e4-29bed9274385",
+                    "path": "<Keyboard>/c",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ctrlCQuit",
+                    "isComposite": false,
+                    "isPartOfComposite": true
                 }
             ]
         }

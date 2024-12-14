@@ -60,7 +60,7 @@ public class SystemResourcesWindow : MonoBehaviour
     [SerializeField] DiagnosisWindow diagnosisWindow;
 
     // Set the default status of the system resources
-    public void awake()
+    public void Awake()
     {
         currentGPUStatus = GPUStatus.OK;
         currentCPUStatus = CPUStatus.OK;

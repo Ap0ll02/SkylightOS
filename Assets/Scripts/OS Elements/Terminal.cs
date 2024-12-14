@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using System.Text.RegularExpressions;
 using System;
 using TMPro;
 //using TMPro.EditorUtilities;
@@ -20,6 +19,8 @@ public class Terminal : MonoBehaviour
 {
     /// @var twinName The name of the terminal window, change here if you did change your window name.
     string twinName = "TerminalWindow";
+
+    public GameObject usrInput;
 
     /// @var TInstructionTxt The text that covers the terminal that can be used to show instructions or text.
     [SerializeField] TMP_Text TInstructionTxt;
@@ -96,7 +97,46 @@ public class Terminal : MonoBehaviour
         // Allows the TerminalTask to modify terminal commands if Task State is On
         OnNMAPPressed?.Invoke();
     }
-    
+
+    public void CheckInput() {
+        string nmapPattern = @"^(?:nmap)(\s+)(\w+)$";
+        TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
+
+        if(uTxt.text.ToLower().Trim() == "ls") {
+            ListFilesExec();
+        }
+        else if(Regex.IsMatch(uTxt.text.ToLower(), nmapPattern)) {
+            NMapExec();
+        }
+        else if(uTxt.text.ToLower().Trim() == "solar -i antivirus") {
+            AntiVirusExec();
+        }
+        else if(uTxt.text.ToLower().Trim() == "ls") {
+            
+        }
+        else {
+            uTxt.text = "";
+            uTxt.placeholder.GetComponent<TMP_Text>().text = "Unable To Recognize Command. Try Again.";
+            return;
+        }
+
+        uTxt.text = "";
+        uTxt.placeholder.GetComponent<TMP_Text>().text = "Enter Command";
+    }
+
+    public void HandleUserInput(string input)
+    {
+        TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
+        uTxt.text = input;
+        CheckInput();
+    }
+
+    public void HandleCtrlC() {
+        TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
+        uTxt.text = "";
+        uTxt.placeholder.GetComponent<TMP_Text>().text = "Enter Command";
+    }
+
     public IEnumerator TerminalLoading() {
         while(count < 20 * iterCount) {
             count++;

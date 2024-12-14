@@ -45,7 +45,6 @@ public class Terminal : MonoBehaviour
     {
         TWindow = GameObject.Find(twinName);
         TWindow.SetActive(true);
-        usrInput = GameObject.Find(ConsoleInput);
     }
 
     public void Start()
@@ -102,10 +101,7 @@ public class Terminal : MonoBehaviour
 
     public void HandleUserInput()
     {
-        if (usrInput != null)
-        {
-            Debug.Log("Lol I love this input");
-        }
+        
     }
 
     public IEnumerator TerminalLoading() {

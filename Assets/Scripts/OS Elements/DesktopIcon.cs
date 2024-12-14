@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class DesktopIcon : MonoBehaviour
 {
-    public bool visible = true;
+    public bool visible;
     public void ToggleVisible(GameObject app) {
         var appGroup = app.GetComponent<CanvasGroup>();
         if(appGroup == null)

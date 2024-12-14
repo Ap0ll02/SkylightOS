@@ -322,38 +322,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 803093847729059577, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -710.00006
-      objectReference: {fileID: 0}
     - target: {fileID: 4323852002756923911, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: NyanCatBossFight
       value: 
       objectReference: {fileID: 1600253997}
-    - target: {fileID: 4569832982332939215, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 461.89
-      objectReference: {fileID: 0}
-    - target: {fileID: 4569832982332939215, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 461.89
-      objectReference: {fileID: 0}
-    - target: {fileID: 4569832982332939215, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 797
-      objectReference: {fileID: 0}
-    - target: {fileID: 4569832982332939215, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -228.05
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915130101323574182, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -6.7998047
-      objectReference: {fileID: 0}
-    - target: {fileID: 4915130101323574182, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -51.800293
-      objectReference: {fileID: 0}
     - target: {fileID: 6074580081977407537, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_Name
       value: LevelContainer
@@ -396,14 +368,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6651417099806281802, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7453472850630349647, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-      propertyPath: m_Texture
-      value: 
-      objectReference: {fileID: 2800000, guid: 4554c7d5d877edc4bbc0a8d2ad5c7241, type: 3}
-    - target: {fileID: 7913138495764829216, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -99,13 +99,13 @@ public class Terminal : MonoBehaviour
     }
 
     public void CheckInput() {
-        string regPattern = @"^(?:nmap)(\s+)(\w+)$";
+        string nmapPattern = @"^(?:nmap)(\s+)(\w+)$";
         TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
 
         if(uTxt.text.ToLower().Trim() == "ls") {
             ListFilesExec();
         }
-        else if(Regex.IsMatch(uTxt.text.ToLower(), regPattern)) {
+        else if(Regex.IsMatch(uTxt.text.ToLower(), nmapPattern)) {
             NMapExec();
         }
         else if(uTxt.text.ToLower().Trim() == "solar -i antivirus") {

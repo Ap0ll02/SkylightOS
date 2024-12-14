@@ -3,6 +3,8 @@ using UnityEngine;
 using System.Text.RegularExpressions;
 using System;
 using TMPro;
+using System.Collections.Generic;
+using UnityEngine.InputSystem;
 //using TMPro.EditorUtilities;
 /**
  * @author Jack Ratermann
@@ -34,6 +36,7 @@ public class Terminal : MonoBehaviour
 
     /// @var IntroText A String to be displayed upoon start for terminal. 
     private string FirstText = "Welcome to ClearSky Console.\n We are testing multi-line editing tbh.";
+    public TMP_Text autoFill;
 
     /// @var OnAVPressed event and Action delegate variable setup.
     public static event Action OnAVPressed;
@@ -44,6 +47,7 @@ public class Terminal : MonoBehaviour
     {
         TWindow = GameObject.Find(twinName);
         TWindow.SetActive(true);
+        autoFill = GameObject.Find("AutoFill").GetComponentInChildren<TMP_Text>();
     }
 
     public void Start()
@@ -98,6 +102,12 @@ public class Terminal : MonoBehaviour
         OnNMAPPressed?.Invoke();
     }
 
+    bool firstCharacter = true;
+    Stack inpHist = new();
+    int lCount = 0;
+    int sCount = 0;
+    int nCount = 0;
+
     public void CheckInput() {
         string nmapPattern = @"^(?:nmap)(\s+)(\w+)$";
         TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
@@ -122,6 +132,11 @@ public class Terminal : MonoBehaviour
 
         uTxt.text = "";
         uTxt.placeholder.GetComponent<TMP_Text>().text = "Enter Command";
+        firstCharacter = true;
+        lCount = 0;
+        sCount = 0;
+        nCount = 0;
+        autoFill.text = "";
     }
 
     public void HandleUserInput(string input)
@@ -135,6 +150,71 @@ public class Terminal : MonoBehaviour
         TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
         uTxt.text = "";
         uTxt.placeholder.GetComponent<TMP_Text>().text = "Enter Command";
+        firstCharacter = true;
+        lCount = 0;
+        sCount = 0;
+        nCount = 0;
+        autoFill.text = "";
+    }
+    public void HandleTab() {
+        // TODO: Fix tab entering like 4 times
+        TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
+        Debug.Log("I Exist");
+        if(firstCharacter && inpHist.Count == 0) {
+            AutoCorrect(null);
+        } else {
+            Debug.Log("Setting The Text To This: " + autoFill.text);
+            uTxt.text = autoFill.text.Replace("\n", "").Replace("\r", "");
+        }
+    }
+
+    public void AutoCorrect(string input = null) {
+        TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
+        autoFill.text = "";
+        List<List<string>> commandList = new();
+        List<string> l = new();
+        l.Add("ls");
+        List<string> s = new();
+        s.Add("solar");
+        s.Add("-i");
+        s.Add("antivirus");
+        List<string> n = new();
+        n.Add("nmap");
+        commandList.Add(l);
+        commandList.Add(s);
+        commandList.Add(n);
+        string solarPattern = @"^(?:solar)(\s+)$";
+        if(input == "l") {
+            autoFill.text = l[0];
+            lCount++;
+            inpHist.Push("l");
+        }
+        else if(input == "s") {
+            autoFill.text = s[sCount];
+            inpHist.Push("s");
+        }
+        else if(input == "n") {
+            autoFill.text = n[0];
+            nCount++;
+            inpHist.Push("n");
+        }
+        else if(input == "\b") {
+            lCount = 0;
+            sCount = 0;
+            nCount = 0;
+            inpHist.Pop();
+        }
+        else if(input == null){
+            foreach (var list in commandList) {
+                autoFill.text += list[0] + "\n";
+            }
+            return;
+        }
+        else if(Regex.IsMatch(uTxt.text, solarPattern)) {
+            sCount++;
+            autoFill.text += s[sCount];
+        }
+        firstCharacter = false;
     }
 
     public IEnumerator TerminalLoading() {

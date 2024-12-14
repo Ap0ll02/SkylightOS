@@ -980,6 +980,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""tabFill"",
+                    ""type"": ""Button"",
+                    ""id"": ""40b960cc-d6b2-47be-b498-3fe5b3d6796d"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1147,6 +1156,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""ctrlCQuit"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""8b55c7be-968a-4093-8630-434e826edb2e"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""tabFill"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -1246,6 +1266,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_User_ChoiceD = m_User.FindAction("ChoiceD", throwIfNotFound: true);
         m_User_ChoiceBACK = m_User.FindAction("ChoiceBACK", throwIfNotFound: true);
         m_User_ctrlCQuit = m_User.FindAction("ctrlCQuit", throwIfNotFound: true);
+        m_User_tabFill = m_User.FindAction("tabFill", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1549,6 +1570,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_User_ChoiceD;
     private readonly InputAction m_User_ChoiceBACK;
     private readonly InputAction m_User_ctrlCQuit;
+    private readonly InputAction m_User_tabFill;
     public struct UserActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -1560,6 +1582,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @ChoiceD => m_Wrapper.m_User_ChoiceD;
         public InputAction @ChoiceBACK => m_Wrapper.m_User_ChoiceBACK;
         public InputAction @ctrlCQuit => m_Wrapper.m_User_ctrlCQuit;
+        public InputAction @tabFill => m_Wrapper.m_User_tabFill;
         public InputActionMap Get() { return m_Wrapper.m_User; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1590,6 +1613,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @ctrlCQuit.started += instance.OnCtrlCQuit;
             @ctrlCQuit.performed += instance.OnCtrlCQuit;
             @ctrlCQuit.canceled += instance.OnCtrlCQuit;
+            @tabFill.started += instance.OnTabFill;
+            @tabFill.performed += instance.OnTabFill;
+            @tabFill.canceled += instance.OnTabFill;
         }
 
         private void UnregisterCallbacks(IUserActions instance)
@@ -1615,6 +1641,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @ctrlCQuit.started -= instance.OnCtrlCQuit;
             @ctrlCQuit.performed -= instance.OnCtrlCQuit;
             @ctrlCQuit.canceled -= instance.OnCtrlCQuit;
+            @tabFill.started -= instance.OnTabFill;
+            @tabFill.performed -= instance.OnTabFill;
+            @tabFill.canceled -= instance.OnTabFill;
         }
 
         public void RemoveCallbacks(IUserActions instance)
@@ -1711,5 +1740,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnChoiceD(InputAction.CallbackContext context);
         void OnChoiceBACK(InputAction.CallbackContext context);
         void OnCtrlCQuit(InputAction.CallbackContext context);
+        void OnTabFill(InputAction.CallbackContext context);
     }
 }

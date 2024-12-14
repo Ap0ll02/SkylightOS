@@ -958,6 +958,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "tabFill",
+                    "type": "Button",
+                    "id": "40b960cc-d6b2-47be-b498-3fe5b3d6796d",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -1125,6 +1134,17 @@
                     "action": "ctrlCQuit",
                     "isComposite": false,
                     "isPartOfComposite": true
+                },
+                {
+                    "name": "",
+                    "id": "8b55c7be-968a-4093-8630-434e826edb2e",
+                    "path": "<Keyboard>/tab",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "tabFill",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }

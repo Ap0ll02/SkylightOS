@@ -61,7 +61,7 @@ public class TerminalTask : AbstractTask
         terminal = FindObjectOfType<Terminal>().gameObject.GetComponentInParent<BasicWindow>().gameObject;
         terminalPanel = FindObjectOfType<Terminal>().gameObject;
         terminalText = terminalPanel.GetComponentInChildren<TMP_Text>();
-        hGroup = FindObjectOfType<Terminal>().gameObject.GetComponentInChildren<HorizontalLayoutGroup>().gameObject;
+        // hGroup = FindObjectOfType<Terminal>().gameObject.GetComponentInChildren<HorizontalLayoutGroup>().gameObject;
         // lsBtn = GameObject.Find("LSBtn");
         // avBtn = GameObject.Find("antiviralBtn");
         // nmapBtn = GameObject.Find("nmapBtn");
@@ -193,18 +193,19 @@ public class TerminalTask : AbstractTask
     }
 
     // Used for when the games are done
+    // FIXME: Set input to be inactive and active during game
     public void GameEnd() {
         if(termState == State.ArrowGameOn) {
             termState = State.ArrowGameOff;
             arrowGame.SetActive(false);
-            hGroup.SetActive(true);
+            // hGroup.SetActive(true);
             StartCoroutine(FadeOut(5));
             terminalText.text = "Download Complete. Please Locate The Installer In The Filesystem.\n";
             terminalText.text += "Try our new file browser with the button below!\n";
         }
         else if(termState == State.MazeGameOn) {
             termState = State.MazeGameOff;
-            hGroup.SetActive(true);
+            //hGroup.SetActive(true);
             dm.gameObject.SetActive(false);
             terminalText.text = "Installing File!";
             installBtn.GetComponentInChildren<TMP_Text>().text = "Install Program";

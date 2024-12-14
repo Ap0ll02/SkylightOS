@@ -1,7 +1,6 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+using System.Text.RegularExpressions;
 using System;
 using TMPro;
 //using TMPro.EditorUtilities;
@@ -100,10 +99,29 @@ public class Terminal : MonoBehaviour
     }
 
     public void CheckInput() {
+        string regPattern = @"^(?:nmap)(\s+)(\w+)$";
         TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
-        if(uTxt.text == "ls") {
+
+        if(uTxt.text.ToLower().Trim() == "ls") {
             ListFilesExec();
         }
+        else if(Regex.IsMatch(uTxt.text.ToLower(), regPattern)) {
+            NMapExec();
+        }
+        else if(uTxt.text.ToLower().Trim() == "solar -i antivirus") {
+            AntiVirusExec();
+        }
+        else if(uTxt.text.ToLower().Trim() == "ls") {
+            
+        }
+        else {
+            uTxt.text = "";
+            uTxt.placeholder.GetComponent<TMP_Text>().text = "Unable To Recognize Command. Try Again.";
+            return;
+        }
+
+        uTxt.text = "";
+        uTxt.placeholder.GetComponent<TMP_Text>().text = "Enter Command";
     }
 
     public void HandleUserInput(string input)
@@ -111,6 +129,12 @@ public class Terminal : MonoBehaviour
         TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
         uTxt.text = input;
         CheckInput();
+    }
+
+    public void HandleCtrlC() {
+        TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
+        uTxt.text = "";
+        uTxt.placeholder.GetComponent<TMP_Text>().text = "Enter Command";
     }
 
     public IEnumerator TerminalLoading() {

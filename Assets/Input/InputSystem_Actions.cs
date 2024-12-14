@@ -971,6 +971,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""ctrlCQuit"",
+                    ""type"": ""Button"",
+                    ""id"": ""e55f7ba9-9378-4c1c-9674-f880366499ff"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -1105,6 +1114,39 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""action"": ""ChoiceBACK"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""ctrlc"",
+                    ""id"": ""127ad53d-2769-487b-bedc-c06f63567cba"",
+                    ""path"": ""OneModifier"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ctrlCQuit"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": ""modifier"",
+                    ""id"": ""ae9adfbd-a059-4146-ac3c-43fea7e29e45"",
+                    ""path"": ""<Keyboard>/ctrl"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ctrlCQuit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""binding"",
+                    ""id"": ""0d1807f1-b001-4375-b1e4-29bed9274385"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ctrlCQuit"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
                 }
             ]
         }
@@ -1203,6 +1245,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_User_ChoiceC = m_User.FindAction("ChoiceC", throwIfNotFound: true);
         m_User_ChoiceD = m_User.FindAction("ChoiceD", throwIfNotFound: true);
         m_User_ChoiceBACK = m_User.FindAction("ChoiceBACK", throwIfNotFound: true);
+        m_User_ctrlCQuit = m_User.FindAction("ctrlCQuit", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1505,6 +1548,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputAction m_User_ChoiceC;
     private readonly InputAction m_User_ChoiceD;
     private readonly InputAction m_User_ChoiceBACK;
+    private readonly InputAction m_User_ctrlCQuit;
     public struct UserActions
     {
         private @InputSystem_Actions m_Wrapper;
@@ -1515,6 +1559,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public InputAction @ChoiceC => m_Wrapper.m_User_ChoiceC;
         public InputAction @ChoiceD => m_Wrapper.m_User_ChoiceD;
         public InputAction @ChoiceBACK => m_Wrapper.m_User_ChoiceBACK;
+        public InputAction @ctrlCQuit => m_Wrapper.m_User_ctrlCQuit;
         public InputActionMap Get() { return m_Wrapper.m_User; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1542,6 +1587,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @ChoiceBACK.started += instance.OnChoiceBACK;
             @ChoiceBACK.performed += instance.OnChoiceBACK;
             @ChoiceBACK.canceled += instance.OnChoiceBACK;
+            @ctrlCQuit.started += instance.OnCtrlCQuit;
+            @ctrlCQuit.performed += instance.OnCtrlCQuit;
+            @ctrlCQuit.canceled += instance.OnCtrlCQuit;
         }
 
         private void UnregisterCallbacks(IUserActions instance)
@@ -1564,6 +1612,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @ChoiceBACK.started -= instance.OnChoiceBACK;
             @ChoiceBACK.performed -= instance.OnChoiceBACK;
             @ChoiceBACK.canceled -= instance.OnChoiceBACK;
+            @ctrlCQuit.started -= instance.OnCtrlCQuit;
+            @ctrlCQuit.performed -= instance.OnCtrlCQuit;
+            @ctrlCQuit.canceled -= instance.OnCtrlCQuit;
         }
 
         public void RemoveCallbacks(IUserActions instance)
@@ -1659,5 +1710,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         void OnChoiceC(InputAction.CallbackContext context);
         void OnChoiceD(InputAction.CallbackContext context);
         void OnChoiceBACK(InputAction.CallbackContext context);
+        void OnCtrlCQuit(InputAction.CallbackContext context);
     }
 }

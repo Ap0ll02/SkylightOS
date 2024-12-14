@@ -21,6 +21,8 @@ public class Terminal : MonoBehaviour
     /// @var twinName The name of the terminal window, change here if you did change your window name.
     string twinName = "TerminalWindow";
 
+    public GameObject usrInput;
+
     /// @var TInstructionTxt The text that covers the terminal that can be used to show instructions or text.
     [SerializeField] TMP_Text TInstructionTxt;
 
@@ -43,6 +45,7 @@ public class Terminal : MonoBehaviour
     {
         TWindow = GameObject.Find(twinName);
         TWindow.SetActive(true);
+        usrInput = GameObject.Find(ConsoleInput);
     }
 
     public void Start()
@@ -96,7 +99,15 @@ public class Terminal : MonoBehaviour
         // Allows the TerminalTask to modify terminal commands if Task State is On
         OnNMAPPressed?.Invoke();
     }
-    
+
+    public void HandleUserInput()
+    {
+        if (usrInput != null)
+        {
+            Debug.Log("Lol I love this input");
+        }
+    }
+
     public IEnumerator TerminalLoading() {
         while(count < 20 * iterCount) {
             count++;

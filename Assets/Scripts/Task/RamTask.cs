@@ -57,6 +57,7 @@ public class RamTask : AbstractTask
         diagnosisWindow.SetHeaderText("Skylight RAM Downloader");
         systemResourcesWindow.currentRAMStatus = SystemResourcesWindow.RAMStatus.CRITICAL;
         northstar.WriteHint("Let's Diagnose This RAM Issue, Perhaps Go To The Process Manager Button Below?", Northstar.Style.warm);
+        systemResourcesWindow.UpdateSystemResourcesText();
     }
 
     public override void CompleteTask()

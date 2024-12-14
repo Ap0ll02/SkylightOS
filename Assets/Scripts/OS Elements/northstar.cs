@@ -36,6 +36,8 @@ public class Northstar : MonoBehaviour
         compEffect = compEffect.GetComponent<ParticleSystem>();
     }
     Coroutine pd;
+
+    Coroutine nsNullTimer = null;
     public void Start() {
         persona.SetActive(true);
         canClose = false;
@@ -45,12 +47,17 @@ public class Northstar : MonoBehaviour
         if(pd == null) {
             pd = StartCoroutine(PlayDialogue(dialogue, 2f));
         }
-        
+        nsNullTimer ??= StartCoroutine(AutoCloseUpdate());
     }
 
     public void OnUserSummon() {
         tw.StartShowingText();
         canClose = true;
+    }
+
+    IEnumerator NullTimer() {
+        yield return new WaitForSeconds(3f);
+        persona.SetActive(false);
     }
 
     public void OnAutoSummon() {
@@ -154,5 +161,16 @@ public class Northstar : MonoBehaviour
         }
         tw.StartDisappearingText();
         canClose = true;
+        nsText.text = " ";
+    }
+
+    public IEnumerator AutoCloseUpdate() {
+        while(true) {
+            yield return new WaitForSeconds(3f);
+            if(tw.isHidingText || nsText.text == null || nsText.text.Trim() == "<noparse></noparse>") {
+                Debug.Log("Hiding Her");
+                persona.SetActive(false);
+            }
+        }
     }
 }

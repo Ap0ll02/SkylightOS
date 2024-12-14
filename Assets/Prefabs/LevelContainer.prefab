@@ -403,6 +403,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -686.9998
       objectReference: {fileID: 0}
+    - target: {fileID: 5337146164265831593, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5492733734655236800, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
@@ -1737,7 +1741,7 @@ PrefabInstance:
       objectReference: {fileID: 7913397288697430930}
     - target: {fileID: 4434023094814654872, guid: 35a75b24ed39556ad9cff77c7388769b, type: 3}
       propertyPath: m_DefaultControlScheme
-      value: Keyboard&Mouse
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 4434023094814654872, guid: 35a75b24ed39556ad9cff77c7388769b, type: 3}
       propertyPath: m_NotificationBehavior
@@ -2450,7 +2454,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 226143052845405765, guid: d42822f80f23777429b8a43545358051, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1903468150010715202, guid: d42822f80f23777429b8a43545358051, type: 3}
       propertyPath: m_UiScaleMode

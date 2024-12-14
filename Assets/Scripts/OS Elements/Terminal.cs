@@ -99,9 +99,18 @@ public class Terminal : MonoBehaviour
         OnNMAPPressed?.Invoke();
     }
 
-    public void HandleUserInput()
+    public void CheckInput() {
+        TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
+        if(uTxt.text == "ls") {
+            ListFilesExec();
+        }
+    }
+
+    public void HandleUserInput(string input)
     {
-        
+        TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
+        uTxt.text = input;
+        CheckInput();
     }
 
     public IEnumerator TerminalLoading() {

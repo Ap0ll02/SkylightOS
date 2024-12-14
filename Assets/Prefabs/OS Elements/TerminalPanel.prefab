@@ -1244,7 +1244,7 @@ MonoBehaviour:
   m_HideSoftKeyboard: 0
   m_CharacterValidation: 6
   m_RegexValue: ^(\w)(\s+)(\w+)
-  m_GlobalPointSize: 14
+  m_GlobalPointSize: 1200
   m_CharacterLimit: 0
   m_OnEndEdit:
     m_PersistentCalls:
@@ -1389,8 +1389,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 200
-  m_fontSizeBase: 200
+  m_fontSize: 1200
+  m_fontSizeBase: 1200
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1699,7 +1699,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 8370.473, y: -32938.61}
+  m_AnchoredPosition: {x: 8265, y: -33000}
   m_SizeDelta: {x: 1451, y: 230}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1280491488907739939

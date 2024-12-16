@@ -176,12 +176,12 @@ public class Terminal : MonoBehaviour
         string solarPattern1 = @"^(?:solar)(\s+)$";
         string solarPattern2 = @"^(?:solar)(\s+)(?:-i)(\s+)$";
         TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
-
+        uTxt.caretWidth = 25;
         caret.text = "";
         for (int i = 0; i < uTxt.caretPosition; i++) {
             caret.text += " ";
         }
-        caret.text += "|";
+        caret.text += "<b>|</b>";
 
         if(input == "s") {
             autoFill.text = "solar";
@@ -221,58 +221,3 @@ public class Terminal : MonoBehaviour
         lbp = null;
     }
 }
-
-
-        // TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
-        // autoFill.text = "";
-        // List<List<string>> commandList = new();
-        // List<string> l = new()
-        // {
-        //     "ls"
-        // };
-        // List<string> s = new()
-        // {
-        //     "solar",
-        //     "solar -i",
-        //     "solar -i antivirus"
-        // };
-        // List<string> n = new()
-        // {
-        //     "nmap"
-        // };
-        // commandList.Add(l);
-        // commandList.Add(s);
-        // commandList.Add(n);
-        // string solarPattern = @"^(?:solar)(\s+)$";
-        // if(input == "l") {
-        //     autoFill.text = l[0];
-        //     lCount++;
-        //     inpHist.Push("l");
-        // }
-        // else if(input == "s") {
-        //     autoFill.text = s[sCount];
-        //     inpHist.Push("s");
-        // }
-        // else if(input == "n") {
-        //     autoFill.text = n[0];
-        //     nCount++;
-        //     inpHist.Push("n");
-        // }
-        // else if(input == "\b") {
-        //     lCount = 0;
-        //     sCount = 0;
-        //     nCount = 0;
-        //     inpHist.Pop();
-        // }
-        // else if(input == null){
-        //     foreach (var list in commandList) {
-        //         autoFill.text += list[0] + "\n";
-        //     }
-        //     return;
-        // }
-        // else if(Regex.IsMatch(uTxt.text, solarPattern)) {
-        //     sCount++;
-        //     autoFill.text += s[sCount];
-        // }
-        // firstCharacter = false;
-        // canTab = true;

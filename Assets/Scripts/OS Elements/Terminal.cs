@@ -43,10 +43,12 @@ public class Terminal : MonoBehaviour
     public static event Action OnNMAPPressed;
     public static event Action OnLSPressed;
     public int iterCount;
+    TMP_Text caret;
     public void Awake()
     {
         TWindow = GameObject.Find(twinName);
         TWindow.SetActive(true);
+        caret = GameObject.Find("Caret").GetComponent<TMP_Text>();
         autoFill = GameObject.Find("AutoFill").GetComponentInChildren<TMP_Text>();
     }
 
@@ -143,78 +145,57 @@ public class Terminal : MonoBehaviour
     {
         TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
         uTxt.text = input;
+        canTab = true;
         CheckInput();
     }
 
     public void HandleCtrlC() {
-        TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
-        uTxt.text = "";
-        uTxt.placeholder.GetComponent<TMP_Text>().text = "Enter Command";
-        firstCharacter = true;
-        lCount = 0;
-        sCount = 0;
-        nCount = 0;
-        autoFill.text = "";
+        // TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
+        // uTxt.text = "";
+        // uTxt.placeholder.GetComponent<TMP_Text>().text = "Enter Command";
+        // firstCharacter = true;
+        // lCount = 0;
+        // sCount = 0;
+        // nCount = 0;
+        // autoFill.text = "";
+        // canTab = true;
     }
+    bool canTab = true;
     public void HandleTab() {
         // TODO: Fix tab entering like 4 times
         TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
-        Debug.Log("I Exist");
-        if(firstCharacter && inpHist.Count == 0) {
-            AutoCorrect(null);
-        } else {
-            Debug.Log("Setting The Text To This: " + autoFill.text);
-            uTxt.text = autoFill.text.Replace("\n", "").Replace("\r", "");
+        if (canTab) {
+            canTab = false;
+            uTxt.text = tabCompTxt;
+            uTxt.caretPosition = tabCompTxt.Length + 1; 
         }
     }
 
+    string tabCompTxt;
     public void AutoCorrect(string input = null) {
+        string solarPattern1 = @"^(?:solar)(\s+)$";
+        string solarPattern2 = @"^(?:solar)(\s+)(?:-i)(\s+)$";
         TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
-        autoFill.text = "";
-        List<List<string>> commandList = new();
-        List<string> l = new();
-        l.Add("ls");
-        List<string> s = new();
-        s.Add("solar");
-        s.Add("-i");
-        s.Add("antivirus");
-        List<string> n = new();
-        n.Add("nmap");
-        commandList.Add(l);
-        commandList.Add(s);
-        commandList.Add(n);
-        string solarPattern = @"^(?:solar)(\s+)$";
-        if(input == "l") {
-            autoFill.text = l[0];
-            lCount++;
-            inpHist.Push("l");
+
+        caret.text = "";
+        for (int i = 0; i < uTxt.caretPosition; i++) {
+            caret.text += " ";
         }
-        else if(input == "s") {
-            autoFill.text = s[sCount];
-            inpHist.Push("s");
+        caret.text += "|";
+
+        if(input == "s") {
+            autoFill.text = "solar";
+            tabCompTxt = "solar";
         }
-        else if(input == "n") {
-            autoFill.text = n[0];
-            nCount++;
-            inpHist.Push("n");
+        else if(Regex.IsMatch(uTxt.text, solarPattern1)) {
+            autoFill.text = "-i";
+            tabCompTxt = "solar -i";
         }
-        else if(input == "\b") {
-            lCount = 0;
-            sCount = 0;
-            nCount = 0;
-            inpHist.Pop();
+        else if(Regex.IsMatch(uTxt.text, solarPattern2)) {
+            autoFill.text = "antivirus";
+            tabCompTxt = "solar -i antivirus";
         }
-        else if(input == null){
-            foreach (var list in commandList) {
-                autoFill.text += list[0] + "\n";
-            }
-            return;
-        }
-        else if(Regex.IsMatch(uTxt.text, solarPattern)) {
-            sCount++;
-            autoFill.text += s[sCount];
-        }
-        firstCharacter = false;
+        canTab = true;
     }
 
     public IEnumerator TerminalLoading() {
@@ -240,3 +221,58 @@ public class Terminal : MonoBehaviour
         lbp = null;
     }
 }
+
+
+        // TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
+        // autoFill.text = "";
+        // List<List<string>> commandList = new();
+        // List<string> l = new()
+        // {
+        //     "ls"
+        // };
+        // List<string> s = new()
+        // {
+        //     "solar",
+        //     "solar -i",
+        //     "solar -i antivirus"
+        // };
+        // List<string> n = new()
+        // {
+        //     "nmap"
+        // };
+        // commandList.Add(l);
+        // commandList.Add(s);
+        // commandList.Add(n);
+        // string solarPattern = @"^(?:solar)(\s+)$";
+        // if(input == "l") {
+        //     autoFill.text = l[0];
+        //     lCount++;
+        //     inpHist.Push("l");
+        // }
+        // else if(input == "s") {
+        //     autoFill.text = s[sCount];
+        //     inpHist.Push("s");
+        // }
+        // else if(input == "n") {
+        //     autoFill.text = n[0];
+        //     nCount++;
+        //     inpHist.Push("n");
+        // }
+        // else if(input == "\b") {
+        //     lCount = 0;
+        //     sCount = 0;
+        //     nCount = 0;
+        //     inpHist.Pop();
+        // }
+        // else if(input == null){
+        //     foreach (var list in commandList) {
+        //         autoFill.text += list[0] + "\n";
+        //     }
+        //     return;
+        // }
+        // else if(Regex.IsMatch(uTxt.text, solarPattern)) {
+        //     sCount++;
+        //     autoFill.text += s[sCount];
+        // }
+        // firstCharacter = false;
+        // canTab = true;

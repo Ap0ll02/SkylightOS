@@ -2,17 +2,25 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class  Popups : Hazards
+public class Popups : Hazards
 {
     // Start is called before the first frame update
     void Start()
     {
-        
+        StartCoroutine(SetAsLastChildCoroutine());
     }
 
-    // Update is called once per frame
-    void Update()
+    private IEnumerator SetAsLastChildCoroutine()
     {
-        
+        while (true)
+        {
+            yield return new WaitForSeconds(1f);
+            transform.SetAsLastSibling();
+        }
+    }
+
+    public void ClosePopup()
+    {
+        gameObject.SetActive(false);
     }
 }

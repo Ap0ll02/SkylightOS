@@ -135,14 +135,14 @@ PrefabInstance:
     - target: {fileID: 4047056102172207677, guid: 9c6856fe978e64c45a353210b769b859, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 4961446047144471103}
+      objectReference: {fileID: 5851722475623103472}
     - target: {fileID: 4047056102172207677, guid: 9c6856fe978e64c45a353210b769b859, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: Close
+      value: ClosePopup
       objectReference: {fileID: 0}
     - target: {fileID: 4047056102172207677, guid: 9c6856fe978e64c45a353210b769b859, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: BasicWindow, Assembly-CSharp
+      value: Popups, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 4936913323952420332, guid: 9c6856fe978e64c45a353210b769b859, type: 3}
       propertyPath: m_Name
@@ -173,15 +173,15 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9c6856fe978e64c45a353210b769b859, type: 3}
---- !u!114 &4961446047144471103 stripped
+--- !u!114 &5851722475623103472 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 4010976310349531486, guid: 9c6856fe978e64c45a353210b769b859, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2469731569104115857, guid: 9c6856fe978e64c45a353210b769b859, type: 3}
   m_PrefabInstance: {fileID: 8319064751098028897}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e9783ccd866ae124e8522c5e72231e24, type: 3}
+  m_Script: {fileID: 11500000, guid: d8bbb93acd2b4df49b44bf8d4446735d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &6082527916073955467 stripped

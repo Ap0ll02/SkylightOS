@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using System;
 /// <summary>
 /// Garrett Sharp
 /// The functionality for a basic window
@@ -15,6 +16,9 @@ public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
     // Enable/Disable closing for the window. Set in inherited class or editor if you want the window to not be closable by the user. 
     public bool isClosable = true;
 
+    // Is the window open or not
+    public bool isOpen = false;
+
     // The start position of the mouse when it starts dragging. 
     private Vector3 MouseDragStartPos;
 
@@ -23,6 +27,20 @@ public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     // The transform of the actual Window, used for various things
     RectTransform rectTransform;
+
+    // The canvas group, used for setting the window to visible or not
+    public CanvasGroup canvasGroup;
+
+    // Actions for window open and close events
+    public event Action OnWindowOpen;
+    public event Action OnWindowClose;
+
+    // Getting the references
+    void Awake()
+    {
+        // Reference to the windows own canvas group
+        canvasGroup = GetComponent<CanvasGroup>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -65,8 +83,8 @@ public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
     // Override - Make the Window Unclosable by user or to make something happen on close
     public void Close()
     {
-        if(isClosable)
-        gameObject.SetActive(false);
+        if (isClosable)
+            CloseWindow();
     }
 
     // Keeps the window in the bounds of the screen when dragged. 
@@ -114,5 +132,33 @@ public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
         rectTransform.localPosition = position;
     }
 
+    // Use this for opening the window
+    // Basically call this to open the window, if something else opens the window this also has the functionality to 
+    // notify whatever you need that the window has been closed
+    public void OpenWindow()
+    {
+        canvasGroup.alpha = 1;
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = true;
+        OnWindowOpen?.Invoke();
+    }
 
+    // Use this for closing the window
+    // DO NOT CLOSE THE WINDOWS BY SETTING THE GAMEOBJECTS TO INACTIVE
+    // Same as openWindow, this will notify whatever you need that the window has been closed
+    public void CloseWindow()
+    {
+        canvasGroup.alpha = 0;
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.interactable = false;
+        OnWindowClose?.Invoke();
+    }
+
+    public void ToggleWindow()
+    {
+        if (isOpen)
+            CloseWindow();
+        else
+            OpenWindow();
+    }
 }

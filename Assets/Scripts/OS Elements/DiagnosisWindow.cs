@@ -33,7 +33,7 @@ public class DiagnosisWindow : MonoBehaviour
     // Starting disabled
     void Start()
     {
-        gameObject.SetActive(false);
+        window.CloseWindow();
         finishDiagButton.SetActive(false);
     }
 
@@ -42,17 +42,22 @@ public class DiagnosisWindow : MonoBehaviour
     // Called when the diagnosis window is opened
     public void OpenWindow()
     {
-        gameObject.SetActive(true);
+        window.OpenWindow();
         gameObject.transform.SetAsLastSibling();
         OnDiagnosisWindowOpened?.Invoke();
         window.isClosable = false;
         StartLoadingBar();
     }
 
+    // Called when the diagnosis window is closed
+    public void OnEnable()
+    {
+        window.OnWindowClose += ResetLoadingBar;
+    }
+
     public void OnDisable()
     {
-        ResetLoadingBar();
-        gameObject.SetActive(false);
+        window.OnWindowClose -= ResetLoadingBar;
     }
 
     // Starting the loading bar

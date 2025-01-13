@@ -36,7 +36,7 @@ public class Terminal : MonoBehaviour
 
     /// @var IntroText A String to be displayed upoon start for terminal. 
     private string FirstText = "Welcome to ClearSky Console.\n We are testing multi-line editing tbh.";
-    public TMP_Text autoFill;
+    public GameObject autoFill;
 
     /// @var OnAVPressed event and Action delegate variable setup.
     public static event Action OnAVPressed;
@@ -49,13 +49,14 @@ public class Terminal : MonoBehaviour
         TWindow = GameObject.Find(twinName);
         TWindow.SetActive(true);
         caret = GameObject.Find("Caret").GetComponent<TMP_Text>();
-        autoFill = GameObject.Find("AutoFill").GetComponentInChildren<TMP_Text>();
+        autoFill = GameObject.Find("AutoFill");
     }
 
     public void Start()
     {
         TInstructionTxt.horizontalAlignment = HorizontalAlignmentOptions.Center; 
         TInstructionTxt.text = FirstText;
+        autoFill.SetActive(false);
         TWindow.SetActive(false);
     }
 
@@ -138,14 +139,14 @@ public class Terminal : MonoBehaviour
         lCount = 0;
         sCount = 0;
         nCount = 0;
-        autoFill.text = "";
+        autoFill.SetActive(false);
     }
 
     public void HandleUserInput(string input)
     {
         TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
+        
         uTxt.text = input;
-        canTab = true;
         CheckInput();
     }
 
@@ -160,42 +161,13 @@ public class Terminal : MonoBehaviour
         // autoFill.text = "";
         // canTab = true;
     }
-    bool canTab = true;
-    public void HandleTab() {
-        // TODO: Fix tab entering like 4 times
-        TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
-        if (canTab) {
-            canTab = false;
-            uTxt.text = tabCompTxt;
-            uTxt.caretPosition = tabCompTxt.Length + 1; 
-        }
+    
+    public void AutoCorrect(string input = null) {
+        autoFill.SetActive(true);
     }
 
-    string tabCompTxt;
-    public void AutoCorrect(string input = null) {
-        string solarPattern1 = @"^(?:solar)(\s+)$";
-        string solarPattern2 = @"^(?:solar)(\s+)(?:-i)(\s+)$";
-        TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
-        uTxt.caretWidth = 25;
-        caret.text = "";
-        for (int i = 0; i < uTxt.caretPosition; i++) {
-            caret.text += " ";
-        }
-        caret.text += "<b>|</b>";
-
-        if(input == "s") {
-            autoFill.text = "solar";
-            tabCompTxt = "solar";
-        }
-        else if(Regex.IsMatch(uTxt.text, solarPattern1)) {
-            autoFill.text = "-i";
-            tabCompTxt = "solar -i";
-        }
-        else if(Regex.IsMatch(uTxt.text, solarPattern2)) {
-            autoFill.text = "antivirus";
-            tabCompTxt = "solar -i antivirus";
-        }
-        canTab = true;
+    public void Deselect() {
+        autoFill.SetActive(false);
     }
 
     public IEnumerator TerminalLoading() {

@@ -47,7 +47,7 @@ public class Northstar : MonoBehaviour
         if(pd == null) {
             pd = StartCoroutine(PlayDialogue(dialogue, 2f));
         }
-        nsNullTimer ??= StartCoroutine(AutoCloseUpdate());
+        //nsNullTimer ??= StartCoroutine(AutoCloseUpdate());
     }
 
     public void OnUserSummon() {
@@ -164,13 +164,13 @@ public class Northstar : MonoBehaviour
         nsText.text = " ";
     }
 
-    public IEnumerator AutoCloseUpdate() {
-        while(true) {
-            yield return new WaitForSeconds(3f);
-            if(tw.isHidingText || nsText.text == null || nsText.text.Trim() == "<noparse></noparse>") {
-                Debug.Log("Hiding Her");
-                persona.SetActive(false);
-            }
-        }
-    }
+ //   public IEnumerator AutoCloseUpdate() {
+        //while(true) {
+          //  yield return new WaitForSeconds(3f);
+            //if(tw.isHidingText || nsText.text == null || nsText.text.Trim() == "<noparse></noparse>") {
+              //  Debug.Log("Hiding Her");
+                //persona.SetActive(false);
+            //}
+        //}
+    //}
 }

@@ -5,7 +5,7 @@ using System;
 using TMPro;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
-//using TMPro.EditorUtilities;
+using UnityEngine.UI;
 /**
  * @author Jack Ratermann
  * @date 11/03/2024
@@ -21,7 +21,6 @@ public class Terminal : MonoBehaviour
 {
     /// @var twinName The name of the terminal window, change here if you did change your window name.
     string twinName = "TerminalWindow";
-
     public GameObject usrInput;
 
     /// @var TInstructionTxt The text that covers the terminal that can be used to show instructions or text.
@@ -36,27 +35,26 @@ public class Terminal : MonoBehaviour
 
     /// @var IntroText A String to be displayed upoon start for terminal. 
     private string FirstText = "Welcome to ClearSky Console.\n We are testing multi-line editing tbh.";
-    public GameObject autoFill;
+    // public GameObject autoFill;
 
     /// @var OnAVPressed event and Action delegate variable setup.
     public static event Action OnAVPressed;
     public static event Action OnNMAPPressed;
     public static event Action OnLSPressed;
     public int iterCount;
-    TMP_Text caret;
     public void Awake()
     {
         TWindow = GameObject.Find(twinName);
         TWindow.SetActive(true);
-        caret = GameObject.Find("Caret").GetComponent<TMP_Text>();
-        autoFill = GameObject.Find("AutoFill");
+        // autoFill = GameObject.Find("helpBtn").GetComponentInChildren<Image>().GameObject;
+        // autoFill.GetComponentInChildren<TMP_Text>().text = "ls\nsolar -i antivirus\nnmap [ip address]";
     }
 
     public void Start()
     {
         TInstructionTxt.horizontalAlignment = HorizontalAlignmentOptions.Center; 
         TInstructionTxt.text = FirstText;
-        autoFill.SetActive(false);
+     //   autoFill.SetActive(false);
         TWindow.SetActive(false);
     }
 
@@ -139,7 +137,7 @@ public class Terminal : MonoBehaviour
         lCount = 0;
         sCount = 0;
         nCount = 0;
-        autoFill.SetActive(false);
+    //    autoFill.SetActive(false);
     }
 
     public void HandleUserInput(string input)
@@ -149,25 +147,15 @@ public class Terminal : MonoBehaviour
         uTxt.text = input;
         CheckInput();
     }
-
-    public void HandleCtrlC() {
-        // TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
-        // uTxt.text = "";
-        // uTxt.placeholder.GetComponent<TMP_Text>().text = "Enter Command";
-        // firstCharacter = true;
-        // lCount = 0;
-        // sCount = 0;
-        // nCount = 0;
-        // autoFill.text = "";
-        // canTab = true;
-    }
-    
-    public void AutoCorrect(string input = null) {
-        autoFill.SetActive(true);
-    }
-
-    public void Deselect() {
-        autoFill.SetActive(false);
+    public bool help = true; 
+    public void ToggleHelp() {
+        if (help == true) {
+            help = false;
+  //          autoFill.SetActive(true);
+        } else {
+            help = true;
+//            autoFill.SetActive(false);
+        }
     }
 
     public IEnumerator TerminalLoading() {

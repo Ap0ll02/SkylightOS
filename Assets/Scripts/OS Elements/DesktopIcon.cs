@@ -4,30 +4,9 @@ using UnityEngine;
 
 public class DesktopIcon : MonoBehaviour
 {
-    public bool visible;
-    public void ToggleVisible(GameObject app) {
-        var appGroup = app.GetComponent<CanvasGroup>();
-        if(appGroup == null)
-        {
-            appGroup = app.AddComponent<CanvasGroup>();
-        }
-        // visible = appGroup.alpha > 0;
-        if(!app.activeSelf) {
-            app.SetActive(true);
-            visible = false;
-        }
-        if (visible) {
-            appGroup.alpha = 0;
-            appGroup.interactable = false;
-            appGroup.blocksRaycasts = false;
-            visible = false;
-        }
-        else {
-            appGroup.alpha = 1;
-            appGroup.interactable = true;
-            appGroup.blocksRaycasts = true;
-            visible = true;
-        }
+    // Used to have more code but windows have this functionality built in already now
+    public void ToggleVisible(BasicWindow window) {
+        window.ToggleWindow();
     }
 
 }

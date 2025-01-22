@@ -17,7 +17,7 @@ public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
     public bool isClosable = true;
 
     // Is the window open or not
-    public bool isOpen = false;
+    public bool isOpen = true;
 
     // The start position of the mouse when it starts dragging. 
     private Vector3 MouseDragStartPos;
@@ -79,14 +79,6 @@ public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
 
     }
 
-    // Used for closing the window.
-    // Override - Make the Window Unclosable by user or to make something happen on close
-    public void Close()
-    {
-        if (isClosable)
-            CloseWindow();
-    }
-
     // Keeps the window in the bounds of the screen when dragged. 
     private void TrapToScreen()
     {
@@ -140,6 +132,8 @@ public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
         canvasGroup.alpha = 1;
         canvasGroup.blocksRaycasts = true;
         canvasGroup.interactable = true;
+        isOpen = true;
+        transform.SetAsLastSibling();
         OnWindowOpen?.Invoke();
     }
 
@@ -151,6 +145,7 @@ public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
         canvasGroup.interactable = false;
+        isOpen = false;
         OnWindowClose?.Invoke();
     }
 

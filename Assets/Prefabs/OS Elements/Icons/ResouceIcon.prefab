@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &8487593987302619290
+--- !u!1001 &2214789472208095439
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,12 +10,36 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1931996266981989354, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_Name
-      value: TerminalIcon
+      value: ResouceIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 7168894472288002100, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 9519210ab7b038f4ebb1c5f1451f9a03, type: 3}
+    - target: {fileID: 7168894472288002100, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
+      propertyPath: m_Color.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7168894472288002100, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7168894472288002100, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7168894472288002100, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7168894472288002100, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7542280087322448023, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_TargetGraphic
       value: 
-      objectReference: {fileID: 1804754976620600613}
+      objectReference: {fileID: 2007438581844011448}
     - target: {fileID: 7542280087322448023, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_Colors.m_NormalColor.b
       value: 1
@@ -54,23 +78,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8469657877142531085, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 77.46
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8469657877142531085, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 77.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 8469657877142531085, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8469657877142531085, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8469657877142531085, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
+      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 8469657877142531085, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -90,19 +102,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8469657877142531085, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8469657877142531085, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8469657877142531085, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 8469657877142531085, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -808.8
+      value: -500
       objectReference: {fileID: 0}
     - target: {fileID: 8469657877142531085, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -127,20 +139,20 @@ PrefabInstance:
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1931996266981989354, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       insertIndex: 2
-      addedObject: {fileID: 1804754976620600613}
+      addedObject: {fileID: 2007438581844011448}
   m_SourcePrefab: {fileID: 100100000, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
---- !u!1 &8000127543468254064 stripped
+--- !u!1 &320695742956737317 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1931996266981989354, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
-  m_PrefabInstance: {fileID: 8487593987302619290}
+  m_PrefabInstance: {fileID: 2214789472208095439}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1804754976620600613
+--- !u!114 &2007438581844011448
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8000127543468254064}
+  m_GameObject: {fileID: 320695742956737317}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
@@ -154,10 +166,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: d745e4e0ad5a815438faa1bc1aa1c633, type: 3}
+  m_Texture: {fileID: 2800000, guid: 9519210ab7b038f4ebb1c5f1451f9a03, type: 3}
   m_UVRect:
     serializedVersion: 2
-    x: 0
-    y: 0
-    width: 1
-    height: 1
+    x: 0.1
+    y: 0.1
+    width: 0.8
+    height: 0.8

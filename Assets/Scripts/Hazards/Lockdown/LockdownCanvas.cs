@@ -1,9 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 /// <summary>
 /// Garrett Sharp
-/// Some of the lockdown canvas functionality
+/// Lockdown canvas functionality
 /// </summary>
 public class LockdownCanvas : MonoBehaviour
 {
@@ -11,41 +12,53 @@ public class LockdownCanvas : MonoBehaviour
 
     public bool isComplete; // Flag to check if loading is complete
 
-    public GameObject canvas; // Reference to the canvas
+    public CanvasGroup canvasGroup; // Reference to the canvas group
+    public void Awake()
+    {
+        canvasGroup = gameObject.GetComponent<CanvasGroup>();
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        isComplete = false;
-        canvas.SetActive(false); // Enable the canvas
+        CloseCanvas();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
-
-    void OnEnable()
-    {
-        StartCoroutine(CheckLoadingComplete());
-    }
-
+    // Check if the loading bar is complete
     private IEnumerator CheckLoadingComplete()
     {
         while (!loadingScript.isLoaded)
         {
             yield return new WaitForSeconds(0.5f); // Check every 0.5 seconds
         }
-        // Loading is complete, you can add additional actions here if needed
+        // Loading is complete
         Debug.Log("Loading complete.");
         isComplete = true;
     }
 
+    // For when close
     public void ResetLoading()
     {
         isComplete = false;
-        loadingScript.isLoaded = false;
         loadingScript.Reset();
+    }
+
+    // Open the canvas
+    public void OpenCanvas()
+    {
+        canvasGroup.alpha = 1;
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.interactable = true;
+        loadingScript.StartLoading();
+        StartCoroutine(CheckLoadingComplete());
+    }
+
+    // Close the canvas
+    public void CloseCanvas()
+    {
+        canvasGroup.alpha = 0;
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.interactable = false;
+        ResetLoading();
     }
 }

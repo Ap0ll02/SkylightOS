@@ -94,7 +94,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isDraggable: 1
   isClosable: 0
+  isOpen: 0
   leftMouse: 0
+  canvasGroup: {fileID: 0}
 --- !u!82 &3701656686901488266
 AudioSource:
   m_ObjectHideFlags: 0
@@ -420,8 +422,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 3360279094286895577}
-        m_TargetAssemblyTypeName: WindowUI, Assembly-CSharp
-        m_MethodName: Close
+        m_TargetAssemblyTypeName: BasicWindow, Assembly-CSharp
+        m_MethodName: CloseWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

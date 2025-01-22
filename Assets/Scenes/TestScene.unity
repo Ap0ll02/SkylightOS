@@ -122,6 +122,17 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!114 &469543071 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1039006869256134685, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+  m_PrefabInstance: {fileID: 5291605486206993077}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9783ccd866ae124e8522c5e72231e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &504505843 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 8955931847404925371, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
@@ -278,17 +289,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9783ccd866ae124e8522c5e72231e24, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1088841719 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 2932208476760505789, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-  m_PrefabInstance: {fileID: 5291605486206993077}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e2b7b149ef8bcae4aac96f51ec1f371b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &1160734819 stripped
@@ -475,6 +475,18 @@ PrefabInstance:
       propertyPath: isClosable
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 3701945043822353815, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -966.8901
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845022594809898315, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -753.99994
+      objectReference: {fileID: 0}
+    - target: {fileID: 3845022594809898315, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -298
+      objectReference: {fileID: 0}
     - target: {fileID: 3885361645849253573, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -534,10 +546,14 @@ PrefabInstance:
     - target: {fileID: 6622582597161286255, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 1088841719}
+      objectReference: {fileID: 469543071}
     - target: {fileID: 6622582597161286255, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: ToggleMenu
+      value: ToggleWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 6622582597161286255, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BasicWindow, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 6651417099806281802, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_LocalPosition.x

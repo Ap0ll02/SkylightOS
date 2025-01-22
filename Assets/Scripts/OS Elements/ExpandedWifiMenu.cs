@@ -2,7 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+using UnityEngine.UI;
 using System;
+using UnityEditor.PackageManager.UI;
 /// <summary>
 /// Garrett Sharp
 /// The wifi menu that is expanded when the wifi button is pressed
@@ -19,6 +21,9 @@ public class ExpandedWifiMenu : MonoBehaviour
     // Button to be hidden when connected
     [SerializeField] GameObject wifiButton;
 
+    // Reference to the window
+    [SerializeField] BasicWindow window;
+
     // Enum to track the state of the wifi
     public enum WifiState
     {
@@ -32,36 +37,30 @@ public class ExpandedWifiMenu : MonoBehaviour
     // Getting references to the diagnosis window and setting the default state
     void Awake()
     {
+        wifiStateText = GetComponentInChildren<TMP_Text>();
+        wifiButton = GetComponentInChildren<Button>().gameObject;
         diagnosisWindow = FindObjectOfType<DiagnosisWindow>();
         currentWifiState = WifiState.Connected; // Default state
+        window = GetComponent<BasicWindow>();
         UpdateWifiState();
     }
 
-    // Disabling the game object on start
-    void Start()
+    // Called when the diagnosis window is closed
+    public void OnEnable()
     {
-        gameObject.SetActive(false);
+        window.OnWindowOpen += OnWindowOpen;
+        window.CloseWindow();
     }
 
-    // Update the wifi menu on enable if needed.
-    void OnEnable()
+    public void OnDisable()
+    {
+        window.OnWindowOpen -= OnWindowOpen;
+    }
+
+    public void OnWindowOpen()
     {
         CheckWifiState();
         UpdateWifiState();
-        transform.SetAsLastSibling();
-    }
-
-    // Called by the wifi button
-    public void ToggleMenu()
-    {
-        if (gameObject.activeSelf)
-        {
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            gameObject.SetActive(true);
-        }
     }
 
     // When you press the 'run diagnossis' button

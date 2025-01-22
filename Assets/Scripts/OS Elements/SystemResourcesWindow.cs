@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using Unity.VisualScripting;
 /// <summary>
 /// System resources, can be used for multiple different tasks. All you gotta do is set the states and it should run everything else basically
 /// Garrett Sharp
@@ -59,6 +60,10 @@ public class SystemResourcesWindow : MonoBehaviour
     // Reference to the DiagnosisWindow
     [SerializeField] DiagnosisWindow diagnosisWindow;
 
+    // Reference to the window
+    [SerializeField] BasicWindow window;
+
+
     // Set the default status of the system resources
     public void Awake()
     {
@@ -66,13 +71,14 @@ public class SystemResourcesWindow : MonoBehaviour
         currentCPUStatus = CPUStatus.OK;
         currentRAMStatus = RAMStatus.OK;
         diagnosisWindow = FindObjectOfType<DiagnosisWindow>();
+        window = GetComponent<BasicWindow>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         UpdateSystemResourcesText();
-        gameObject.SetActive(false);
+        window.CloseWindow();
 
         // Add button listeners
         GPUButton.GetComponent<Button>().onClick.AddListener(OpenDiagnosisWindow);
@@ -83,20 +89,18 @@ public class SystemResourcesWindow : MonoBehaviour
     // When the window is enabled, update the text
     public void OnEnable()
     {
-        UpdateSystemResourcesText();
+        window.OnWindowOpen += UpdateSystemResourcesText;
+    }
+
+    public void OnDisable()
+    {
+        window.OnWindowOpen -= UpdateSystemResourcesText;
     }
 
     public void ToggleMenu()
     {
-        if (gameObject.activeSelf)
-        {
-            gameObject.SetActive(false);
-        }
-        else
-        {
-            gameObject.SetActive(true);
-            gameObject.transform.SetAsLastSibling();
-        }
+        window.ToggleWindow();
+        UpdateSystemResourcesText();
     }
 
     // Set the system resources

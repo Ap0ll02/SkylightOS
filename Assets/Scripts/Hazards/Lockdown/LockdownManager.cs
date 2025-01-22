@@ -4,21 +4,19 @@ using UnityEngine;
 
 public class LockdownManager : AbstractManager
 {
-    [SerializeField] private GameObject raycastBlocker;
     [SerializeField] private float minDelay = 3.0f;
     [SerializeField] private float maxDelay = 10.0f;
     [SerializeField] private LockdownCanvas lockdownCanvas; // Reference to LockdownCanvas
     private bool hazardStarted = false;
 
+    void Awake()
+    {
+        lockdownCanvas = GameObject.FindObjectOfType<LockdownCanvas>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
-        // Ensure the raycast blocker is assigned
-        if (raycastBlocker == null)
-        {
-            Debug.LogError("RaycastBlocker is not assigned.");
-        }
-
         // Ensure the lockdown canvas is assigned
         if (lockdownCanvas == null)
         {
@@ -34,7 +32,7 @@ public class LockdownManager : AbstractManager
 
     public override void StartHazard()
     {
-        if (raycastBlocker != null && lockdownCanvas != null && !hazardStarted)
+        if (lockdownCanvas != null && !hazardStarted)
         {
             hazardStarted = true;
             StartCoroutine(ActivateRaycastBlockerAfterDelay());
@@ -45,7 +43,7 @@ public class LockdownManager : AbstractManager
     {
         float delay = Random.Range(minDelay, maxDelay);
         yield return new WaitForSeconds(delay);
-        raycastBlocker.SetActive(true);
+        lockdownCanvas.OpenCanvas();
         StartCoroutine(CheckLockdownCanvasComplete());
         // Start the minigame here
     }
@@ -62,18 +60,13 @@ public class LockdownManager : AbstractManager
 
     public override void StopHazard()
     {
-        if (raycastBlocker != null)
-        {
-            raycastBlocker.SetActive(false);
-            hazardStarted = false;
-            // End the minigame here
-        }
+        lockdownCanvas.CloseCanvas();
+        hazardStarted = false;
     }
 
     public override bool CanProgress()
     {
         // Check if the minigame is completed
-        bool test = raycastBlocker.activeSelf;
-        return raycastBlocker == null || !raycastBlocker.activeSelf;
+        return !lockdownCanvas.loadingScript.canContinue;
     }
 }

@@ -43,14 +43,12 @@ public class Terminal : MonoBehaviour
     public void Awake()
     {
         TWindow = GameObject.Find(twinName);
-        TWindow.SetActive(true);
     }
 
     public void Start()
     {
         TInstructionTxt.horizontalAlignment = HorizontalAlignmentOptions.Center; 
         TInstructionTxt.text = FirstText;
-        TWindow.SetActive(false);
     }
 
     public void ListFilesExec()

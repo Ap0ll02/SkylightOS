@@ -4,7 +4,7 @@ using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
 using System;
-using UnityEditor.PackageManager.UI;
+//using UnityEditor.PackageManager.UI;
 /// <summary>
 /// Garrett Sharp
 /// The wifi menu that is expanded when the wifi button is pressed

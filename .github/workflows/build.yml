@@ -3,8 +3,8 @@ name: Build project
 on:
   push:
     branches:
-    - unstable
-    - stable
+    - Unstable
+    - Stable
 
 jobs:
   buildForAllSupportedPlatforms:

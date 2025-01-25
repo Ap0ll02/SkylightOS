@@ -33,7 +33,7 @@ jobs:
           UNITY_EMAIL: ${{ secrets.UNITY_EMAIL }}
           UNITY_PASSWORD: ${{ secrets.UNITY_PASSWORD }}
         with:
-          customImage: 'unityci/editor:2022.3.50f1-base-0'
+          unityVersion: auto
           targetPlatform: ${{ matrix.targetPlatform }}
       - uses: actions/upload-artifact@v3
         with:

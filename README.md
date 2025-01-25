@@ -1,4 +1,5 @@
 # SkylightOS
+[![Build project](https://github.com/Ap0ll02/WindowsProject/actions/workflows/build.yml/badge.svg)](https://github.com/Ap0ll02/WindowsProject/actions/workflows/build.yml)
 --- 
 ## Stellar. Light. Speed. The Operating System of the Future.
 

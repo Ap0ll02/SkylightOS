@@ -62,9 +62,6 @@ public class TerminalTask : AbstractTask
         terminalPanel = FindObjectOfType<Terminal>().gameObject;
         terminalText = terminalPanel.GetComponentInChildren<TMP_Text>();
         hGroup = FindObjectOfType<Terminal>().gameObject.GetComponentInChildren<HorizontalLayoutGroup>().gameObject;
-        // lsBtn = GameObject.Find("LSBtn");
-        // avBtn = GameObject.Find("antiviralBtn");
-        // nmapBtn = GameObject.Find("nmapBtn");
         termState = State.Off;
         ag = arrowGame.GetComponent<Arrowgame>();
         drawMaze = FindObjectOfType<DrawMaze>().gameObject;

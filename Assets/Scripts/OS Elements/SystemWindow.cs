@@ -5,7 +5,7 @@ using UnityEngine;
 public class SystemWindow : MonoBehaviour
 {
     // Enum to track the state of the window
-    enum WindowState
+    public enum WindowState
     {
         MAIN,
         RESOURCES,
@@ -26,7 +26,7 @@ public class SystemWindow : MonoBehaviour
     public BasicWindowPanel updatePanel;
 
     // Reference to the current open panel
-    private BasicWindowPanel currentPanel;
+    public BasicWindowPanel currentPanel;
 
     // Awake is called when the script instance is being loaded.
     void Awake()

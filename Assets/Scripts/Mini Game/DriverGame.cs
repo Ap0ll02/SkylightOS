@@ -25,15 +25,15 @@ public class DriverGame : AbstractMinigame
     public float percentage = 0;
     public float chance = 0;
     public Vector2 bg_pos;
-    public Vector2 speed = new Vector2(-10, 0);
+    public Vector2 speed = new Vector2(80, 0);
     public RectTransform bg_cpos;
     public RectTransform bg_width;
 
     InputAction moveAction;
 
     void Awake() {
-        bg_pos = bg.transform.position;
         bg_cpos = bg.GetComponent<RectTransform>();
+        bg_pos = bg_cpos.anchoredPosition;
     }
 
     // Start is called before the first frame update
@@ -48,9 +48,17 @@ public class DriverGame : AbstractMinigame
     // Update is called once per frame
     void Update()
     {
+        // TODO Change this to a spawn system on horizontal layout and delete after every X position through spawn list.
+        // between -210 and -240
+        if(bg_cpos.anchoredPosition.x < -221.86436) {
+            bg_cpos.anchoredPosition = bg_pos;
+        }
         // Don't forget deltaTime with movement     
-        bg_cpos.anchoredPosition -= speed * Time.deltaTime;
+        bg_cpos.anchoredPosition -= (speed * Time.deltaTime);
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
-        player.anchoredPosition += new Vector2(moveValue.x, 0);
+        if (moveValue.x < 0) {
+            moveValue.x = 0;
+        }
+        player.anchoredPosition += moveValue;
     }
 }

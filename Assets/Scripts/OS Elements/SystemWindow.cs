@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class SystemWindow : MonoBehaviour
@@ -12,6 +13,9 @@ public class SystemWindow : MonoBehaviour
         DRIVERS,
         UPDATE
     }
+
+    // Reference to the window
+    public BasicWindow window;
 
     // Current state of the window
     public WindowState currentState;
@@ -31,12 +35,17 @@ public class SystemWindow : MonoBehaviour
     // Awake is called when the script instance is being loaded.
     void Awake()
     {
+        window = GetComponent<BasicWindow>();
         currentState = WindowState.MAIN;
         currentPanel = mainPanel;
+        resourcesPanel.ClosePanel();
+        driversPanel.ClosePanel();
+        updatePanel.ClosePanel();
+        backButton.SetActive(false);
     }
 
     // Switches the state of the window
-    void SwitchState(WindowState state)
+    public void SwitchState(WindowState state)
     {
         if (currentPanel != null)
         {
@@ -81,15 +90,32 @@ public class SystemWindow : MonoBehaviour
         }
     }
 
-    // Start is called before the first frame update
-    void Start()
+    // Open the Resources window
+    public void OpenResources()
     {
-
+        SwitchState(WindowState.RESOURCES);
     }
 
-    // Update is called once per frame
-    void Update()
+    // Open the Drivers window
+    public void OpenDrivers()
     {
+        SwitchState(WindowState.DRIVERS);
+    }
 
+    // Open the Update window
+    public void OpenUpdate()
+    {
+        SwitchState(WindowState.UPDATE);
+    }
+
+    // When the window is enabled, update the text
+    public void OnEnable()
+    {
+        window.OnWindowOpen += BackButton;
+    }
+
+    public void OnDisable()
+    {
+        window.OnWindowOpen -= BackButton;
     }
 }

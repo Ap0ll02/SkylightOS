@@ -20,7 +20,7 @@ public class DriverGame : AbstractMinigame
     public GameObject obstacle;
 
     public float percentage = 0;
-
+    public float chance = 0;
     void Awake() {
 
     }

@@ -56,9 +56,21 @@ public class DriverGame : AbstractMinigame
         // Don't forget deltaTime with movement     
         bg_cpos.anchoredPosition -= (speed * Time.deltaTime);
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
-        if (moveValue.x < 0) {
-            moveValue.x = 0;
-        }
         player.anchoredPosition += moveValue;
+        CheckBounds();
+    }
+
+    void CheckBounds() {
+        if(player.anchoredPosition.x < -1700) {
+            player.anchoredPosition = new Vector2(-1700, player.anchoredPosition.y);
+        } else if (player.anchoredPosition.x > 1700) {
+            player.anchoredPosition = new Vector2(1700, player.anchoredPosition.y);
+        }
+
+        if(player.anchoredPosition.y < -900) {
+            player.anchoredPosition = new Vector2(player.anchoredPosition.x, -900);
+        } else if (player.anchoredPosition.y > 900) {
+            player.anchoredPosition = new Vector2(player.anchoredPosition.x, 900);
+        }
     }
 }

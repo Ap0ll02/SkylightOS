@@ -342,9 +342,6 @@ PrefabInstance:
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3103533957802632519}
-    - targetCorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 5348233713604711342}
     - targetCorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       insertIndex: -1
@@ -355,6 +352,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6094820174900390667}
+    - targetCorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 3103533957802632519}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4985135885990256120, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       insertIndex: -1
@@ -393,6 +393,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cd5a7c95737fa54e859382b820314fc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  window: {fileID: 0}
   currentState: 0
   backButton: {fileID: 2698374852154171795}
   mainPanel: {fileID: 622496750146055748}
@@ -434,11 +435,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4885339670460158141, guid: f56e7214a5ef18347b187ab38a9e2c71, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1800
+      value: 2929.9
       objectReference: {fileID: 0}
     - target: {fileID: 4885339670460158141, guid: f56e7214a5ef18347b187ab38a9e2c71, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1800
+      value: 1844.1
       objectReference: {fileID: 0}
     - target: {fileID: 4885339670460158141, guid: f56e7214a5ef18347b187ab38a9e2c71, type: 3}
       propertyPath: m_LocalPosition.x
@@ -470,11 +471,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4885339670460158141, guid: f56e7214a5ef18347b187ab38a9e2c71, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0
+      value: -0.7
       objectReference: {fileID: 0}
     - target: {fileID: 4885339670460158141, guid: f56e7214a5ef18347b187ab38a9e2c71, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -54
+      value: -52.1
       objectReference: {fileID: 0}
     - target: {fileID: 4885339670460158141, guid: f56e7214a5ef18347b187ab38a9e2c71, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

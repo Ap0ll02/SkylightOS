@@ -28,6 +28,7 @@ public class DriverGame : AbstractMinigame
     public Vector2 speed = new Vector2(80, 0);
     public RectTransform bg_cpos;
     public RectTransform bg_width;
+    public Component[] obs;
 
     InputAction moveAction;
 
@@ -58,6 +59,7 @@ public class DriverGame : AbstractMinigame
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
         player.anchoredPosition += moveValue;
         CheckBounds();
+        HandleObs();
     }
 
     void CheckBounds() {
@@ -72,5 +74,14 @@ public class DriverGame : AbstractMinigame
         } else if (player.anchoredPosition.y > 900) {
             player.anchoredPosition = new Vector2(player.anchoredPosition.x, 900);
         }
+    }
+
+    void HandleObs() {
+        obs = obstacle.GetComponentsInChildren<RectTransform>(); 
+        foreach (RectTransform ob in obs)
+        {
+            ob.anchoredPosition -= (speed*15 * Time.deltaTime);                       
+        }
+
     }
 }

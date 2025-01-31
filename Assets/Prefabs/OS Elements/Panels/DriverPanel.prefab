@@ -709,15 +709,37 @@ PrefabInstance:
       addedObject: {fileID: 8221771699789853123}
     - targetCorrespondingSourceObject: {fileID: 7337865907692603752, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7227694209768134482}
-    - targetCorrespondingSourceObject: {fileID: 7337865907692603752, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 3474998351812324332}
     - targetCorrespondingSourceObject: {fileID: 7337865907692603752, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}
       insertIndex: -1
+      addedObject: {fileID: 7227694209768134482}
+    - targetCorrespondingSourceObject: {fileID: 7337865907692603752, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}
+      insertIndex: -1
       addedObject: {fileID: 8992306101361454640}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6372009332783336980, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8118247965099956334}
   m_SourcePrefab: {fileID: 100100000, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}
+--- !u!1 &1026517597632912965 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6372009332783336980, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}
+  m_PrefabInstance: {fileID: 6220316518180098129}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8118247965099956334
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1026517597632912965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3a8ab96647e66cfddb6e82d67915a64c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  system_menu: {fileID: 0}
+  driver_desc: {fileID: 5178624081148223542}
 --- !u!224 &3712750329707174201 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7337865907692603752, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}

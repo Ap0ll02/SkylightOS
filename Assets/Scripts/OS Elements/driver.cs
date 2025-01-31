@@ -10,7 +10,7 @@ public class driver : MonoBehaviour
 
     void Awake() {
         // FIXME When Garrett updates this menu the reference will need to be reacquired
-        system_menu = GetComponentInParent<SystemResourcesWindow>().gameObject;
+        system_menu = GetComponentInParent<SystemWindow>().gameObject;
     }
 
     // Start is called before the first frame update

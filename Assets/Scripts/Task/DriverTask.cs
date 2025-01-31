@@ -16,7 +16,9 @@ public class DriverTask : AbstractTask
         taskDescription = "Looks like our drivers are out of date, perhaps this will solve our issues. Lets use our system's driver menu to update!";
         // ATTENTION: need reference to window canvas' System Menu, could change
         // with Garrett's implementation
-        //system_menu = FindObjectOfType(WindowCanvas).GetComponentInChildren<SystemResourcesWindow>().gameObject;
+        system_menu = GameObject.Find("WindowCanvas").GetComponentInChildren<SystemWindow>().gameObject;
+        driver_script = system_menu.GetComponentInChildren<driver>();
+        driver_desc = driver_script.gameObject.GetComponentInChildren<TMP_Text>();
     }
     // Broken, non-interactable state loaded here
     new void Start() {

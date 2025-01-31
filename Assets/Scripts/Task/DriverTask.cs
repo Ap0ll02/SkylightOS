@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 /// @author Jack
 /// @brief Driver task involves the system window then the driver window. This will
@@ -10,6 +11,7 @@ public class DriverTask : AbstractTask
     public GameObject system_menu;
     public TMP_Text driver_desc;
     public driver driver_script;
+    public GameObject driver_btn;
     // Get our references here
     void Awake() {
         taskTitle = "Update Drivers";
@@ -19,32 +21,45 @@ public class DriverTask : AbstractTask
         system_menu = GameObject.Find("WindowCanvas").GetComponentInChildren<SystemWindow>().gameObject;
         driver_script = system_menu.GetComponentInChildren<driver>();
         driver_desc = driver_script.gameObject.GetComponentInChildren<TMP_Text>();
+        driver_btn = driver_script.GetComponentInChildren<Button>().gameObject;
     }
     // Broken, non-interactable state loaded here
     new void Start() {
-        driver_desc.text = "Driver's out of date. Updates required.";
+        driver_desc.text = "Drivers out of date. Updates required.";
         // TODO: Steps towards system menu
         // prepare what you can even though the system menu isn't complete
         // Get states ready and design the game.
+        driver_btn.SetActive(false);
     }
 
+    // Interactable, broken state init here
     public override void startTask() {
-
+        driver_desc.text = "Drivers out of date. Updates required.";
+        driver_btn.SetActive(true);
     }
 
+    // Non-interactable, OS standard state here.
     public override void CompleteTask(){
-
+        driver_desc.text = "Your drivers are up to date.";
+        driver_btn.SetActive(false);
     }
 
     public override void checkHazards(){
 
     }
 
-    public override void stopHazards() {
-
+    public override void stopHazards()
+    {
+        foreach (var hazardManager in hazardManagers) {
+            hazardManager.StopHazard();
+        }
     }
 
-    public override void startHazards(){
-
+    public override void startHazards()
+    {
+        foreach (var hazardManager in hazardManagers) {
+            hazardManager.StartHazard();
+        }
     }
+    
 }

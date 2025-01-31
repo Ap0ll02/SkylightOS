@@ -67,8 +67,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: UPDATE
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c62937eae947cf7438bd97e5d0bed903, type: 2}
+  m_sharedMaterial: {fileID: 3075697826781590097, guid: c62937eae947cf7438bd97e5d0bed903, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -201,8 +201,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Version: 2345.34'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5168fe7ed5997ed49b0e8b6d3ec71e9d, type: 2}
-  m_sharedMaterial: {fileID: 8103096300495507558, guid: 5168fe7ed5997ed49b0e8b6d3ec71e9d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c62937eae947cf7438bd97e5d0bed903, type: 2}
+  m_sharedMaterial: {fileID: 3075697826781590097, guid: c62937eae947cf7438bd97e5d0bed903, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -543,8 +543,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: UPDATE LATER
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c62937eae947cf7438bd97e5d0bed903, type: 2}
+  m_sharedMaterial: {fileID: 3075697826781590097, guid: c62937eae947cf7438bd97e5d0bed903, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -677,8 +677,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Skylight OS
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5168fe7ed5997ed49b0e8b6d3ec71e9d, type: 2}
-  m_sharedMaterial: {fileID: 8103096300495507558, guid: 5168fe7ed5997ed49b0e8b6d3ec71e9d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c62937eae947cf7438bd97e5d0bed903, type: 2}
+  m_sharedMaterial: {fileID: 3075697826781590097, guid: c62937eae947cf7438bd97e5d0bed903, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -811,8 +811,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Name: Skylight Live Messenger'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5168fe7ed5997ed49b0e8b6d3ec71e9d, type: 2}
-  m_sharedMaterial: {fileID: 8103096300495507558, guid: 5168fe7ed5997ed49b0e8b6d3ec71e9d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c62937eae947cf7438bd97e5d0bed903, type: 2}
+  m_sharedMaterial: {fileID: 3075697826781590097, guid: c62937eae947cf7438bd97e5d0bed903, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1078,8 +1078,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 'Publisher: Skylight OS'
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 5168fe7ed5997ed49b0e8b6d3ec71e9d, type: 2}
-  m_sharedMaterial: {fileID: 8103096300495507558, guid: 5168fe7ed5997ed49b0e8b6d3ec71e9d, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: c62937eae947cf7438bd97e5d0bed903, type: 2}
+  m_sharedMaterial: {fileID: 3075697826781590097, guid: c62937eae947cf7438bd97e5d0bed903, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1281,10 +1281,42 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 7337865907692603752, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6647370839563128840}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 6372009332783336980, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8770139070284889866}
   m_SourcePrefab: {fileID: 100100000, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}
 --- !u!224 &4885339670460158141 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7337865907692603752, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}
   m_PrefabInstance: {fileID: 2745331695242795477}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &9112061997823236033 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6372009332783336980, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}
+  m_PrefabInstance: {fileID: 2745331695242795477}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &8770139070284889866
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9112061997823236033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64aca6b89443279449a3d849b2c34baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ButtonOneObject: {fileID: 6323280263300607892}
+  ButtonTwoObject: {fileID: 3158804241959989467}
+  WarningObject: {fileID: 2839171485810054744}
+  GreenCheckMark: {fileID: 0}
+  versionText: {fileID: 8711495209002995239}
+  publisherText: {fileID: 3074681047912061279}
+  nameText: {fileID: 8301575688987761338}
+  mainTitleText: {fileID: 475647968672625797}
+  buttonOneText: {fileID: 5552742370948456084}
+  buttonTwoText: {fileID: 75088168107471419}
+  alienFont: {fileID: 11400000, guid: c62937eae947cf7438bd97e5d0bed903, type: 2}
+  regularFont: {fileID: 11400000, guid: 5168fe7ed5997ed49b0e8b6d3ec71e9d, type: 2}

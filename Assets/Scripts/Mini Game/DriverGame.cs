@@ -44,7 +44,10 @@ public class DriverGame : AbstractMinigame
     }
 
     public override void StartGame() {
-
+        obs = obstacle.GetComponentsInChildren<RectTransform>(); 
+        foreach(var ob in obs) {
+            
+        }
     }
     // Update is called once per frame
     void Update()
@@ -69,8 +72,8 @@ public class DriverGame : AbstractMinigame
             player.anchoredPosition = new Vector2(1700, player.anchoredPosition.y);
         }
 
-        if(player.anchoredPosition.y < -900) {
-            player.anchoredPosition = new Vector2(player.anchoredPosition.x, -900);
+        if(player.anchoredPosition.y < -980) {
+            player.anchoredPosition = new Vector2(player.anchoredPosition.x, -980);
         } else if (player.anchoredPosition.y > 900) {
             player.anchoredPosition = new Vector2(player.anchoredPosition.x, 900);
         }
@@ -80,7 +83,7 @@ public class DriverGame : AbstractMinigame
         obs = obstacle.GetComponentsInChildren<RectTransform>(); 
         foreach (RectTransform ob in obs)
         {
-            ob.anchoredPosition -= (speed*15 * Time.deltaTime);                       
+            ob.anchoredPosition -= (speed*5 * Time.deltaTime);                       
         }
 
     }

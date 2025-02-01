@@ -16,10 +16,15 @@ public class RamDownloadGame : AbstractMinigame
     // Reference to the window canvas
     [SerializeField] Canvas windowCanvas;
 
+    // Reference to the BoxCollider2D
+    [SerializeField] BoxCollider2D boxCollider;
+
     // Awake is called when the script instance is being loaded
     void Awake()
     {
         window = GetComponent<BasicWindow>();
+        boxCollider = GetComponent<BoxCollider2D>();
+
         // Find the object with the name "WindowCanvas" and get the Canvas component
         GameObject canvasObject = GameObject.Find("WindowCanvas");
         if (canvasObject != null)
@@ -32,22 +37,26 @@ public class RamDownloadGame : AbstractMinigame
         }
     }
 
-    //
     private void Start()
     {
         window.CloseWindow();
+        boxCollider.enabled = false; // Ensure the collider is initially disabled
     }
 
     // On enable
     void OnEnable()
     {
         window.OnWindowOpen += StartGame;
+        window.OnWindowOpen += EnableCollider;
+        window.OnWindowClose += DisableCollider;
     }
 
     // On disable
     void OnDisable()
     {
         window.OnWindowOpen -= StartGame;
+        window.OnWindowOpen -= EnableCollider;
+        window.OnWindowClose -= DisableCollider;
     }
 
     public override void StartGame()
@@ -77,7 +86,7 @@ public class RamDownloadGame : AbstractMinigame
         }
     }
 
-    // Spawn a new window outside the current window area
+    // Spawn a new window within the canvas area but outside the current window
     void SpawnNewWindow()
     {
         Vector3 spawnPosition = GetRandomPositionOutsideWindow();
@@ -85,21 +94,22 @@ public class RamDownloadGame : AbstractMinigame
         newWindow.transform.SetParent(windowCanvas.transform, false);
     }
 
-    // Get a random position outside the current window area but within the screen bounds
+    // Get a random position within the canvas area but outside the current window
     Vector3 GetRandomPositionOutsideWindow()
     {
+        RectTransform canvasRect = windowCanvas.GetComponent<RectTransform>();
         Vector3 windowPosition = window.transform.position;
         Vector3 windowSize = window.GetComponent<RectTransform>().sizeDelta;
 
-        float screenWidth = Screen.width;
-        float screenHeight = Screen.height;
+        float canvasWidth = canvasRect.rect.width;
+        float canvasHeight = canvasRect.rect.height;
 
         float x, y;
 
         do
         {
-            x = Random.Range(0, screenWidth);
-            y = Random.Range(0, screenHeight);
+            x = Random.Range(0, canvasWidth);
+            y = Random.Range(0, canvasHeight);
         } while (x > windowPosition.x - windowSize.x / 2 && x < windowPosition.x + windowSize.x / 2 &&
                  y > windowPosition.y - windowSize.y / 2 && y < windowPosition.y + windowSize.y / 2);
 
@@ -124,5 +134,17 @@ public class RamDownloadGame : AbstractMinigame
         {
             EndGame();
         }
+    }
+
+    // Enable the BoxCollider2D
+    void EnableCollider()
+    {
+        boxCollider.enabled = true;
+    }
+
+    // Disable the BoxCollider2D
+    void DisableCollider()
+    {
+        boxCollider.enabled = false;
     }
 }

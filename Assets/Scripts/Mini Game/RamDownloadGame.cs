@@ -89,30 +89,35 @@ public class RamDownloadGame : AbstractMinigame
     // Spawn a new window within the canvas area but outside the current window
     void SpawnNewWindow()
     {
-        Vector3 spawnPosition = GetRandomPositionOutsideWindow();
-        GameObject newWindow = Instantiate(windowPrefab, spawnPosition, Quaternion.identity);
-        newWindow.transform.SetParent(windowCanvas.transform, false);
+        Vector3 spawnPosition = GetRandomPositionInsideCanvas();
+        if (!IsOverlappingCurrentWindow(spawnPosition))
+        {
+            GameObject newWindow = Instantiate(windowPrefab, spawnPosition, Quaternion.identity);
+            newWindow.transform.SetParent(windowCanvas.transform, false);
+            newWindow.GetComponent<RectTransform>().anchoredPosition = spawnPosition;
+        }
     }
 
-    // Get a random position within the canvas area but outside the current window
-    Vector3 GetRandomPositionOutsideWindow()
+    // Check if the position is overlapping with the current window
+    bool IsOverlappingCurrentWindow(Vector3 position)
+    {
+        RectTransform windowRect = window.GetComponent<RectTransform>();
+        Rect windowBounds = new Rect(windowRect.anchoredPosition, windowRect.sizeDelta);
+
+        return windowBounds.Contains(position);
+    }
+
+    // Get a random position within the canvas area
+    Vector3 GetRandomPositionInsideCanvas()
     {
         RectTransform canvasRect = windowCanvas.GetComponent<RectTransform>();
-        Vector3 windowPosition = window.transform.position;
-        Vector3 windowSize = window.GetComponent<RectTransform>().sizeDelta;
 
-        float canvasWidth = canvasRect.rect.width;
-        float canvasHeight = canvasRect.rect.height;
+        float canvasWidth = canvasRect.rect.width * canvasRect.localScale.x;
+        float canvasHeight = canvasRect.rect.height * canvasRect.localScale.y;
 
-        float x, y;
-
-        do
-        {
-            x = Random.Range(0, canvasWidth);
-            y = Random.Range(0, canvasHeight);
-        } while (x > windowPosition.x - windowSize.x / 2 && x < windowPosition.x + windowSize.x / 2 &&
-                 y > windowPosition.y - windowSize.y / 2 && y < windowPosition.y + windowSize.y / 2);
-
+        float x = Random.Range(0, canvasWidth);
+        float y = Random.Range(0, canvasHeight);
+         
         return new Vector3(x, y, 0);
     }
 

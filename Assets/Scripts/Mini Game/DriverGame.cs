@@ -29,12 +29,15 @@ public class DriverGame : AbstractMinigame
     public RectTransform bg_cpos;
     public RectTransform bg_width;
     public Component[] obs;
+    public List<GameObject> bgs = new List<GameObject>();
 
     InputAction moveAction;
 
     void Awake() {
         bg_cpos = bg.GetComponent<RectTransform>();
         bg_pos = bg_cpos.anchoredPosition;
+        bgs.Add(bg);
+        //bg = GetComponentInChildren<Background>().gameObject;
     }
 
     // Start is called before the first frame update
@@ -48,15 +51,16 @@ public class DriverGame : AbstractMinigame
         foreach(var ob in obs) {
             
         }
+
     }
     // Update is called once per frame
     void Update()
     {
         // TODO Change this to a spawn system on horizontal layout and delete after every X position through spawn list.
         // between -210 and -240
-        if(bg_cpos.anchoredPosition.x < -221.86436) {
-            bg_cpos.anchoredPosition = bg_pos;
-        }
+        // if(bg_cpos.anchoredPosition.x < -221.86436) {
+        //     bg_cpos.anchoredPosition = bg_pos;
+        // }
         // Don't forget deltaTime with movement     
         bg_cpos.anchoredPosition -= (speed * Time.deltaTime);
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
@@ -77,6 +81,13 @@ public class DriverGame : AbstractMinigame
         } else if (player.anchoredPosition.y > 900) {
             player.anchoredPosition = new Vector2(player.anchoredPosition.x, 900);
         }
+
+        if(bgs[bgs.Count - 1].GetComponent<RectTransform>().anchoredPosition.x < -265) {
+            bgs.RemoveAt(bgs.Count-1); 
+            bgs.Add(Instantiate(bg, new Vector3(268.22f, 0.91f, 90), Quaternion.identity));
+            bg_cpos = bgs[bgs.Count-1].GetComponent<RectTransform>();
+        }
+
     }
 
     void HandleObs() {

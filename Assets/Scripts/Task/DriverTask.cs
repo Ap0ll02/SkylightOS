@@ -10,7 +10,7 @@ public class DriverTask : AbstractTask
 {
     public GameObject system_menu;
     public TMP_Text driver_desc;
-    public driver driver_script;
+    public DriverGame driver_script;
     public GameObject driver_btn;
     // Get our references here
     void Awake() {
@@ -19,7 +19,7 @@ public class DriverTask : AbstractTask
         // ATTENTION: need reference to window canvas' System Menu, could change
         // with Garrett's implementation
         system_menu = GameObject.Find("WindowCanvas").GetComponentInChildren<SystemWindow>().gameObject;
-        driver_script = system_menu.GetComponentInChildren<driver>();
+        driver_script = system_menu.GetComponentInChildren<DriverGame>();
         driver_desc = driver_script.gameObject.GetComponentInChildren<TMP_Text>();
         driver_btn = driver_script.GetComponentInChildren<Button>().gameObject;
     }
@@ -36,6 +36,14 @@ public class DriverTask : AbstractTask
     public override void startTask() {
         driver_desc.text = "Drivers out of date. Updates required.";
         driver_btn.SetActive(true);
+    }
+
+    public void OnEnable(){
+        //driver_script.OnGameEnd += 
+    }
+
+    public void OnDisable(){
+        //driver_script.OnGameEnd -= 
     }
 
     // Non-interactable, OS standard state here.

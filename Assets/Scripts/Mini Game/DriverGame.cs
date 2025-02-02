@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.InputSystem;
+using Unity.VisualScripting;
+using System.Linq;
+using System;
 
 public class DriverGame : AbstractMinigame
 {
@@ -24,25 +27,23 @@ public class DriverGame : AbstractMinigame
 
     public float percentage = 0;
     public float chance = 0;
-    public Vector2 bg_pos;
-    public Vector2 speed = new Vector2(80, 0);
-    public RectTransform bg_cpos;
+
+    public GameObject parent;
+    public Vector2 speed = new(80, 0);
     public RectTransform bg_width;
     public Component[] obs;
-    public List<GameObject> bgs = new List<GameObject>();
+    public List<GameObject> bgs = new();
 
     InputAction moveAction;
 
     void Awake() {
-        bg_cpos = bg.GetComponent<RectTransform>();
-        bg_pos = bg_cpos.anchoredPosition;
-        bgs.Add(bg);
-        //bg = GetComponentInChildren<Background>().gameObject;
     }
 
     // Start is called before the first frame update
     void Start()
     {
+        bgs.Add(Instantiate(bg, parent: parent.GetComponent<RectTransform>()));
+        bgs[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(244.5f, 0.91f, 90);
         moveAction = InputSystem.actions.FindAction("Move");   
     }
 
@@ -62,7 +63,10 @@ public class DriverGame : AbstractMinigame
         //     bg_cpos.anchoredPosition = bg_pos;
         // }
         // Don't forget deltaTime with movement     
-        bg_cpos.anchoredPosition -= (speed * Time.deltaTime);
+        foreach (var b in bgs) {
+            b.GetComponent<RectTransform>().anchoredPosition -= speed * Time.deltaTime;
+        }
+        
         Vector2 moveValue = moveAction.ReadValue<Vector2>();
         player.anchoredPosition += moveValue;
         CheckBounds();
@@ -82,19 +86,24 @@ public class DriverGame : AbstractMinigame
             player.anchoredPosition = new Vector2(player.anchoredPosition.x, 900);
         }
 
-        if(bgs[bgs.Count - 1].GetComponent<RectTransform>().anchoredPosition.x < -265) {
-            bgs.RemoveAt(bgs.Count-1); 
-            bgs.Add(Instantiate(bg, new Vector3(268.22f, 0.91f, 90), Quaternion.identity));
-            bg_cpos = bgs[bgs.Count-1].GetComponent<RectTransform>();
+        if(bgs[^1].GetComponent<RectTransform>().anchoredPosition.x < -243) {
+            bgs.Add(Instantiate(bg, parent: parent.GetComponent<RectTransform>()));
+            bgs[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(643.8f, 0.91f, 90);
+        }
+        try{if(bgs[^2].GetComponent<RectTransform>().anchoredPosition.x < -643){
+            Destroy(bgs[^2]);
+            bgs.RemoveAt(bgs.Count-2);
+        }} catch (Exception e) when (e is ArgumentOutOfRangeException) {
+            Debug.Log("idk hope it works");
         }
 
     }
 
     void HandleObs() {
         obs = obstacle.GetComponentsInChildren<RectTransform>(); 
-        foreach (RectTransform ob in obs)
+        foreach (RectTransform ob in obs.Cast<RectTransform>())
         {
-            ob.anchoredPosition -= (speed*5 * Time.deltaTime);                       
+            ob.anchoredPosition -= 5 * Time.deltaTime * speed;                       
         }
 
     }

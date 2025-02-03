@@ -12,8 +12,8 @@ public class RamTask : AbstractTask
     // The system resources window
     [SerializeField] SystemResourcesWindow systemResourcesWindow;
 
-    // The diagnosis window
-    [SerializeField] DiagnosisWindow diagnosisWindow;
+    // The minigame window
+    [SerializeField] RamDownloadGame minigameWindow;
 
     // Shouldnt be here (performance thief shit)
     [SerializeField] LoadingScript loadingBarScript;
@@ -31,17 +31,16 @@ public class RamTask : AbstractTask
     private void Awake()
     {
         systemResourcesWindow = FindObjectOfType<SystemResourcesWindow>();
-        diagnosisWindow = FindObjectOfType<DiagnosisWindow>();
-        loadingBarScript = diagnosisWindow.GetComponentInChildren<LoadingScript>();
+        minigameWindow = FindObjectOfType<RamDownloadGame>();
         northstar = FindObjectOfType<Northstar>();
     }
 
     // Start is called before the first frame update
-    void Start()
+    new void Start()
     {
         // Set the task title and description
         taskTitle = "Fix Ram";
-        taskDescription = "Your computer is running low on RAM, open the diagnosis window to install ram";
+        taskDescription = "Your computer is running low on RAM, check the resources window to view the problem";
         gameObject.SetActive(false);
     }
 
@@ -54,7 +53,6 @@ public class RamTask : AbstractTask
     // Method to start the task
     public override void startTask()
     {
-        diagnosisWindow.SetHeaderText("Skylight RAM Downloader");
         systemResourcesWindow.currentRAMStatus = SystemResourcesWindow.RAMStatus.CRITICAL;
         northstar.WriteHint("Let's Diagnose This RAM Issue, Perhaps Go To The Process Manager Button Below?", Northstar.Style.warm);
         systemResourcesWindow.UpdateSystemResourcesText();
@@ -64,6 +62,7 @@ public class RamTask : AbstractTask
     {
         systemResourcesWindow.currentRAMStatus = SystemResourcesWindow.RAMStatus.OK;
         systemResourcesWindow.UpdateSystemResourcesText();
+        northstar.WriteHint("We did the ram!!!!!", Northstar.Style.warm);
         stopHazards();
         base.CompleteTask();
     }
@@ -71,45 +70,29 @@ public class RamTask : AbstractTask
     // Message handler for opening the diagnosis window
     void OnEnable()
     {
-        DiagnosisWindow.OnDiagnosisWindowOpened += HandleDiagnosisWindowOpened;
-        DiagnosisWindow.LoadingDoneNotify += CompleteTask;
-        PerformanceThiefManager.PThiefEnded += PerformanceThiefEnd;
-        PerformanceThiefManager.PThiefStarted += PerformanceThiefStart;
-        PerformanceThiefManager.PThiefUpdateDelay += DelayHandler;
+        RamDownloadGame.RamMinigameStartNotify += HandleMinigameStarted;
+        RamDownloadGame.RamMinigameEndNotify += HandleMinigameEnded;
     }
 
     // Removing message handler?
     void OnDisable()
     {
-        DiagnosisWindow.OnDiagnosisWindowOpened -= HandleDiagnosisWindowOpened;
-        DiagnosisWindow.LoadingDoneNotify -= CompleteTask;
-        PerformanceThiefManager.PThiefStarted -= PerformanceThiefStart;
-        PerformanceThiefManager.PThiefEnded -= PerformanceThiefEnd;
-        PerformanceThiefManager.PThiefUpdateDelay -= DelayHandler;
+        RamDownloadGame.RamMinigameStartNotify -= HandleMinigameStarted;
+        RamDownloadGame.RamMinigameEndNotify -= HandleMinigameEnded;
     }
 
-    void PerformanceThiefStart()
-    {
-        //loadingBarScript.perthiefTime = perTime;
-    }
-
-    void PerformanceThiefEnd()
-    {
-        loadingBarScript.perthiefTime = 1f;
-    }
-
-    void DelayHandler()
-    {
-        loadingBarScript.perthiefTime = UnityEngine.Random.Range(0.01f, 0.29f);
-    }
 
     // When the diagnosis window is opened, start the hazards and loading bar
-    void HandleDiagnosisWindowOpened()
+    void HandleMinigameStarted()
     {
         startHazards();
-        northstar.WriteHint("OH SHIT WE GOTTA WAIT FOR THE BAR TO LOAD", Northstar.Style.warm);
+        northstar.WriteHint("OH SHIT WE GOTTA PUT THE RAM IN THE RAM SLOTS", Northstar.Style.warm);
     }
 
+    void HandleMinigameEnded()
+    {
+        CompleteTask();
+    }
     // This will request the manager to start a hazard
     public override void startHazards()
     {
@@ -136,13 +119,11 @@ public class RamTask : AbstractTask
             canProgress = hazardManager.CanProgress();
             if (!hazardManager.CanProgress())
             {
-                diagnosisWindow.StopLoadingBar();
                 break;
                 //loadingBarScript.canContinue = false;
             }
             else
             {
-                diagnosisWindow.ContinueLoadingBar();
                 //loadingBarScript.canContinue = true;
             }
         }

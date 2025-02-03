@@ -11,6 +11,9 @@ public abstract class AbstractMinigame : MonoBehaviour
     /// Have minigames inherit from this for enforcing structure.
     /// </summary>
     public bool CanContinue;
+
+    public bool isStarted;
+
     //public static event Action OnGameEnd;
     public abstract void StartGame();
 }

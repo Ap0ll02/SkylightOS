@@ -48,6 +48,8 @@ public class SystemResourcesWindow : MonoBehaviour
     // Reference to the window
     [SerializeField] BasicWindow window;
 
+    // Reference to the minigame 
+    [SerializeField] RamDownloadGame minigame;
 
     // Set the default status of the system resources
     public void Awake()
@@ -120,6 +122,6 @@ public class SystemResourcesWindow : MonoBehaviour
     // Method to open the MinigameWindow
     public void OpenMinigameWindow()
     {
-        minigameWindow.OpenWindow();
+        minigame.tryStartGame();
     }
 }

@@ -18,14 +18,6 @@ public class SystemResourcesWindow : MonoBehaviour
         CRITICAL
     }
 
-    // Enum to track the state of the CPU
-    public enum CPUStatus
-    {
-        OK,
-        WARNING,
-        CRITICAL
-    }
-
     // Enum to track the state of the RAM
     public enum RAMStatus
     {
@@ -37,77 +29,60 @@ public class SystemResourcesWindow : MonoBehaviour
     // Current status of the GPU
     public GPUStatus currentGPUStatus;
 
-    // Current status of the CPU
-    public CPUStatus currentCPUStatus;
-
     // Current status of the RAM
     public RAMStatus currentRAMStatus;
 
     // References to the GPU status text
     [SerializeField] TMP_Text GPUStatusText;
 
-    // References to the CPU status text
-    [SerializeField] TMP_Text CPUStatusText;
-
     // References to the RAM status text
     [SerializeField] TMP_Text RAMStatusText;
 
     // References to the buttons
     [SerializeField] GameObject GPUButton;
-    [SerializeField] GameObject CPUButton;
     [SerializeField] GameObject RAMButton;
 
     // Reference to the DiagnosisWindow
-    [SerializeField] DiagnosisWindow diagnosisWindow;
+    [SerializeField] BasicWindow minigameWindow;
 
     // Reference to the window
     [SerializeField] BasicWindow window;
 
+    // Reference to the minigame 
+    [SerializeField] RamDownloadGame minigame;
 
     // Set the default status of the system resources
     public void Awake()
     {
         currentGPUStatus = GPUStatus.OK;
-        currentCPUStatus = CPUStatus.OK;
         currentRAMStatus = RAMStatus.OK;
-        diagnosisWindow = FindObjectOfType<DiagnosisWindow>();
-        window = GetComponent<BasicWindow>();
+        window = GetComponentInParent<BasicWindow>();
     }
 
     // Start is called before the first frame update
     void Start()
     {
         UpdateSystemResourcesText();
-        window.CloseWindow();
 
         // Add button listeners
-        GPUButton.GetComponent<Button>().onClick.AddListener(OpenDiagnosisWindow);
-        CPUButton.GetComponent<Button>().onClick.AddListener(OpenDiagnosisWindow);
-        RAMButton.GetComponent<Button>().onClick.AddListener(OpenDiagnosisWindow);
+        GPUButton.GetComponent<Button>().onClick.AddListener(OpenMinigameWindow);
+        RAMButton.GetComponent<Button>().onClick.AddListener(OpenMinigameWindow);
     }
 
-    // When the window is enabled, update the text
-    public void OnEnable()
+    private void OnEnable()
     {
         window.OnWindowOpen += UpdateSystemResourcesText;
     }
 
-    public void OnDisable()
+    private void OnDisable()
     {
         window.OnWindowOpen -= UpdateSystemResourcesText;
     }
 
-    public void ToggleMenu()
-    {
-        window.ToggleWindow();
-        UpdateSystemResourcesText();
-    }
-
     // Set the system resources
-    public void SetSystemResources(GPUStatus newGPUStatus, CPUStatus newCPUStatus, RAMStatus newRAMStatus)
+    public void SetSystemResources(GPUStatus newGPUStatus, RAMStatus newRAMStatus)
     {
         currentGPUStatus = newGPUStatus;
-        currentCPUStatus = newCPUStatus;
         currentRAMStatus = newRAMStatus;
     }
 
@@ -128,21 +103,6 @@ public class SystemResourcesWindow : MonoBehaviour
                 break;
         }
 
-        switch (currentCPUStatus)
-        {
-            case (CPUStatus.OK):
-                CPUStatusText.text = "OK";
-                CPUButton.SetActive(false);
-                break;
-            case (CPUStatus.WARNING):
-                CPUStatusText.text = "WARNING";
-                break;
-            case (CPUStatus.CRITICAL):
-                CPUStatusText.text = "CRITICAL";
-                CPUButton.SetActive(true);
-                break;
-        }
-
         switch (currentRAMStatus)
         {
             case (RAMStatus.OK):
@@ -159,9 +119,9 @@ public class SystemResourcesWindow : MonoBehaviour
         }
     }
 
-    // Method to open the DiagnosisWindow
-    public void OpenDiagnosisWindow()
+    // Method to open the MinigameWindow
+    public void OpenMinigameWindow()
     {
-        diagnosisWindow.OpenWindow();
+        minigame.tryStartGame();
     }
 }

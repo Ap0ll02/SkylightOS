@@ -6,13 +6,16 @@ public class UpdateGame : MonoBehaviour
 {
     public GameObject[] mail;
     public BasicWindow window;
-    public Rect windowRect;
-    public GameObject character;
     public Camera mainCamera; // Reference to the camera in your scene
-    public Rect windowBounds = new Rect(-2166, -1500, 4332, 3000);
-    public Transform spawnPoint; // The location where the mail will spawn
-    public float spawnInterval = 0.5f; // Time interval between spawns (in
-    //Vector3 characterPosition;
+    public Rect windowBounds = new Rect(-2166, -3000, 4332, 6000);
+    public RectTransform playerRectTransform;
+    public UpdateGameScoreManager scoreManager;
+    public UpdatePanel updatePanel;
+    public int winScore = 1000;
+    public int loseScore = -100;
+    public bool isGameOver;
+    public float spawnInterval = 1.5f; // Time interval between spawns (in
+
 
     void Awake()
     {
@@ -21,6 +24,7 @@ public class UpdateGame : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        scoreManager = FindObjectOfType<UpdateGameScoreManager>();
         //characterPosition = character.transform.position;
         window.isClosable = false;
         window.CloseWindow();
@@ -30,41 +34,56 @@ public class UpdateGame : MonoBehaviour
     void Update()
     {
         MoveCharacter();
+        scoreCheck();
+    }
+
+    public void SpawnPackets()
+    {
+        isGameOver = false;
         StartCoroutine(SpawnMail());
     }
 
-    void MoveCharacter()
+    public void MoveCharacter()
     {
-            Vector3 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
 
-            // Since the mouseWorldPosition includes depth (Z axis), we need to adjust it for 2D
-            mouseWorldPosition.z = transform.position.z; // Keep character's z position unchanged
-            //Vector3 clampedPosition = new Vector3
-            character.transform.position = mouseWorldPosition;
+        // Convert mouse position to anchored position
+        // Anchored Position is the position in reference to the parent object so, the local cordinate system
+        Vector2 mouseWorldPosition = mainCamera.ScreenToWorldPoint(Input.mousePosition);
+        Vector2 targetAnchoredPosition = (Vector2)playerRectTransform.parent.InverseTransformPoint(mouseWorldPosition);
+
+        // Clamping X  positions based on parent window bounds
+        targetAnchoredPosition.x = Mathf.Clamp(targetAnchoredPosition.x, windowBounds.xMin, windowBounds.xMax);
+        // We want to ensure the Y position does not move
+        targetAnchoredPosition.y = -1881;
+        // Apply the constrained anchored position to the player. We want to move our character so....
+        playerRectTransform.anchoredPosition = targetAnchoredPosition;
 
     }
 
-    void SpawnPackets()
-    {
 
-    }
-
-    void CheckTask()
-    {
-
-    }
 
     private IEnumerator SpawnMail()
     {
-        while (true) // Infinite loop to keep spawning mail
+        while (isGameOver == false) // Infinite loop to keep spawning mail
         {
-            int index = Random.Range(0, mail.Length);
-            // Loop through the mail array
-            // Instantiate the mail object at the spawn point's position and rotation
-            Instantiate(mail[index], spawnPoint.position, spawnPoint.rotation);
-
-            // Wait for the specified interval before spawning the next object
+            GameObject newMail = Instantiate(mail[Random.Range(0, mail.Length)], playerRectTransform.parent);
+            RectTransform rectTransform = newMail.GetComponent<RectTransform>();
+            rectTransform.anchoredPosition = new Vector2(Random.Range(windowBounds.xMin, windowBounds.xMax), 1881 );
             yield return new WaitForSeconds(spawnInterval);
+        }
+    }
+
+    public void scoreCheck()
+    {
+        if (scoreManager.score >= winScore)
+        {
+            isGameOver = true;
+            updatePanel.ChangeState(UpdatePanel.UpdateState.Working);
+        }
+        else if (scoreManager.score <= loseScore)
+        {
+            isGameOver = true;
+            updatePanel.ChangeState(UpdatePanel.UpdateState.NotWorkingInteractable);
         }
     }
 }

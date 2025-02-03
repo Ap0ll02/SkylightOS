@@ -8,6 +8,10 @@ public class UpdateTask : AbstractTask
     public GameObject UpdatePannelObject;
     public UpdatePanel updatePannel;
 
+    public void start()
+    {
+        //updatePannel.ChangeState(UpdateState.Working);
+    }
     public override void startTask()
     {
         updatePannel.ChangeState(UpdatePanel.UpdateState.NotWorkingInteractable);
@@ -20,7 +24,7 @@ public class UpdateTask : AbstractTask
 
     public override void startHazards()
     {
-
+        updatePannel.ChangeState(UpdatePanel.UpdateState.NotWorkingInteractable);
     }
 
     public override void stopHazards()

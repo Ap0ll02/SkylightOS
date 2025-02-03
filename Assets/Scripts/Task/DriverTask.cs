@@ -19,9 +19,9 @@ public class DriverTask : AbstractTask
         // ATTENTION: need reference to window canvas' System Menu, could change
         // with Garrett's implementation
         system_menu = GameObject.Find("WindowCanvas").GetComponentInChildren<SystemWindow>().gameObject;
-        driver_script = system_menu.GetComponentInChildren<DriverGame>();
-        driver_desc = driver_script.gameObject.GetComponentInChildren<TMP_Text>();
-        driver_btn = driver_script.GetComponentInChildren<Button>().gameObject;
+        //driver_script = system_menu.GetComponentInChildren<DriverGame>();
+        //driver_desc = driver_script.gameObject.GetComponentInChildren<TMP_Text>();
+        //driver_btn = driver_script.GetComponentInChildren<Button>().gameObject;
     }
     // Broken, non-interactable state loaded here
     new void Start() {

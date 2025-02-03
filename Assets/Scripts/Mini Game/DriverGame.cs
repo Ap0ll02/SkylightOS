@@ -61,10 +61,14 @@ public class DriverGame : AbstractMinigame
         // Remove comment for testing convenience.
         //StartCoroutine(Progression());
         this.gameObject.SetActive(false);
+        this.GetComponent<CanvasGroup>().alpha = 0;
+        this.GetComponent<CanvasGroup>().interactable = false;
     }
 
     public override void StartGame() {
-        this.gameObject.SetActive(true);
+        //this.gameObject.SetActive(true);
+        this.GetComponent<CanvasGroup>().alpha = 1;
+        this.GetComponent<CanvasGroup>().interactable = true;
         obs = obstacle.GetComponentsInChildren<RectTransform>(); 
         pBar.text = "0%";   
         bgs.Add(Instantiate(bg, parent: parent.GetComponent<RectTransform>()));

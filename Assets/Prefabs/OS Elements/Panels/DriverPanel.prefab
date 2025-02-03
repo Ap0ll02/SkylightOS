@@ -391,9 +391,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5730989253908378268, guid: ebb9edb233b247d48a3a0c95f1aaf172, type: 3}
-        m_TargetAssemblyTypeName: DriverGame, Assembly-CSharp
-        m_MethodName: StartGame
+      - m_Target: {fileID: 8118247965099956334}
+        m_TargetAssemblyTypeName: driver, Assembly-CSharp
+        m_MethodName: GameOn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

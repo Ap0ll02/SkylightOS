@@ -12,7 +12,7 @@ public class driver : MonoBehaviour
     void Awake() {
         // FIXME When Garrett updates this menu the reference will need to be reacquired
         system_menu = GetComponentInParent<SystemWindow>().gameObject;
-        dgs = GetComponent<DriverGame>();
+        //dgs = GameObject.Find("DriverMGWindow").GetComponent<DriverGame>();
         update_panel.GetComponent<CanvasGroup>().alpha = 1;
         update_panel.GetComponent<CanvasGroup>().interactable = true;
     }

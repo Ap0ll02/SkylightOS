@@ -17,7 +17,7 @@ public class WarningSign : AbstractMail
     {
         mailRect = GetComponent<RectTransform>();
         type = "Warning";
-        score = -10;
+        score = -50;
         scoreManager = FindObjectOfType<UpdateGameScoreManager>();
         if(scoreManager == null)
         {

@@ -46,7 +46,7 @@ public class UpdatePanel : MonoBehaviour
                 ButtonOneObject.SetActive(false);
                 ButtonTwoObject.SetActive(false);
                 WarningObject.SetActive(false);
-                //GreenCheckMark.SetActive(true);
+                GreenCheckMark.SetActive(true);
                 mainTitleText.font = regularFont;
                 nameText.font = regularFont;
                 publisherText.font = regularFont;
@@ -58,7 +58,7 @@ public class UpdatePanel : MonoBehaviour
                 ButtonOneObject.SetActive(false);
                 ButtonTwoObject.SetActive(false);
                 WarningObject.SetActive(true);
-                //GreenCheckMark.SetActive(false);
+                GreenCheckMark.SetActive(false);
                 mainTitleText.font = alienFont;
                 nameText.font = alienFont;
                 publisherText.font = alienFont;
@@ -70,7 +70,7 @@ public class UpdatePanel : MonoBehaviour
                 ButtonOneObject.SetActive(true);
                 ButtonTwoObject.SetActive(true);
                 WarningObject.SetActive(true);
-                //GreenCheckMark.SetActive(false);
+                GreenCheckMark.SetActive(false);
                 mainTitleText.font = alienFont;
                 nameText.font = alienFont;
                 publisherText.font = alienFont;

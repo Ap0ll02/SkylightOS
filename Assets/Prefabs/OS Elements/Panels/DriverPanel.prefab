@@ -281,13 +281,14 @@ GameObject:
   - component: {fileID: 4443378057377233417}
   - component: {fileID: 4351984403899787475}
   - component: {fileID: 242382622381573029}
+  - component: {fileID: 6717395098224086345}
   m_Layer: 0
   m_Name: Update Drivers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8992306101361454640
 RectTransform:
   m_ObjectHideFlags: 0
@@ -390,6 +391,18 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+--- !u!225 &6717395098224086345
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5462492541996010211}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &7236161358250588138
 GameObject:
   m_ObjectHideFlags: 0
@@ -740,6 +753,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   system_menu: {fileID: 0}
   driver_desc: {fileID: 5178624081148223542}
+  dgs: {fileID: 0}
+  update_panel: {fileID: 5462492541996010211}
 --- !u!224 &3712750329707174201 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7337865907692603752, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}

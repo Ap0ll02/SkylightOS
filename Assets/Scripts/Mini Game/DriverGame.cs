@@ -55,6 +55,7 @@ public class DriverGame : AbstractMinigame
         moveAction = InputSystem.actions.FindAction("Move");           
         // Remove comment for testing convenience.
         //StartCoroutine(Progression());
+        this.gameObject.SetActive(false);
     }
 
     public override void StartGame() {

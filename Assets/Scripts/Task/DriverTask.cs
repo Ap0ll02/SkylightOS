@@ -29,14 +29,16 @@ public class DriverTask : AbstractTask
         // TODO: Steps towards system menu
         // prepare what you can even though the system menu isn't complete
         // Get states ready and design the game.
-        driver_btn.SetActive(false);
+        driver_btn.GetComponent<CanvasGroup>().alpha = 0;
+        driver_btn.GetComponent<CanvasGroup>().interactable = false;
     }
 
     // Interactable, broken state init here
     public override void startTask() {
+        driver_btn.GetComponent<CanvasGroup>().alpha = 1;
+        driver_btn.GetComponent<CanvasGroup>().interactable = true;
         driver_desc.text = "Drivers out of date. Updates required.";
-        driver_btn.SetActive(true);
-    }
+   }
 
     public void OnEnable(){
         //driver_script.OnGameEnd += 
@@ -49,7 +51,8 @@ public class DriverTask : AbstractTask
     // Non-interactable, OS standard state here.
     public override void CompleteTask(){
         driver_desc.text = "Your drivers are up to date.";
-        driver_btn.SetActive(false);
+        driver_btn.GetComponent<CanvasGroup>().alpha = 0;
+        driver_btn.GetComponent<CanvasGroup>().interactable = false;
     }
 
     public override void checkHazards(){

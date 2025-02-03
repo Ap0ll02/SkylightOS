@@ -41,11 +41,11 @@ public class DriverTask : AbstractTask
    }
 
     public void OnEnable(){
-        //driver_script.OnGameEnd += 
+        driver_script.OnGameEnd += CompleteTask;
     }
 
     public void OnDisable(){
-        //driver_script.OnGameEnd -= 
+        driver_script.OnGameEnd -= CompleteTask;
     }
 
     // Non-interactable, OS standard state here.

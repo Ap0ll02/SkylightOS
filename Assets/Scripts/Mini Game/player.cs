@@ -8,6 +8,7 @@ public class player : MonoBehaviour
     public Action OnTObs;
     void OnTriggerEnter2D(Collider2D other) {
         Debug.Log ("Triggered");
+        Destroy(other);
         OnTObs?.Invoke();
     }
 }

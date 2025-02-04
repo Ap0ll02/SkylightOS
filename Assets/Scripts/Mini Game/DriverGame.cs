@@ -65,11 +65,9 @@ public class DriverGame : AbstractMinigame
 
         pBar.text = "0%";   
         bgs.Add(Instantiate(bg, parent: parent.GetComponent<RectTransform>()));
-        Debug.Log("got to line 67");
         bgs[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(244.5f, 0.91f, 90);
         moveAction = InputSystem.actions.FindAction("Move");           
         gameRunning = true;
-        Debug.Log("Trying to canvas group");
         my_cg.alpha = 1;
         my_cg.interactable = true;
         obs = obstacle.GetComponentsInChildren<RectTransform>(); 
@@ -152,7 +150,7 @@ public class DriverGame : AbstractMinigame
     void HandleObs() {
         foreach (RectTransform ob in obs_list.Cast<RectTransform>())
         {
-            ob.anchoredPosition -= 5 * Time.deltaTime * speed;                       
+            ob.anchoredPosition -= 5f * Time.deltaTime * speed;
         }
     }
     public IEnumerator Progression() {

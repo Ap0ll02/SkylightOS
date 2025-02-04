@@ -141,26 +141,19 @@ public class DriverGame : AbstractMinigame
         }} catch (Exception e) when (e is ArgumentOutOfRangeException) {
             Debug.Log("Ignore: Early index error handling. Driver Game: line 97");
         }
-        foreach (var ob in obs_list) {
-            if(ob.GetComponent<RectTransform>().anchoredPosition.x < -2300) {
-                Destroy(ob);
+        foreach (var ob in obs_list.Cast<RectTransform>()) {
+            if(ob.anchoredPosition.x < -2300) {
+                Destroy(ob.gameObject);
             }
         }
 
     }
 
     void HandleObs() {
-        obs = obstacle.GetComponentsInChildren<RectTransform>(); 
-        try{
-            foreach (RectTransform ob in obs.Cast<RectTransform>())
-            {
-                ob.anchoredPosition -= 5 * Time.deltaTime * speed;                       
-            }
-        } catch (Exception e) {
-            Debug.Log(e);
+        foreach (RectTransform ob in obs_list.Cast<RectTransform>())
+        {
+            ob.anchoredPosition -= 5 * Time.deltaTime * speed;                       
         }
-
-
     }
     public IEnumerator Progression() {
         while(pCount < 100) {
@@ -176,10 +169,10 @@ public class DriverGame : AbstractMinigame
         while(true) {
             System.Random rnd = new();
             float y_pos = rnd.Next(-1200, 1200);
-            float x_pos = rnd.Next(2300, 4000);
+            float x_pos = rnd.Next(2300, 6000);
             yield return new WaitForSeconds(ob_speed);
             obs_list.Add(Instantiate(obstacle_prefab, parent: obstacle.GetComponent<RectTransform>()));
-            obs_list[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(x_pos, y_pos);
+            obs_list[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(x_pos, y_pos, 0);
         }
     }
 

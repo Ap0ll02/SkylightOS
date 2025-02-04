@@ -25,7 +25,7 @@ public class driver : MonoBehaviour
     }
 
     public void GameOn() {
-        dgs.gameObject.SetActive(true);
+        //dgs.gameObject.SetActive(true);
     }
 
 }

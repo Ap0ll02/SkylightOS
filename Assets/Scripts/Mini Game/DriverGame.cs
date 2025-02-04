@@ -30,12 +30,13 @@ public class DriverGame : AbstractMinigame
     public GameObject obstacle;
 
     public float percentage = 0;
-    public float ob_speed = 0;
+    readonly float ob_speed = 5f;
 
     public GameObject parent;
     public Vector2 speed = new(80, 0);
     public RectTransform bg_width;
     public Component[] obs;
+    public BasicWindow window;
 
     // Spawn notes: -1200 < y < 1200
     // x > 2300
@@ -45,38 +46,40 @@ public class DriverGame : AbstractMinigame
     public TMP_Text pBar;
 
     InputAction moveAction;
+    public CanvasGroup my_cg;
     public Action OnGameEnd;
     public int difficulty_p_reduction = 5;
 
     void Awake() {
+        gameRunning = false;
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        pBar.text = "0%";   
-        bgs.Add(Instantiate(bg, parent: parent.GetComponent<RectTransform>()));
-        bgs[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(244.5f, 0.91f, 90);
-        moveAction = InputSystem.actions.FindAction("Move");           
-        // Remove comment for testing convenience.
-        //StartCoroutine(Progression());
-        this.gameObject.SetActive(false);
-        this.GetComponent<CanvasGroup>().alpha = 0;
-        this.GetComponent<CanvasGroup>().interactable = false;
+        my_cg.alpha = 0;
+        my_cg.interactable = false;
     }
 
     public override void StartGame() {
-        //this.gameObject.SetActive(true);
-        this.GetComponent<CanvasGroup>().alpha = 1;
-        this.GetComponent<CanvasGroup>().interactable = true;
+
+        pBar.text = "0%";   
+        bgs.Add(Instantiate(bg, parent: parent.GetComponent<RectTransform>()));
+        Debug.Log("got to line 67");
+        bgs[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(244.5f, 0.91f, 90);
+        moveAction = InputSystem.actions.FindAction("Move");           
+        gameRunning = true;
+        Debug.Log("Trying to canvas group");
+        my_cg.alpha = 1;
+        my_cg.interactable = true;
         obs = obstacle.GetComponentsInChildren<RectTransform>(); 
         pBar.text = "0%";   
         bgs.Add(Instantiate(bg, parent: parent.GetComponent<RectTransform>()));
         bgs[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(244.5f, 0.91f, 90);
         obs_list.Add(Instantiate(obstacle_prefab, parent: obstacle.GetComponent<RectTransform>()));
-        gameRunning = true;
         StartCoroutine(Progression());
         StartCoroutine(SpawnObstacle());
+        window.OpenWindow();
     }
 
     public void OnEnable() {
@@ -94,11 +97,15 @@ public class DriverGame : AbstractMinigame
     // Update is called once per frame
     void Update()
     {
-        while(gameRunning) {
+        if(gameRunning) {
             // Gotta loop because ideal scrolling leaves 2 bg instances in scene
             // at once.
             foreach (var b in bgs) {
-                b.GetComponent<RectTransform>().anchoredPosition -= speed * Time.deltaTime;
+                try {
+                    b.GetComponent<RectTransform>().anchoredPosition -= speed * Time.deltaTime;
+                } catch (Exception e) {
+                    Debug.Log(e);
+                }
             }
             
             Vector2 moveValue = moveAction.ReadValue<Vector2>();
@@ -144,10 +151,15 @@ public class DriverGame : AbstractMinigame
 
     void HandleObs() {
         obs = obstacle.GetComponentsInChildren<RectTransform>(); 
-        foreach (RectTransform ob in obs.Cast<RectTransform>())
-        {
-            ob.anchoredPosition -= 5 * Time.deltaTime * speed;                       
+        try{
+            foreach (RectTransform ob in obs.Cast<RectTransform>())
+            {
+                ob.anchoredPosition -= 5 * Time.deltaTime * speed;                       
+            }
+        } catch (Exception e) {
+            Debug.Log(e);
         }
+
 
     }
     public IEnumerator Progression() {
@@ -179,5 +191,6 @@ public class DriverGame : AbstractMinigame
         obs_list.RemoveRange(0, obs_list.Count);
         StopCoroutine(Progression());
         StopCoroutine(SpawnObstacle());
+        window.CloseWindow();
     }
 }

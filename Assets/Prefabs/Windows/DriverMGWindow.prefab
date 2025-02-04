@@ -704,15 +704,16 @@ MonoBehaviour:
   bg_alt: {fileID: 0}
   obstacle: {fileID: 3531236188714788631}
   percentage: 0
-  ob_speed: 0
   parent: {fileID: 5868862310272521046}
   speed: {x: 100, y: 0}
   bg_width: {fileID: 0}
   obs: []
+  window: {fileID: 9033154325290910975}
   obstacle_prefab: {fileID: 4771524687728608119, guid: 06612e59219775f19ade755a55af84f5, type: 3}
   obs_list: []
   bgs: []
   pBar: {fileID: 633351268963036474}
+  my_cg: {fileID: 4512181217991663270}
   difficulty_p_reduction: 5
   gameRunning: 0
 --- !u!114 &9141961044837165853
@@ -728,8 +729,24 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 1
+--- !u!225 &4512181217991663270 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 7881392939221308288, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
+  m_PrefabInstance: {fileID: 6052321092903357734}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5074216941207601577 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
   m_PrefabInstance: {fileID: 6052321092903357734}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &9033154325290910975 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3360279094286895577, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
+  m_PrefabInstance: {fileID: 6052321092903357734}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1644072638464364766}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9783ccd866ae124e8522c5e72231e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

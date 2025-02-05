@@ -93,6 +93,14 @@ public class OSManager : MonoBehaviour
             // Enable all buttons except the completed task buttons
             for (int i = 0; i < taskButtons.Count; i++)
             {
+                if(tasks[i].isComplete)
+                {
+                    TaskObject taskObject = taskButtons[i].GetComponentInParent<TaskObject>();
+                    if (taskObject != null)
+                    {
+                        taskObject.SetTaskDone();
+                    }
+                }
                 taskButtons[i].interactable = !tasks[i].isComplete;
             }
 
@@ -115,15 +123,13 @@ public class OSManager : MonoBehaviour
     {
         for (int i = 0; i < tasks.Count; i++)
         {
-            GameObject taskButton = Instantiate(buttonPrefab, buttonContainer);
-            taskButton.GetComponentInChildren<TMP_Text>().text = tasks[i].taskTitle;
-
-            // Find the TaskButton script on the child object and set the task index
-            TaskButton taskButtonScript = taskButton.GetComponentInChildren<TaskButton>();
-            taskButtonScript.SetTaskIndex(i);
+            GameObject taskObjectPrefab = Instantiate(buttonPrefab, buttonContainer);
+            TaskObject taskObject = taskObjectPrefab.GetComponent<TaskObject>();
+            taskObject.SetTaskInfo(tasks[i].taskTitle, tasks[i].taskDescription);
+            taskObject.SetTaskIndex(i);
 
             // Add the button to the list of task buttons
-            Button buttonComponent = taskButton.GetComponentInChildren<Button>();
+            Button buttonComponent = taskObjectPrefab.GetComponentInChildren<Button>();
             taskButtons.Add(buttonComponent);
         }
     }

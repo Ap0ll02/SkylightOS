@@ -1,13 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
+
 using UnityEngine.InputSystem;
-using Unity.VisualScripting;
-using System.Linq;
+
 using System;
 using TMPro;
-using System.Diagnostics.Tracing;
+using Unity.VisualScripting;
+
 
 public class DriverGame : AbstractMinigame
 {
@@ -22,19 +22,19 @@ public class DriverGame : AbstractMinigame
     */
 
     public int pCount = 0;
-   public RectTransform player;
+    public RectTransform player;
     public player pscript;
     public GameObject bg;
-    public GameObject bg_alt;
     // Consider redoing this as an array of possible obstacles to spawn.
     public GameObject obstacle;
 
     public float percentage = 0;
-    readonly float ob_speed = 5f;
+    readonly float ob_speed = 15f;
+    readonly int ob_max_spawn = 4;
+    readonly float ob_spawntime = 4f;
 
     public GameObject parent;
     public Vector2 speed = new(80, 0);
-    public RectTransform bg_width;
     public Component[] obs;
     public BasicWindow window;
 
@@ -87,7 +87,9 @@ public class DriverGame : AbstractMinigame
     public void OnDisable() {
             pscript.OnTObs -= PlayerHit;
     }
-    public void PlayerHit() {
+    public void PlayerHit(Collider2D ob_hit) {
+        obs_list.Remove(ob_hit.gameObject);
+        Destroy(ob_hit.gameObject);
         pCount -= difficulty_p_reduction;
         pCount = pCount < 0 ? 0 : pCount;
     }
@@ -139,18 +141,21 @@ public class DriverGame : AbstractMinigame
         }} catch (Exception e) when (e is ArgumentOutOfRangeException) {
             Debug.Log("Ignore: Early index error handling. Driver Game: line 97");
         }
-        foreach (var ob in obs_list.Cast<RectTransform>()) {
-            if(ob.anchoredPosition.x < -2300) {
-                Destroy(ob.gameObject);
+
+        obs_list.RemoveAll(ob => {
+            if(ob.GetComponent<RectTransform>().anchoredPosition.x < -2300) {
+                Destroy(ob);
+                return true;
             }
-        }
+            return false;
+        });
 
     }
 
     void HandleObs() {
-        foreach (RectTransform ob in obs_list.Cast<RectTransform>())
+        foreach (var ob in obs_list)
         {
-            ob.anchoredPosition -= 5f * Time.deltaTime * speed;
+            ob.GetComponent<RectTransform>().anchoredPosition -= ob_speed * Time.deltaTime * speed;
         }
     }
     public IEnumerator Progression() {
@@ -166,11 +171,15 @@ public class DriverGame : AbstractMinigame
     public IEnumerator SpawnObstacle() {
         while(true) {
             System.Random rnd = new();
-            float y_pos = rnd.Next(-1200, 1200);
-            float x_pos = rnd.Next(2300, 6000);
-            yield return new WaitForSeconds(ob_speed);
-            obs_list.Add(Instantiate(obstacle_prefab, parent: obstacle.GetComponent<RectTransform>()));
-            obs_list[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(x_pos, y_pos, 0);
+            int to_spawn = rnd.Next(1, ob_max_spawn);
+            for(int i = 0; i < to_spawn; i++) {
+                float y_pos = rnd.Next(-1200, 1200);
+                float x_pos = rnd.Next(2300, 6000);
+                float spawn_time = rnd.Next((int)ob_spawntime, (int)(1.5f * ob_spawntime));
+                yield return new WaitForSeconds(spawn_time);
+                obs_list.Add(Instantiate(obstacle_prefab, parent: obstacle.GetComponent<RectTransform>()));
+                obs_list[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(x_pos, y_pos, 0);
+            }
         }
     }
 
@@ -178,6 +187,7 @@ public class DriverGame : AbstractMinigame
         foreach (var b in bgs){
             Destroy(b);
         }
+        gameRunning = false;
         bgs.RemoveRange(0, bgs.Count);
         obs_list.RemoveRange(0, obs_list.Count);
         StopCoroutine(Progression());

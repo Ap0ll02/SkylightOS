@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class PipeGame : MonoBehaviour
 {
+    public List<GameObject> PipePrefab;
+    public GameObject PipeLayout;
     // Start is called before the first frame update
     void Start()
     {

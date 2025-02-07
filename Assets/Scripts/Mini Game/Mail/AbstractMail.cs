@@ -7,6 +7,7 @@ public class AbstractMail : MonoBehaviour
 {
     public string type;
     public int score;
+    public BasicWindow window;
     public UpdateGameScoreManager scoreManager;
     public GameObject mailSound;
 
@@ -32,5 +33,11 @@ public class AbstractMail : MonoBehaviour
         Instantiate(mailSound);
         Destroy(gameObject);
     }
+
+    // public void GameOver()
+    // {
+    //     window.OnWindowClose -= this.GameOver;
+    //     Destroy(gameObject);
+    // }
 
 }

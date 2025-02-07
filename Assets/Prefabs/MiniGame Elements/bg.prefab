@@ -84,7 +84,7 @@ GameObject:
   - component: {fileID: 8939369299740912953}
   - component: {fileID: 8604953098781948781}
   - component: {fileID: 2494532270537343932}
-  - component: {fileID: 5921258026341635789}
+  - component: {fileID: 8605689030895365436}
   m_Layer: 8
   m_Name: bg
   m_TagString: Untagged
@@ -114,7 +114,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -1777.6019, y: 2.4232}
-  m_SizeDelta: {x: 2271.463, y: 8890.569}
+  m_SizeDelta: {x: 2271.4644, y: 8890.569}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8939369299740912953
 CanvasRenderer:
@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_ShowMaskGraphic: 0
---- !u!114 &5921258026341635789
+--- !u!114 &8605689030895365436
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -354,7 +354,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 1153.8, y: -891.96}
+  m_AnchoredPosition: {x: 1153.7998, y: -891.96094}
   m_SizeDelta: {x: 2305.388, y: 1783.929}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1909728019980366297

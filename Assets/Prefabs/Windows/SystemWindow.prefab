@@ -224,6 +224,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8118247965099956334, guid: 3953a489076b39f449e91bb057f5f6ca, type: 3}
+      propertyPath: system_menu
+      value: 
+      objectReference: {fileID: 5370302390482469076}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -493,6 +497,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpdatePanel
       objectReference: {fileID: 0}
+    - target: {fileID: 9112061997823236033, guid: f56e7214a5ef18347b187ab38a9e2c71, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -609,6 +617,10 @@ PrefabInstance:
     - target: {fileID: 4212349158268090713, guid: 71d41882ce3915f41a0dde511a752229, type: 3}
       propertyPath: m_Name
       value: MainSystemPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 4212349158268090713, guid: 71d41882ce3915f41a0dde511a752229, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4660992438848656693, guid: 71d41882ce3915f41a0dde511a752229, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

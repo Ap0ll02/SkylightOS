@@ -6,7 +6,7 @@ using TMPro;
 /// @brief Driver task involves the system window then the driver window. This will
 /// lead into a minigame, akin to the dino game on google.
 public class DriverTask : AbstractTask 
-{
+{ 
     public GameObject system_menu;
     public TMP_Text driver_desc;
     public driver driver_script;

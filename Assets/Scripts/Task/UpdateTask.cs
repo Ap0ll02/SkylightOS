@@ -5,12 +5,12 @@ using UnityEngine;
 public class UpdateTask : AbstractTask
 {
     // Start is called before the first frame update
-    public GameObject UpdatePannelObject;
+    [SerializeField] UpdateGame updateGameWindow;
     public UpdatePanel updatePannel;
 
-    public void start()
+    public void Awake()
     {
-        //updatePannel.ChangeState(UpdateState.Working);
+        updatePannel.ChangeState(UpdatePanel.UpdateState.NotWorking);
     }
     public override void startTask()
     {
@@ -19,21 +19,48 @@ public class UpdateTask : AbstractTask
 
     public override void checkHazards()
     {
-
+        //
     }
 
     public override void startHazards()
     {
-        updatePannel.ChangeState(UpdatePanel.UpdateState.NotWorkingInteractable);
+        //
     }
 
     public override void stopHazards()
     {
-
+        //
     }
 
-    // Update is called once per frame
-    void Update()
+    void OnEnable()
     {
+        UpdateGame.updateGameStartNotify += HandleMinigameStarted;
+        UpdateGame.updateGameEndNotify  += HandleMinigameEnded;
+    }
+
+    // Removing message handler?
+    void OnDisable()
+    {
+        UpdateGame.updateGameStartNotify -= HandleMinigameStarted;
+        UpdateGame.updateGameEndNotify  -= HandleMinigameEnded;
+    }
+
+    void HandleMinigameStarted()
+    {
+        startHazards();
+        //northstar.WriteHint("OH SHIT WE GOTTA PUT THE RAM IN THE RAM SLOTS", Northstar.Style.warm);
+    }
+
+    void HandleMinigameEnded()
+    {
+        CompleteTask();
+    }
+
+    public override void CompleteTask()
+    {
+        updatePannel.ChangeState(UpdatePanel.UpdateState.Working);
+        //northstar.WriteHint("We did the ram!!!!!", Northstar.Style.warm);
+        stopHazards();
+        base.CompleteTask();
     }
 }

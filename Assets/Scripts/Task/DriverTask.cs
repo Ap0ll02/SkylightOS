@@ -19,8 +19,8 @@ public class DriverTask : AbstractTask
         //system_menu = FindObjectOfType(WindowCanvas).GetComponentInChildren<SystemResourcesWindow>().gameObject;
     }
     // Broken, non-interactable state loaded here
-    new void Start() {
-        driver_desc.text = "Driver's out of date. Updates required.";
+    new void Start() { 
+        driver_desc.text = "Drivers out of date. Updates required.";
         // TODO: Steps towards system menu
         // prepare what you can even though the system menu isn't complete
         // Get states ready and design the game.

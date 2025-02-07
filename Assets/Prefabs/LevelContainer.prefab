@@ -389,7 +389,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5717612609163883681, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5717612609163883681, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
@@ -400,8 +400,16 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 3883653361568596917}
     - target: {fileID: 5717612609163883681, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5717612609163883681, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5717612609163883681, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TryStartGame
       objectReference: {fileID: 0}
     - target: {fileID: 5717612609163883681, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName

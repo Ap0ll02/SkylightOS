@@ -12,3 +12,4 @@ public class player : MonoBehaviour
         OnTObs?.Invoke(other);
     }
 }
+ 

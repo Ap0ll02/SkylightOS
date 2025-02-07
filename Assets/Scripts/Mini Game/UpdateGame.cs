@@ -31,14 +31,17 @@ public class UpdateGame : MonoBehaviour
     public UpdateGameScoreManager scoreManager;
 
     // Reference to UpdatePanel used for controlling the game's UI graphics state.
-    public UpdatePanel updatePanel;
-
     // Game state tracking variables.
     public bool isGameOver = false; // Whether the game is over.
     public bool playingGame = false; // Whether the game is currently active.
 
     // Time interval (in seconds) for spawning mail objects.
     public float spawnInterval = 1f;
+    // The action that will notify the task that the minigame has started
+    public static event Action updateGameStartNotify;
+
+    // The action that will notify the task that the minigame is done
+    public static event Action updateGameEndNotify;
 
     // This method executes when the script instance is being loaded.
     void Awake()
@@ -53,7 +56,6 @@ public class UpdateGame : MonoBehaviour
     {
         // Finds components used for scoring and updates (these are searched automatically in the scene).
         scoreManager = FindObjectOfType<UpdateGameScoreManager>();
-        updatePanel = FindObjectOfType<UpdatePanel>();
         windowArea = updateWindow.GetComponent<RectTransform>().rect;
 
         // Initially closes the game window.
@@ -77,6 +79,7 @@ public class UpdateGame : MonoBehaviour
     // Starts the game logic: opens window, sets flags, and calls relevant methods.
     public void StartGame()
     {
+        updateGameStartNotify?.Invoke();
         // If they try to play again they need the player character!
         if (!player.activeSelf)
         {
@@ -109,6 +112,7 @@ public class UpdateGame : MonoBehaviour
             yield return null; // Wait until the next frame.
         }
         player.SetActive(false);
+        updateGameEndNotify?.Invoke();
         window.CloseWindow();
     }
 
@@ -146,7 +150,7 @@ public class UpdateGame : MonoBehaviour
             playingGame = false;
             isGameOver = true;
             scoreManager.ResetScore();
-            updatePanel.ChangeState(UpdatePanel.UpdateState.Working);
+
         }
         else if (scoreManager.lossReached) // If the loss condition is met.
         {
@@ -154,7 +158,6 @@ public class UpdateGame : MonoBehaviour
             playingGame = false;
             isGameOver = true;
             scoreManager.ResetScore();
-            updatePanel.ChangeState(UpdatePanel.UpdateState.NotWorkingInteractable);
         }
     }
 

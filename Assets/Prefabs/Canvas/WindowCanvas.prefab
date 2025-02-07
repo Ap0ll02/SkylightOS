@@ -902,6 +902,22 @@ PrefabInstance:
       value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     - target: {fileID: 8031607210738022916, guid: c82efd5d10f6e954ba3e8317f9786f61, type: 3}
+      propertyPath: window
+      value: 
+      objectReference: {fileID: 4022365972454569610}
+    - target: {fileID: 5897350993354581884, guid: c82efd5d10f6e954ba3e8317f9786f61, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TryStartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897350993354581884, guid: c82efd5d10f6e954ba3e8317f9786f61, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UpdateGame, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 5897350993354581884, guid: c82efd5d10f6e954ba3e8317f9786f61, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8031607210738022916, guid: c82efd5d10f6e954ba3e8317f9786f61, type: 3}
       propertyPath: minigameWindow
       value: 
       objectReference: {fileID: 5015770312983906817}

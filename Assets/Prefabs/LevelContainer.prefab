@@ -459,6 +459,10 @@ PrefabInstance:
       propertyPath: m_Texture
       value: 
       objectReference: {fileID: 2800000, guid: 4554c7d5d877edc4bbc0a8d2ad5c7241, type: 3}
+    - target: {fileID: 7913440682652900861, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+      propertyPath: system_menu
+      value: 
+      objectReference: {fileID: 6214514606717118006}
     - target: {fileID: 7935187371312512225, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -605,7 +609,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4577179027369101096, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
   m_PrefabInstance: {fileID: 159827954544260415}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 6214514606717118006}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9783ccd866ae124e8522c5e72231e24, type: 3}
@@ -630,6 +634,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e6ecf01efc8933969c6221b96498917, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &6089571996958046799 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6247992254469771120, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+  m_PrefabInstance: {fileID: 159827954544260415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &6214514606717118006 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6055572068505752329, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+  m_PrefabInstance: {fileID: 159827954544260415}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6382170610639999130 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6531860990431798693, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+  m_PrefabInstance: {fileID: 159827954544260415}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &8238661168895648350 stripped
@@ -1648,6 +1673,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4331997241153310832, guid: 5d1db74d1fec797efb9c9ddad7920be4, type: 3}
+      propertyPath: driver_btn
+      value: 
+      objectReference: {fileID: 6089571996958046799}
+    - target: {fileID: 4331997241153310832, guid: 5d1db74d1fec797efb9c9ddad7920be4, type: 3}
+      propertyPath: driver_desc
+      value: 
+      objectReference: {fileID: 6382170610639999130}
+    - target: {fileID: 4331997241153310832, guid: 5d1db74d1fec797efb9c9ddad7920be4, type: 3}
+      propertyPath: system_menu
+      value: 
+      objectReference: {fileID: 6214514606717118006}
+    - target: {fileID: 4331997241153310832, guid: 5d1db74d1fec797efb9c9ddad7920be4, type: 3}
+      propertyPath: driver_script
+      value: 
+      objectReference: {fileID: 5831683883384182069}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

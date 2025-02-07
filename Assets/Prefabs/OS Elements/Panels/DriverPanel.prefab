@@ -391,9 +391,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1026517597632912965}
+      - m_Target: {fileID: 8118247965099956334}
         m_TargetAssemblyTypeName: driver, Assembly-CSharp
-        m_MethodName: 
+        m_MethodName: GameOn
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -765,6 +765,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   system_menu: {fileID: 0}
   driver_desc: {fileID: 5178624081148223542}
+  dgs: {fileID: 0}
+  update_panel: {fileID: 5462492541996010211}
 --- !u!224 &3712750329707174201 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7337865907692603752, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}

@@ -24,7 +24,7 @@ public class DriverTask : AbstractTask
         //driver_btn = driver_script.GetComponentInChildren<Button>().gameObject;
     }
     // Broken, non-interactable state loaded here
-    new void Start() {
+    new void Start() { 
         driver_desc.text = "Drivers out of date. Updates required.";
         // TODO: Steps towards system menu
         // prepare what you can even though the system menu isn't complete

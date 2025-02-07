@@ -223,7 +223,7 @@ GameObject:
   - component: {fileID: 4744141308447865285}
   - component: {fileID: 1872761423020641400}
   m_Layer: 0
-  m_Name: topmask
+  m_Name: topmask1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -697,16 +697,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   CanContinue: 0
+  isStarted: 0
   pCount: 0
   player: {fileID: 4853714420238522035}
   pscript: {fileID: 2725605436604894161}
   bg: {fileID: 4467203556739267396, guid: a698fa7ef37f96019b0c93458a8e87f5, type: 3}
-  bg_alt: {fileID: 0}
   obstacle: {fileID: 3531236188714788631}
   percentage: 0
   parent: {fileID: 5868862310272521046}
   speed: {x: 100, y: 0}
-  bg_width: {fileID: 0}
   obs: []
   window: {fileID: 9033154325290910975}
   obstacle_prefab: {fileID: 4771524687728608119, guid: 06612e59219775f19ade755a55af84f5, type: 3}

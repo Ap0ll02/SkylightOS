@@ -674,6 +674,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8238661168895648350 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8098114258947921761, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+  m_PrefabInstance: {fileID: 159827954544260415}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 64aca6b89443279449a3d849b2c34baa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &8955931847404925371 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 9114738351182972036, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
@@ -1616,7 +1627,7 @@ MonoBehaviour:
   taskTitle: Update Task
   taskDescription: This Task is all about updating things!
   UpdatePannelObject: {fileID: 0}
-  updatePannel: {fileID: 0}
+  updatePannel: {fileID: 8238661168895648350}
 --- !u!4 &7309691829816682672 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4112647665692842070, guid: 5f82a484c8fd7cc42822c2e0b2faeaa4, type: 3}

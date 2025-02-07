@@ -357,6 +357,7 @@ GameObject:
   - component: {fileID: 3392983495258349862}
   - component: {fileID: 3321428662831687675}
   - component: {fileID: 8578526544507808166}
+  - component: {fileID: 9010473334503625627}
   m_Layer: 8
   m_Name: NSPersona
   m_TagString: Untagged
@@ -381,8 +382,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 803.9, y: -300.53}
-  m_SizeDelta: {x: 192.65, y: 314.67}
+  m_AnchoredPosition: {x: 797, y: -228.05}
+  m_SizeDelta: {x: 461.89, y: 461.89}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &3321428662831687675
 CanvasRenderer:
@@ -412,13 +413,25 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Texture: {fileID: 2800000, guid: b36c238225043d72bb1b144b8d294b80, type: 3}
+  m_Texture: {fileID: 2800000, guid: 4554c7d5d877edc4bbc0a8d2ad5c7241, type: 3}
   m_UVRect:
     serializedVersion: 2
     x: 0
     y: 0
     width: 1
     height: 1
+--- !u!225 &9010473334503625627
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3405646756203018724}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5082522700404860178
 GameObject:
   m_ObjectHideFlags: 0
@@ -470,7 +483,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   persona: {fileID: 3405646756203018724}
+  personaCanvas: {fileID: 9010473334503625627}
   icon: {fileID: 1980806390605352321}
+  speechBubble: {fileID: 7476109084697163047}
+  speechBubbleCanvas: {fileID: 6069770153404891429}
+  personaOpen: 0
+  speechBubbleOpen: 0
   taskList: []
   osmanager: {fileID: 0}
   compEffect: {fileID: 1534645613191836707}
@@ -488,6 +506,7 @@ GameObject:
   - component: {fileID: 82800322594226180}
   - component: {fileID: 246829121497001024}
   - component: {fileID: 813204157044945362}
+  - component: {fileID: 6069770153404891429}
   m_Layer: 8
   m_Name: pBubble
   m_TagString: Untagged
@@ -550,6 +569,18 @@ MonoBehaviour:
     y: 0
     width: 1
     height: 1
+--- !u!225 &6069770153404891429
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7476109084697163047}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1001 &7809153682252681503
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class pipe : MonoBehaviour
         BottomRight
     }
 
-    public int angleStyle;
+    public List<PipeType> connectables;
     // Start is called before the first frame update
     void Start()
     {

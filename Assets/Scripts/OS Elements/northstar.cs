@@ -97,11 +97,10 @@ public class Northstar : MonoBehaviour
         {
             OnAutoSummon();
         }
-        //else
-        //{
-        //    twh ??= StartCoroutine(Timer(2f, true));
-        //    compEffect.Stop();
-        //}
+        else if(!personaOpen)
+        {
+            compEffect.Play();
+        }
     }
 
     public void OnClick()
@@ -119,6 +118,7 @@ public class Northstar : MonoBehaviour
     public void OnUserSummon()
     {
         transform.SetAsLastSibling();
+        compEffect.Stop();
         OpenPersona();
         if (currentText != string.Empty)
         {

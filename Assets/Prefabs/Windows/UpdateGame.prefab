@@ -314,7 +314,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3360279094286895577, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: isClosable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4985135885990256120, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_Name
@@ -362,18 +362,19 @@ MonoBehaviour:
   - {fileID: 8838077595282446251, guid: 677a4e4a495a5af47a202393f702a33d, type: 3}
   window: {fileID: 0}
   mainCamera: {fileID: 0}
-  windowBounds:
+  updateWindow: {fileID: 1751941793817241514}
+  windowArea:
     serializedVersion: 2
-    x: -2166
-    y: -1500
-    width: 4332
-    height: 3000
+    x: 0
+    y: 0
+    width: 0
+    height: 0
+  player: {fileID: 8061247470372423748}
   playerRectTransform: {fileID: 9001319666752597485}
-  scoreManager: {fileID: 0}
+  scoreManager: {fileID: 742084015624097011}
   updatePanel: {fileID: 0}
-  winScore: 1000
-  loseScore: -100
   isGameOver: 0
+  playingGame: 0
   spawnInterval: 0.5
 --- !u!95 &6717211655038557919
 Animator:
@@ -458,6 +459,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0daeced8c633bd849a94bf0b5522683b, type: 3}
+--- !u!114 &742084015624097011 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -1339717092259576947, guid: 0daeced8c633bd849a94bf0b5522683b, type: 3}
+  m_PrefabInstance: {fileID: 7432125878879670142}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 857a5512be6bce84b9debaac48fbfbce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &8698794834482930666 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2277806340150127764, guid: 0daeced8c633bd849a94bf0b5522683b, type: 3}

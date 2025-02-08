@@ -44,3 +44,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 14fa1b39f4c5a695e88ab7e25997d84b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  hazardManagers: []
+  isComplete: 0
+  taskTitle: Default title, please set in task
+  taskDescription: Default Description, please set in task
+  system_menu: {fileID: 0}
+  driver_desc: {fileID: 0}
+  driver_script: {fileID: 0}
+  driver_btn: {fileID: 0}

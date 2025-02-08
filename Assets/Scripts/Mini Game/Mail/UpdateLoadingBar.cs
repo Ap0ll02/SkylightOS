@@ -15,9 +15,8 @@ public class UpdateLoadingBar : MonoBehaviour
     // Ref to the progress bar and a state variable, as well as a can continue
     // variable in case it needs to stop.
     public Image progBar;
-    public bool isLoaded = false;
-    public bool canContinue = true;
 
+    public UpdateGameScoreManager scoreManager;
     /// @var Change This Variable To Change Speed Of Progress Bar (Default 0.001f)
     // Note: Changed 0.1f -> 0.5f
     readonly double speed = 0.5;
@@ -26,25 +25,25 @@ public class UpdateLoadingBar : MonoBehaviour
     /// @var clickModifier Mainly for performance thief, this variable allows a multiplied increase or decrease
     /// in amount filled by a single click.
     /// @var drainSpeed Decrease/Make a bigger negative number to make progress bar actively drain quicker
-    public float clickFillSpeed = 0.1f;
-    public float clickModifier = 1f;
+
+    bool isLoaded = false;
 
     /// @brief Start the loading bar, rather than making IEnum public
 
 
     /// @brief The loading progress for clickable loading.
-    public void ScoreLoading(int score)
+    public void ScoreLoading()
     {
-        if(progBar.fillAmount < 1000 && canContinue)
+        if(scoreManager.score < scoreManager.winScore)
         {
-            progBar.fillAmount += score;
+            progBar.fillAmount = scoreManager.score;
         }
-        else if (canContinue && progBar.fillAmount >= 1000)
+        else if (scoreManager.winReached)
         {
-            progBar.fillAmount = 1000;
+            progBar.fillAmount = scoreManager.winScore;
             isLoaded = true;
         }
-        if (progBar.fillAmount <= 0)
+        if (scoreManager.score <= 0)
         {
             progBar.fillAmount = 0;
             isLoaded = false;

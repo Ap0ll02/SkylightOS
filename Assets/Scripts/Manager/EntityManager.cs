@@ -12,103 +12,111 @@ public class EntityManager : AbstractManager
 {
     [SerializeField] private GameObject nyanKittenPrefab;
     private List<NyanKitten> nyanKittens = new List<NyanKitten>();
-    public float stateChangeInterval = 5f;
-    public float timeSinceLastStateChange = 0f;
-    public float spawnChanceAfterFlee = 0.5f; // 50% chance to spawn another Nyan Kitten
     public float randomValue;
     private bool isHazardActive = true; // Flag to control state updates
+    [SerializeField] private int maxKittens = 5;
 
-    // Start is called before the first frame update
-    void Start()
+    // Stars the hazard
+    public override void StartHazard()
     {
-
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (!isHazardActive)
-        { 
-            SetNyanKittenState(NyanKitten.NyanKittenState.Flee);// Skip updating states if hazard is not active
-            return;
-        }
-
-        timeSinceLastStateChange += Time.deltaTime;
-        if (timeSinceLastStateChange >= stateChangeInterval)
+        switch (difficulty)
         {
-            SetRandomNyanKittenState();
-            timeSinceLastStateChange = 0f;
+            case (Difficulty.Easy):
+                maxKittens = 1;
+                break;
+            case (Difficulty.Medium):
+                maxKittens = 3;
+                break;
+            case (Difficulty.Hard):
+                maxKittens = 5;
+                break;
+            default:
+                maxKittens = 3;
+                break;
         }
+
+        isHazardActive = true; // Activate hazard
+        SpawnNyanKitten(GetRandomState());
+        StartCoroutine(UpdateNyanKittens());
     }
 
-    public void SpawnNyanKitten()
+    // Stops the hazard
+    public override void StopHazard()
     {
-        Vector3 spawnPosition = new Vector3(Random.Range(-10f, 10f), Random.Range(-6f, 6f), 0);
+        isHazardActive = false; // Deactivate hazard
+        StopAllCoroutines();
+        SetAllNyanKittenState(NyanKitten.NyanKittenState.Flee);
+    }
+
+    // Spawns a nyan kitten
+    public void SpawnNyanKitten(NyanKitten.NyanKittenState startState)
+    {
+        Vector3 spawnPosition = new Vector3(
+            Random.Range(-20f, -10f) * (Random.value > 0.5f ? 1 : -1),
+            Random.Range(-12f, -6f) * (Random.value > 0.5f ? 1 : -1),
+            0
+        );
         GameObject nyanKittenObject = Instantiate(nyanKittenPrefab, spawnPosition, Quaternion.identity);
         NyanKitten nyanKitten = nyanKittenObject.GetComponent<NyanKitten>();
+        nyanKitten.currentState = startState;
         nyanKittens.Add(nyanKitten);
     }
 
-    public void SetNyanKittenState(NyanKitten.NyanKittenState state)
+    // Sets the states of all current nyan kittens
+    public void SetAllNyanKittenState(NyanKitten.NyanKittenState state)
     {
         foreach (NyanKitten nyanKitten in nyanKittens)
         {
             nyanKitten.currentState = state;
-            if (state == NyanKitten.NyanKittenState.Flee && isHazardActive)
-            {
-                //TrySpawnAnotherNyanKitten();
-            }
         }
     }
 
-    private void SetRandomNyanKittenState()
+    // Updates the nyan kittens, and can possibly spawn a new kitten
+    IEnumerator UpdateNyanKittens()
     {
-        foreach (NyanKitten nyanKitten in nyanKittens)
+        while (isHazardActive)
         {
-            randomValue = Random.value;
-            if (nyanKitten.currentState == NyanKitten.NyanKittenState.Flee)
+            UpdateNyanKittenStates();
+            if(nyanKittens.Count < maxKittens && Random.Range(0,5) == 1)
             {
-                //TrySpawnAnotherNyanKitten();
+                SpawnNyanKitten(GetRandomState());
             }
-            else if (randomValue > 0.3f)
-            {
-                nyanKitten.currentState = NyanKitten.NyanKittenState.Attack;
-            }
-            else if (randomValue > 0.2f)
-            {
-                nyanKitten.currentState = NyanKitten.NyanKittenState.Roam;
-            }
-            else
-            {
-                nyanKitten.currentState = NyanKitten.NyanKittenState.Flee;
-            }
+            yield return new WaitForSeconds(3f);
         }
     }
 
-    private void TrySpawnAnotherNyanKitten()
+    // Randomly changes the state of a nyan kitten
+    private void UpdateNyanKittenStates()
     {
-        if (Random.value < spawnChanceAfterFlee)
+        NyanKitten currentKitten = nyanKittens[Random.Range(0, nyanKittens.Count)];
+        randomValue = Random.Range(0,10);
+        if (currentKitten.currentState == NyanKitten.NyanKittenState.Flee)
+            return;
+        if(randomValue > 8)
         {
-            SpawnNyanKitten();
+            currentKitten.currentState = NyanKitten.NyanKittenState.Flee;
+            return;
+        }
+        if (randomValue > 4 && randomValue <= 8)
+        {
+            currentKitten.currentState = NyanKitten.NyanKittenState.Attack;
+        }
+        else
+        {
+            currentKitten.currentState = NyanKitten.NyanKittenState.Roam;
         }
     }
 
-    public override void StartHazard()
-    {
-        isHazardActive = true; // Activate hazard
-        SpawnNyanKitten();
-        SetNyanKittenState(NyanKitten.NyanKittenState.Roam);
-    }
-
-    public override void StopHazard()
-    {
-        isHazardActive = false; // Deactivate hazard
-        SetNyanKittenState(NyanKitten.NyanKittenState.Flee);
-    }
-
+    // Might update later idk
     public override bool CanProgress()
     {
         return true;
+    }
+
+    // Returns a random state
+    public NyanKitten.NyanKittenState GetRandomState()
+    {
+        return (NyanKitten.NyanKittenState)Random.Range(0, 3);
     }
 }
 

@@ -7,7 +7,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Controls;
 
-public class NyanKitten : Hazards
+public class NyanKitten : BasicEntity
 {
     // This will control the current state of our nyan kitten
     public NyanKittenState currentState;

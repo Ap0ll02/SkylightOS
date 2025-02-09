@@ -85,3 +85,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e2f47291aab4cf189afa4df1d324253, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  top_connectables: 
+  bottom_connectables: 
+  left_connectables: 
+  right_connectables: 
+  PipeStyle: 0
+  rotAction:
+    m_Name: Rot
+    m_Type: 1
+    m_ExpectedControlType: Button
+    m_Id: c7d14d57-1790-4836-9ea7-0e2833d1c21f
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: 7315a48b-2c56-4c5d-8cc4-6cc67996b951
+      m_Path: <Mouse>/leftButton
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Rot
+      m_Flags: 0
+    m_Flags: 0

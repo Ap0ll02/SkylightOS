@@ -90,7 +90,7 @@ public class TerminalTask : AbstractTask
         Terminal.OnLSPressed += LSTask;
         Terminal.OnNMAPPressed += NMAPTask;
         PerformanceThiefManager.PThiefStarted += TimerOn;
-        PerformanceThiefManager.PThiefIDisable += StopInput;
+        //PerformanceThiefManager.PThiefIDisable += StopInput;
     }
 
     public void OnDisable()
@@ -102,7 +102,7 @@ public class TerminalTask : AbstractTask
         Terminal.OnLSPressed -= LSTask;
         Terminal.OnNMAPPressed -= NMAPTask;
         PerformanceThiefManager.PThiefStarted -= TimerOn;
-        PerformanceThiefManager.PThiefIDisable -= StopInput;
+        //PerformanceThiefManager.PThiefIDisable -= StopInput;
     }
 
     void TimerOn() {

@@ -55,9 +55,6 @@ public class InternetTaskOne : AbstractTask
     {
         DiagnosisWindow.OnDiagnosisWindowOpened += HandleDiagnosisWindowOpened;
         DiagnosisWindow.LoadingDoneNotify += CompleteTask;
-        PerformanceThiefManager.PThiefEnded += PerformanceThiefEnd;
-        PerformanceThiefManager.PThiefStarted += PerformanceThiefStart;
-        PerformanceThiefManager.PThiefUpdateDelay += DelayHandler;
     }
 
     // Removing message handler?
@@ -65,13 +62,6 @@ public class InternetTaskOne : AbstractTask
     {
         DiagnosisWindow.OnDiagnosisWindowOpened -= HandleDiagnosisWindowOpened;
         DiagnosisWindow.LoadingDoneNotify -= CompleteTask;
-        PerformanceThiefManager.PThiefStarted -= PerformanceThiefStart;
-        PerformanceThiefManager.PThiefEnded -= PerformanceThiefEnd;
-        PerformanceThiefManager.PThiefUpdateDelay -= DelayHandler;
-    }
-
-    void DelayHandler() {
-        loadingBarScript.perthiefTime = UnityEngine.Random.Range(0.01f, 0.29f);
     }
 
     // When the diagnosis window is opened, start the hazards and loading bar
@@ -80,14 +70,6 @@ public class InternetTaskOne : AbstractTask
         //loadingBarScript.StartLoading();
         //loadingBarScript.perthiefTime = perTime;
         startHazards();
-    }
-
-    void PerformanceThiefStart() {
-        //loadingBarScript.perthiefTime = perTime;
-    }
-
-    void PerformanceThiefEnd() {
-        loadingBarScript.perthiefTime = 1f;
     }
 
     // Actually starting the task, this should be called from the OS Manager
@@ -121,7 +103,6 @@ public class InternetTaskOne : AbstractTask
             }
             else
             {
-                //loadingBarScript.perthiefTime = perTime;
                 diagnosisWindowScript.ContinueLoadingBar();
             }
         }

@@ -22,8 +22,8 @@ public class LoadingScript : MonoBehaviour
     public bool clickToLoad = false;
 
     /// @var Change This Variable To Change Speed Of Progress Bar (Default 0.001f)
-    // Note: Changed 0.1f -> 0.5f
-    readonly double speed = 0.5;
+    // Note: Changed 0.1f -> 0.1f
+    readonly double speed = 0.1;
 
     /// @var clickFillSpeed Changes the amount the bar fills on one click
     /// @var clickModifier Mainly for performance thief, this variable allows a multiplied increase or decrease
@@ -32,8 +32,6 @@ public class LoadingScript : MonoBehaviour
     readonly float clickFillSpeed = 0.1f;
     readonly float clickModifier = 1f;
     readonly float drainSpeed = 0.0005f;
-
-    public float perthiefTime = 1f;
 
     /// @brief Start the loading bar, rather than making IEnum public
     public void StartLoading()
@@ -53,7 +51,7 @@ public class LoadingScript : MonoBehaviour
     {
         if(progBar.fillAmount < 1 && canContinue)
         {
-            progBar.fillAmount += clickFillSpeed * clickModifier * perthiefTime;
+            progBar.fillAmount += clickFillSpeed * clickModifier;
         }
         else if(canContinue && progBar.fillAmount >= 1)
         {
@@ -89,7 +87,7 @@ public class LoadingScript : MonoBehaviour
             {
                 yield return new WaitForSeconds(0.007f);
                 // Debug.Log("SPEED: " + perthiefTime * speed);
-                progBar.fillAmount += (float)(speed * Time.deltaTime * perthiefTime);
+                progBar.fillAmount += (float)(speed * Time.deltaTime);
             }
             else
             {

@@ -67,6 +67,6 @@ public class LockdownManager : AbstractManager
     public override bool CanProgress()
     {
         // Check if the minigame is completed
-        return !lockdownCanvas.loadingScript.canContinue;
+        return !lockdownCanvas.loadingScript.isLoaded;
     }
 }

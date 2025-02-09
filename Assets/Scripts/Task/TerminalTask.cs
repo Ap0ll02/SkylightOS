@@ -53,6 +53,11 @@ public class TerminalTask : AbstractTask
     public AudioSource musicAG;
     public bool iTimer = false;
 
+    // Performace Thief stuff
+    public bool PThiefActive = false;
+    public float PThiefDelay = 0;
+    public bool StopInputRunning = false;
+
     /// @brief Assign all of the terminal objects in the scene.
     public void Awake() {
         taskTitle = "Download and Install Antivirus";
@@ -89,8 +94,9 @@ public class TerminalTask : AbstractTask
         Terminal.OnAVPressed += AVTask;
         Terminal.OnLSPressed += LSTask;
         Terminal.OnNMAPPressed += NMAPTask;
-        PerformanceThiefManager.PThiefStarted += TimerOn;
-        //PerformanceThiefManager.PThiefIDisable += StopInput;
+        PerformanceThiefManager.PThiefStarted += PThiefStart;
+        PerformanceThiefManager.PThiefEnded += PThiefEnd;
+        PerformanceThiefManager.PThiefUpdate += PThiefUpdate;
     }
 
     public void OnDisable()
@@ -101,8 +107,9 @@ public class TerminalTask : AbstractTask
         Terminal.OnAVPressed -= AVTask;
         Terminal.OnLSPressed -= LSTask;
         Terminal.OnNMAPPressed -= NMAPTask;
-        PerformanceThiefManager.PThiefStarted -= TimerOn;
-        //PerformanceThiefManager.PThiefIDisable -= StopInput;
+        PerformanceThiefManager.PThiefStarted -= PThiefStart;
+        PerformanceThiefManager.PThiefEnded -= PThiefEnd;
+        PerformanceThiefManager.PThiefUpdate -= PThiefUpdate;
     }
 
     void TimerOn() {
@@ -120,21 +127,11 @@ public class TerminalTask : AbstractTask
             }
             else
             {
-                if(iTimer == true) {
-                    ag.CanContinue = false;
+                if(PThiefActive && !StopInputRunning) {
+                    StartCoroutine(StopInputTimer(PThiefDelay));
                     break;
                 }
-                ag.CanContinue = true;
             }
-        }
-    }
-
-    void StopInput() {
-        if(iTimer == false) {
-            iTimer = true;
-            StartCoroutine(StopInputTimer());
-        } else {
-            return;
         }
     }
 
@@ -278,10 +275,36 @@ public class TerminalTask : AbstractTask
         if(musicAG.volume < 0) musicAG.Stop();  
     }
 
-    public IEnumerator StopInputTimer() {
+    public IEnumerator StopInputTimer(float x) {
+        StopInputRunning = true;
         Debug.Log("Input Disabled");
-        yield return new WaitForSeconds(2.5f);
+        ag.CanContinue = false;
+        yield return new WaitForSeconds(x);
         Debug.Log("Input Re-Enabled");
-        iTimer = false;
+        ag.CanContinue = true;
+        yield return new WaitForSeconds(3f);
+        StopInputRunning = false;
+    }
+
+    public void PThiefStart()
+    {
+        PThiefActive = true;
+    }
+
+    public void PThiefEnd()
+    {
+        PThiefActive = false;
+        StopInputRunning = false;
+        StopCoroutine(StopInputTimer(PThiefDelay));
+    }
+
+    public void PThiefUpdate(float PThiefModifier)
+    {
+        // Math is basically the inverse of the modifier multiplied by 1.5
+        // if Pthief is 1 , then the delay is (1/1 - 1) * 1.5 = 0
+        // if PThief is 0.75, then the delay is (1/0.75 - 1) * 1.5 = 0.5
+        // etc.
+
+        PThiefDelay = (1f/PThiefModifier - 1) * 1.5f;
     }
 }

@@ -25,6 +25,10 @@ public class LoadingScript : MonoBehaviour
     // Note: Changed 0.1f -> 0.1f
     readonly double speed = 0.1;
 
+    // All performance thief related stuff
+    bool pThiefActive = false;
+    float pThiefModifier = 1f;
+
     /// @var clickFillSpeed Changes the amount the bar fills on one click
     /// @var clickModifier Mainly for performance thief, this variable allows a multiplied increase or decrease
     /// in amount filled by a single click.
@@ -86,8 +90,14 @@ public class LoadingScript : MonoBehaviour
             if (canContinue)
             {
                 yield return new WaitForSeconds(0.007f);
-                // Debug.Log("SPEED: " + perthiefTime * speed);
-                progBar.fillAmount += (float)(speed * Time.deltaTime);
+                if(pThiefActive)
+                {
+                    progBar.fillAmount += (float)(speed * Time.deltaTime * pThiefModifier);
+                }
+                else
+                {
+                    progBar.fillAmount += (float)(speed * Time.deltaTime);
+                }
             }
             else
             {
@@ -102,5 +112,34 @@ public class LoadingScript : MonoBehaviour
     {
         progBar.fillAmount = 0;
         isLoaded = false;
+    }
+
+    private void OnEnable()
+    {
+        PerformanceThiefManager.PThiefStarted += OnPThiefStart;
+        PerformanceThiefManager.PThiefEnded += OnPThiefEnd;
+        PerformanceThiefManager.PThiefUpdate += UpdatePThiefModifier;
+    }
+
+    private void OnDisable()
+    {
+        PerformanceThiefManager.PThiefStarted -= OnPThiefStart;
+        PerformanceThiefManager.PThiefEnded -= OnPThiefEnd;
+        PerformanceThiefManager.PThiefUpdate -= UpdatePThiefModifier;
+    }
+
+    private void UpdatePThiefModifier(float modifier)
+    {
+        pThiefModifier = modifier;
+    }
+
+    private void OnPThiefStart()
+    {
+        pThiefActive = true;
+    }
+
+    private void OnPThiefEnd()
+    {
+        pThiefActive = true;
     }
 }

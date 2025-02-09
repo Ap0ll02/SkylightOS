@@ -11,11 +11,13 @@ public class PerformanceThiefManager : AbstractManager
     public float pModifier = 0.5f;
     public float pTime = 5f;
     public bool isActive = false;
-    public int random;
+    public int randomStartDelayMax = 1;
+    public int randomStartDelayMin = 5;
+    public Northstar northstar;
 
-    public void Awake() {
-        UnityEngine.Random.InitState(System.Environment.TickCount);
-        random = UnityEngine.Random.Range(0, 10);
+    public void Awake()
+    {
+        northstar = GameObject.FindObjectOfType<Northstar>();
     }
 
     public override bool CanProgress()
@@ -26,6 +28,13 @@ public class PerformanceThiefManager : AbstractManager
     public override void StartHazard()
     {
         isActive = true;
+        StartCoroutine(StartAfterDelay(UnityEngine.Random.Range(randomStartDelayMin, randomStartDelayMax)));
+    }
+
+    IEnumerator StartAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        northstar.WriteHint("Performance Thief has started. You have to deal with it.", Northstar.Style.warm, true);
         Debug.Log("Performance Thief Started.");
         PThiefStarted?.Invoke();
         StartCoroutine(RunPerformanceThief());
@@ -39,7 +48,7 @@ public class PerformanceThiefManager : AbstractManager
         {
             yield return new WaitForSeconds(pTime);
             PThiefUpdate?.Invoke(pModifier);
-            if(UnityEngine.Random.Range(0, 10) == random && pModifier >= 0.005)
+            if(UnityEngine.Random.Range(0, 10) > 5 && pModifier >= 0.005)
             {
                 pModifier -= 0.01f;
             }
@@ -83,7 +92,7 @@ public class PerformanceThiefManager : AbstractManager
         }
     }
 
-    // This is a method that will be called by the BIOSManager to stop the performance thief
+    // This is a method that will be called by the BIOSManager to stop the performance thief 
     public void StopProcess()
     {
         StopHazard();

@@ -29,6 +29,105 @@ public class pipe : MonoBehaviour
         }
     }
 
+    void Start() {
+        CreateLists();
+    }
+    void CreateLists() {
+        top_connectables = new();
+        bottom_connectables = new();
+        right_connectables = new();
+        left_connectables = new();
+
+        if(PipeStyle == PipeType.StraightUp){
+            top_connectables.Add(PipeType.TopLeft);
+            top_connectables.Add(PipeType.TopRight);
+            top_connectables.Add(PipeType.StraightUp);
+            top_connectables.Add(PipeType.FourWay);
+            
+            bottom_connectables.Add(PipeType.StraightUp);       
+            bottom_connectables.Add(PipeType.BottomLeft);
+            bottom_connectables.Add(PipeType.BottomRight);
+            bottom_connectables.Add(PipeType.FourWay);
+        }
+        else if(PipeStyle == PipeType.StraightLaying){
+            left_connectables.Add(PipeType.TopLeft);
+            left_connectables.Add(PipeType.BottomLeft);
+            left_connectables.Add(PipeType.StraightLaying);
+            left_connectables.Add(PipeType.FourWay);
+
+            right_connectables.Add(PipeType.TopRight);
+            right_connectables.Add(PipeType.BottomRight);
+            right_connectables.Add(PipeType.StraightLaying);
+            right_connectables.Add(PipeType.FourWay);
+        }
+        else if(PipeStyle == PipeType.TopRight){
+            left_connectables.Add(PipeType.TopLeft);
+            left_connectables.Add(PipeType.BottomLeft);
+            left_connectables.Add(PipeType.StraightLaying);
+            left_connectables.Add(PipeType.FourWay);
+
+            bottom_connectables.Add(PipeType.StraightUp);       
+            bottom_connectables.Add(PipeType.BottomLeft);
+            bottom_connectables.Add(PipeType.BottomRight);
+            bottom_connectables.Add(PipeType.FourWay);
+        }
+        else if(PipeStyle == PipeType.TopLeft){
+            right_connectables.Add(PipeType.TopRight);
+            right_connectables.Add(PipeType.BottomRight);
+            right_connectables.Add(PipeType.StraightLaying);
+            right_connectables.Add(PipeType.FourWay);
+
+            bottom_connectables.Add(PipeType.StraightUp);       
+            bottom_connectables.Add(PipeType.BottomLeft);
+            bottom_connectables.Add(PipeType.BottomRight);
+            bottom_connectables.Add(PipeType.FourWay);
+        }
+        else if(PipeStyle == PipeType.BottomLeft){  
+            right_connectables.Add(PipeType.TopRight);
+            right_connectables.Add(PipeType.BottomRight);
+            right_connectables.Add(PipeType.StraightLaying);
+            right_connectables.Add(PipeType.FourWay);
+
+            top_connectables.Add(PipeType.TopLeft);
+            top_connectables.Add(PipeType.TopRight);
+            top_connectables.Add(PipeType.StraightUp);
+            top_connectables.Add(PipeType.FourWay);
+        }
+        else if(PipeStyle == PipeType.BottomRight){
+            left_connectables.Add(PipeType.TopLeft);
+            left_connectables.Add(PipeType.BottomLeft);
+            left_connectables.Add(PipeType.StraightLaying);
+            left_connectables.Add(PipeType.FourWay);
+
+            top_connectables.Add(PipeType.TopLeft);
+            top_connectables.Add(PipeType.TopRight);
+            top_connectables.Add(PipeType.StraightUp);
+            top_connectables.Add(PipeType.FourWay);
+        }
+        else if(PipeStyle == PipeType.FourWay){
+            left_connectables.Add(PipeType.TopLeft);
+            left_connectables.Add(PipeType.BottomLeft);
+            left_connectables.Add(PipeType.StraightLaying);
+            left_connectables.Add(PipeType.FourWay);
+
+            top_connectables.Add(PipeType.TopLeft);
+            top_connectables.Add(PipeType.TopRight);
+            top_connectables.Add(PipeType.StraightUp);
+            top_connectables.Add(PipeType.FourWay);
+
+            right_connectables.Add(PipeType.TopRight);
+            right_connectables.Add(PipeType.BottomRight);
+            right_connectables.Add(PipeType.StraightLaying);
+            right_connectables.Add(PipeType.FourWay);
+
+            bottom_connectables.Add(PipeType.StraightUp);       
+            bottom_connectables.Add(PipeType.BottomLeft);
+            bottom_connectables.Add(PipeType.BottomRight);
+            bottom_connectables.Add(PipeType.FourWay);
+        }
+
+    }
+
     // Rotate the given pipe 90 degrees
     private void OnRotate(InputAction.CallbackContext context)
     {
@@ -36,6 +135,9 @@ public class pipe : MonoBehaviour
         RectTransform rt = GetComponent<RectTransform>();
         Vector3 newRotation = rt.eulerAngles;
         newRotation.z += 90;
+        newRotation.z %= 360;
+        NextPipeStyle();
+        CreateLists();
         rt.rotation = Quaternion.Euler(newRotation);
     }
     // Raycast results to ensure specific pipe is targeted.
@@ -53,6 +155,16 @@ public class pipe : MonoBehaviour
             }
         }
         return false;
+    }
+
+    void NextPipeStyle() {
+        if(PipeStyle == PipeType.StraightUp) PipeStyle = PipeType.StraightLaying;
+        if(PipeStyle == PipeType.StraightLaying) PipeStyle = PipeType.StraightUp;
+        if(PipeStyle == PipeType.BottomLeft) PipeStyle = PipeType.BottomRight;
+        if(PipeStyle == PipeType.BottomRight) PipeStyle = PipeType.TopRight;
+        if(PipeStyle == PipeType.TopLeft) PipeStyle = PipeType.BottomLeft;
+        if(PipeStyle == PipeType.TopRight) PipeStyle = PipeType.TopLeft;
+        Debug.Log("CURRENT: " + PipeStyle);
     }
 
     void OnEnable(){

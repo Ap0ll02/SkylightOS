@@ -107,27 +107,31 @@ public class PipeGame : AbstractMinigame
         }
         // MISTAKING BOTTOM LEFT FOR TOP LEFT, MISTAKING AND VICE VERSA
         // Test if sides have any adjacent connections
-        if(above != 666 && 
-        lastPipe.GetComponent<pipe>().top_connectables
-        .Contains(SpawnedPipes[above].GetComponent<pipe>().PipeStyle)) {
+        if(above != 666
+        && lastPipe.GetComponent<pipe>().top_connectables
+        .Contains(SpawnedPipes[above].GetComponent<pipe>().PipeStyle) 
+        && SpawnedPipes[above].GetComponent<pipe>().bottom_connectables.Contains(lastPipe.GetComponent<pipe>().PipeStyle)) {
             Debug.Log("My " + SpawnedPipes[above].GetComponent<pipe>().PipeStyle + "connected to my " + lastPipe.GetComponent<pipe>().PipeStyle);
         }
 
         else if(below != 666 && 
         lastPipe.GetComponent<pipe>().bottom_connectables
-        .Contains(SpawnedPipes[below].GetComponent<pipe>().PipeStyle)) {
+        .Contains(SpawnedPipes[below].GetComponent<pipe>().PipeStyle)
+        && SpawnedPipes[below].GetComponent<pipe>().top_connectables.Contains(lastPipe.GetComponent<pipe>().PipeStyle)) {
             Debug.Log("My " + SpawnedPipes[below].GetComponent<pipe>().PipeStyle + "connected to my " + lastPipe.GetComponent<pipe>().PipeStyle);
         }
 
         else if(left != 666 && 
         lastPipe.GetComponent<pipe>().left_connectables
-        .Contains(SpawnedPipes[left].GetComponent<pipe>().PipeStyle)) {
+        .Contains(SpawnedPipes[left].GetComponent<pipe>().PipeStyle)
+        && SpawnedPipes[left].GetComponent<pipe>().right_connectables.Contains(lastPipe.GetComponent<pipe>().PipeStyle)) {
             Debug.Log("My " + SpawnedPipes[left].GetComponent<pipe>().PipeStyle + "connected to my " + lastPipe.GetComponent<pipe>().PipeStyle);
         }
 
         else if(right != 666 && 
         lastPipe.GetComponent<pipe>().right_connectables
-        .Contains(SpawnedPipes[right].GetComponent<pipe>().PipeStyle)) {
+        .Contains(SpawnedPipes[right].GetComponent<pipe>().PipeStyle)
+        && SpawnedPipes[right].GetComponent<pipe>().left_connectables.Contains(lastPipe.GetComponent<pipe>().PipeStyle)) {
             Debug.Log("My " + SpawnedPipes[right].GetComponent<pipe>().PipeStyle + "connected to my " + lastPipe.GetComponent<pipe>().PipeStyle);
         }
     }

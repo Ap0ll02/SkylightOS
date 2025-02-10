@@ -1,72 +1,100 @@
 using System;
 using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PerformanceThiefManager : AbstractManager
 {
     public static event Action PThiefStarted;
+    public static event Action<float> PThiefUpdate;
     public static event Action PThiefEnded;
-    public float pTime = 1f;
-    private Coroutine timerCR;
-    public static event Action PThiefIDisable;
-    public static event Action PThiefUpdateDelay;
+    public float pModifier = 0.5f;
+    public float pTime = 5f;
     public bool isActive = false;
-    public int random;
+    public int randomStartDelayMax = 1;
+    public int randomStartDelayMin = 5;
+    public Northstar northstar;
 
-    public void Awake() {
-        gameObject.SetActive(true);
-        UnityEngine.Random.InitState(System.Environment.TickCount);
-        random = UnityEngine.Random.Range(0, 10);
+    public void Awake()
+    {
+        northstar = GameObject.FindObjectOfType<Northstar>();
     }
 
     public override bool CanProgress()
     {   
-        // Debug.Log("RANDOM NUMBER: " + random);
-        if(isActive) {
-            PThiefUpdateDelay?.Invoke();
-            //timerCR = StartCoroutine(Timer());
-        }
-        if(isActive && random == 6) {
-            //Debug.Log("Stopping Input!");
-            PThiefIDisable?.Invoke();
-            random = UnityEngine.Random.Range(0, 10);
-        }
-        else if(isActive && random != 6) {
-            random = UnityEngine.Random.Range(0, 10);
-        }
         return true;
     }
 
     public override void StartHazard()
     {
         isActive = true;
-        // Debug.Log("Performance Thief Started.");
+        StartCoroutine(StartAfterDelay(UnityEngine.Random.Range(randomStartDelayMin, randomStartDelayMax)));
+    }
+
+    IEnumerator StartAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        northstar.WriteHint("Performance Thief has started. You have to deal with it.", Northstar.Style.warm, true);
+        Debug.Log("Performance Thief Started.");
         PThiefStarted?.Invoke();
+        StartCoroutine(RunPerformanceThief());
+    }
+
+    // Basically going to have the performance thief ramp up as it runs for longer,
+    // encouraging the player to not ignore it
+    IEnumerator RunPerformanceThief()
+    {
+        while (isActive)
+        {
+            yield return new WaitForSeconds(pTime);
+            PThiefUpdate?.Invoke(pModifier);
+            if(UnityEngine.Random.Range(0, 10) > 5 && pModifier >= 0.005)
+            {
+                pModifier -= 0.01f;
+            }
+        }
     }
 
     public override void StopHazard()
     {
         if(isActive){
-            // Debug.Log("Performance Thief Ended.");
+            Debug.Log("Performance Thief Ended.");
             PThiefEnded?.Invoke();
-            timerCR = null;
-            //StopAllCoroutines();
+            StopAllCoroutines();
             isActive = false;
         }
-        else {
+        else 
+        {
             Debug.Log("Performance Thief Already Stopped");
         }
+    }
+
+    public void UpdatePerformanceThief(float modifier)
+    {
+        pModifier = modifier;
     }
 
     public void BIOSPerformanceHandler(int index) {
         switch (index) {
             case 0: Debug.Log("Case 0"); break;
-            case 1: Debug.Log("Case 1"); break;
+            case 1: Debug.Log("Case 1"); 
+                UpdatePerformanceThief(0.75f);
+                StopAllCoroutines();
+                PThiefUpdate?.Invoke(pModifier);
+                    break;
             case 2: {
-                StopHazard();
-                break;
+                UpdatePerformanceThief(1f);
+                StopAllCoroutines();
+                PThiefUpdate?.Invoke(pModifier);
+                    break;
             }
             default: break;
         }
+    }
+
+    // This is a method that will be called by the BIOSManager to stop the performance thief 
+    public void StopProcess()
+    {
+        StopHazard();
     }
 }

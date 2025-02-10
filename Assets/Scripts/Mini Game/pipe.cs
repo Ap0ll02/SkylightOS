@@ -159,11 +159,11 @@ public class pipe : MonoBehaviour
 
     void NextPipeStyle() {
         if(PipeStyle == PipeType.StraightUp) PipeStyle = PipeType.StraightLaying;
-        if(PipeStyle == PipeType.StraightLaying) PipeStyle = PipeType.StraightUp;
-        if(PipeStyle == PipeType.BottomLeft) PipeStyle = PipeType.BottomRight;
-        if(PipeStyle == PipeType.BottomRight) PipeStyle = PipeType.TopRight;
-        if(PipeStyle == PipeType.TopLeft) PipeStyle = PipeType.BottomLeft;
-        if(PipeStyle == PipeType.TopRight) PipeStyle = PipeType.TopLeft;
+        else if(PipeStyle == PipeType.StraightLaying) PipeStyle = PipeType.StraightUp;
+        else if(PipeStyle == PipeType.BottomLeft) PipeStyle = PipeType.BottomRight;
+        else if(PipeStyle == PipeType.BottomRight) PipeStyle = PipeType.TopRight;
+        else if(PipeStyle == PipeType.TopLeft) PipeStyle = PipeType.BottomLeft;
+        else if(PipeStyle == PipeType.TopRight) PipeStyle = PipeType.TopLeft;
         Debug.Log("CURRENT: " + PipeStyle);
     }
 

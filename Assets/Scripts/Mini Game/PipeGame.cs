@@ -1,6 +1,9 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Animations;
 using UnityEngine.InputSystem;
@@ -72,6 +75,10 @@ public class PipeGame : AbstractMinigame
     // Update is called once per frame
     void Update()
     {
+        if(ConnectedPath.Contains(SpawnedPipes[0]) && ConnectedPath.Contains(SpawnedPipes[87])){
+            GameOver();
+        }
+
         int above = SpawnedPipes.IndexOf(lastPipe);
         int below = above;
         int left = above;
@@ -105,6 +112,8 @@ public class PipeGame : AbstractMinigame
         else {
             right += 1;
         }
+
+        CheckPath(above, below, left, right);
         // MISTAKING BOTTOM LEFT FOR TOP LEFT, MISTAKING AND VICE VERSA
         // Test if sides have any adjacent connections
         if(above != 666
@@ -112,6 +121,8 @@ public class PipeGame : AbstractMinigame
         .Contains(SpawnedPipes[above].GetComponent<pipe>().PipeStyle) 
         && SpawnedPipes[above].GetComponent<pipe>().bottom_connectables.Contains(lastPipe.GetComponent<pipe>().PipeStyle)) {
             Debug.Log("My " + SpawnedPipes[above].GetComponent<pipe>().PipeStyle + "connected to my " + lastPipe.GetComponent<pipe>().PipeStyle);
+            ConnectedPath.Add(SpawnedPipes[above]);
+            lastPipe = ConnectedPath[^1];
         }
 
         else if(below != 666 && 
@@ -119,13 +130,17 @@ public class PipeGame : AbstractMinigame
         .Contains(SpawnedPipes[below].GetComponent<pipe>().PipeStyle)
         && SpawnedPipes[below].GetComponent<pipe>().top_connectables.Contains(lastPipe.GetComponent<pipe>().PipeStyle)) {
             Debug.Log("My " + SpawnedPipes[below].GetComponent<pipe>().PipeStyle + "connected to my " + lastPipe.GetComponent<pipe>().PipeStyle);
-        }
+            ConnectedPath.Add(SpawnedPipes[below]);
+            lastPipe = ConnectedPath[^1];
+       }
 
         else if(left != 666 && 
         lastPipe.GetComponent<pipe>().left_connectables
         .Contains(SpawnedPipes[left].GetComponent<pipe>().PipeStyle)
         && SpawnedPipes[left].GetComponent<pipe>().right_connectables.Contains(lastPipe.GetComponent<pipe>().PipeStyle)) {
+            ConnectedPath.Add(SpawnedPipes[left]);
             Debug.Log("My " + SpawnedPipes[left].GetComponent<pipe>().PipeStyle + "connected to my " + lastPipe.GetComponent<pipe>().PipeStyle);
+            lastPipe = ConnectedPath[^1];
         }
 
         else if(right != 666 && 
@@ -133,6 +148,41 @@ public class PipeGame : AbstractMinigame
         .Contains(SpawnedPipes[right].GetComponent<pipe>().PipeStyle)
         && SpawnedPipes[right].GetComponent<pipe>().left_connectables.Contains(lastPipe.GetComponent<pipe>().PipeStyle)) {
             Debug.Log("My " + SpawnedPipes[right].GetComponent<pipe>().PipeStyle + "connected to my " + lastPipe.GetComponent<pipe>().PipeStyle);
+            ConnectedPath.Add(SpawnedPipes[right]);
+            lastPipe = ConnectedPath[^1];
         }
+    }
+
+    // Needs to be updated for both connections, we need more debug statements to see where things go wrong. 
+    public void CheckPath(int above, int below, int left, int right) {
+        foreach(var pipe in SpawnedPipes){
+            if(above != 666 && !pipe.GetComponent<pipe>().top_connectables.Contains(SpawnedPipes[above].GetComponent<pipe>().PipeStyle)){
+                if(ConnectedPath.Contains(SpawnedPipes[above])){
+                    ConnectedPath.Remove(SpawnedPipes[above]);
+                }
+            }
+
+            if(below != 666 && !pipe.GetComponent<pipe>().top_connectables.Contains(SpawnedPipes[below].GetComponent<pipe>().PipeStyle)){
+                if(ConnectedPath.Contains(SpawnedPipes[below])){
+                    ConnectedPath.Remove(SpawnedPipes[below]);
+                }
+            }
+
+            if(left != 666 && !pipe.GetComponent<pipe>().top_connectables.Contains(SpawnedPipes[left].GetComponent<pipe>().PipeStyle)){
+                if(ConnectedPath.Contains(SpawnedPipes[left])){
+                    ConnectedPath.Remove(SpawnedPipes[left]);
+                }
+            }
+
+            if(right != 666 && !pipe.GetComponent<pipe>().top_connectables.Contains(SpawnedPipes[right].GetComponent<pipe>().PipeStyle)){
+                if(ConnectedPath.Contains(SpawnedPipes[right])){
+                    ConnectedPath.Remove(SpawnedPipes[right]);
+                }
+            }
+        }
+    }
+
+    public void GameOver() {
+        Debug.Log("Game Over");
     }
 }

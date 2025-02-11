@@ -10,6 +10,10 @@ public class WireConnectMinigame : AbstractMinigame
     public GameObject slotPrefab;
     public Transform wireLayoutGroup;
     public Transform slotLayoutGroup;
+    public Color wireColor;
+    public Color slotColor;
+    public char wireCharColor = 'a';
+    public char slotCharColor = 'a';
 
     // Start is called before the first frame update
     void Start()
@@ -39,12 +43,16 @@ public class WireConnectMinigame : AbstractMinigame
     {
         foreach (var wire in wires)
         {
-            Instantiate(wirePrefab, wireLayoutGroup);
+            var wireInstance = Instantiate(wirePrefab, wireLayoutGroup);
+            wireInstance.GetComponent<Renderer>().material.color = wireColor;
+            wireInstance.GetComponent<MinigameWire>().wireColor = wireCharColor;
         }
 
         foreach (var slot in slots)
         {
-            Instantiate(slotPrefab, slotLayoutGroup);
+            var slotInstance = Instantiate(slotPrefab, slotLayoutGroup);
+            slotInstance.GetComponent<Renderer>().material.color = slotColor;
+            slotInstance.GetComponent<MinigameSlot>().slotColor = slotCharColor;
         }
     }
 

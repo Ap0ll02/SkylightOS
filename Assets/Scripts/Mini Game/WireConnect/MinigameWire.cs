@@ -8,6 +8,7 @@ public class MinigameWire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     private RectTransform rectTransform;
     private CanvasGroup canvasGroup;
     public char wireColor;
+    private Vector2 offset;
 
     private void Awake()
     {
@@ -19,11 +20,16 @@ public class MinigameWire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
     {
         canvasGroup.alpha = 0.6f;
         canvasGroup.blocksRaycasts = false;
+        RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform, eventData.position, eventData.pressEventCamera, out offset);
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        rectTransform.anchoredPosition += eventData.delta;
+        Vector2 localPoint;
+        if (RectTransformUtility.ScreenPointToLocalPointInRectangle(rectTransform.parent as RectTransform, eventData.position, eventData.pressEventCamera, out localPoint))
+        {
+            rectTransform.localPosition = localPoint - offset;
+        }
     }
 
     public void OnEndDrag(PointerEventData eventData)

@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class MinigameSlot : MonoBehaviour, IDropHandler
+public class MinigameSlot : MonoBehaviour
 {
     public char slotColor;
 
-    public void OnDrop(PointerEventData eventData)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        MinigameWire wire = eventData.pointerDrag.GetComponent<MinigameWire>();
+        MinigameWire wire = collision.GetComponent<MinigameWire>();
         if (wire != null)
         {
             // Check if the wire color matches the slot color

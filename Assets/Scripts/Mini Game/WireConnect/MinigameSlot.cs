@@ -15,6 +15,7 @@ public class MinigameSlot : MonoBehaviour
             // Check if the wire color matches the slot color
             if (wire.wireColor == slotColor)
             {
+                wire.isDraggable = false;
                 // Correct connection
                 Debug.Log("Correct connection!");
             }

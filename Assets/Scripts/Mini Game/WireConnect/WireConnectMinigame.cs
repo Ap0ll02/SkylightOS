@@ -44,14 +44,14 @@ public class WireConnectMinigame : AbstractMinigame
         foreach (var wire in wires)
         {
             var wireInstance = Instantiate(wirePrefab, wireLayoutGroup);
-            wireInstance.GetComponent<Renderer>().material.color = wireColor;
+            //wireInstance.GetComponent<Renderer>().material.color = wireColor;
             wireInstance.GetComponent<MinigameWire>().wireColor = wireCharColor;
         }
 
         foreach (var slot in slots)
         {
             var slotInstance = Instantiate(slotPrefab, slotLayoutGroup);
-            slotInstance.GetComponent<Renderer>().material.color = slotColor;
+            //slotInstance.GetComponent<Renderer>().material.color = slotColor;
             slotInstance.GetComponent<MinigameSlot>().slotColor = slotCharColor;
         }
     }

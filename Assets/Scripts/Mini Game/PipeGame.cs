@@ -1,19 +1,21 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using TMPro;
-using UnityEditor;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Animations;
-using UnityEngine.InputSystem;
+using UnityEngine.UI;
 // TODO 87 is ending pipe. 0 is first
+
+// TODO YOOOOOOOO
+/*
+    Ok so, we send an 'object' through the first pipe, it tries all connected paths it can and if any end with 87, or even contain 87 tbh, then we know it worked!
+*/
 public class PipeGame : AbstractMinigame
 {
     public List<GameObject> PipePrefab;
     public GameObject lastPipe;
     public List<GameObject> SpawnedPipes;
     public GameObject PipeLayout;
+    public bool gameRunning = true;
 
     public List<GameObject> ConnectedPath;
 
@@ -21,168 +23,173 @@ public class PipeGame : AbstractMinigame
         StartGame();
     }
 
-   public override void StartGame()
-    {
-        System.Random rnd = new();
-        for(int i = 0; i < 99; i++){
-            int pipeType = rnd.Next(0, 7);
-            switch (pipeType)
-            {
-                case 0: // Vertical Pipe
-                    SpawnedPipes.Add(Instantiate(PipePrefab[pipeType], parent: PipeLayout.GetComponent<RectTransform>()));
-                    SpawnedPipes[i].GetComponent<pipe>().PipeStyle = pipe.PipeType.StraightUp;
-                   break;
-                case 1: // Horizontal Pipe
-                    SpawnedPipes.Add(Instantiate(PipePrefab[0], parent: PipeLayout.GetComponent<RectTransform>()));
-                    SpawnedPipes[i].GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0, 0, 90)); 
-                    SpawnedPipes[i].GetComponent<pipe>().PipeStyle = pipe.PipeType.StraightLaying;
-                    break;
-                case 2: // Top right pipe
+   public override void StartGame() { 
+    System.Random rnd = new();
+    // Initialize the first and ending pipe
+    int pipezero = rnd.Next(0, 3);
+    switch(pipezero){
+        case 0:
+            SpawnedPipes.Add(Instantiate(PipePrefab[0], parent: PipeLayout.GetComponent<RectTransform>()));
+            SpawnedPipes[0].GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0, 0, 90)); 
+            SpawnedPipes[0].GetComponent<pipe>().PipeStyle = pipe.PipeType.StraightLaying;
+            break;
+        case 1:
+            SpawnedPipes.Add(Instantiate(PipePrefab[1], parent: PipeLayout.GetComponent<RectTransform>()));
+            SpawnedPipes[0].GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+            SpawnedPipes[0].GetComponent<pipe>().PipeStyle = pipe.PipeType.StraightUp;
+            break;
+        case 2:
+            SpawnedPipes.Add(Instantiate(PipePrefab[2], parent: PipeLayout.GetComponent<RectTransform>()));
+            SpawnedPipes[0].GetComponent<pipe>().PipeStyle = pipe.PipeType.FourWay;
+            break;
+        default:
+            Debug.Log("Accidental 3+");
+            break;
+    }
+
+    for(int i = 1; i < 99; i++){
+        // Take care of ending connection pipe
+        if(i == 87) {
+            int pipelast = rnd.Next(0, 3);
+            switch(pipelast){
+                case 0:
                     SpawnedPipes.Add(Instantiate(PipePrefab[1], parent: PipeLayout.GetComponent<RectTransform>()));
-                    SpawnedPipes[i].GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0, 0, 180));
-                    SpawnedPipes[i].GetComponent<pipe>().PipeStyle = pipe.PipeType.TopRight;
+                    SpawnedPipes[87].GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0, 0, 270)); 
+                    SpawnedPipes[87].GetComponent<pipe>().PipeStyle = pipe.PipeType.StraightLaying;
                     break;
-                // Top Left
-                case 3:
+                case 1:
                     SpawnedPipes.Add(Instantiate(PipePrefab[1], parent: PipeLayout.GetComponent<RectTransform>()));
-                    SpawnedPipes[i].GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0, 0, 270));
-                    SpawnedPipes[i].GetComponent<pipe>().PipeStyle = pipe.PipeType.TopLeft;
+                    SpawnedPipes[87].GetComponent<pipe>().PipeStyle = pipe.PipeType.StraightUp;
                     break;
-                // Bottom Left
-                case 4:
-                    SpawnedPipes.Add(Instantiate(PipePrefab[1], parent: PipeLayout.GetComponent<RectTransform>()));
-                    SpawnedPipes[i].GetComponent<pipe>().PipeStyle = pipe.PipeType.BottomLeft;
-                    break;
-                // Bottom Right
-                case 5:
-                    SpawnedPipes.Add(Instantiate(PipePrefab[1], parent: PipeLayout.GetComponent<RectTransform>()));
-                    SpawnedPipes[i].GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0, 0, 90));
-                    SpawnedPipes[i].GetComponent<pipe>().PipeStyle = pipe.PipeType.BottomRight;
-                    break;
-                case 6:
+                case 2:
                     SpawnedPipes.Add(Instantiate(PipePrefab[2], parent: PipeLayout.GetComponent<RectTransform>()));
-                    SpawnedPipes[i].GetComponent<pipe>().PipeStyle = pipe.PipeType.FourWay;
+                    SpawnedPipes[87].GetComponent<pipe>().PipeStyle = pipe.PipeType.FourWay;
                     break;
                 default:
-                    Debug.Log("Accidental 7+");
+                    Debug.Log("Accidental 3+");
                     break;
             }
-        } 
-        lastPipe = SpawnedPipes[0];
-        ConnectedPath.Add(SpawnedPipes[0]);
-    }
+            continue;
+        }
+
+        int pipeType = rnd.Next(0, 7);
+        switch (pipeType)
+        {
+            case 0: // Vertical Pipe
+                SpawnedPipes.Add(Instantiate(PipePrefab[pipeType], parent: PipeLayout.GetComponent<RectTransform>()));
+                SpawnedPipes[i].GetComponent<pipe>().PipeStyle = pipe.PipeType.StraightUp;
+                break;
+            case 1: // Horizontal Pipe
+                SpawnedPipes.Add(Instantiate(PipePrefab[0], parent: PipeLayout.GetComponent<RectTransform>()));
+                SpawnedPipes[i].GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0, 0, 90)); 
+                SpawnedPipes[i].GetComponent<pipe>().PipeStyle = pipe.PipeType.StraightLaying;
+                break;
+            case 2: // Top right pipe
+                SpawnedPipes.Add(Instantiate(PipePrefab[1], parent: PipeLayout.GetComponent<RectTransform>()));
+                SpawnedPipes[i].GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0, 0, 180));
+                SpawnedPipes[i].GetComponent<pipe>().PipeStyle = pipe.PipeType.TopRight;
+                break;
+            // Top Left
+            case 3:
+                SpawnedPipes.Add(Instantiate(PipePrefab[1], parent: PipeLayout.GetComponent<RectTransform>()));
+                SpawnedPipes[i].GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0, 0, 270));
+                SpawnedPipes[i].GetComponent<pipe>().PipeStyle = pipe.PipeType.TopLeft;
+                break;
+            // Bottom Left
+            case 4:
+                SpawnedPipes.Add(Instantiate(PipePrefab[1], parent: PipeLayout.GetComponent<RectTransform>()));
+                SpawnedPipes[i].GetComponent<pipe>().PipeStyle = pipe.PipeType.BottomLeft;
+                break;
+            // Bottom Right
+            case 5:
+                SpawnedPipes.Add(Instantiate(PipePrefab[1], parent: PipeLayout.GetComponent<RectTransform>()));
+                SpawnedPipes[i].GetComponent<RectTransform>().rotation = Quaternion.Euler(new Vector3(0, 0, 90));
+                SpawnedPipes[i].GetComponent<pipe>().PipeStyle = pipe.PipeType.BottomRight;
+                break;
+            case 6:
+                SpawnedPipes.Add(Instantiate(PipePrefab[2], parent: PipeLayout.GetComponent<RectTransform>()));
+                SpawnedPipes[i].GetComponent<pipe>().PipeStyle = pipe.PipeType.FourWay;
+                break;
+            default:
+                Debug.Log("Accidental 7+");
+                break;
+        }
+        foreach(var pipe in SpawnedPipes){
+            pipe.GetComponent<RawImage>().color = Color.white;
+        }
+    } 
+    lastPipe = SpawnedPipes[0];
+    ConnectedPath.Add(SpawnedPipes[0]);
+ }
 
     // Update is called once per frame
     void Update()
     {
-        if(ConnectedPath.Contains(SpawnedPipes[0]) && ConnectedPath.Contains(SpawnedPipes[87])){
+        if(!gameRunning) return;
+        if(CheckPath(0, 87)){
             GameOver();
-        }
-
-        int above = SpawnedPipes.IndexOf(lastPipe);
-        int below = above;
-        int left = above;
-        int right = above;
-
-        // Calculate all adjacent index numbers
-        if(above < 11) {
-            above = 666;
-        }
-        else {
-            above -= 11;
-        }
-
-        if(below > 87) {
-            below = 666;
-        }
-        else {
-            below += 11;
-        }
-
-        if(left % 11 == 0) {
-            left = 666;
-        }
-        else {
-            left -= 1;
-        }
-
-        if(right+1 % 11 == 0) {
-            right = 666;
-        }
-        else {
-            right += 1;
-        }
-
-        CheckPath(above, below, left, right);
-        // MISTAKING BOTTOM LEFT FOR TOP LEFT, MISTAKING AND VICE VERSA
-        // Test if sides have any adjacent connections
-        if(above != 666
-        && lastPipe.GetComponent<pipe>().top_connectables
-        .Contains(SpawnedPipes[above].GetComponent<pipe>().PipeStyle) 
-        && SpawnedPipes[above].GetComponent<pipe>().bottom_connectables.Contains(lastPipe.GetComponent<pipe>().PipeStyle)) {
-            Debug.Log("My " + SpawnedPipes[above].GetComponent<pipe>().PipeStyle + "connected to my " + lastPipe.GetComponent<pipe>().PipeStyle);
-            ConnectedPath.Add(SpawnedPipes[above]);
-            lastPipe = ConnectedPath[^1];
-        }
-
-        else if(below != 666 && 
-        lastPipe.GetComponent<pipe>().bottom_connectables
-        .Contains(SpawnedPipes[below].GetComponent<pipe>().PipeStyle)
-        && SpawnedPipes[below].GetComponent<pipe>().top_connectables.Contains(lastPipe.GetComponent<pipe>().PipeStyle)) {
-            Debug.Log("My " + SpawnedPipes[below].GetComponent<pipe>().PipeStyle + "connected to my " + lastPipe.GetComponent<pipe>().PipeStyle);
-            ConnectedPath.Add(SpawnedPipes[below]);
-            lastPipe = ConnectedPath[^1];
-       }
-
-        else if(left != 666 && 
-        lastPipe.GetComponent<pipe>().left_connectables
-        .Contains(SpawnedPipes[left].GetComponent<pipe>().PipeStyle)
-        && SpawnedPipes[left].GetComponent<pipe>().right_connectables.Contains(lastPipe.GetComponent<pipe>().PipeStyle)) {
-            ConnectedPath.Add(SpawnedPipes[left]);
-            Debug.Log("My " + SpawnedPipes[left].GetComponent<pipe>().PipeStyle + "connected to my " + lastPipe.GetComponent<pipe>().PipeStyle);
-            lastPipe = ConnectedPath[^1];
-        }
-
-        else if(right != 666 && 
-        lastPipe.GetComponent<pipe>().right_connectables
-        .Contains(SpawnedPipes[right].GetComponent<pipe>().PipeStyle)
-        && SpawnedPipes[right].GetComponent<pipe>().left_connectables.Contains(lastPipe.GetComponent<pipe>().PipeStyle)) {
-            Debug.Log("My " + SpawnedPipes[right].GetComponent<pipe>().PipeStyle + "connected to my " + lastPipe.GetComponent<pipe>().PipeStyle);
-            ConnectedPath.Add(SpawnedPipes[right]);
-            lastPipe = ConnectedPath[^1];
         }
     }
 
     // Needs to be updated for both connections, we need more debug statements to see where things go wrong. 
-    public void CheckPath(int above, int below, int left, int right) {
-        foreach(var pipe in SpawnedPipes){
-            if(above != 666 && !pipe.GetComponent<pipe>().top_connectables.Contains(SpawnedPipes[above].GetComponent<pipe>().PipeStyle)){
-                if(ConnectedPath.Contains(SpawnedPipes[above])){
-                    ConnectedPath.Remove(SpawnedPipes[above]);
-                }
-            }
+    public bool CheckPath(int start, int end) {
+        HashSet<int> visited = new();
+        return DFS(start, end, visited);
+    }
 
-            if(below != 666 && !pipe.GetComponent<pipe>().top_connectables.Contains(SpawnedPipes[below].GetComponent<pipe>().PipeStyle)){
-                if(ConnectedPath.Contains(SpawnedPipes[below])){
-                    ConnectedPath.Remove(SpawnedPipes[below]);
-                }
-            }
-
-            if(left != 666 && !pipe.GetComponent<pipe>().top_connectables.Contains(SpawnedPipes[left].GetComponent<pipe>().PipeStyle)){
-                if(ConnectedPath.Contains(SpawnedPipes[left])){
-                    ConnectedPath.Remove(SpawnedPipes[left]);
-                }
-            }
-
-            if(right != 666 && !pipe.GetComponent<pipe>().top_connectables.Contains(SpawnedPipes[right].GetComponent<pipe>().PipeStyle)){
-                if(ConnectedPath.Contains(SpawnedPipes[right])){
-                    ConnectedPath.Remove(SpawnedPipes[right]);
+    private bool DFS(int current, int end, HashSet<int> visited){
+        if(current == end){
+            return true;
+        }
+        visited.Add(current);
+        int[] directions = new int[]{-11, 11, -1, 1}; // Up, Down, Left, Right
+        foreach(var direction in directions){
+            int neighbor = current + direction;
+            if(neighbor >= 0 && neighbor < SpawnedPipes.Count && !visited.Contains(neighbor)){
+                if(PipesConnected(current, neighbor) && DFS(neighbor, end, visited)){
+                    return true;
                 }
             }
         }
+
+        return false;
+    }
+
+    private bool PipesConnected(int current, int neighbor){
+        var currentPipe = SpawnedPipes[current].GetComponent<pipe>();
+        var neighborPipe = SpawnedPipes[neighbor].GetComponent<pipe>();
+
+        int direction = neighbor - current;
+        return direction switch
+        {
+            -11 => currentPipe.top_connectables.Contains(neighborPipe.PipeStyle) &&
+                    neighborPipe.bottom_connectables.Contains(currentPipe.PipeStyle),
+            11 => currentPipe.bottom_connectables.Contains(neighborPipe.PipeStyle) &&
+                    neighborPipe.top_connectables.Contains(currentPipe.PipeStyle),
+            -1 => currentPipe.left_connectables.Contains(neighborPipe.PipeStyle) &&
+                    neighborPipe.right_connectables.Contains(currentPipe.PipeStyle),
+            1 => currentPipe.right_connectables.Contains(neighborPipe.PipeStyle) &&
+                    neighborPipe.left_connectables.Contains(currentPipe.PipeStyle),
+            _ => false,
+        };
     }
 
     public void GameOver() {
+        gameRunning = false;
         Debug.Log("Game Over");
+        foreach(var pipe in SpawnedPipes){
+            pipe.GetComponent<ParticleSystem>().Play();
+            pipe.GetComponent<RawImage>().color = Color.blue;
+        }
+        StartCoroutine(DestroyAfterSeconds(8));
+    }
+
+    public IEnumerator DestroyAfterSeconds(float seconds){
+        yield return new WaitForSeconds(seconds);
+        gameObject.GetComponent<BasicWindow>().CloseWindow();
+        foreach(var pipe in SpawnedPipes){
+            pipe.GetComponent<ParticleSystem>().Stop();
+            Destroy(pipe);
+        }
     }
 }

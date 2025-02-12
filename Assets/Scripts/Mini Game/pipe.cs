@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -16,10 +17,10 @@ public class pipe : MonoBehaviour
         FourWay
     }
 
-    public List<PipeType> top_connectables;
-    public List<PipeType> bottom_connectables;
-    public List<PipeType> left_connectables;
-    public List<PipeType> right_connectables;
+    public HashSet<PipeType> top_connectables;
+    public HashSet<PipeType> bottom_connectables;
+    public HashSet<PipeType> left_connectables;
+    public HashSet<PipeType> right_connectables;
 
     public PipeType PipeStyle;
     public InputAction rotAction;
@@ -33,99 +34,100 @@ public class pipe : MonoBehaviour
         CreateLists();
     }
     void CreateLists() {
-        top_connectables = new();
-        bottom_connectables = new();
-        right_connectables = new();
-        left_connectables = new();
+        top_connectables = new HashSet<PipeType>();
+        bottom_connectables = new HashSet<PipeType>();
+        left_connectables = new HashSet<PipeType>();
+        right_connectables = new HashSet<PipeType>();
 
-        if(PipeStyle == PipeType.StraightUp){
-            top_connectables.Add(PipeType.TopLeft);
-            top_connectables.Add(PipeType.TopRight);
-            top_connectables.Add(PipeType.StraightUp);
-            top_connectables.Add(PipeType.FourWay);
-            
-            bottom_connectables.Add(PipeType.StraightUp);       
-            bottom_connectables.Add(PipeType.BottomLeft);
-            bottom_connectables.Add(PipeType.BottomRight);
-            bottom_connectables.Add(PipeType.FourWay);
+        // Updated to switch for better performance and readability
+        switch (PipeStyle)
+        {
+            case PipeType.StraightUp:
+                InitializeStraightUp();
+                break;
+            case PipeType.StraightLaying:
+                InitializeStraightLaying();
+                break;
+            case PipeType.TopRight:
+                InitializeTopRight();
+                break;
+            case PipeType.TopLeft:
+                InitializeTopLeft();
+                break;
+            case PipeType.BottomLeft:
+                InitializeBottomLeft();
+                break;
+            case PipeType.BottomRight:
+                InitializeBottomRight();
+                break;
+            case PipeType.FourWay:
+                InitializeFourWay();
+                break;
         }
-        else if(PipeStyle == PipeType.StraightLaying){
-            left_connectables.Add(PipeType.TopLeft);
-            left_connectables.Add(PipeType.BottomLeft);
-            left_connectables.Add(PipeType.StraightLaying);
-            left_connectables.Add(PipeType.FourWay);
+        
 
-            right_connectables.Add(PipeType.TopRight);
-            right_connectables.Add(PipeType.BottomRight);
-            right_connectables.Add(PipeType.StraightLaying);
-            right_connectables.Add(PipeType.FourWay);
-        }
-        else if(PipeStyle == PipeType.TopRight){
-            left_connectables.Add(PipeType.TopLeft);
-            left_connectables.Add(PipeType.BottomLeft);
-            left_connectables.Add(PipeType.StraightLaying);
-            left_connectables.Add(PipeType.FourWay);
+    }
 
-            bottom_connectables.Add(PipeType.StraightUp);       
-            bottom_connectables.Add(PipeType.BottomLeft);
-            bottom_connectables.Add(PipeType.BottomRight);
-            bottom_connectables.Add(PipeType.FourWay);
-        }
-        else if(PipeStyle == PipeType.TopLeft){
-            right_connectables.Add(PipeType.TopRight);
-            right_connectables.Add(PipeType.BottomRight);
-            right_connectables.Add(PipeType.StraightLaying);
-            right_connectables.Add(PipeType.FourWay);
+    // The Following Initialization Methods were generated with AI (Github COPILOT) to
+    // speed up the monotonous process of extremely similar code.
 
-            bottom_connectables.Add(PipeType.StraightUp);       
-            bottom_connectables.Add(PipeType.BottomLeft);
-            bottom_connectables.Add(PipeType.BottomRight);
-            bottom_connectables.Add(PipeType.FourWay);
-        }
-        else if(PipeStyle == PipeType.BottomLeft){  
-            right_connectables.Add(PipeType.TopRight);
-            right_connectables.Add(PipeType.BottomRight);
-            right_connectables.Add(PipeType.StraightLaying);
-            right_connectables.Add(PipeType.FourWay);
+    private void InitializeFourWay()
+    {
+        left_connectables.UnionWith(new[]
+        { PipeType.TopLeft, PipeType.BottomLeft, PipeType.StraightLaying, PipeType.FourWay });
+        top_connectables.UnionWith(new[]
+        { PipeType.TopLeft, PipeType.TopRight, PipeType.StraightUp, PipeType.FourWay });
+        right_connectables.UnionWith(new[]
+        { PipeType.TopRight, PipeType.BottomRight, PipeType.StraightLaying, PipeType.FourWay });
+        bottom_connectables.UnionWith(new[]
+        { PipeType.StraightUp, PipeType.BottomLeft, PipeType.BottomRight, PipeType.FourWay });
+    }
 
-            top_connectables.Add(PipeType.TopLeft);
-            top_connectables.Add(PipeType.TopRight);
-            top_connectables.Add(PipeType.StraightUp);
-            top_connectables.Add(PipeType.FourWay);
-        }
-        else if(PipeStyle == PipeType.BottomRight){
-            left_connectables.Add(PipeType.TopLeft);
-            left_connectables.Add(PipeType.BottomLeft);
-            left_connectables.Add(PipeType.StraightLaying);
-            left_connectables.Add(PipeType.FourWay);
+    void InitializeStraightLaying()
+    {
+        left_connectables.UnionWith(new[]
+        { PipeType.TopLeft, PipeType.BottomLeft, PipeType.StraightLaying, PipeType.FourWay });
+        right_connectables.UnionWith(new[]
+        { PipeType.TopRight, PipeType.BottomRight, PipeType.StraightLaying, PipeType.FourWay });
+    }
 
-            top_connectables.Add(PipeType.TopLeft);
-            top_connectables.Add(PipeType.TopRight);
-            top_connectables.Add(PipeType.StraightUp);
-            top_connectables.Add(PipeType.FourWay);
-        }
-        else if(PipeStyle == PipeType.FourWay){
-            left_connectables.Add(PipeType.TopLeft);
-            left_connectables.Add(PipeType.BottomLeft);
-            left_connectables.Add(PipeType.StraightLaying);
-            left_connectables.Add(PipeType.FourWay);
+    void InitializeStraightUp() {
+        top_connectables.UnionWith(new[]
+        { PipeType.TopLeft, PipeType.TopRight, PipeType.StraightUp, PipeType.FourWay});
+        bottom_connectables.UnionWith(new[]
+        { PipeType.StraightUp, PipeType.BottomLeft, PipeType.BottomRight, PipeType.FourWay});
+    }
 
-            top_connectables.Add(PipeType.TopLeft);
-            top_connectables.Add(PipeType.TopRight);
-            top_connectables.Add(PipeType.StraightUp);
-            top_connectables.Add(PipeType.FourWay);
+    void InitializeTopRight()
+    {
+        left_connectables.UnionWith(new[]
+        { PipeType.TopLeft, PipeType.BottomLeft, PipeType.StraightLaying, PipeType.FourWay });
+        bottom_connectables.UnionWith(new[]
+        { PipeType.StraightUp, PipeType.BottomLeft, PipeType.BottomRight, PipeType.FourWay });
+    }
 
-            right_connectables.Add(PipeType.TopRight);
-            right_connectables.Add(PipeType.BottomRight);
-            right_connectables.Add(PipeType.StraightLaying);
-            right_connectables.Add(PipeType.FourWay);
+    void InitializeTopLeft()
+    {
+        right_connectables.UnionWith(new[]
+        { PipeType.TopRight, PipeType.BottomRight, PipeType.StraightLaying, PipeType.FourWay });
+        bottom_connectables.UnionWith(new[]
+        { PipeType.StraightUp, PipeType.BottomLeft, PipeType.BottomRight, PipeType.FourWay });
+    }
 
-            bottom_connectables.Add(PipeType.StraightUp);       
-            bottom_connectables.Add(PipeType.BottomLeft);
-            bottom_connectables.Add(PipeType.BottomRight);
-            bottom_connectables.Add(PipeType.FourWay);
-        }
+    void InitializeBottomLeft()
+    {
+        right_connectables.UnionWith(new[]
+        { PipeType.TopRight, PipeType.BottomRight, PipeType.StraightLaying, PipeType.FourWay });
+        top_connectables.UnionWith(new[]
+        { PipeType.TopLeft, PipeType.TopRight, PipeType.StraightUp, PipeType.FourWay });
+    }
 
+    void InitializeBottomRight()
+    {
+        left_connectables.UnionWith(new[]
+        { PipeType.TopLeft, PipeType.BottomLeft, PipeType.StraightLaying, PipeType.FourWay });
+        top_connectables.UnionWith(new[]
+        { PipeType.TopLeft, PipeType.TopRight, PipeType.StraightUp, PipeType.FourWay });
     }
 
     // Rotate the given pipe 90 degrees
@@ -146,7 +148,7 @@ public class pipe : MonoBehaviour
         {
             position = Mouse.current.position.ReadValue()
         };
-        var results = new System.Collections.Generic.List<RaycastResult>();
+        var results = new List<RaycastResult>();
         EventSystem.current.RaycastAll(pd, results);
 
         foreach(var result in results){
@@ -158,13 +160,27 @@ public class pipe : MonoBehaviour
     }
 
     void NextPipeStyle() {
-        if(PipeStyle == PipeType.StraightUp) PipeStyle = PipeType.StraightLaying;
-        else if(PipeStyle == PipeType.StraightLaying) PipeStyle = PipeType.StraightUp;
-        else if(PipeStyle == PipeType.BottomLeft) PipeStyle = PipeType.BottomRight;
-        else if(PipeStyle == PipeType.BottomRight) PipeStyle = PipeType.TopRight;
-        else if(PipeStyle == PipeType.TopLeft) PipeStyle = PipeType.BottomLeft;
-        else if(PipeStyle == PipeType.TopRight) PipeStyle = PipeType.TopLeft;
-        Debug.Log("CURRENT: " + PipeStyle);
+
+        switch(PipeStyle){
+            case PipeType.StraightUp:
+                PipeStyle = PipeType.StraightLaying;
+                break;
+            case PipeType.StraightLaying:
+                PipeStyle = PipeType.StraightUp;
+                break;
+            case PipeType.BottomLeft:
+                PipeStyle = PipeType.BottomRight;
+                break;
+            case PipeType.BottomRight:
+                PipeStyle = PipeType.TopRight;
+                break;
+            case PipeType.TopLeft:
+                PipeStyle = PipeType.BottomLeft;
+                break;
+            case PipeType.TopRight:
+                PipeStyle = PipeType.TopLeft;
+                break;
+        }
     }
 
     void OnEnable(){

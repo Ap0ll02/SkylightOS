@@ -26,6 +26,8 @@ public class TerminalTask : AbstractTask
         StageTwo
     }
 
+    public BasicWindow window;
+
     /// @var Terminal Variables that get references in awake() to the scene's terminal
     public GameObject terminal;
     private List<bool> tasksDone = new List<bool>();
@@ -127,9 +129,14 @@ public class TerminalTask : AbstractTask
             }
             else
             {
+                ag.CanContinue = true;
                 if(PThiefActive && !StopInputRunning) {
                     StartCoroutine(StopInputTimer(PThiefDelay));
                     break;
+                }
+                else
+                {
+                    ag.CanContinue = true;
                 }
             }
         }

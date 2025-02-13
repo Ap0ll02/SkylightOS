@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WarningSign : AbstractMail
@@ -23,6 +24,7 @@ public class WarningSign : AbstractMail
         {
             Debug.Log("Score Manager not found");
         }
+        base.Start();
     }
 
 }

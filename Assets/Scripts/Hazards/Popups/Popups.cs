@@ -4,6 +4,13 @@ using UnityEngine;
 
 public class Popups : Hazards
 {
+    public BasicWindow window;
+
+    private void Awake()
+    {
+        window = GetComponent<BasicWindow>();
+        window.isOpen = true;
+    }
     // Start is called before the first frame update
     void Start()
     {

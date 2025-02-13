@@ -99,7 +99,7 @@ public class PopupManager : AbstractManager
     {
         for (int i = spawnedWindows.Count - 1; i >= 0; i--)
         {
-            if (!spawnedWindows[i].activeSelf)
+            if (!spawnedWindows[i].GetComponent<BasicWindow>().isOpen)
             {
                 Destroy(spawnedWindows[i]);
                 spawnedWindows.RemoveAt(i);

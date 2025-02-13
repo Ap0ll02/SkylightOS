@@ -11,7 +11,10 @@ public class AbstractMail : MonoBehaviour
     public UpdateGameScoreManager scoreManager;
     public GameObject mailSound;
 
-
+    public void Start()
+    {
+        StartCoroutine(DestroyAfterTime());
+    }
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
@@ -31,6 +34,11 @@ public class AbstractMail : MonoBehaviour
             Debug.Log("Score Manager is null");
         }
         Instantiate(mailSound);
+        Destroy(gameObject);
+    }
+    private IEnumerator DestroyAfterTime()
+    {
+        yield return new WaitForSeconds(5f);
         Destroy(gameObject);
     }
 

@@ -10,6 +10,8 @@ public class NyanCatTask : AbstractBossTask
     public GameObject BossCanvas;
     public GameObject OsManagerWindow;
     public GameObject SKYBIOSWINDOW;
+    public GameObject TerminalWindow;
+    public GameObject SystemWindow;
     // Start is called before the first frame update
     public override void startTask()
     {
@@ -19,6 +21,8 @@ public class NyanCatTask : AbstractBossTask
         BossCanvas.SetActive(true);
         OsManagerWindow.SetActive(false);
         SKYBIOSWINDOW.SetActive(false);
+        TerminalWindow.SetActive(false);
+        SystemWindow.SetActive(false);
 }
 
     public override void startHazards()

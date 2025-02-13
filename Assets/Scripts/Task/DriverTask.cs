@@ -53,6 +53,7 @@ public class DriverTask : AbstractTask
         driver_desc.text = "Thank you! Your drivers are up to date.";
         driver_btn.GetComponent<CanvasGroup>().alpha = 0;
         driver_btn.GetComponent<CanvasGroup>().interactable = false;
+        base.CompleteTask();
     }
 
     public override void checkHazards(){

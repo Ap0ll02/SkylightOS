@@ -139,7 +139,7 @@ public class DriverGame : AbstractMinigame
             Destroy(bgs[^2]);
             bgs.RemoveAt(bgs.Count-2);
         }} catch (Exception e) when (e is ArgumentOutOfRangeException) {
-            Debug.Log("Ignore: Early index error handling. Driver Game: line 97");
+            //Debug.Log("Ignore: Early index error handling. Driver Game: line 97");
         }
 
         obs_list.RemoveAll(ob => {

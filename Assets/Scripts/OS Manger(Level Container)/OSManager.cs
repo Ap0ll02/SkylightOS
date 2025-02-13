@@ -32,11 +32,15 @@ public class OSManager : MonoBehaviour
     // Reference to boss task button (temporary)
     [SerializeField] public Button bossTaskButton;
 
+    public BasicWindow window;
     // Start is called before the first frame update
     void Start()
     {
         CreateTaskButtons();
         SubscribeToTaskEvents();
+        window = GetComponent<BasicWindow>();
+        window.CloseWindow();
+
     }
 
     // Update is called once per frame

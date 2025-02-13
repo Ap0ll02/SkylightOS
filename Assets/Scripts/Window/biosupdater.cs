@@ -5,7 +5,9 @@ public class Biosupdater : MonoBehaviour
 {
     [SerializeField] TMP_Dropdown val;
 
+    public BasicWindow window;
     public void Start() {
+        window.CloseWindow();
         val.value = 0;
         val.SetValueWithoutNotify(0);
     }

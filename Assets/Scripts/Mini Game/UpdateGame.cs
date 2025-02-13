@@ -48,7 +48,6 @@ public class UpdateGame : MonoBehaviour
     {
         // Finds the BasicWindow component on the same GameObject and assigns it.
         window = GetComponent<BasicWindow>();
-        window.isClosable = false;
     }
 
     // Called before the first frame update.
@@ -113,6 +112,7 @@ public class UpdateGame : MonoBehaviour
         }
         player.SetActive(false);
         updateGameEndNotify?.Invoke();
+        window.isClosable = true;
         window.CloseWindow();
     }
 

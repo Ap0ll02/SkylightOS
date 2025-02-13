@@ -23,6 +23,7 @@ public class NewBehaviourScript : AbstractMail
             {
                 Debug.Log("Score Manager not found");
             }
+        base.Start();
         }
 
 }

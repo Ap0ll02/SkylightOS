@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class SystemWindow : MonoBehaviour
@@ -44,6 +43,10 @@ public class SystemWindow : MonoBehaviour
         backButton.SetActive(false);
     }
 
+    private void Start()
+    {
+        window.CloseWindow();
+    }
     // Switches the state of the window
     public void SwitchState(WindowState state)
     {

@@ -5,13 +5,9 @@ public class OverheatGPUTask : AbstractTask
     void Awake()
     {
         SystemStatus = GetComponent<SystemResourcesWindow>();
-    }
-    // Start is called before the first frame update
-    new void Start()
-    {
         SystemStatus.SetSystemResources(SystemResourcesWindow.GPUStatus.WARNING, SystemStatus.currentRAMStatus);
     }
-
+    // Start is called before the first frame update
     public override void startTask()
     {
         SystemStatus.SetSystemResources(SystemResourcesWindow.GPUStatus.CRITICAL, SystemStatus.currentRAMStatus);
@@ -33,5 +29,11 @@ public class OverheatGPUTask : AbstractTask
         foreach (var hazardManager in hazardManagers) {
             hazardManager.StartHazard();
         }
+    }
+
+    public override void CompleteTask()
+    {
+        base.CompleteTask();
+        SystemStatus.SetSystemResources(SystemResourcesWindow.GPUStatus.OK, SystemStatus.currentRAMStatus);
     }
 }

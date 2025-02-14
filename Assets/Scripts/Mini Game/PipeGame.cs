@@ -15,15 +15,16 @@ public class PipeGame : AbstractMinigame
     public GameObject lastPipe;
     public List<GameObject> SpawnedPipes;
     public GameObject PipeLayout;
-    public bool gameRunning = true;
+    public bool gameRunning = false;
 
     public List<GameObject> ConnectedPath;
 
     public void Start(){
-        StartGame();
+        GetComponent<BasicWindow>().CloseWindow();
     }
     // Teste
    public override void StartGame() { 
+    GetComponent<BasicWindow>().OpenWindow();
     System.Random rnd = new();
     // Initialize the first and ending pipe
     int pipezero = rnd.Next(0, 3);
@@ -120,6 +121,7 @@ public class PipeGame : AbstractMinigame
     } 
     lastPipe = SpawnedPipes[0];
     ConnectedPath.Add(SpawnedPipes[0]);
+    gameRunning = true;
  }
 
     // Update is called once per frame

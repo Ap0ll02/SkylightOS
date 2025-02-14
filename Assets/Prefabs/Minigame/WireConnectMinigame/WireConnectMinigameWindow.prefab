@@ -31,10 +31,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1674073691359628332}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.5}
-  m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 349.97253, y: 0}
-  m_SizeDelta: {x: 700, y: 3050}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 349.97253, y: 0.00061035156}
+  m_SizeDelta: {x: 700, y: 0.39990234}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &4861532155764850169
 MonoBehaviour:
@@ -93,10 +93,10 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1674073691359628332}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0.5}
-  m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: -344.1986, y: 0}
-  m_SizeDelta: {x: 700, y: 3050}
+  m_AnchorMin: {x: 1, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -344.1986, y: 0.00061035156}
+  m_SizeDelta: {x: 700, y: 0.39990234}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &509950975150358418
 MonoBehaviour:
@@ -156,10 +156,10 @@ RectTransform:
   - {fileID: 2111435337004362607}
   m_Father: {fileID: 8781909635251099194}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -10.387, y: -60}
-  m_SizeDelta: {x: 2897.4, y: 3050}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: -11.906006, y: -51.894043}
+  m_SizeDelta: {x: -125.319, y: -195.886}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1001 &7803199745237834421
 PrefabInstance:
@@ -195,11 +195,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1068.229
+      value: 2000
       objectReference: {fileID: 0}
     - target: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 2160
+      value: 1500
       objectReference: {fileID: 0}
     - target: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -231,11 +231,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -106.8251
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -216
+      value: -250
       objectReference: {fileID: 0}
     - target: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -301,10 +301,9 @@ MonoBehaviour:
   slotPrefab: {fileID: 331610886629745971, guid: d3d974f23f1555945bd50cfe6fbd6180, type: 3}
   wireLayoutGroup: {fileID: 2019319610362583967}
   slotLayoutGroup: {fileID: 2111435337004362607}
-  wireColor: {r: 0, g: 0, b: 0, a: 0}
-  slotColor: {r: 0, g: 0, b: 0, a: 0}
-  wireCharColor: 97
-  slotCharColor: 97
+  wireColor: 0
+  slotColor: 0
+  dragAreaRectTransform: {fileID: 1674073691359628332}
 --- !u!224 &8781909635251099194 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}

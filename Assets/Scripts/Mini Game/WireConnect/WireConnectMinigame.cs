@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using System.Threading;
 using UnityEngine;
 
 public class WireConnectMinigame : AbstractMinigame
@@ -10,10 +12,9 @@ public class WireConnectMinigame : AbstractMinigame
     public GameObject slotPrefab;
     public Transform wireLayoutGroup;
     public Transform slotLayoutGroup;
-    public Color wireColor;
-    public Color slotColor;
-    public char wireCharColor = 'a';
-    public char slotCharColor = 'a';
+    public MinigameWire.WireColors wireColor;
+    public MinigameSlot.SlotColors slotColor;
+    public RectTransform dragAreaRectTransform;
 
     // Start is called before the first frame update
     void Start()
@@ -21,38 +22,50 @@ public class WireConnectMinigame : AbstractMinigame
         StartGame();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        // Check for win condition
-        if (CheckWinCondition())
-        {
-            Debug.Log("You win!");
-            // Handle win condition (e.g., end the game, show a message, etc.)
-        }
-    }
-
     public override void StartGame()
     {
         isStarted = true;
         // Initialize wires and slots
         SpawnWiresAndSlots();
+        StartCoroutine(CheckWinCoroutine());
+    }
+
+    public IEnumerator CheckWinCoroutine()
+    {
+        while (isStarted)
+        {
+            yield return new WaitForSeconds(0.5f);
+            // Check for win condition
+            if (CheckWinCondition())
+            {
+                Debug.Log("You win!");
+                // Handle win condition (e.g., end the game, show a message, etc.)
+                break;
+            }
+        }
     }
 
     private void SpawnWiresAndSlots()
     {
-        foreach (var wire in wires)
-        {
-            var wireInstance = Instantiate(wirePrefab, wireLayoutGroup);
-            //wireInstance.GetComponent<Renderer>().material.color = wireColor;
-            wireInstance.GetComponent<MinigameWire>().wireColor = wireCharColor;
-        }
+        // Shuffle the colors
+        var wireColors = new List<MinigameWire.WireColors> { MinigameWire.WireColors.Red, MinigameWire.WireColors.Green, MinigameWire.WireColors.Blue, MinigameWire.WireColors.Yellow };
+        var slotColors = new List<MinigameSlot.SlotColors> { MinigameSlot.SlotColors.Red, MinigameSlot.SlotColors.Green, MinigameSlot.SlotColors.Blue, MinigameSlot.SlotColors.Yellow };
+        wireColors = wireColors.OrderBy(a => System.Guid.NewGuid()).ToList();
+        slotColors = slotColors.OrderBy(a => System.Guid.NewGuid()).ToList();
 
-        foreach (var slot in slots)
+        for (int i = 0; i < slots.Count; i++)
         {
             var slotInstance = Instantiate(slotPrefab, slotLayoutGroup);
-            //slotInstance.GetComponent<Renderer>().material.color = slotColor;
-            slotInstance.GetComponent<MinigameSlot>().slotColor = slotCharColor;
+            slotInstance.GetComponent<MinigameSlot>().slotColor = slotColors[i];
+            slots[i] = slotInstance.GetComponent<MinigameSlot>();
+        }
+
+        for (int i = 0; i < wires.Count; i++)
+        {
+            var wireInstance = Instantiate(wirePrefab, wireLayoutGroup);
+            wireInstance.GetComponent<MinigameWire>().wireColor = wireColors[i];
+            wireInstance.GetComponent<MinigameWire>().dragAreaRectTransform = dragAreaRectTransform;
+            wires[i] = wireInstance.GetComponent<MinigameWire>();
         }
     }
 
@@ -60,8 +73,8 @@ public class WireConnectMinigame : AbstractMinigame
     {
         foreach (var slot in slots)
         {
-            // Check if each slot has the correct wire
-            // Implement your logic here
+            if (slot.isConnected)
+                return true;
         }
         return false;
     }

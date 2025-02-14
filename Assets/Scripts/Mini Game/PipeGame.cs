@@ -22,7 +22,7 @@ public class PipeGame : AbstractMinigame
     public void Start(){
         StartGame();
     }
-
+    // Teste
    public override void StartGame() { 
     System.Random rnd = new();
     // Initialize the first and ending pipe

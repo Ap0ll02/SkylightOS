@@ -73,9 +73,9 @@ public class WireConnectMinigame : AbstractMinigame
     {
         foreach (var slot in slots)
         {
-            if (slot.isConnected)
-                return true;
+            if (!slot.isConnected)
+                return false;
         }
-        return false;
+        return true;
     }
 }

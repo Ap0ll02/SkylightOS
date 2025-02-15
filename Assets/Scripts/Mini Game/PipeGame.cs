@@ -1,14 +1,12 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
-// TODO 87 is ending pipe. 0 is first
 
-// TODO YOOOOOOOO
-/*
-    Ok so, we send an 'object' through the first pipe, it tries all connected paths it can and if any end with 87, or even contain 87 tbh, then we know it worked!
-*/
+// Jack Ratermann
+// Pipe game for the GPU
+// Depends on: BasicWindow.cs
 public class PipeGame : AbstractMinigame
 {
     public List<GameObject> PipePrefab;
@@ -18,11 +16,12 @@ public class PipeGame : AbstractMinigame
     public bool gameRunning = false;
 
     public List<GameObject> ConnectedPath;
+    public event Action GameOverEvent;
 
     public void Start(){
         GetComponent<BasicWindow>().CloseWindow();
     }
-    // Teste
+
    public override void StartGame() { 
     GetComponent<BasicWindow>().OpenWindow();
     System.Random rnd = new();
@@ -133,14 +132,24 @@ public class PipeGame : AbstractMinigame
         }
     }
 
-    // Needs to be updated for both connections, we need more debug statements to see where things go wrong. 
+    // Check if there is a path from start to end
     public bool CheckPath(int start, int end) {
         HashSet<int> visited = new();
-        return DFS(start, end, visited);
+        List<int> path = new();
+        bool result = DFS(start, end, visited, path);
+        if(result){
+            ConnectedPath.Clear();
+            foreach(int index in path){
+                ConnectedPath.Add(SpawnedPipes[index]);
+            }
+        }
+        return result;
     }
 
-    private bool DFS(int current, int end, HashSet<int> visited){
+    // Depth First Search to find a path from start to end, and add to the connectedpath
+    private bool DFS(int current, int end, HashSet<int> visited, List<int> path){
         if(current == end){
+            path.Add(current);
             return true;
         }
         visited.Add(current);
@@ -148,15 +157,16 @@ public class PipeGame : AbstractMinigame
         foreach(var direction in directions){
             int neighbor = current + direction;
             if(neighbor >= 0 && neighbor < SpawnedPipes.Count && !visited.Contains(neighbor)){
-                if(PipesConnected(current, neighbor) && DFS(neighbor, end, visited)){
+                if(PipesConnected(current, neighbor) && DFS(neighbor, end, visited, path)){
+                    path.Add(current);
                     return true;
                 }
             }
         }
-
         return false;
     }
 
+    // Check if two pipes are connected
     private bool PipesConnected(int current, int neighbor){
         var currentPipe = SpawnedPipes[current].GetComponent<pipe>();
         var neighborPipe = SpawnedPipes[neighbor].GetComponent<pipe>();
@@ -177,13 +187,14 @@ public class PipeGame : AbstractMinigame
     }
 
     public void GameOver() {
+        GameOverEvent?.Invoke();
         gameRunning = false;
         Debug.Log("Game Over");
-        foreach(var pipe in SpawnedPipes){
+        foreach(var pipe in ConnectedPath){
             pipe.GetComponent<ParticleSystem>().Play();
             pipe.GetComponent<RawImage>().color = Color.blue;
         }
-        StartCoroutine(DestroyAfterSeconds(8));
+        StartCoroutine(DestroyAfterSeconds(5));
     }
 
     public IEnumerator DestroyAfterSeconds(float seconds){

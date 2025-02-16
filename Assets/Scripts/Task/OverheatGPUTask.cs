@@ -42,7 +42,7 @@ public class OverheatGPUTask : AbstractTask
         }
     }
 
-    private void OEnable()
+    private void OnEnable()
     {
         pg.GameOverEvent += CompleteTask;        
     }

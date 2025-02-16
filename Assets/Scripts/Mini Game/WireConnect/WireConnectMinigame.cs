@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.CompilerServices;
 using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class WireConnectMinigame : AbstractMinigame
@@ -16,18 +18,51 @@ public class WireConnectMinigame : AbstractMinigame
     public MinigameSlot.SlotColors slotColor;
     public RectTransform dragAreaRectTransform;
 
+    // Reference to the window
+    public BasicWindow window;
+
+    public int numRounds = 2;
+    public int currentRound;
+
+    private void Awake()
+    {
+        window = GetComponent<BasicWindow>();
+    }
+     
     // Start is called before the first frame update
     void Start()
     {
-        StartGame();
+        currentRound = 1;
+        TryStartGame();
+    }
+
+    public void TryStartGame()
+    {
+        if (!isStarted)
+        {
+            StartGame();
+        }
+        else
+        {
+            Debug.Log("Game already started!");
+        }
     }
 
     public override void StartGame()
     {
         isStarted = true;
-        // Initialize wires and slots
-        SpawnWiresAndSlots();
+        window.isClosable = false;
+
         StartCoroutine(CheckWinCoroutine());
+        SpawnWiresAndSlots();
+  
+    }
+
+    public void FinishGame()
+    {
+        Debug.Log("Wire Minigame Completed! ");
+        isStarted = false;
+        window.isClosable = true;
     }
 
     public IEnumerator CheckWinCoroutine()
@@ -38,10 +73,37 @@ public class WireConnectMinigame : AbstractMinigame
             // Check for win condition
             if (CheckWinCondition())
             {
-                Debug.Log("You win!");
-                // Handle win condition (e.g., end the game, show a message, etc.)
+                Debug.Log("Round " + currentRound + " completed!" );
+                FinishMinigameRound();
                 break;
             }
+        }
+    }
+
+    private void FinishMinigameRound()
+    {
+        StopAllCoroutines();
+        // Clean up the minigame
+        foreach (var wire in wires)
+        {
+            Destroy(wire.gameObject);
+        }
+        foreach (var slot in slots)
+        {
+            Destroy(slot.gameObject);
+        }
+
+        currentRound++;
+
+        if (currentRound <= numRounds)
+        {
+            // Start the next round
+            SpawnWiresAndSlots();
+            StartCoroutine(CheckWinCoroutine());
+        }
+        else
+        {
+            FinishGame();
         }
     }
 

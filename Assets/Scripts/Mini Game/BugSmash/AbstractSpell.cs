@@ -1,13 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public abstract class AbstractSpell : MonoBehaviour
 {
     // Start is called before the first frame update
+    public Vector2 direction;
     public int manaCost;
     public int spellDamage;
+    public float speed;
+    public float maxLifetime;
+    public AnimatorController animationController;
     public Animator animator;
     public AnimationClip travelAnimation;
     public AnimationClip ExplosionAnimation;
@@ -17,7 +22,7 @@ public abstract class AbstractSpell : MonoBehaviour
     // This is the function that is called when the Bug tag is collided with a spell. This means that this function is only called
     // when the spell collides with a game object that has the Bug tag.
     // This is what happens to object B, the object that is being collided into.
-    public abstract void CastSpell();
+    public abstract void CastSpell(Vector2 direction);
     public abstract void SpellLife();
 
     private void SpellHit(Collision2D collision)
@@ -35,9 +40,16 @@ public abstract class AbstractSpell : MonoBehaviour
         }
     }
 
+
+
+    public void TravelAnimation()
+    {
+        animator.SetTrigger("Travel");
+    }
+
     public void explosionAnimation()
     {
-
+        animator.SetTrigger("Hit");
     }
 
 }

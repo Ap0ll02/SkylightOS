@@ -48,7 +48,6 @@ public class UpdateTask : AbstractTask
     void HandleMinigameStarted()
     {
         startHazards();
-        //northstar.WriteHint("OH SHIT WE GOTTA PUT THE RAM IN THE RAM SLOTS", Northstar.Style.warm);
     }
 
     void HandleMinigameEnded()

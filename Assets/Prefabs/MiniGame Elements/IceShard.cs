@@ -1,44 +1,77 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEditor.Animations;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class IceShard : AbstractSpell
+public class IceShard : MonoBehaviour
 {
-// Spell Variables
+    public float currentLifeTime;
+    public float maxLifeTime;
+    public float speed;
+    public Vector3 direction;
+    public bool isDestroyed;
+    public int manaCost;
+    public int spellDamage;
+    public AnimatorController animationController;
+    private Animator animator;
+    //public Image image;
+    //public Sprite spriteArray;
 
-    private float currentLifetime;
-    private bool isDestroyed = false;
-    public void  start()
+
+    public void  Start()
     {
-        animator =  animationController.GetComponent<Animator>();
+        //animator =  animationController.GetComponent<Animator>();
         manaCost = 1;
-        spellDamage = 2;
+        spellDamage = 1;
+        speed = 7;
+        maxLifeTime = 4;
+        currentLifeTime = 0;
+        isDestroyed = false;
     }
 
-    void Update()
-    {
-        SpellLife();
-        transform.position = (Vector2)transform.position + direction * speed * Time.deltaTime;
-    }
 
-    public override void CastSpell(Vector2 target)
+// Move the projectile every frame
+    public void Update()
     {
-        direction = (target - (Vector2)transform.position).normalized;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        transform.rotation = Quaternion.Euler(new Vector3(0, 0, angle));
-    }
-
-    public override void SpellLife()
-    {
-        currentLifetime += Time.deltaTime;
-        if (currentLifetime >= maxLifetime)
+        if (direction != Vector3.zero)
         {
-            animator.SetTrigger("Hit");
-            Destroy(gameObject);
-            isDestroyed = true;
-            return;
+            transform.position += direction * speed * Time.deltaTime; // Move toward the target
         }
+        // Handle the ice shard’s lifetime
+        SpellLife();
+    }
+
+    public void SpellLife()
+    {
+        currentLifeTime += Time.deltaTime;
+        if (currentLifeTime >= maxLifeTime)
+        {
+            if (animator) animator.SetTrigger("Hit"); // Trigger animator if available
+            Destroy(gameObject); // Destroy the ice shard
+            isDestroyed = true;
+        }
+    }
+
+    private void SpellHit(Collision2D collision)
+    {
+        var bug = collision.gameObject.GetComponent<AbstractBug>();
+        bug.TakeDamage(spellDamage);
+        explosionAnimation();
+    }
+    // This event is reffering to what happens when this object collides into object B. If object B is a Bug we do damage!
+    public void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Bug"))
+        {
+            SpellHit(collision);
+        }
+    }
+
+    public void explosionAnimation()
+    {
+        animator.SetTrigger("Hit");
     }
 
 

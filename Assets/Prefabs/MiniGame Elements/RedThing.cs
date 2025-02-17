@@ -17,6 +17,7 @@ public class RedThing : AbstractBug
     public void Update()
     {
         TrackPlayer();
+        base.GameOverCheck();
     }
 }
 

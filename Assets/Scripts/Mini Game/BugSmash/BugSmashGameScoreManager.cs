@@ -9,9 +9,7 @@ public class BugSmashGameScoreManager : MonoBehaviour
     // Amount of bugs that we need to kill
     public int winScore = 1000;
     // In this rendition this is the amount of hearts the player has
-    public int loseScore;
-    public bool winReached = false;
-    public bool lossReached = false;
+    public bool gameOver = false;
 
     public CatGirlWizard player;
 
@@ -38,21 +36,17 @@ public class BugSmashGameScoreManager : MonoBehaviour
     // If they reached the win score or if they reached the lossScore. So make sure you are checking both bools for game condition check
     public void ScoreCheck()
     {
-        if (score >= winScore)
+        if (score >= winScore || player.isDead)
         {
-            winReached = true;
-        }
-        else if (player.isDead)
-        {
-            lossReached = true;
+            gameOver = true;
         }
     }
 
     public void ResetScore()
     {
+
         score = 0;
-        winReached = false;
-        lossReached = false;
+        gameOver = false;
     }
 
 }

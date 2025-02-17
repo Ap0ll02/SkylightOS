@@ -70,7 +70,6 @@ public abstract class AbstractBug : MonoBehaviour
         //animator.SetTrigger("Move");
         Vector2 currentPosition = this.transform.position;
         Vector2 playerPosition = catGirl.transform.position;
-
         this.transform.position = Vector2.MoveTowards(
             currentPosition,
             playerPosition,
@@ -103,6 +102,7 @@ public abstract class AbstractBug : MonoBehaviour
     // Will play the bug death animation when it is destroyed
     private void OnDestroy()
     {
+        scoreManager.AddScore(score);
         Debug.Log("Bug Destroyed");
         //animator.SetTrigger("Death");
     }
@@ -112,6 +112,14 @@ public abstract class AbstractBug : MonoBehaviour
         CoolDown = true;         // Set cooldown flag to true
         yield return new WaitForSeconds(1f); // Wait for 1 second
         CoolDown = false;        // Reset cooldown flag
+    }
+
+    public void GameOverCheck()
+    {
+        if (scoreManager.gameOver)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }

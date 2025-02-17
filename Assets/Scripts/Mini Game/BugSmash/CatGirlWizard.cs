@@ -8,40 +8,64 @@ using UnityEngine.InputSystem;
 public class CatGirlWizard : MonoBehaviour
 {
     public GameObject iceBallPrefab; // Reference to the Ice Ball prefab
+    public GameObject BugSmashWindow;
     public BasicWindow window;
-    public float moveSpeed = 5f;
+
+    public float moveSpeed = 4f;
 
     private Animator animator;
     public InputActionReference move;
     public InputActionReference shoot;
-
     public Rigidbody2D catGirlBody;
-    public int Hearts = 3;
-    public int Mana = 10;
+
+    public int maxHearts = 10;
+    public int hearts;
+    public int Mana = 100;
 
     public Vector2 moveDirection;
-    public bool isDead = false;
-    public bool playGame = false;
+    public bool isDead;
+    public bool isSpellOnCooldown = false;
+    public float spellCooldown = 0.25f;
+
 
     private void Start()
     {
+
         // Reference the Animator component attached to the GameObject
         animator = GetComponent<Animator>();
+        isDead = false;
+        hearts = maxHearts;
     }
 
     public void TakeDamage(int damage)
     {
-        Hearts -= damage;
+        hearts -= damage;
+        if(hearts <= 0 )
+            isDead = true;
     }
 
     public void Heal(int heal)
     {
-        Hearts += heal;
+        hearts += heal;
     }
 
     public void CastSpell()
     {
+        if (isSpellOnCooldown)
+            return;
+        isSpellOnCooldown = true;
+        Vector2 mousePosition = Mouse.current.position.ReadValue();
+        Vector3 worldPosition = Camera.main.ScreenToWorldPoint(mousePosition);
+        worldPosition.z = 0;
 
+        //GameObject iceBall = Instantiate(iceBallPrefab, transform.position, Quaternion.identity);
+        Vector3 dir = (worldPosition - transform.position);
+        float angle = Mathf.Atan2(dir.y,dir.x) * Mathf.Rad2Deg + 180;
+        GameObject iceBall = Instantiate(iceBallPrefab, transform.position, Quaternion.AngleAxis(angle, Vector3.forward),BugSmashWindow.transform);
+
+        iceBall.GetComponent<IceShard>().direction = dir;
+        iceBall.GetComponent<IceShard>().transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+        StartCoroutine(SpellCoolDown(spellCooldown));
     }
 
 
@@ -51,21 +75,15 @@ public class CatGirlWizard : MonoBehaviour
         {
             moveDirection = move.action.ReadValue<Vector2>();
             MoveDirection();
-            //Shoot();
             yield return null;
         }
     }
 
 
 
-    private void OnShootPerformed(InputAction.CallbackContext context)
-
+    public void OnShootPerformed(InputAction.CallbackContext context)
     {
-        Vector3 mousePos = Camera.main.ScreenToWorldPoint(context.ReadValue<Vector2>());
-        mousePos.z = 0; // Ensure the Z-coordinate matches your game's plane.
-        GameObject newIceBall = Instantiate(iceBallPrefab, transform.position, Quaternion.identity);
-        var iceball = newIceBall.GetComponent<AbstractSpell>();
-        iceball.CastSpell(mousePos);
+        CastSpell();
     }
 
     public void MoveDirection()
@@ -104,8 +122,10 @@ public class CatGirlWizard : MonoBehaviour
 
     private void OnEnable()
     {
-        StartCoroutine(ControlCatGirl());
         move.action.Enable();
+        shoot.action.Enable();
+        StartCoroutine(ControlCatGirl());
+        shoot.action.performed += OnShootPerformed;
     }
 
     // This unsubscribes form the events so we can keep our code nice and clean
@@ -113,7 +133,22 @@ public class CatGirlWizard : MonoBehaviour
     {
         // Unsubscribe from the movement events and disables input
         move.action.Disable();
+        shoot.action.Disable();
+        shoot.action.performed -= OnShootPerformed;
     }
 
+    public void ResetCatgirl()
+    {
+        hearts = maxHearts;
+        isDead = false;
+        Mana = 100;
+        isSpellOnCooldown = false;
+    }
+
+    IEnumerator SpellCoolDown(float time)
+    {
+        yield return new WaitForSeconds(time);
+        isSpellOnCooldown = false;
+    }
 
 }

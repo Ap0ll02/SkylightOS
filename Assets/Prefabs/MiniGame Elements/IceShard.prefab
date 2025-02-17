@@ -12,9 +12,11 @@ GameObject:
   - component: {fileID: 1078194038166806005}
   - component: {fileID: 3730412157182000015}
   - component: {fileID: -1649283467131732619}
+  - component: {fileID: 1510813339166422208}
+  - component: {fileID: -3290686815608915460}
   m_Layer: 0
   m_Name: IceShard
-  m_TagString: Untagged
+  m_TagString: Spell
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -27,13 +29,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2539185157295264741}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: -0.4260793, w: 0.90468585}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 500, y: 500, z: 1}
+  m_LocalScale: {x: 1888.812, y: 1353.4344, z: 107.99999}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: -50.438}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!95 &1078194038166806005
 Animator:
   serializedVersion: 5
@@ -119,12 +121,83 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5c05f8a37f1a24e41af6c73ff1928949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  direction: {x: 0.636912, y: -0.77093655}
+  currentLifeTime: 0
+  maxLifeTime: 0
+  speed: 0
+  direction: {x: 0, y: 0, z: 0}
+  isDestroyed: 0
   manaCost: 0
   spellDamage: 0
-  speed: 0
-  maxLifetime: 0
   animationController: {fileID: 9100000, guid: 83fc4bc9ee6f2814d94a8ba4b3296c87, type: 2}
-  animator: {fileID: 1078194038166806005}
-  travelAnimation: {fileID: 7400000, guid: 1d9a34097e80c334fb02b069c0fbb2b0, type: 2}
-  ExplosionAnimation: {fileID: 7400000, guid: f4fe705d313fef94da4e77d69e94341e, type: 2}
+--- !u!61 &1510813339166422208
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2539185157295264741}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 0.12, y: 0.07}
+    newSize: {x: 0.12, y: 0.07}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 0.12, y: 0.07}
+  m_EdgeRadius: 0
+--- !u!50 &-3290686815608915460
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2539185157295264741}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 1
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 4

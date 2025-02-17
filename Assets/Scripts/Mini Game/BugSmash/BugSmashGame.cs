@@ -3,21 +3,22 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class BugSmashGame : MonoBehaviour
 {
 
     // Controls the spawn of bugs
     // Time interval (in seconds) for spawning mail objects.
-    public float spawnInterval = 1f;
+    public float spawnInterval = 0.5f;
     public int spawnCount = 0;
     public int spawnMax = 10;
     public GameObject[] bugs;
 
     // Reference to the BasicWindow component used to manage opening and closing game menus.
     public BasicWindow window;
-
     public GameObject updateWindow;
+
     // THIS IS VERY VERY IMPORTANT IS GUIDES WHERE THINGS SPAWN VIA THE WINDOW DIMENSIONS
     public Rect windowArea;
 
@@ -54,6 +55,7 @@ public class BugSmashGame : MonoBehaviour
         window.CloseWindow();
         scoreManager = FindObjectOfType<BugSmashGameScoreManager>();
         windowArea = updateWindow.GetComponent<RectTransform>().rect;
+
         if (player == null)
         {
             player = GameObject.FindGameObjectWithTag("CatGirlWizardPlayer");
@@ -90,10 +92,11 @@ public class BugSmashGame : MonoBehaviour
         if (!player.activeSelf)
         {
             player.SetActive(true);
+
         }
         // Set the game states to indicate it is running.
         playingGame = true;
-        isGameOver = false;
+        scoreManager.ResetScore();
 
         // Start the spawning process for mail packets.
         StartCoroutine(SpawnBugs());
@@ -105,12 +108,13 @@ public class BugSmashGame : MonoBehaviour
     // Main gameplay loop, executed every frame while the game is active.
     public IEnumerator PlayingGame()
     {
-        while (!isGameOver) // Keep looping unless the game ends.
+        while (!scoreManager.gameOver) // Keep looping unless the game ends.
         {
             // Executes the following checks and methods:
             WinCheck(); // Check if win or lose conditions are fulfilled.
             yield return null; // Wait until the next frame.
         }
+        player.GetComponent<CatGirlWizard>().ResetCatgirl();
         player.SetActive(false);
         //BugSmashGameEndNotify?.Invoke();
         window.CloseWindow();
@@ -119,29 +123,18 @@ public class BugSmashGame : MonoBehaviour
     // Checks win and lose conditions by utilizing the UpdateGameScoreManager.
     public void WinCheck()
     {
-
         scoreManager.ScoreCheck(); // Check scores using the score manager.
-        if (scoreManager.winReached) // If the win condition is met.
+        if (scoreManager.gameOver || player.GetComponent<CatGirlWizard>().isDead) // If the win condition is met.
         {
             // Stop the game and update the UI to indicate success.
             playingGame = false;
-            isGameOver = true;
-            scoreManager.ResetScore();
-
-        }
-        else if (scoreManager.lossReached) // If the loss condition is met.
-        {
-            // Stop the game and update the UI to indicate failure.
-            playingGame = false;
-            isGameOver = true;
-            scoreManager.ResetScore();
         }
     }
 
     // Coroutine responsible for repeatedly spawning mail objects.
     private IEnumerator SpawnBugs()
     {
-        while (!isGameOver) // Continuously spawn mail while the game is active.
+        while (!scoreManager.gameOver) // Continuously spawn mail while the game is active.
         {
             // Instantiate a random Bug prefab from the array.
             GameObject bug = Instantiate(bugs[UnityEngine.Random.Range(0, bugs.Length)],

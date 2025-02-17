@@ -8,7 +8,7 @@ public class Spider : AbstractBug
     public void Start()
     {
         score = 40;
-        moveSpeed = UnityEngine.Random.Range(0.5f, 1.5f);
+        moveSpeed = UnityEngine.Random.Range(0.1f, 2f);
         damage = 3;
         hearts = 6;
         base.Start();
@@ -17,6 +17,7 @@ public class Spider : AbstractBug
     public void Update()
     {
         TrackPlayer();
+        base.GameOverCheck();
     }
 
     // Update is called once per frame

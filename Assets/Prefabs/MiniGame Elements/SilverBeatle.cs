@@ -17,5 +17,6 @@ public class SilverBeatle : AbstractBug
     void Update()
     {
         TrackPlayer();
+        base.GameOverCheck();
     }
 }

@@ -18,5 +18,6 @@ public class OrangeBeatle : AbstractBug
     void Update()
     {
         TrackPlayer();
+        base.GameOverCheck();
     }
 }

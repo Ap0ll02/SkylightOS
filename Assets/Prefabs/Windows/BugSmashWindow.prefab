@@ -121,9 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   score: 0
   winScore: 1000
-  loseScore: 0
-  winReached: 0
-  lossReached: 0
+  gameOver: 0
   player: {fileID: 7176569819165351065}
 --- !u!1001 &942416840944340925
 PrefabInstance:

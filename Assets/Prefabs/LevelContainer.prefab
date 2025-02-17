@@ -540,6 +540,7 @@ PrefabInstance:
     - {fileID: 2421223467402422693, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
     - {fileID: 5037567461279109094, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
     - {fileID: 3668396117824967852, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+    - {fileID: 8628738918239265831, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4681667716897255497, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
       insertIndex: 5
@@ -1673,7 +1674,7 @@ MonoBehaviour:
   isComplete: 0
   taskTitle: Update Task
   taskDescription: This Task is all about updating things!
-  UpdatePannelObject: {fileID: 0}
+  updateGameWindow: {fileID: 0}
   updatePannel: {fileID: 8238661168895648350}
 --- !u!4 &7309691829816682672 stripped
 Transform:

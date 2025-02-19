@@ -33,7 +33,8 @@ public class WireConnectMinigame : AbstractMinigame
     void Start()
     {
         currentRound = 1;
-        TryStartGame();
+        numRounds = 2;
+        window.CloseWindow();
     }
 
     public void TryStartGame()
@@ -52,6 +53,7 @@ public class WireConnectMinigame : AbstractMinigame
     {
         isStarted = true;
         window.isClosable = false;
+        window.OpenWindow();
 
         StartCoroutine(CheckWinCoroutine());
         SpawnWiresAndSlots();
@@ -62,7 +64,15 @@ public class WireConnectMinigame : AbstractMinigame
     {
         Debug.Log("Wire Minigame Completed! ");
         isStarted = false;
+        isComplete = true;
         window.isClosable = true;
+        StartCoroutine(FinishGameCoroutine());
+    }
+
+    public IEnumerator FinishGameCoroutine()
+    {
+        yield return new WaitForSeconds(1f);
+        window.CloseWindow();
     }
 
     public IEnumerator CheckWinCoroutine()

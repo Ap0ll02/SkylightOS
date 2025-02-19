@@ -63,19 +63,6 @@ public class MinigameWire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
         StartCoroutine(SetInitialPositionAfterLayout());
     }
 
-    private IEnumerator SetInitialPositionAfterLayout()
-    {
-        // Wait for the end of the frame to ensure the layout has been updated
-        yield return new WaitForEndOfFrame();
-
-        // Set the initial position of the wire in local space
-        initialPosition = rectTransform.position;
-        Vector3 direction = rectTransform.position - initialPosition;
-        float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        rectTransform.rotation = Quaternion.Euler(0, 0, angle - 90); // Adjust the angle by subtracting 90 degrees
-        SetWireColor();
-    }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (eventData.button == PointerEventData.InputButton.Left && isDraggable)
@@ -104,7 +91,7 @@ public class MinigameWire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
             lineRenderer.SetPosition(1, rectTransform.position);
 
             // Rotate the wire to match the direction of the LineRenderer
-            Vector3 direction = rectTransform.position - initialPosition;
+            Vector3 direction = rectTransform.anchoredPosition - (Vector2)initialPosition;
             float angle = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
             rectTransform.rotation = Quaternion.Euler(0, 0, angle - 90); // Adjust the angle by subtracting 90 degrees
         }
@@ -158,4 +145,53 @@ public class MinigameWire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
         lineRenderer.endColor = color;
         plugImage.color = color;
     }
+
+    private Vector3 initialOffset;
+
+    private IEnumerator SetInitialPositionAfterLayout()
+    {
+        // Wait for the end of the frame to ensure the layout has been updated
+        yield return new WaitForEndOfFrame();
+
+        // Set the initial position of the wire in local space
+        initialPosition = rectTransform.position;
+        SetWireColor();
+
+        // Calculate the initial offset relative to the parent's parent
+        RectTransform parentParentRectTransform = rectTransform.parent.parent.GetComponent<RectTransform>();
+        initialOffset = initialPosition - parentParentRectTransform.position;
+
+        // Set the initial position of the LineRenderer
+        lineRenderer.positionCount = 2;
+        lineRenderer.SetPosition(0, new Vector3(initialPosition.x, initialPosition.y, 0));
+        lineRenderer.SetPosition(1, new Vector3(rectTransform.position.x, rectTransform.position.y, 0));
+
+        // Start the UpdateLineRenderer coroutine
+        StartCoroutine(UpdateLineRenderer());
+    }
+
+
+    private IEnumerator UpdateLineRenderer()
+    {
+        RectTransform parentParentRectTransform = rectTransform.parent.parent.GetComponent<RectTransform>();
+
+        while (true)
+        {
+            // Update the start position of the LineRenderer to match the initial offset relative to the parent's parent
+            if (lineRenderer.positionCount > 0)
+            {
+                Vector3 parentParentPosition = parentParentRectTransform.position;
+                lineRenderer.SetPosition(0, new Vector3(parentParentPosition.x + initialOffset.x, parentParentPosition.y + initialOffset.y, 0));
+            }
+
+            // Update the end position of the LineRenderer to match the current position of the wire
+            if (lineRenderer.positionCount > 1)
+            {
+                lineRenderer.SetPosition(1, new Vector3(rectTransform.position.x, rectTransform.position.y, 0));
+            }
+
+            yield return null; // Wait for the next frame
+        }
+    }
+
 }

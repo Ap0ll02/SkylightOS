@@ -140,7 +140,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Start Firmware Download
+  m_text: Reconnect Peripherals
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 1ffb8c3515fb6dc4688eff5a7e48200f, type: 2}
   m_sharedMaterial: {fileID: 7453642021753212536, guid: 1ffb8c3515fb6dc4688eff5a7e48200f, type: 2}
@@ -1133,6 +1133,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3360279094286895577, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
+      propertyPath: isClosable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4985135885990256120, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_Name
       value: PeripheralWindow
@@ -1183,10 +1187,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 16205751f9a43c2478c1b9e749709679, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  window: {fileID: 0}
   downloadButton: {fileID: 5328558327080814791}
   connectButton: {fileID: 5069573814806121289}
   loadingBar: {fileID: 2116254696811617761}
   loadingScript: {fileID: 392363342308151473}
+  minigameWindow: {fileID: 0}
+  wireConnectMinigame: {fileID: 0}
   currentState: 0
 --- !u!224 &6399081875399106186 stripped
 RectTransform:

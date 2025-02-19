@@ -22,8 +22,8 @@ public class PeripheralWindow : MonoBehaviour
     public LoadingScript loadingScript;
 
     // Minigame reference
-    public WireConnectMinigame minigame;
     public GameObject minigameWindow;
+    public WireConnectMinigame wireConnectMinigame;
 
     // Messages to let the task know that we have started and finished loading
     public event Action OnLoadingStart;
@@ -33,6 +33,7 @@ public class PeripheralWindow : MonoBehaviour
     public event Action OnConnectStart;
     public event Action OnConnectComplete;
 
+    private bool alreadyOpened;
     public enum PeripheralState
     {
         Start,
@@ -44,24 +45,23 @@ public class PeripheralWindow : MonoBehaviour
 
     public PeripheralState currentState;
 
+    public void Awake()
+    {
+        window = GetComponent<BasicWindow>();
+        wireConnectMinigame = FindObjectOfType<WireConnectMinigame>();
+        alreadyOpened = false;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        window.CloseWindow();
         UpdateState(PeripheralState.Start);
-    }
-
-    void OnEnable()
-    {
-        window.OnWindowOpen += StartState;
-    }
-
-    private void OnDisable()
-    {
-        window.OnWindowOpen -= StartState;
     }
 
     void StartState()
     {
+        window.isClosable = false;
         UpdateState(PeripheralState.Start);
         loadingScript.Reset();
     }
@@ -80,8 +80,6 @@ public class PeripheralWindow : MonoBehaviour
         OnLoadingComplete?.Invoke();
     }
 
-
-
     private IEnumerator CheckLoadingDone()
     {
 
@@ -89,7 +87,6 @@ public class PeripheralWindow : MonoBehaviour
         {
             yield return null;
         }
-        // Update the diagnosis window here
         FinishDownload();
     }
 
@@ -98,17 +95,19 @@ public class PeripheralWindow : MonoBehaviour
         UpdateState(PeripheralState.Connecting);
         OnConnectStart?.Invoke();
         StartCoroutine(CheckMinigameDone());
+        wireConnectMinigame.TryStartGame();
     }
 
     public void FinishConnectMinigame()
     {
         UpdateState(PeripheralState.Connected);
         OnConnectComplete?.Invoke();
+        window.isClosable = true;
     }
 
     private IEnumerator CheckMinigameDone()
     {
-        while(minigame.isStarted)
+        while(!wireConnectMinigame.isComplete)
         {
             yield return null;
         }
@@ -118,6 +117,7 @@ public class PeripheralWindow : MonoBehaviour
 
     private void UpdateState(PeripheralState newState)
     {
+        currentState = newState;
         switch (newState)
         {
             case PeripheralState.Start:
@@ -148,6 +148,20 @@ public class PeripheralWindow : MonoBehaviour
             default:
                 Debug.LogError("You broke it you fuck fuck fuck sandwich fuckhead fuck shit fuck");
                 break;
+        }
+    }
+
+    public void TryOpenWindow()
+    {
+        if(!alreadyOpened)
+        {
+            alreadyOpened = true;
+            window.OpenWindow();
+            StartState();
+        }    
+        else
+        {
+            Debug.Log("This shit already opened bruh wtf wrong with u");
         }
     }
 }

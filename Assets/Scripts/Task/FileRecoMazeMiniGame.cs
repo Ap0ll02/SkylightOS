@@ -37,6 +37,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
                     filePiece.Add(Instantiate(filePrefab, parent: parentMaze.GetComponent<RectTransform>()));
                     mazePieces.Add(filePiece[evIndex]);
                     evIndex++;
+                    i--;
                     continue;
             }
 

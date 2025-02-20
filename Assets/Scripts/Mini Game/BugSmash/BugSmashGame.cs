@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = System.Random;
 
 public class BugSmashGame : MonoBehaviour
 {
@@ -136,12 +137,14 @@ public class BugSmashGame : MonoBehaviour
     {
         while (!scoreManager.gameOver) // Continuously spawn mail while the game is active.
         {
+            windowArea = updateWindow.GetComponent<RectTransform>().rect;
             // Instantiate a random Bug prefab from the array.
             GameObject bug = Instantiate(bugs[UnityEngine.Random.Range(0, bugs.Length)],
             playerRectTransform.parent);
             bug.GetComponent<AbstractBug>().window = window;
-            // Fetch the RectTransform of the spawned mail object.
+            // Fetch the RectTransform of the spawned bug object.
             RectTransform rectTransform = bug.GetComponent<RectTransform>();
+            // need to add the transform from the bug to bound it but mehhhhh
 
             // Wait for the specified spawn interval before repeating.
             yield return new WaitForSeconds(spawnInterval);

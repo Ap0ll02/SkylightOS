@@ -14,6 +14,7 @@ public abstract class AbstractBug : MonoBehaviour
     public int score;
 
     public bool CoolDown;
+    public bool Isdone;
 
     public float moveSpeed;
     public Vector2 distance;
@@ -22,6 +23,10 @@ public abstract class AbstractBug : MonoBehaviour
     private Animator animator;
 
     public BugSmashGameScoreManager scoreManager;
+
+
+    public Sprite[] sprites;
+    public int spriteIndex;
 
 
     // Start is called before the first frame update
@@ -109,9 +114,12 @@ public abstract class AbstractBug : MonoBehaviour
 
     private IEnumerator AttackCooldown()
     {
-        CoolDown = true;         // Set cooldown flag to true
-        yield return new WaitForSeconds(1f); // Wait for 1 second
-        CoolDown = false;        // Reset cooldown flag
+        // Set cooldown flag to true
+        CoolDown = true;
+        //Wait for a second for the attack
+        yield return new WaitForSeconds(1f);
+        // Reset cooldown flag
+        CoolDown = false;
     }
 
     public void GameOverCheck()
@@ -120,6 +128,17 @@ public abstract class AbstractBug : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+    }
+
+    public void PlayTravellingAnimation()
+    {
+        StartCoroutine(PlayAnimation);
+    }
+
+    IEnumerator PlayAnimation()
+    {
+        yield return new WaitForSeconds(0.5f);
+        if()
     }
 
 }

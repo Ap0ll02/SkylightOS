@@ -96,6 +96,7 @@ public class SystemResourcesWindow : MonoBehaviour
                 break;
             case (GPUStatus.WARNING):
                 GPUStatusText.text = "WARNING";
+                GPUButton.SetActive(false);
                 break;
             case (GPUStatus.CRITICAL):
                 GPUStatusText.text = "CRITICAL";

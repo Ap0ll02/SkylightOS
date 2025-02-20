@@ -844,7 +844,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: UseAIToCauseInputLag
+  m_text: Manage Liquid Cool System
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -1480,5 +1480,6 @@ MonoBehaviour:
   RAMStatusText: {fileID: 87515920144919706}
   GPUButton: {fileID: 7620554529522737397}
   RAMButton: {fileID: 2746116706594238568}
-  diagnosisWindow: {fileID: 0}
+  minigameWindow: {fileID: 0}
   window: {fileID: 0}
+  minigame: {fileID: 0}

@@ -14,6 +14,8 @@ public abstract class AbstractMinigame : MonoBehaviour
 
     public bool isStarted;
 
+    public bool isComplete = false;
+
     //public static event Action OnGameEnd;
     public abstract void StartGame();
 }

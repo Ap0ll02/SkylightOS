@@ -8,7 +8,7 @@ public class Spider : AbstractBug
     public void Start()
     {
         score = 40;
-        moveSpeed = UnityEngine.Random.Range(0.1f, 2f);
+        moveSpeed = UnityEngine.Random.Range(1f, 3f);
         damage = 3;
         hearts = 6;
         base.Start();

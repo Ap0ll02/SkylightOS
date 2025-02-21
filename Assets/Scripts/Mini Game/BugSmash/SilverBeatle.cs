@@ -9,7 +9,7 @@ public class SilverBeatle : AbstractBug
         score = 30;
         hearts = 3;
         damage = 2;
-        moveSpeed = UnityEngine.Random.Range(1f,2f);;
+        moveSpeed = UnityEngine.Random.Range(2f,4f);
         base.Start();
     }
 

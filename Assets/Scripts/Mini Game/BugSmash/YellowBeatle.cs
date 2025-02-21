@@ -11,7 +11,7 @@ public class YellowBeatle : AbstractBug
         score = 20;
         hearts = 2;
         damage = 2;
-        moveSpeed = UnityEngine.Random.Range(1.5f,2.5f); //( 1.5, 2.5)
+        moveSpeed = UnityEngine.Random.Range(1.5f,3.5f);
 
         base.Start();
     }

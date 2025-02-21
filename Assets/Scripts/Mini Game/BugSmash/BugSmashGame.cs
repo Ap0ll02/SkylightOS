@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = System.Random;
 
 public class BugSmashGame : MonoBehaviour
 {
@@ -52,6 +53,7 @@ public class BugSmashGame : MonoBehaviour
     void Start()
     {
         // Finds components used for scoring and updates (these are searched automatically in the scene).
+        // Initially closes the game window.
         window.CloseWindow();
         scoreManager = FindObjectOfType<BugSmashGameScoreManager>();
         windowArea = updateWindow.GetComponent<RectTransform>().rect;
@@ -66,13 +68,13 @@ public class BugSmashGame : MonoBehaviour
             throw new Exception("Player not found");
         }
         player.GameObject().GetComponent<CatGirlWizard>().window = window;
-        // Initially closes the game window.
     }
 
     // Wrapper to prevent starting the game multiple times by accident.
     public void TryStartGame()
     {
-        if (!playingGame) // If the game is not currently playing, start it.
+        // If the game is not currently playing, start it.
+        if (!playingGame)
         {
             StartGame();
         }
@@ -87,7 +89,7 @@ public class BugSmashGame : MonoBehaviour
     {
         // Opens the game window for the user.
         window.OpenWindow();
-        //BugSmashGameStartNotify?.Invoke();
+        BugSmashGameStartNotify?.Invoke();
         // If they try to play again they need the player character!
         if (!player.activeSelf)
         {
@@ -111,20 +113,24 @@ public class BugSmashGame : MonoBehaviour
         while (!scoreManager.gameOver) // Keep looping unless the game ends.
         {
             // Executes the following checks and methods:
-            WinCheck(); // Check if win or lose conditions are fulfilled.
-            yield return null; // Wait until the next frame.
+            // Check if win or lose conditions are fulfilled.
+            WinCheck();
+            // Wait until the next frame.
+            yield return null;
         }
         player.GetComponent<CatGirlWizard>().ResetCatgirl();
         player.SetActive(false);
-        //BugSmashGameEndNotify?.Invoke();
+        BugSmashGameEndNotify?.Invoke();
         window.CloseWindow();
     }
 
     // Checks win and lose conditions by utilizing the UpdateGameScoreManager.
     public void WinCheck()
     {
-        scoreManager.ScoreCheck(); // Check scores using the score manager.
-        if (scoreManager.gameOver || player.GetComponent<CatGirlWizard>().isDead) // If the win condition is met.
+        // Check scores using the score manager.
+        scoreManager.ScoreCheck();
+        // If the win condition is met.
+        if (scoreManager.gameOver || player.GetComponent<CatGirlWizard>().isDead)
         {
             // Stop the game and update the UI to indicate success.
             playingGame = false;
@@ -134,15 +140,17 @@ public class BugSmashGame : MonoBehaviour
     // Coroutine responsible for repeatedly spawning mail objects.
     private IEnumerator SpawnBugs()
     {
-        while (!scoreManager.gameOver) // Continuously spawn mail while the game is active.
+        // Continuously spawn bugs while the game is active.
+        while (!scoreManager.gameOver)
         {
+            windowArea = updateWindow.GetComponent<RectTransform>().rect;
             // Instantiate a random Bug prefab from the array.
             GameObject bug = Instantiate(bugs[UnityEngine.Random.Range(0, bugs.Length)],
             playerRectTransform.parent);
             bug.GetComponent<AbstractBug>().window = window;
-            // Fetch the RectTransform of the spawned mail object.
+            // Fetch the RectTransform of the spawned bug object.
             RectTransform rectTransform = bug.GetComponent<RectTransform>();
-
+            // need to add the transform from the bug to bound it but mehhhhh
             // Wait for the specified spawn interval before repeating.
             yield return new WaitForSeconds(spawnInterval);
         }

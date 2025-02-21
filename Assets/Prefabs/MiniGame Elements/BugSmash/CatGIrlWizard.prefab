@@ -107,15 +107,34 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   iceBallPrefab: {fileID: 2539185157295264741, guid: 5d759cf200ffbea46acccb36078585e8, type: 3}
   BugSmashWindow: {fileID: 0}
+  CatgirlDeath: {fileID: 1210181365342237567, guid: 6ae68e2c75b84064190011a1a284dea0, type: 3}
+  windowBounds:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 0
+    height: 0
   window: {fileID: 0}
   moveSpeed: 5
   move: {fileID: -5378659886672155917, guid: 442359ca11c1e694498afc1c226aa237, type: 3}
   shoot: {fileID: -1087443828360172019, guid: 442359ca11c1e694498afc1c226aa237, type: 3}
   catGirlBody: {fileID: 8330529152585894784}
-  Hearts: 3
+  maxHearts: 10
+  hearts: 0
   Mana: 10
   moveDirection: {x: 0, y: 0}
   isDead: 0
+  isSpellOnCooldown: 0
+  spellCooldown: 0.25
+  catGirlSounds:
+  - {fileID: 8300000, guid: d466ff6907e17934dafad28781f05f60, type: 3}
+  - {fileID: 8300000, guid: 2516b41e19dee384cb74ccfd6c9c1ae9, type: 3}
+  - {fileID: 8300000, guid: 82325ea70de7c6a48aca79348e1f06c3, type: 3}
+  - {fileID: 8300000, guid: c624f394f50c1b9428fbc50f18cb20d7, type: 3}
+  - {fileID: 8300000, guid: 324f108f47e7b694bb5c7bc1cce8d8f5, type: 3}
+  - {fileID: 8300000, guid: f79700a69db2451459505ef6982b196f, type: 3}
+  - {fileID: 8300000, guid: b3942bc77f41f634c8144bc3d825a19b, type: 3}
+  WeLost: {fileID: 8300000, guid: eb82d44ebfc685e40ac3757675b4d925, type: 3}
 --- !u!114 &8801399018612505568
 MonoBehaviour:
   m_ObjectHideFlags: 0

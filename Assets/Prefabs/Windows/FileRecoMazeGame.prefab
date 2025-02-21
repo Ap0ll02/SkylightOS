@@ -29,6 +29,7 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 8067876646615584769}
+  - {fileID: 7177925413879712978}
   m_Father: {fileID: 6456001667558423244}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2462,16 +2463,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8255558311665634110}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.25}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 6456001667558423244}
+  m_Father: {fileID: 5624457365332271639}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -2674.75, y: 1638.75}
   m_SizeDelta: {x: 96, y: 96}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5329717080898704393
@@ -2999,9 +3000,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 5624457365332271639}
-    - targetCorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 7177925413879712978}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4985135885990256120, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       insertIndex: -1
@@ -3036,6 +3034,15 @@ MonoBehaviour:
   filePrefab: {fileID: 1144983664481477696, guid: e5e72ef8cee8a0c958852858819dae77, type: 3}
   filePiece: []
   player: {fileID: 7177925413879712978}
+  moveAction:
+    m_Name: Move
+    m_Type: 0
+    m_ExpectedControlType: 
+    m_Id: 07de9cbe-6885-4bd9-baeb-defcfb675bca
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings: []
+    m_Flags: 0
   gameRunning: 0
   moveSpeed: 4
 --- !u!114 &2417276760574865072

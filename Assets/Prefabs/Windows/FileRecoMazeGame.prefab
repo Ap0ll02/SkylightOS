@@ -2976,6 +2976,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3360279094286895577, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
+      propertyPath: canvasGroup
+      value: 
+      objectReference: {fileID: 2408602036674356675}
     - target: {fileID: 3701656686901488266, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -3025,12 +3029,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanContinue: 0
   isStarted: 0
-  mazePath: {fileID: 0}
-  bg: {fileID: 0}
-  mazeContainer: []
+  mazePath: {fileID: 1211234651187291641}
+  bg: {fileID: 5250724449025217470}
+  mazeContainer:
+  - {fileID: 470139591112092063}
   filePrefab: {fileID: 1144983664481477696, guid: e5e72ef8cee8a0c958852858819dae77, type: 3}
   filePiece: []
-  player: {fileID: 0}
+  player: {fileID: 7177925413879712978}
   gameRunning: 0
   moveSpeed: 4
 --- !u!114 &2417276760574865072
@@ -3047,6 +3052,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Padding: {x: 8.95, y: 6.66, z: 11.7, w: 30.07}
   m_Softness: {x: 40, y: 40}
+--- !u!225 &2408602036674356675 stripped
+CanvasGroup:
+  m_CorrespondingSourceObject: {fileID: 7881392939221308288, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
+  m_PrefabInstance: {fileID: 5480115299263919683}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &6456001667558423244 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}

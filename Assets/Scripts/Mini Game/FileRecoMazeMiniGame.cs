@@ -17,12 +17,12 @@ public class FileRecoMazeMiniGame : AbstractMinigame
 
     // GamePlay Initials
     public Coroutine updateGame;
-    InputAction pMoveAction;
+    public InputAction moveAction;
     public bool gameRunning = false;
     public float moveSpeed = 4f;
 
     // Get any non-inspector references here
-    void Awake()
+    void Start()
     {
         StartGame();
     }
@@ -39,8 +39,8 @@ public class FileRecoMazeMiniGame : AbstractMinigame
 
         GetComponent<BasicWindow>().OpenWindow();        
         gameRunning = true;
+        moveAction = InputSystem.actions.FindAction("Move"); 
         updateGame = StartCoroutine(GameUpdate());
-        pMoveAction = InputSystem.actions.FindAction("Move");           
     }
 
     public void GameOver() {
@@ -52,9 +52,8 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     public IEnumerator GameUpdate() {
         RectTransform mazePos = mazePath.GetComponent<RectTransform>();
         while(gameRunning){
-            // Do upate stuff
-            Vector2 moveValue = pMoveAction.ReadValue<Vector2>();
-            if(Touching(player.gameObject, mazePath)) mazePos.anchoredPosition += moveValue * moveSpeed * Time.deltaTime;
+            Vector2 moveValue = moveAction.ReadValue<Vector2>();
+            if(Touching(player.gameObject, mazePath)) mazePos.anchoredPosition += moveSpeed * Time.deltaTime * moveValue;
         }
         yield return null;
     }    

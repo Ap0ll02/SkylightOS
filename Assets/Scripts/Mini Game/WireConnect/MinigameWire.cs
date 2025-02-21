@@ -161,13 +161,21 @@ public class MinigameWire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
         RectTransform parentParentRectTransform = rectTransform.parent.parent.GetComponent<RectTransform>();
         initialOffset = initialPosition - parentParentRectTransform.position;
 
-        // Set the initial position of the LineRenderer
-        lineRenderer.positionCount = 2;
-        lineRenderer.SetPosition(0, new Vector3(initialPosition.x, initialPosition.y, 0));
-        lineRenderer.SetPosition(1, new Vector3(rectTransform.position.x, rectTransform.position.y, 0));
+        // Check if the parent parent parent is the last child
+        if (rectTransform.parent.parent.parent.GetSiblingIndex() != rectTransform.parent.parent.parent.parent.childCount - 1)
+        {
+            lineRenderer.enabled = false;
+        }
+        else
+        {
+            // Set the initial position of the LineRenderer
+            lineRenderer.positionCount = 2;
+            lineRenderer.SetPosition(0, new Vector3(initialPosition.x, initialPosition.y, 0));
+            lineRenderer.SetPosition(1, new Vector3(rectTransform.position.x, rectTransform.position.y, 0));
 
-        // Start the UpdateLineRenderer coroutine
-        StartCoroutine(UpdateLineRenderer());
+            // Start the UpdateLineRenderer coroutine
+            StartCoroutine(UpdateLineRenderer());
+        }
     }
 
 
@@ -177,6 +185,13 @@ public class MinigameWire : MonoBehaviour, IDragHandler, IBeginDragHandler, IEnd
 
         while (true)
         {
+            // Check if the parent parent parent is the last child
+            if (rectTransform.parent.parent.parent.GetSiblingIndex() != rectTransform.parent.parent.parent.parent.childCount - 1)
+            {
+                lineRenderer.enabled = false;
+                yield return null; // Exit the coroutine if the condition is met
+            }
+            lineRenderer.enabled = true;
             // Update the start position of the LineRenderer to match the initial offset relative to the parent's parent
             if (lineRenderer.positionCount > 0)
             {

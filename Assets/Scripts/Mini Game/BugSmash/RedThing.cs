@@ -10,7 +10,7 @@ public class RedThing : AbstractBug
         score = 5;
         hearts = 1;
         damage = 1;
-        moveSpeed = UnityEngine.Random.Range(2.5f,4f);
+        moveSpeed = UnityEngine.Random.Range(2.5f,4.5f);
         base.Start();
     }
 

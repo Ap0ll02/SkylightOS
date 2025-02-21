@@ -130,15 +130,15 @@ public abstract class AbstractBug : MonoBehaviour
         }
     }
 
-    public void PlayTravellingAnimation()
-    {
-        StartCoroutine(PlayAnimation);
-    }
-
-    IEnumerator PlayAnimation()
-    {
-        yield return new WaitForSeconds(0.5f);
-        if()
-    }
+    // public void PlayTravellingAnimation()
+    // {
+    //     StartCoroutine(PlayAnimation);
+    // }
+    //
+    // IEnumerator PlayAnimation()
+    // {
+    //     yield return new WaitForSeconds(0.5f);
+    //     if()
+    // }
 
 }

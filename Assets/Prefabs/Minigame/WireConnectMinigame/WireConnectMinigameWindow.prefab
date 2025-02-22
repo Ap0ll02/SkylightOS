@@ -867,7 +867,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3360279094286895577, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: isDraggable
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4985135885990256120, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       propertyPath: m_Name
@@ -903,6 +903,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanContinue: 0
   isStarted: 0
+  isComplete: 0
   wires:
   - {fileID: 3762703812501839501, guid: 4afe7715b4056af4ea46f5d9b0344549, type: 3}
   - {fileID: 3762703812501839501, guid: 4afe7715b4056af4ea46f5d9b0344549, type: 3}
@@ -920,6 +921,9 @@ MonoBehaviour:
   wireColor: 0
   slotColor: 0
   dragAreaRectTransform: {fileID: 1674073691359628332}
+  window: {fileID: 0}
+  numRounds: 2
+  currentRound: 0
 --- !u!224 &8781909635251099194 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}

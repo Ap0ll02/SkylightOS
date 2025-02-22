@@ -67,7 +67,7 @@ public class ExpandedWifiMenu : MonoBehaviour
     public void RunDiagnosisPressed()
     {
         diagnosisWindow.OpenWindow();
-        gameObject.SetActive(false);
+        window.CloseWindow();
     }
 
     // Method to check the current wifi state

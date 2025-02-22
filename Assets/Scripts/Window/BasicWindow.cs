@@ -142,6 +142,18 @@ public class BasicWindow : MonoBehaviour, IDragHandler, IPointerDownHandler
     // Same as openWindow, this will notify whatever you need that the window has been closed
     public void CloseWindow()
     {
+        if (isClosable)
+        {
+            canvasGroup.alpha = 0;
+            canvasGroup.blocksRaycasts = false;
+            canvasGroup.interactable = false;
+            isOpen = false;
+            OnWindowClose?.Invoke();
+        }
+    }
+
+    public void ForceCloseWindow()
+    {
         canvasGroup.alpha = 0;
         canvasGroup.blocksRaycasts = false;
         canvasGroup.interactable = false;

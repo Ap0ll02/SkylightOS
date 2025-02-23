@@ -126,6 +126,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: OSManagerWindow
       objectReference: {fileID: 0}
+    - target: {fileID: 4312717441184550531, guid: b50c7cb0fb7cc5245aaedd3fc39976a5, type: 3}
+      propertyPath: tasks.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4656347351973318508, guid: b50c7cb0fb7cc5245aaedd3fc39976a5, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

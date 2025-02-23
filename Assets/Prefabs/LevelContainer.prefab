@@ -42,6 +42,7 @@ Transform:
   - {fileID: 5922007187888597258}
   - {fileID: 4358280225419237593}
   - {fileID: 7908003770202491471}
+  - {fileID: 5359042666646364738}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &159827954544260415
@@ -800,6 +801,79 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8101197225068343398, guid: 6258cda8deac5be3da423eba8658fd45, type: 3}
   m_PrefabInstance: {fileID: 1212705412441960724}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &1782560674807270135
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 6651417099806281802}
+    m_Modifications:
+    - target: {fileID: 33086147027996482, guid: e7dcff45b80ff418192da4da87910355, type: 3}
+      propertyPath: m_Name
+      value: FileSystem
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972839169220257973, guid: e7dcff45b80ff418192da4da87910355, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0.4664401
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972839169220257973, guid: e7dcff45b80ff418192da4da87910355, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -0.48324874
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972839169220257973, guid: e7dcff45b80ff418192da4da87910355, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 2247.7239
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972839169220257973, guid: e7dcff45b80ff418192da4da87910355, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972839169220257973, guid: e7dcff45b80ff418192da4da87910355, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972839169220257973, guid: e7dcff45b80ff418192da4da87910355, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972839169220257973, guid: e7dcff45b80ff418192da4da87910355, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972839169220257973, guid: e7dcff45b80ff418192da4da87910355, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972839169220257973, guid: e7dcff45b80ff418192da4da87910355, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5972839169220257973, guid: e7dcff45b80ff418192da4da87910355, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e7dcff45b80ff418192da4da87910355, type: 3}
+--- !u!4 &5359042666646364738 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 5972839169220257973, guid: e7dcff45b80ff418192da4da87910355, type: 3}
+  m_PrefabInstance: {fileID: 1782560674807270135}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &6054311195154262687 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -3694686134465404824, guid: e7dcff45b80ff418192da4da87910355, type: 3}
+  m_PrefabInstance: {fileID: 1782560674807270135}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5fc0358f3b281be7c89e116f83f12104, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4843409845628648055
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2495,6 +2569,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2333111304329633965, guid: 0abe564c295f556349ba67f58ce788e9, type: 3}
+      propertyPath: fs
+      value: 
+      objectReference: {fileID: 6054311195154262687}
     - target: {fileID: 2858680687749397595, guid: 0abe564c295f556349ba67f58ce788e9, type: 3}
       propertyPath: m_Name
       value: MazeGame

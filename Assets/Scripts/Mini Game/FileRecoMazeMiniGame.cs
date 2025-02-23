@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
-using Febucci.UI.Actions;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.UI;
 
 public class FileRecoMazeMiniGame : AbstractMinigame
@@ -33,11 +33,10 @@ public class FileRecoMazeMiniGame : AbstractMinigame
         foreach(var maze in mazeContainer){
             maze.SetActive(false);
         }
-
         System.Random rand = new();
         int pickMaze = rand.Next(0, mazeContainer.Count);
         mazeContainer[pickMaze].SetActive(true);
-
+        // SetCollider();
         GetComponent<BasicWindow>().OpenWindow();        
         gameRunning = true;
         moveAction = InputSystem.actions.FindAction("Move"); 
@@ -51,37 +50,89 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     }
     // -2645 x, 1330 y, is the maximum right and bottom we allow the maze to move
     public IEnumerator GameUpdate() {
-        RectTransform mazePos = mazePath.GetComponent<RectTransform>();
-        while(gameRunning){
+        RectTransform mazeRect = mazePath.GetComponent<RectTransform>();
+
+        while (gameRunning) {
             Vector2 moveValue = moveAction.ReadValue<Vector2>();
-            if(Touching(player.gameObject, mazePath)) mazePos.anchoredPosition -= moveSpeed * moveValue;
-            if(mazePos.anchoredPosition.x < -2645) mazePos.anchoredPosition = new Vector2(-2645, mazePos.anchoredPosition.y);
-            else if(mazePos.anchoredPosition.x > 2900) mazePos.anchoredPosition = new Vector2(2900, mazePos.anchoredPosition.y);
-            if(mazePos.anchoredPosition.y > 1330) mazePos.anchoredPosition = new Vector2(mazePos.anchoredPosition.x, 1330);
-            else if(mazePos.anchoredPosition.y < -1800) mazePos.anchoredPosition = new Vector2(mazePos.anchoredPosition.x, -1800);
-           yield return null;
-       }
-    }    
 
-    // TODO: Fix the issue with player anchoredposition not in the same scope as maze piece anchoredpositions
+            // Predict the new position
+            Vector2 newPos = mazeRect.anchoredPosition - moveSpeed * moveValue;
+
+            // Check if the new position collides with any walls
+            if (Touching(player.gameObject, mazePath)) {
+                Debug.Log("Colliding with walls");
+                mazeRect.anchoredPosition = newPos;
+            } else {
+                mazeRect.anchoredPosition += moveSpeed * moveValue;
+            }
+
+            yield return null;
+        }
+    }
+
+    // public bool IsCollidingWithWalls(Vector2 newPos) {
+    //     RectTransform playerRect = player.GetComponent<RectTransform>();
+
+    //     foreach (RectTransform wall in mazePath.transform) { // Assuming walls are children of mazePath
+    //         if (wall == null) continue;
+
+    //         if (RectOverlaps(playerRect, wall, newPos)) {
+    //             return true; // Collision detected, movement should be blocked
+    //         }
+    //     }
+
+    //     return false; // No collision, allow movement
+    // }
+
+    // public bool RectOverlaps(RectTransform rectA, RectTransform rectB, Vector2 newPos) {
+    //     Vector2 sizeA = rectA.sizeDelta;
+    //     Vector2 sizeB = rectB.sizeDelta;
+
+    //     Vector2 minA = newPos - sizeA / 2;
+    //     Vector2 maxA = newPos + sizeA / 2;
+
+    //     Vector2 minB = rectB.anchoredPosition - sizeB / 2;
+    //     Vector2 maxB = rectB.anchoredPosition + sizeB / 2;
+
+    //     return minA.x < maxB.x && maxA.x > minB.x &&
+    //             minA.y < maxB.y && maxA.y > minB.y;
+    // }
+
+   
+
+    // Use Rigidbody2D and Collider2D to detect collisions
     public bool Touching(GameObject player, GameObject mazePath) {
-        RectTransform playerRect = player.GetComponent<RectTransform>();
-        RectTransform[] mazeRects = mazePath.GetComponentsInChildren<RectTransform>();
+        Collider2D playerCollider = player.GetComponent<BoxCollider2D>();
+        Collider2D[] mazeColliders = mazePath.GetComponentsInChildren<BoxCollider2D>();
 
-        foreach (RectTransform mazeRect in mazeRects) {
-            if (mazeRect == mazePath.GetComponent<RectTransform>() || mazeRect.gameObject.GetComponent<RawImage>()) continue; // Skip the parent mazePath RectTransform
-
-            Vector2 playerMin = playerRect.anchoredPosition - (playerRect.rect.size * 0.5f);
-            Vector2 playerMax = playerRect.anchoredPosition + (playerRect.rect.size * 0.5f);
-
-            Vector2 mazeMin = mazeRect.anchoredPosition - (mazeRect.rect.size * 0.5f);
-            Vector2 mazeMax = mazeRect.anchoredPosition + (mazeRect.rect.size * 0.5f);
-
-            if (playerMin.x >= mazeMin.x && playerMax.x <= mazeMax.x &&
-                playerMin.y >= mazeMin.y && playerMax.y <= mazeMax.y) {
+        foreach (Collider2D mazeCollider in mazeColliders) {
+            //if (mazeCollider == mazePath.GetComponent<Collider2D>()) continue; // Skip the parent mazePath Collider2D
+            if (playerCollider.IsTouching(mazeCollider)) {
                 return true;
             }
         }
         return false;
     }
+
+    // public void SetCollider() { 
+    //     Canvas.ForceUpdateCanvases(); // Ensure UI is updated before calculations
+
+    //     foreach (BoxCollider2D mp in mazePath.GetComponentsInChildren<BoxCollider2D>()) { 
+            
+    //         if (mp.TryGetComponent<RectTransform>(out var rt)) {
+    //             Vector3[] corners = new Vector3[4];
+    //             rt.GetWorldCorners(corners); // Get the 4 world-space corners
+
+    //             float width = Vector2.Distance(corners[0], corners[3]); // Left to Right
+    //             float height = Vector2.Distance(corners[0], corners[1]); // Bottom to Top
+
+    //             Vector2 worldSize = new Vector2(width, height);
+
+    //             mp.size = worldSize;
+    //             Debug.Log($"Collider Set: {mp.gameObject.name} | World Size: {worldSize}");
+    //         }
+    //     }
+    // }
+
+
 }

@@ -32,9 +32,13 @@ public class OSManager : MonoBehaviour
     // Reference to boss task button (temporary)
     [SerializeField] public Button bossTaskButton;
 
+    // Reference to the GameObject containing all tasks
+    [SerializeField] public GameObject tasksContainer;
+
     // Start is called before the first frame update
     void Start()
     {
+        GetTasksFromContainer();
         CreateTaskButtons();
         SubscribeToTaskEvents();
     }
@@ -69,7 +73,7 @@ public class OSManager : MonoBehaviour
     // Method to start the boss task
     public void StartBossTask()
     {
-        if(bossTask == null)
+        if (bossTask == null)
         {
             Debug.LogError("Boss task is null, you need to set the boss task");
             return;
@@ -93,7 +97,7 @@ public class OSManager : MonoBehaviour
             // Enable all buttons except the completed task buttons
             for (int i = 0; i < taskButtons.Count; i++)
             {
-                if(tasks[i].isComplete)
+                if (tasks[i].isComplete)
                 {
                     TaskObject taskObject = taskButtons[i].GetComponentInParent<TaskObject>();
                     if (taskObject != null)
@@ -168,5 +172,19 @@ public class OSManager : MonoBehaviour
     void OnDestroy()
     {
         AbstractTask.OnTaskCompleted -= FinishTask;
+    }
+
+    // Method to get tasks from the tasksContainer GameObject
+    void GetTasksFromContainer()
+    {
+        tasks = new List<AbstractTask>();
+        foreach (Transform child in tasksContainer.transform)
+        {
+            AbstractTask task = child.GetComponent<AbstractTask>();
+            if (task != null)
+            {
+                tasks.Add(task);
+            }
+        }
     }
 }

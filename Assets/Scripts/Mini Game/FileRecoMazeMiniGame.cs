@@ -59,7 +59,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
             Vector2 pPosBefore = player.anchoredPosition;
             player.anchoredPosition += -1f * moveSpeed * moveValue;
             Vector2 pPosAfter = player.anchoredPosition;
-            if(pPosBefore != pPosAfter){
+            if() {
                 mazeRect.anchoredPosition += -1f * moveSpeed * moveValue;
             }
             yield return null;

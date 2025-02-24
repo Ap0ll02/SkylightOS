@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -55,52 +54,19 @@ public class FileRecoMazeMiniGame : AbstractMinigame
         RectTransform mazeRect = mazePath.GetComponent<RectTransform>();
 
         while (gameRunning) {
+            // Read input, move player
             Vector2 moveValue = moveAction.ReadValue<Vector2>();
-
-            // Predict the new position
-            Vector2 newPos = mazeRect.anchoredPosition - moveSpeed * moveValue;
-            Vector2 playerPos = player.anchoredPosition + moveSpeed * moveValue;
-
-            // Check if the new position stays wihtin path
-            if (Touching(player.gameObject, mazePath, playerPos)) {
-                mazeRect.anchoredPosition = newPos;
+            Vector2 pPosBefore = player.anchoredPosition;
+            player.anchoredPosition += -1f * moveSpeed * moveValue;
+            Vector2 pPosAfter = player.anchoredPosition;
+            if(pPosBefore != pPosAfter){
+                mazeRect.anchoredPosition += -1f * moveSpeed * moveValue;
             }
             yield return null;
         }
     }
 
     // MARK: - Collision Detection
-    // Use Rigidbody2D and Collider2D to detect collisions
-    public bool Touching(GameObject player, GameObject mazePath, Vector2 newPos) {
-        RectTransform playerRect = player.GetComponent<RectTransform>();
-        RectTransform mazeRect = mazePath.GetComponent<RectTransform>();
-
-        // Convert the player's new position to the local space of the maze
-        Vector2 localPlayerPos = mazeRect.InverseTransformPoint(playerRect.TransformPoint(newPos));
-
-        // Check if the player's new position is within the bounds of the maze
-        Vector2 mazeMin = mazeRect.rect.min;
-        Vector2 mazeMax = mazeRect.rect.max;
-
-        Vector2 playerMin = localPlayerPos - playerRect.rect.size / 2;
-        Vector2 playerMax = localPlayerPos + playerRect.rect.size / 2;
-
-        if (playerMin.x < mazeMin.x || playerMax.x > mazeMax.x || playerMin.y < mazeMin.y || playerMax.y > mazeMax.y) {
-            return false; // Player is out of bounds
-        }
-
-        // Check if the player is touching any maze colliders
-        Collider2D playerCollider = player.GetComponent<BoxCollider2D>();
-        Collider2D[] mazeColliders = mazePath.GetComponentsInChildren<BoxCollider2D>();
-
-        foreach (Collider2D mazeCollider in mazeColliders) {
-            if (playerCollider.IsTouching(mazeCollider)) {
-                return true;
-            }
-        }
-
-        return false;
-    }
 
     public void SetColliders() { 
         Canvas.ForceUpdateCanvases(); // Ensure UI is updated before calculations
@@ -119,7 +85,6 @@ public class FileRecoMazeMiniGame : AbstractMinigame
 
                 collider.size = localSize;
                 collider.offset = rt.rect.center;
-                // Debug.Log($"Collider Set: {collider.gameObject.name} | Local Size: {localSize}");
             }
         }
     }

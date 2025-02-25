@@ -17,7 +17,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     public Coroutine updateGame;
     public InputAction moveAction;
     public bool gameRunning = false;
-    public float moveSpeed = 2f;
+    public float moveSpeed = 1f;
 
     // Get any non-inspector references here
     void Start()
@@ -54,8 +54,25 @@ public class FileRecoMazeMiniGame : AbstractMinigame
             // Read input, move player
             Vector2 moveValue = moveAction.ReadValue<Vector2>();
             player.GetComponent<Rigidbody2D>().AddForce(moveSpeed * moveValue);
+
+            if (player.anchoredPosition.x > 260) {
+                player.anchoredPosition = new Vector2(-959, player.anchoredPosition.y);
+                mazeRect.anchoredPosition += new Vector2(200, 0);
+            } else if(player.anchoredPosition.x < -960) {
+                player.anchoredPosition = new Vector2(259, player.anchoredPosition.y);
+                mazeRect.anchoredPosition -= new Vector2(200, 0);
+            } else if(player.anchoredPosition.y < -650) {
+                player.anchoredPosition = new Vector2(player.anchoredPosition.x, 59);
+                mazeRect.anchoredPosition -= new Vector2(0, 200);
+            } else if (player.anchoredPosition.y > 60) {
+                player.anchoredPosition = new Vector2(player.anchoredPosition.x, -649);
+                mazeRect.anchoredPosition += new Vector2(0, 200);
+            }
+            // Debug.Log("Player Pos: " + player.anchoredPosition);
+            // player.anchoredPosition += moveSpeed * moveValue;
+            // Debug.Log("Movement: " + moveSpeed * moveValue);
             // mazeRect.anchoredPosition += -1f * moveSpeed * moveValue;
-            mazeRect.anchoredPosition = player.anchoredPosition + new Vector2(2487.65f, -1458.3f);
+            // mazeRect.anchoredPosition = player.anchoredPosition; /*+ new Vector2(2487.65f, -1458.3f);*/
             yield return null;
         }
     }

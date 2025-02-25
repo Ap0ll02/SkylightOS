@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-//TODO: Currently, the player can still move out of the maze.
-
 public class FileRecoMazeMiniGame : AbstractMinigame
 {
     // Maze Initials
@@ -52,22 +50,18 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     // MARK: - Game Update
     public IEnumerator GameUpdate() {
         RectTransform mazeRect = mazePath.GetComponent<RectTransform>();
-
         while (gameRunning) {
             // Read input, move player
             Vector2 moveValue = moveAction.ReadValue<Vector2>();
-            Vector2 pPosBefore = player.anchoredPosition;
-            player.anchoredPosition += -1f * moveSpeed * moveValue;
-            Vector2 pPosAfter = player.anchoredPosition;
-            if() {
-                mazeRect.anchoredPosition += -1f * moveSpeed * moveValue;
-            }
+            player.GetComponent<Rigidbody2D>().AddForce(moveSpeed * moveValue);
+            // mazeRect.anchoredPosition += -1f * moveSpeed * moveValue;
+            mazeRect.anchoredPosition = player.anchoredPosition + new Vector2(2487.65f, -1458.3f);
             yield return null;
         }
     }
 
     // MARK: - Collision Detection
-
+    // Kind of works rn, still needs some tweaking with camera/maze
     public void SetColliders() { 
         Canvas.ForceUpdateCanvases(); // Ensure UI is updated before calculations
 

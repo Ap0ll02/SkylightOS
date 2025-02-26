@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2552574875230759472}
   - component: {fileID: 9105262916139316478}
-  - component: {fileID: 2316142427617202074}
+  - component: {fileID: 7314291190412514685}
   - component: {fileID: 3042069936699193665}
   m_Layer: 8
   m_Name: PoptartCloseButton
@@ -35,8 +35,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -960.0539, y: -594.6435}
-  m_SizeDelta: {x: 1734.136, y: 836.621}
+  m_AnchoredPosition: {x: -968.34, y: -595.49}
+  m_SizeDelta: {x: 1800.1, y: 878.95}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &9105262916139316478
 CanvasRenderer:
@@ -46,7 +46,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2805349996994238363}
   m_CullTransparentMesh: 1
---- !u!114 &2316142427617202074
+--- !u!114 &7314291190412514685
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,7 +66,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: -1966363699, guid: 6f9a5bf54d7344147a4a78d1e31614cc, type: 3}
+  m_Sprite: {fileID: 21300000, guid: c09669537a650da4e961f266b843b7db, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -122,7 +122,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 123027838324207347}
         m_TargetAssemblyTypeName: BasicWindow, Assembly-CSharp
-        m_MethodName: CloseWindow
+        m_MethodName: ForceCloseWindow
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -240,6 +240,10 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: c09669537a650da4e961f266b843b7db, type: 3}
+    - target: {fileID: 6339063960590963129, guid: 829d620e041c695408bb146ea4d5740d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ForceCloseWindow
+      objectReference: {fileID: 0}
     - target: {fileID: 8412689385836177586, guid: 829d620e041c695408bb146ea4d5740d, type: 3}
       propertyPath: m_Name
       value: NyanPopup3
@@ -248,7 +252,7 @@ PrefabInstance:
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2595259046606911941, guid: 829d620e041c695408bb146ea4d5740d, type: 3}
-      insertIndex: 1
+      insertIndex: -1
       addedObject: {fileID: 2552574875230759472}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 8412689385836177586, guid: 829d620e041c695408bb146ea4d5740d, type: 3}
@@ -299,5 +303,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 86e285d5cea982d4891e3587391c87b8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 2
-  heightVariation: 2
+  speed: 1
+  heightVariation: 3

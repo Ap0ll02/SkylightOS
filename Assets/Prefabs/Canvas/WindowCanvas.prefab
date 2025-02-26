@@ -1124,6 +1124,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FileRecoMazeGame
       objectReference: {fileID: 0}
+    - target: {fileID: 2417276760574865072, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6456001667558423244, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1150,11 +1154,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6456001667558423244, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 3744.7012
+      value: 3872.7598
       objectReference: {fileID: 0}
     - target: {fileID: 6456001667558423244, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 2565.6357
+      value: 2690.019
       objectReference: {fileID: 0}
     - target: {fileID: 6456001667558423244, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1186,11 +1190,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6456001667558423244, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -48.78479
+      value: -61.5039
       objectReference: {fileID: 0}
     - target: {fileID: 6456001667558423244, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 3.4365234
+      value: 4.5978
       objectReference: {fileID: 0}
     - target: {fileID: 6456001667558423244, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

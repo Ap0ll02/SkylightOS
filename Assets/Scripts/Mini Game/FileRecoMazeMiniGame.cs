@@ -54,7 +54,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
             // Read input, move player
             Vector2 moveValue = moveAction.ReadValue<Vector2>();
             player.GetComponent<Rigidbody2D>().AddForce(moveSpeed * moveValue);
-
+            // FIXME: Coordinates changed a little bit
             if (player.anchoredPosition.x > 260) {
                 player.anchoredPosition = new Vector2(-959, player.anchoredPosition.y);
                 mazeRect.anchoredPosition += new Vector2(200, 0);

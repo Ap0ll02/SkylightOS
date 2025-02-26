@@ -30,6 +30,8 @@ public class RamTask : AbstractTask
     // Awake my child
     private void Awake()
     {
+        taskTitle = "Fix Ram";
+        taskDescription = "Your computer is running low on RAM, check the resources window to view the problem";
         systemResourcesWindow = FindObjectOfType<SystemResourcesWindow>();
         minigameWindow = FindObjectOfType<RamDownloadGame>();
         northstar = FindObjectOfType<Northstar>();
@@ -39,8 +41,6 @@ public class RamTask : AbstractTask
     new void Start()
     {
         // Set the task title and description
-        taskTitle = "Fix Ram";
-        taskDescription = "Your computer is running low on RAM, check the resources window to view the problem";
         gameObject.SetActive(false);
     }
 

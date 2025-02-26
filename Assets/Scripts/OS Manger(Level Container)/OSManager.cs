@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using UnityEditor.PackageManager.UI;
 /// <summary>
 /// Garrett Sharp
 /// OS Manager
@@ -35,9 +36,18 @@ public class OSManager : MonoBehaviour
     // Reference to the GameObject containing all tasks
     [SerializeField] public GameObject tasksContainer;
 
+    // Reference to the basic window
+    [SerializeField] public BasicWindow window;
+
+    void Awake()
+    {
+        window = GetComponent<BasicWindow>();
+    }
+
     // Start is called before the first frame update
     void Start()
     {
+        window.ForceCloseWindow();
         GetTasksFromContainer();
         CreateTaskButtons();
         SubscribeToTaskEvents();

@@ -44,6 +44,11 @@ public class SystemWindow : MonoBehaviour
         backButton.SetActive(false);
     }
 
+    private void Start()
+    {
+        window.ForceCloseWindow();
+    }
+
     // Switches the state of the window
     public void SwitchState(WindowState state)
     {

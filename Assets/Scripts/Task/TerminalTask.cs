@@ -58,6 +58,10 @@ public class TerminalTask : AbstractTask
     public float PThiefDelay = 0;
     public bool StopInputRunning = false;
 
+    // TODO: The terminal window itself is dependent on this task heavily
+    // we need to refactor this, which would also allow other tasks to be activated from here
+    [SerializeField] BasicWindow window;
+
     /// @brief Assign all of the terminal objects in the scene.
     public void Awake() {
         taskTitle = "Download and Install Antivirus";
@@ -80,6 +84,7 @@ public class TerminalTask : AbstractTask
     }
 
     public new void Start() {
+        window.ForceCloseWindow();
         base.Start();
         installBtn.SetActive(false);
         gameObject.SetActive(false);

@@ -11,6 +11,9 @@ public class SkyBIOSWindow : MonoBehaviour
     public GameObject openPeripheralWindowButton;
     public PeripheralWindow peripheralWindow;
 
+    // Reference to bios window itself
+    public BasicWindow window;
+
     public enum PeripheralState
     {
         Working,
@@ -22,9 +25,16 @@ public class SkyBIOSWindow : MonoBehaviour
 
     private void Awake()
     {
+        window = GetComponent<BasicWindow>();
         peripheralWindow = FindObjectOfType<PeripheralWindow>();
         SetState(PeripheralState.Working);
     }
+
+    private void Start()
+    {
+        window.ForceCloseWindow();
+    }
+
 
     public void SetState(PeripheralState newState)
     {
@@ -56,15 +66,4 @@ public class SkyBIOSWindow : MonoBehaviour
         peripheralWindow.TryOpenWindow();
     }
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

@@ -55,18 +55,18 @@ public class FileRecoMazeMiniGame : AbstractMinigame
             Vector2 moveValue = moveAction.ReadValue<Vector2>();
             player.GetComponent<Rigidbody2D>().AddForce(moveSpeed * moveValue);
             // FIXME: Coordinates changed a little bit
-            if (player.anchoredPosition.x > 260) {
-                player.anchoredPosition = new Vector2(-959, player.anchoredPosition.y);
-                mazeRect.anchoredPosition += new Vector2(200, 0);
-            } else if(player.anchoredPosition.x < -960) {
-                player.anchoredPosition = new Vector2(259, player.anchoredPosition.y);
-                mazeRect.anchoredPosition -= new Vector2(200, 0);
-            } else if(player.anchoredPosition.y < -650) {
-                player.anchoredPosition = new Vector2(player.anchoredPosition.x, 59);
-                mazeRect.anchoredPosition -= new Vector2(0, 200);
-            } else if (player.anchoredPosition.y > 60) {
-                player.anchoredPosition = new Vector2(player.anchoredPosition.x, -649);
-                mazeRect.anchoredPosition += new Vector2(0, 200);
+            if (player.anchoredPosition.x > 650) {
+                player.anchoredPosition = new Vector2(-650, player.anchoredPosition.y);
+                mazeRect.anchoredPosition -= new Vector2(240, 0);
+            } else if(player.anchoredPosition.x < -650) {
+                player.anchoredPosition = new Vector2(650, player.anchoredPosition.y);
+                mazeRect.anchoredPosition += new Vector2(240, 0);
+            } else if(player.anchoredPosition.y < -402) {
+                player.anchoredPosition = new Vector2(player.anchoredPosition.x, 401);
+                mazeRect.anchoredPosition += new Vector2(0, 300);
+            } else if (player.anchoredPosition.y > 402) {
+                player.anchoredPosition = new Vector2(player.anchoredPosition.x, -401);
+                mazeRect.anchoredPosition -= new Vector2(0, 300);
             }
             // Debug.Log("Player Pos: " + player.anchoredPosition);
             // player.anchoredPosition += moveSpeed * moveValue;

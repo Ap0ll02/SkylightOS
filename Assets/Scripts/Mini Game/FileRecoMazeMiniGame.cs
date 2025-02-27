@@ -34,7 +34,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
         int pickMaze = rand.Next(0, mazeContainer.Count);
         mazeContainer[pickMaze].SetActive(true);
         Canvas.ForceUpdateCanvases(); // Co-Pilot tip for updating UI before calculations
-        SetColliders(); // Sets the boxcolliders automatically, much love, kisses, thanks for the help copilot
+        // SetColliders(); // Sets the boxcolliders automatically, much love, kisses, thanks for the help copilot
         GetComponent<BasicWindow>().OpenWindow();        
         gameRunning = true;
         moveAction = InputSystem.actions.FindAction("Move"); 
@@ -54,19 +54,20 @@ public class FileRecoMazeMiniGame : AbstractMinigame
             // Read input, move player
             Vector2 moveValue = moveAction.ReadValue<Vector2>();
             player.GetComponent<Rigidbody2D>().AddForce(moveSpeed * moveValue);
+            // player.anchoredPosition += moveSpeed * moveValue;
             // FIXME: Coordinates changed a little bit
-            if (player.anchoredPosition.x > 260) {
-                player.anchoredPosition = new Vector2(-959, player.anchoredPosition.y);
-                mazeRect.anchoredPosition += new Vector2(200, 0);
-            } else if(player.anchoredPosition.x < -960) {
-                player.anchoredPosition = new Vector2(259, player.anchoredPosition.y);
-                mazeRect.anchoredPosition -= new Vector2(200, 0);
-            } else if(player.anchoredPosition.y < -650) {
-                player.anchoredPosition = new Vector2(player.anchoredPosition.x, 59);
-                mazeRect.anchoredPosition -= new Vector2(0, 200);
-            } else if (player.anchoredPosition.y > 60) {
-                player.anchoredPosition = new Vector2(player.anchoredPosition.x, -649);
-                mazeRect.anchoredPosition += new Vector2(0, 200);
+            if (player.anchoredPosition.x > 650) {
+                mazeRect.anchoredPosition -= new Vector2(240, 0);
+                player.anchoredPosition = new Vector2(-650, player.anchoredPosition.y);
+            } else if(player.anchoredPosition.x < -650) {
+                mazeRect.anchoredPosition += new Vector2(240, 0);
+                player.anchoredPosition = new Vector2(650, player.anchoredPosition.y);
+            } else if(player.anchoredPosition.y < -402) {
+                mazeRect.anchoredPosition += new Vector2(0, 300);
+                player.anchoredPosition = new Vector2(player.anchoredPosition.x, 401);
+            } else if (player.anchoredPosition.y > 402) {
+                mazeRect.anchoredPosition -= new Vector2(0, 300);
+                player.anchoredPosition = new Vector2(player.anchoredPosition.x, -401);
             }
             // Debug.Log("Player Pos: " + player.anchoredPosition);
             // player.anchoredPosition += moveSpeed * moveValue;
@@ -79,24 +80,24 @@ public class FileRecoMazeMiniGame : AbstractMinigame
 
     // MARK: - Collision Detection
     // Kind of works rn, still needs some tweaking with camera/maze
-    public void SetColliders() { 
-        Canvas.ForceUpdateCanvases(); // Ensure UI is updated before calculations
+    // public void SetColliders() { 
+    //     Canvas.ForceUpdateCanvases(); // Ensure UI is updated before calculations
 
-        foreach (BoxCollider2D collider in mazePath.GetComponentsInChildren<BoxCollider2D>()) { 
-            if (collider.TryGetComponent<RectTransform>(out var rt)) { // Finally get to use out variables woohoo
-                Vector3[] corners = new Vector3[4];
-                rt.GetWorldCorners(corners); // Get the 4 world-space corners
+    //     foreach (BoxCollider2D collider in mazePath.GetComponentsInChildren<BoxCollider2D>()) { 
+    //         if (collider.TryGetComponent<RectTransform>(out var rt)) { // Finally get to use out variables woohoo
+    //             Vector3[] corners = new Vector3[4];
+    //             rt.GetWorldCorners(corners); // Get the 4 world-space corners
 
-                // Calculate the size in world space
-                float width = Vector3.Distance(corners[0], corners[3]); // Left to Right
-                float height = Vector3.Distance(corners[0], corners[1]); // Bottom to Top
+    //             // Calculate the size in world space
+    //             float width = Vector3.Distance(corners[0], corners[3]); // Left to Right
+    //             float height = Vector3.Distance(corners[0], corners[1]); // Bottom to Top
 
-                // Convert world size to local size, this part is critical, as the nesting makes world scale pointless
-                Vector2 localSize = new(width / rt.lossyScale.x, height / rt.lossyScale.y);
+    //             // Convert world size to local size, this part is critical, as the nesting makes world scale pointless
+    //             Vector2 localSize = new(width / rt.lossyScale.x, height / rt.lossyScale.y);
 
-                collider.size = localSize;
-                collider.offset = rt.rect.center;
-            }
-        }
-    }
+    //             collider.size = localSize;
+    //             collider.offset = rt.rect.center;
+    //         }
+    //     }
+    // }
 }

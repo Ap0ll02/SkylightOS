@@ -1,0 +1,70 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2483317757755557019
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8343061701572132866}
+  - component: {fileID: 3211646897820232689}
+  m_Layer: 0
+  m_Name: NyanCatStageOne
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8343061701572132866
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2483317757755557019}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3211646897820232689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2483317757755557019}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c06c7b9e780d8484fab2583bda263a0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  bossManager: {fileID: 0}
+  canvas: {fileID: 0}
+  text: {fileID: 0}
+  dialogueLines:
+  - 
+  - 
+  - 
+  - 
+  - 
+  textOne: '<rainb><shake a=0.5>MUHAHAHAHA!</rainb></shake><waitfor=0.5> I have been
+    here since 2008. You know how many IT persons have tried... and <incr>failed!!!</incr>
+    to remove me '
+  textTwo: Seriously<waitfor=0.5>, You know how rude it is to try and close a process!
+    The <rainb>Rainbow Sprinkle Gall</rainb> of you people. YOU shall face my <bounce
+    a=0.05>revenge!</bounce>
+  textThree: ..... AND YOU WILL FACE MY REVENGE!
+  textFour: ....Really? come on... Why are the LAZERS NOT TURNING ON ...
+  textFive: ... THERE WE GO!... AS I WAS SAYING MUHAHAHA AND YOU WILL FACE MY REVENGE
+  textBoxPrefab: {fileID: 0}
+  bossTextPrefab: {fileID: 0}
+  nyanCatIdlePrefab: {fileID: 0}
+  typewriter: {fileID: 0}
+  NorthStar: {fileID: 0}
+  northstar: {fileID: 0}

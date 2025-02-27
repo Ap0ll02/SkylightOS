@@ -10,14 +10,5 @@ using UnityEngine;
 /// </summary>
 public abstract class AbstractBossTask : AbstractTask
 {
-    public void Start() 
-    {
 
-
-    }
-
-    public void Update()
-    {
-
-    }
 }

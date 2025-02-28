@@ -11,7 +11,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     public List<GameObject> mazeContainer;
     public GameObject filePrefab;
     public List<GameObject> filePiece; 
-    public RectTransform player;
+    public GameObject player;
 
     // GamePlay Initials
     public Coroutine updateGame;
@@ -53,27 +53,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
         while (gameRunning) {
             // Read input, move player
             Vector2 moveValue = moveAction.ReadValue<Vector2>();
-            player.GetComponent<Rigidbody2D>().AddForce(moveSpeed * moveValue);
-            // player.anchoredPosition += moveSpeed * moveValue;
-            // FIXME: Coordinates changed a little bit
-            if (player.anchoredPosition.x > 650) {
-                mazeRect.anchoredPosition -= new Vector2(240, 0);
-                player.anchoredPosition = new Vector2(-650, player.anchoredPosition.y);
-            } else if(player.anchoredPosition.x < -650) {
-                mazeRect.anchoredPosition += new Vector2(240, 0);
-                player.anchoredPosition = new Vector2(650, player.anchoredPosition.y);
-            } else if(player.anchoredPosition.y < -402) {
-                mazeRect.anchoredPosition += new Vector2(0, 300);
-                player.anchoredPosition = new Vector2(player.anchoredPosition.x, 401);
-            } else if (player.anchoredPosition.y > 402) {
-                mazeRect.anchoredPosition -= new Vector2(0, 300);
-                player.anchoredPosition = new Vector2(player.anchoredPosition.x, -401);
-            }
-            // Debug.Log("Player Pos: " + player.anchoredPosition);
-            // player.anchoredPosition += moveSpeed * moveValue;
-            // Debug.Log("Movement: " + moveSpeed * moveValue);
-            // mazeRect.anchoredPosition += -1f * moveSpeed * moveValue;
-            // mazeRect.anchoredPosition = player.anchoredPosition; /*+ new Vector2(2487.65f, -1458.3f);*/
+            player.transform.position += moveSpeed * Time.deltaTime * (Vector3)moveValue;
             yield return null;
         }
     }

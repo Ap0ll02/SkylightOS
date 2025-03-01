@@ -37,10 +37,10 @@ public class BugSmashGame : MonoBehaviour
     public bool playingGame = false; // Whether the game is currently active.
 
     // The action that will notify the task that the minigame has started
-    public static event Action BugSmashGameStartNotify;
+    public event Action BugSmashGameStartNotify;
 
     // The action that will notify the task that the minigame is done
-    public static event Action BugSmashGameEndNotify;
+    public event Action BugSmashGameEndNotify;
 
     // This method executes when the script instance is being loaded.
     void Awake()

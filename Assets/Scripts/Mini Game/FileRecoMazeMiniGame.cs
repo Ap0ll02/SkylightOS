@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Packages.Rider.Editor.UnitTesting;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Assertions.Must;
 using UnityEngine.InputSystem;
 
 public class FileRecoMazeMiniGame : AbstractMinigame
@@ -25,6 +27,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     public RecoveryFilePiece rpScript;
     public ExitWall ewScript;
 
+    Vector3 OriginalScale;
 
     // Get any non-inspector references here
     void Start()
@@ -36,19 +39,23 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     public override void StartGame() {
         Canvas.ForceUpdateCanvases(); // Co-Pilot tip for updating UI before calculations
         GetComponent<BasicWindow>().OpenWindow();        
-
+        HashSet<int> randomNumbers = new();
         gameRunning = true;
         SpawnList.AddRange(SpawnContainer.GetComponentsInChildren<Transform>());
         System.Random rand = new();
-
-        for(int i = 0; i < 5; i++){
+        while(randomNumbers.Count < 5){
+            randomNumbers.Add(rand.Next(0, SpawnList.Count));
+        }
+        int i = 0;
+        foreach(int num in randomNumbers){
             filePieces.Add(Instantiate(filePiecePrefab, parent: parentContainer.transform));
-            filePieces[i].transform.position = SpawnList[rand.Next(0, SpawnList.Count)].position;
+            filePieces[i].transform.position = SpawnList[num].position;
+            i++;
         }
         foreach(Transform spawnBlock in SpawnList){
             Destroy(spawnBlock.gameObject);
         }
-
+        new Vector3(player.transform.localScale.x, player.transform.localScale.y, player.transform.localScale.z);
         moveAction = InputSystem.actions.FindAction("Move"); 
         updateGame = StartCoroutine(GameUpdate());
     }
@@ -77,8 +84,10 @@ public class FileRecoMazeMiniGame : AbstractMinigame
             // Rotate Player In Direction Of Movement
             // CoPilot Help To Write Every Case After The First
             var turnSpeed = 8f * Time.deltaTime;
-            var targetRotation = Mathf.Atan2(moveValue.y, moveValue.x) * Mathf.Rad2Deg;
-            player.transform.rotation = Quaternion.Slerp(player.transform.rotation, Quaternion.Euler(0, 0, targetRotation), turnSpeed);
+            if(moveValue != Vector2.zero){
+                var targetRotation = Mathf.Atan2(moveValue.y, moveValue.x) * Mathf.Rad2Deg;
+                player.transform.rotation = Quaternion.Slerp(player.transform.rotation, Quaternion.Euler(0, 0, targetRotation), turnSpeed);
+            }
             yield return new WaitForFixedUpdate();
         }
     }
@@ -87,12 +96,12 @@ public class FileRecoMazeMiniGame : AbstractMinigame
         ExitWall.GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
-    void OnEnable() {
+    public void OnEnable() {
         rpScript.FileRecovered += FileRecover;
         ewScript.GameOverEvent += GameOver;
     }
 
-    void OnDisable() {
+    public void OnDisable() {
         rpScript.FileRecovered -= FileRecover;
         ewScript.GameOverEvent -= GameOver;
     }

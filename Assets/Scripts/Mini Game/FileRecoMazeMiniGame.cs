@@ -43,7 +43,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
             // Read input, move player
             Vector2 moveValue = moveAction.ReadValue<Vector2>();
             player.transform.position += moveSpeed * Time.deltaTime * (Vector3)moveValue;
-            yield return null;
+            yield return new WaitForFixedUpdate();
         }
     }
 }

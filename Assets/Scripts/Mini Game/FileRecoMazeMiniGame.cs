@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Packages.Rider.Editor.UnitTesting;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -7,16 +8,23 @@ using UnityEngine.InputSystem;
 public class FileRecoMazeMiniGame : AbstractMinigame
 {
     // Maze Initials
-
-    public List<GameObject> mazeContainer;
     public GameObject player;
     public GameObject cameraPos;
+    public GameObject filePiecePrefab;
+    public GameObject SpawnContainer;
+    public List<Transform> SpawnList;
+    public List<GameObject> filePieces;
+    public GameObject parentContainer;
+    public GameObject ExitWall;
 
     // GamePlay Initials
     public Coroutine updateGame;
     public InputAction moveAction;
     public bool gameRunning = false;
     readonly float moveSpeed = 1.7f;
+    public RecoveryFilePiece rpScript;
+    public ExitWall ewScript;
+
 
     // Get any non-inspector references here
     void Start()
@@ -28,7 +36,19 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     public override void StartGame() {
         Canvas.ForceUpdateCanvases(); // Co-Pilot tip for updating UI before calculations
         GetComponent<BasicWindow>().OpenWindow();        
+
         gameRunning = true;
+        SpawnList.AddRange(SpawnContainer.GetComponentsInChildren<Transform>());
+        System.Random rand = new();
+
+        for(int i = 0; i < 5; i++){
+            filePieces.Add(Instantiate(filePiecePrefab, parent: parentContainer.transform));
+            filePieces[i].transform.position = SpawnList[rand.Next(0, SpawnList.Count)].position;
+        }
+        foreach(Transform spawnBlock in SpawnList){
+            Destroy(spawnBlock.gameObject);
+        }
+
         moveAction = InputSystem.actions.FindAction("Move"); 
         updateGame = StartCoroutine(GameUpdate());
     }
@@ -36,6 +56,13 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     public void GameOver() {
         gameRunning = false;
         StopCoroutine(updateGame);
+        // Destroy all the file pieces, the list, and the player
+        foreach(GameObject filePiece in filePieces){
+            Destroy(filePiece);
+        }
+        filePieces.Clear();
+        Destroy(player);
+
         GetComponent<BasicWindow>().CloseWindow();
     }
     // -2645 x, 1330 y, is the maximum right and bottom we allow the maze to move
@@ -46,10 +73,40 @@ public class FileRecoMazeMiniGame : AbstractMinigame
             // Read input, move player
             Vector2 moveValue = moveAction.ReadValue<Vector2>();
             player.transform.position += moveSpeed * Time.deltaTime * (Vector3)moveValue;
-            // cameraPos.transform.position = Vector3.Lerp(cameraPos.transform.position, player.transform.position, 0.1f);
             cameraPos.transform.position = Vector3.SmoothDamp(cameraPos.transform.position, player.transform.position, ref velocity, 0.1f);
-            
+            // Rotate Player In Direction Of Movement
+            // CoPilot Help To Write Every Case After The First
+            var turnSpeed = 8f * Time.deltaTime;
+            var targetRotation = Mathf.Atan2(moveValue.y, moveValue.x) * Mathf.Rad2Deg;
+            player.transform.rotation = Quaternion.Slerp(player.transform.rotation, Quaternion.Euler(0, 0, targetRotation), turnSpeed);
             yield return new WaitForFixedUpdate();
+        }
+    }
+
+    public void ExitUnlock() {
+        ExitWall.GetComponent<BoxCollider2D>().isTrigger = true;
+    }
+
+    void OnEnable() {
+        rpScript.FileRecovered += FileRecover;
+        ewScript.GameOverEvent += GameOver;
+    }
+
+    void OnDisable() {
+        rpScript.FileRecovered -= FileRecover;
+        ewScript.GameOverEvent -= GameOver;
+    }
+
+    void FileRecover(GameObject filePiece) {
+        Debug.Log("File Recovered");
+        switch(filePieces.Count){
+            case 0:
+                ExitUnlock();
+                break;
+            default:
+                filePieces.Remove(filePiece);
+                Destroy(filePiece);
+                break;
         }
     }
 }

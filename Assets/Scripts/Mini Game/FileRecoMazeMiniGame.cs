@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,12 +10,13 @@ public class FileRecoMazeMiniGame : AbstractMinigame
 
     public List<GameObject> mazeContainer;
     public GameObject player;
+    public GameObject cameraPos;
 
     // GamePlay Initials
     public Coroutine updateGame;
     public InputAction moveAction;
     public bool gameRunning = false;
-    public float moveSpeed = 1f;
+    readonly float moveSpeed = 1.7f;
 
     // Get any non-inspector references here
     void Start()
@@ -38,11 +40,15 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     }
     // -2645 x, 1330 y, is the maximum right and bottom we allow the maze to move
     // MARK: - Game Update
+    Vector3 velocity = Vector3.zero;
     public IEnumerator GameUpdate() {
         while (gameRunning) {
             // Read input, move player
             Vector2 moveValue = moveAction.ReadValue<Vector2>();
             player.transform.position += moveSpeed * Time.deltaTime * (Vector3)moveValue;
+            // cameraPos.transform.position = Vector3.Lerp(cameraPos.transform.position, player.transform.position, 0.1f);
+            cameraPos.transform.position = Vector3.SmoothDamp(cameraPos.transform.position, player.transform.position, ref velocity, 0.1f);
+            
             yield return new WaitForFixedUpdate();
         }
     }

@@ -1,10 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using Packages.Rider.Editor.UnitTesting;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Assertions.Must;
+using UnityEngine.Analytics;
 using UnityEngine.InputSystem;
 
 public class FileRecoMazeMiniGame : AbstractMinigame
@@ -16,6 +13,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     public GameObject SpawnContainer;
     public List<Transform> SpawnList;
     public List<GameObject> filePieces;
+    int filePiecesCount = 5;
     public GameObject parentContainer;
     public GameObject ExitWall;
 
@@ -24,7 +22,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     public InputAction moveAction;
     public bool gameRunning = false;
     readonly float moveSpeed = 1.7f;
-    public RecoveryFilePiece rpScript;
+    public FileRecoPlayer rpScript;
     public ExitWall ewScript;
 
     Vector3 OriginalScale;
@@ -58,6 +56,15 @@ public class FileRecoMazeMiniGame : AbstractMinigame
         new Vector3(player.transform.localScale.x, player.transform.localScale.y, player.transform.localScale.z);
         moveAction = InputSystem.actions.FindAction("Move"); 
         updateGame = StartCoroutine(GameUpdate());
+    }
+    public void OnEnable() {
+        rpScript.FileRecovered += FileRecover;
+        ewScript.GameOverEvent += GameOver;
+    }
+
+    public void OnDisable() {
+        rpScript.FileRecovered -= FileRecover;
+        ewScript.GameOverEvent -= GameOver;
     }
 
     public void GameOver() {
@@ -96,25 +103,19 @@ public class FileRecoMazeMiniGame : AbstractMinigame
         ExitWall.GetComponent<BoxCollider2D>().isTrigger = true;
     }
 
-    public void OnEnable() {
-        rpScript.FileRecovered += FileRecover;
-        ewScript.GameOverEvent += GameOver;
-    }
-
-    public void OnDisable() {
-        rpScript.FileRecovered -= FileRecover;
-        ewScript.GameOverEvent -= GameOver;
-    }
-
-    void FileRecover(GameObject filePiece) {
+    public void FileRecover(Collider2D filePiece) {
         Debug.Log("File Recovered");
-        switch(filePieces.Count){
-            case 0:
+        switch(filePiecesCount){
+            case 1:
                 ExitUnlock();
+                filePiecesCount--;
+                filePieces.Remove(filePiece.gameObject);
+                Destroy(filePiece.gameObject);
                 break;
             default:
-                filePieces.Remove(filePiece);
-                Destroy(filePiece);
+                filePiecesCount--;
+                filePieces.Remove(filePiece.gameObject);
+                Destroy(filePiece.gameObject);
                 break;
         }
     }

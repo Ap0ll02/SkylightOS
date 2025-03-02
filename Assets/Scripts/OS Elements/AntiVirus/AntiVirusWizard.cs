@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,6 +10,10 @@ public class AntiVirusWizard : MonoBehaviour
     public BugSmashGame bugSmashGame;
 
     public GameObject installText;
+
+    // Messages to let the task know that we have started and finished loading
+    public event Action OnMinigameStart;
+    public event Action OnMinigameComplete;
 
     public enum WizardStatus
     {
@@ -37,6 +42,16 @@ public class AntiVirusWizard : MonoBehaviour
         
     }
 
+    public void OnEnable()
+    {
+        bugSmashGame.BugSmashGameEndWinNotify += GameFinish;
+    }
+
+    public void OnDisable()
+    {
+        bugSmashGame.BugSmashGameEndWinNotify -= GameFinish;
+    }
+
     public void SetStatus(WizardStatus status)
     {
         switch (status)
@@ -62,6 +77,19 @@ public class AntiVirusWizard : MonoBehaviour
 
     public void TryStartGame()
     {
-        bugSmashGame.TryStartGame();
+        if(!bugSmashGame.playingGame)
+        {
+            bugSmashGame.TryStartGame();
+            OnMinigameStart?.Invoke();
+        }
+        else
+        {
+            Debug.Log("Game already running");
+        }
+    }
+
+    public void GameFinish()
+    {
+        OnMinigameComplete?.Invoke();
     }
 }

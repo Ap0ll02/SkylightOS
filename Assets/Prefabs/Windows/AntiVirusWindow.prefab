@@ -172,6 +172,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e4ee22ce601a59a4f9b679d7aae645e9, type: 3}
+--- !u!114 &2200309729015910131 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 575928651249875211, guid: e4ee22ce601a59a4f9b679d7aae645e9, type: 3}
+  m_PrefabInstance: {fileID: 1834950787284056056}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c719fdddbdbad874589d22699ff8037a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3097530297206557447 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3714252946437995775, guid: e4ee22ce601a59a4f9b679d7aae645e9, type: 3}
@@ -308,6 +319,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6810adbd5a53d9e48a863025de9c0add, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &5667351731988723050 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1995269304589715207, guid: 24de852235b93de4f92af3bdb1ae7bbe, type: 3}
+  m_PrefabInstance: {fileID: 6131339197781275245}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10a88c9eaa19a6846adf0196614a041d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &8934180229529569174 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 3380638812773545467, guid: 24de852235b93de4f92af3bdb1ae7bbe, type: 3}
@@ -439,8 +461,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a9d28ca062c1cd4bbcda448c7253941, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bugSmashGame: {fileID: 0}
   wizardPanel: {fileID: 4136458210834561660}
   antiVirusPanel: {fileID: 3097530297206557447}
+  antiVirusWizard: {fileID: 5667351731988723050}
+  antiVirusMain: {fileID: 2200309729015910131}
   isInstalled: 0
 --- !u!224 &7524999346296430439 stripped
 RectTransform:

@@ -40,7 +40,8 @@ public class BugSmashGame : MonoBehaviour
     public event Action BugSmashGameStartNotify;
 
     // The action that will notify the task that the minigame is done
-    public event Action BugSmashGameEndNotify;
+    public event Action BugSmashGameEndWinNotify;
+    public event Action BugSmashGameEndLossNotify;
 
     // This method executes when the script instance is being loaded.
     void Awake()
@@ -118,9 +119,12 @@ public class BugSmashGame : MonoBehaviour
             // Wait until the next frame.
             yield return null;
         }
+        if (player.GetComponent<CatGirlWizard>().isDead)
+            BugSmashGameEndLossNotify?.Invoke();
+        else
+            BugSmashGameEndWinNotify?.Invoke();
         player.GetComponent<CatGirlWizard>().ResetCatgirl();
         player.SetActive(false);
-        BugSmashGameEndNotify?.Invoke();
         window.CloseWindow();
     }
 

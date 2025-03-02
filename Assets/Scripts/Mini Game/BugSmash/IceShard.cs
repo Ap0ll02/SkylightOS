@@ -71,7 +71,7 @@ public class IceShard : MonoBehaviour
 
     public void explosionAnimation()
     {
-        animator.SetTrigger("Hit");
+        //animator.SetTrigger("Hit");
     }
 
 

@@ -83,8 +83,8 @@ public class CatGirlWizard : MonoBehaviour
         iceBall.GetComponent<IceShard>().direction = dir;
         iceBall.GetComponent<IceShard>().transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
         // we pick a random audio source to play.
-        this.gameObject.GetComponent<AudioSource>().clip = catGirlSounds[UnityEngine.Random.Range(0,catGirlSounds.Length)];
-        this.gameObject.GetComponent<AudioSource>().Play();
+        //this.gameObject.GetComponent<AudioSource>().clip = catGirlSounds[UnityEngine.Random.Range(0,catGirlSounds.Length)];
+        //this.gameObject.GetComponent<AudioSource>().Play();
         StartCoroutine(SpellCoolDown(spellCooldown));
         // This is what actually starts the cool down Coroutine
     }

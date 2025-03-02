@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class AntiVirusMain : MonoBehaviour
 {
     // Messages to let the task know that we have started and finished loading
@@ -14,8 +14,10 @@ public class AntiVirusMain : MonoBehaviour
     public GameObject scanButton;
 
     public GameObject infectedText;
+    public TMP_Text infectedTextStr;
     public GameObject removeVirusButton;
 
+    public string numViruses;
     // Prefab to spawn
     public GameObject prefabToSpawn;
 
@@ -25,14 +27,9 @@ public class AntiVirusMain : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
+        numViruses = UnityEngine.Random.Range(0, 1000000).ToString();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void OnScanButton()
     {
@@ -73,6 +70,7 @@ public class AntiVirusMain : MonoBehaviour
                 removeVirusButton.SetActive(false);
                 break;
             case AntiVirusWindow.AntiVirusState.InstalledRan:
+                infectedTextStr.text = "Your system is infected!\r\nThere is " + numViruses + " Malicious Programs!";
                 scanBar.SetActive(false);
                 scanButton.SetActive(false);
                 infectedText.SetActive(true);

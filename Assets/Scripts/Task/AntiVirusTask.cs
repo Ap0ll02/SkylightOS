@@ -22,11 +22,13 @@ public class AntiVirusTask : AbstractTask
 
     public override void startTask()
     {
+        startHazards();
         antiVirusWindow.SetStatus(AntiVirusWindow.AntiVirusState.NeedsInstallInteractable);
     }
 
     public override void CompleteTask()
     {
+        stopHazards();
         base.CompleteTask();
     }
 
@@ -69,17 +71,24 @@ public class AntiVirusTask : AbstractTask
 
     public override void startHazards()
     {
-        throw new System.NotImplementedException();
+        foreach (var hazardManager in hazardManagers)
+        {
+            hazardManager.StartHazard();
+        }
     }
 
+    // This will request the manager to stop a hazard
     public override void stopHazards()
     {
-        throw new System.NotImplementedException();
+        foreach (var hazardManager in hazardManagers)
+        {
+            hazardManager.StopHazard();
+        }
     }
 
     public override void checkHazards()
     {
-        throw new System.NotImplementedException();
+        // Not implemented ;)
     }
 
 }

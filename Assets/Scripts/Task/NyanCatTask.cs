@@ -19,7 +19,7 @@ public class NyanCatTask : AbstractBossTask
         BossCanvas.SetActive(true);
         OsManagerWindow.SetActive(false);
         SKYBIOSWINDOW.SetActive(false);
-}
+    }
 
     public override void startHazards()
     {

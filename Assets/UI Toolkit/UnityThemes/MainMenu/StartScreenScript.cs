@@ -13,48 +13,85 @@ using UnityEngine.UIElements;
 public class StartScreenScript : MonoBehaviour
 {
     [SerializeField] private UIDocument uiDocument;
-    // We want to be able to control our music right? this is the reference for it 
     private AudioSource audioSource;
-    
-    // This is getting references to all of our button components 
+
     public Button buttonLogin;
+    public Button buttonBack;
+    public Button buttonLevel1;
+    public Button buttonLevel2;
+    public Button buttonLevel3;
     public Button buttonQuit;
     public Button buttonSetting;
     public Button buttonMusic;
     public Button buttonMusicOff;
     public Button buttonCredits;
 
-    // Start is called before the first frame update
-
     private void Start()
     {
-        // Grab the audio source reference
         audioSource = GetComponent<AudioSource>();
         var root = uiDocument.rootVisualElement;
-        // We need to find the buttons
+
         buttonLogin = root.Q<Button>("Login");
+        buttonBack = root.Q<Button>("Back");
+        buttonLevel1 = root.Q<Button>("Level1");
+        buttonLevel2 = root.Q<Button>("Level2");
+        buttonLevel3 = root.Q<Button>("Level3");
         buttonQuit = root.Q<Button>("Quit");
         buttonSetting = root.Q<Button>("Settings");
         buttonMusic = root.Q<Button>("Music");
         buttonMusicOff = root.Q<Button>("MusicOff");
         buttonCredits = root.Q<Button>("Credits");
 
-
-        // UXML does not manage events. C# will through subscribing to events or registering callbacks. Let's subscribe to an event
-        // Simple the event is the login button being clicked we will subscribe our LoginButtonClicked function to this event
         buttonLogin.clicked += LoginButtonClicked;
+        buttonLevel1.clicked += Level1ButtonClicked;
+        buttonLevel2.clicked += Level2ButtonClicked;
+        buttonLevel3.clicked += Level3ButtonClicked;
         buttonQuit.clicked += QuitButtonClicked;
         buttonSetting.clicked += SettingButtonClicked;
         buttonMusic.clicked += MusicButtonClicked;
         buttonMusicOff.clicked += MusicButtonClicked;
         buttonCredits.clicked += CreditsButtonClicked;
+        buttonBack.clicked += BackButtonClicked;
 
-        //UpdateMusicButtonVisibility();
+        buttonBack.style.display = DisplayStyle.None;
+        buttonLevel1.style.display = DisplayStyle.None;
+        buttonLevel2.style.display = DisplayStyle.None;
+        buttonLevel3.style.display = DisplayStyle.None;
     }
 
     private void LoginButtonClicked()
     {
+        buttonBack.style.display = DisplayStyle.Flex;
+        buttonLogin.style.display = DisplayStyle.None;
+        buttonLevel1.style.display = DisplayStyle.Flex;
+        buttonLevel2.style.display = DisplayStyle.Flex;
+        buttonLevel3.style.display = DisplayStyle.Flex;
+    }
+
+    private void BackButtonClicked()
+    {
+        buttonBack.style.display = DisplayStyle.None;
+        buttonLogin.style.display = DisplayStyle.Flex;
+        buttonLevel1.style.display = DisplayStyle.None;
+        buttonLevel2.style.display = DisplayStyle.None;
+        buttonLevel3.style.display = DisplayStyle.None;
+    }
+
+    private void Level1ButtonClicked()
+    {
         SceneManager.LoadScene("IntroCutscene");
+        audioSource.Stop();
+    }
+
+    private void Level2ButtonClicked()
+    {
+        SceneManager.LoadScene("Level2");
+        audioSource.Stop();
+    }
+
+    private void Level3ButtonClicked()
+    {
+        SceneManager.LoadScene("Level3");
         audioSource.Stop();
     }
 
@@ -68,10 +105,9 @@ public class StartScreenScript : MonoBehaviour
         Debug.Log("This is where the Settings will be");
     }
 
-    // This function simply handles the toggle button for the audio button 
     private void MusicButtonClicked()
     {
-        if (audioSource.isPlaying) 
+        if (audioSource.isPlaying)
             audioSource.Pause();
         else
             audioSource.Play();
@@ -84,28 +120,14 @@ public class StartScreenScript : MonoBehaviour
 
     private void OnDisable()
     {
-        // This function just unsubscribes our function from the event. We want to avoid those pesky errors 
         buttonLogin.clicked -= LoginButtonClicked;
-        buttonLogin.clicked -= QuitButtonClicked;
-        buttonLogin.clicked -= SettingButtonClicked;
-        buttonLogin.clicked -= MusicButtonClicked;
-        buttonLogin.clicked -= CreditsButtonClicked;
-
+        buttonLevel1.clicked -= Level1ButtonClicked;
+        buttonLevel2.clicked -= Level2ButtonClicked;
+        buttonLevel3.clicked -= Level3ButtonClicked;
+        buttonQuit.clicked -= QuitButtonClicked;
+        buttonSetting.clicked -= SettingButtonClicked;
+        buttonMusic.clicked -= MusicButtonClicked;
+        buttonCredits.clicked -= CreditsButtonClicked;
+        buttonBack.clicked -= BackButtonClicked;
     }
-
-    // This is so I can eventually implement the toggle feature 
-    // private void UpdateMusicButtonVisibility()
-    // {
-    //     if (audioSource.isPlaying)
-    //     {
-    //         buttonMusic.style.display = DisplayStyle.Flex;
-    //         buttonMusicOff.style.display = DisplayStyle.None;
-    //     }
-    //     else
-    //     {
-    //         buttonMusic.style.display = DisplayStyle.None;
-    //         buttonMusicOff.style.display = DisplayStyle.Flex;
-    //     }
-    // }
-
 }

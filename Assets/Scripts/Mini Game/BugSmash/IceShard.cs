@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
-using UnityEditor.Animations;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +13,6 @@ public class IceShard : MonoBehaviour
     public bool isDestroyed;
     public int manaCost;
     public int spellDamage;
-    public AnimatorController animationController;
     private Animator animator;
     //public Image image;
     //public Sprite spriteArray;

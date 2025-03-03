@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using UnityEditor.PackageManager.UI;
 /// <summary>
 /// Garrett Sharp
 /// OS Manager

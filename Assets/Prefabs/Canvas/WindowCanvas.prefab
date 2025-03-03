@@ -1086,6 +1086,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4681667716897255497}
     m_Modifications:
+    - target: {fileID: 2200309729015910131, guid: ce5c25c4ae6f36c4a84a5ba75f4f6937, type: 3}
+      propertyPath: windowCanvas
+      value: 
+      objectReference: {fileID: 9166339939259810141}
     - target: {fileID: 4095457885845376528, guid: ce5c25c4ae6f36c4a84a5ba75f4f6937, type: 3}
       propertyPath: m_Name
       value: AntiVirusWindow

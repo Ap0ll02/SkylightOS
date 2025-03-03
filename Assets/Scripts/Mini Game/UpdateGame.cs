@@ -59,7 +59,7 @@ public class UpdateGame : MonoBehaviour
         windowArea = updateWindow.GetComponent<RectTransform>().rect;
 
         // Initially closes the game window.
-        window.CloseWindow();
+        window.ForceCloseWindow();
     }
 
     // Wrapper to prevent starting the game multiple times by accident.

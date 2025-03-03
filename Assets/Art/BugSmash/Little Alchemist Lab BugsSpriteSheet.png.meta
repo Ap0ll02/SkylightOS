@@ -1,0 +1,6054 @@
+fileFormatVersion: 2
+guid: 8d81ca1b969ef244ab9916a8f444b340
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_0
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 484
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 24191f47848ce804cb343b7f9ffaa0f6
+      internalID: 1667724711
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_1
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 484
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 31bd3db654fe5f94184a6e1df54e74a1
+      internalID: -1893345968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_2
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 484
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c2d3a6be7122e34b88573a97b33dd36
+      internalID: 482872853
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_3
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 481
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6cea451a915ae63438bc02bb10fb7782
+      internalID: -600703735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_4
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 483
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ce29407f2cef4e14f88133b4ecd2214c
+      internalID: 1036231387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_5
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 484
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f75ad29c78c96b24982afb4d1e7abf3c
+      internalID: 470007016
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_6
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 483
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f65716b68586cc7458dcfb9166a97234
+      internalID: -1473558124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_7
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 484
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b85d8380276a5c48834d14ec68e824d
+      internalID: -1261624096
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_8
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 483
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb42a64017872a44897b8f041d981ccc
+      internalID: -3276538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_9
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 484
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f14b7a463b0bef34ab5f8c88c7cd2a13
+      internalID: 116936622
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_10
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 483
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af7a1d1980e563c4ea27ad3ced76a641
+      internalID: 697972978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_11
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 484
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c5b8a908317516149b7da5e4e248f9bc
+      internalID: 856222508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_12
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 481
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d99d995d4f8d52242bb7c757a1cb0f84
+      internalID: 57641669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_13
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 484
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5a9d46cf157d4b458ceff94c8a6efba
+      internalID: 754396877
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_14
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 486
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff00b213e1e0eec4c922c96aa7abe08e
+      internalID: 2022815083
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_15
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 486
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d543f8e9a42b6241a8d3bf41108694c
+      internalID: 160202469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_16
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 484
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebd5e0ea6231f5648999ae9af7ff44e3
+      internalID: -1047831737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_17
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 452
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d54529f92f0a1204a90c055673e6e76b
+      internalID: 1957734374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_18
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 449
+        width: 94
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c15bca1cd2e906a489a062f2bfbe7898
+      internalID: -397128662
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_19
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 451
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8666ca244e147c54db80db5f5147a336
+      internalID: -1159406184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_20
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 452
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 26a063fcc5697994a8cad5b58320ca00
+      internalID: 904178604
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_21
+      rect:
+        serializedVersion: 2
+        x: 195
+        y: 451
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e6a9f756052b3c545bc8d9a3f5bbfa0c
+      internalID: -2117781088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_22
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 452
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b8434fefbea7eb44b546e1ae72b490a
+      internalID: 187677749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_23
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 451
+        width: 26
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 274e8d38dc0efbf4198236d389819dd3
+      internalID: 1943693402
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_24
+      rect:
+        serializedVersion: 2
+        x: 292
+        y: 452
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39a808711c6b6e2489434e880e6fdd56
+      internalID: -1179871730
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_25
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 451
+        width: 26
+        height: 24
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb93bdba3799f1646b2076c5cbb25e6f
+      internalID: 1540502978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_26
+      rect:
+        serializedVersion: 2
+        x: 355
+        y: 452
+        width: 26
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe664b878566a9643b5d125469034494
+      internalID: -807315574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_27
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 449
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3bb57991c955ce1449f1d9be9365a7a5
+      internalID: -1691153562
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_28
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 452
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94bd32cc53c18754b97d94b1671a4c7a
+      internalID: 2051120681
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_29
+      rect:
+        serializedVersion: 2
+        x: 452
+        y: 454
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab2edda87df6994468ef0a55f3497c27
+      internalID: -479411836
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_30
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 454
+        width: 24
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0743518f99c0293409fc9a86bb436ba3
+      internalID: -1849235846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_31
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 452
+        width: 22
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e87f511274015f4abc4f8eb481e9956
+      internalID: -197607407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_32
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 424
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2334e163fc8fa7f46930318995b179af
+      internalID: -2081372814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_33
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 424
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5e87ed8f25535d45ac67ecec604f4bc
+      internalID: 1621545619
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_34
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 424
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1f6e8d07c56b49b4b9ded0ee8e7ce533
+      internalID: -887295722
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_35
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 417
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc70a90361cd28745a0d7640e54b9f75
+      internalID: -1927465218
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_36
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 422
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0976c8a3ff719d64eafa7a3562793e73
+      internalID: -752844849
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_37
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 423
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5f606bb90ff54094d8e457d6311983f6
+      internalID: -839283693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_38
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 422
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f5b5c6d46f1d9c4ba13035f5c403b49
+      internalID: -697488258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_39
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 423
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13ff6799f3a8fb943ac30e9bd934ecb0
+      internalID: -891292616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_40
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 422
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf5c787d5d020184598b4f39b9307bc7
+      internalID: 2010268299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_41
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 423
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b703d6e6c4d607459bb4f8ddcff48a0
+      internalID: -1925135697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_42
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 422
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b801847627b65e4458eef7ceed3696dd
+      internalID: 751809778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_43
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 423
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d53e94809e575ee4aaa29361296a0b46
+      internalID: -787066528
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_44
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 417
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b8306bcacf87cc147b09af80464d21ab
+      internalID: -331776252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_45
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 424
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9050ccba95b472a43b496da423b4b5ff
+      internalID: 1580310897
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_46
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 423
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd38515c1e14365488e2b29bfb5ac8e1
+      internalID: -567195479
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_47
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 423
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad530aa8c3cce2a4cbcf45a1c4f91eb2
+      internalID: 326219694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_48
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 424
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ccde04794353484997a715e2f1b9401
+      internalID: 1028891496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_49
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 392
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 870f91d720e6c404980ca7c4ee23f222
+      internalID: 1399360881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_50
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 385
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d7929f63519b3584aa440790dbb2145a
+      internalID: 754972611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_51
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 385
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9746c5018254f8d4391e643085ce8854
+      internalID: 557719210
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_52
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 385
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb505e966fa9cd342960fd3c38347092
+      internalID: 1696441656
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_53
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 390
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917a215003cc51f48ad6d00d0ec872f4
+      internalID: 1576063973
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_54
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 391
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9921f06d4f6278b41bcf6f2f41cbf72d
+      internalID: -227020984
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_55
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 390
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 161aa2fbc47b79b40831ab2620822016
+      internalID: -295245749
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_56
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 391
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba042188e9fa66745a878f1100333250
+      internalID: 906794488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_57
+      rect:
+        serializedVersion: 2
+        x: 263
+        y: 390
+        width: 18
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 86a54f46e0774fe4f82e7c3381e0e62b
+      internalID: -822405739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_58
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 391
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0311fde9f24bd9f45808544adbca8165
+      internalID: 192864611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_59
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 390
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab7f78d7c288f594cb36d776dc8ffc93
+      internalID: -445135617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_60
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 391
+        width: 17
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 54cad7875b4d77247849d05eaea1b953
+      internalID: -284412883
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_61
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 385
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d6e07fbe8865244b8bea79f0c5d89db
+      internalID: -927165068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_62
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 392
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f1a45d2db80c4a40a2201624014c494
+      internalID: -229517252
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_63
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 391
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 087116df1698614428f1f375cf1fb713
+      internalID: -1911559457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_64
+      rect:
+        serializedVersion: 2
+        x: 488
+        y: 391
+        width: 16
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7d694766832aea4fa531f18de6c7449
+      internalID: -1686256030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_65
+      rect:
+        serializedVersion: 2
+        x: 520
+        y: 392
+        width: 17
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60c1bfb514839354c900cebe71840abb
+      internalID: -721317436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_66
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 356
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32a98b69355f66c44abde8980e1f5ba6
+      internalID: -1882632512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_67
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 356
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 296a69b50ad7727418d3708de459d2d9
+      internalID: -2123467735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_68
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 356
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c6c0251df315b6b4081f5d7ae9c1eb46
+      internalID: -1612340443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_69
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 353
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b2cdbe8a45018d45ab992c3095bf7c3
+      internalID: -2026150307
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_70
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 356
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8f33f51d120e11d42a588b7bdb3ec755
+      internalID: -2072032858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_71
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 356
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c4803a60035d9b458b787e2288f5e62
+      internalID: -78883990
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_72
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 356
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c91bc24d57913945a0d4d12320421a7
+      internalID: 235478098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_73
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 356
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 17b91f7b42e5b8f4089417f6f311eba8
+      internalID: 20926270
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_74
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 356
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 39112df31ba35454e8a53adf54d96c03
+      internalID: -537695931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_75
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 356
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 282095a3e8c4f6f4a9e921087a44ac10
+      internalID: -1678891615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_76
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 356
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f0e10cb3305b0647a263849bb847386
+      internalID: -1418538547
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_77
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 356
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc6565462e9ebf84aa37304e4e25a26d
+      internalID: -1746336669
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_78
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 353
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df82f72860731f546980e5ea59a9e0f0
+      internalID: 997877012
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_79
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 356
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 621b08337fec641418730285c4914827
+      internalID: 979250232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_80
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 356
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 64f255c028b6ab544bee299f606d142d
+      internalID: -1010012146
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_81
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 356
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e11e937eb52852d4ca95d217cb4633d7
+      internalID: -44851667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_82
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 356
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 210618f331e361e4c8668bff9cff2d5d
+      internalID: -1560717092
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_83
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 324
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b91fe62ad1d0c6f4fa03052c607d33e9
+      internalID: -2110755081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_84
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 321
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2cba244c43315e4488f172a63f31298
+      internalID: 321242344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_85
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 321
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f58e3607a3e5b5c4198147c0dcff31d0
+      internalID: 1394923449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_86
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 321
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60fe64f5f4566df4cb724d9fd3c401fd
+      internalID: -2126617408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_87
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 324
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 87b7f34378ffb944e9afdebabac24d9a
+      internalID: -262400382
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_88
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 324
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ec50062539fa17b42b4e146b1fa20a32
+      internalID: -536168698
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_89
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 324
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 138c237da7dac2b4a9f48f11580f0d00
+      internalID: -1811786808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_90
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 324
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c29976c37e8f1b4abac5be3494b798d
+      internalID: -54817443
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_91
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 324
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 52158073a65ccdb41a08ba1846a1576b
+      internalID: -153653326
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_92
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 324
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 515d79e98fdb36842816b572eb7e49e5
+      internalID: -1156514219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_93
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 324
+        width: 21
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 208b5dcdfa76d314294cf99bdfbba011
+      internalID: -1269355078
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_94
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 324
+        width: 21
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff1634b44498e7f4c90406275af6295c
+      internalID: -505702194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_95
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 321
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2499f9ad8bfb0334da115b635f5305e5
+      internalID: 2143588766
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_96
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 324
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad23c26b7d280d3419ccf15775697684
+      internalID: 1606222215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_97
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 324
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f489463757410604c9428f274091992c
+      internalID: -359204738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_98
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 324
+        width: 21
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3089b23d7aca35543800f052852cf72c
+      internalID: -211641985
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_99
+      rect:
+        serializedVersion: 2
+        x: 518
+        y: 324
+        width: 20
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 895e939adc77bca46a875cbf85a6e54c
+      internalID: -1558084813
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_100
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 294
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ab11e11060b1224b94d62f22f758d81
+      internalID: -1959111365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_101
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 294
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59ac1246a6d51784a8b562fe67d77d1d
+      internalID: -1255077305
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_102
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 294
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed35dbeb21028e34ba420eb676ed1823
+      internalID: 304603588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_103
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 289
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2987bc6567b2ad540a254bc0b11f2418
+      internalID: -1494319289
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_104
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 293
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e84e9137db3c7394681ba0c9b6614234
+      internalID: -42862946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_105
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 294
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba146f05f16556c4eb67130b434f4673
+      internalID: 2103525186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_106
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 293
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c4054c92023ada47b85faa89e412af5
+      internalID: -649227529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_107
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 294
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7047f16cd48178249a77c9d8f80696be
+      internalID: -336801084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_108
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 293
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 917d44467cc39954397493398e1dac29
+      internalID: 383791773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_109
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 294
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ef5d90a45727ee409fb3ffdc6b518b7
+      internalID: 2099637206
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_110
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 293
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: dec1ddb52c33f0e409d91758183edce2
+      internalID: -591927982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_111
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 294
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7af2f4910090cd445967d3774b843a9c
+      internalID: 322525718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_112
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 289
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0f42cdaef6165340922b266e6a3968c
+      internalID: -1366587070
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_113
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 294
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f0eff984c327757469301d4911b259db
+      internalID: -435389520
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_114
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 294
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9c9dc18b34f80f447b85552187a13025
+      internalID: -2110092851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_115
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 294
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 478b23b6aefca3a40a32350af260a979
+      internalID: 980173361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_116
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 294
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2dfabc05d270b4e439a1237b2ef85fc9
+      internalID: 1296237514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_117
+      rect:
+        serializedVersion: 2
+        x: 4
+        y: 262
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3aa1357f904de6d4482141a185bec97a
+      internalID: -1391659758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_118
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 257
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1c65b98d1363b974c9ecb62c8762dfde
+      internalID: 1769864680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_119
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 257
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e2d73287cc5d68f458575dfe60daa82d
+      internalID: 157320685
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_120
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 257
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4b019fb28b838d2418710b7f70f6751d
+      internalID: 835227406
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_121
+      rect:
+        serializedVersion: 2
+        x: 130
+        y: 261
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e36fd14b2d812d4f93f7a03ae7345f1
+      internalID: 170442345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_122
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 262
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b4af08f633491044a3cb16bc2698699
+      internalID: 1424593881
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_123
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 261
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a30c266bbfda4ac469a045735b20b7ad
+      internalID: 1371019826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_124
+      rect:
+        serializedVersion: 2
+        x: 228
+        y: 262
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 683e57739396ef440bb2aecf3b4acf51
+      internalID: 627098188
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_125
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 261
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4fbe3d6c0f2cfa149a0554520750276f
+      internalID: -1616298823
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_126
+      rect:
+        serializedVersion: 2
+        x: 293
+        y: 262
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ab35bfec8905f1499b149040987886f
+      internalID: -621798293
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_127
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 261
+        width: 24
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4402e7e757e1f4b40bc76512ae243604
+      internalID: 1046064243
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_128
+      rect:
+        serializedVersion: 2
+        x: 356
+        y: 262
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a1fa7c10fd26dcc488c235f0446448b9
+      internalID: 881237097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_129
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 257
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bdff46021117a094e9d58f0160d841be
+      internalID: -1475986546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_130
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 262
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2f72ff14f74d57b4d98932cc2f06b49a
+      internalID: -1566023090
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_131
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 262
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7d70cb10867010e4d96e822f3faa8ce1
+      internalID: 841632769
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_132
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 262
+        width: 22
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46596f526eb9e87408e3c1185ab2a214
+      internalID: 1915170535
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_133
+      rect:
+        serializedVersion: 2
+        x: 517
+        y: 262
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ab757b943b8f684f86af4338deb01cc
+      internalID: 273919739
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_134
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 230
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd130679a622eee4da722115bb8e5b48
+      internalID: 823287831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_135
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 230
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d89c98ae6130b5459c1e74f0737df0b
+      internalID: -1705560032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_136
+      rect:
+        serializedVersion: 2
+        x: 69
+        y: 230
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0c8ecd9cb0565454ab9f3703bbc66f96
+      internalID: -722944822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_137
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 225
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 21afb18e459abf043997b2bdf321102e
+      internalID: 1856711438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_138
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 228
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de91dc280024e4b4e87a85ab62c32412
+      internalID: 1570949657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_139
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 230
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f072ac811fb4ea4894049659cbff470
+      internalID: 44939420
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_140
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 228
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cdf97018cdaa7c04a8395d05129702dc
+      internalID: -1552277421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_141
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 230
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 02e5138304cd6a34ca7160f14111415e
+      internalID: -974904248
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_142
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 228
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3887772dea902554c817ef01550b024d
+      internalID: -606163600
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_143
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 230
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d545aa9328b39644b0731555b406eea
+      internalID: -1186502152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_144
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 228
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7384c36e5cf56144dbbafcc8c30a63ef
+      internalID: 424759475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_145
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 230
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 48fa51d5f2d0ea44d94e5fa745f404c5
+      internalID: 1248030094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_146
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 225
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 916d3ef8077a7504b91d52723bf4fe22
+      internalID: 167164049
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_147
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 230
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34df5c08f815994499a8c26291b3a8c5
+      internalID: 1274974980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_148
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 230
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4d5358100d87cf41b3ad07d083d5378
+      internalID: -1186156413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_149
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 230
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 301fce00a7a95984aa3d63d6b54c4364
+      internalID: 1446072108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_150
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 230
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ea1c858e7ccec9749bf957827c222c07
+      internalID: 2069028435
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_151
+      rect:
+        serializedVersion: 2
+        x: 5
+        y: 198
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b23e08b70d2d3e4c91ca50f56451dfd
+      internalID: -1694421682
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_152
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 193
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 65a123f38ad6e0d4294483a4167e8bae
+      internalID: 1772321693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_153
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 193
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7e77b017b92c5b74b8bc87ab0e0722a1
+      internalID: -1108374065
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_154
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 193
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 591c5fcb7d560c74caf00034b49427c9
+      internalID: -1864923279
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_155
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 196
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 83e1738d3ffdf484b926c9f8353f3a2f
+      internalID: 54406391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_156
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 198
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13b02ae87d318544ba16710eb305ef60
+      internalID: 661204814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_157
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 196
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b995abbde708bbe4aaab3b617539e945
+      internalID: 1713947660
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_158
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 198
+        width: 23
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eadca9687f66cba4b86c1c6bd263230c
+      internalID: -791923645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_159
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 196
+        width: 23
+        height: 23
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5a971e5151abcba40b3fe2b0cf66289b
+      internalID: -559974088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_160
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 198
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 516f4e0f6c5bebd43bd826300b19d22b
+      internalID: 1027371464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_161
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 196
+        width: 23
+        height: 25
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4b3060c9d5fe38429cd452abf2a474c
+      internalID: -965632517
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_162
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 198
+        width: 23
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45ab0908bf2d2e3419df4a7eacfba544
+      internalID: 1054725616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_163
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 193
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: eb46fcc9884716148868eb62f67d50fe
+      internalID: 286621737
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_164
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 198
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 20910c4269cc6824796c94b3dfefef1e
+      internalID: 988764274
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_165
+      rect:
+        serializedVersion: 2
+        x: 453
+        y: 198
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d34b4d1f0e7b1547888ec95caba0377
+      internalID: -14023937
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_166
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 198
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4528db5f2e80c18499424e61164c2e4a
+      internalID: 2002610282
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_167
+      rect:
+        serializedVersion: 2
+        x: 515
+        y: 198
+        width: 23
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d615bd77685b113418a6973fc4fbbbbb
+      internalID: -999353578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_168
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 168
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9e761e98d322254098c28b332c4bbcb
+      internalID: -816779024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_169
+      rect:
+        serializedVersion: 2
+        x: 39
+        y: 168
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4edad66795d7ca94fa1a642ab7e30ad4
+      internalID: -964927499
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_170
+      rect:
+        serializedVersion: 2
+        x: 71
+        y: 168
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95cd7651305f56942b3c1292bafdfc27
+      internalID: -910540185
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_171
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 161
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c3d145d68e5d10141b6bd3fe1c43f81d
+      internalID: -1448973408
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_172
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 167
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a103a3005ffb0704aa0651a9aafbaa6a
+      internalID: -1704736457
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_173
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 168
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e86824b0d1a9e2840b7bf92ad27523f5
+      internalID: -842619330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_174
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 167
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0759c869df302f641b489aecaf9feaba
+      internalID: 901884674
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_175
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 168
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3432b2bee2d143d438a200a3462827d3
+      internalID: -1039505958
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_176
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 167
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f33db167ca79570448c1743e27eed620
+      internalID: 290448217
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_177
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 168
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cd463c2f433eb84db3aec0c86e176fc
+      internalID: -1675934194
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_178
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 167
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e0ca0bf39115e6b43a39e4be7548d303
+      internalID: 1372590487
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_179
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 168
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ff7c74339fd559d48b3fad57bc05b637
+      internalID: -702603591
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_180
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 161
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f111c03b3d9fc604eba9e2fbf01b5b9e
+      internalID: 1267359593
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_181
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 168
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6843e613a2df3a74ca6480f42a851623
+      internalID: -30921862
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_182
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 168
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 90c5dcbacb440bd4ca0d43181e530551
+      internalID: 461638308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_183
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 168
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 01868c89f2f69114d9a766b068a5f8f8
+      internalID: -1727934576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_184
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 168
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d5d6a565753ef14fb8887626dfb23a6
+      internalID: -264204118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_185
+      rect:
+        serializedVersion: 2
+        x: 7
+        y: 136
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: adc97dc9838287846a14cdb28c89d8b5
+      internalID: -922301828
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_186
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 129
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d6872228014238a4c9a79ac926ae00b1
+      internalID: 1996147047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_187
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 129
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 42ba0a67c26720a49a6ae4e341a573c6
+      internalID: 535794665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_188
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 129
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccfde37adf71cf14ca577e890a119b0a
+      internalID: 2132304941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_189
+      rect:
+        serializedVersion: 2
+        x: 134
+        y: 135
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae3a839123951974bacbaf1acc602643
+      internalID: -1643307085
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_190
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 136
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ae6481dfccd2b84bb23df87076454f3
+      internalID: 176547939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_191
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 135
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7198405bac21c0d489a9192ec5c4c172
+      internalID: 1702877613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_192
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 136
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a56cb0e10c9bcc94fa2339f1afb4e005
+      internalID: 1670110395
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_193
+      rect:
+        serializedVersion: 2
+        x: 264
+        y: 135
+        width: 18
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de8f548a11cc0044ab8826380562e3cc
+      internalID: 2138286922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_194
+      rect:
+        serializedVersion: 2
+        x: 296
+        y: 136
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8586cb931ff662947ba4d8a576484c76
+      internalID: 1726812605
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_195
+      rect:
+        serializedVersion: 2
+        x: 327
+        y: 135
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 381019062b0d8e04ab5175e3612b9670
+      internalID: 1038199097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_196
+      rect:
+        serializedVersion: 2
+        x: 359
+        y: 136
+        width: 18
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 99a635e1015dfa848854ea9248bae438
+      internalID: 1898967425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_197
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 129
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b190d02fdfa58ab4da7d6daa76f541f1
+      internalID: 368265676
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_198
+      rect:
+        serializedVersion: 2
+        x: 423
+        y: 136
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06e255ba221b0b24784c65f0fbcbda17
+      internalID: 1018425222
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_199
+      rect:
+        serializedVersion: 2
+        x: 455
+        y: 136
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd442f1c30c43454ca3b254c3e5c7a31
+      internalID: -1452556381
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_200
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 136
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d7b4f69ecb913a41be8a3c219127531
+      internalID: 288420191
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_201
+      rect:
+        serializedVersion: 2
+        x: 519
+        y: 136
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f3d5c5baa0c2a945bac698a71e9ca3d
+      internalID: -1217932116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_202
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 103
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fabde1ea707a980459b75e8a4c66cc6b
+      internalID: 2126598601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_203
+      rect:
+        serializedVersion: 2
+        x: 38
+        y: 103
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e392071fb12623d4484ea6899bc07d22
+      internalID: -662095552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_204
+      rect:
+        serializedVersion: 2
+        x: 70
+        y: 103
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61ee4ca5a905cfa4eb7dbc2805eba0e9
+      internalID: 996198610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_205
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 97
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: df6578c7de3aead4eb904581f6eba0d5
+      internalID: -787417667
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_206
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 102
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c97fcbc5f914e63408c0d67cfd8314a6
+      internalID: -1608134476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_207
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 103
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5c35baeeaa3185c4d8076dfcdd2918f9
+      internalID: 190145383
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_208
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 102
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22bb6975502d02e4c841d81d870de943
+      internalID: -158898869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_209
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 103
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed23b6156f73db44f8deab878cf38ad9
+      internalID: 1606344507
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_210
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 102
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4ac79f4258131574d8940ccd99ecc970
+      internalID: 1381920713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_211
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 103
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d36ef2604cda1be4699b89a9feed926b
+      internalID: -1493099124
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_212
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 102
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3261877b00c93d24b987ac819970168c
+      internalID: -1755325671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_213
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 103
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33c3eb7d290b6554b9e2e3c5b0ff6f5c
+      internalID: 2045261337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_214
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 97
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b06af197b73a9464bb72a68c792025da
+      internalID: 1430727108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_215
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 103
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b42cdfc69f8d2c64990019fb49c6d936
+      internalID: 820459119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_216
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 104
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a12168f3598791b4a992f97cd0ee306e
+      internalID: 1345116800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_217
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 103
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed791add481ccf24daedcdec8e67006c
+      internalID: 1736722019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_218
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 104
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33d54ee37f566bb4ba792e2418d7b4ab
+      internalID: 96529486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_219
+      rect:
+        serializedVersion: 2
+        x: 6
+        y: 71
+        width: 19
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef146aa26f3d23341b37a5933dd869b3
+      internalID: -1128712770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_220
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 65
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ab6a719af8da8143b3e45bc1f1c1f56
+      internalID: -263650394
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_221
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 65
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7222bdbfce5b85647ae851be91911cfd
+      internalID: -791726843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_222
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 65
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d8f70e906dbed24ba00ffcf116c91f0
+      internalID: 998657359
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_223
+      rect:
+        serializedVersion: 2
+        x: 132
+        y: 70
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3940f0e7d5df6764a8fa5077f0a6c69f
+      internalID: -1436899833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_224
+      rect:
+        serializedVersion: 2
+        x: 164
+        y: 71
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ee445440806037e49b465b74dd9c5d35
+      internalID: 697513838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_225
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 70
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 45daa7e967ec8b74eaa082659e05c9a2
+      internalID: -2089796803
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_226
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 71
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f8044e09082a341954fbef20ec2646
+      internalID: 957813505
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_227
+      rect:
+        serializedVersion: 2
+        x: 262
+        y: 70
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: de812a696ed22cb4dbcc427550319dc3
+      internalID: 853933059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_228
+      rect:
+        serializedVersion: 2
+        x: 294
+        y: 71
+        width: 21
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d5f22cb2af862ef458becb3c9d3f2a72
+      internalID: 972619683
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_229
+      rect:
+        serializedVersion: 2
+        x: 325
+        y: 70
+        width: 21
+        height: 19
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0bf2f16a409af744b9ec241cfeaef61c
+      internalID: -1616670820
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_230
+      rect:
+        serializedVersion: 2
+        x: 357
+        y: 71
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af0e033c99d1ec547b36763776be3f9c
+      internalID: -1289183393
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_231
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 65
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f2fd2b6d9a79c2c4cb7a5f55cec0ad71
+      internalID: 637424778
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_232
+      rect:
+        serializedVersion: 2
+        x: 422
+        y: 71
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fce40a644782a0b479f0ac74d067b068
+      internalID: -1325831839
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_233
+      rect:
+        serializedVersion: 2
+        x: 454
+        y: 72
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73f76c60d66e59e44a39c0196bc473e7
+      internalID: -1288907404
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_234
+      rect:
+        serializedVersion: 2
+        x: 485
+        y: 71
+        width: 20
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0fdc790b6e7a74546ad9ea969a5a3799
+      internalID: -1376829519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_235
+      rect:
+        serializedVersion: 2
+        x: 516
+        y: 72
+        width: 21
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6ea2c71cec49c204092d840ec3218f2c
+      internalID: 560561036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_236
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 43
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2e0cc0898d53633459431b8d92efddd0
+      internalID: -324080822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_237
+      rect:
+        serializedVersion: 2
+        x: 42
+        y: 43
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3022254cf7c5ec04584e8a3a1f1dbac1
+      internalID: 1404316712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_238
+      rect:
+        serializedVersion: 2
+        x: 74
+        y: 43
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b78e6906856f4e4fbb8aa786268b15d
+      internalID: 2029918699
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_239
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 33
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ebe3a75293ee454a9e05b29b9e7db74
+      internalID: -1944493034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_240
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 41
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b720d219a751d0240a4486a31b1d3491
+      internalID: 962996380
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_241
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 43
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9f901dd0012c4da489c00d14557012b8
+      internalID: 614747712
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_242
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 41
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e476fd450f164cd4696cd86e39d68acc
+      internalID: 732975723
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_243
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 43
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12cf14dde6e2a7f46b187c6169fb770e
+      internalID: 1559855371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_244
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 41
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ec54dc531e7ae64ba61277de2301f92
+      internalID: 871126855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_245
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 43
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8871e4dfb6261c48b732cb31cc68ea5
+      internalID: 639049256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_246
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 41
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 60e16fcf51c2cb3448508e1d6677f6a4
+      internalID: -1313801671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_247
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 43
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 32ea0f3216c1d3f4d8a4ebc9ce40d6f5
+      internalID: -2119901845
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_248
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 33
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9d861b7e52964644a5a75b7a08ee672
+      internalID: -1909508509
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_249
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 42
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d61628d366bba544e8e7121031352e68
+      internalID: 1946732634
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_250
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 42
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e62a1adee09d61d418f13e530172b7b3
+      internalID: -689598347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_251
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 42
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 27fe7fa5c40209d45ad9869b0d192ca9
+      internalID: 1225602367
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_252
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 42
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7499876e9d348a6408ea5324dde61a4e
+      internalID: 128432975
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_253
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 11
+        width: 11
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb672fcf3424ecd4e869541c4cc71370
+      internalID: 1092148333
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_254
+      rect:
+        serializedVersion: 2
+        x: 33
+        y: 1
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0ed762372f08ade4094fc087e0881233
+      internalID: 1923499452
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_255
+      rect:
+        serializedVersion: 2
+        x: 65
+        y: 1
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2be13e6edbf1ab449aa8aac396ae44a2
+      internalID: 1264426899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_256
+      rect:
+        serializedVersion: 2
+        x: 97
+        y: 1
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6d3137262fb98947bf2d4237e141094
+      internalID: -869329639
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_257
+      rect:
+        serializedVersion: 2
+        x: 138
+        y: 9
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fd2929ea67213984d9720fe68f79098f
+      internalID: 797681844
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_258
+      rect:
+        serializedVersion: 2
+        x: 170
+        y: 11
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7672788911e78284e94587df0c4b77d5
+      internalID: 480859340
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_259
+      rect:
+        serializedVersion: 2
+        x: 203
+        y: 9
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3fb46eeecced6c248ad006dbd9aff83b
+      internalID: 492061974
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_260
+      rect:
+        serializedVersion: 2
+        x: 235
+        y: 11
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 08f69c49cdef83f4598916f872ed688e
+      internalID: 1847909186
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_261
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 9
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4f0a511b0a8fe1e49ac57851890687cf
+      internalID: -1963957855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_262
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 11
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1e07acd75e3c96b44954c7fafe54cb29
+      internalID: 101256483
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_263
+      rect:
+        serializedVersion: 2
+        x: 331
+        y: 9
+        width: 11
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4694f689812d3db48980fc8f214d6186
+      internalID: 826412582
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_264
+      rect:
+        serializedVersion: 2
+        x: 363
+        y: 11
+        width: 11
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1864dbefd62d4864da958590657f30d5
+      internalID: -1806818497
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_265
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 1
+        width: 30
+        height: 30
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f26f0f7902ceb404893d7690c99273cb
+      internalID: 1874893807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_266
+      rect:
+        serializedVersion: 2
+        x: 426
+        y: 10
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d433a86c4384e1d4c99f7eb336a9b91f
+      internalID: 1554391170
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_267
+      rect:
+        serializedVersion: 2
+        x: 458
+        y: 10
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2d724469c500ef947b64540152f6889a
+      internalID: 1940298128
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_268
+      rect:
+        serializedVersion: 2
+        x: 490
+        y: 10
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 541824e8d3ddb8745b4f73edae848c5b
+      internalID: 1698441231
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Little Alchemist Lab BugsSpriteSheet_269
+      rect:
+        serializedVersion: 2
+        x: 522
+        y: 10
+        width: 12
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bf060510bc85c0d42902d8f958b62d30
+      internalID: -423493637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Little Alchemist Lab BugsSpriteSheet_0: 1667724711
+      Little Alchemist Lab BugsSpriteSheet_1: -1893345968
+      Little Alchemist Lab BugsSpriteSheet_10: 697972978
+      Little Alchemist Lab BugsSpriteSheet_100: -1959111365
+      Little Alchemist Lab BugsSpriteSheet_101: -1255077305
+      Little Alchemist Lab BugsSpriteSheet_102: 304603588
+      Little Alchemist Lab BugsSpriteSheet_103: -1494319289
+      Little Alchemist Lab BugsSpriteSheet_104: -42862946
+      Little Alchemist Lab BugsSpriteSheet_105: 2103525186
+      Little Alchemist Lab BugsSpriteSheet_106: -649227529
+      Little Alchemist Lab BugsSpriteSheet_107: -336801084
+      Little Alchemist Lab BugsSpriteSheet_108: 383791773
+      Little Alchemist Lab BugsSpriteSheet_109: 2099637206
+      Little Alchemist Lab BugsSpriteSheet_11: 856222508
+      Little Alchemist Lab BugsSpriteSheet_110: -591927982
+      Little Alchemist Lab BugsSpriteSheet_111: 322525718
+      Little Alchemist Lab BugsSpriteSheet_112: -1366587070
+      Little Alchemist Lab BugsSpriteSheet_113: -435389520
+      Little Alchemist Lab BugsSpriteSheet_114: -2110092851
+      Little Alchemist Lab BugsSpriteSheet_115: 980173361
+      Little Alchemist Lab BugsSpriteSheet_116: 1296237514
+      Little Alchemist Lab BugsSpriteSheet_117: -1391659758
+      Little Alchemist Lab BugsSpriteSheet_118: 1769864680
+      Little Alchemist Lab BugsSpriteSheet_119: 157320685
+      Little Alchemist Lab BugsSpriteSheet_12: 57641669
+      Little Alchemist Lab BugsSpriteSheet_120: 835227406
+      Little Alchemist Lab BugsSpriteSheet_121: 170442345
+      Little Alchemist Lab BugsSpriteSheet_122: 1424593881
+      Little Alchemist Lab BugsSpriteSheet_123: 1371019826
+      Little Alchemist Lab BugsSpriteSheet_124: 627098188
+      Little Alchemist Lab BugsSpriteSheet_125: -1616298823
+      Little Alchemist Lab BugsSpriteSheet_126: -621798293
+      Little Alchemist Lab BugsSpriteSheet_127: 1046064243
+      Little Alchemist Lab BugsSpriteSheet_128: 881237097
+      Little Alchemist Lab BugsSpriteSheet_129: -1475986546
+      Little Alchemist Lab BugsSpriteSheet_13: 754396877
+      Little Alchemist Lab BugsSpriteSheet_130: -1566023090
+      Little Alchemist Lab BugsSpriteSheet_131: 841632769
+      Little Alchemist Lab BugsSpriteSheet_132: 1915170535
+      Little Alchemist Lab BugsSpriteSheet_133: 273919739
+      Little Alchemist Lab BugsSpriteSheet_134: 823287831
+      Little Alchemist Lab BugsSpriteSheet_135: -1705560032
+      Little Alchemist Lab BugsSpriteSheet_136: -722944822
+      Little Alchemist Lab BugsSpriteSheet_137: 1856711438
+      Little Alchemist Lab BugsSpriteSheet_138: 1570949657
+      Little Alchemist Lab BugsSpriteSheet_139: 44939420
+      Little Alchemist Lab BugsSpriteSheet_14: 2022815083
+      Little Alchemist Lab BugsSpriteSheet_140: -1552277421
+      Little Alchemist Lab BugsSpriteSheet_141: -974904248
+      Little Alchemist Lab BugsSpriteSheet_142: -606163600
+      Little Alchemist Lab BugsSpriteSheet_143: -1186502152
+      Little Alchemist Lab BugsSpriteSheet_144: 424759475
+      Little Alchemist Lab BugsSpriteSheet_145: 1248030094
+      Little Alchemist Lab BugsSpriteSheet_146: 167164049
+      Little Alchemist Lab BugsSpriteSheet_147: 1274974980
+      Little Alchemist Lab BugsSpriteSheet_148: -1186156413
+      Little Alchemist Lab BugsSpriteSheet_149: 1446072108
+      Little Alchemist Lab BugsSpriteSheet_15: 160202469
+      Little Alchemist Lab BugsSpriteSheet_150: 2069028435
+      Little Alchemist Lab BugsSpriteSheet_151: -1694421682
+      Little Alchemist Lab BugsSpriteSheet_152: 1772321693
+      Little Alchemist Lab BugsSpriteSheet_153: -1108374065
+      Little Alchemist Lab BugsSpriteSheet_154: -1864923279
+      Little Alchemist Lab BugsSpriteSheet_155: 54406391
+      Little Alchemist Lab BugsSpriteSheet_156: 661204814
+      Little Alchemist Lab BugsSpriteSheet_157: 1713947660
+      Little Alchemist Lab BugsSpriteSheet_158: -791923645
+      Little Alchemist Lab BugsSpriteSheet_159: -559974088
+      Little Alchemist Lab BugsSpriteSheet_16: -1047831737
+      Little Alchemist Lab BugsSpriteSheet_160: 1027371464
+      Little Alchemist Lab BugsSpriteSheet_161: -965632517
+      Little Alchemist Lab BugsSpriteSheet_162: 1054725616
+      Little Alchemist Lab BugsSpriteSheet_163: 286621737
+      Little Alchemist Lab BugsSpriteSheet_164: 988764274
+      Little Alchemist Lab BugsSpriteSheet_165: -14023937
+      Little Alchemist Lab BugsSpriteSheet_166: 2002610282
+      Little Alchemist Lab BugsSpriteSheet_167: -999353578
+      Little Alchemist Lab BugsSpriteSheet_168: -816779024
+      Little Alchemist Lab BugsSpriteSheet_169: -964927499
+      Little Alchemist Lab BugsSpriteSheet_17: 1957734374
+      Little Alchemist Lab BugsSpriteSheet_170: -910540185
+      Little Alchemist Lab BugsSpriteSheet_171: -1448973408
+      Little Alchemist Lab BugsSpriteSheet_172: -1704736457
+      Little Alchemist Lab BugsSpriteSheet_173: -842619330
+      Little Alchemist Lab BugsSpriteSheet_174: 901884674
+      Little Alchemist Lab BugsSpriteSheet_175: -1039505958
+      Little Alchemist Lab BugsSpriteSheet_176: 290448217
+      Little Alchemist Lab BugsSpriteSheet_177: -1675934194
+      Little Alchemist Lab BugsSpriteSheet_178: 1372590487
+      Little Alchemist Lab BugsSpriteSheet_179: -702603591
+      Little Alchemist Lab BugsSpriteSheet_18: -397128662
+      Little Alchemist Lab BugsSpriteSheet_180: 1267359593
+      Little Alchemist Lab BugsSpriteSheet_181: -30921862
+      Little Alchemist Lab BugsSpriteSheet_182: 461638308
+      Little Alchemist Lab BugsSpriteSheet_183: -1727934576
+      Little Alchemist Lab BugsSpriteSheet_184: -264204118
+      Little Alchemist Lab BugsSpriteSheet_185: -922301828
+      Little Alchemist Lab BugsSpriteSheet_186: 1996147047
+      Little Alchemist Lab BugsSpriteSheet_187: 535794665
+      Little Alchemist Lab BugsSpriteSheet_188: 2132304941
+      Little Alchemist Lab BugsSpriteSheet_189: -1643307085
+      Little Alchemist Lab BugsSpriteSheet_19: -1159406184
+      Little Alchemist Lab BugsSpriteSheet_190: 176547939
+      Little Alchemist Lab BugsSpriteSheet_191: 1702877613
+      Little Alchemist Lab BugsSpriteSheet_192: 1670110395
+      Little Alchemist Lab BugsSpriteSheet_193: 2138286922
+      Little Alchemist Lab BugsSpriteSheet_194: 1726812605
+      Little Alchemist Lab BugsSpriteSheet_195: 1038199097
+      Little Alchemist Lab BugsSpriteSheet_196: 1898967425
+      Little Alchemist Lab BugsSpriteSheet_197: 368265676
+      Little Alchemist Lab BugsSpriteSheet_198: 1018425222
+      Little Alchemist Lab BugsSpriteSheet_199: -1452556381
+      Little Alchemist Lab BugsSpriteSheet_2: 482872853
+      Little Alchemist Lab BugsSpriteSheet_20: 904178604
+      Little Alchemist Lab BugsSpriteSheet_200: 288420191
+      Little Alchemist Lab BugsSpriteSheet_201: -1217932116
+      Little Alchemist Lab BugsSpriteSheet_202: 2126598601
+      Little Alchemist Lab BugsSpriteSheet_203: -662095552
+      Little Alchemist Lab BugsSpriteSheet_204: 996198610
+      Little Alchemist Lab BugsSpriteSheet_205: -787417667
+      Little Alchemist Lab BugsSpriteSheet_206: -1608134476
+      Little Alchemist Lab BugsSpriteSheet_207: 190145383
+      Little Alchemist Lab BugsSpriteSheet_208: -158898869
+      Little Alchemist Lab BugsSpriteSheet_209: 1606344507
+      Little Alchemist Lab BugsSpriteSheet_21: -2117781088
+      Little Alchemist Lab BugsSpriteSheet_210: 1381920713
+      Little Alchemist Lab BugsSpriteSheet_211: -1493099124
+      Little Alchemist Lab BugsSpriteSheet_212: -1755325671
+      Little Alchemist Lab BugsSpriteSheet_213: 2045261337
+      Little Alchemist Lab BugsSpriteSheet_214: 1430727108
+      Little Alchemist Lab BugsSpriteSheet_215: 820459119
+      Little Alchemist Lab BugsSpriteSheet_216: 1345116800
+      Little Alchemist Lab BugsSpriteSheet_217: 1736722019
+      Little Alchemist Lab BugsSpriteSheet_218: 96529486
+      Little Alchemist Lab BugsSpriteSheet_219: -1128712770
+      Little Alchemist Lab BugsSpriteSheet_22: 187677749
+      Little Alchemist Lab BugsSpriteSheet_220: -263650394
+      Little Alchemist Lab BugsSpriteSheet_221: -791726843
+      Little Alchemist Lab BugsSpriteSheet_222: 998657359
+      Little Alchemist Lab BugsSpriteSheet_223: -1436899833
+      Little Alchemist Lab BugsSpriteSheet_224: 697513838
+      Little Alchemist Lab BugsSpriteSheet_225: -2089796803
+      Little Alchemist Lab BugsSpriteSheet_226: 957813505
+      Little Alchemist Lab BugsSpriteSheet_227: 853933059
+      Little Alchemist Lab BugsSpriteSheet_228: 972619683
+      Little Alchemist Lab BugsSpriteSheet_229: -1616670820
+      Little Alchemist Lab BugsSpriteSheet_23: 1943693402
+      Little Alchemist Lab BugsSpriteSheet_230: -1289183393
+      Little Alchemist Lab BugsSpriteSheet_231: 637424778
+      Little Alchemist Lab BugsSpriteSheet_232: -1325831839
+      Little Alchemist Lab BugsSpriteSheet_233: -1288907404
+      Little Alchemist Lab BugsSpriteSheet_234: -1376829519
+      Little Alchemist Lab BugsSpriteSheet_235: 560561036
+      Little Alchemist Lab BugsSpriteSheet_236: -324080822
+      Little Alchemist Lab BugsSpriteSheet_237: 1404316712
+      Little Alchemist Lab BugsSpriteSheet_238: 2029918699
+      Little Alchemist Lab BugsSpriteSheet_239: -1944493034
+      Little Alchemist Lab BugsSpriteSheet_24: -1179871730
+      Little Alchemist Lab BugsSpriteSheet_240: 962996380
+      Little Alchemist Lab BugsSpriteSheet_241: 614747712
+      Little Alchemist Lab BugsSpriteSheet_242: 732975723
+      Little Alchemist Lab BugsSpriteSheet_243: 1559855371
+      Little Alchemist Lab BugsSpriteSheet_244: 871126855
+      Little Alchemist Lab BugsSpriteSheet_245: 639049256
+      Little Alchemist Lab BugsSpriteSheet_246: -1313801671
+      Little Alchemist Lab BugsSpriteSheet_247: -2119901845
+      Little Alchemist Lab BugsSpriteSheet_248: -1909508509
+      Little Alchemist Lab BugsSpriteSheet_249: 1946732634
+      Little Alchemist Lab BugsSpriteSheet_25: 1540502978
+      Little Alchemist Lab BugsSpriteSheet_250: -689598347
+      Little Alchemist Lab BugsSpriteSheet_251: 1225602367
+      Little Alchemist Lab BugsSpriteSheet_252: 128432975
+      Little Alchemist Lab BugsSpriteSheet_253: 1092148333
+      Little Alchemist Lab BugsSpriteSheet_254: 1923499452
+      Little Alchemist Lab BugsSpriteSheet_255: 1264426899
+      Little Alchemist Lab BugsSpriteSheet_256: -869329639
+      Little Alchemist Lab BugsSpriteSheet_257: 797681844
+      Little Alchemist Lab BugsSpriteSheet_258: 480859340
+      Little Alchemist Lab BugsSpriteSheet_259: 492061974
+      Little Alchemist Lab BugsSpriteSheet_26: -807315574
+      Little Alchemist Lab BugsSpriteSheet_260: 1847909186
+      Little Alchemist Lab BugsSpriteSheet_261: -1963957855
+      Little Alchemist Lab BugsSpriteSheet_262: 101256483
+      Little Alchemist Lab BugsSpriteSheet_263: 826412582
+      Little Alchemist Lab BugsSpriteSheet_264: -1806818497
+      Little Alchemist Lab BugsSpriteSheet_265: 1874893807
+      Little Alchemist Lab BugsSpriteSheet_266: 1554391170
+      Little Alchemist Lab BugsSpriteSheet_267: 1940298128
+      Little Alchemist Lab BugsSpriteSheet_268: 1698441231
+      Little Alchemist Lab BugsSpriteSheet_269: -423493637
+      Little Alchemist Lab BugsSpriteSheet_27: -1691153562
+      Little Alchemist Lab BugsSpriteSheet_28: 2051120681
+      Little Alchemist Lab BugsSpriteSheet_29: -479411836
+      Little Alchemist Lab BugsSpriteSheet_3: -600703735
+      Little Alchemist Lab BugsSpriteSheet_30: -1849235846
+      Little Alchemist Lab BugsSpriteSheet_31: -197607407
+      Little Alchemist Lab BugsSpriteSheet_32: -2081372814
+      Little Alchemist Lab BugsSpriteSheet_33: 1621545619
+      Little Alchemist Lab BugsSpriteSheet_34: -887295722
+      Little Alchemist Lab BugsSpriteSheet_35: -1927465218
+      Little Alchemist Lab BugsSpriteSheet_36: -752844849
+      Little Alchemist Lab BugsSpriteSheet_37: -839283693
+      Little Alchemist Lab BugsSpriteSheet_38: -697488258
+      Little Alchemist Lab BugsSpriteSheet_39: -891292616
+      Little Alchemist Lab BugsSpriteSheet_4: 1036231387
+      Little Alchemist Lab BugsSpriteSheet_40: 2010268299
+      Little Alchemist Lab BugsSpriteSheet_41: -1925135697
+      Little Alchemist Lab BugsSpriteSheet_42: 751809778
+      Little Alchemist Lab BugsSpriteSheet_43: -787066528
+      Little Alchemist Lab BugsSpriteSheet_44: -331776252
+      Little Alchemist Lab BugsSpriteSheet_45: 1580310897
+      Little Alchemist Lab BugsSpriteSheet_46: -567195479
+      Little Alchemist Lab BugsSpriteSheet_47: 326219694
+      Little Alchemist Lab BugsSpriteSheet_48: 1028891496
+      Little Alchemist Lab BugsSpriteSheet_49: 1399360881
+      Little Alchemist Lab BugsSpriteSheet_5: 470007016
+      Little Alchemist Lab BugsSpriteSheet_50: 754972611
+      Little Alchemist Lab BugsSpriteSheet_51: 557719210
+      Little Alchemist Lab BugsSpriteSheet_52: 1696441656
+      Little Alchemist Lab BugsSpriteSheet_53: 1576063973
+      Little Alchemist Lab BugsSpriteSheet_54: -227020984
+      Little Alchemist Lab BugsSpriteSheet_55: -295245749
+      Little Alchemist Lab BugsSpriteSheet_56: 906794488
+      Little Alchemist Lab BugsSpriteSheet_57: -822405739
+      Little Alchemist Lab BugsSpriteSheet_58: 192864611
+      Little Alchemist Lab BugsSpriteSheet_59: -445135617
+      Little Alchemist Lab BugsSpriteSheet_6: -1473558124
+      Little Alchemist Lab BugsSpriteSheet_60: -284412883
+      Little Alchemist Lab BugsSpriteSheet_61: -927165068
+      Little Alchemist Lab BugsSpriteSheet_62: -229517252
+      Little Alchemist Lab BugsSpriteSheet_63: -1911559457
+      Little Alchemist Lab BugsSpriteSheet_64: -1686256030
+      Little Alchemist Lab BugsSpriteSheet_65: -721317436
+      Little Alchemist Lab BugsSpriteSheet_66: -1882632512
+      Little Alchemist Lab BugsSpriteSheet_67: -2123467735
+      Little Alchemist Lab BugsSpriteSheet_68: -1612340443
+      Little Alchemist Lab BugsSpriteSheet_69: -2026150307
+      Little Alchemist Lab BugsSpriteSheet_7: -1261624096
+      Little Alchemist Lab BugsSpriteSheet_70: -2072032858
+      Little Alchemist Lab BugsSpriteSheet_71: -78883990
+      Little Alchemist Lab BugsSpriteSheet_72: 235478098
+      Little Alchemist Lab BugsSpriteSheet_73: 20926270
+      Little Alchemist Lab BugsSpriteSheet_74: -537695931
+      Little Alchemist Lab BugsSpriteSheet_75: -1678891615
+      Little Alchemist Lab BugsSpriteSheet_76: -1418538547
+      Little Alchemist Lab BugsSpriteSheet_77: -1746336669
+      Little Alchemist Lab BugsSpriteSheet_78: 997877012
+      Little Alchemist Lab BugsSpriteSheet_79: 979250232
+      Little Alchemist Lab BugsSpriteSheet_8: -3276538
+      Little Alchemist Lab BugsSpriteSheet_80: -1010012146
+      Little Alchemist Lab BugsSpriteSheet_81: -44851667
+      Little Alchemist Lab BugsSpriteSheet_82: -1560717092
+      Little Alchemist Lab BugsSpriteSheet_83: -2110755081
+      Little Alchemist Lab BugsSpriteSheet_84: 321242344
+      Little Alchemist Lab BugsSpriteSheet_85: 1394923449
+      Little Alchemist Lab BugsSpriteSheet_86: -2126617408
+      Little Alchemist Lab BugsSpriteSheet_87: -262400382
+      Little Alchemist Lab BugsSpriteSheet_88: -536168698
+      Little Alchemist Lab BugsSpriteSheet_89: -1811786808
+      Little Alchemist Lab BugsSpriteSheet_9: 116936622
+      Little Alchemist Lab BugsSpriteSheet_90: -54817443
+      Little Alchemist Lab BugsSpriteSheet_91: -153653326
+      Little Alchemist Lab BugsSpriteSheet_92: -1156514219
+      Little Alchemist Lab BugsSpriteSheet_93: -1269355078
+      Little Alchemist Lab BugsSpriteSheet_94: -505702194
+      Little Alchemist Lab BugsSpriteSheet_95: 2143588766
+      Little Alchemist Lab BugsSpriteSheet_96: 1606222215
+      Little Alchemist Lab BugsSpriteSheet_97: -359204738
+      Little Alchemist Lab BugsSpriteSheet_98: -211641985
+      Little Alchemist Lab BugsSpriteSheet_99: -1558084813
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

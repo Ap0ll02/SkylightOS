@@ -1,7 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Analytics;
 using UnityEngine.InputSystem;
 
 public class FileRecoMazeMiniGame : AbstractMinigame
@@ -24,18 +24,24 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     readonly float moveSpeed = 1.7f;
     public FileRecoPlayer rpScript;
     public ExitWall ewScript;
-
-    Vector3 OriginalScale;
+    
+    public event Action FileMazeOver;
 
     // Get any non-inspector references here
+    void Awake()
+    {
+        gameObject.SetActive(true);
+    }
     void Start()
     {
-        StartGame();
+        GetComponent<BasicWindow>().CloseWindow();
+        // StartGame();
     }
 
     // MARK: - Game Initialization
     public override void StartGame() {
-        Canvas.ForceUpdateCanvases(); // Co-Pilot tip for updating UI before calculations
+        filePieces = new List<GameObject>();
+        // Canvas.ForceUpdateCanvases(); // Co-Pilot tip for updating UI before calculations
         GetComponent<BasicWindow>().OpenWindow();        
         HashSet<int> randomNumbers = new();
         gameRunning = true;
@@ -51,9 +57,9 @@ public class FileRecoMazeMiniGame : AbstractMinigame
             i++;
         }
         foreach(Transform spawnBlock in SpawnList){
-            Destroy(spawnBlock.gameObject);
+            spawnBlock.gameObject.SetActive(false);
         }
-        new Vector3(player.transform.localScale.x, player.transform.localScale.y, player.transform.localScale.z);
+        // new Vector3(player.transform.localScale.x, player.transform.localScale.y, player.transform.localScale.z);
         moveAction = InputSystem.actions.FindAction("Move"); 
         updateGame = StartCoroutine(GameUpdate());
     }
@@ -76,7 +82,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
         }
         filePieces.Clear();
         Destroy(player);
-
+        FileMazeOver?.Invoke();
         GetComponent<BasicWindow>().CloseWindow();
     }
     // -2645 x, 1330 y, is the maximum right and bottom we allow the maze to move
@@ -104,19 +110,35 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     }
 
     public void FileRecover(Collider2D filePiece) {
-        Debug.Log("File Recovered");
         switch(filePiecesCount){
             case 1:
                 ExitUnlock();
+                if (filePieces.Contains(filePiece.gameObject)) {
+                    filePieces.Remove(filePiece.gameObject);
+                    Destroy(filePiece.gameObject);
+                }
                 filePiecesCount--;
-                filePieces.Remove(filePiece.gameObject);
-                Destroy(filePiece.gameObject);
                 break;
             default:
+                if (filePieces.Contains(filePiece.gameObject)) {
+                    filePieces.Remove(filePiece.gameObject);
+                    Destroy(filePiece.gameObject);
+                }
                 filePiecesCount--;
-                filePieces.Remove(filePiece.gameObject);
-                Destroy(filePiece.gameObject);
                 break;
         }
+        
     }
+
+    // public void Test_fileRecovery() {
+    //     Debug.Log("File Recovered: ");
+    //     FileRecover(filePieces[0].GetComponent<Collider2D>());
+    //     try {
+    //         Assert.IsTrue(filePiecesCount == 0);
+    //     } catch (AssertionException e) {
+    //         Debug.Log("FAILED" + e);
+    //         return;
+    //     }
+    //     Debug.Log("PASSED");
+    // }
 }

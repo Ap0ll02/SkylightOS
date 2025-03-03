@@ -1,17 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using UnityEngine;
-
 public class FileRecoveryTask : AbstractTask
 {
     public FileSystemWindow status_text;
+    public FileRecoMazeMiniGame frS;
 
     void Awake()
     {
         status_text = FindObjectOfType<FileSystemWindow>();
     }
-    void Start()
+    new void Start()
     {
         // Broken, Non-Interactable State
         status_text.UpdateStatus("EXT6 File System Corrupted.\n Please Recover File System", false);
@@ -20,6 +16,16 @@ public class FileRecoveryTask : AbstractTask
     public override void startTask(){
         // Interactable, Broken State
         status_text.UpdateStatus("EXT6 File System Corrupted.\n Please Recover File System", true);
+    }
+
+    void OnEnable()
+    {
+        frS.FileMazeOver += CompleteTask;
+    }
+
+    void OnDisable()
+    {
+        frS.FileMazeOver -= CompleteTask;
     }
 
     public override void CompleteTask()

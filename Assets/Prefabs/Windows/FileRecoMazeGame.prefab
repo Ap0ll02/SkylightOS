@@ -525,6 +525,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 273cf04d4dc154330ba8b3ce12b221fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &8425427910933344145 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7989886319726066258, guid: 586b1ab8c69d2d991b057add7a42f559, type: 3}
+  m_PrefabInstance: {fileID: 1877127263662740931}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &8593330776952234781 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7876023353859569374, guid: 586b1ab8c69d2d991b057add7a42f559, type: 3}
@@ -536,11 +541,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5501e4ce79e7de66098f8de10b02035a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &8783340536700362979 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7199097340760814880, guid: 586b1ab8c69d2d991b057add7a42f559, type: 3}
-  m_PrefabInstance: {fileID: 1877127263662740931}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &5480115299263919683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -701,7 +701,7 @@ MonoBehaviour:
   SpawnContainer: {fileID: 944414213830799315}
   SpawnList: []
   filePieces: []
-  parentContainer: {fileID: 8783340536700362979}
+  parentContainer: {fileID: 8425427910933344145}
   ExitWall: {fileID: 1338016498262014627}
   moveAction:
     m_Name: Move

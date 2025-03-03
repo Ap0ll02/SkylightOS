@@ -425,6 +425,14 @@ PrefabInstance:
       propertyPath: hazardManagers.Array.data[1]
       value: 
       objectReference: {fileID: 499660948}
+    - target: {fileID: 1020770849245283190, guid: 0fc8862c645308e4caab9764c7ddb12d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1125490751220325498, guid: 0fc8862c645308e4caab9764c7ddb12d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 4032663283239806923, guid: 0fc8862c645308e4caab9764c7ddb12d, type: 3}
       propertyPath: hazardManagers.Array.size
       value: 3
@@ -441,6 +449,10 @@ PrefabInstance:
       propertyPath: hazardManagers.Array.data[2]
       value: 
       objectReference: {fileID: 1749021752}
+    - target: {fileID: 5394684450860613742, guid: 0fc8862c645308e4caab9764c7ddb12d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7082175173159563356, guid: 0fc8862c645308e4caab9764c7ddb12d, type: 3}
       propertyPath: m_Name
       value: Level1TaskContainer

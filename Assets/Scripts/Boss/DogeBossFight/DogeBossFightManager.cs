@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DogeBossFightManager : MonoBehaviour
+public class DogeBossFightManager : BossManager
 {
-    // Start is called before the first frame update
-    void Start()
+    bool PlayingGameOver = false;
+    // This method will call the Next stage and start the boss fight
+    public void StartBossFight()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        if (!PlayingGameOver)
+        {
+            PlayingGameOver = true;
+            currentBossStageIndex = 0;
+            Debug.Log("Starting Boss Fight");
+            NextStage();
+        }
     }
 }

@@ -192,6 +192,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4947454445037440520, guid: 5c5bc20028e5038b7b95c5625c149a0c, type: 3}
+      propertyPath: BossCanvas
+      value: 
+      objectReference: {fileID: 633267863}
+    - target: {fileID: 4947454445037440520, guid: 5c5bc20028e5038b7b95c5625c149a0c, type: 3}
       propertyPath: SKYBIOSWINDOW
       value: 
       objectReference: {fileID: 118666444}
@@ -199,6 +203,10 @@ PrefabInstance:
       propertyPath: OsManagerWindow
       value: 
       objectReference: {fileID: 136707754}
+    - target: {fileID: 4947454445037440520, guid: 5c5bc20028e5038b7b95c5625c149a0c, type: 3}
+      propertyPath: NyanCatBossFight
+      value: 
+      objectReference: {fileID: 1527487423}
     - target: {fileID: 9153555703705774558, guid: 5c5bc20028e5038b7b95c5625c149a0c, type: 3}
       propertyPath: m_Name
       value: BossTask
@@ -511,6 +519,11 @@ Transform:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7082175173159563356, guid: 0fc8862c645308e4caab9764c7ddb12d, type: 3}
   m_PrefabInstance: {fileID: 1167457124}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1527487423 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4366849566078826834, guid: 9295c4f61eebdc44999dd9b5dd93cee0, type: 3}
+  m_PrefabInstance: {fileID: 723201719}
   m_PrefabAsset: {fileID: 0}
 --- !u!114 &1538782120 stripped
 MonoBehaviour:

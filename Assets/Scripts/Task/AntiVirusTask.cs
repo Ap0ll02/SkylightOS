@@ -7,8 +7,11 @@ public class AntiVirusTask : AbstractTask
     public AntiVirusWindow antiVirusWindow;
 
 
+    public GameObject antiVirusIcon;
+
     void Awake()
     {
+
         taskTitle = "Fix and run antivirus";
         taskDescription = "The download of the antivirus is riddled with bugs. Use the desktop icon to access the wizard.";
         antiVirusWindow = FindObjectOfType<AntiVirusWindow>();
@@ -17,6 +20,7 @@ public class AntiVirusTask : AbstractTask
     // Start is called before the first frame update
     new void Start()
     {
+        antiVirusIcon.SetActive(true);
         antiVirusWindow.SetStatus(AntiVirusWindow.AntiVirusState.NeedsInstall);
     }
 

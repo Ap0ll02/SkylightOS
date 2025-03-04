@@ -1,6 +1,5 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor.PackageManager.UI;
 using UnityEngine;
 
 public class SystemWindow : MonoBehaviour
@@ -36,16 +35,16 @@ public class SystemWindow : MonoBehaviour
     void Awake()
     {
         window = GetComponent<BasicWindow>();
+    }
+
+    private void Start()
+    {
         currentState = WindowState.MAIN;
         currentPanel = mainPanel;
         resourcesPanel.ClosePanel();
         driversPanel.ClosePanel();
         updatePanel.ClosePanel();
         backButton.SetActive(false);
-    }
-
-    private void Start()
-    {
         window.ForceCloseWindow();
     }
 

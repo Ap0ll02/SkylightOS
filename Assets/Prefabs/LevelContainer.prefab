@@ -345,6 +345,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5678960941507448667, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -186.65002
+      objectReference: {fileID: 0}
     - target: {fileID: 5717612609163883681, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
       value: 1
@@ -625,6 +629,10 @@ PrefabInstance:
     - target: {fileID: 42630542325290427, guid: 13f4770f2241e22409b18847c80f2239, type: 3}
       propertyPath: m_Name
       value: BossCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 42630542325290427, guid: 13f4770f2241e22409b18847c80f2239, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 871252762713740074, guid: 13f4770f2241e22409b18847c80f2239, type: 3}
       propertyPath: m_UiScaleMode

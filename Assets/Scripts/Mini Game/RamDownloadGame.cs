@@ -81,6 +81,7 @@ public class RamDownloadGame : AbstractMinigame
         isStarted = true;
         Debug.Log("Ram Minigame Started");
         window.OpenWindow();
+        window.isClosable = false;
         StartSpawningWindows();
     }
 
@@ -89,6 +90,7 @@ public class RamDownloadGame : AbstractMinigame
     {
         isStarted = false;
         StopAllCoroutines();
+        window.isClosable = true;
         window.CloseWindow();
         RamMinigameEndNotify?.Invoke();
     }

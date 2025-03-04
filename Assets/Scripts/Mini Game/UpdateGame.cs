@@ -113,7 +113,7 @@ public class UpdateGame : MonoBehaviour
         }
         player.SetActive(false);
         updateGameEndNotify?.Invoke();
-        window.CloseWindow();
+        window.ForceCloseWindow();
     }
 
     // Begins the mail spawning process by invoking the coroutine.

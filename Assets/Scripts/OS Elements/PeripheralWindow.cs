@@ -103,6 +103,7 @@ public class PeripheralWindow : MonoBehaviour
         UpdateState(PeripheralState.Connected);
         OnConnectComplete?.Invoke();
         window.isClosable = true;
+        window.ForceCloseWindow();
     }
 
     private IEnumerator CheckMinigameDone()

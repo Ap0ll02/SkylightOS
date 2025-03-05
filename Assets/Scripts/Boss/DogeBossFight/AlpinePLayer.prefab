@@ -10,8 +10,9 @@ GameObject:
   m_Component:
   - component: {fileID: 6213747513933557563}
   - component: {fileID: 8341680361723106665}
+  - component: {fileID: 7322071666543635890}
   m_Layer: 0
-  m_Name: NorthStarPlayer
+  m_Name: AlpinePLayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,3 +85,15 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &7322071666543635890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4348337642833433264}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8173565578c6ea64cab9cb34cb4901bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

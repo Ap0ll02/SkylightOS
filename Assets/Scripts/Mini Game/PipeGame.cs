@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,6 +11,7 @@ using UnityEngine.UI;
 // Depends on: BasicWindow.cs
 public class PipeGame : AbstractMinigame
 {
+    // MARK: - Globals
     public List<GameObject> PipePrefab;
     public GameObject lastPipe;
     public List<GameObject> SpawnedPipes;
@@ -17,14 +20,21 @@ public class PipeGame : AbstractMinigame
 
     public List<GameObject> ConnectedPath;
     public event Action GameOverEvent;
+    public Coroutine GameUpdateCR;
+    public Coroutine HeatUpCR;  
+    public TMP_Text temp;
+    public int temp_val;
 
     public void Start(){
         GetComponent<BasicWindow>().CloseWindow();
     }
 
+    // MARK: - Initializations
    public override void StartGame() { 
+    try {StopCoroutine(GameUpdateCR);} catch (Exception e) {Debug.Log("early catch, ignore." + e);}
     GetComponent<BasicWindow>().OpenWindow();
     System.Random rnd = new();
+    temp_val = 30;
     // Initialize the first and ending pipe
     int pipezero = rnd.Next(0, 3);
     switch(pipezero){
@@ -118,20 +128,42 @@ public class PipeGame : AbstractMinigame
             pipe.GetComponent<RawImage>().color = Color.white;
         }
     } 
+    temp.text = "Temp: " + "<bounce a=1 f=3>" + temp_val + " </bounce>";
     lastPipe = SpawnedPipes[0];
     ConnectedPath.Add(SpawnedPipes[0]);
     gameRunning = true;
- }
+    GameUpdateCR = StartCoroutine(GameUpdate());
+    HeatUpCR = StartCoroutine(HeatUpGPU());
+}
 
+    // MARK: - Game Update Loops
     // Update is called once per frame
-    void Update()
+    public IEnumerator GameUpdate()
     {
-        if(!gameRunning) return;
-        if(CheckPath(0, 87)){
-            GameOver();
+        while(gameRunning){
+            yield return null;
+            if(CheckPath(0, 87) && temp_val < 200){
+                GameOver();
+            } else if (temp_val >= 200) {
+                gameRunning = false;
+                ResetGame();
+            }
         }
     }
 
+    public float initial = 0;
+    public float final = 1;
+    public float a_amp = 0;
+    public IEnumerator HeatUpGPU() {
+        while(temp_val < 200) {
+            temp_val++;
+            temp.text = "Temp: " + "<bounce a=" + a_amp + "f=3>" + temp_val + " </bounce>";
+            a_amp = Mathf.Lerp(initial, final, 0.1f);
+            yield return new WaitForSeconds(0.2f);
+        }
+    }
+
+    // MARK: - Pipe Path Checking
     // Check if there is a path from start to end
     public bool CheckPath(int start, int end) {
         HashSet<int> visited = new();
@@ -188,6 +220,8 @@ public class PipeGame : AbstractMinigame
 
     public void GameOver() {
         GameOverEvent?.Invoke();
+        if(GameUpdateCR != null) StopCoroutine(GameUpdateCR);
+        if(HeatUpCR != null) StopCoroutine(HeatUpCR);
         gameRunning = false;
         Debug.Log("Game Over");
         foreach(var pipe in ConnectedPath){
@@ -204,5 +238,17 @@ public class PipeGame : AbstractMinigame
             pipe.GetComponent<ParticleSystem>().Stop();
             Destroy(pipe);
         }
+    }
+
+    public void ResetGame() {
+        StopCoroutine(GameUpdateCR);
+        foreach(var pipe in SpawnedPipes){
+            pipe.GetComponent<ParticleSystem>().Stop();
+            Destroy(pipe);
+        }
+        initial = 0;
+        final = 0;
+        a_amp = 0;
+        StartGame();
     }
 }

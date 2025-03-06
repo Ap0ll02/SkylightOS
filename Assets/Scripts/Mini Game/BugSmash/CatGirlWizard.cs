@@ -53,7 +53,6 @@ public class CatGirlWizard : MonoBehaviour
         if (hearts <= 0)
         {
             isDead = true;
-            Instantiate(CatgirlDeath, transform.position, Quaternion.identity);
         }
     }
 

@@ -192,7 +192,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 14759, y: -18}
+  m_AnchoredPosition: {x: 17450, y: 3527}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!20 &4721767629449406122
@@ -280,7 +280,7 @@ Transform:
   m_GameObject: {fileID: 4092949701615627472}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 25100, y: 0, z: 0}
+  m_LocalPosition: {x: 27770, y: 3745, z: 0}
   m_LocalScale: {x: 300, y: 300, z: 300}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -289,7 +289,6 @@ Transform:
   - {fileID: 4286764155590910971}
   - {fileID: 8105615787482723600}
   - {fileID: 6731772893240187539}
-  - {fileID: 1709309122354524953}
   m_Father: {fileID: 2181983578792050636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1227649598836451725
@@ -988,8 +987,10 @@ GameObject:
   - component: {fileID: 3994616363642516936}
   - component: {fileID: 7630374357472306}
   - component: {fileID: 3021620450823087177}
+  - component: {fileID: 3228701083861502975}
+  - component: {fileID: 8544247143262459643}
   m_Layer: 10
-  m_Name: CatGirlWizard2
+  m_Name: AlpinePlayer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1004,11 +1005,11 @@ Transform:
   m_GameObject: {fileID: 9199784632515237528}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -34.75, y: -1.4, z: 0}
-  m_LocalScale: {x: 2.9935186, y: 3.209921, z: 1}
+  m_LocalPosition: {x: 17543, y: 3381, z: 0}
+  m_LocalScale: {x: 898.0556, y: 962.9763, z: 300.00003}
   m_ConstrainProportionsScale: 1
   m_Children: []
-  m_Father: {fileID: 4002848522820305291}
+  m_Father: {fileID: 2181983578792050636}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3994616363642516936
 SpriteRenderer:
@@ -1088,7 +1089,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 0
+  m_Constraints: 4
 --- !u!61 &3021620450823087177
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -1134,6 +1135,58 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
+--- !u!114 &3228701083861502975
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9199784632515237528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8173565578c6ea64cab9cb34cb4901bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: {fileID: 1273146264192137822, guid: c44217e9c05106e44849a4fba29a1345, type: 3}
+  catGirlBody: {fileID: 7630374357472306}
+  catGirlSounds: []
+  maxHearts: 10
+  hearts: 0
+  Mana: 100
+  isDead: 0
+  moveSpeed: 10
+  jumpSpeed: 25
+  moveDirection: {x: 0, y: 0}
+--- !u!114 &8544247143262459643
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9199784632515237528}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: c44217e9c05106e44849a4fba29a1345, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: Keyboard
+  m_DefaultActionMap: GamePlay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 4721767629449406122}
 --- !u!1001 &209776849188720660
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1335,6 +1388,9 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1709309122354524953}
     - targetCorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}
       insertIndex: -1
       addedObject: {fileID: 4002848522820305291}

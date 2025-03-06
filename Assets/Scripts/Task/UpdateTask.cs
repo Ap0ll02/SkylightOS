@@ -35,14 +35,14 @@ public class UpdateTask : AbstractTask
     void OnEnable()
     {
         UpdateGame.updateGameStartNotify += HandleMinigameStarted;
-        UpdateGame.updateGameEndNotify  += HandleMinigameEnded;
+        UpdateGame.updateGameEndWinNotify  += HandleMinigameEnded;
     }
 
     // Removing message handler?
     void OnDisable()
     {
         UpdateGame.updateGameStartNotify -= HandleMinigameStarted;
-        UpdateGame.updateGameEndNotify  -= HandleMinigameEnded;
+        UpdateGame.updateGameEndWinNotify  -= HandleMinigameEnded;
     }
 
     void HandleMinigameStarted()

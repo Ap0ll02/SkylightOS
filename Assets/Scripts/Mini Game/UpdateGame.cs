@@ -41,7 +41,10 @@ public class UpdateGame : MonoBehaviour
     public static event Action updateGameStartNotify;
 
     // The action that will notify the task that the minigame is done
-    public static event Action updateGameEndNotify;
+    public static event Action updateGameEndLossNotify;
+
+    // The action that will notify the task that the minigame is done
+    public static event Action updateGameEndWinNotify;
 
     // This method executes when the script instance is being loaded.
     void Awake()
@@ -112,7 +115,15 @@ public class UpdateGame : MonoBehaviour
             yield return null; // Wait until the next frame.
         }
         player.SetActive(false);
-        updateGameEndNotify?.Invoke();
+        if (scoreManager.lossReached)
+        {
+            updateGameEndLossNotify?.Invoke();
+        }
+        else
+        {
+            updateGameEndWinNotify?.Invoke();
+        }
+        scoreManager.ResetScore();
         window.ForceCloseWindow();
     }
 
@@ -149,15 +160,12 @@ public class UpdateGame : MonoBehaviour
             // Stop the game and update the UI to indicate success.
             playingGame = false;
             isGameOver = true;
-            scoreManager.ResetScore();
-
         }
         else if (scoreManager.lossReached) // If the loss condition is met.
         {
             // Stop the game and update the UI to indicate failure.
             playingGame = false;
             isGameOver = true;
-            scoreManager.ResetScore();
         }
     }
 

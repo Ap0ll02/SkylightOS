@@ -375,28 +375,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a795476c70220f446bfcbbbfbf0f4580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &1098518293 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 8344960917271436518, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-  m_PrefabInstance: {fileID: 1785894148}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 53b2fd7991435b84c98484af564ce810, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1140187150 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 3232914784175017055, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-  m_PrefabInstance: {fileID: 1785894148}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c76b7b2e19abad47af973d2249fc9a0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &1167457124
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -586,6 +564,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2919293426037507032, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 21.721008
+      objectReference: {fileID: 0}
     - target: {fileID: 3582372218237067787, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -662,18 +644,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 6458335616470826773, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
-      value: 
-      objectReference: {fileID: 1098518293}
-    - target: {fileID: 6458335616470826773, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: OpenMinigameWindow
-      objectReference: {fileID: 0}
-    - target: {fileID: 6458335616470826773, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: SystemResourcesWindow, Assembly-CSharp
-      objectReference: {fileID: 0}
     - target: {fileID: 6651417099806281802, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -718,10 +688,6 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -210.00006
       objectReference: {fileID: 0}
-    - target: {fileID: 8344960917271436518, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-      propertyPath: minigame
-      value: 
-      objectReference: {fileID: 1140187150}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

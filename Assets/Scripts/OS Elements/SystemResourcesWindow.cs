@@ -42,14 +42,14 @@ public class SystemResourcesWindow : MonoBehaviour
     [SerializeField] GameObject GPUButton;
     [SerializeField] GameObject RAMButton;
 
-    // Reference to the DiagnosisWindow
-    [SerializeField] BasicWindow minigameWindow;
-
     // Reference to the window
     [SerializeField] BasicWindow window;
 
-    // Reference to the minigame 
-    [SerializeField] RamDownloadGame minigame;
+    // Reference to the RAM minigame 
+    [SerializeField] RamDownloadGame ramMinigame;
+
+    // Reference to the GPU Minigame
+    [SerializeField] PipeGame gpuMinigame;
 
     // Set the default status of the system resources
     public void Awake()
@@ -57,16 +57,17 @@ public class SystemResourcesWindow : MonoBehaviour
         currentGPUStatus = GPUStatus.OK;
         currentRAMStatus = RAMStatus.OK;
         window = GetComponentInParent<BasicWindow>();
+        ramMinigame = FindObjectOfType<RamDownloadGame>();
+        gpuMinigame = FindObjectOfType<PipeGame>();
+        // Add button listeners
+        GPUButton.GetComponent<Button>().onClick.AddListener(OpenRamMinigameWindow);
+        RAMButton.GetComponent<Button>().onClick.AddListener(OpenGpuMinigameWindow);
     }
 
     // Start is called before the first frame update
     void Start()
     {
         UpdateSystemResourcesText();
-
-        // Add button listeners
-        GPUButton.GetComponent<Button>().onClick.AddListener(OpenMinigameWindow);
-        RAMButton.GetComponent<Button>().onClick.AddListener(OpenMinigameWindow);
     }
 
     private void OnEnable()
@@ -95,7 +96,7 @@ public class SystemResourcesWindow : MonoBehaviour
                 GPUButton.SetActive(false);
                 break;
             case (GPUStatus.WARNING):
-                GPUStatusText.text = "WARNING";
+                GPUStatusText.text = "CRITICAL";
                 GPUButton.SetActive(false);
                 break;
             case (GPUStatus.CRITICAL):
@@ -111,7 +112,7 @@ public class SystemResourcesWindow : MonoBehaviour
                 RAMButton.SetActive(false);
                 break;
             case (RAMStatus.WARNING):
-                RAMStatusText.text = "WARNING";
+                RAMStatusText.text = "CRITICAL";
                 break;
             case (RAMStatus.CRITICAL):
                 RAMStatusText.text = "CRITICAL";
@@ -121,8 +122,15 @@ public class SystemResourcesWindow : MonoBehaviour
     }
 
     // Method to open the MinigameWindow
-    public void OpenMinigameWindow()
+    public void OpenRamMinigameWindow()
     {
-        minigame.tryStartGame();
+        ramMinigame.tryStartGame();
     }
+
+    // Method to open the MinigameWindow
+    public void OpenGpuMinigameWindow()
+    {
+        //
+    }
+
 }

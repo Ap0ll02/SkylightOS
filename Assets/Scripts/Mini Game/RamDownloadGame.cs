@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
-
+using TMPro;
 public class RamDownloadGame : AbstractMinigame
 {
     // Reference to the RamDownloadGame window
@@ -10,6 +10,12 @@ public class RamDownloadGame : AbstractMinigame
 
     // Counter for downloads
     public int downloadCounter = 0;
+
+    // Counter for total required
+    public int totalDownloads = 5;
+
+    // Reference to the download counter text
+    public TMP_Text downloadCounterText;
 
     // Reference to the window prefab
     [SerializeField] GameObject windowPrefab;
@@ -49,6 +55,7 @@ public class RamDownloadGame : AbstractMinigame
     {
         window.CloseWindow();
         boxCollider.enabled = false; // Ensure the collider is initially disabled
+        downloadCounterText.text = "Downloads: " + downloadCounter + "/" + totalDownloads;
     }
 
     // On enable
@@ -182,7 +189,8 @@ public class RamDownloadGame : AbstractMinigame
     // When a file gets downloaded, check win condition
     public void OnFileDownloaded()
     {
-        if (downloadCounter > 5)
+        downloadCounterText.text = "Downloads: " + downloadCounter + "/" + totalDownloads;
+        if (downloadCounter > totalDownloads)
         {
             EndGame();
         }

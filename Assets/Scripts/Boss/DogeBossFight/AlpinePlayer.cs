@@ -6,13 +6,13 @@ using UnityEngine.InputSystem;
 
 public class AlpinePlayer : MonoBehaviour
 {
+    [Header("Animation and Audio")]
     private Animator animator;
-    // Used event based programing to envoke specific functions for moving and shooting
-    public InputActionReference move;
     // We want our catgirl to have a body we can reference
     public Rigidbody2D catGirlBody;
     //The sounds our catgirl will make when doing stuff
     public AudioClip[] catGirlSounds;
+
 
     // Max health variable
     public int maxHearts = 10;
@@ -28,46 +28,39 @@ public class AlpinePlayer : MonoBehaviour
 
     public Vector2 moveDirection;
     // Start is called before the first frame update
+    // private void Update()
+    // {
+    //     MoveDirection();
+    // }
 
-    private void Update()
-    {
-        MoveDirection();
-    }
+    #region Input
+    public InputActionReference move;
+    public InputActionReference jump;
+    public InputActionReference shoot;
 
-    public IEnumerator ControlCatGirl()
-    {
-        while (!isDead)
-        {
-            moveDirection = move.action.ReadValue<Vector2>();
-            MoveDirection();
-            yield return null;
-        }
-    }
-
-    // Similar to the ControlCatGirl function it is invoked when the shoot call back is invoked AKA left clicking. Check the input manager for this logic.
+// These are the listeners the observers! that subscribe or observe the input action reference. So in short when a button is pressed this function will be called
     public void OnShootPerformed(InputAction.CallbackContext context)
     {
         //CastSpell();
     }
-
+    public void OnJumpPerformed(InputAction.CallbackContext context)
+    {
+        catGirlBody.velocity = new Vector2(catGirlBody.velocity.x, jumpSpeed);
+        if (catGirlBody.velocity.y < 0)
+        {
+            //Higher gravity when falling
+            catGirlBody.gravityScale = catGirlBody.gravityScale * 1.5f;
+        }
+    }
+    #endregion
+    #region Gameplay
     // Controls the movement of our catgirl wizard and controls the animation controller this is also handled through the input controller
     public void MoveDirection()
     {
-
-        moveDirection = move.action.ReadValue<Vector2>();
-        catGirlBody.velocity = new Vector2(moveDirection.x * moveSpeed, moveDirection.y * jumpSpeed * Time.deltaTime);
-        if (move.action.ReadValue<Vector2>().y > 0)
-        {
-            // animator.SetTrigger("Jump");
-            // animator.ResetTrigger("Idle");
-            // animator.ResetTrigger("Right");
-            // animator.ResetTrigger("Left");
-        }
-        else if (move.action.ReadValue<Vector2>().x > 0)
+        catGirlBody.velocity = new Vector2(move.action.ReadValue<Vector2>().x * moveSpeed, catGirlBody.velocity.y);
+        if (move.action.ReadValue<Vector2>().x > 0)
         {
             // animator.SetTrigger("Right");
-            // animator.ResetTrigger("Jump");
-            // animator.ResetTrigger("Idle");
             // animator.ResetTrigger("Left");
         }
         else if (move.action.ReadValue<Vector2>().x < 0)
@@ -77,25 +70,38 @@ public class AlpinePlayer : MonoBehaviour
         }
         else
         {
-            // animator.SetTrigger("Idle");
-            // animator.ResetTrigger("Jump");
             // animator.ResetTrigger("Right");
             // animator.ResetTrigger("Left");
         }
     }
 
-    private void OnEnable()
+    public IEnumerator PlayingGame()
     {
-        move.action.Enable();
-        StartCoroutine(ControlCatGirl());
+        while (!isDead) // Keep looping unless the game ends.
+        {
+            MoveDirection();
+            yield return null; // Wait until the next frame.
+        }
     }
 
-    // This unsubscribes form the events so we can keep our code nice and clean
+    #endregion Gameplay
+    #region Start and End
+    private void OnEnable()
+    {
+        //subscribes to our events
+        jump.action.performed += OnJumpPerformed;
+        shoot.action.performed += OnShootPerformed;
+        StartCoroutine(PlayingGame());
+    }
+
     public void OnDisable()
     {
         // Unsubscribe from the movement events and disables input
-        move.action.Disable();
+        jump.action.performed -= OnJumpPerformed;
+        shoot.action.performed -= OnShootPerformed;
     }
+    #endregion
+    #region PlayerFunctions
     public void TakeDamage(int damage)
     {
         hearts -= damage;
@@ -109,4 +115,5 @@ public class AlpinePlayer : MonoBehaviour
     {
         hearts += heal;
     }
+    #endregion
 }

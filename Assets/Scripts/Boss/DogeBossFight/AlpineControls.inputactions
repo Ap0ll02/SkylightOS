@@ -9,71 +9,56 @@
                     "name": "Move",
                     "type": "PassThrough",
                     "id": "3f7ccb61-4408-4af2-a288-9a670e660a7f",
-                    "expectedControlType": "Vector2",
+                    "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": true
+                },
+                {
+                    "name": "Jump",
+                    "type": "Button",
+                    "id": "bf295635-db71-4313-9a3c-14699eae8d6f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Fire",
+                    "type": "Button",
+                    "id": "7daf8272-7dbe-418d-8cc6-4f2422c8624e",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
                 {
-                    "name": "2D Vector",
-                    "id": "38ae055b-1e41-44a1-abad-4ca3b1e7ea65",
-                    "path": "2DVector",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": true,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "Down",
-                    "id": "d714c6ee-a277-4a78-87aa-7ae66c204027",
+                    "name": "",
+                    "id": "9ef16da7-954e-4219-8eb8-5fb2bfc1bac0",
                     "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "Move",
+                    "groups": ";Mouse and Keyboard",
+                    "action": "Jump",
                     "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
-                    "name": "down",
-                    "id": "ac6b9d46-e8f2-4067-a844-5970b780d86b",
-                    "path": "",
+                    "name": "",
+                    "id": "0eabfbcf-4fb0-4951-835b-07be126408d3",
+                    "path": "<Keyboard>/space",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
-                    "action": "Move",
+                    "groups": ";Mouse and Keyboard",
+                    "action": "Fire",
                     "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "left",
-                    "id": "db5550b3-75d0-4b8d-b210-4d2165619501",
-                    "path": "<Keyboard>/a",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "right",
-                    "id": "247b999b-fa5a-4545-bdea-2e7cf5865ae8",
-                    "path": "<Keyboard>/d",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
+                    "isPartOfComposite": false
                 },
                 {
                     "name": "2D Vector",
-                    "id": "d7ab7514-86cc-4bb3-9c0c-d4357752ff47",
+                    "id": "987dd755-88ef-4c8d-a8f6-b73020ae6b63",
                     "path": "2DVector",
                     "interactions": "",
                     "processors": "",
@@ -83,45 +68,23 @@
                     "isPartOfComposite": false
                 },
                 {
-                    "name": "up",
-                    "id": "0a732dab-2ba2-4b83-9a0f-f6fad70ee5db",
-                    "path": "<Keyboard>/upArrow",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
-                    "name": "down",
-                    "id": "d2115a86-141e-4be4-b1d2-391aef3a4ffd",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Move",
-                    "isComposite": false,
-                    "isPartOfComposite": true
-                },
-                {
                     "name": "left",
-                    "id": "727ada35-7553-4aa5-bf42-53d8d4220ba4",
-                    "path": "<Keyboard>/leftArrow",
+                    "id": "1a6d02a9-0c00-41a2-8ca9-0aabc97170e6",
+                    "path": "<Keyboard>/a",
                     "interactions": "",
                     "processors": "",
-                    "groups": ";Keyboard",
+                    "groups": ";Mouse and Keyboard",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
                 },
                 {
                     "name": "right",
-                    "id": "5d382438-650c-4c95-86f8-56e48647be93",
-                    "path": "<Keyboard>/rightArrow",
+                    "id": "b127a124-6f96-4d8f-8c99-0666951098d8",
+                    "path": "<Keyboard>/d",
                     "interactions": "",
                     "processors": "",
-                    "groups": "",
+                    "groups": ";Mouse and Keyboard",
                     "action": "Move",
                     "isComposite": false,
                     "isPartOfComposite": true
@@ -131,11 +94,16 @@
     ],
     "controlSchemes": [
         {
-            "name": "Keyboard",
-            "bindingGroup": "Keyboard",
+            "name": "Mouse and Keyboard",
+            "bindingGroup": "Mouse and Keyboard",
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": true,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
                     "isOptional": true,
                     "isOR": false
                 }

@@ -28,10 +28,10 @@ public class AlpinePlayer : MonoBehaviour
 
     public Vector2 moveDirection;
     // Start is called before the first frame update
-    // private void Update()
-    // {
-    //     MoveDirection();
-    // }
+    private void Update()
+    {
+        MoveDirection();
+    }
 
     #region Input
     public InputActionReference move;
@@ -46,11 +46,6 @@ public class AlpinePlayer : MonoBehaviour
     public void OnJumpPerformed(InputAction.CallbackContext context)
     {
         catGirlBody.velocity = new Vector2(catGirlBody.velocity.x, jumpSpeed);
-        if (catGirlBody.velocity.y < 0)
-        {
-            //Higher gravity when falling
-            catGirlBody.gravityScale = catGirlBody.gravityScale * 1.5f;
-        }
     }
     #endregion
     #region Gameplay
@@ -91,7 +86,7 @@ public class AlpinePlayer : MonoBehaviour
         //subscribes to our events
         jump.action.performed += OnJumpPerformed;
         shoot.action.performed += OnShootPerformed;
-        StartCoroutine(PlayingGame());
+        //StartCoroutine(PlayingGame());
     }
 
     public void OnDisable()

@@ -8,12 +8,17 @@ using UnityEngine.SceneManagement;
 public class SceneChange : MonoBehaviour
 {
     // Can be called even priavte, its' called within the Image.
-    private void LoadLevel1()
-    {
+    private void LoadLevel1(){
         SceneManager.LoadScene("Level1");
     }
-    private void LoadIntro() 
-    { 
+    private void LoadIntro(){ 
         SceneManager.LoadScene("Level0");
     }                
+    private void LoadLevel2(){
+        SceneManager.LoadScene("Level2");
+    }
+    private void LoadLevel3(){
+        SceneManager.LoadScene("Level3");
+    }
+
 }

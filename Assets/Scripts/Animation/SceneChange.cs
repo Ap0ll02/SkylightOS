@@ -7,13 +7,22 @@ using UnityEngine.SceneManagement;
 // Depends on the animation to call the function.
 public class SceneChange : MonoBehaviour
 {
-    // Can be called even priavte, its' called within the Image.
-    private void LoadLevel1(){
-        SceneManager.LoadScene("Level1");
-    }
     private void LoadIntro(){ 
         SceneManager.LoadScene("Level0");
     }                
+    private void LoadTransition12(){
+        SceneManager.LoadScene("1To2Cutscene");
+    }
+    private void LoadTransition23(){
+        SceneManager.LoadScene("2To3Cutscene");
+    }
+    private void LoadTransitionEnd(){
+        SceneManager.LoadScene("EndingCutscene");
+    }
+    // Load the levels
+    private void LoadLevel1(){
+        SceneManager.LoadScene("Level1");
+    }
     private void LoadLevel2(){
         SceneManager.LoadScene("Level2");
     }

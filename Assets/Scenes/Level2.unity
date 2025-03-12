@@ -157,6 +157,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1610149095427984785, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: LoadTransition23
+      objectReference: {fileID: 0}
     - target: {fileID: 1776763200028983417, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -338,11 +342,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6651417099806281802, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
   m_PrefabInstance: {fileID: 116418412}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &116418414 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7695542554623347460, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
-  m_PrefabInstance: {fileID: 116418412}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &180396844 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7817070531446463311, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
@@ -414,7 +413,7 @@ PrefabInstance:
     - target: {fileID: 530421159202692348, guid: 29d7f0f3e494e9747ab5c488bd5861e3, type: 3}
       propertyPath: antiVirusIcon
       value: 
-      objectReference: {fileID: 116418414}
+      objectReference: {fileID: 0}
     - target: {fileID: 530421159202692348, guid: 29d7f0f3e494e9747ab5c488bd5861e3, type: 3}
       propertyPath: hazardManagers.Array.size
       value: 2

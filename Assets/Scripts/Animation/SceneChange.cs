@@ -7,26 +7,26 @@ using UnityEngine.SceneManagement;
 // Depends on the animation to call the function.
 public class SceneChange : MonoBehaviour
 {
-    private void LoadIntro(){ 
+    public void LoadIntro(){ 
         SceneManager.LoadScene("Level0");
     }                
-    private void LoadTransition12(){
+    public void LoadTransition12(){
         SceneManager.LoadScene("1To2Cutscene");
     }
-    private void LoadTransition23(){
+    public void LoadTransition23(){
         SceneManager.LoadScene("2To3Cutscene");
     }
-    private void LoadTransitionEnd(){
+    public void LoadTransitionEnd(){
         SceneManager.LoadScene("EndingCutscene");
     }
     // Load the levels
-    private void LoadLevel1(){
+    public void LoadLevel1(){
         SceneManager.LoadScene("Level1");
     }
-    private void LoadLevel2(){
+    public void LoadLevel2(){
         SceneManager.LoadScene("Level2");
     }
-    private void LoadLevel3(){
+    public void LoadLevel3(){
         SceneManager.LoadScene("Level3");
     }
 

@@ -13,7 +13,7 @@ public class AlpinePlayer : MonoBehaviour
     //The sounds our catgirl will make when doing stuff
     public AudioClip[] catGirlSounds;
 
-
+    [Header("Varibles")]
     // Max health variable
     public int maxHearts = 10;
     // This is the current amount of health our catgirl has
@@ -26,11 +26,16 @@ public class AlpinePlayer : MonoBehaviour
     public float moveSpeed = 10;
     public float jumpSpeed = 5;
 
+    [Header("Camera")]
+    public Transform catGirlCamera;
+    public float smoothSpeed = 0.5f;
     public Vector2 moveDirection;
     // Start is called before the first frame update
     private void Update()
     {
         MoveDirection();
+        catGirlCamera.position = new Vector2(transform.position.x, transform.position.y);
+
     }
 
     #region Input

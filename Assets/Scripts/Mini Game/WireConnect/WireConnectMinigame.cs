@@ -5,6 +5,7 @@ using System.Runtime.CompilerServices;
 using System.Threading;
 using Unity.VisualScripting;
 using UnityEngine;
+using TMPro;
 
 public class WireConnectMinigame : AbstractMinigame
 {
@@ -17,7 +18,7 @@ public class WireConnectMinigame : AbstractMinigame
     public MinigameWire.WireColors wireColor;
     public MinigameSlot.SlotColors slotColor;
     public RectTransform dragAreaRectTransform;
-
+    public TMP_Text connectedWiresText;
     // Reference to the window
     public BasicWindow window;
 
@@ -71,8 +72,8 @@ public class WireConnectMinigame : AbstractMinigame
 
     public IEnumerator FinishGameCoroutine()
     {
-        yield return new WaitForSeconds(1f);
-        window.CloseWindow();
+        yield return new WaitForSeconds(0.25f);
+        window.ForceCloseWindow();
     }
 
     public IEnumerator CheckWinCoroutine()
@@ -80,6 +81,7 @@ public class WireConnectMinigame : AbstractMinigame
         while (isStarted)
         {
             yield return new WaitForSeconds(0.5f);
+            UpdateWiresConnected();
             // Check for win condition
             if (CheckWinCondition())
             {
@@ -149,5 +151,16 @@ public class WireConnectMinigame : AbstractMinigame
                 return false;
         }
         return true;
+    }
+
+    private void UpdateWiresConnected()
+    {
+        int connected = 0;
+        foreach (var slot in slots)
+        {
+            if (slot.isConnected)
+                connected++;
+        }
+        connectedWiresText.text = "Connected Wires: " + connected + "/" + numRounds * 4;
     }
 }

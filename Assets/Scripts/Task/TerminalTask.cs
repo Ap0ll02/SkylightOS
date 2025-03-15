@@ -125,13 +125,11 @@ public class TerminalTask : AbstractTask
     {
         foreach (var hazardManager in hazardManagers)
         {
-            if (!hazardManager.CanProgress())
-            {
+            if (!hazardManager.CanProgress()) {
                 ag.CanContinue = false;
                 break;
             }
-            else
-            {
+            else {
                 if(PThiefActive && !StopInputRunning) {
                     StartCoroutine(StopInputTimer(PThiefDelay));
                     break;
@@ -263,6 +261,8 @@ public class TerminalTask : AbstractTask
 
     public new void CompleteTask() {
         termState = State.Off;
+        installBtn.SetActive(false);
+        terminalText.text = "Successful Install Of Anti-Virus!";
         base.CompleteTask();
     }
 

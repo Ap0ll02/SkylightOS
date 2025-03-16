@@ -53,15 +53,43 @@ public class AlpinePlayer : MonoBehaviour
     public void OnJumpPerformed(InputAction.CallbackContext context)
     {
         catGirlBody.velocity = new Vector2(catGirlBody.velocity.x, jumpSpeed);
-        //animator.SetBool("isGrounded", false);
+        animator.SetBool("isJumping", false);
     }
     #endregion
     #region Gameplay
     // Controls the movement of our catgirl wizard and controls the animation controller this is also handled through the input controller
     public void MoveDirection()
     {
-        catGirlBody.velocity = new Vector2(move.action.ReadValue<Vector2>().x * moveSpeed, catGirlBody.velocity.y);
-        Debug.Log(catGirlBody.velocity);
+        animator = GetComponent<Animator>();
+        if (animator != null)
+        {
+            // Debug.Log(move.action.ReadValue<Vector2>().x * moveSpeed);
+            // Debug.Log(catGirlBody.velocity);
+            catGirlBody.velocity = new Vector2(move.action.ReadValue<Vector2>().x * moveSpeed, catGirlBody.velocity.y);
+            if (catGirlBody.velocity.x > 0.2f)
+            {
+                animator.SetFloat("VelocityX", catGirlBody.velocity.x);
+                animator.SetBool("isRunning", true);
+            }
+            else if (catGirlBody.velocity.x < -0.2f)
+            {
+                animator.SetFloat("VelocityX", catGirlBody.velocity.x);
+                animator.SetBool("isRunning", true);
+            }
+            else
+            {
+                animator.SetBool("isRunning", false);
+            }
+            if (Math.Abs(catGirlBody.velocity.y) < 0.2f)
+            {
+                animator.SetBool("isJumping", false);
+            }
+        }
+        else
+        {
+            Debug.Log("Animator is null");
+        }
+        //move.action.ReadValue<Vector2>().x * moveSpeed
     }
 
     public IEnumerator PlayingGame()

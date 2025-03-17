@@ -11,10 +11,11 @@ GameObject:
   - component: {fileID: 7536523372115191731}
   - component: {fileID: 5206172093854753122}
   - component: {fileID: 9166136187923513496}
+  - component: {fileID: 6964294578569008903}
   - component: {fileID: 6251348465750765795}
   - component: {fileID: 701699548012233297}
   - component: {fileID: -7004780763835773950}
-  - component: {fileID: 2824176712042031}
+  - component: {fileID: 7707326550481801646}
   m_Layer: 10
   m_Name: AlpinePlayer
   m_TagString: Untagged
@@ -32,7 +33,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9384, y: -472, z: 0}
-  m_LocalScale: {x: 1077.6667, y: 962.9763, z: 300.00003}
+  m_LocalScale: {x: 1569.0826, y: 1752.6168, z: 300.00003}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -77,7 +78,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -748920607
   m_SortingLayer: 5
-  m_SortingOrder: 100
+  m_SortingOrder: 9
   m_Sprite: {fileID: -526172245, guid: c79f7376177b4de40852201edee973f6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -116,6 +117,41 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
+--- !u!70 &6964294578569008903
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 37014947182887474}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_ForceSendLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ForceReceiveLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_ContactCaptureLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_CallbackLayers:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.0047076168, y: -0.0618567}
+  m_Size: {x: 0.100716725, y: 0.11271208}
+  m_Direction: 0
 --- !u!61 &6251348465750765795
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -148,7 +184,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0.00249964, y: 0.0010484383}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -159,7 +195,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.16, y: 0.16}
+  m_Size: {x: 0.10753484, y: 0.16209687}
   m_EdgeRadius: 0
 --- !u!114 &701699548012233297
 MonoBehaviour:
@@ -223,11 +259,13 @@ MonoBehaviour:
   isDead: 0
   moveSpeed: 3
   jumpSpeed: 2
+  catGirlCamera: {fileID: 0}
+  smoothSpeed: 0.5
   moveDirection: {x: 0, y: 0}
   move: {fileID: 1273146264192137822, guid: c44217e9c05106e44849a4fba29a1345, type: 3}
   jump: {fileID: -2238900218968141954, guid: c44217e9c05106e44849a4fba29a1345, type: 3}
   shoot: {fileID: 8169904425868959601, guid: c44217e9c05106e44849a4fba29a1345, type: 3}
---- !u!95 &2824176712042031
+--- !u!95 &7707326550481801646
 Animator:
   serializedVersion: 5
   m_ObjectHideFlags: 0
@@ -237,7 +275,7 @@ Animator:
   m_GameObject: {fileID: 37014947182887474}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4a7d9b49b0e265046bd4dc12913b4d33, type: 2}
+  m_Controller: {fileID: 9100000, guid: a31b485f0a8696e40aa6241e9c1c5811, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0

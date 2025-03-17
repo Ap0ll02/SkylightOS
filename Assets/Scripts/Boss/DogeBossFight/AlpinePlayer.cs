@@ -25,16 +25,18 @@ public class AlpinePlayer : MonoBehaviour
     // The speed of our catgirl
     public float moveSpeed = 10;
     public float jumpSpeed = 5;
+    private bool isGrounded;
 
     [Header("Camera")]
     public Transform catGirlCamera;
     public float smoothSpeed = 0.5f;
     public Vector2 moveDirection;
+    Vector3 velocity = Vector3.zero;
     // Start is called before the first frame update
     private void Update()
     {
         MoveDirection();
-        catGirlCamera.position = new Vector2(transform.position.x, transform.position.y);
+        catGirlCamera.position = Vector3.SmoothDamp(catGirlCamera.position, new Vector3(transform.position.x, transform.position.y, 0), ref velocity, 0.1f);
 
     }
 
@@ -51,6 +53,7 @@ public class AlpinePlayer : MonoBehaviour
     public void OnJumpPerformed(InputAction.CallbackContext context)
     {
         catGirlBody.velocity = new Vector2(catGirlBody.velocity.x, jumpSpeed);
+        //animator.SetBool("isGrounded", false);
     }
     #endregion
     #region Gameplay
@@ -58,21 +61,7 @@ public class AlpinePlayer : MonoBehaviour
     public void MoveDirection()
     {
         catGirlBody.velocity = new Vector2(move.action.ReadValue<Vector2>().x * moveSpeed, catGirlBody.velocity.y);
-        if (move.action.ReadValue<Vector2>().x > 0)
-        {
-            // animator.SetTrigger("Right");
-            // animator.ResetTrigger("Left");
-        }
-        else if (move.action.ReadValue<Vector2>().x < 0)
-        {
-            // animator.SetTrigger("Left");
-            // animator.ResetTrigger("Right");
-        }
-        else
-        {
-            // animator.ResetTrigger("Right");
-            // animator.ResetTrigger("Left");
-        }
+        Debug.Log(catGirlBody.velocity);
     }
 
     public IEnumerator PlayingGame()
@@ -88,6 +77,7 @@ public class AlpinePlayer : MonoBehaviour
     #region Start and End
     private void OnEnable()
     {
+
         //subscribes to our events
         jump.action.performed += OnJumpPerformed;
         shoot.action.performed += OnShootPerformed;

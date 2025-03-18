@@ -113,6 +113,66 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2309348557167335165}
     m_Modifications:
+    - target: {fileID: 746657571074646785, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 746657571074646785, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 746657571074646785, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 746657571074646785, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583590448056405419, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583590448056405419, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583590448056405419, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2583590448056405419, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525685034600065611, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525685034600065611, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SendTextToCL
+      objectReference: {fileID: 0}
+    - target: {fileID: 3525685034600065611, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: ls
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678843734560267035, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678843734560267035, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678843734560267035, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4678843734560267035, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5910797279157268680, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -193,9 +253,33 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7665693816492523973, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7665693816492523973, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SendTextToCL
+      objectReference: {fileID: 0}
+    - target: {fileID: 7665693816492523973, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: solar -i antivirus
+      objectReference: {fileID: 0}
     - target: {fileID: 7720251255885841662, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
       propertyPath: m_Name
       value: TerminalPanel
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073531490730874730, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073531490730874730, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SendTextToCL
+      objectReference: {fileID: 0}
+    - target: {fileID: 8073531490730874730, guid: 00225119b0cbf0a46b5a59493d637c2b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: nmap localhost
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

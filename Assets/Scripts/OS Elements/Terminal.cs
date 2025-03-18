@@ -125,7 +125,6 @@ public class Terminal : MonoBehaviour
         {
             AntiVirusExec();
         }
-        else if (uTxt.text.ToLower().Trim() == "ls") { }
         else
         {
             uTxt.text = "";
@@ -150,6 +149,11 @@ public class Terminal : MonoBehaviour
         TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
         uTxt.text = "";
         uTxt.placeholder.GetComponent<TMP_Text>().text = "Enter Command";
+    }
+
+    public void SendTextToCL(string command) {
+      TMP_InputField uTxt = usrInput.GetComponent<TMP_InputField>();
+      uTxt.text = command;
     }
 
     public IEnumerator TerminalLoading()

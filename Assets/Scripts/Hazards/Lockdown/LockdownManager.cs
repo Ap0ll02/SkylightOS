@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class LockdownManager : AbstractManager
 {
-    [SerializeField] private float minDelay = 3.0f;
-    [SerializeField] private float maxDelay = 10.0f;
+    [SerializeField] private float minDelay = 5.0f;
+    [SerializeField] private float maxDelay = 15.0f;
     [SerializeField] private LockdownCanvas lockdownCanvas; // Reference to LockdownCanvas
     private bool hazardStarted = false;
 
@@ -24,13 +24,12 @@ public class LockdownManager : AbstractManager
         }
     }
 
-    // Update is called once per frame
-    void Update()
+    public override void StartHazard()
     {
-
+        StartLockdownDelayTimer();
     }
 
-    public override void StartHazard()
+    public void StartLockdownDelayTimer()
     {
         if (lockdownCanvas != null && !hazardStarted)
         {
@@ -41,11 +40,9 @@ public class LockdownManager : AbstractManager
 
     private IEnumerator ActivateRaycastBlockerAfterDelay()
     {
-        float delay = Random.Range(minDelay, maxDelay);
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(GetDelay());
         lockdownCanvas.OpenCanvas();
         StartCoroutine(CheckLockdownCanvasComplete());
-        // Start the minigame here
     }
 
     private IEnumerator CheckLockdownCanvasComplete()
@@ -60,6 +57,7 @@ public class LockdownManager : AbstractManager
 
     public override void StopHazard()
     {
+        StopAllCoroutines();
         lockdownCanvas.CloseCanvas();
         hazardStarted = false;
     }
@@ -68,5 +66,29 @@ public class LockdownManager : AbstractManager
     {
         // Check if the minigame is completed
         return !lockdownCanvas.loadingScript.isLoaded;
+    }
+
+    public void CanvasClosed()
+    {
+        lockdownCanvas.ResetLoading();
+        lockdownCanvas.CloseCanvas();
+        hazardStarted = false;
+        if (difficulty != OSManager.Difficulty.Easy)
+            StartLockdownDelayTimer();
+        else
+            StopHazard();
+    }
+
+    public float GetDelay()
+    {
+        if (difficulty == OSManager.Difficulty.Medium)
+        {
+            return Random.Range(minDelay / 2, maxDelay / 2);
+        }
+        else if (difficulty == OSManager.Difficulty.Hard)
+        {
+            return Random.Range(minDelay / 3, maxDelay / 3);
+        }
+        return Random.Range(minDelay, maxDelay);
     }
 }

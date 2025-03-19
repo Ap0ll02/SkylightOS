@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using UnityEngine;
 /// <summary>
 /// Garrett Sharp
@@ -18,10 +19,10 @@ public class PopupManager : AbstractManager
     public int maxWindows = 5;
 
     // Minumum spawn interval, so atleast 3 'secs' (idk if its actually seconds) between spawns
-    public int spawnIntervalMin = 3;
-    
+    public int spawnIntervalMin;
+
     // Maximum spawn interval
-    public int spawnIntervalMax = 10;
+    public int spawnIntervalMax;
 
     // The range of the spawn position
     public float xRangeMin = -5f;
@@ -43,8 +44,11 @@ public class PopupManager : AbstractManager
     public override void StartHazard()
     {
         Debug.Log("Starting Popup Manager");
+        UpdateSpawnInterval();
         StartCoroutine(SpawnWindow());
     }
+
+
 
     // Spawns the window based off of the IEnumerator
     IEnumerator SpawnWindow()
@@ -67,7 +71,7 @@ public class PopupManager : AbstractManager
     // Checks if any windows are spawned, called by task
     public override bool CanProgress()
     {
-        if(spawnedWindows.Count == 0)
+        if (spawnedWindows.Count == 0)
         {
             return true;
         }
@@ -94,7 +98,7 @@ public class PopupManager : AbstractManager
         float randomY = Random.Range(yRangeMin, yRangeMax);
         return new Vector3(randomX, randomY, 0);
     }
-    
+
     private void CleanUpDisabledWindows()
     {
         for (int i = spawnedWindows.Count - 1; i >= 0; i--)
@@ -106,4 +110,24 @@ public class PopupManager : AbstractManager
             }
         }
     }
+
+    private void UpdateSpawnInterval()
+    {
+        if (difficulty == OSManager.Difficulty.Easy)
+        {
+            spawnIntervalMin = 5;
+            spawnIntervalMax = 10;
+        }
+        else if (difficulty == OSManager.Difficulty.Medium)
+        {
+            spawnIntervalMin = 3;
+            spawnIntervalMax = 7;
+        }
+        else if (difficulty == OSManager.Difficulty.Hard)
+        {
+            spawnIntervalMin = 1;
+            spawnIntervalMax = 5;
+        }
+    }
+
 }

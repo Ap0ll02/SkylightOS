@@ -14,6 +14,9 @@ public class OSManager : MonoBehaviour
     // List to hold the tasks
     [SerializeField] public List<AbstractTask> tasks;
 
+    // List to hold the tasks
+    [SerializeField] public List<AbstractManager> hazards;
+
     // Reference to the button prefab
     [SerializeField] public GameObject buttonPrefab;
 
@@ -38,6 +41,16 @@ public class OSManager : MonoBehaviour
     // Reference to the basic window
     [SerializeField] public BasicWindow window;
 
+    // Difficulty to be set in each task and hazard 
+    public enum Difficulty
+    {
+        Easy,
+        Medium,
+        Hard
+    }
+
+    public Difficulty difficulty;
+
     void Awake()
     {
         window = GetComponent<BasicWindow>();
@@ -50,6 +63,7 @@ public class OSManager : MonoBehaviour
         GetTasksFromContainer();
         CreateTaskButtons();
         SubscribeToTaskEvents();
+        SetDifficulty(difficulty);
     }
 
     // Update is called once per frame
@@ -194,6 +208,18 @@ public class OSManager : MonoBehaviour
             {
                 tasks.Add(task);
             }
+        }
+    }
+
+    void SetDifficulty(Difficulty difficulty)
+    {
+        foreach (var task in tasks)
+        {
+            task.SetDifficulty(difficulty);
+        }
+        foreach (var hazard in hazards)
+        {
+            hazard.SetDifficulty(difficulty);
         }
     }
 }

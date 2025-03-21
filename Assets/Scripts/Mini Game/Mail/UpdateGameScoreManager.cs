@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using TMPro;
 public class UpdateGameScoreManager : MonoBehaviour
 {
     public int score;
@@ -9,10 +9,20 @@ public class UpdateGameScoreManager : MonoBehaviour
     public int loseScore = -100;
     public bool winReached = false;
     public bool lossReached = false;
+    
+    // Score Text
+    public TMP_Text scoreText;
+
+    public void Start()
+    {
+        scoreText.text = $"Megabytes downloaded: 0 / {winScore}";
+    }
+
     public void AddScore(int value)
     {
         score += value;
         Debug.Log($"Score: {score}");
+        scoreText.text = $"Megabytes downloaded: {score} / {winScore}";
     }
 
     // This will be used by to check the win and lose conditions. It should be called every frame since its checking two conditions
@@ -34,6 +44,7 @@ public class UpdateGameScoreManager : MonoBehaviour
         score = 0;
         winReached = false;
         lossReached = false;
+        scoreText.text = $"Megabytes downloaded: 0 / {winScore}";
     }
 
 

@@ -21,13 +21,13 @@ public class EntityManager : AbstractManager
     {
         switch (difficulty)
         {
-            case (Difficulty.Easy):
+            case (OSManager.Difficulty.Easy):
                 maxKittens = 1;
                 break;
-            case (Difficulty.Medium):
+            case (OSManager.Difficulty.Medium):
                 maxKittens = 3;
                 break;
-            case (Difficulty.Hard):
+            case (OSManager.Difficulty.Hard):
                 maxKittens = 5;
                 break;
             default:

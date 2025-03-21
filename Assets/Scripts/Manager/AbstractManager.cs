@@ -5,16 +5,14 @@ using UnityEngine;
 
 public abstract class AbstractManager : MonoBehaviour
 {
-    public enum Difficulty
-    {
-        Easy,
-        Medium,
-        Hard
-    }
-
-    public Difficulty difficulty = Difficulty.Medium;
+    public OSManager.Difficulty difficulty;
 
     public abstract void StartHazard();
     public abstract void StopHazard();
     public abstract bool CanProgress();
+
+    public void SetDifficulty(OSManager.Difficulty difficulty)
+    {
+        this.difficulty = difficulty;
+    }
 }

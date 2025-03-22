@@ -18,4 +18,17 @@ public abstract class AbstractMinigame : MonoBehaviour
 
     //public static event Action OnGameEnd;
     public abstract void StartGame();
+
+    public void TryStartGame()
+    {
+        if (!isStarted)
+        {
+            isStarted = true;
+            StartGame();
+        }
+        else
+        {
+            Debug.LogWarning("Game already started bruh");
+        }
+    }
 }

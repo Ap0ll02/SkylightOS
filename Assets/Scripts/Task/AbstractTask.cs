@@ -10,6 +10,8 @@ using System;
 
 public abstract class AbstractTask : MonoBehaviour
 {
+    OSManager.Difficulty difficulty;
+
     //dont forget to state your purpose
     public List<AbstractManager> hazardManagers;
 
@@ -47,5 +49,8 @@ public abstract class AbstractTask : MonoBehaviour
     // this will request our manager to start making hazards
     public abstract void startHazards();
 
-
+    public void SetDifficulty(OSManager.Difficulty difficulty)
+    {
+        this.difficulty = difficulty;
+    }
 }

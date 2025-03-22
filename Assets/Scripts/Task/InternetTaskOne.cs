@@ -98,12 +98,12 @@ public class InternetTaskOne : AbstractTask
         {
             if (!hazardManager.CanProgress())
             {
-                diagnosisWindowScript.StopLoadingBar();
+                //diagnosisWindowScript.StopLoadingBar();
                 break;
             }
             else
             {
-                diagnosisWindowScript.ContinueLoadingBar();
+                //diagnosisWindowScript.ContinueLoadingBar();
             }
         }
     }

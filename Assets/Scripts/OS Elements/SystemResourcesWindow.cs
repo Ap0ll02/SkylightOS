@@ -60,8 +60,8 @@ public class SystemResourcesWindow : MonoBehaviour
         ramMinigame = FindObjectOfType<RamDownloadGame>();
         gpuMinigame = FindObjectOfType<PipeGame>();
         // Add button listeners
-        GPUButton.GetComponent<Button>().onClick.AddListener(OpenRamMinigameWindow);
-        RAMButton.GetComponent<Button>().onClick.AddListener(OpenGpuMinigameWindow);
+        //GPUButton.GetComponent<Button>().onClick.AddListener(OpenRamMinigameWindow);
+        //RAMButton.GetComponent<Button>().onClick.AddListener(OpenGpuMinigameWindow);
     }
 
     // Start is called before the first frame update
@@ -124,13 +124,23 @@ public class SystemResourcesWindow : MonoBehaviour
     // Method to open the MinigameWindow
     public void OpenRamMinigameWindow()
     {
-        ramMinigame.tryStartGame();
+        if(ramMinigame == null)
+        {
+            Debug.LogError("Ram Minigame not found");
+            return;
+        }
+        ramMinigame.TryStartGame();
     }
 
     // Method to open the MinigameWindow
     public void OpenGpuMinigameWindow()
     {
-        //
+        if (gpuMinigame == null)
+        {
+            Debug.LogError("GPU Minigame not found");
+            return;
+        }
+        gpuMinigame.TryStartGame();
     }
 
 }

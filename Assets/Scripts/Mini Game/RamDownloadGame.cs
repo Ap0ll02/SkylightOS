@@ -72,15 +72,6 @@ public class RamDownloadGame : AbstractMinigame
         window.OnWindowClose -= DisableCollider;
     }
 
-    // Basically make sure that we cant restart the Minigame
-    public void tryStartGame()
-    {
-        if (!isStarted)
-            StartGame();
-        else
-            Debug.Log("Game already started, you trying to break it or something?");
-    }
-
     // Starts the game
     public override void StartGame()
     {

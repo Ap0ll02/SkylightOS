@@ -53,11 +53,11 @@ public class LoadingScript : MonoBehaviour
     /// @brief The loading progress for clickable loading.
     public void ClickLoading()
     {
-        if(progBar.fillAmount < 1 && canContinue)
+        if(progBar.fillAmount < 1)
         {
             progBar.fillAmount += clickFillSpeed * clickModifier;
         }
-        else if(canContinue && progBar.fillAmount >= 1)
+        else if(progBar.fillAmount >= 1)
         {
             progBar.fillAmount = 1;
             isLoaded = true;
@@ -119,6 +119,8 @@ public class LoadingScript : MonoBehaviour
         PerformanceThiefManager.PThiefStarted += OnPThiefStart;
         PerformanceThiefManager.PThiefEnded += OnPThiefEnd;
         PerformanceThiefManager.PThiefUpdate += UpdatePThiefModifier;
+        PopupManager.PopupCanContinue += () => canContinue = true;
+        PopupManager.PopupCantContinue += () => canContinue = false;
     }
 
     private void OnDisable()
@@ -126,6 +128,8 @@ public class LoadingScript : MonoBehaviour
         PerformanceThiefManager.PThiefStarted -= OnPThiefStart;
         PerformanceThiefManager.PThiefEnded -= OnPThiefEnd;
         PerformanceThiefManager.PThiefUpdate -= UpdatePThiefModifier;
+        PopupManager.PopupCanContinue -= () => canContinue = true;
+        PopupManager.PopupCantContinue -= () => canContinue = false;
     }
 
     private void UpdatePThiefModifier(float modifier)

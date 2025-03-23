@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Runtime.CompilerServices;
@@ -16,7 +17,7 @@ public class PopupManager : AbstractManager
     public List<GameObject> spawnedWindows = new List<GameObject>();
 
     // Max windows
-    public int maxWindows = 5;
+    public int maxWindows;
 
     // Minumum spawn interval, so atleast 3 'secs' (idk if its actually seconds) between spawns
     public int spawnIntervalMin;
@@ -33,6 +34,10 @@ public class PopupManager : AbstractManager
     // The canvas to spawn the windows on
     public Canvas canvas;
 
+    // 
+    public static event Action PopupCanContinue;
+    public static event Action PopupCantContinue;
+
     // Getting rid of disabled windows.
     // Calling this method in update is kinda stupid will probably change later
     public void Update()
@@ -46,18 +51,33 @@ public class PopupManager : AbstractManager
         Debug.Log("Starting Popup Manager");
         UpdateSpawnInterval();
         StartCoroutine(SpawnWindow());
+        StartCoroutine(CheckWindows());
     }
 
-
+    IEnumerator CheckWindows()
+    {
+        while (true)
+        {
+            if (CanProgress())
+            {
+                PopupCanContinue?.Invoke();
+            }
+            else
+            {
+                PopupCantContinue?.Invoke();
+            }
+            yield return new WaitForSeconds(0.25f);
+        }
+    }
 
     // Spawns the window based off of the IEnumerator
     IEnumerator SpawnWindow()
     {
         while (true)
         {
-            int spawnInterval = Random.Range(spawnIntervalMin, spawnIntervalMax);
+            int spawnInterval = UnityEngine.Random.Range(spawnIntervalMin, spawnIntervalMax);
             yield return new WaitForSeconds(spawnInterval);
-            SpawnWindow(Random.Range(0, popupList.Count));
+            SpawnWindow(UnityEngine.Random.Range(0, popupList.Count));
         }
     }
 
@@ -65,6 +85,7 @@ public class PopupManager : AbstractManager
     public override void StopHazard()
     {
         Debug.Log("Stopping Popup Manager");
+        PopupCanContinue?.Invoke();
         StopAllCoroutines();
     }
 
@@ -94,8 +115,8 @@ public class PopupManager : AbstractManager
 
     private Vector3 GetSpawnPosition()
     {
-        float randomX = Random.Range(xRangeMin, xRangeMax);
-        float randomY = Random.Range(yRangeMin, yRangeMax);
+        float randomX = UnityEngine.Random.Range(xRangeMin, xRangeMax);
+        float randomY = UnityEngine.Random.Range(yRangeMin, yRangeMax);
         return new Vector3(randomX, randomY, 0);
     }
 
@@ -117,16 +138,19 @@ public class PopupManager : AbstractManager
         {
             spawnIntervalMin = 5;
             spawnIntervalMax = 10;
+            maxWindows = 3;
         }
         else if (difficulty == OSManager.Difficulty.Medium)
         {
             spawnIntervalMin = 3;
             spawnIntervalMax = 7;
+            maxWindows = 5;
         }
         else if (difficulty == OSManager.Difficulty.Hard)
         {
             spawnIntervalMin = 1;
             spawnIntervalMax = 5;
+            maxWindows = 7;
         }
     }
 

@@ -11,30 +11,23 @@ public class DogeBossFightManager : BossManager
     public int currentMusicIndex = 0;
     bool GameOver = false;
     private Northstar northstar;
+    public GameObject[] objectsToActivate;
 
     // This method will call the Next stage and start the boss fight
     public void StartBossFight()
     {
-
         if (!GameOver)
         {
-            this.bossStagePrefabs[currentBossStageIndex].SetActive(true);
-            this.bossStagePrefabs[currentBossStageIndex].GetComponent<AbstractBossStage>().BossStartStage();
+            this.NextStage();
             currentMusic = GetComponent<AudioSource>();
             currentMusic.clip = musicArray[currentMusicIndex];
             currentMusic.Play();
-            northstar = GameObject.Find("Northstar").GetComponent<Northstar>();
         }
     }
 
     private void Start()
     {
         StartBossFight();
-        // this.bossStagePrefabs[currentBossStageIndex].SetActive(true);
-        // this.bossStagePrefabs[currentBossStageIndex].GetComponent<AbstractBossStage>().BossStartStage();
-        // currentMusic = GetComponent<AudioSource>();
-        // currentMusic.clip = musicArray[currentMusicIndex];
-        // currentMusic.Play();
     }
     private void Update()
     {
@@ -77,5 +70,9 @@ public class DogeBossFightManager : BossManager
 
     void  OnEnable()
     {
+        foreach (GameObject obj in objectsToActivate)
+        {
+            gameObject.SetActive(true);
+        }
     }
 }

@@ -2,16 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DogeStage3 : AbstractBossStage
+public class DogeStage4 : AbstractBossStage
 {
     public override void BossStartStage()
     {
-        Debug.Log("Stage 3");
+        Debug.Log("Stage 4");
     }
 
     public override void BossEndStage()
     {
-        Debug.Log("Stage 3 End");
+        Debug.Log("Stage 4 End");
         bossManager.NextStage();
     }
+
 }
+

@@ -10,6 +10,7 @@ public abstract class BossManager : MonoBehaviour
     public int currentBossStageIndex = 0;
     // This is the array of all the boss stages
     public GameObject[] bossStagePrefabs;
+    public bool bossIsDonee = false;
 
     // This will start the next stage of the boss fight
      public void NextStage()
@@ -17,20 +18,18 @@ public abstract class BossManager : MonoBehaviour
          if (currentBossStageIndex >= bossStagePrefabs.Length)
          {
              Debug.Log("Boss is done");
+             bossIsDonee = true;
              return;
          }
-         if (bossStagePrefabs[currentBossStageIndex] == null || bossStagePrefabs.Length == 0)
+         else if (bossStagePrefabs[currentBossStageIndex] == null || bossStagePrefabs.Length == 0)
          {
              Debug.Log("We are ethier empty or null");
+             return;
          }
-         // we capture a reference to the Boss stage we are currently working with
-         bossStagePrefabs[currentBossStageIndex].SetActive(true);
-         var BossStage = bossStagePrefabs[currentBossStageIndex].GetComponent<AbstractBossStage>();
-         // If we still have boss stages we should incremeant there is some helpful debugging logs if you really need it
-         // Debug.Log($"Index {currentBossStageIndex}");
-         // Debug.Log($"Boss Stage Length: {bossStagePrefabs.Length}");
-         if (currentBossStageIndex < bossStagePrefabs.Length)
+         else if(currentBossStageIndex < bossStagePrefabs.Length)
          {
+             bossStagePrefabs[currentBossStageIndex].SetActive(true);
+             var BossStage = bossStagePrefabs[currentBossStageIndex].GetComponent<AbstractBossStage>();
              // This invokes the start stage of the next Boss stage
              BossStage.BossStartStage();
              // We need to hit the next stage so we increment our index
@@ -38,7 +37,7 @@ public abstract class BossManager : MonoBehaviour
          }
          else
          {
-             Debug.Log("Boss is done");
+             Debug.Log("something went wrong");
          }
      }
 

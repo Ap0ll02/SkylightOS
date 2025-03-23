@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,11 +9,6 @@ public class PlatformTurn: MonoBehaviour
 
     public int turnAngle;
     // Start is called before the first frame update
-    void Start()
-    {
-        StartCoroutine(PlatformCooldown());
-    }
-
     IEnumerator PlatformCooldown()
     {
         yield return new WaitForSeconds(turnCoolDown);
@@ -24,4 +20,11 @@ public class PlatformTurn: MonoBehaviour
         transform.Rotate(0, 0, turnAngle);
         StartCoroutine(PlatformCooldown());
     }
+
+    // We only start the turning once the level is activated
+    private void OnEnable()
+    {
+        StartCoroutine(PlatformCooldown());
+    }
+
 }

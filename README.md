@@ -10,3 +10,6 @@ A whole suite of apps that allow you to debug, reconnect, develop and diagnose p
 
 ## Speed
 No unneccesary bloatware of schedulers, virtual memory, or virtual processors. Just let your host OS take care of it. Clearly it will run faster not having to worry about these unimportant details. 
+
+## Check Us Out
+[Our SkylightOS Website](https://skylightos.itch.io/skylight-os)

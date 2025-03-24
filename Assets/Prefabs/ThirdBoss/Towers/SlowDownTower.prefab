@@ -102,3 +102,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27951b49213301da6a4f21d9c702ac9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  towerType: 1
+  damage: 10
+  timeToDamage: 1
+  cooldown: 3
+  isSpecial: 0
+  level: 0
+  costToUpgrade: 25

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1001 &5141142596921490760
+--- !u!1001 &8613171743999688605
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -10,7 +10,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5841414768728899615, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
       propertyPath: m_Name
-      value: BasicTower
+      value: AOETower
       objectReference: {fileID: 0}
     - target: {fileID: 8444291395104816027, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
       propertyPath: m_LocalPosition.x
@@ -52,36 +52,35 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 4757554486077913741, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5841414768728899615, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 7437742159923741116}
+      addedObject: {fileID: 3788978877070461309}
   m_SourcePrefab: {fileID: 100100000, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
---- !u!1 &1606059089382407511 stripped
+--- !u!1 &2781251880452816770 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5841414768728899615, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
-  m_PrefabInstance: {fileID: 5141142596921490760}
+  m_PrefabInstance: {fileID: 8613171743999688605}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &7437742159923741116
+--- !u!114 &3788978877070461309
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1606059089382407511}
+  m_GameObject: {fileID: 2781251880452816770}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d223aa434d3b17ad85691e85f5d8159, type: 3}
+  m_Script: {fileID: 11500000, guid: 48ba92dd012c0d53c80d9d4ef09703c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerType: 0
-  damage: 35
-  timeToDamage: 1
-  cooldown: 1
-  isSpecial: 0
+  towerType: 3
+  damage: 400
+  timeToDamage: 4
+  cooldown: 2
+  isSpecial: 1
   level: 0
-  costToUpgrade: 10
+  costToUpgrade: 110

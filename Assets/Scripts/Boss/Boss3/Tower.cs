@@ -12,19 +12,19 @@ public abstract class Tower : MonoBehaviour
     Trapper
   }
 
-  public abstract Towers towerType;
+  public Towers towerType;
 
-  public abstract float damage;
+  public float damage;
 
-  public abstract float timeToDamage = 1f;
+  public float timeToDamage = 1f;
 
-  public abstract float cooldown;
+  public float cooldown;
 
-  public abstract bool isSpecial;
+  public bool isSpecial;
 
-  public abstract int level;
+  public int level;
 
-  public abstract float costToUpgrade;
+  public float costToUpgrade;
 
   public abstract void Attack();
 }

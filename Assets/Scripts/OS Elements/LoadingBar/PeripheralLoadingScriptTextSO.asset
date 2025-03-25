@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 59107252b0098f04ca1ca7c01a8ba793, type: 3}
+  m_Name: PeripheralLoadingScriptTextSO
+  m_EditorClassIdentifier: 
+  loadingTexts:
+  - 'Locating your printer. It was hiding again.  '
+  - 'Informing your keyboard that QWERTY is still the standard.  '
+  - "Updating your mouse\u2019s firmware. Yes, it has firmware.  "
+  - 'Performing a highly technical blinking-lights upgrade.  '
+  - 'Reassuring your speakers that stereo is still relevant.  '
+  - 'Waiting for your webcam to stop panicking.  '
+  - 'Checking if your scanner still believes in itself.  '
+  - "Calibrating your trackpad\u2019s aversion to touch.  "
+  - 'Reminding your monitor that 60Hz is not impressive anymore.  '
+  - 'Politely requesting your USB hub to behave like a hub.  '
+  - "Optimizing mouse DPI settings, for reasons we can\u2019t explain.  "
+  - 'Attempting to negotiate with the printer again.  '
+  - 'Attempting to install drivers without breaking everything else  '
+  - 'Translating firmware instructions from Ancient Greek  '
+  - 'Undoing whatever the last update did  '
+  - 'Scanning for peripherals that allegedly exist  '
+  - 'Performing ritual handshake with USB port... again  '
+  - 'Rolling dice to determine if the printer will work today  '
+  - 'Updating the update that updates the updater  '
+  - 'Trying not to break Bluetooth this time  '
+  - 'Installing "critical" patch that changes nothing noticeable  '
+  - "Failing gracefully while pretending everything\u2019s fine  "
+  - 'Remapping keyboard keys according to our best guess  '
+  - 'Hoping this fixes the issue support couldn''t reproduce  '
+  - 'Replacing perfectly good drivers with newer, worse ones  '
+  - "Bricking risk at only 13% \u2013 proceed with confidence  "
+  - 'Implementing feature that worked last version, maybe  '
+  - "Pouring coffee into the port (figuratively\u2026 we hope)  "
+  - "Upgrading your webcam\u2019s paranoia mode  "
+  - Arming explosives
+  - 'Swapping out the LED driver because why not  '
+  - 'Overwriting firmware with something we found on a forum  '
+  - "Uninstalling last driver that said it was \u201Cstable\u201D  "

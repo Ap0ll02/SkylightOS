@@ -14,7 +14,7 @@ public class TowerManager : MonoBehaviour
     public List<Tower> towerPrefabs;
     public Camera mainCamera;
     public LayerMask targetLayer;
-    public float maxDistance = 50f;
+    public float maxDistance = 1000f;
     public bool placeMode = true;
     public Tower towerSc;
     public GameObject pickedTower;
@@ -25,9 +25,9 @@ public class TowerManager : MonoBehaviour
 
     void Start()
     {
-        if (targetLayer == 0)
-            targetLayer = LayerMask.GetMask("TowerPlacements");
-        placeMode = true;
+        //        if (targetLayer == 0)
+        //           targetLayer = LayerMask.GetMask("TowerPlacements");
+        //      placeMode = true;
     }
 
     public void OnAttack()
@@ -41,7 +41,6 @@ public class TowerManager : MonoBehaviour
         GameObject hit;
         if (placeMode)
         {
-            Debug.Log("Place Mode On:");
             // Check raycast for any valid place points
             if (CheckPlacePos(out hit))
             {
@@ -53,26 +52,30 @@ public class TowerManager : MonoBehaviour
                 CreateTower();
             }
         }
-        Debug.Log("Place Mode Was False?: " + placeMode);
     }
 
     public bool CheckPlacePos(out GameObject hitObject)
     {
-        Debug.Log("Here we are, raycasting...");
         // Raycast to check mouse position, if it is hitting
         // any 'block' in the valid layer, for ability to place tower
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        if (Physics.Raycast(ray, out RaycastHit hit, maxDistance))
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        Debug.DrawRay(ray.origin, ray.direction * 1000f, Color.green, 15f);
+
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance, targetLayer))
         {
             Debug.Log(
-                $"Raycast hit: {hit.collider.gameObject.name} on layer {LayerMask.LayerToName(hit.collider.gameObject.layer)}"
+                $"Raycast hit: {hitInfo.collider.gameObject.name} on layer {LayerMask.LayerToName(hitInfo.collider.gameObject.layer)}"
             );
-            Debug.Log("Success");
-            hitObject = hit.collider.gameObject;
+
+            hitObject = hitInfo.collider.gameObject;
             return true;
         }
-        hitObject = null;
-        return false;
+        else
+        {
+            Debug.Log("Raycast: Failed");
+            hitObject = null;
+            return false;
+        }
     }
 
     public void CreateTower()

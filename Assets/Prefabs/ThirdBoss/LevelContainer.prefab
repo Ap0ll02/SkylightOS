@@ -151,35 +151,35 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1628931661539310924, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 280
       objectReference: {fileID: 0}
     - target: {fileID: 1628931661539310924, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 137
       objectReference: {fileID: 0}
     - target: {fileID: 1628931661539310924, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 99
       objectReference: {fileID: 0}
     - target: {fileID: 1628931661539310924, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8746197
       objectReference: {fileID: 0}
     - target: {fileID: 1628931661539310924, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_LocalRotation.x
-      value: -0
+      value: 0.4848096
       objectReference: {fileID: 0}
     - target: {fileID: 1628931661539310924, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1628931661539310924, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_LocalRotation.z
-      value: -0
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1628931661539310924, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 58
       objectReference: {fileID: 0}
     - target: {fileID: 1628931661539310924, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
@@ -211,6 +211,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3831578835716232510}
     m_Modifications:
+    - target: {fileID: 2871818010178933103, guid: 9f57d8c4563bd1600b6ef77b2f9e8eef, type: 3}
+      propertyPath: m_Layer
+      value: 14
+      objectReference: {fileID: 0}
     - target: {fileID: 4460987814416254873, guid: 9f57d8c4563bd1600b6ef77b2f9e8eef, type: 3}
       propertyPath: m_Name
       value: Map

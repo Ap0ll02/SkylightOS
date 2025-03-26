@@ -14,7 +14,7 @@ public class TowerManager : MonoBehaviour
     public List<Tower> towerPrefabs;
     public Camera mainCamera;
     public LayerMask targetLayer;
-    public float maxDistance = 1000f;
+    public float maxDistance = 10000f;
     public bool placeMode = true;
     public Tower towerSc;
     public GameObject pickedTower;
@@ -59,14 +59,10 @@ public class TowerManager : MonoBehaviour
         // Raycast to check mouse position, if it is hitting
         // any 'block' in the valid layer, for ability to place tower
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(ray.origin, ray.direction * 1000f, Color.green, 15f);
+        Debug.DrawRay(ray.origin, ray.direction * maxDistance * 10f, Color.green, 15f);
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance, targetLayer))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance * 10f, targetLayer))
         {
-            Debug.Log(
-                $"Raycast hit: {hitInfo.collider.gameObject.name} on layer {LayerMask.LayerToName(hitInfo.collider.gameObject.layer)}"
-            );
-
             hitObject = hitInfo.collider.gameObject;
             return true;
         }

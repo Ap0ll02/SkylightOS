@@ -28,6 +28,7 @@ public class TowerManager : MonoBehaviour
         //        if (targetLayer == 0)
         //           targetLayer = LayerMask.GetMask("TowerPlacements");
         //      placeMode = true;
+        pickedTower = towerPrefabs[0].gameObject;
     }
 
     public void OnAttack()
@@ -50,6 +51,11 @@ public class TowerManager : MonoBehaviour
                     placeableList.Remove(hit);
                 }
                 CreateTower();
+                PlayerTowers[^1].GetComponent<Transform>().position = new Vector3(
+                    hit.transform.position.x,
+                    hit.transform.position.y,
+                    hit.transform.position.z
+                );
             }
         }
     }

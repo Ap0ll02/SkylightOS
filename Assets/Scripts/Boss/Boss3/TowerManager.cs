@@ -41,11 +41,12 @@ public class TowerManager : MonoBehaviour
     // Handles function calls for ensuring tower can place and creating tower
     public void PlaceTower()
     {
-        if (player.currency < pickedTower.costToUpgrade)
+        if (player.currency >= pickedTower.costToUpgrade[pickedTower.level])
         {
-            return;
+            Transaction();
         }
-        Transaction();
+        else
+            return;
 
         GameObject hit;
         if (placeMode)
@@ -67,7 +68,7 @@ public class TowerManager : MonoBehaviour
 
     void Transaction()
     {
-        player.currency -= (int)pickedTower.costToUpgrade[pickedTower.level];
+        player.currency -= pickedTower.costToUpgrade[pickedTower.level];
         pickedTower.level += 1;
     }
 

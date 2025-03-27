@@ -25,7 +25,7 @@ public abstract class Tower : MonoBehaviour
 
     public int level;
 
-    public int[3] costToUpgrade;
+    public int[] costToUpgrade = new int[3];
 
     public abstract void Attack();
 }

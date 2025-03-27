@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-///
 /// @author: Jack Ratermann
 /// @brief: This is the managing class for towers
 /// handling placement, spawning, upgrading, etc.
+
 public class TowerManager : MonoBehaviour
 {
     // Tower Management: Placing towers, making sure money/payment
@@ -19,7 +19,7 @@ public class TowerManager : MonoBehaviour
     public Tower towerSc;
     public GameObject pickedTower;
     public List<GameObject> placeableList = new();
-
+    public GameObject parentBlock;
     public List<GameObject> PlayerTowers = new();
     public Input pInput;
 
@@ -31,18 +31,21 @@ public class TowerManager : MonoBehaviour
         pickedTower = towerPrefabs[0].gameObject;
     }
 
+    // Left click, or attack keybind callback function
     public void OnAttack()
     {
         PlaceTower();
         Debug.Log("PlaceTower() was called by PlayerInput!");
     }
 
+    // Handles function calls for ensuring tower can place and creating tower
     public void PlaceTower()
     {
         GameObject hit;
         if (placeMode)
         {
-            // Check raycast for any valid place points
+            // Check raycast for any valid place points, using hit
+            // to hold the game object of the object in raycast
             if (CheckPlacePos(out hit))
             {
                 Debug.Log("Hit This Bitch: " + hit);
@@ -50,12 +53,8 @@ public class TowerManager : MonoBehaviour
                 {
                     placeableList.Remove(hit);
                 }
-                CreateTower();
-                PlayerTowers[^1].GetComponent<Transform>().position = new Vector3(
-                    hit.transform.position.x,
-                    hit.transform.position.y,
-                    hit.transform.position.z
-                );
+                CreateTower(hit);
+                PlayerTowers[^1].transform.SetParent(this.GetComponent<Transform>(), true);
             }
         }
     }
@@ -80,9 +79,18 @@ public class TowerManager : MonoBehaviour
         }
     }
 
-    public void CreateTower()
+    public void CreateTower(GameObject parentBlock)
     {
         Debug.Log("Create Tower");
-        PlayerTowers.Add(Instantiate(pickedTower, parent: this.GetComponent<Transform>()));
+        PlayerTowers.Add(Instantiate(pickedTower, parent: parentBlock.GetComponent<Transform>()));
+
+        Transform pt = PlayerTowers[^1].GetComponent<Transform>();
+        MeshRenderer prend = parentBlock.GetComponent<MeshRenderer>();
+
+        // This centers the tower when placed on a bottom left anchor, not a top right
+        pt.position = pt.position + (prend.bounds.size / 2);
+
+        // This works for top right
+        //pt.position = pt.position - (prend.bounds.size / 2);
     }
 }

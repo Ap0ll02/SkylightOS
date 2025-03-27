@@ -60,7 +60,9 @@ MonoBehaviour:
   towerSc: {fileID: 0}
   pickedTower: {fileID: 0}
   placeableList: []
+  parentBlock: {fileID: 0}
   PlayerTowers: []
+  player: {fileID: 2991891161658796891, guid: 3604e05b0b3756f3991702ec912ecc00, type: 3}
 --- !u!114 &7798512533513046529
 MonoBehaviour:
   m_ObjectHideFlags: 0

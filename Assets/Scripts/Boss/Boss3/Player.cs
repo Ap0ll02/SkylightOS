@@ -2,17 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+/// @author Jack Ratermann
+/// @brief This class is to manage the player state and help with
+/// game management, like currency.
+
 public class Player : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    // Management of the players state and game stuff
+    public int currency;
+    public TowerManager tm;
 }

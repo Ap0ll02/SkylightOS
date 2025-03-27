@@ -4,27 +4,28 @@ using UnityEngine;
 
 public abstract class Tower : MonoBehaviour
 {
-  public enum Towers {
-    Basic,
-    SlowDown,
-    Mage,
-    AOE,
-    Trapper
-  }
+    public enum Towers
+    {
+        Basic,
+        SlowDown,
+        Mage,
+        AOE,
+        Trapper,
+    }
 
-  public Towers towerType;
+    public Towers towerType;
 
-  public float damage;
+    public float damage;
 
-  public float timeToDamage = 1f;
+    public float timeToDamage = 1f;
 
-  public float cooldown;
+    public float cooldown;
 
-  public bool isSpecial;
+    public bool isSpecial;
 
-  public int level;
+    public int level;
 
-  public float costToUpgrade;
+    public int[3] costToUpgrade;
 
-  public abstract void Attack();
+    public abstract void Attack();
 }

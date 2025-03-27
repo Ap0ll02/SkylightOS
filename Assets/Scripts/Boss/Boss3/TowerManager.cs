@@ -17,18 +17,18 @@ public class TowerManager : MonoBehaviour
     public float maxDistance = 100000.0f;
     public bool placeMode = true;
     public Tower towerSc;
-    public GameObject pickedTower;
+    public Tower pickedTower;
     public List<GameObject> placeableList = new();
     public GameObject parentBlock;
     public List<GameObject> PlayerTowers = new();
-    public Input pInput;
+    public Player player;
 
     void Start()
     {
         //        if (targetLayer == 0)
         //           targetLayer = LayerMask.GetMask("TowerPlacements");
         //      placeMode = true;
-        pickedTower = towerPrefabs[0].gameObject;
+        pickedTower = towerPrefabs[0];
     }
 
     // Left click, or attack keybind callback function
@@ -41,6 +41,12 @@ public class TowerManager : MonoBehaviour
     // Handles function calls for ensuring tower can place and creating tower
     public void PlaceTower()
     {
+        if (player.currency < pickedTower.costToUpgrade)
+        {
+            return;
+        }
+        Transaction();
+
         GameObject hit;
         if (placeMode)
         {
@@ -57,6 +63,12 @@ public class TowerManager : MonoBehaviour
                 PlayerTowers[^1].transform.SetParent(this.GetComponent<Transform>(), true);
             }
         }
+    }
+
+    void Transaction()
+    {
+        player.currency -= (int)pickedTower.costToUpgrade[pickedTower.level];
+        pickedTower.level += 1;
     }
 
     public bool CheckPlacePos(out GameObject hitObject)
@@ -84,7 +96,9 @@ public class TowerManager : MonoBehaviour
     {
         // Creating the tower
         Debug.Log("Create Tower");
-        PlayerTowers.Add(Instantiate(pickedTower, parent: parentBlock.GetComponent<Transform>()));
+        PlayerTowers.Add(
+            Instantiate(pickedTower.gameObject, parent: parentBlock.GetComponent<Transform>())
+        );
 
         // References for positioning
         Transform pt = PlayerTowers[^1].GetComponent<Transform>();

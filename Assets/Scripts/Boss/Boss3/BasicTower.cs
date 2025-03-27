@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BasicTower : Tower
 {
-  public override void Attack() {
-    Debug.Log("Attack");
-  }
+    public override void Attack()
+    {
+        Debug.Log("Attack");
+    }
 }

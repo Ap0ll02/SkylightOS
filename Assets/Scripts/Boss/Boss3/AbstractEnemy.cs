@@ -14,9 +14,22 @@ public abstract class AbstractEnemy: MonoBehaviour
         public float speed;
     #endregion enemystats
 
+    public int currentPosition = 0;
+    Vector2 targetPosition;
+    NavigationManager navi;
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+    }
+
+    public void Move()
+    {
+        var nextWaypoint= navi.NextWaypoint(currentPosition);
+        targetPosition = nextWaypoint.GetComponent<Vector2>();
+        if (Vector2.Distance(this.transform.position, targetPosition) < 0.1f)
+        {
+            targetPosition = navi.NextWaypoint(currentPosition).GetComponent<Vector2>();
+        }
     }
 
     public abstract void SlowDownHit(int damage = 0, float percent = 1, float duration = 0);

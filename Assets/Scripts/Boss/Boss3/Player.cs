@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 /// @author Jack Ratermann
@@ -9,12 +7,21 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Management of the players state and game stuff
-    public int currency = 50;
+    private int currency = 500;
     public TowerManager tm;
 
     void Start()
     {
-        currency = 50;
         Debug.Log("Starting Points: " + currency);
+    }
+
+    public int GetCurrency()
+    {
+        return currency;
+    }
+
+    public void SetCurrency(int newAmt)
+    {
+        currency = newAmt;
     }
 }

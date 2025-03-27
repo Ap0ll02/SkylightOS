@@ -9,11 +9,12 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Management of the players state and game stuff
-    public int currency;
+    public int currency = 50;
     public TowerManager tm;
 
     void Start()
     {
+        currency = 50;
         Debug.Log("Starting Points: " + currency);
     }
 }

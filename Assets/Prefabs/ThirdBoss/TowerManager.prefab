@@ -51,13 +51,7 @@ MonoBehaviour:
   - {fileID: -325621749177007451, guid: ca1cee046ac8fff5d95f282b692e6fe8, type: 3}
   - {fileID: 3788978877070461309, guid: d35f25e7940756123bc61f5e84baad8b, type: 3}
   - {fileID: 8209163948427490728, guid: da8385742d44e9689af5db681ece5660, type: 3}
-  mainCamera: {fileID: 261834362348260544, guid: 39fd3c9df9eac664d8339f9a2daba431, type: 3}
-  targetLayer:
-    serializedVersion: 2
-    m_Bits: 16384
-  maxDistance: 50
   placeMode: 1
-  towerSc: {fileID: 0}
   pickedTower: {fileID: 0}
   placeableList: []
   parentBlock: {fileID: 0}
@@ -76,7 +70,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Actions: {fileID: -944628639613478452, guid: 1088b0051a51af3d9b3224919a5d6fc9, type: 3}
-  m_NotificationBehavior: 0
+  m_NotificationBehavior: 2
   m_UIInputModule: {fileID: 0}
   m_DeviceLostEvent:
     m_PersistentCalls:
@@ -204,6 +198,22 @@ MonoBehaviour:
       m_Calls: []
     m_ActionId: e55f7ba9-9378-4c1c-9674-f880366499ff
     m_ActionName: User/ctrlCQuit[/Keyboard/ctrl,/Keyboard/c]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 58191292285033694}
+        m_TargetAssemblyTypeName: TowerManager, Assembly-CSharp
+        m_MethodName: OnChooseTower
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6608f436-a23a-4b7f-9113-50c1075cc6d8
+    m_ActionName: Player/ChooseTower[/Keyboard/1,/Keyboard/2,/Keyboard/3,/Keyboard/4,/Keyboard/5]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: Player

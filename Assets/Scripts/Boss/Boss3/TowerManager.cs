@@ -41,7 +41,20 @@ public class TowerManager : MonoBehaviour
 
     public void OnChooseTower(InputAction.CallbackContext context)
     {
-        Debug.Log("What Is Going On?: " + context.control.name);
+        switch (context.control.name)
+        {
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+                pickedTower = towerPrefabs[int.Parse(context.control.name) - 1];
+                break;
+            default:
+                Debug.LogError("Detected Incorrect Input", this.gameObject);
+                break;
+        }
+        Debug.Log("Selected Tower: " + pickedTower);
     }
 
     GameObject hit;

@@ -14,7 +14,7 @@ public class TowerManager : MonoBehaviour
     public List<Tower> towerPrefabs;
     public Camera mainCamera;
     public LayerMask targetLayer;
-    public float maxDistance = 10000f;
+    public float maxDistance = 100000.0f;
     public bool placeMode = true;
     public Tower towerSc;
     public GameObject pickedTower;
@@ -64,9 +64,10 @@ public class TowerManager : MonoBehaviour
         // Raycast to check mouse position, if it is hitting
         // any 'block' in the valid layer, for ability to place tower
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        Debug.DrawRay(ray.origin, ray.direction * maxDistance * 10f, Color.green, 15f);
+        // DEBUG: Turn ON if raycasts need to be drawn
+        // Debug.DrawRay(ray.origin, ray.direction * maxDistance * 100f, Color.green, 15f);
 
-        if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance * 10f, targetLayer))
+        if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance * 100f, targetLayer))
         {
             hitObject = hitInfo.collider.gameObject;
             return true;
@@ -81,16 +82,16 @@ public class TowerManager : MonoBehaviour
 
     public void CreateTower(GameObject parentBlock)
     {
+        // Creating the tower
         Debug.Log("Create Tower");
         PlayerTowers.Add(Instantiate(pickedTower, parent: parentBlock.GetComponent<Transform>()));
 
+        // References for positioning
         Transform pt = PlayerTowers[^1].GetComponent<Transform>();
         MeshRenderer prend = parentBlock.GetComponent<MeshRenderer>();
 
-        // This centers the tower when placed on a bottom left anchor, not a top right
-        pt.position = pt.position + (prend.bounds.size / 2);
-
-        // This works for top right
-        //pt.position = pt.position - (prend.bounds.size / 2);
+        // Centering and raising the tower
+        pt.position = prend.bounds.center;
+        pt.position += new Vector3(0, 11, 0);
     }
 }

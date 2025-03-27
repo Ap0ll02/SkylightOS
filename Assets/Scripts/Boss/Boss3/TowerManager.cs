@@ -14,7 +14,7 @@ public class TowerManager : MonoBehaviour
     public List<Tower> towerPrefabs;
     public Camera mainCamera;
     public LayerMask targetLayer;
-    public float maxDistance = 100000.0f;
+    float maxDistance = 1000.0f;
     public bool placeMode = true;
     public Tower towerSc;
     public Tower pickedTower;
@@ -41,12 +41,16 @@ public class TowerManager : MonoBehaviour
     // Handles function calls for ensuring tower can place and creating tower
     public void PlaceTower()
     {
-        if (player.currency >= pickedTower.costToUpgrade[pickedTower.level])
+        Debug.Log("Points: " + player.currency);
+        Debug.Log("Cost: " + pickedTower.costToUpgrade[0]);
+        if (player.currency >= pickedTower.costToUpgrade[0])
         {
             Transaction();
         }
         else
+        {
             return;
+        }
 
         GameObject hit;
         if (placeMode)
@@ -68,8 +72,8 @@ public class TowerManager : MonoBehaviour
 
     void Transaction()
     {
-        player.currency -= pickedTower.costToUpgrade[pickedTower.level];
-        pickedTower.level += 1;
+        player.currency -= pickedTower.costToUpgrade[0];
+        Debug.Assert(player.currency >= 0, "Transaction completed with an invalid balance.");
     }
 
     public bool CheckPlacePos(out GameObject hitObject)
@@ -96,11 +100,10 @@ public class TowerManager : MonoBehaviour
     public void CreateTower(GameObject parentBlock)
     {
         // Creating the tower
-        Debug.Log("Create Tower");
         PlayerTowers.Add(
             Instantiate(pickedTower.gameObject, parent: parentBlock.GetComponent<Transform>())
         );
-
+        Debug.Assert(PlayerTowers.Count != 0, "Incorrect Instantiation of Tower");
         // References for positioning
         Transform pt = PlayerTowers[^1].GetComponent<Transform>();
         MeshRenderer prend = parentBlock.GetComponent<MeshRenderer>();
@@ -108,5 +111,7 @@ public class TowerManager : MonoBehaviour
         // Centering and raising the tower
         pt.position = prend.bounds.center;
         pt.position += new Vector3(0, 11, 0);
+
+        PlayerTowers[^1].GetComponent<Tower>().level = 1;
     }
 }

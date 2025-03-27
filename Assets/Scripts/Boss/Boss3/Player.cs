@@ -11,4 +11,9 @@ public class Player : MonoBehaviour
     // Management of the players state and game stuff
     public int currency;
     public TowerManager tm;
+
+    void Start()
+    {
+        Debug.Log("Starting Points: " + currency);
+    }
 }

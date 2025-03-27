@@ -43,30 +43,29 @@ public class TowerManager : MonoBehaviour
     {
         Debug.Log("Points: " + player.currency);
         Debug.Log("Cost: " + pickedTower.costToUpgrade[0]);
-        if (player.currency >= pickedTower.costToUpgrade[0])
-        {
-            Transaction();
-        }
-        else
-        {
-            return;
-        }
+        // TODO: Currency comparison doesn't allow for raycast and tower
+        // instantiation to work.
+
+        //if (player.currency >= pickedTower.costToUpgrade[0])
+        //{
+        Transaction();
+        //}
+        //else
+        //{
+        //   return; }
 
         GameObject hit;
-        if (placeMode)
+        // Check raycast for any valid place points, using hit
+        // to hold the game object of the object in raycast
+        if (CheckPlacePos(out hit))
         {
-            // Check raycast for any valid place points, using hit
-            // to hold the game object of the object in raycast
-            if (CheckPlacePos(out hit))
+            Debug.Log("Hit This Bitch: " + hit);
+            if (placeableList.Contains(hit))
             {
-                Debug.Log("Hit This Bitch: " + hit);
-                if (placeableList.Contains(hit))
-                {
-                    placeableList.Remove(hit);
-                }
-                CreateTower(hit);
-                PlayerTowers[^1].transform.SetParent(this.GetComponent<Transform>(), true);
+                placeableList.Remove(hit);
             }
+            CreateTower(hit);
+            PlayerTowers[^1].transform.SetParent(this.GetComponent<Transform>(), true);
         }
     }
 
@@ -82,7 +81,7 @@ public class TowerManager : MonoBehaviour
         // any 'block' in the valid layer, for ability to place tower
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         // DEBUG: Turn ON if raycasts need to be drawn
-        // Debug.DrawRay(ray.origin, ray.direction * maxDistance * 100f, Color.green, 15f);
+        Debug.DrawRay(ray.origin, ray.direction * maxDistance * 100f, Color.green, 15f);
 
         if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance * 100f, targetLayer))
         {

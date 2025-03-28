@@ -38,6 +38,9 @@ public class OSManager : MonoBehaviour
     // Reference to the GameObject containing all tasks
     [SerializeField] public GameObject tasksContainer;
 
+    // Reference to the GameObject containing all hazards
+    [SerializeField] public GameObject hazardsContainer;
+
     // Reference to the basic window
     [SerializeField] public BasicWindow window;
 
@@ -60,15 +63,27 @@ public class OSManager : MonoBehaviour
     void Start()
     {
         window.ForceCloseWindow();
-        GetTasksFromContainer();
+        if (tasksContainer != null)
+        {
+            tasks = GetTasksFromContainer(tasksContainer);
+            SetTaskDifficulty(difficulty);
+        }
+        else
+        {
+            Debug.LogError("No tasks container found");
+            return;
+        }
+        if (hazardsContainer != null)
+        {
+            hazards = GetHazardsFromContainer(hazardsContainer);
+            SetHazardDifficulty(difficulty);
+        }
+        else
+        {
+            Debug.LogError("No hazards container found");
+        }
         CreateTaskButtons();
         SubscribeToTaskEvents();
-        SetDifficulty(difficulty);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
 
     }
 
@@ -198,10 +213,10 @@ public class OSManager : MonoBehaviour
     }
 
     // Method to get tasks from the tasksContainer GameObject
-    void GetTasksFromContainer()
+    List<AbstractTask> GetTasksFromContainer(GameObject taskContainer)
     {
-        tasks = new List<AbstractTask>();
-        foreach (Transform child in tasksContainer.transform)
+        List<AbstractTask> newTasks = new List<AbstractTask>();
+        foreach (Transform child in taskContainer.transform)
         {
             AbstractTask task = child.GetComponent<AbstractTask>();
             if (task != null)
@@ -209,17 +224,37 @@ public class OSManager : MonoBehaviour
                 tasks.Add(task);
             }
         }
+        return newTasks;
     }
 
-    void SetDifficulty(Difficulty difficulty)
+    List<AbstractManager> GetHazardsFromContainer(GameObject hazardContainer)
+    {
+        List<AbstractManager> newHazards = new List<AbstractManager>();
+        foreach (Transform child in hazardContainer.transform)
+        {
+            AbstractManager hazard = child.GetComponent<AbstractManager>();
+            if (hazard != null)
+            {
+                hazards.Add(hazard);
+            }
+        }
+        return newHazards;
+    }
+
+    void SetTaskDifficulty(List<AbstractTask> tasks, Difficulty difficulty)
     {
         foreach (var task in tasks)
         {
             task.SetDifficulty(difficulty);
         }
+    }
+
+    void SetHazardDifficulty(List<AbstractManager> hazards, Difficulty difficulty)
+    {
         foreach (var hazard in hazards)
         {
             hazard.SetDifficulty(difficulty);
         }
     }
+
 }

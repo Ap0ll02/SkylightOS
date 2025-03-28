@@ -13,10 +13,40 @@ public abstract class AbstractEnemy: MonoBehaviour
         public int damage;
         public float speed;
     #endregion enemystats
+    public int currentPosition = 0;
+    public NavigationManager navi;
+    public Vector3 nextWaypoint;
 
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
+    }
+
+    public void Move()
+    {
+        //Debug.Log("transform.position: " + transform.position + " nextWaypoint: " + nextWaypoint + " speed: " + speed + "");
+        //transform.LookAt(nextWaypoint);
+        if (Vector3.Distance(this.transform.position, nextWaypoint) < 0.001f)
+        {
+            GetNewWaypoint();
+        }
+        else
+        {
+            // I have to add rotation eventually
+
+            // Move the object towards the waypoint as before
+            transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, speed * Time.deltaTime);
+
+        }
+    }
+
+    public void GetNewWaypoint()
+    {
+        var waypointGameObject = navi.NextWaypoint(currentPosition++);
+        transform.rotation = waypointGameObject.transform.rotation;
+        // Debug.Log("Current Waypoint:"+ waypointGameObject.name);
+        nextWaypoint = waypointGameObject.transform.position;
+        //= navi.NextWaypoint(currentPosition++);
     }
 
     public abstract void SlowDownHit(int damage = 0, float percent = 1, float duration = 0);

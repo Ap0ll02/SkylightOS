@@ -1,20 +1,19 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BasicInsect : AbstractInsect
+public class LargeSpider : AbstractInsect
 {
-    public void Start()
+    void Start()
     {
         GetNewWaypoint();
         speed = 4f + BugSpeedBuff;
-        maxHealth = 5;
+        maxHealth = 15;
         currentHealth = maxHealth;
-        pointValue = 100;
+        pointValue = 300;
     }
-
-    public void Update()
+    // Update is called once per frame
+    void Update()
     {
         Move();
     }

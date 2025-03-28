@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class AbstractInsect : AbstractEnemy
 {
-    public float BugSpeedBuff = 0.5f;
+    public float BugSpeedBuff = 10f;
     private float percent;
     private float duration =0;
 

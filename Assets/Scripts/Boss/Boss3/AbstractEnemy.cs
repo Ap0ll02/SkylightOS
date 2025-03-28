@@ -44,9 +44,8 @@ public abstract class AbstractEnemy: MonoBehaviour
     {
         var waypointGameObject = navi.NextWaypoint(currentPosition++);
         transform.rotation = waypointGameObject.transform.rotation;
-        // Debug.Log("Current Waypoint:"+ waypointGameObject.name);
+        Debug.Log("Current Waypoint:"+ waypointGameObject.name);
         nextWaypoint = waypointGameObject.transform.position;
-        //= navi.NextWaypoint(currentPosition++);
     }
 
     public abstract void SlowDownHit(int damage = 0, float percent = 1, float duration = 0);

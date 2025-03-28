@@ -8,7 +8,7 @@ public class BasicInsect : AbstractInsect
     public void Start()
     {
         GetNewWaypoint();
-        speed = 4f + BugSpeedBuff;
+        speed = 30f + BugSpeedBuff;
         maxHealth = 5;
         currentHealth = maxHealth;
         pointValue = 100;

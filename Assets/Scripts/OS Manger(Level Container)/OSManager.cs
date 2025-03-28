@@ -66,7 +66,7 @@ public class OSManager : MonoBehaviour
         if (tasksContainer != null)
         {
             tasks = GetTasksFromContainer(tasksContainer);
-            SetTaskDifficulty(difficulty);
+            SetTaskDifficulty(tasks, difficulty);
         }
         else
         {
@@ -76,7 +76,7 @@ public class OSManager : MonoBehaviour
         if (hazardsContainer != null)
         {
             hazards = GetHazardsFromContainer(hazardsContainer);
-            SetHazardDifficulty(difficulty);
+            SetHazardDifficulty(hazards, difficulty);
         }
         else
         {

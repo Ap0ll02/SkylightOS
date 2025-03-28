@@ -51,12 +51,14 @@ MonoBehaviour:
   - {fileID: -325621749177007451, guid: ca1cee046ac8fff5d95f282b692e6fe8, type: 3}
   - {fileID: 3788978877070461309, guid: d35f25e7940756123bc61f5e84baad8b, type: 3}
   - {fileID: 8209163948427490728, guid: da8385742d44e9689af5db681ece5660, type: 3}
+  mainCamera: {fileID: 261834362348260544, guid: 39fd3c9df9eac664d8339f9a2daba431, type: 3}
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 16384
   placeMode: 1
-  pickedTower: {fileID: 0}
   placeableList: []
   parentBlock: {fileID: 0}
   PlayerTowers: []
-  player: {fileID: 2991891161658796891, guid: 3604e05b0b3756f3991702ec912ecc00, type: 3}
 --- !u!114 &7798512533513046529
 MonoBehaviour:
   m_ObjectHideFlags: 0

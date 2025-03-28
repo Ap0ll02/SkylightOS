@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Projectile : MonoBehaviour
 {
-    void Start()
+    public void Start()
     {
         Coroutine shoot = StartCoroutine(Shoot());
     }
@@ -20,10 +20,10 @@ public class Projectile : MonoBehaviour
 
     public void CleanUp()
     {
-        Destroy(this.gameObject);
+        Destroy(gameObject);
     }
 
-    IEnumerator Shoot()
+    public IEnumerator Shoot()
     {
         yield return null;
     }

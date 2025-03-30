@@ -15,15 +15,18 @@ public class Player : MonoBehaviour
     public void Start()
     {
         Debug.Log("Starting Points: " + currency);
+        scoreTxt.text = currency.ToString();
     }
 
     public int GetCurrency()
     {
+        scoreTxt.text = currency.ToString();
         return currency;
     }
 
     public void SetCurrency(int newAmt)
     {
         currency = newAmt;
+        scoreTxt.text = currency.ToString();
     }
 }

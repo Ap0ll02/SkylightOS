@@ -12,10 +12,10 @@ using UnityEngine.UI;
 public class OSManager : MonoBehaviour
 {
     // List to hold the tasks
-    [SerializeField] public List<AbstractTask> tasks;
+    private List<AbstractTask> tasks;
 
     // List to hold the tasks
-    [SerializeField] public List<AbstractManager> hazards;
+    private List<AbstractManager> hazards;
 
     // Reference to the button prefab
     [SerializeField] public GameObject buttonPrefab;
@@ -57,12 +57,6 @@ public class OSManager : MonoBehaviour
     void Awake()
     {
         window = GetComponent<BasicWindow>();
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        window.ForceCloseWindow();
         if (tasksContainer != null)
         {
             tasks = GetTasksFromContainer(tasksContainer);
@@ -82,6 +76,12 @@ public class OSManager : MonoBehaviour
         {
             Debug.LogError("No hazards container found");
         }
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        window.ForceCloseWindow();
         CreateTaskButtons();
         SubscribeToTaskEvents();
 
@@ -221,7 +221,7 @@ public class OSManager : MonoBehaviour
             AbstractTask task = child.GetComponent<AbstractTask>();
             if (task != null)
             {
-                tasks.Add(task);
+                newTasks.Add(task);
             }
         }
         return newTasks;
@@ -235,7 +235,7 @@ public class OSManager : MonoBehaviour
             AbstractManager hazard = child.GetComponent<AbstractManager>();
             if (hazard != null)
             {
-                hazards.Add(hazard);
+                newHazards.Add(hazard);
             }
         }
         return newHazards;

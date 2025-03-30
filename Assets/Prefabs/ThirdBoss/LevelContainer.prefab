@@ -283,6 +283,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayerManager
       objectReference: {fileID: 0}
+    - target: {fileID: 2991891161658796891, guid: 3604e05b0b3756f3991702ec912ecc00, type: 3}
+      propertyPath: scoreTxt
+      value: 
+      objectReference: {fileID: 4305916197050125770}
     - target: {fileID: 4317383711124773040, guid: 3604e05b0b3756f3991702ec912ecc00, type: 3}
       propertyPath: m_LocalPosition.x
       value: 613.80865
@@ -403,6 +407,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6991160370421027908, guid: 9f57d8c4563bd1600b6ef77b2f9e8eef, type: 3}
   m_PrefabInstance: {fileID: 6329961999812257948}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4305916197050125770 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7789297785815295318, guid: 9f57d8c4563bd1600b6ef77b2f9e8eef, type: 3}
+  m_PrefabInstance: {fileID: 6329961999812257948}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9541d86e2fd84c1d9990edf0852d74ab, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5111087438441758111 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1240372350165177603, guid: 9f57d8c4563bd1600b6ef77b2f9e8eef, type: 3}

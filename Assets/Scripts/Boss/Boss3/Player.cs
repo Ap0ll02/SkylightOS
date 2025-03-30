@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 
 /// @author Jack Ratermann
@@ -9,19 +10,23 @@ public class Player : MonoBehaviour
     // Management of the players state and game stuff
     private int currency = 500;
     public TowerManager tm;
+    public TMP_Text scoreTxt;
 
-    void Start()
+    public void Start()
     {
         Debug.Log("Starting Points: " + currency);
+        scoreTxt.text = currency.ToString();
     }
 
     public int GetCurrency()
     {
+        scoreTxt.text = currency.ToString();
         return currency;
     }
 
     public void SetCurrency(int newAmt)
     {
         currency = newAmt;
+        scoreTxt.text = currency.ToString();
     }
 }

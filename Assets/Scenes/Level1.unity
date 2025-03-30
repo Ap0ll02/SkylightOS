@@ -191,6 +191,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3671408492713916349, guid: b52f6a8a2c2d6ca4db94275e410c727c, type: 3}
+      propertyPath: lockdownCanvas
+      value: 
+      objectReference: {fileID: 1113972508}
+    - target: {fileID: 5610941164864300299, guid: b52f6a8a2c2d6ca4db94275e410c727c, type: 3}
+      propertyPath: canvas
+      value: 
+      objectReference: {fileID: 992958559}
     - target: {fileID: 9059358583323761695, guid: b52f6a8a2c2d6ca4db94275e410c727c, type: 3}
       propertyPath: m_Name
       value: Level1HazardContainer
@@ -432,11 +440,27 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9295c4f61eebdc44999dd9b5dd93cee0, type: 3}
+--- !u!223 &992958559 stripped
+Canvas:
+  m_CorrespondingSourceObject: {fileID: 9007959229973607522, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+  m_PrefabInstance: {fileID: 1785894148}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1032814516 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 977171719315574225, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
   m_PrefabInstance: {fileID: 1785894148}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1113972508 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6782829290182487391, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+  m_PrefabInstance: {fileID: 1785894148}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ffa697c169732f04885815c5ef80471b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1145778522 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 9059358583323761695, guid: b52f6a8a2c2d6ca4db94275e410c727c, type: 3}

@@ -6,6 +6,8 @@ public class FileRecoveryTask : AbstractTask
     void Awake()
     {
         status_text = FindObjectOfType<FileSystemWindow>();
+        taskTitle = "Recover Lost Files";
+        taskDescription = "Recover the EXT6 File System by visiting the file recovery software.";
     }
     new void Start()
     {
@@ -20,11 +22,13 @@ public class FileRecoveryTask : AbstractTask
 
     void OnEnable()
     {
+        frS.FileMazeStarted += startHazards;
         frS.FileMazeOver += CompleteTask;
     }
 
     void OnDisable()
     {
+        frS.FileMazeStarted -= startHazards;
         frS.FileMazeOver -= CompleteTask;
     }
 

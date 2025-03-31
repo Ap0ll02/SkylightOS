@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
-
+using TMPro;
 public class FileRecoMazeMiniGame : AbstractMinigame
 {
     // Maze Initials
@@ -24,8 +24,12 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     readonly float moveSpeed = 1.7f;
     public FileRecoPlayer rpScript;
     public ExitWall ewScript;
-    
+
+    public event Action FileMazeStarted;
     public event Action FileMazeOver;
+
+    // Reference to the 'Files Recovered' UI element
+    public TMP_Text filesRecoveredText;
 
     // Get any non-inspector references here
     void Awake()
@@ -40,6 +44,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
 
     // MARK: - Game Initialization
     public override void StartGame() {
+        FileMazeStarted?.Invoke();
         filePieces = new List<GameObject>();
         // Canvas.ForceUpdateCanvases(); // Co-Pilot tip for updating UI before calculations
         GetComponent<BasicWindow>().OpenWindow();        
@@ -75,6 +80,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
 
     public void GameOver() {
         gameRunning = false;
+        isStarted = false;
         StopCoroutine(updateGame);
         // Destroy all the file pieces, the list, and the player
         foreach(GameObject filePiece in filePieces){
@@ -127,7 +133,13 @@ public class FileRecoMazeMiniGame : AbstractMinigame
                 filePiecesCount--;
                 break;
         }
-        
+        UpdateCounter();
+    }
+
+    // Updates the 'Files Recovered' UI element
+    public void UpdateCounter()
+    {
+        filesRecoveredText.text = "Files Recovered: " + (5 - filePiecesCount) + "/5";
     }
 
     // public void Test_fileRecovery() {

@@ -1485,6 +1485,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4681667716897255497}
     m_Modifications:
+    - target: {fileID: 1645422141827126217, guid: b1355fce0219664058a50e3f385029c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6525806970679335540}
+    - target: {fileID: 1645422141827126217, guid: b1355fce0219664058a50e3f385029c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: TryStartGame
+      objectReference: {fileID: 0}
+    - target: {fileID: 1645422141827126217, guid: b1355fce0219664058a50e3f385029c4, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: AbstractMinigame, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 2636480704228006516, guid: b1355fce0219664058a50e3f385029c4, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -1947,6 +1959,26 @@ PrefabInstance:
       propertyPath: m_SortingLayer
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4370450936845587544, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
+      propertyPath: filePieces.Array.data[0]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370450936845587544, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
+      propertyPath: filePieces.Array.data[1]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370450936845587544, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
+      propertyPath: filePieces.Array.data[2]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370450936845587544, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
+      propertyPath: filePieces.Array.data[3]
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4370450936845587544, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
+      propertyPath: filePieces.Array.data[4]
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 4444619990431815938, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
       propertyPath: m_SortingLayer
       value: 0
@@ -2197,6 +2229,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6456001667558423244, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
   m_PrefabInstance: {fileID: 7365258022109072940}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &6525806970679335540 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4370450936845587544, guid: b7987096ca4d48443986f160b5d44fcc, type: 3}
+  m_PrefabInstance: {fileID: 7365258022109072940}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9d5a844f9159405ba88937aef0ac5a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &7906738436590043447
 PrefabInstance:
   m_ObjectHideFlags: 0

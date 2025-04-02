@@ -1,15 +1,16 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicTower : Tower
 {
-    //TODO: FIX THE DAN G RIGIDBODIES BECAUSE LAG
     public GameObject projectilePrefab;
     public GameObject projectile;
     private SphereCollider mySphere;
     public Coroutine ActivateTower;
     public int attackRadius;
     public GameObject targetEnemy;
+    public List<GameObject> waypoints = new();
 
     public void Start()
     {
@@ -42,5 +43,11 @@ public class BasicTower : Tower
     {
         Debug.Log("Attack");
         projectile = Instantiate(projectilePrefab, parent: GetComponent<Transform>());
+    }
+
+    public override void GetWaypoints()
+    {
+        // Gather all waypoints within radius
+        // We need a tag on the waypoints and a collider to allow for detection by the tower
     }
 }

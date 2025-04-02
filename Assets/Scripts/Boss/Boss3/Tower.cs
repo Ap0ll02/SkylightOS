@@ -26,4 +26,6 @@ public abstract class Tower : MonoBehaviour
     public int[] costToUpgrade = new int[3];
 
     public abstract void Attack();
+
+    public abstract void GetWaypoints();
 }

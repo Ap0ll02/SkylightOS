@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LargeSpider : AbstractInsect
+public class LargeSpider : AbstractEnemy
 {
     void Start()
     {
         GetNewWaypoint();
-        speed = 4f + BugSpeedBuff;
+        speed = 40f;
         maxHealth = 15;
         currentHealth = maxHealth;
         pointValue = 300;

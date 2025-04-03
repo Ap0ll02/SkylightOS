@@ -2,12 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FastInsect : AbstractInsect
+public class FastInsect : AbstractEnemy
 {
     void Start()
     {
         GetNewWaypoint();
-        speed = 20f + BugSpeedBuff;
+        speed = 100f;
         maxHealth = 1;
         currentHealth = maxHealth;
         pointValue = 50;

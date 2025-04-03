@@ -11,10 +11,10 @@ public class NavigationManager : MonoBehaviour
     private List<GameObject> waypoints = new List<GameObject>();
     public void Awake()
     {
-        Debug.Log("Starting");
+        //Debug.Log("Starting");
         if (waypointParent == null)
         {
-            Debug.Log("null");
+            //Debug.Log("null");
         }
         else
         {
@@ -24,37 +24,19 @@ public class NavigationManager : MonoBehaviour
 
     public GameObject NextWaypoint(int currentIndex)
     {
-        //Debug.Log("Waypoint Count " + waypoints.Count);
         if (currentIndex++ < waypoints.Count)
         {
-            Debug.Log("Next Waypoint " + waypoints[currentIndex].name);
+            //Debug.Log("Next Waypoint " + waypoints[currentIndex].name);
             return waypoints[currentIndex];
         }
-        throw new System.Exception("No more waypoints");
+        return waypoints[waypoints.Count - 1]; //[ waypoints.Count - 1]
     }
 
     public void SetWaypointArray(GameObject parent)
     {
-        int index;
-        if (parent == null)
+        for (int i = 0; i < parent.transform.childCount; i++)
         {
-            //Debug.Log("No parent");
-        }
-        else
-        {
-            index = parent.transform.childCount;
-            //Debug.Log(index);
-            for (int i = 0; i < index; i++)
-            {
-                var child = parent.transform.GetChild(i).gameObject;
-                if (child == null)
-                {
-                    //Debug.Log("child null");
-                }
-                //Debug.Log("in the loop");
-                waypoints.Add(parent.transform.GetChild(i).gameObject);
-                //Debug.Log(waypoints[i].name);
-            }
+            waypoints.Add(parent.transform.GetChild(i).gameObject);
         }
     }
 }

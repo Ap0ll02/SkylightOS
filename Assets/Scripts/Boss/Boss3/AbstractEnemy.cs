@@ -16,7 +16,12 @@ public abstract class AbstractEnemy: MonoBehaviour
     public int currentPosition = 0;
     public NavigationManager navi;
     public Vector3 nextWaypoint;
+    public Animator animator;
 
+    public void Start()
+    {
+        animator = GetComponent<Animator>();
+    }
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -24,16 +29,13 @@ public abstract class AbstractEnemy: MonoBehaviour
 
     public void Move()
     {
-        //Debug.Log("transform.position: " + transform.position + " nextWaypoint: " + nextWaypoint + " speed: " + speed + "");
-        //transform.LookAt(nextWaypoint);
         if (Vector3.Distance(this.transform.position, nextWaypoint) < 0.001f)
         {
             GetNewWaypoint();
         }
         else
         {
-            // I have to add rotation eventually
-
+            animator.SetTrigger("Moving");
             // Move the object towards the waypoint as before
             transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, speed * Time.deltaTime);
 
@@ -48,7 +50,7 @@ public abstract class AbstractEnemy: MonoBehaviour
         nextWaypoint = waypointGameObject.transform.position;
     }
 
-    public abstract void SlowDownHit(int damage = 0, float percent = 1, float duration = 0);
+    //public abstract void SlowDownHit(int damage = 0, float percent = 1, float duration = 0);
     // public abstract void Death();
     // public abstract void Move();
 

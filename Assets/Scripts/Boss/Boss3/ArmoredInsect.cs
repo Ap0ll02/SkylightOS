@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmoredInsect : AbstractInsect
+public class ArmoredInsect : AbstractEnemy
 {
     // Start is called before the first frame update
     void Start()
     {
         GetNewWaypoint();
-        speed = 4f + BugSpeedBuff;
+        speed = 30f;
         maxHealth = 15;
         currentHealth = maxHealth;
         pointValue = 300;

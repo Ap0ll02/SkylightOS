@@ -62155,7 +62155,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf1e3ab5a2c91d64fb259d60ab3f945c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  MotherRam: {fileID: 4724446463228024492}
+  currentRamStick: 0
 --- !u!65 &6546733731069706866
 BoxCollider:
   m_ObjectHideFlags: 0

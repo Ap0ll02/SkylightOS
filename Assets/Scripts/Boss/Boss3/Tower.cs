@@ -12,6 +12,8 @@ public abstract class Tower : MonoBehaviour
         Trapper,
     }
 
+    // TODO: Use current enemy position for waypoints instead of grabbing
+    // all of the waypoints
     public Towers towerType;
 
     public float damage;

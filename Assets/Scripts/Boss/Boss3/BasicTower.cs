@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BasicTower : Tower
@@ -10,7 +9,6 @@ public class BasicTower : Tower
     public Coroutine ActivateTower;
     public int attackRadius;
     public GameObject targetEnemy;
-    public List<GameObject> waypoints = new();
 
     public void Start()
     {
@@ -24,21 +22,6 @@ public class BasicTower : Tower
         yield return null;
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("tdEnemy"))
-        {
-            Debug.Log("Enemy Here");
-            Debug.Log(
-                "Stats: "
-                    + GetComponent<Transform>().position
-                    + " with pos: "
-                    + other.GetComponent<Transform>().position
-            );
-            Attack();
-        }
-    }
-
     public override void Attack()
     {
         Debug.Log("Attack");
@@ -47,7 +30,15 @@ public class BasicTower : Tower
 
     public override void GetWaypoints()
     {
+        int maxInd = 0;
         // Gather all waypoints within radius
         // We need a tag on the waypoints and a collider to allow for detection by the tower
+        foreach (GameObject wp in waypoints)
+        {
+            if (waypoints.IndexOf(wp) > maxInd)
+            {
+                targetWaypoint = wp;
+            }
+        }
     }
 }

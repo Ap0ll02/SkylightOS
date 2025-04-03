@@ -1,10 +1,13 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MageTower : Tower
 {
-  public override void Attack() {
-    Debug.Log("Attack");
-  }
+    public GameObject targetEnemy;
+
+    public override void Attack()
+    {
+        Debug.Log("Attack");
+    }
+
+    public override void GetWaypoints() { }
 }

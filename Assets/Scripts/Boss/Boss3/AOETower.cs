@@ -1,10 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class AOETower : Tower
 {
-  public override void Attack() {
-    Debug.Log("Attack");
-  }
+    public GameObject projectilePrefab;
+    public GameObject projectile;
+
+    public GameObject targetEnemy;
+
+    public override void Attack()
+    {
+        Debug.Log("Attack");
+        projectile = Instantiate(projectilePrefab, parent: GetComponent<Transform>());
+    }
+
+    public override void GetWaypoints() { }
 }

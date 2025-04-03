@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public abstract class AbstractEnemy: MonoBehaviour
 {
@@ -18,6 +19,7 @@ public abstract class AbstractEnemy: MonoBehaviour
     public Vector3 nextWaypoint;
     public Animator animator;
 
+    private UnityEvent EnemyDeath;
     public void Start()
     {
         animator = GetComponent<Animator>();
@@ -49,7 +51,17 @@ public abstract class AbstractEnemy: MonoBehaviour
         Debug.Log("Current Waypoint:"+ waypointGameObject.name);
         nextWaypoint = waypointGameObject.transform.position;
     }
+    // I have to think of this method a little bit more
+    /// <summary>
+    /// If I make it a unity event then all towers would invoke the unity death event removing the specific enemy. Maybe we only want to remove the bug the tower sees
+    /// We could add conditional object to check if everytower had this bug in its view this can cause more problems
+    /// basically unity events invoke methods that all the towers share which has potential to remove our bugs from all towers are cause null references
+    /// </summary>
+    //public void SubscribeToDeath(UnityAction death)
+    public void Death()
+    {
 
+    }
     //public abstract void SlowDownHit(int damage = 0, float percent = 1, float duration = 0);
     // public abstract void Death();
     // public abstract void Move();

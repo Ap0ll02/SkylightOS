@@ -20,10 +20,6 @@ public abstract class AbstractEnemy: MonoBehaviour
     public Animator animator;
 
     private UnityEvent EnemyDeath;
-    public void Start()
-    {
-        animator = GetComponent<Animator>();
-    }
     public void TakeDamage(int damage)
     {
         currentHealth -= damage;
@@ -40,7 +36,6 @@ public abstract class AbstractEnemy: MonoBehaviour
             animator.SetTrigger("Moving");
             // Move the object towards the waypoint as before
             transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, speed * Time.deltaTime);
-
         }
     }
 
@@ -60,10 +55,8 @@ public abstract class AbstractEnemy: MonoBehaviour
     //public void SubscribeToDeath(UnityAction death)
     public void Death()
     {
-
+        Debug.Log("Hey We Hit The GPU Killing Bug");
+        Destroy(gameObject);
     }
     //public abstract void SlowDownHit(int damage = 0, float percent = 1, float duration = 0);
-    // public abstract void Death();
-    // public abstract void Move();
-
 }

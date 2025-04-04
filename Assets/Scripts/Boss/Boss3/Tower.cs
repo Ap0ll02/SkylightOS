@@ -28,18 +28,29 @@ public abstract class Tower : MonoBehaviour
 
     public int[] costToUpgrade = new int[3];
 
-    public GameObject targetWaypoint;
+    public GameObject targetEnemy;
     public List<GameObject> enemyQueue;
-    public List<GameObject> waypoints;
 
     public abstract void Attack();
 
-    public abstract void GetWaypoints();
+    public void GetTarget()
+    {
+        int maxInd = 0;
+        // Gather all waypoints within radius
+        // We need a tag on the waypoints and a collider to allow for detection by the tower
+        foreach (GameObject en in enemyQueue)
+        {
+            if (en.GetComponent<AbstractEnemy>().currentPosition > maxInd)
+            {
+                targetEnemy = en;
+            }
+        }
+    }
 
     private void OnCollisionEnter(Collision other)
     {
         Debug.Log("Collision Checking:");
-        if (other.gameObject.CompareTag("tdEnemy"))
+        if (other.gameObject.CompareTag("tdEnemy") && !enemyQueue.Contains(other.gameObject))
         {
             enemyQueue.Add(other.gameObject);
             Debug.Log("Enemy Here");
@@ -50,10 +61,6 @@ public abstract class Tower : MonoBehaviour
                     + other.gameObject.GetComponent<Transform>().position
             );
             Attack();
-        }
-        else if (other.gameObject.CompareTag("waypoint"))
-        {
-            waypoints.Add(other.gameObject);
         }
     }
 

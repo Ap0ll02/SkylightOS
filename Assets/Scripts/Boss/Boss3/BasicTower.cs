@@ -18,6 +18,7 @@ public class BasicTower : Tower
 
     public IEnumerator ActiveTower()
     {
+        Attack();
         yield return null;
     }
 

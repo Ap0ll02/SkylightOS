@@ -1,9 +1,26 @@
+using System.Collections;
 using UnityEngine;
 
 public class AOETower : Tower
 {
     public GameObject projectilePrefab;
     public GameObject projectile;
+    private SphereCollider mySphere;
+    public Coroutine ActivateTower;
+    public int attackRadius;
+
+    public void Start()
+    {
+        mySphere = GetComponent<SphereCollider>();
+        mySphere.radius = attackRadius;
+        ActivateTower = StartCoroutine(ActiveTower());
+    }
+
+    public IEnumerator ActiveTower()
+    {
+        Attack();
+        yield return null;
+    }
 
     public override void Attack()
     {

@@ -47,7 +47,7 @@ public abstract class Tower : MonoBehaviour
         }
     }
 
-    private void OnCollisionEnter(Collision other)
+    protected void OnCollisionEnter(Collision other)
     {
         Debug.Log("Collision Checking:");
         if (other.gameObject.CompareTag("tdEnemy") && !enemyQueue.Contains(other.gameObject))
@@ -60,11 +60,12 @@ public abstract class Tower : MonoBehaviour
                     + " with pos: "
                     + other.gameObject.GetComponent<Transform>().position
             );
-            Attack();
         }
+        GetTarget();
+        Attack();
     }
 
-    private void OnCollisionExit(Collision other)
+    protected void OnCollisionExit(Collision other)
     {
         if (other.gameObject.CompareTag("tdEnemy"))
         {

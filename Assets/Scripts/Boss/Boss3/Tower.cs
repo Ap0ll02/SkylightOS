@@ -12,11 +12,9 @@ public abstract class Tower : MonoBehaviour
         Trapper,
     }
 
-    // TODO: Use current enemy position for waypoints instead of grabbing
-    // all of the waypoints
     public Towers towerType;
 
-    public float damage;
+    public int damage;
 
     public float timeToDamage = 1f;
 
@@ -29,7 +27,7 @@ public abstract class Tower : MonoBehaviour
     public int[] costToUpgrade = new int[3];
 
     public GameObject targetEnemy;
-    public List<GameObject> enemyQueue;
+    public List<GameObject> enemyQueue = new();
 
     public abstract void Attack();
 
@@ -42,12 +40,13 @@ public abstract class Tower : MonoBehaviour
         {
             if (en.GetComponent<AbstractEnemy>().currentPosition > maxInd)
             {
+                maxInd = en.GetComponent<AbstractEnemy>().currentPosition;
                 targetEnemy = en;
             }
         }
     }
 
-    protected void OnCollisionEnter(Collision other)
+    protected void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision Checking:");
         if (other.gameObject.CompareTag("tdEnemy") && !enemyQueue.Contains(other.gameObject))
@@ -62,10 +61,9 @@ public abstract class Tower : MonoBehaviour
             );
         }
         GetTarget();
-        Attack();
     }
 
-    protected void OnCollisionExit(Collision other)
+    protected void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("tdEnemy"))
         {
@@ -74,5 +72,10 @@ public abstract class Tower : MonoBehaviour
                 return;
             }
         }
+    }
+
+    public void HitEnemy(GameObject enemy)
+    {
+        enemy.GetComponent<AbstractEnemy>().TakeDamage(damage);
     }
 }

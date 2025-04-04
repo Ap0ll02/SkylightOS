@@ -19,7 +19,7 @@ public class TrapperTower : Tower
     public IEnumerator ActiveTower()
     {
         Attack();
-        yield return null;
+        yield return new WaitForSeconds(cooldown);
     }
 
     public override void Attack()

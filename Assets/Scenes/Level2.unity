@@ -147,7 +147,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 803093847729059577, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -710
+      value: -710.00006
       objectReference: {fileID: 0}
     - target: {fileID: 977171719315574225, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_IsActive
@@ -197,9 +197,13 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: 41
       objectReference: {fileID: 0}
+    - target: {fileID: 2919293426037507032, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 21.720947
+      objectReference: {fileID: 0}
     - target: {fileID: 3845022594809898315, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -753.9997
+      value: -753.99976
       objectReference: {fileID: 0}
     - target: {fileID: 3885361645849253573, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchorMax.y
@@ -333,6 +337,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -22.62915
       objectReference: {fileID: 0}
+    - target: {fileID: 7057406918082169067, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.001953125
+      objectReference: {fileID: 0}
+    - target: {fileID: 7913138495764829216, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8143543156707115745, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_IsActive
       value: 0
@@ -353,6 +365,11 @@ PrefabInstance:
       addedObject: {fileID: 2065904817}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+--- !u!20 &116418413 stripped
+Camera:
+  m_CorrespondingSourceObject: {fileID: 1870108137778966971, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+  m_PrefabInstance: {fileID: 116418412}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &210782171 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6651417099806281802, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
@@ -478,6 +495,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DogeRaycastBlockCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1633724980614707434, guid: fc01fca816ab756499e4d30a0d2fc965, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633724980614707434, guid: fc01fca816ab756499e4d30a0d2fc965, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3453796397359325015, guid: fc01fca816ab756499e4d30a0d2fc965, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -558,6 +583,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8996429385943745059, guid: fc01fca816ab756499e4d30a0d2fc965, type: 3}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 116418413}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

@@ -29,7 +29,7 @@ public class DriverGame : AbstractMinigame
     public GameObject obstacle;
 
     public float percentage = 0;
-    readonly float ob_speed = 15f;
+    readonly float ob_speed = 30f;
     readonly int ob_max_spawn = 4;
     readonly float ob_spawntime = 4f;
 
@@ -47,8 +47,13 @@ public class DriverGame : AbstractMinigame
 
     InputAction moveAction;
     public CanvasGroup my_cg;
+    public Action OnGameStart;
     public Action OnGameEnd;
-    public int difficulty_p_reduction = 5;
+    public int difficulty_p_reduction = 20;
+
+    // HazardManager shiet
+    private bool popupContinue = true;
+    private bool lockdownContinue = true;
 
     void Awake() {
         gameRunning = false;
@@ -59,10 +64,11 @@ public class DriverGame : AbstractMinigame
     {
         my_cg.alpha = 0;
         my_cg.interactable = false;
+        difficulty_p_reduction = 20;
     }
 
     public override void StartGame() {
-
+        OnGameStart?.Invoke();
         pBar.text = "0%";   
         bgs.Add(Instantiate(bg, parent: parent.GetComponent<RectTransform>()));
         bgs[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(244.5f, 0.91f, 90);
@@ -82,6 +88,10 @@ public class DriverGame : AbstractMinigame
 
     public void OnEnable() {
         pscript.OnTObs += PlayerHit;
+        PopupManager.PopupCanContinue += () => popupContinue = true;
+        PopupManager.PopupCantContinue += () => popupContinue = false;
+        LockdownManager.LockdownCanContinue += () => lockdownContinue = true;
+        LockdownManager.LockdownCantContinue += () => lockdownContinue = false;
     }
 
     public void OnDisable() {
@@ -97,59 +107,64 @@ public class DriverGame : AbstractMinigame
     // Update is called once per frame
     void Update()
     {
-        if(gameRunning) {
+        if (gameRunning)
+        {
             // Gotta loop because ideal scrolling leaves 2 bg instances in scene
             // at once.
-            foreach (var b in bgs) {
-                try {
-                    b.GetComponent<RectTransform>().anchoredPosition -= speed * Time.deltaTime;
-                } catch (Exception e) {
+            foreach (var b in bgs)
+            {
+                try
+                {
+                    b.GetComponent<RectTransform>().anchoredPosition -= speed * Time.deltaTime * 2;
+                }
+                catch (Exception e)
+                {
                     Debug.Log(e);
                 }
             }
-            
-            Vector2 moveValue = moveAction.ReadValue<Vector2>();
-            player.anchoredPosition += moveValue;
+
+            // Stop input if popup/lockdown is active
+            if (popupContinue && lockdownContinue)
+            {
+                Vector2 moveValue = moveAction.ReadValue<Vector2>();
+                player.anchoredPosition += new Vector2(moveValue.x * 3, moveValue.y * 8);
+            }
             CheckBounds();
             HandleObs();
         }
     }
 
-    void CheckBounds() {
+    void CheckBounds()
+    {
+        // Gave this function the copilot special, seems to work the same with slightly better performance
         // Player bounds, so they can't go off screen
-        if(player.anchoredPosition.x < -1700) {
-            player.anchoredPosition = new Vector2(-1700, player.anchoredPosition.y);
-        } else if (player.anchoredPosition.x > 1700) {
-            player.anchoredPosition = new Vector2(1700, player.anchoredPosition.y);
-        }
-
-        if(player.anchoredPosition.y < -980) {
-            player.anchoredPosition = new Vector2(player.anchoredPosition.x, -980);
-        } else if (player.anchoredPosition.y > 900) {
-            player.anchoredPosition = new Vector2(player.anchoredPosition.x, 900);
-        }
+        player.anchoredPosition = new Vector2(
+            Mathf.Clamp(player.anchoredPosition.x, -1700, 1700),
+            Mathf.Clamp(player.anchoredPosition.y, -980, 900)
+        );
 
         // Handles background scrolling instantiation and deletion
-        if(bgs[^1].GetComponent<RectTransform>().anchoredPosition.x < -243) {
+        if (bgs[^1].GetComponent<RectTransform>().anchoredPosition.x < -243)
+        {
             bgs.Add(Instantiate(bg, parent: parent.GetComponent<RectTransform>()));
             bgs[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(643.8f, 0.91f, 90);
         }
-        try{
-            if(bgs[^2].GetComponent<RectTransform>().anchoredPosition.x < -643){
+
+        if (bgs.Count > 1 && bgs[^2].GetComponent<RectTransform>().anchoredPosition.x < -643)
+        {
             Destroy(bgs[^2]);
-            bgs.RemoveAt(bgs.Count-2);
-        }} catch (Exception e) when (e is ArgumentOutOfRangeException) {
-            Debug.Log("Ignore: Early index error handling. Driver Game: line 97");
+            bgs.RemoveAt(bgs.Count - 2);
         }
 
-        obs_list.RemoveAll(ob => {
-            if(ob.GetComponent<RectTransform>().anchoredPosition.x < -2300) {
+        obs_list.RemoveAll(ob =>
+        {
+            if (ob.GetComponent<RectTransform>().anchoredPosition.x < -2300)
+            {
                 Destroy(ob);
                 return true;
             }
             return false;
         });
-
     }
 
     void HandleObs() {
@@ -158,6 +173,7 @@ public class DriverGame : AbstractMinigame
             ob.GetComponent<RectTransform>().anchoredPosition -= ob_speed * Time.deltaTime * speed;
         }
     }
+
     public IEnumerator Progression() {
         while(pCount < 100) {
             pCount++;

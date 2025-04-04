@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -9,10 +10,9 @@ public class LockdownManager : AbstractManager
     [SerializeField] private LockdownCanvas lockdownCanvas; // Reference to LockdownCanvas
     private bool hazardStarted = false;
 
-    void Awake()
-    {
-        lockdownCanvas = GameObject.FindObjectOfType<LockdownCanvas>();
-    }
+    public static event Action LockdownCanContinue;
+    public static event Action LockdownCantContinue;
+
 
     // Start is called before the first frame update
     void Start()
@@ -26,6 +26,7 @@ public class LockdownManager : AbstractManager
 
     public override void StartHazard()
     {
+        Debug.Log("Starting Lockdown Hazard");
         StartLockdownDelayTimer();
     }
 
@@ -42,6 +43,7 @@ public class LockdownManager : AbstractManager
     {
         yield return new WaitForSeconds(GetDelay());
         lockdownCanvas.OpenCanvas();
+        LockdownCantContinue?.Invoke();
         StartCoroutine(CheckLockdownCanvasComplete());
     }
 
@@ -51,8 +53,7 @@ public class LockdownManager : AbstractManager
         {
             yield return new WaitForSeconds(0.5f); // Check every 0.5 seconds
         }
-        lockdownCanvas.ResetLoading();
-        StopHazard();
+        CanvasClosed();
     }
 
     public override void StopHazard()
@@ -73,6 +74,7 @@ public class LockdownManager : AbstractManager
         lockdownCanvas.ResetLoading();
         lockdownCanvas.CloseCanvas();
         hazardStarted = false;
+        LockdownCanContinue?.Invoke();
         if (difficulty != OSManager.Difficulty.Easy)
             StartLockdownDelayTimer();
         else
@@ -83,12 +85,12 @@ public class LockdownManager : AbstractManager
     {
         if (difficulty == OSManager.Difficulty.Medium)
         {
-            return Random.Range(minDelay / 2, maxDelay / 2);
+            return UnityEngine.Random.Range(minDelay / 2, maxDelay / 2);
         }
         else if (difficulty == OSManager.Difficulty.Hard)
         {
-            return Random.Range(minDelay / 3, maxDelay / 3);
+            return UnityEngine.Random.Range(minDelay / 3, maxDelay / 3);
         }
-        return Random.Range(minDelay, maxDelay);
+        return UnityEngine.Random.Range(minDelay, maxDelay);
     }
 }

@@ -715,6 +715,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CanContinue: 0
   isStarted: 0
+  isComplete: 0
   pCount: 0
   player: {fileID: 4853714420238522035}
   pscript: {fileID: 2725605436604894161}
@@ -722,7 +723,7 @@ MonoBehaviour:
   obstacle: {fileID: 3531236188714788631}
   percentage: 0
   parent: {fileID: 5868862310272521046}
-  speed: {x: 100, y: 0}
+  speed: {x: 80, y: 0}
   obs: []
   window: {fileID: 9033154325290910975}
   obstacle_prefab: {fileID: 4771524687728608119, guid: 06612e59219775f19ade755a55af84f5, type: 3}

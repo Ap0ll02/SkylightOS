@@ -1,20 +1,42 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class TankInsect : AbstractEnemy
 {
+    public int damageNegatedMax;
     void Start()
     {
+        animator = GetComponent<Animator>();
+        if(navi == null)
+            navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = 30f;
-        maxHealth = 15;
+        speed = 50f;
+        maxHealth = 400;
         currentHealth = maxHealth;
-        pointValue = 300;
+        pointValue = 150;
+        damage = 1;
+        damageNegatedMax = 400;
     }
     // Update is called once per frame
     void Update()
     {
         Move();
+    }
+
+    public override void TakeDamage(int damage)
+    {
+        // If the bug still has armor to negate damage then we half the damage rounding up
+        if (damageNegatedMax > 0)
+        {
+            base.TakeDamage(((int)Math.Ceiling(damage * 0.5f)));
+            damageNegatedMax -= damage;
+        }
+        // Once the max negation damage is reached it takes damage normally
+        else
+        {
+            base.TakeDamage(damage);
+        }
     }
 }

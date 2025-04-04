@@ -8,13 +8,14 @@ public class BasicInsect : AbstractEnemy
     public void Start()
     {
         animator = GetComponent<Animator>();
-        navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
+        if(navi == null)
+            navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = 60f;
+        speed = 90f;
         maxHealth = 5;
         currentHealth = maxHealth;
         pointValue = 100;
-        damage = 6;
+        damage = 1;
     }
 
     public void Update()

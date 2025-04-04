@@ -18,14 +18,17 @@ public abstract class AbstractEnemy: MonoBehaviour
     public NavigationManager navi;
     public Vector3 nextWaypoint;
     public Animator animator;
+    public event Action<GameObject> BugDeath;
 
     private UnityEvent EnemyDeath;
-    public void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        if(currentHealth <= 0)
+            Death();
     }
 
-    public void Move()
+    public virtual void Move()
     {
         if (Vector3.Distance(this.transform.position, nextWaypoint) < 0.001f)
         {
@@ -33,13 +36,13 @@ public abstract class AbstractEnemy: MonoBehaviour
         }
         else
         {
-            animator.SetTrigger("Moving");
+            animator.SetBool("Moving", true);
             // Move the object towards the waypoint as before
             transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, speed * Time.deltaTime);
         }
     }
 
-    public void GetNewWaypoint()
+    public virtual void GetNewWaypoint()
     {
         var waypointGameObject = navi.NextWaypoint(currentPosition++);
         transform.rotation = waypointGameObject.transform.rotation;
@@ -53,10 +56,11 @@ public abstract class AbstractEnemy: MonoBehaviour
     /// basically unity events invoke methods that all the towers share which has potential to remove our bugs from all towers are cause null references
     /// </summary>
     //public void SubscribeToDeath(UnityAction death)
-    public void Death()
+    public virtual void Death()
     {
         Debug.Log("Hey We Hit The GPU Killing Bug");
-        Destroy(gameObject);
+        BugDeath?.Invoke(this.gameObject);
+        Destroy(this.gameObject);
     }
     //public abstract void SlowDownHit(int damage = 0, float percent = 1, float duration = 0);
 }

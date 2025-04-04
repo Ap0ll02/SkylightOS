@@ -19,7 +19,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &5557629043334981443
 Transform:
   m_ObjectHideFlags: 0
@@ -30,7 +30,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 191.33554, y: 148.22949, z: 1}
+  m_LocalScale: {x: 251.59015, y: 195.62862, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
@@ -129,6 +129,7 @@ MonoBehaviour:
   navi: {fileID: 0}
   nextWaypoint: {x: 0, y: 0, z: 0}
   animator: {fileID: 3009722527457047244}
+  immunity: 2
 --- !u!65 &6227120767894868020
 BoxCollider:
   m_ObjectHideFlags: 0

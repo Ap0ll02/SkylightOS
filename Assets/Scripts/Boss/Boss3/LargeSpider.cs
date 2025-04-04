@@ -6,6 +6,9 @@ public class LargeSpider : AbstractEnemy
 {
     void Start()
     {
+        animator = GetComponent<Animator>();
+        if(navi == null)
+            navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
         speed = 40f;
         maxHealth = 15;

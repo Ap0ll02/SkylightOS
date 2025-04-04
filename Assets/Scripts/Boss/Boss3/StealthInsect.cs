@@ -2,22 +2,22 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class FastInsect : AbstractEnemy
+public class StealthInsect : AbstractEnemy
 {
-    void Start()
+    public void Start()
     {
         animator = GetComponent<Animator>();
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = 150f;
+        speed = 60f;
         maxHealth = 5;
         currentHealth = maxHealth;
-        pointValue = 150;
+        pointValue = 100;
         damage = 1;
     }
-    // Update is called once per frame
-    void Update()
+
+    public void Update()
     {
         Move();
     }

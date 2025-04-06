@@ -4,27 +4,27 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class AbstractEnemy: MonoBehaviour
+public abstract class AbstractEnemy : MonoBehaviour
 {
     // contains all the base variables used by every variant of enemy.
     #region enemystats
-        public int pointValue;
-        public int currentHealth;
-        public int maxHealth;
-        public int damage;
-        public float speed;
+    public int pointValue;
+    public int currentHealth;
+    public int maxHealth;
+    public int damage;
+    public float speed;
     #endregion enemystats
     public int currentPosition = 0;
     public NavigationManager navi;
     public Vector3 nextWaypoint;
     public Animator animator;
-    public event Action<GameObject> BugDeath;
+    public event Action<GameObject> EnemyDeath;
 
-    private UnityEvent EnemyDeath;
+    // private UnityEvent EnemyDeath; Currently unneeded
     public virtual void TakeDamage(int damage)
     {
         currentHealth -= damage;
-        if(currentHealth <= 0)
+        if (currentHealth <= 0)
             Death();
     }
 
@@ -38,7 +38,11 @@ public abstract class AbstractEnemy: MonoBehaviour
         {
             animator.SetBool("Moving", true);
             // Move the object towards the waypoint as before
-            transform.position = Vector3.MoveTowards(transform.position, nextWaypoint, speed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(
+                transform.position,
+                nextWaypoint,
+                speed * Time.deltaTime
+            );
         }
     }
 
@@ -46,9 +50,10 @@ public abstract class AbstractEnemy: MonoBehaviour
     {
         var waypointGameObject = navi.NextWaypoint(currentPosition++);
         transform.rotation = waypointGameObject.transform.rotation;
-        Debug.Log("Current Waypoint:"+ waypointGameObject.name);
+        Debug.Log("Current Waypoint:" + waypointGameObject.name);
         nextWaypoint = waypointGameObject.transform.position;
     }
+
     // I have to think of this method a little bit more
     /// <summary>
     /// If I make it a unity event then all towers would invoke the unity death event removing the specific enemy. Maybe we only want to remove the bug the tower sees
@@ -59,8 +64,8 @@ public abstract class AbstractEnemy: MonoBehaviour
     public virtual void Death()
     {
         Debug.Log("Hey We Hit The GPU Killing Bug");
-        BugDeath?.Invoke(this.gameObject);
-        Destroy(this.gameObject);
+        EnemyDeath?.Invoke(gameObject);
+        Destroy(gameObject);
     }
     //public abstract void SlowDownHit(int damage = 0, float percent = 1, float duration = 0);
 }

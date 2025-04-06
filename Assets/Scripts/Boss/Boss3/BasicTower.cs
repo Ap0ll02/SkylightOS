@@ -8,7 +8,6 @@ public class BasicTower : Tower
     private SphereCollider mySphere;
     public Coroutine ActivateTower;
     public int attackRadius;
-    public GameObject targetEnemy;
 
     public void Start()
     {
@@ -19,26 +18,16 @@ public class BasicTower : Tower
 
     public IEnumerator ActiveTower()
     {
-        yield return null;
+        if (targetEnemy != null)
+        {
+            Attack();
+        }
+        yield return new WaitForSeconds(cooldown);
     }
 
     public override void Attack()
     {
         Debug.Log("Attack");
         projectile = Instantiate(projectilePrefab, parent: GetComponent<Transform>());
-    }
-
-    public override void GetWaypoints()
-    {
-        int maxInd = 0;
-        // Gather all waypoints within radius
-        // We need a tag on the waypoints and a collider to allow for detection by the tower
-        foreach (GameObject wp in waypoints)
-        {
-            if (waypoints.IndexOf(wp) > maxInd)
-            {
-                targetWaypoint = wp;
-            }
-        }
     }
 }

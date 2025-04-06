@@ -14,7 +14,7 @@ public abstract class Tower : MonoBehaviour
 
     public Towers towerType;
 
-    public float damage;
+    public int damage;
 
     public float timeToDamage = 1f;
 
@@ -26,42 +26,74 @@ public abstract class Tower : MonoBehaviour
 
     public int[] costToUpgrade = new int[3];
 
-    public GameObject targetWaypoint;
-    public List<GameObject> enemyQueue;
-    public List<GameObject> waypoints;
+    public GameObject targetEnemy;
+    public List<GameObject> enemyQueue = new();
 
     public abstract void Attack();
 
-    public abstract void GetWaypoints();
-
-    private void OnCollisionEnter(Collision other)
+    public void GetTarget()
     {
-        Debug.Log("Collision Checking:");
-        if (other.gameObject.CompareTag("tdEnemy"))
+        int maxInd = 0;
+        // Gather all waypoints within radius
+        // We need a tag on the waypoints and a collider to allow for detection by the tower
+        foreach (GameObject en in enemyQueue)
         {
-            enemyQueue.Add(other.gameObject);
-            Debug.Log("Enemy Here");
-            Debug.Log(
-                "Stats: "
-                    + GetComponent<Transform>().position
-                    + " with pos: "
-                    + other.gameObject.GetComponent<Transform>().position
-            );
-            Attack();
-        }
-        else if (other.gameObject.CompareTag("waypoint"))
-        {
-            waypoints.Add(other.gameObject);
+            if (en.GetComponent<AbstractEnemy>().currentPosition > maxInd)
+            {
+                maxInd = en.GetComponent<AbstractEnemy>().currentPosition;
+                targetEnemy = en;
+            }
         }
     }
 
-    private void OnCollisionExit(Collision other)
+    protected void OnTriggerEnter(Collider other)
+    {
+        Debug.Log("Collision Checking:");
+        if (other.gameObject.CompareTag("tdEnemy") && !enemyQueue.Contains(other.gameObject))
+        {
+            enemyQueue.Add(other.gameObject);
+            Debug.Log("Enemy Added To Queue");
+
+            AbstractEnemy enemyScript = other.gameObject.GetComponent<AbstractEnemy>();
+            if (enemyScript != null)
+            {
+                enemyScript.DeathEvent -= RemoveEnemy;
+            }
+        }
+        GetTarget();
+    }
+
+    protected void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("tdEnemy"))
         {
             if (enemyQueue.Remove(other.gameObject))
             {
+                AbstractEnemy enemyScript = other.gameObject.GetComponent<AbstractEnemy>();
+                if (enemyScript != null)
+                {
+                    enemyScript.DeathEvent -= RemoveEnemy;
+                }
+                GetTarget();
+
                 return;
+            }
+        }
+    }
+
+    public void HitEnemy(GameObject enemy)
+    {
+        enemy.GetComponent<AbstractEnemy>().TakeDamage(damage);
+    }
+
+    public void RemoveEnemy(GameObject enemy)
+    {
+        if (enemyQueue.Remove(enemy))
+        {
+            AbstractEnemy enemyScript = enemy.GetComponent<AbstractEnemy>();
+            if (enemyScript != null)
+            {
+                enemyScript.DeathEvent -= RemoveEnemy;
             }
         }
     }

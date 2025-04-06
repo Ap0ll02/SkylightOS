@@ -18,7 +18,10 @@ public class BasicTower : Tower
 
     public IEnumerator ActiveTower()
     {
-        Attack();
+        if (targetEnemy != null)
+        {
+            Attack();
+        }
         yield return new WaitForSeconds(cooldown);
     }
 

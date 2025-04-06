@@ -52,13 +52,13 @@ public abstract class Tower : MonoBehaviour
         if (other.gameObject.CompareTag("tdEnemy") && !enemyQueue.Contains(other.gameObject))
         {
             enemyQueue.Add(other.gameObject);
-            Debug.Log("Enemy Here");
-            Debug.Log(
-                "Stats: "
-                    + GetComponent<Transform>().position
-                    + " with pos: "
-                    + other.gameObject.GetComponent<Transform>().position
-            );
+            Debug.Log("Enemy Added To Queue");
+
+            AbstractEnemy enemyScript = other.gameObject.GetComponent<AbstractEnemy>();
+            if (enemyScript != null)
+            {
+                enemyScript.DeathEvent -= RemoveEnemy;
+            }
         }
         GetTarget();
     }
@@ -69,6 +69,13 @@ public abstract class Tower : MonoBehaviour
         {
             if (enemyQueue.Remove(other.gameObject))
             {
+                AbstractEnemy enemyScript = other.gameObject.GetComponent<AbstractEnemy>();
+                if (enemyScript != null)
+                {
+                    enemyScript.DeathEvent -= RemoveEnemy;
+                }
+                GetTarget();
+
                 return;
             }
         }
@@ -77,5 +84,17 @@ public abstract class Tower : MonoBehaviour
     public void HitEnemy(GameObject enemy)
     {
         enemy.GetComponent<AbstractEnemy>().TakeDamage(damage);
+    }
+
+    public void RemoveEnemy(GameObject enemy)
+    {
+        if (enemyQueue.Remove(enemy))
+        {
+            AbstractEnemy enemyScript = enemy.GetComponent<AbstractEnemy>();
+            if (enemyScript != null)
+            {
+                enemyScript.DeathEvent -= RemoveEnemy;
+            }
+        }
     }
 }

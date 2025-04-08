@@ -44,13 +44,11 @@ public abstract class Tower : MonoBehaviour
                 targetEnemy = en;
             }
         }
+
+        canAttack = true;
         if (targetEnemy == null)
         {
             canAttack = false;
-        }
-        else
-        {
-            canAttack = true;
         }
         return targetEnemy;
     }

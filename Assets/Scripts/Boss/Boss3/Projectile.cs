@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
 
     public Vector3 targetPosition;
     protected Vector3 myPosition;
-    public float travelTime = 0.3f;
+    public float travelTime = 0.1f;
 
     public void Start()
     {
@@ -20,15 +20,13 @@ public class Projectile : MonoBehaviour
         Debug.Log("Enemy Locked: " + temp);
         if (targetPosition != null)
         {
-            transform.DOMove(targetPosition, travelTime).SetEase(Ease.InFlash);
-        }
-    }
-
-    public void Update()
-    {
-        if (targetPosition != null)
-        {
-            transform.DOMove(targetPosition, travelTime).SetEase(Ease.InFlash);
+            transform
+                .DOMove(targetPosition, travelTime)
+                .SetEase(Ease.InFlash)
+                .OnComplete(() =>
+                {
+                    tm.HitEnemy(tm.GetTarget());
+                });
         }
     }
 

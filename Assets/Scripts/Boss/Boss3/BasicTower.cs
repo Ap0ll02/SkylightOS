@@ -18,9 +18,9 @@ public class BasicTower : Tower
 
     public IEnumerator ActiveTower()
     {
-        while (canAttack)
+        while (true)
         {
-            if (targetEnemy != null)
+            if (targetEnemy != null && canAttack)
             {
                 Attack();
             }
@@ -32,5 +32,11 @@ public class BasicTower : Tower
     {
         Debug.Log("Attacking: " + targetEnemy);
         projectile = Instantiate(projectilePrefab, parent: GetComponent<Transform>());
+    }
+
+    public void DeleteTower()
+    {
+        StopAllCoroutines();
+        Destroy(gameObject);
     }
 }

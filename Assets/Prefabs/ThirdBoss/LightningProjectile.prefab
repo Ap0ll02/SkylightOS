@@ -174,7 +174,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4162189018943461028, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.21
+      value: 0.23
       objectReference: {fileID: 0}
     - target: {fileID: 4162189018943461028, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
       propertyPath: m_LocalScale.y
@@ -226,11 +226,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4162189018943461028, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
       propertyPath: m_ConstrainProportionsScale
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5967783903914127903, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
       propertyPath: m_Name
       value: LightningProjectile
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017794845964690385, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
+      propertyPath: travelTime
+      value: 0.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

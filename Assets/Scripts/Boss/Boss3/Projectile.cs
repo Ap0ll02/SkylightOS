@@ -11,17 +11,30 @@ public class Projectile : MonoBehaviour
 
     public void Start()
     {
-        targetPosition = GetComponentInParent<Transform>().position;
         tm = GetComponentInParent<Tower>();
+
+        // Reference To Target Enemy
+        GameObject temp = tm.GetTarget();
+        targetPosition = temp.GetComponent<Transform>().position;
         myPosition = GetComponent<Transform>().position;
+        Debug.Log("Enemy Locked: " + temp);
         if (targetPosition != null)
         {
             transform.DOMove(targetPosition, travelTime).SetEase(Ease.InFlash);
         }
     }
 
-    public void OnCollisionEnter(Collision collision)
+    public void Update()
     {
+        if (targetPosition != null)
+        {
+            transform.DOMove(targetPosition, travelTime).SetEase(Ease.InFlash);
+        }
+    }
+
+    public void OnTriggerEnter(Collider collision)
+    {
+        Debug.Log("Collided at all");
         if (collision.gameObject.CompareTag("tdEnemy"))
         {
             tm.HitEnemy(collision.gameObject);

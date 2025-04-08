@@ -21,7 +21,7 @@ public abstract class Tower : MonoBehaviour
     public float cooldown;
 
     public bool isSpecial;
-
+    protected bool canAttack = true;
     public int level;
 
     public int[] costToUpgrade = new int[3];
@@ -31,7 +31,7 @@ public abstract class Tower : MonoBehaviour
 
     public abstract void Attack();
 
-    public void GetTarget()
+    public GameObject GetTarget()
     {
         int maxInd = 0;
         // Gather all waypoints within radius
@@ -44,6 +44,15 @@ public abstract class Tower : MonoBehaviour
                 targetEnemy = en;
             }
         }
+        if (targetEnemy == null)
+        {
+            canAttack = false;
+        }
+        else
+        {
+            canAttack = true;
+        }
+        return targetEnemy;
     }
 
     protected void OnTriggerEnter(Collider other)
@@ -51,16 +60,17 @@ public abstract class Tower : MonoBehaviour
         Debug.Log("Collision Checking:");
         if (other.gameObject.CompareTag("tdEnemy") && !enemyQueue.Contains(other.gameObject))
         {
+            canAttack = true;
             enemyQueue.Add(other.gameObject);
             Debug.Log("Enemy Added To Queue");
 
             AbstractEnemy enemyScript = other.gameObject.GetComponent<AbstractEnemy>();
             if (enemyScript != null)
             {
-                enemyScript.EnemyDeath -= RemoveEnemy;
+                enemyScript.EnemyDeath += RemoveEnemy;
             }
         }
-        GetTarget();
+        _ = GetTarget();
     }
 
     protected void OnTriggerExit(Collider other)
@@ -74,7 +84,8 @@ public abstract class Tower : MonoBehaviour
                 {
                     enemyScript.EnemyDeath -= RemoveEnemy;
                 }
-                GetTarget();
+                targetEnemy = null;
+                _ = GetTarget();
 
                 return;
             }
@@ -96,5 +107,8 @@ public abstract class Tower : MonoBehaviour
                 enemyScript.EnemyDeath -= RemoveEnemy;
             }
         }
+
+        targetEnemy = null;
+        _ = GetTarget();
     }
 }

@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 6017794845964690385}
   - component: {fileID: 2647017809876923545}
   - component: {fileID: -7008780118704124061}
-  m_Layer: 0
+  m_Layer: 16
   m_Name: Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9a87fe77ce6df29de867c49a89ae6387, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  tm: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
+  travelTime: 0.3
+  velocity: 0
 --- !u!136 &2647017809876923545
 CapsuleCollider:
   m_ObjectHideFlags: 0

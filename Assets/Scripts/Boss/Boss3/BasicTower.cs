@@ -18,16 +18,19 @@ public class BasicTower : Tower
 
     public IEnumerator ActiveTower()
     {
-        if (targetEnemy != null)
+        while (canAttack)
         {
-            Attack();
+            if (targetEnemy != null)
+            {
+                Attack();
+            }
+            yield return new WaitForSeconds(cooldown);
         }
-        yield return new WaitForSeconds(cooldown);
     }
 
     public override void Attack()
     {
-        Debug.Log("Attack");
+        Debug.Log("Attacking: " + targetEnemy);
         projectile = Instantiate(projectilePrefab, parent: GetComponent<Transform>());
     }
 }

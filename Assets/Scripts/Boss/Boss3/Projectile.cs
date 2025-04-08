@@ -7,7 +7,7 @@ public class Projectile : MonoBehaviour
 
     public Vector3 targetPosition;
     protected Vector3 myPosition;
-    public float travelTime = 0.1f;
+    public float travelTime = 0.7f;
 
     public void Start()
     {

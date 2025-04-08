@@ -57,7 +57,7 @@ public abstract class Tower : MonoBehaviour
             AbstractEnemy enemyScript = other.gameObject.GetComponent<AbstractEnemy>();
             if (enemyScript != null)
             {
-                enemyScript.DeathEvent -= RemoveEnemy;
+                enemyScript.EnemyDeath -= RemoveEnemy;
             }
         }
         GetTarget();
@@ -72,7 +72,7 @@ public abstract class Tower : MonoBehaviour
                 AbstractEnemy enemyScript = other.gameObject.GetComponent<AbstractEnemy>();
                 if (enemyScript != null)
                 {
-                    enemyScript.DeathEvent -= RemoveEnemy;
+                    enemyScript.EnemyDeath -= RemoveEnemy;
                 }
                 GetTarget();
 
@@ -93,7 +93,7 @@ public abstract class Tower : MonoBehaviour
             AbstractEnemy enemyScript = enemy.GetComponent<AbstractEnemy>();
             if (enemyScript != null)
             {
-                enemyScript.DeathEvent -= RemoveEnemy;
+                enemyScript.EnemyDeath -= RemoveEnemy;
             }
         }
     }

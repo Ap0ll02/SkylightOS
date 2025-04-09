@@ -19,14 +19,14 @@ public class GPU : MonoBehaviour
     public void Start()
     {
         RamStickCount = GrabRam();
-        Debug.Log("Ram Sticks: " + RamStickCount);
+        // Debug.Log("Ram Sticks: " + RamStickCount);
         Debug.Assert(RamStickCount > 0, "No ram sticks in the gameobject");
         //StartCoroutine(RamStickDamage());
     }
     // We are sending the object that collided with our GPU, Hopefully a enemy...
     private void OnTriggerEnter(Collider collider )
     {
-        Debug.Log("GPU Hit");
+        // Debug.Log("GPU Hit");
         GameObject thingHittingOurGPU = collider.gameObject;
         // Nice! If it's an enemy we should call our DamageCalculation function
         if (thingHittingOurGPU.CompareTag("tdEnemy"))

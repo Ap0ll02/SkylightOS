@@ -49,7 +49,6 @@ MonoBehaviour:
   tm: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
   travelTime: 0.7
-  velocity: 0
 --- !u!136 &2647017809876923545
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -60,12 +59,12 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 131072
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 130935
   m_LayerOverridePriority: 0
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -89,10 +88,10 @@ Rigidbody:
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
   m_IncludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 131072
   m_ExcludeLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 130935
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 0

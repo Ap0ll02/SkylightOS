@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 1251462490599551112}
   - component: {fileID: 3549982756929402753}
   - component: {fileID: 2731911827411577636}
-  m_Layer: 0
+  m_Layer: 17
   m_Name: SudoInsect
   m_TagString: tdEnemy
   m_Icon: {fileID: 0}
@@ -133,6 +133,8 @@ MonoBehaviour:
   navi: {fileID: 0}
   nextWaypoint: {x: 0, y: 0, z: 0}
   animator: {fileID: 3192174412515539849}
+  isAlive: 1
+  SpawnManager: {fileID: 0}
 --- !u!65 &2731911827411577636
 BoxCollider:
   m_ObjectHideFlags: 0

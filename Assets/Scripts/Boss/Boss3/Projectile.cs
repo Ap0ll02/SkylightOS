@@ -25,6 +25,7 @@ public class Projectile : MonoBehaviour
 
     public void Update()
     {
+        Debug.Log("Projectile Update: " );
         transform.position = Vector3.MoveTowards(
             transform.position,
             targetPosition,
@@ -34,7 +35,7 @@ public class Projectile : MonoBehaviour
 
     public void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Collided at all");
+        Debug.Log("Collision: "+ collision.gameObject);
         if (collision.CompareTag("tdEnemy"))
         {
             tm.HitEnemy(collision.gameObject);

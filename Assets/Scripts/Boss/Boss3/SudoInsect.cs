@@ -14,7 +14,7 @@ public class SudoInsect : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         if(SpawnManager == null)
-            SpawnManager = GameObject.Find("SpawnManager");
+            SpawnManager = GameObject.Find("Enemies");
 
         Debug.Assert(animator != null, "Animator is null");
         Debug.Assert(navi != null, "Navigation Manager is null");

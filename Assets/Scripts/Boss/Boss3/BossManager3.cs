@@ -8,4 +8,8 @@ using UnityEngine;
 public class BossManager3 : BossManager
 {
 
+    void start()
+    {
+        this.NextStage();
+    }
 }

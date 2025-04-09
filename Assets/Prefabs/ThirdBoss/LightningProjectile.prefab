@@ -97,6 +97,10 @@ PrefabInstance:
       value: LightningProjectile
       objectReference: {fileID: 0}
     - target: {fileID: 6017794845964690385, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
+      propertyPath: speed
+      value: 750
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017794845964690385, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
       propertyPath: travelTime
       value: 0.7
       objectReference: {fileID: 0}

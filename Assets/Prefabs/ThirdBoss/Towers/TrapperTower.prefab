@@ -100,3 +100,8 @@ MonoBehaviour:
   isSpecial: 1
   level: 0
   costToUpgrade: 64000000c80000002c010000
+  targetEnemy: {fileID: 0}
+  enemyQueue: []
+  projectilePrefab: {fileID: 5967783903914127903, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
+  projectile: {fileID: 5967783903914127903, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
+  attackRadius: 10

@@ -6,7 +6,7 @@ public class Projectile : MonoBehaviour
 
     public Vector3 targetPosition;
     protected Vector3 myPosition;
-    public float travelTime = 0.7f;
+    public float speed;
 
     public void Start()
     {
@@ -25,17 +25,17 @@ public class Projectile : MonoBehaviour
 
     public void Update()
     {
-        Debug.Log("Projectile Update: " );
+        Debug.Log("Projectile Update: ");
         transform.position = Vector3.MoveTowards(
             transform.position,
             targetPosition,
-            Time.deltaTime * 100f
+            Time.deltaTime * speed
         );
     }
 
     public void OnTriggerEnter(Collider collision)
     {
-        Debug.Log("Collision: "+ collision.gameObject);
+        Debug.Log("Collision: " + collision.gameObject);
         if (collision.CompareTag("tdEnemy"))
         {
             tm.HitEnemy(collision.gameObject);
@@ -47,19 +47,4 @@ public class Projectile : MonoBehaviour
     {
         Destroy(gameObject);
     }
-
-    /*if (targetPosition != null)
-    {
-        transform
-            .DOMove(targetPosition, travelTime)
-            .SetEase(Ease.Linear)
-            .OnComplete(() =>
-            {
-                if (temp != null)
-                {
-                    tm.HitEnemy(tm.GetTarget());
-                }
-                CleanUp();
-            });
-    } */
 }

@@ -16,15 +16,21 @@ public class TrapperTower : Tower
         ActivateTower = StartCoroutine(ActiveTower());
     }
 
-    public IEnumerator ActiveTower()
-    {
-        Attack();
-        yield return new WaitForSeconds(cooldown);
-    }
-
     public override void Attack()
     {
         Debug.Log("Attack");
         projectile = Instantiate(projectilePrefab, parent: GetComponent<Transform>());
+    }
+
+    public IEnumerator ActiveTower()
+    {
+        while (true)
+        {
+            if (targetEnemy != null && canAttack)
+            {
+                Attack();
+            }
+            yield return new WaitForSeconds(cooldown);
+        }
     }
 }

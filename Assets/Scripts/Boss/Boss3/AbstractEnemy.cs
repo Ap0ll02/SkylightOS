@@ -24,6 +24,7 @@ public abstract class AbstractEnemy : MonoBehaviour
     public virtual void TakeDamage(int damage)
     {
         currentHealth -= damage;
+        Debug.Log("Health: " + currentHealth + "Minus Damage: " + damage);
         if (currentHealth <= 0)
             Death();
     }
@@ -50,7 +51,7 @@ public abstract class AbstractEnemy : MonoBehaviour
     {
         var waypointGameObject = navi.NextWaypoint(currentPosition++);
         transform.rotation = waypointGameObject.transform.rotation;
-        Debug.Log("Current Waypoint:" + waypointGameObject.name);
+        // Debug.Log("Current Waypoint:" + waypointGameObject.name);
         nextWaypoint = waypointGameObject.transform.position;
     }
 
@@ -63,7 +64,7 @@ public abstract class AbstractEnemy : MonoBehaviour
     //public void SubscribeToDeath(UnityAction death)
     public virtual void Death()
     {
-        Debug.Log("Hey We Hit The GPU Killing Bug");
+        // Debug.Log("Hey We Hit The GPU Killing Bug");
         EnemyDeath?.Invoke(gameObject);
         Destroy(gameObject);
     }

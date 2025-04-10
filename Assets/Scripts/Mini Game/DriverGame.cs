@@ -127,7 +127,7 @@ public class DriverGame : AbstractMinigame
             if (popupContinue && lockdownContinue)
             {
                 Vector2 moveValue = moveAction.ReadValue<Vector2>();
-                player.anchoredPosition += new Vector2(moveValue.x * 3, moveValue.y * 8);
+                player.anchoredPosition += new Vector2(moveValue.x * 3, moveValue.y * 8) * Time.deltaTime * 100;
             }
             CheckBounds();
             HandleObs();

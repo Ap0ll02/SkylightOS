@@ -15,32 +15,39 @@ public class StartScreenScript : MonoBehaviour
     [SerializeField] private UIDocument uiDocument;
     private AudioSource audioSource;
 
-    public Button buttonLogin;
-    public Button buttonBack;
-    public Button buttonLevel1;
-    public Button buttonLevel2;
-    public Button buttonLevel3;
-    public Button buttonQuit;
-    public Button buttonSetting;
-    public Button buttonMusic;
-    public Button buttonMusicOff;
-    public Button buttonCredits;
-
+    public VisualElement groupLogin;
+    public VisualElement groupSaveLoadSelect;
+    public VisualElement groupDifficulty;
+    public VisualElement groupLevel;
+    public VisualElement groupBack;
+    public VisualElement root;
     private void Start()
     {
         audioSource = GetComponent<AudioSource>();
-        var root = uiDocument.rootVisualElement;
+        root = uiDocument.rootVisualElement;
 
-        buttonLogin = root.Q<Button>("Login");
-        buttonBack = root.Q<Button>("Back");
-        buttonLevel1 = root.Q<Button>("Level1");
-        buttonLevel2 = root.Q<Button>("Level2");
-        buttonLevel3 = root.Q<Button>("Level3");
-        buttonQuit = root.Q<Button>("Quit");
-        buttonSetting = root.Q<Button>("Settings");
-        buttonMusic = root.Q<Button>("Music");
-        buttonMusicOff = root.Q<Button>("MusicOff");
-        buttonCredits = root.Q<Button>("Credits");
+        groupLogin = root.Q<VisualElement>("LoginContainer");
+        groupSaveLoadSelect = root.Q<VisualElement>("SaveLoadSelect");
+        groupDifficulty = root.Q<VisualElement>("Difficulty");
+        groupLevel = root.Q<VisualElement>("Level");
+        groupBack = root.Q<VisualElement>("Back");
+
+        var buttonLogin = groupLogin.Q<Button>("Login");
+        var buttonBack = groupBack.Q<Button>("Back");
+        var buttonLevel1 = groupLevel.Q<Button>("Level1");
+        var buttonLevel2 = groupLevel.Q<Button>("Level2");
+        var buttonLevel3 = groupLevel.Q<Button>("Level3");
+        var buttonQuit = root.Q<Button>("Quit");
+        var buttonSetting = root.Q<Button>("Settings");
+        var buttonMusic = root.Q<Button>("Music");
+        var buttonMusicOff = root.Q<Button>("MusicOff");
+        var buttonCredits = root.Q<Button>("Credits");
+        var buttonNewGame = groupSaveLoadSelect.Q<Button>("NewGame");
+        var buttonLoadGame = groupSaveLoadSelect.Q<Button>("LoadGame");
+        var buttonEasy = groupDifficulty.Q<Button>("Easy");
+        var buttonMedium = groupDifficulty.Q<Button>("Medium");
+        var buttonHard = groupDifficulty.Q<Button>("Hard");
+        var buttonLevelSelect = groupSaveLoadSelect.Q<Button>("LevelSelect");
 
         buttonLogin.clicked += LoginButtonClicked;
         buttonLevel1.clicked += Level1ButtonClicked;
@@ -52,29 +59,80 @@ public class StartScreenScript : MonoBehaviour
         buttonMusicOff.clicked += MusicButtonClicked;
         buttonCredits.clicked += CreditsButtonClicked;
         buttonBack.clicked += BackButtonClicked;
+        buttonNewGame.clicked += NewGameButtonClicked;
+        buttonLoadGame.clicked += LoadGameButtonClicked;
+        buttonEasy.clicked += EasyButtonClicked;
+        buttonMedium.clicked += MediumButtonClicked;
+        buttonHard.clicked += HardButtonClicked;
+        buttonLevelSelect.clicked += LevelSelectButtonClicked;
 
-        buttonBack.style.display = DisplayStyle.None;
-        buttonLevel1.style.display = DisplayStyle.None;
-        buttonLevel2.style.display = DisplayStyle.None;
-        buttonLevel3.style.display = DisplayStyle.None;
+        groupBack.style.display = DisplayStyle.None;
+        groupLevel.style.display = DisplayStyle.None;
+        groupSaveLoadSelect.style.display = DisplayStyle.None;
+        groupDifficulty.style.display = DisplayStyle.None;
     }
 
     private void LoginButtonClicked()
     {
-        buttonBack.style.display = DisplayStyle.Flex;
-        buttonLogin.style.display = DisplayStyle.None;
-        buttonLevel1.style.display = DisplayStyle.Flex;
-        buttonLevel2.style.display = DisplayStyle.Flex;
-        buttonLevel3.style.display = DisplayStyle.Flex;
+        groupBack.style.display = DisplayStyle.Flex;
+        groupLogin.style.display = DisplayStyle.None;
+        groupSaveLoadSelect.style.display = DisplayStyle.Flex;
     }
 
     private void BackButtonClicked()
     {
-        buttonBack.style.display = DisplayStyle.None;
-        buttonLogin.style.display = DisplayStyle.Flex;
-        buttonLevel1.style.display = DisplayStyle.None;
-        buttonLevel2.style.display = DisplayStyle.None;
-        buttonLevel3.style.display = DisplayStyle.None;
+        groupBack.style.display = DisplayStyle.None;
+        groupLogin.style.display = DisplayStyle.Flex;
+        groupLevel.style.display = DisplayStyle.None;
+        groupSaveLoadSelect.style.display = DisplayStyle.None;
+        groupDifficulty.style.display = DisplayStyle.None;
+    }
+
+    private void NewGameButtonClicked()
+    {
+        groupSaveLoadSelect.style.display = DisplayStyle.None;
+        groupDifficulty.style.display = DisplayStyle.Flex;
+    }
+
+    private void LoadGameButtonClicked()
+    {
+        // Load the saved game level from PlayerPrefs
+        SaveLoad.Level savedLevel = SaveLoad.GameLevel;
+
+        // Load the corresponding scene based on the saved level
+        switch (savedLevel)
+        {
+            case SaveLoad.Level.Level1:
+                SceneManager.LoadScene("IntroCutscene");
+                break;
+            case SaveLoad.Level.Level2:
+                SceneManager.LoadScene("1To2Cutscene");
+                break;
+            case SaveLoad.Level.Level3:
+                SceneManager.LoadScene("2To3Cutscene");
+                break;
+            default:
+                Debug.LogError("Unknown level saved in PlayerPrefs");
+                break;
+        }
+    }
+
+    private void EasyButtonClicked()
+    {
+        SaveLoad.GameDifficulty = SaveLoad.Difficulty.Easy;
+        SceneManager.LoadScene("IntroCutscene");
+    }
+
+    private void MediumButtonClicked()
+    {
+        SaveLoad.GameDifficulty = SaveLoad.Difficulty.Medium;
+        SceneManager.LoadScene("IntroCutscene");
+    }
+
+    private void HardButtonClicked()
+    {
+        SaveLoad.GameDifficulty = SaveLoad.Difficulty.Hard;
+        SceneManager.LoadScene("IntroCutscene");
     }
 
     private void Level1ButtonClicked()
@@ -85,13 +143,13 @@ public class StartScreenScript : MonoBehaviour
 
     private void Level2ButtonClicked()
     {
-        SceneManager.LoadScene("Level2");
+        SceneManager.LoadScene("1To2Cutscene");
         audioSource.Stop();
     }
 
     private void Level3ButtonClicked()
     {
-        SceneManager.LoadScene("Level3");
+        SceneManager.LoadScene("2To3Cutscene");
         audioSource.Stop();
     }
 
@@ -120,6 +178,23 @@ public class StartScreenScript : MonoBehaviour
 
     private void OnDisable()
     {
+        var buttonLogin = groupLogin.Q<Button>("Login");
+        var buttonBack = groupBack.Q<Button>("Back");
+        var buttonLevel1 = groupLevel.Q<Button>("Level1");
+        var buttonLevel2 = groupLevel.Q<Button>("Level2");
+        var buttonLevel3 = groupLevel.Q<Button>("Level3");
+        var buttonQuit = root.Q<Button>("Quit");
+        var buttonSetting = root.Q<Button>("Settings");
+        var buttonMusic = root.Q<Button>("Music");
+        var buttonMusicOff = root.Q<Button>("MusicOff");
+        var buttonCredits = root.Q<Button>("Credits");
+        var buttonNewGame = groupSaveLoadSelect.Q<Button>("NewGame");
+        var buttonLoadGame = groupSaveLoadSelect.Q<Button>("LoadGame");
+        var buttonEasy = groupDifficulty.Q<Button>("Easy");
+        var buttonMedium = groupDifficulty.Q<Button>("Medium");
+        var buttonHard = groupDifficulty.Q<Button>("Hard");
+        var buttonLevelSelect = groupSaveLoadSelect.Q<Button>("LevelSelect");
+
         buttonLogin.clicked -= LoginButtonClicked;
         buttonLevel1.clicked -= Level1ButtonClicked;
         buttonLevel2.clicked -= Level2ButtonClicked;
@@ -129,5 +204,20 @@ public class StartScreenScript : MonoBehaviour
         buttonMusic.clicked -= MusicButtonClicked;
         buttonCredits.clicked -= CreditsButtonClicked;
         buttonBack.clicked -= BackButtonClicked;
+        buttonNewGame.clicked -= NewGameButtonClicked;
+        buttonLoadGame.clicked -= LoadGameButtonClicked;
+        buttonEasy.clicked -= EasyButtonClicked;
+        buttonMedium.clicked -= MediumButtonClicked;
+        buttonHard.clicked -= HardButtonClicked;
+        buttonLevelSelect.clicked -= LevelSelectButtonClicked;
+    }
+
+    private void LevelSelectButtonClicked()
+    {
+        groupBack.style.display = DisplayStyle.Flex;
+        groupLogin.style.display = DisplayStyle.None;
+        groupLevel.style.display = DisplayStyle.Flex;
+        groupSaveLoadSelect.style.display = DisplayStyle.None;
+        groupDifficulty.style.display = DisplayStyle.None;
     }
 }

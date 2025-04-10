@@ -143,13 +143,13 @@ public class StartScreenScript : MonoBehaviour
 
     private void Level2ButtonClicked()
     {
-        SceneManager.LoadScene("Level2");
+        SceneManager.LoadScene("1To2Cutscene");
         audioSource.Stop();
     }
 
     private void Level3ButtonClicked()
     {
-        SceneManager.LoadScene("Level3");
+        SceneManager.LoadScene("2To3Cutscene");
         audioSource.Stop();
     }
 

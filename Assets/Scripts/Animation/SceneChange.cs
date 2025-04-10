@@ -21,12 +21,15 @@ public class SceneChange : MonoBehaviour
     }
     // Load the levels
     public void LoadLevel1(){
+        SaveLoad.GameLevel = SaveLoad.Level.Level1; // Set the game level
         SceneManager.LoadScene("Level1");
     }
     public void LoadLevel2(){
+        SaveLoad.GameLevel = SaveLoad.Level.Level2; // Set the game level
         SceneManager.LoadScene("Level2");
     }
     public void LoadLevel3(){
+        SaveLoad.GameLevel = SaveLoad.Level.Level3; // Set the game level
         SceneManager.LoadScene("Level3");
     }
 

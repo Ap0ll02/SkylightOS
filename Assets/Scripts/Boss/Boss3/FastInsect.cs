@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Random = UnityEngine.Random;
 public class FastInsect : AbstractEnemy
 {
     void Start()
@@ -10,7 +10,7 @@ public class FastInsect : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = 150f;
+        speed = Random.Range(130f, 150f);
         maxHealth = 5;
         currentHealth = maxHealth;
         pointValue = 150;

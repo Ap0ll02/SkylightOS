@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,34 +8,27 @@ using Random = UnityEngine.Random;
 /// </summary>
 public class Stage1Boss3 : AbstractBossStage
 {
-    bool isSpawning = false;
-    public int spawnPoints;
-    public List<GameObject> SpawnWave;
-    public GameObject enemiesGameObject;
-
-
+    public SpawnManagerBoss3 spawnManager;
+    public List<GameObject> enemyArray;
+    private bool spawning;
     public override void BossStartStage()
     {
-        StartCoroutine(Spawning());
-        Debug.Log("Stage 1");
+
+        Debug.Log("Start Stage 1");
+        Debug.Assert(spawnManager != null, "Spawn Manager is null");
+        spawnManager.enemies = enemyArray;
+        StartCoroutine(spawnManager.SpawnRandom(100, 0, 7, 2.0f));
     }
 
     public override void BossEndStage()
     {
-        isSpawning = false;
+        //Debug.Log("Stage 1 End");
+        bossManager.NextStage();
+    }
+    IEnumerator seconds()
+    {
+        yield return new WaitForSeconds(1);
+        BossEndStage();
     }
 
-    public IEnumerator Spawning()
-    {
-        while (isSpawning)
-        {
-            if (spawnPoints <= 0)
-                isSpawning = false;
-            int spawnIndex = Random.Range(0, SpawnWave.Count - 1);
-            spawnPoints -= spawnIndex;
-            var enemy = Instantiate(SpawnWave[spawnIndex]);
-            enemy.transform.SetParent(enemiesGameObject.transform);
-        }
-        yield return null;
-    }
 }

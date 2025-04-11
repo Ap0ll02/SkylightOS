@@ -13,20 +13,24 @@ public abstract class AbstractEnemy : MonoBehaviour
     public int maxHealth;
     public int damage;
     public float speed;
+    public float originalSpeed;
     #endregion enemystats
     public int currentPosition = 0;
     public NavigationManager navi;
     public Vector3 nextWaypoint;
     public Animator animator;
+    private bool hasBeenSlowed;
+    private Coroutine slowdownCoroutine;
     public event Action<GameObject> EnemyDeath;
 
     // private UnityEvent EnemyDeath; Currently unneeded
-    public virtual void TakeDamage(int damage)
+    public virtual void TakeDamage(int damage, float time = 0, float percentage = 0 )
     {
         currentHealth -= damage;
-        Debug.Log("Health: " + currentHealth + "Minus Damage: " + damage);
         if (currentHealth <= 0)
             Death();
+        if (percentage > 0)
+            HandleSlowdown(time, percentage);
     }
 
     public virtual void Move()
@@ -68,5 +72,33 @@ public abstract class AbstractEnemy : MonoBehaviour
         EnemyDeath?.Invoke(gameObject);
         Destroy(gameObject);
     }
-    //public abstract void SlowDownHit(int damage = 0, float percent = 1, float duration = 0);
+
+    public void HandleSlowdown(float time, float percentage)
+    {
+        bool isGreaterDebuff = (speed * (1 - percentage)) > speed;
+        if (hasBeenSlowed && isGreaterDebuff)
+        {
+            speed = originalSpeed * (1-percentage);
+            StopCoroutine(slowdownCoroutine);
+            slowdownCoroutine = StartCoroutine(slowdown(time));
+        }
+        else if (hasBeenSlowed)
+        {
+            StopCoroutine(slowdownCoroutine);
+            slowdownCoroutine = StartCoroutine(slowdown(time));
+        }
+        else
+        {
+            hasBeenSlowed = true;
+            originalSpeed = speed;
+            speed = originalSpeed * (1-percentage);
+            StartCoroutine(slowdown(time));
+        }
+    }
+    public IEnumerator slowdown(float time)
+    {
+        yield return new WaitForSeconds(time);
+        hasBeenSlowed = false;
+        speed = originalSpeed;
+    }
 }

@@ -14,6 +14,7 @@ public abstract class BossManager : MonoBehaviour
     // This will start the next stage of the boss fight
      public void NextStage()
      {
+         Debug.Log("currentBossStageIndex = " + currentBossStageIndex);
          if (currentBossStageIndex >= bossStagePrefabs.Length)
          {
              Debug.Log("Boss is done");
@@ -26,8 +27,8 @@ public abstract class BossManager : MonoBehaviour
          // we capture a reference to the Boss stage we are currently working with
          bossStagePrefabs[currentBossStageIndex].SetActive(true);
          var BossStage = bossStagePrefabs[currentBossStageIndex].GetComponent<AbstractBossStage>();
+         // Debug.Log("Boss Stage: " + BossStage);
          // If we still have boss stages we should incremeant there is some helpful debugging logs if you really need it
-         // Debug.Log($"Index {currentBossStageIndex}");
          // Debug.Log($"Boss Stage Length: {bossStagePrefabs.Length}");
          if (currentBossStageIndex < bossStagePrefabs.Length)
          {

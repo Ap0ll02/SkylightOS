@@ -1,6 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
-
+using System;
 public abstract class Tower : MonoBehaviour
 {
     public enum Towers
@@ -38,20 +38,21 @@ public abstract class Tower : MonoBehaviour
         int maxInd = 0;
         // Gather all waypoints within radius
         // We need a tag on the waypoints and a collider to allow for detection by the tower
-        foreach (GameObject en in enemyQueue)
-        {
+        try {
+          foreach (GameObject en in enemyQueue)
+          {
             try {
-
               if (en.GetComponent<AbstractEnemy>().currentPosition > maxInd)
-            {
+              {
                 maxInd = en.GetComponent<AbstractEnemy>().currentPosition;
                 targetEnemy = en;
-            }
-
+              }
             } catch (Exception e) {
               enemyQueue.Remove(en);
             }
-        }
+          }}catch (Exception e) when (e is InvalidOperationException) {
+              break;
+            }
 
         canAttack = true;
         if (targetEnemy == null)

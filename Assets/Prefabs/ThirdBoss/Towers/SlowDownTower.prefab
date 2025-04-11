@@ -119,6 +119,8 @@ MonoBehaviour:
   timeToDamage: 1
   cooldown: 3
   isSpecial: 0
+  effectDuration: 3
+  slowPercent: 50
   level: 0
   costToUpgrade: 1e0000005a000000dc000000
   targetEnemy: {fileID: 0}

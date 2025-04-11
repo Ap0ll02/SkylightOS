@@ -16,11 +16,13 @@ public abstract class Tower : MonoBehaviour
 
     public int damage;
 
-    public float timeToDamage = 1f;
+    public float timeToDamage;
 
     public float cooldown;
 
     public bool isSpecial;
+    public float effectDuration;
+    public float slowPercent;
     protected bool canAttack = true;
     public int level;
 
@@ -38,10 +40,16 @@ public abstract class Tower : MonoBehaviour
         // We need a tag on the waypoints and a collider to allow for detection by the tower
         foreach (GameObject en in enemyQueue)
         {
-            if (en.GetComponent<AbstractEnemy>().currentPosition > maxInd)
+            try {
+
+              if (en.GetComponent<AbstractEnemy>().currentPosition > maxInd)
             {
                 maxInd = en.GetComponent<AbstractEnemy>().currentPosition;
                 targetEnemy = en;
+            }
+
+            } catch (Exception e) {
+              enemyQueue.Remove(en);
             }
         }
 
@@ -92,7 +100,7 @@ public abstract class Tower : MonoBehaviour
 
     public void HitEnemy(GameObject enemy)
     {
-        enemy.GetComponent<AbstractEnemy>().TakeDamage(damage);
+        enemy.GetComponent<AbstractEnemy>().TakeDamage(damage, effectDuration, slowPercent);
     }
 
     public void RemoveEnemy(GameObject enemy)

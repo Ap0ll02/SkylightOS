@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -7,9 +8,11 @@ using UnityEngine;
 ///
 public class BossManager3 : BossManager
 {
-
-    void start()
+    public void Start()
     {
-        this.NextStage();
+        currentBossStageIndex = 0;
+        Debug.Log("Starting Boss Fight");
+        NextStage();
     }
+
 }

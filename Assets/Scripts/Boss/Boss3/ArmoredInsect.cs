@@ -1,7 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Random = UnityEngine.Random;
 public class ArmoredInsect : AbstractEnemy
 {
     public int immunity = 2;
@@ -12,7 +12,7 @@ public class ArmoredInsect : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = 40f;
+        speed = Random.Range(60f, 70f);
         maxHealth = 5;
         currentHealth = maxHealth;
         pointValue = 100;
@@ -45,7 +45,7 @@ public class ArmoredInsect : AbstractEnemy
         animator.SetBool("Dead", true);
         Destroy(this.gameObject);
     }
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(int damage, float time = 0, float precent = 0)
     {
         if (immunity > 0)
         {

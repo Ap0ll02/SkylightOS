@@ -2,7 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+using Random = UnityEngine.Random;
 public class TankInsect : AbstractEnemy
 {
     public int damageNegatedMax;
@@ -12,7 +12,7 @@ public class TankInsect : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = 50f;
+        speed = Random.Range(60f,70f);
         maxHealth = 400;
         currentHealth = maxHealth;
         pointValue = 150;
@@ -25,7 +25,7 @@ public class TankInsect : AbstractEnemy
         Move();
     }
 
-    public override void TakeDamage(int damage)
+    public override void TakeDamage(int damage, float time = 0, float precent = 0)
     {
         // If the bug still has armor to negate damage then we half the damage rounding up
         if (damageNegatedMax > 0)

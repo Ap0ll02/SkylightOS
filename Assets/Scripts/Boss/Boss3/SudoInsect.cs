@@ -14,7 +14,7 @@ public class SudoInsect : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         if(SpawnManager == null)
-            SpawnManager = GameObject.Find("Enemies");
+            SpawnManager = GameObject.Find("SpawnManagerBoss3");
 
         Debug.Assert(animator != null, "Animator is null");
         Debug.Assert(navi != null, "Navigation Manager is null");
@@ -22,7 +22,7 @@ public class SudoInsect : AbstractEnemy
 
         GetNewWaypoint();
 
-        speed = 50f;
+        speed = Random.Range(50f, 60f);
         maxHealth = 5;
         currentHealth = maxHealth;
         pointValue = 100;
@@ -30,7 +30,7 @@ public class SudoInsect : AbstractEnemy
 
         for (int i = 0; i < this.transform.childCount; i++)
         {
-            Debug.Log(this.transform.GetChild(i).gameObject.name);
+            // Debug.Log(this.transform.GetChild(i).gameObject.name);
             Bugs.Add(this.transform.GetChild(i).gameObject);
         }
     }

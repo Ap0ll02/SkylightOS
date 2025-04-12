@@ -85,18 +85,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27951b49213301da6a4f21d9c702ac9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  towerType: 0
+  towerType: 1
   damage: 10
   timeToDamage: 1
   cooldown: 3
   isSpecial: 0
   level: 0
-  costToUpgrade: 000000000000000000000000
+  costToUpgrade: 4b0000008c000000fa000000
   targetEnemy: {fileID: 0}
   enemyQueue: []
   projectilePrefab: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
   projectile: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
-  attackRadius: 10
+  attackRadius: 15
 --- !u!1001 &8154863955547772367
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -29,7 +29,7 @@ public abstract class Tower : MonoBehaviour
 
     public GameObject targetEnemy;
     public List<GameObject> enemyQueue = new();
-
+    public Player playerScript;
     public abstract void Attack();
 
     public GameObject GetTarget()
@@ -52,7 +52,6 @@ public abstract class Tower : MonoBehaviour
             }
             catch (Exception e) when (e is MissingReferenceException)
             {
-                RemoveEnemy(en);
                 continue;
             }
         }
@@ -89,7 +88,7 @@ public abstract class Tower : MonoBehaviour
             {
                 if (other.TryGetComponent<AbstractEnemy>(out AbstractEnemy enemyScript))
                 {
-                    enemyScript.EnemyDeath += RemoveEnemy;
+                    enemyScript.EnemyDeath -= RemoveEnemy;
                 }
 
                 targetEnemy = null;
@@ -107,11 +106,12 @@ public abstract class Tower : MonoBehaviour
 
     public void RemoveEnemy(GameObject enemy)
     {
-        if (enemyQueue.Remove(enemy))
+        if (enemyQueue.Contains(enemy))
         {
-            if (enemy.TryGetComponent<AbstractEnemy>(out AbstractEnemy enemyScript))
+            if (enemy.TryGetComponent<AbstractEnemy>(out AbstractEnemy en))
             {
-                enemyScript.EnemyDeath += RemoveEnemy;
+                playerScript.SetCurrency(playerScript.GetCurrency() + en.reward);
+                _ = enemyQueue.Remove(enemy);
             }
         }
 

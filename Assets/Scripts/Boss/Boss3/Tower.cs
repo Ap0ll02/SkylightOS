@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -28,7 +29,7 @@ public abstract class Tower : MonoBehaviour
 
     public GameObject targetEnemy;
     public List<GameObject> enemyQueue = new();
-
+    public Player playerScript;
     public abstract void Attack();
 
     public GameObject GetTarget()
@@ -38,10 +39,20 @@ public abstract class Tower : MonoBehaviour
         // We need a tag on the waypoints and a collider to allow for detection by the tower
         foreach (GameObject en in enemyQueue)
         {
-            if (en.GetComponent<AbstractEnemy>().currentPosition > maxInd)
+            try
             {
-                maxInd = en.GetComponent<AbstractEnemy>().currentPosition;
-                targetEnemy = en;
+                if (en.TryGetComponent<AbstractEnemy>(out AbstractEnemy enemy))
+                {
+                    if (enemy.currentPosition > maxInd)
+                    {
+                        maxInd = enemy.currentPosition;
+                        targetEnemy = en;
+                    }
+                }
+            }
+            catch (Exception e) when (e is MissingReferenceException)
+            {
+                continue;
             }
         }
 
@@ -61,9 +72,7 @@ public abstract class Tower : MonoBehaviour
             canAttack = true;
             enemyQueue.Add(other.gameObject);
             Debug.Log("Enemy Added To Queue");
-
-            AbstractEnemy enemyScript = other.gameObject.GetComponent<AbstractEnemy>();
-            if (enemyScript != null)
+            if (other.TryGetComponent<AbstractEnemy>(out AbstractEnemy enemyScript))
             {
                 enemyScript.EnemyDeath += RemoveEnemy;
             }
@@ -77,11 +86,11 @@ public abstract class Tower : MonoBehaviour
         {
             if (enemyQueue.Remove(other.gameObject))
             {
-                AbstractEnemy enemyScript = other.gameObject.GetComponent<AbstractEnemy>();
-                if (enemyScript != null)
+                if (other.TryGetComponent<AbstractEnemy>(out AbstractEnemy enemyScript))
                 {
                     enemyScript.EnemyDeath -= RemoveEnemy;
                 }
+
                 targetEnemy = null;
                 _ = GetTarget();
 
@@ -97,12 +106,12 @@ public abstract class Tower : MonoBehaviour
 
     public void RemoveEnemy(GameObject enemy)
     {
-        if (enemyQueue.Remove(enemy))
+        if (enemyQueue.Contains(enemy))
         {
-            AbstractEnemy enemyScript = enemy.GetComponent<AbstractEnemy>();
-            if (enemyScript != null)
+            if (enemy.TryGetComponent<AbstractEnemy>(out AbstractEnemy en))
             {
-                enemyScript.EnemyDeath -= RemoveEnemy;
+                playerScript.SetCurrency(playerScript.GetCurrency() + en.reward);
+                _ = enemyQueue.Remove(enemy);
             }
         }
 

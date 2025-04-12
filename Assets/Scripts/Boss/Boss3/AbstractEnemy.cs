@@ -14,6 +14,9 @@ public abstract class AbstractEnemy : MonoBehaviour
     public int damage;
     public float speed;
     public float originalSpeed;
+
+    // POINTS TO GAIN AFTER ENEMY DEATH
+    public int reward;
     #endregion enemystats
     public int currentPosition = 0;
     public NavigationManager navi;
@@ -24,7 +27,7 @@ public abstract class AbstractEnemy : MonoBehaviour
     public event Action<GameObject> EnemyDeath;
 
     // private UnityEvent EnemyDeath; Currently unneeded
-    public virtual void TakeDamage(int damage, float time = 0, float percentage = 0 )
+    public virtual void TakeDamage(int damage, float time = 0, float percentage = 0)
     {
         currentHealth -= damage;
         if (currentHealth <= 0)
@@ -78,7 +81,7 @@ public abstract class AbstractEnemy : MonoBehaviour
         bool isGreaterDebuff = (speed * (1 - percentage)) > speed;
         if (hasBeenSlowed && isGreaterDebuff)
         {
-            speed = originalSpeed * (1-percentage);
+            speed = originalSpeed * (1 - percentage);
             StopCoroutine(slowdownCoroutine);
             slowdownCoroutine = StartCoroutine(slowdown(time));
         }
@@ -91,10 +94,11 @@ public abstract class AbstractEnemy : MonoBehaviour
         {
             hasBeenSlowed = true;
             originalSpeed = speed;
-            speed = originalSpeed * (1-percentage);
+            speed = originalSpeed * (1 - percentage);
             StartCoroutine(slowdown(time));
         }
     }
+
     public IEnumerator slowdown(float time)
     {
         yield return new WaitForSeconds(time);

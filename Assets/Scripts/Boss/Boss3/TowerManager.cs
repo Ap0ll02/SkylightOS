@@ -58,6 +58,25 @@ public class TowerManager : MonoBehaviour
         Debug.Log("Selected Tower: " + pickedTower);
     }
 
+    public void ChooseTower(string number)
+    {
+        switch (number)
+        {
+            // Fallthrough the cases, as code is identical
+            case "1":
+            case "2":
+            case "3":
+            case "4":
+            case "5":
+                pickedTower = towerPrefabs[int.Parse(number) - 1];
+                break;
+            default:
+                Debug.LogError("Detected Incorrect Input", gameObject);
+                break;
+        }
+        Debug.Log("Selected Tower: " + pickedTower);
+    }
+
     private GameObject hit;
 
     // Handles function calls for ensuring tower can place and creating tower

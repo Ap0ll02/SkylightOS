@@ -55,7 +55,7 @@ public class ArmoredInsect : AbstractEnemy
         else
         {
             // We have the death check in our damage method so we will just reuse it and call the base damage function
-            base.TakeDamage(damage);
+            base.TakeDamage(damage, time, precent);
         }
     }
 }

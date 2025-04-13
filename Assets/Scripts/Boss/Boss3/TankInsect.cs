@@ -30,13 +30,13 @@ public class TankInsect : AbstractEnemy
         // If the bug still has armor to negate damage then we half the damage rounding up
         if (damageNegatedMax > 0)
         {
-            base.TakeDamage(((int)Math.Ceiling(damage * 0.5f)));
+            base.TakeDamage((int)Math.Ceiling(damage * 0.5f),time,precent);
             damageNegatedMax -= damage;
         }
         // Once the max negation damage is reached it takes damage normally
         else
         {
-            base.TakeDamage(damage);
+            base.TakeDamage(damage,time,precent);
         }
     }
 }

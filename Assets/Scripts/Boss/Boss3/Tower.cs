@@ -66,7 +66,11 @@ public abstract class Tower : MonoBehaviour
         {
             LookAtTarget(targetEnemy.transform);
         }
-        catch (Exception e) when (e is NullReferenceException)
+        catch (Exception e)
+            when (e is NullReferenceException
+                || e is UnassignedReferenceException
+                || e is MissingReferenceException
+            )
         {
             return;
         }

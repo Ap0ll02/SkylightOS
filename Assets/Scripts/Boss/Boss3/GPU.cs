@@ -29,7 +29,7 @@ public class GPU : MonoBehaviour
         // Debug.Log("GPU Hit");
         GameObject thingHittingOurGPU = collider.gameObject;
         // Nice! If it's an enemy we should call our DamageCalculation function
-        if (thingHittingOurGPU.CompareTag("tdEnemy"))
+        if (thingHittingOurGPU.CompareTag("tdEnemy") || thingHittingOurGPU.CompareTag("StealthEnemyTD"))
         {
             Debug.Log("We Confirmed Its A Bug");
             DamageCalculation(thingHittingOurGPU);
@@ -70,11 +70,9 @@ public class GPU : MonoBehaviour
     // This function will take the object that collided with our GPU and calculate the damage it will do to our GPU
     public void DamageCalculation(GameObject thingHittingOurGPU)
     {
-        Debug.Log("Some Fucker Hit Our GPU");
         // We cant directly apply the damage... our Ram sticks is technically our health. We also have to deactivate all the ram sticks... So we need a loop for this
         int damage = thingHittingOurGPU.GetComponent<AbstractEnemy>().damage;
         // We will loop for as many times as damage is applied. This will deactivate the equivalent amount of ram sticks
-        Debug.Log("Damage: " + damage);
         while (damage > 0)
         {
             // We don't want to deactivate ram sticks if they don't exist. So we need to sanity check here
@@ -85,14 +83,11 @@ public class GPU : MonoBehaviour
                 Debug.Assert(ramParent != null,
                     "ramParent is null assign the gameobject containing all the ram sticks in the inspector");
                 var ram = ramParent.transform.GetChild(0).gameObject;
-                Debug.Log("ram: " + ram);
                 Debug.Assert(ram != null,
                     "ram is null assign the gameobject containing all the ram sticks in the inspector");
                 ram.SetActive(false);
                 currentRamStick++;
-                Debug.Log("Next Ram Stick: " + currentRamStick);
                 damage--;
-                Debug.Log("Damage Left: " + damage);
             }
             // If we are out of ram end the game... maybe break the loop for good measure who the fuck knows
             else

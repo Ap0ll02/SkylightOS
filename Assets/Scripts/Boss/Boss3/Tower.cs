@@ -32,6 +32,44 @@ public abstract class Tower : MonoBehaviour
     public Player playerScript;
     public abstract void Attack();
 
+    public void LookAtTarget(Transform target)
+    {
+        float speed = 50f * Time.deltaTime;
+        Vector3 direction = target.position - transform.position;
+        direction.y = 0f;
+
+        if (towerType == Towers.AOE)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                targetRotation,
+                -speed
+            );
+        }
+        else if (direction.sqrMagnitude > 0.001f)
+        {
+            Quaternion targetRotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.RotateTowards(
+                transform.rotation,
+                targetRotation,
+                speed
+            );
+        }
+    }
+
+    public void Update()
+    {
+        try
+        {
+            LookAtTarget(targetEnemy.transform);
+        }
+        catch (Exception e) when (e is NullReferenceException)
+        {
+            return;
+        }
+    }
+
     public GameObject GetTarget()
     {
         int maxInd = 0;
@@ -60,10 +98,6 @@ public abstract class Tower : MonoBehaviour
         if (targetEnemy == null)
         {
             canAttack = false;
-        }
-        else
-        {
-            _ = Quaternion.RotateTowards(transform.rotation, targetEnemy.transform.rotation, 7);
         }
         return targetEnemy;
     }

@@ -177,6 +177,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MageTower
       objectReference: {fileID: 0}
+    - target: {fileID: 6061110870057843102, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+      propertyPath: m_Radius
+      value: 18
+      objectReference: {fileID: 0}
     - target: {fileID: 8444291395104816027, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
       propertyPath: m_LocalScale.x
       value: 10
@@ -273,7 +277,7 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   projectilePrefab: {fileID: 2965605986013614288, guid: acddbe30a66a2ad3f9d043498db2a7bc, type: 3}
   projectile: {fileID: 2965605986013614288, guid: acddbe30a66a2ad3f9d043498db2a7bc, type: 3}
-  attackRadius: 15
+  attackRadius: 18
 --- !u!4 &2415233097272226371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8444291395104816027, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}

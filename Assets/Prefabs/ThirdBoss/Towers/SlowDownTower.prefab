@@ -16,6 +16,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SlowDownTower
       objectReference: {fileID: 0}
+    - target: {fileID: 6061110870057843102, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+      propertyPath: m_Radius
+      value: 85
+      objectReference: {fileID: 0}
     - target: {fileID: 8444291395104816027, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
       propertyPath: m_LocalPosition.x
       value: 623.06805
@@ -90,7 +94,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   towerType: 1
-  damage: 10
+  damage: 5
   timeToDamage: 1
   cooldown: 3
   isSpecial: 0
@@ -101,7 +105,7 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   projectilePrefab: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
   projectile: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
-  attackRadius: 15
+  attackRadius: 85
 --- !u!1001 &8154863955547772367
 PrefabInstance:
   m_ObjectHideFlags: 0

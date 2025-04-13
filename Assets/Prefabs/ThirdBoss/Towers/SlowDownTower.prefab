@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1160247174179249896, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5841414768728899615, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
       propertyPath: m_Name
       value: SlowDownTower
@@ -94,6 +98,7 @@ MonoBehaviour:
   costToUpgrade: 4b0000008c000000fa000000
   targetEnemy: {fileID: 0}
   enemyQueue: []
+  playerScript: {fileID: 0}
   projectilePrefab: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
   projectile: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
   attackRadius: 15

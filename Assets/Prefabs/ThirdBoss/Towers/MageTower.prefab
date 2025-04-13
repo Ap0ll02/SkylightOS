@@ -169,6 +169,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1160247174179249896, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5841414768728899615, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
       propertyPath: m_Name
       value: MageTower
@@ -266,6 +270,7 @@ MonoBehaviour:
   costToUpgrade: 64000000fa00000090010000
   targetEnemy: {fileID: 0}
   enemyQueue: []
+  playerScript: {fileID: 0}
   projectilePrefab: {fileID: 2965605986013614288, guid: acddbe30a66a2ad3f9d043498db2a7bc, type: 3}
   projectile: {fileID: 2965605986013614288, guid: acddbe30a66a2ad3f9d043498db2a7bc, type: 3}
   attackRadius: 15

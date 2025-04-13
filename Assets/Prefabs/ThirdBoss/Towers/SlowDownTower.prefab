@@ -119,6 +119,8 @@ MonoBehaviour:
   targetEnemy: {fileID: 0}
   enemyQueue: []
   playerScript: {fileID: 0}
+  duration: 3
+  slowPercent: 0.4
   projectilePrefab: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
   projectile: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
   attackRadius: 85

@@ -30,6 +30,8 @@ public abstract class Tower : MonoBehaviour
     public GameObject targetEnemy;
     public List<GameObject> enemyQueue = new();
     public Player playerScript;
+    public float duration;
+    public float slowPercent;
     public abstract void Attack();
 
     public void LookAtTarget(Transform target)
@@ -139,7 +141,7 @@ public abstract class Tower : MonoBehaviour
 
     public void HitEnemy(GameObject enemy)
     {
-        enemy.GetComponent<AbstractEnemy>().TakeDamage(damage);
+        enemy.GetComponent<AbstractEnemy>().TakeDamage(damage, duration, slowPercent);
     }
 
     public void RemoveEnemy(GameObject enemy)

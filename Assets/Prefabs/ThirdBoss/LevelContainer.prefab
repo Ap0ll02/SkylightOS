@@ -122,6 +122,38 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3831578835716232510}
     m_Modifications:
+    - target: {fileID: 1432799378414618272, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4022845050652822663}
+    - target: {fileID: 1432799378414618272, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863757977203973372, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4022845050652822663}
+    - target: {fileID: 2863757977203973372, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931121255669435681, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4022845050652822663}
+    - target: {fileID: 3931121255669435681, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097557231542680704, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4022845050652822663}
+    - target: {fileID: 5097557231542680704, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
+      objectReference: {fileID: 0}
     - target: {fileID: 6035585231890149365, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -201,6 +233,14 @@ PrefabInstance:
     - target: {fileID: 6035585231890149365, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024476232648685348, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4022845050652822663}
+    - target: {fileID: 8024476232648685348, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
       objectReference: {fileID: 0}
     - target: {fileID: 8024476232648685348, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
@@ -461,6 +501,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1628931661539310924, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
   m_PrefabInstance: {fileID: 3970689355956228185}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4022845050652822663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 58191292285033694, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+  m_PrefabInstance: {fileID: 3970689355956228185}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 088493b0517d5570cba6a0f09ead2d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4129902912257957378
 PrefabInstance:
   m_ObjectHideFlags: 0

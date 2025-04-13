@@ -11,10 +11,11 @@ public class StealthInsect : AbstractEnemy
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
         speed = Random.Range(70f, 90f);
-        maxHealth = 5;
+        maxHealth = 100;
         currentHealth = maxHealth;
         pointValue = 100;
         damage = 1;
+        reward = 6;
     }
 
     public void Update()

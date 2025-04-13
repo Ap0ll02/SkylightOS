@@ -13,10 +13,11 @@ public class ArmoredInsect : AbstractEnemy
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
         speed = Random.Range(60f, 70f);
-        maxHealth = 5;
+        maxHealth = 200;
         currentHealth = maxHealth;
         pointValue = 100;
         damage = 2;
+        reward = 10;
     }
     // Update is called once per frame
     void Update()
@@ -39,12 +40,6 @@ public class ArmoredInsect : AbstractEnemy
         }
     }
 
-    public override void Death()
-    {
-        animator.SetBool("Moving", false);
-        animator.SetBool("Dead", true);
-        Destroy(this.gameObject);
-    }
     public override void TakeDamage(int damage, float time = 0, float precent = 0)
     {
         if (immunity > 0)

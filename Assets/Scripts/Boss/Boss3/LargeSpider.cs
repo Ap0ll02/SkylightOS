@@ -14,6 +14,7 @@ public class LargeSpider : AbstractEnemy
         maxHealth = 15;
         currentHealth = maxHealth;
         pointValue = 300;
+        reward = 25;
     }
     // Update is called once per frame
     void Update()

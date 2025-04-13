@@ -111,7 +111,12 @@ public abstract class Tower : MonoBehaviour
     protected void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision Checking:");
-        if (other.gameObject.CompareTag("tdEnemy") && !enemyQueue.Contains(other.gameObject))
+        if (
+            (
+                other.gameObject.CompareTag("tdEnemy")
+                || (other.gameObject.CompareTag("StealthEnemyTD") && isSpecial)
+            ) && !enemyQueue.Contains(other.gameObject)
+        )
         {
             canAttack = true;
             enemyQueue.Add(other.gameObject);

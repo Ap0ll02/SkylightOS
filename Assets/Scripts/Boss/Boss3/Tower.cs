@@ -61,6 +61,10 @@ public abstract class Tower : MonoBehaviour
         {
             canAttack = false;
         }
+        else
+        {
+            _ = Quaternion.RotateTowards(transform.rotation, targetEnemy.transform.rotation, 7);
+        }
         return targetEnemy;
     }
 
@@ -110,7 +114,7 @@ public abstract class Tower : MonoBehaviour
         {
             if (enemy.TryGetComponent<AbstractEnemy>(out AbstractEnemy en))
             {
-                playerScript.SetCurrency(playerScript.GetCurrency() + en.reward);
+                //playerScript.SetCurrency(playerScript.GetCurrency() + en.reward);
                 _ = enemyQueue.Remove(enemy);
             }
         }

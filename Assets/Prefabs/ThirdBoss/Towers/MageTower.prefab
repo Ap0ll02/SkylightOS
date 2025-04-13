@@ -269,12 +269,14 @@ MonoBehaviour:
   damage: 150
   timeToDamage: 2
   cooldown: 1
-  isSpecial: 0
+  isSpecial: 1
   level: 0
   costToUpgrade: 64000000fa00000090010000
   targetEnemy: {fileID: 0}
   enemyQueue: []
   playerScript: {fileID: 0}
+  duration: 0
+  slowPercent: 0
   projectilePrefab: {fileID: 2965605986013614288, guid: acddbe30a66a2ad3f9d043498db2a7bc, type: 3}
   projectile: {fileID: 2965605986013614288, guid: acddbe30a66a2ad3f9d043498db2a7bc, type: 3}
   attackRadius: 18

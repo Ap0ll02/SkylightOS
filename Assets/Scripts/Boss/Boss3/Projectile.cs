@@ -7,6 +7,7 @@ public class Projectile : MonoBehaviour
     public Vector3 targetPosition;
     protected Vector3 myPosition;
     public float speed;
+    public bool seeStealth;
 
     public void Start()
     {
@@ -19,7 +20,7 @@ public class Projectile : MonoBehaviour
         GameObject temp = tm.GetTarget();
         targetPosition = temp.transform.position;
         myPosition = transform.position;
-
+        seeStealth = tm.isSpecial;
         Debug.Log("Enemy Locked: " + temp);
     }
 
@@ -36,7 +37,10 @@ public class Projectile : MonoBehaviour
     public void OnTriggerEnter(Collider collision)
     {
         Debug.Log("Collision: " + collision.gameObject);
-        if (collision.CompareTag("tdEnemy"))
+        if (
+            collision.CompareTag("tdEnemy")
+            || (seeStealth && collision.CompareTag("StealthEnemyTD"))
+        )
         {
             tm.HitEnemy(collision.gameObject);
         }

@@ -16,7 +16,7 @@ public abstract class AbstractEnemy : MonoBehaviour
     public float originalSpeed;
 
     // POINTS TO GAIN AFTER ENEMY DEATH
-    public int reward;
+    public int reward = 50;
     #endregion enemystats
     public int currentPosition = 0;
     public NavigationManager navi;
@@ -24,6 +24,7 @@ public abstract class AbstractEnemy : MonoBehaviour
     public Animator animator;
     private bool hasBeenSlowed;
     private Coroutine slowdownCoroutine;
+    public Player player;
     public event Action<GameObject> EnemyDeath;
 
     // private UnityEvent EnemyDeath; Currently unneeded
@@ -72,6 +73,9 @@ public abstract class AbstractEnemy : MonoBehaviour
     public virtual void Death()
     {
         // Debug.Log("Hey We Hit The GPU Killing Bug");
+        if(player == null)
+            player = GameObject.Find("PlayerManager").GetComponent<Player>();
+        player.SetCurrency(player.GetCurrency() + reward);
         EnemyDeath?.Invoke(gameObject);
         Destroy(gameObject);
     }

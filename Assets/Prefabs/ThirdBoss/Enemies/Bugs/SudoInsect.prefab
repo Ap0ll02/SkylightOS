@@ -129,10 +129,13 @@ MonoBehaviour:
   maxHealth: 0
   damage: 0
   speed: 0
+  originalSpeed: 0
+  reward: 50
   currentPosition: 0
   navi: {fileID: 0}
   nextWaypoint: {x: 0, y: 0, z: 0}
   animator: {fileID: 3192174412515539849}
+  player: {fileID: 0}
   isAlive: 1
   SpawnManager: {fileID: 0}
 --- !u!65 &2731911827411577636

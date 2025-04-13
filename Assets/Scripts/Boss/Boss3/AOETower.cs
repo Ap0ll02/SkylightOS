@@ -8,6 +8,7 @@ public class AOETower : Tower
     private SphereCollider mySphere;
     public Coroutine ActivateTower;
     public int attackRadius;
+    public Animation animation;
 
     public void Start()
     {

@@ -104,10 +104,13 @@ MonoBehaviour:
   maxHealth: 0
   damage: 0
   speed: 0
+  originalSpeed: 0
+  reward: 0
   currentPosition: 0
   navi: {fileID: 0}
   nextWaypoint: {x: 0, y: 0, z: 0}
   animator: {fileID: 6940314662792605583}
+  player: {fileID: 0}
 --- !u!95 &6940314662792605583
 Animator:
   serializedVersion: 5

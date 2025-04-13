@@ -27,7 +27,7 @@ public class SudoInsect : AbstractEnemy
         currentHealth = maxHealth;
         pointValue = 100;
         damage = 2;
-
+        reward = 30;
         for (int i = 0; i < this.transform.childCount; i++)
         {
             // Debug.Log(this.transform.GetChild(i).gameObject.name);

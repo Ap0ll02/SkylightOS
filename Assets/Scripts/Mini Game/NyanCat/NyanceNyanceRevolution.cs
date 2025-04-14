@@ -155,6 +155,12 @@ public class NyanceNyanceRevolution : MonoBehaviour
         NorthStar = GameObject.Find("Northstar");
         northstar = NorthStar.GetComponent<Northstar>();
         //canvas = GameObject.Find("BossCanvas");
+        //StageOne();
+    }
+
+
+    public void StartNyanceNyanceRevolution()
+    {
         StageOne();
     }
 
@@ -185,28 +191,60 @@ public class NyanceNyanceRevolution : MonoBehaviour
     public void StageOne()
     {
         Stage = 1;
-        northstar.WriteHint("Oh no... this is not good!!! You have to stop him",Northstar.Style.warm,true);
+        northstar.WriteHint("Oh no... this is not good!!! You have to stop him", Northstar.Style.warm, true);
+
+        // Ensure canvas is assigned
+        if (canvas == null)
+        {
+            Debug.LogError("Canvas is not assigned.");
+            return;
+        }
+
+        // Instantiate bossTextPrefab and assign to bossText
         bossText = Instantiate(bossTextPrefab, canvas.transform);
-        if(bossText == null)
-            Debug.LogError("Cant instantiate bossText");
+        if (bossText == null)
+        {
+            Debug.LogError("Can't instantiate bossText");
+            return;
+        }
+
+        // Instantiate nyanCatIdlePrefab and assign to nyanCatIdle
         if (nyanCatIdle == null)
             nyanCatIdle = Instantiate(nyanCatIdlePrefab);
-        if(nyanCatIdle == null)
-            Debug.LogError("cant instantiate NyanCatIdle");
+        if (nyanCatIdle == null)
+        {
+            Debug.LogError("Can't instantiate NyanCatIdle");
+            return;
+        }
+
+        // Get TextAnimator_TMP component from bossText
         text = bossText.GetComponent<TextAnimator_TMP>();
         if (text == null)
-            Debug.Log("put the text box prefab on NyanCatBossFight Prefab");
+        {
+            Debug.LogError("TextAnimator_TMP component is not assigned or missing on bossText");
+            return;
+        }
+
+        // Instantiate textBoxPrefab and assign to textBox
         textBox = Instantiate(textBoxPrefab);
         if (textBox == null)
-            Debug.LogError("Cant instantiate textBox");
+        {
+            Debug.LogError("Can't instantiate textBox");
+            return;
+        }
+
+        // Get TypewriterByCharacter component from bossText
         if (typewriter == null)
         {
             typewriter = bossText.GetComponent<TypewriterByCharacter>();
             if (typewriter == null)
             {
-                Debug.LogError("TypewriterByCharacter component is not assigned or missing, put it on Dialogue object!");
+                Debug.LogError("TypewriterByCharacter component is not assigned or missing on bossText");
+                return;
             }
         }
+
+        // Start the dialogue coroutine
         StartCoroutine(playDialogue());
     }
 
@@ -745,26 +783,40 @@ public class NyanceNyanceRevolution : MonoBehaviour
 
     }
     // Create a coroutine that will be used to itterate through each dialogue line 
-    
+
     IEnumerator playDialogue()
     {
         dialogueLines = new string[] { textOne, textTwo, textThree, textFour, textFive };
+
+        // Ensure typewriter is assigned
+        if (typewriter == null)
+        {
+            Debug.LogError("TypewriterByCharacter component is not assigned.");
+            yield break;
+        }
+
         // Go into each string in the dialogueLines array
         foreach (var line in dialogueLines)
         {
-            // check if the line in the array is null 
+            // Check if the line in the array is null
             if (line != null)
             {
-                // Have our typewriter start typing our each word
+                // Log the line being processed
+                Debug.Log("Processing line: " + line);
+
+                // Have our typewriter start typing out each word
                 typewriter.ShowText(line);
-                // This function will continue and wait until the type writer is done showing text
-                // It is asking its self are we still typing? if so continue the function
-                // once it reaches the end it will return false and break our statement 
-                yield return new WaitUntil(()=> typewriter.isShowingText == false);
+
+                // This function will continue and wait until the typewriter is done showing text
+                // It is asking itself if it is still typing; if so, continue the function
+                // Once it reaches the end, it will return false and break our statement
+                yield return new WaitUntil(() => typewriter.isShowingText == false);
+
                 // We then wait for a couple of seconds before loading in the next string
                 yield return new WaitForSeconds(0.5f);
             }
         }
+
         // Start stage two after the end of stage one
         StageTwo();
     }

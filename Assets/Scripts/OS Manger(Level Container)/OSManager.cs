@@ -17,6 +17,9 @@ public class OSManager : MonoBehaviour
     // List to hold the tasks
     private List<AbstractManager> hazards;
 
+    // Reference to the boss task
+    public AbstractBossTask bossTask;
+
     // Reference to the button prefab
     [SerializeField] public GameObject buttonPrefab;
 
@@ -28,9 +31,6 @@ public class OSManager : MonoBehaviour
 
     // List to hold the task buttons
     private List<Button> taskButtons = new List<Button>();
-
-    // Reference to the boss task
-    [SerializeField] public AbstractBossTask bossTask;
 
     // Reference to boss task button (temporary)
     [SerializeField] public Button bossTaskButton;
@@ -57,6 +57,7 @@ public class OSManager : MonoBehaviour
     void Awake()
     {
         window = GetComponent<BasicWindow>();
+        difficulty = (Difficulty)SaveLoad.GameDifficulty;
         if (tasksContainer != null)
         {
             tasks = GetTasksFromContainer(tasksContainer);
@@ -113,15 +114,11 @@ public class OSManager : MonoBehaviour
     {
         if (bossTask == null)
         {
-            Debug.LogError("Boss task is null, you need to set the boss task");
+            Debug.LogError("Boss task is null - so no boss fight will be started");
             return;
         }
         currentTask = bossTask;
-        bossTask.gameObject.SetActive(true);
         bossTask.startTask();
-
-        // Disable the boss task button
-        bossTaskButton.interactable = false;
     }
 
     // Method to finish a task based on an index
@@ -149,7 +146,7 @@ public class OSManager : MonoBehaviour
             // Check if all tasks are complete
             if (AllTasksComplete())
             {
-                CreateBossTaskButton();
+                StartBossTask();
             }
         }
     }
@@ -174,17 +171,6 @@ public class OSManager : MonoBehaviour
             Button buttonComponent = taskObjectPrefab.GetComponentInChildren<Button>();
             taskButtons.Add(buttonComponent);
         }
-    }
-
-    // Method to create the boss task button
-    void CreateBossTaskButton()
-    {
-        bossTaskButton.gameObject.SetActive(true);
-
-        // Add the button to the list of task buttons
-        //bossTaskButton = bossButton.GetComponentInChildren<Button>();
-        //bossTaskButton.onClick.AddListener(StartBossTask);
-        //bossTaskButton.interactable = true;
     }
 
     // Method to check if all tasks are complete

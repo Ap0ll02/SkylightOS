@@ -174,6 +174,15 @@ public class TowerManager : MonoBehaviour
         )
         {
             Transaction(tower.GetComponent<Tower>().level + 1);
+            if (!tower.GetComponent<Tower>().UpgradeTower())
+            {
+                player.SetCurrency(
+                    player.GetCurrency()
+                        + tower.GetComponent<Tower>().costToUpgrade[
+                            tower.GetComponent<Tower>().level
+                        ]
+                );
+            }
         }
     }
 }

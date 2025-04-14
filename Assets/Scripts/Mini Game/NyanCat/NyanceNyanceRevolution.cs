@@ -199,6 +199,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
             Debug.LogError("Canvas is not assigned.");
             return;
         }
+        canvas.SetActive(true);
 
         // Instantiate bossTextPrefab and assign to bossText
         bossText = Instantiate(bossTextPrefab, canvas.transform);

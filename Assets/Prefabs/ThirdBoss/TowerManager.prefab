@@ -59,6 +59,9 @@ MonoBehaviour:
   placeableList: []
   parentBlock: {fileID: 0}
   PlayerTowers: []
+  towerLayer:
+    serializedVersion: 2
+    m_Bits: 32768
 --- !u!114 &7798512533513046529
 MonoBehaviour:
   m_ObjectHideFlags: 0

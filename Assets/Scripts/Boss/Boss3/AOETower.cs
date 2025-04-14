@@ -5,16 +5,21 @@ public class AOETower : Tower
 {
     public GameObject projectilePrefab;
     public GameObject projectile;
-    private SphereCollider mySphere;
     public Coroutine ActivateTower;
-    public int attackRadius;
     public Animation animation;
 
-    public void Start()
+    public new void Start()
     {
-        mySphere = GetComponent<SphereCollider>();
-        mySphere.radius = attackRadius;
+        base.Start();
         ActivateTower = StartCoroutine(ActiveTower());
+
+        // ========= Tower Upgrade Lists =========
+        damages = new int[3] { 280, 500, 950 };
+        timesToDamage = new float[] { 4, 3, 2 };
+        cooldowns = new float[] { 4, 3.25f, 2f };
+        isSpecials = new bool[] { true, true, true };
+        radii = new float[] { 32, 37, 42 };
+        // =======================================
     }
 
     public IEnumerator ActiveTower()

@@ -5,25 +5,23 @@ public class BasicTower : Tower
 {
     public GameObject projectilePrefab;
     public GameObject projectile;
-    private SphereCollider mySphere;
     public Coroutine ActivateTower;
-    public int attackRadius;
 
     // TODO: Change array stats for all tower types
     // UpdateLevel Function To Change Stats To New Ones
     // Including activation of TowerTwo and Three Objects
-    public void Start()
+    public new void Start()
     {
-        mySphere = GetComponent<SphereCollider>();
-        mySphere.radius = attackRadius;
+        base.Start();
         ActivateTower = StartCoroutine(ActiveTower());
 
-        // ========= Tower Upgrade Lists ==================
+        // ========= Tower Upgrade Lists =========
         damages = new int[3] { 35, 60, 100 };
         timesToDamage = new float[] { 1, 1, 1 };
         cooldowns = new float[] { 2, 1, 0.75f };
         isSpecials = new bool[] { false, false, true };
         radii = new float[] { attackRadius, 12, 17 };
+        // =======================================
     }
 
     public IEnumerator ActiveTower()

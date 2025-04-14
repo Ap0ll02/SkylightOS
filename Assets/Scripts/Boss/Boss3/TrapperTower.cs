@@ -5,15 +5,19 @@ public class TrapperTower : Tower
 {
     public GameObject projectilePrefab;
     public GameObject projectile;
-    private SphereCollider mySphere;
     public Coroutine ActivateTower;
-    public int attackRadius;
 
-    public void Start()
+    public new void Start()
     {
-        mySphere = GetComponent<SphereCollider>();
-        mySphere.radius = attackRadius;
+        base.Start();
         ActivateTower = StartCoroutine(ActiveTower());
+        // ========= Tower Upgrade Lists =========
+        damages = new int[3] { 150, 400, 1000 };
+        timesToDamage = new float[] { 1, 1, 1 };
+        cooldowns = new float[] { 8, 6, 3.5f };
+        isSpecials = new bool[] { false, true, true };
+        radii = new float[] { 20, 28, 40 };
+        // =======================================
     }
 
     public override void Attack()

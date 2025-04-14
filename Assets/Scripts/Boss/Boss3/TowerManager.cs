@@ -21,6 +21,7 @@ public class TowerManager : MonoBehaviour
     public GameObject parentBlock;
     public List<GameObject> PlayerTowers = new();
     private Player player;
+    public LayerMask towerLayer;
 
     public void Start()
     {
@@ -104,9 +105,9 @@ public class TowerManager : MonoBehaviour
         }
     }
 
-    private void Transaction()
+    private void Transaction(int level = 0)
     {
-        player.SetCurrency(player.GetCurrency() - pickedTower.costToUpgrade[0]);
+        player.SetCurrency(player.GetCurrency() - pickedTower.costToUpgrade[level]);
         Debug.Assert(player.GetCurrency() >= 0, "Transaction completed with an invalid balance.");
     }
 
@@ -127,6 +128,16 @@ public class TowerManager : MonoBehaviour
             //  "BUT THIS IS THE WRONG LAYER YOU MORON HOW DARE YOU COLLIDE!"
             //);
             hitObject.layer = LayerMask.NameToLayer("TowerUpgrade");
+            return true;
+        }
+        else if (Physics.Raycast(ray, out RaycastHit hitI, maxDistance, towerLayer))
+        {
+            hitObject = hitI.collider.gameObject;
+            // TODO: Add UI To Confirm Tower
+            Debug.Log("Bring Up UI To Confirm");
+
+            // Remove: As soon as UI Is Done
+            UpgradeTower(hitObject);
             return true;
         }
         else
@@ -153,5 +164,16 @@ public class TowerManager : MonoBehaviour
         pt.position += new Vector3(0, 11, 0);
 
         PlayerTowers[^1].GetComponent<Tower>().level = 1;
+    }
+
+    public void UpgradeTower(GameObject tower)
+    {
+        if (
+            player.GetCurrency()
+            > tower.GetComponent<Tower>().costToUpgrade[tower.GetComponent<Tower>().level + 1]
+        )
+        {
+            Transaction(tower.GetComponent<Tower>().level + 1);
+        }
     }
 }

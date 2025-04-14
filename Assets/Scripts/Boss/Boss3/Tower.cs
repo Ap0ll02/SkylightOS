@@ -13,15 +13,23 @@ public abstract class Tower : MonoBehaviour
         Trapper,
     }
 
+    #region UpgradeLists
+    public int[] damages;
+    public float[] timesToDamage;
+    public float[] cooldowns;
+    public bool[] isSpecials;
+    public float[] radii;
+    #endregion UpgradeLists
     public Towers towerType;
 
     public int damage;
 
-    public float timeToDamage = 1f;
+    public float timeToDamage;
 
     public float cooldown;
 
     public bool isSpecial;
+
     protected bool canAttack = true;
     public int level;
 

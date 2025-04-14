@@ -22,6 +22,7 @@ public class Projectile : MonoBehaviour
         myPosition = transform.position;
         seeStealth = tm.isSpecial;
         Debug.Log("Enemy Locked: " + temp);
+        transform.SetParent(null, true);
     }
 
     public void Update()

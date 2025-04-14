@@ -1251,6 +1251,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d223aa434d3b17ad85691e85f5d8159, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  damages: 230000003c00000050000000
+  timesToDamage: []
+  cooldowns: []
+  isSpecials: 
   towerType: 0
   damage: 35
   timeToDamage: 1
@@ -1261,6 +1265,8 @@ MonoBehaviour:
   targetEnemy: {fileID: 0}
   enemyQueue: []
   playerScript: {fileID: 0}
+  duration: 0
+  slowPercent: 0
   projectilePrefab: {fileID: 1303165563935883397, guid: a388c8387a3f2156d986e32238eea421, type: 3}
   projectile: {fileID: 1303165563935883397, guid: a388c8387a3f2156d986e32238eea421, type: 3}
   attackRadius: 8

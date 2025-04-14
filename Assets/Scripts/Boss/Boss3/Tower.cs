@@ -13,15 +13,28 @@ public abstract class Tower : MonoBehaviour
         Trapper,
     }
 
-    public Towers towerType;
+    #region UpgradeLists
+    public int[] damages;
+    public float[] timesToDamage;
+    public float[] cooldowns;
+    public bool[] isSpecials;
+    public float[] radii;
+    public float[] durations;
+    public float[] slowDowns;
+    #endregion UpgradeLists
 
+    public float attackRadius;
+    public SphereCollider mySphere;
+    public Towers towerType;
+    public List<GameObject> towerDesigns;
     public int damage;
 
-    public float timeToDamage = 1f;
+    public float timeToDamage;
 
     public float cooldown;
 
     public bool isSpecial;
+
     protected bool canAttack = true;
     public int level;
 
@@ -33,6 +46,12 @@ public abstract class Tower : MonoBehaviour
     public float duration;
     public float slowPercent;
     public abstract void Attack();
+
+    public void Start()
+    {
+        mySphere = GetComponent<SphereCollider>();
+        mySphere.radius = attackRadius;
+    }
 
     public void LookAtTarget(Transform target)
     {
@@ -111,7 +130,12 @@ public abstract class Tower : MonoBehaviour
     protected void OnTriggerEnter(Collider other)
     {
         Debug.Log("Collision Checking:");
-        if (other.gameObject.CompareTag("tdEnemy") && !enemyQueue.Contains(other.gameObject))
+        if (
+            (
+                other.gameObject.CompareTag("tdEnemy")
+                || (other.gameObject.CompareTag("StealthEnemyTD") && isSpecial)
+            ) && !enemyQueue.Contains(other.gameObject)
+        )
         {
             canAttack = true;
             enemyQueue.Add(other.gameObject);
@@ -161,5 +185,41 @@ public abstract class Tower : MonoBehaviour
 
         targetEnemy = null;
         _ = GetTarget();
+    }
+
+    public bool UpgradeTower()
+    {
+        // Ensure tower is appropriate level
+        if (level == 3)
+        {
+            Debug.Log("Cannot Upgrade Past Level 3");
+            return false;
+        }
+
+        // Fix all standard attributes
+        damage = damages[level];
+        attackRadius = radii[level];
+        cooldown = cooldowns[level];
+        isSpecial = isSpecials[level];
+        timeToDamage = timesToDamage[level];
+        duration = durations[level];
+
+        // Slowdown Stuff
+        if (towerType == Towers.SlowDown)
+        {
+            slowPercent = slowDowns[level];
+        }
+
+        // Tower Look Update
+        int i = 1;
+        foreach (GameObject t in towerDesigns)
+        {
+            t.SetActive(false);
+            if (i == level)
+            {
+                t.SetActive(true);
+            }
+        }
+        return true;
     }
 }

@@ -5,15 +5,18 @@ public class MageTower : Tower
 {
     public GameObject projectilePrefab;
     public GameObject projectile;
-    private SphereCollider mySphere;
     public Coroutine ActivateTower;
-    public int attackRadius;
 
-    public void Start()
+    public new void Start()
     {
-        mySphere = GetComponent<SphereCollider>();
-        mySphere.radius = attackRadius;
-        ActivateTower = StartCoroutine(ActiveTower());
+        base.Start();
+        // ========= Tower Upgrade Lists =========
+        damages = new int[3] { 100, 200, 400 };
+        timesToDamage = new float[] { 2, 1.5f, 1 };
+        cooldowns = new float[] { 2, 1.5f, 1.15f };
+        isSpecials = new bool[] { true, true, true };
+        radii = new float[] { 18, 20, 23 };
+        // =======================================
     }
 
     public IEnumerator ActiveTower()

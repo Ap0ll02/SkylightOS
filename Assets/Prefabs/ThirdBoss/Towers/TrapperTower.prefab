@@ -4178,6 +4178,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 8209163948427490728}
   m_SourcePrefab: {fileID: 100100000, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+--- !u!1 &686081490518113136 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6018868195514984706, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+  m_PrefabInstance: {fileID: 6485785751221719666}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &797977227451093613 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5841414768728899615, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
@@ -4202,6 +4207,7 @@ MonoBehaviour:
   radii: []
   durations: []
   slowDowns: []
+  postProcessObj: {fileID: 686081490518113136}
   attackRadius: 20
   mySphere: {fileID: 0}
   towerType: 4

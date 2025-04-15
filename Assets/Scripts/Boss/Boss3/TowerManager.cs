@@ -25,10 +25,26 @@ public class TowerManager : MonoBehaviour
     public GameObject upgradeUIPrefab;
     public GameObject towerHit;
 
+    public List<TMPro.TMP_Text> towerTexts;
+
     public void Start()
     {
+        List<Tower.Towers> types = new()
+        {
+            Tower.Towers.AOE,
+            Tower.Towers.Basic,
+            Tower.Towers.Mage,
+            Tower.Towers.SlowDown,
+            Tower.Towers.Trapper,
+        };
         pickedTower = towerPrefabs[0];
         player = FindObjectOfType<Player>().GetComponent<Player>();
+        int i = 0;
+        foreach (TMPro.TMP_Text t in towerTexts)
+        {
+            t.text = types[i].ToString() + "\nCost: ";
+            i++;
+        }
     }
 
     // Left click, or attack keybind callback function
@@ -142,11 +158,8 @@ public class TowerManager : MonoBehaviour
             }
 
             towerHit = hitObject;
-            Vector3 offset = new(0, 2f, 0);
-            GameObject ui = Instantiate(upgradeUIPrefab);
-            ui.transform.position = hitObject.transform.position + offset;
-            ui.transform.LookAt(Camera.main.transform);
-
+            towerHit.GetComponent<Tower>().Glow(true);
+            PromptUpgrade(towerHit.GetComponent<Tower>().towerType);
             return true;
         }
         else
@@ -154,6 +167,55 @@ public class TowerManager : MonoBehaviour
             Debug.Log("Raycast: Failed");
             hitObject = null;
             return false;
+        }
+    }
+
+    public void PromptUpgrade(Tower.Towers type)
+    {
+        int level = towerHit.GetComponent<Tower>().level;
+        switch (type)
+        {
+            case Tower.Towers.AOE:
+                towerTexts[0].text =
+                    "AOE Upgrade"
+                    + "\n"
+                    + towerHit.GetComponent<Tower>().costToUpgrade[level]
+                    + " Points";
+                break;
+
+            case Tower.Towers.Basic:
+                towerTexts[1].text =
+                    "Basic Upgrade"
+                    + "\n"
+                    + towerHit.GetComponent<Tower>().costToUpgrade[level]
+                    + " Points";
+                break;
+
+            case Tower.Towers.Mage:
+                towerTexts[2].text =
+                    "Mage Upgrade"
+                    + "\n"
+                    + towerHit.GetComponent<Tower>().costToUpgrade[level]
+                    + " Points";
+                break;
+
+            case Tower.Towers.SlowDown:
+                towerTexts[3].text =
+                    "SlowDown Upgrade"
+                    + "\n"
+                    + towerHit.GetComponent<Tower>().costToUpgrade[level]
+                    + " Points";
+                break;
+
+            case Tower.Towers.Trapper:
+                towerTexts[4].text =
+                    "Trapper Upgrade"
+                    + "\n"
+                    + towerHit.GetComponent<Tower>().costToUpgrade[level]
+                    + " Points";
+                break;
+            default:
+                break;
         }
     }
 

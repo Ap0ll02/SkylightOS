@@ -22,7 +22,7 @@ public abstract class Tower : MonoBehaviour
     public float[] durations;
     public float[] slowDowns;
     #endregion UpgradeLists
-
+    public GameObject postProcessObj;
     public float attackRadius;
     public SphereCollider mySphere;
     public Towers towerType;
@@ -222,5 +222,17 @@ public abstract class Tower : MonoBehaviour
             i++;
         }
         return true;
+    }
+
+    public void Glow(bool on)
+    {
+        if (on)
+        {
+            postProcessObj.SetActive(true);
+        }
+        else
+        {
+            postProcessObj.SetActive(false);
+        }
     }
 }

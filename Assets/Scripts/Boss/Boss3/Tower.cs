@@ -219,6 +219,7 @@ public abstract class Tower : MonoBehaviour
             {
                 t.SetActive(true);
             }
+            i++;
         }
         return true;
     }

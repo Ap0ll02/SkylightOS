@@ -7,9 +7,6 @@ public class BasicTower : Tower
     public GameObject projectile;
     public Coroutine ActivateTower;
 
-    // TODO: Change array stats for all tower types
-    // UpdateLevel Function To Change Stats To New Ones
-    // Including activation of TowerTwo and Three Objects
     public new void Start()
     {
         base.Start();

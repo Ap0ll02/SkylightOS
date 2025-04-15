@@ -142,11 +142,8 @@ public class TowerManager : MonoBehaviour
             }
 
             towerHit = hitObject;
-            Vector3 offset = new(0, 2f, 0);
-            GameObject ui = Instantiate(upgradeUIPrefab);
-            ui.transform.position = hitObject.transform.position + offset;
-            ui.transform.LookAt(Camera.main.transform);
-
+            towerHit.GetComponent<Tower>().Glow(true);
+            PromptUpgrade(towerHit.GetComponent<Tower>().towerType);
             return true;
         }
         else
@@ -154,6 +151,28 @@ public class TowerManager : MonoBehaviour
             Debug.Log("Raycast: Failed");
             hitObject = null;
             return false;
+        }
+    }
+
+    public void PromptUpgrade(Tower.Towers type)
+    {
+        switch (type)
+        {
+            case Tower.Towers.AOE:
+
+                break;
+
+            case Tower.Towers.Basic:
+                break;
+
+            case Tower.Towers.Mage:
+                break;
+
+            case Tower.Towers.SlowDown:
+                break;
+
+            case Tower.Towers.Trapper:
+                break;
         }
     }
 

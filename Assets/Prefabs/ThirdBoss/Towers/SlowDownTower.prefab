@@ -81,6 +81,37 @@ Transform:
   - {fileID: 8858923548810608865}
   m_Father: {fileID: 6115984796564732937}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7027073410628958621
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819268132916360872}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1819268132916360872
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7027073410628958621}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6115984796564732937}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8041622105834189095
 GameObject:
   m_ObjectHideFlags: 0
@@ -798,6 +829,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8444291395104816027, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6241896258997459276}
+    - targetCorrespondingSourceObject: {fileID: 8444291395104816027, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1819268132916360872}
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 5841414768728899615, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
       insertIndex: -1
@@ -832,6 +866,7 @@ MonoBehaviour:
   radii: []
   durations: []
   slowDowns: []
+  postProcessObj: {fileID: 8239090535426633360}
   attackRadius: 85
   mySphere: {fileID: 0}
   towerType: 1
@@ -852,6 +887,11 @@ MonoBehaviour:
   slowPercent: 0.4
   projectilePrefab: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
   projectile: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
+--- !u!1 &8239090535426633360 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6018868195514984706, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+  m_PrefabInstance: {fileID: 2436572246596257682}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3089319405212804551
 PrefabInstance:
   m_ObjectHideFlags: 0

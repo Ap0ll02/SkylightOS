@@ -487,9 +487,93 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 934.3448
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 592.9188
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 551
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9481574
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.31780112
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1052
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 422
+      objectReference: {fileID: 0}
+    - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 37.06
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424240661130626640, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0.7628784
+      objectReference: {fileID: 0}
+    - target: {fileID: 4424240661130626640, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.68481445
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661779124287282208, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_RenderMode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661779124287282208, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_SortingOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5661779124287282208, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -329097359
+      objectReference: {fileID: 0}
     - target: {fileID: 8375388993248038174, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_Name
       value: TowerManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9141585284899164101, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

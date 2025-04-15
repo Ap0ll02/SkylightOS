@@ -133,11 +133,17 @@ public class TowerManager : MonoBehaviour
         else if (Physics.Raycast(ray, out RaycastHit hitI, maxDistance, towerLayer))
         {
             hitObject = hitI.collider.gameObject;
+
+            if (!PlayerTowers.Contains(hitI.collider.gameObject))
+            {
+                return false;
+            }
+
             // TODO: Add UI To Confirm Tower
             Debug.Log("Bring Up UI To Confirm");
 
             // Remove: As soon as UI Is Done
-            UpgradeTower(hitObject);
+            UpgradeHitTower(hitObject);
             return true;
         }
         else
@@ -166,14 +172,22 @@ public class TowerManager : MonoBehaviour
         PlayerTowers[^1].GetComponent<Tower>().level = 1;
     }
 
-    public void UpgradeTower(GameObject tower)
+    public void UpgradeHitTower(GameObject tower)
     {
         if (
             player.GetCurrency()
             > tower.GetComponent<Tower>().costToUpgrade[tower.GetComponent<Tower>().level + 1]
         )
         {
+            // ------ Transaction and Upgrade ------
             Transaction(tower.GetComponent<Tower>().level + 1);
+            int tLevel = tower.GetComponent<Tower>().level;
+            if (tLevel >= 3)
+            {
+                return;
+            }
+            tower.GetComponent<Tower>().level += 1;
+
             if (!tower.GetComponent<Tower>().UpgradeTower())
             {
                 player.SetCurrency(
@@ -184,5 +198,6 @@ public class TowerManager : MonoBehaviour
                 );
             }
         }
+        Debug.Log("Attempted to upgrade tower");
     }
 }

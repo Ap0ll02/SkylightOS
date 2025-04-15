@@ -685,6 +685,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 8808227247431647528, guid: 776a57d0d8d0a8a47a65e16f1e4dccd4, type: 3}
   m_PrefabInstance: {fileID: 7128839982767264273}
   m_PrefabAsset: {fileID: 0}
+--- !u!95 &5285493012221598755 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 3150107228669136434, guid: 776a57d0d8d0a8a47a65e16f1e4dccd4, type: 3}
+  m_PrefabInstance: {fileID: 7128839982767264273}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &7440337371320524917
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1001,4 +1006,5 @@ MonoBehaviour:
   slowPercent: 0
   projectilePrefab: {fileID: 4026556322839833814, guid: 63b8c40622e214ceda5e9f1220482feb, type: 3}
   projectile: {fileID: 4026556322839833814, guid: 63b8c40622e214ceda5e9f1220482feb, type: 3}
-  animation: {fileID: 0}
+  attackRadius: 32
+  animator: {fileID: 5285493012221598755}

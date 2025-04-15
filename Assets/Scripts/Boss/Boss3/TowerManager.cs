@@ -168,24 +168,27 @@ public class TowerManager : MonoBehaviour
         // Centering and raising the tower
         pt.position = prend.bounds.center;
         pt.position += new Vector3(0, 11, 0);
-
+        PlayerTowers[^1].layer = LayerMask.NameToLayer("TowerUpgrade");
+        Debug.Log("LAYER: " + PlayerTowers[^1].layer);
         PlayerTowers[^1].GetComponent<Tower>().level = 1;
     }
 
     public void UpgradeHitTower(GameObject tower)
     {
+        Debug.Log("Starting Upgrade");
         if (
             player.GetCurrency()
-            > tower.GetComponent<Tower>().costToUpgrade[tower.GetComponent<Tower>().level + 1]
+            > tower.GetComponent<Tower>().costToUpgrade[tower.GetComponent<Tower>().level]
         )
         {
-            // ------ Transaction and Upgrade ------
-            Transaction(tower.GetComponent<Tower>().level + 1);
             int tLevel = tower.GetComponent<Tower>().level;
             if (tLevel >= 3)
             {
                 return;
             }
+
+            // ------ Transaction and Upgrade ------
+            Transaction(tower.GetComponent<Tower>().level);
             tower.GetComponent<Tower>().level += 1;
 
             if (!tower.GetComponent<Tower>().UpgradeTower())
@@ -193,7 +196,7 @@ public class TowerManager : MonoBehaviour
                 player.SetCurrency(
                     player.GetCurrency()
                         + tower.GetComponent<Tower>().costToUpgrade[
-                            tower.GetComponent<Tower>().level
+                            tower.GetComponent<Tower>().level - 1
                         ]
                 );
             }

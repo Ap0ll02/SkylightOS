@@ -25,6 +25,8 @@ public class TowerManager : MonoBehaviour
     public GameObject upgradeUIPrefab;
     public GameObject towerHit;
 
+    public List<TMPro.TMP_Text> towerTexts;
+
     public void Start()
     {
         pickedTower = towerPrefabs[0];
@@ -156,22 +158,47 @@ public class TowerManager : MonoBehaviour
 
     public void PromptUpgrade(Tower.Towers type)
     {
+        int level = towerHit.GetComponent<Tower>().level;
         switch (type)
         {
             case Tower.Towers.AOE:
-
+                towerTexts[0].text =
+                    "AOE Upgrade"
+                    + "\n"
+                    + towerHit.GetComponent<Tower>().costToUpgrade[level]
+                    + " Points";
                 break;
 
             case Tower.Towers.Basic:
+                towerTexts[1].text =
+                    "Basic Upgrade"
+                    + "\n"
+                    + towerHit.GetComponent<Tower>().costToUpgrade[level]
+                    + " Points";
                 break;
 
             case Tower.Towers.Mage:
+                towerTexts[2].text =
+                    "Mage Upgrade"
+                    + "\n"
+                    + towerHit.GetComponent<Tower>().costToUpgrade[level]
+                    + " Points";
                 break;
 
             case Tower.Towers.SlowDown:
+                towerTexts[3].text =
+                    "SlowDown Upgrade"
+                    + "\n"
+                    + towerHit.GetComponent<Tower>().costToUpgrade[level]
+                    + " Points";
                 break;
 
             case Tower.Towers.Trapper:
+                towerTexts[4].text =
+                    "Trapper Upgrade"
+                    + "\n"
+                    + towerHit.GetComponent<Tower>().costToUpgrade[level]
+                    + " Points";
                 break;
         }
     }

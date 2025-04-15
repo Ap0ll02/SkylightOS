@@ -22,6 +22,8 @@ public class TowerManager : MonoBehaviour
     public List<GameObject> PlayerTowers = new();
     private Player player;
     public LayerMask towerLayer;
+    public GameObject upgradeUIPrefab;
+    public GameObject towerHit;
 
     public void Start()
     {
@@ -139,11 +141,12 @@ public class TowerManager : MonoBehaviour
                 return false;
             }
 
-            // TODO: Add UI To Confirm Tower
-            Debug.Log("Bring Up UI To Confirm");
+            towerHit = hitObject;
+            Vector3 offset = new(0, 2f, 0);
+            GameObject ui = Instantiate(upgradeUIPrefab);
+            ui.transform.position = hitObject.transform.position + offset;
+            ui.transform.LookAt(Camera.main.transform);
 
-            // Remove: As soon as UI Is Done
-            UpgradeHitTower(hitObject);
             return true;
         }
         else
@@ -152,6 +155,11 @@ public class TowerManager : MonoBehaviour
             hitObject = null;
             return false;
         }
+    }
+
+    public void UpgradeUICallback()
+    {
+        UpgradeHitTower(towerHit);
     }
 
     public void CreateTower(GameObject parentBlock)

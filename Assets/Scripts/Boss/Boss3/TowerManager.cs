@@ -29,8 +29,22 @@ public class TowerManager : MonoBehaviour
 
     public void Start()
     {
+        List<Tower.Towers> types = new()
+        {
+            Tower.Towers.AOE,
+            Tower.Towers.Basic,
+            Tower.Towers.Mage,
+            Tower.Towers.SlowDown,
+            Tower.Towers.Trapper,
+        };
         pickedTower = towerPrefabs[0];
         player = FindObjectOfType<Player>().GetComponent<Player>();
+        int i = 0;
+        foreach (TMPro.TMP_Text t in towerTexts)
+        {
+            t.text = types[i].ToString() + "\nCost: ";
+            i++;
+        }
     }
 
     // Left click, or attack keybind callback function
@@ -199,6 +213,8 @@ public class TowerManager : MonoBehaviour
                     + "\n"
                     + towerHit.GetComponent<Tower>().costToUpgrade[level]
                     + " Points";
+                break;
+            default:
                 break;
         }
     }

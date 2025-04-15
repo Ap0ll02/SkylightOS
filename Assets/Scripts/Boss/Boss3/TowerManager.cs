@@ -133,11 +133,17 @@ public class TowerManager : MonoBehaviour
         else if (Physics.Raycast(ray, out RaycastHit hitI, maxDistance, towerLayer))
         {
             hitObject = hitI.collider.gameObject;
+
+            if (!PlayerTowers.Contains(hitI.collider.gameObject))
+            {
+                return false;
+            }
+
             // TODO: Add UI To Confirm Tower
             Debug.Log("Bring Up UI To Confirm");
 
             // Remove: As soon as UI Is Done
-            UpgradeTower(hitObject);
+            UpgradeHitTower(hitObject);
             return true;
         }
         else
@@ -162,27 +168,39 @@ public class TowerManager : MonoBehaviour
         // Centering and raising the tower
         pt.position = prend.bounds.center;
         pt.position += new Vector3(0, 11, 0);
-
+        PlayerTowers[^1].layer = LayerMask.NameToLayer("TowerUpgrade");
+        Debug.Log("LAYER: " + PlayerTowers[^1].layer);
         PlayerTowers[^1].GetComponent<Tower>().level = 1;
     }
 
-    public void UpgradeTower(GameObject tower)
+    public void UpgradeHitTower(GameObject tower)
     {
+        Debug.Log("Starting Upgrade");
         if (
             player.GetCurrency()
-            > tower.GetComponent<Tower>().costToUpgrade[tower.GetComponent<Tower>().level + 1]
+            > tower.GetComponent<Tower>().costToUpgrade[tower.GetComponent<Tower>().level]
         )
         {
-            Transaction(tower.GetComponent<Tower>().level + 1);
+            int tLevel = tower.GetComponent<Tower>().level;
+            if (tLevel >= 3)
+            {
+                return;
+            }
+
+            // ------ Transaction and Upgrade ------
+            Transaction(tower.GetComponent<Tower>().level);
+            tower.GetComponent<Tower>().level += 1;
+
             if (!tower.GetComponent<Tower>().UpgradeTower())
             {
                 player.SetCurrency(
                     player.GetCurrency()
                         + tower.GetComponent<Tower>().costToUpgrade[
-                            tower.GetComponent<Tower>().level
+                            tower.GetComponent<Tower>().level - 1
                         ]
                 );
             }
         }
+        Debug.Log("Attempted to upgrade tower");
     }
 }

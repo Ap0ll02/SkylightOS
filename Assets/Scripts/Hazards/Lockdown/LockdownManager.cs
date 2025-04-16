@@ -5,8 +5,8 @@ using UnityEngine;
 
 public class LockdownManager : AbstractManager
 {
-    [SerializeField] private float minDelay = 5.0f;
-    [SerializeField] private float maxDelay = 15.0f;
+    [SerializeField] private float minDelay = 10.0f;
+    [SerializeField] private float maxDelay = 30.0f;
     [SerializeField] private LockdownCanvas lockdownCanvas; // Reference to LockdownCanvas
     private bool hazardStarted = false;
 

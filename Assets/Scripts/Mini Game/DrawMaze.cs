@@ -20,7 +20,7 @@ public class DrawMaze : AbstractMinigame
     public FileSystem fs;
     public List<Inode> iMap;
     public TMP_Text terminalText;
-    public GameObject evidenceImage;
+    public BasicWindow evidenceImage;
 
     public enum MazeProg {
         Confirm, Begin, 
@@ -36,13 +36,12 @@ public class DrawMaze : AbstractMinigame
         pInput = new InputSystem_Actions();
         terminalText = GameObject.Find("TInstructionTxt").GetComponent<TMP_Text>();
         fs = FindObjectOfType<FileSystem>();
-        evidenceImage = GameObject.Find("TermImage");
         iMap = fs.inodeTable;
     }
 
     public void  Start() {
         gameObject.SetActive(false);
-        evidenceImage.SetActive(false);
+        evidenceImage.ForceCloseWindow();
     }
 
     public override void StartGame(){
@@ -56,13 +55,13 @@ public class DrawMaze : AbstractMinigame
                     41, 42, 43, 44, 47, 48, 49, 
                     50, 51, 52, 53, 54};
     public string DrawLevel() {
-        evidenceImage.SetActive(false);
+        evidenceImage.ForceCloseWindow();
         string level = "--- SKYLIGHT FILES ---\n\n\n\n";
         int counter = 0;
         char[] selector = new char[] {'A', 'B', 'C', 'D'};
         if(curNode == 29) {
             level = iMap[curNode].iName + "\n\n\n\n\n\n\n";
-            evidenceImage.SetActive(true);
+            evidenceImage.OpenWindow();
         }
         if(curNode == 53) {
             level = "AntiVirus Installer.install";

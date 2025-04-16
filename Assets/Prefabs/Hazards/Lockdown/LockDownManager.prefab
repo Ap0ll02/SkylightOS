@@ -44,7 +44,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a795476c70220f446bfcbbbfbf0f4580, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  raycastBlocker: {fileID: 0}
-  minDelay: 3
-  maxDelay: 10
+  difficulty: 0
+  minDelay: 15
+  maxDelay: 30
   lockdownCanvas: {fileID: 0}

@@ -9,6 +9,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -22,15 +30,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0.0067897607
       objectReference: {fileID: 0}
     - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: 0.999977
       objectReference: {fileID: 0}
     - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
       propertyPath: m_LocalRotation.z
@@ -42,11 +50,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -180
       objectReference: {fileID: 0}
     - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
+      value: 359.222
       objectReference: {fileID: 0}
     - target: {fileID: 4577889617394634072, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
       propertyPath: m_Name
@@ -89,10 +97,12 @@ MonoBehaviour:
   damage: 0
   speed: 0
   originalSpeed: 0
+  reward: 50
   currentPosition: 0
   navi: {fileID: 0}
   nextWaypoint: {x: 0, y: 0, z: 0}
   animator: {fileID: -8354703012519597106}
+  player: {fileID: 0}
 --- !u!95 &-8354703012519597106
 Animator:
   serializedVersion: 5
@@ -157,8 +167,8 @@ SpriteRenderer:
   m_SortingOrder: 0
   m_Sprite: {fileID: -890066773, guid: 8066450cf70925c488e2ebf9d220525f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
+  m_FlipX: 1
+  m_FlipY: 1
   m_DrawMode: 0
   m_Size: {x: 2.8500001, y: 1.9204102}
   m_AdaptiveModeThreshold: 0.5

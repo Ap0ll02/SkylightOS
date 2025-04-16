@@ -70,13 +70,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1138348657520479136}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.5, y: 0.5, z: -0.5, w: 0.5}
-  m_LocalPosition: {x: 0.056001537, y: 3.211, z: 0.825}
-  m_LocalScale: {x: 0.68079257, y: 2.3447683, z: 6.819294}
+  m_LocalRotation: {x: 0.5, y: 0.5, z: 0.5, w: -0.5}
+  m_LocalPosition: {x: -1.0599976, y: 23.241, z: 10.5}
+  m_LocalScale: {x: 9.659555, y: 27.56922, z: 85.92498}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3632478259842533075}
-  m_LocalEulerAnglesHint: {x: 90, y: 90, z: 0}
+  m_LocalEulerAnglesHint: {x: 270, y: 0, z: -90}
 --- !u!95 &6529917687268973248
 Animator:
   serializedVersion: 5
@@ -1671,7 +1671,7 @@ MonoBehaviour:
   towerDesigns:
   - {fileID: 9210787627301541322}
   - {fileID: 8449380434481365290}
-  - {fileID: 0}
+  - {fileID: 610142182361658196}
   damage: 35
   timeToDamage: 1
   cooldown: 1
@@ -1685,6 +1685,7 @@ MonoBehaviour:
   slowPercent: 0
   projectilePrefab: {fileID: 1303165563935883397, guid: a388c8387a3f2156d986e32238eea421, type: 3}
   projectile: {fileID: 1303165563935883397, guid: a388c8387a3f2156d986e32238eea421, type: 3}
+  anim: {fileID: 6529917687268973248}
 --- !u!4 &3632478259842533075 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8444291395104816027, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}

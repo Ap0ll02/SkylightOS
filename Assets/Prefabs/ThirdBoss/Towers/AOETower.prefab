@@ -2459,15 +2459,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8808227247431647528, guid: 776a57d0d8d0a8a47a65e16f1e4dccd4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.43
+      value: -4.6
       objectReference: {fileID: 0}
     - target: {fileID: 8808227247431647528, guid: 776a57d0d8d0a8a47a65e16f1e4dccd4, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 45.84
+      value: 49.5
       objectReference: {fileID: 0}
     - target: {fileID: 8808227247431647528, guid: 776a57d0d8d0a8a47a65e16f1e4dccd4, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.4
+      value: -23.8
       objectReference: {fileID: 0}
     - target: {fileID: 8808227247431647528, guid: 776a57d0d8d0a8a47a65e16f1e4dccd4, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3473,7 +3473,6 @@ MonoBehaviour:
   slowPercent: 0
   projectilePrefab: {fileID: 4026556322839833814, guid: 63b8c40622e214ceda5e9f1220482feb, type: 3}
   projectile: {fileID: 4026556322839833814, guid: 63b8c40622e214ceda5e9f1220482feb, type: 3}
-  attackRadius: 32
   animator: {fileID: 5285493012221598755}
 --- !u!1001 &8874397756792061378
 PrefabInstance:

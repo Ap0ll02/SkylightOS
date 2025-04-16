@@ -40,4 +40,20 @@ public class TankInsect : AbstractEnemy
             base.TakeDamage(damage,time,precent);
         }
     }
+
+    // public void OnDestroy()
+    // {
+    //     animator.SetBool("Moving", false);      // Stop movement animation
+    //     animator.SetBool("Death", true);        // Trigger death animation
+    //
+    //     StartCoroutine(PlayDeathThenDestroy());
+    // }
+    //
+    // private IEnumerator PlayDeathThenDestroy()
+    // {
+    //     AnimatorStateInfo state = animator.GetCurrentAnimatorStateInfo(0); // Get current animation state
+    //     yield return new WaitForSeconds(state.length); // Wait for current animation clip to finish
+    //     Destroy(gameObject);                          // Destroy after animation finishes
+    // }
+
 }

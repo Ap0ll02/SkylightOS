@@ -6,7 +6,6 @@ public class AOETower : Tower
     public GameObject projectilePrefab;
     public GameObject projectile;
     public Coroutine ActivateTower;
-    public int attackRadius;
     public Animator animator;
 
     public new void Start()
@@ -20,6 +19,7 @@ public class AOETower : Tower
         cooldowns = new float[] { 4, 3.25f, 2f };
         isSpecials = new bool[] { true, true, true };
         radii = new float[] { 32, 37, 42 };
+        durations = new float[] { 0, 0, 0 };
         // =======================================
     }
 
@@ -37,7 +37,7 @@ public class AOETower : Tower
 
     public override void Attack()
     {
-        animator.Play("AOETowerBeam");
+        animator.SetTrigger("Fire");
         Debug.Log("Attack");
         projectile = Instantiate(projectilePrefab, parent: GetComponent<Transform>());
     }

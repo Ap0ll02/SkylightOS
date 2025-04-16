@@ -866,7 +866,7 @@ MonoBehaviour:
   radii: []
   durations: []
   slowDowns: []
-  postProcessObj: {fileID: 8239090535426633360}
+  postProcessObj: {fileID: 8246642725693751444, guid: b236f55782810c2058dbff5cbb181412, type: 3}
   attackRadius: 85
   mySphere: {fileID: 0}
   towerType: 1
@@ -887,11 +887,6 @@ MonoBehaviour:
   slowPercent: 0.4
   projectilePrefab: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
   projectile: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
---- !u!1 &8239090535426633360 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 6018868195514984706, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
-  m_PrefabInstance: {fileID: 2436572246596257682}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3089319405212804551
 PrefabInstance:
   m_ObjectHideFlags: 0

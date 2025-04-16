@@ -28,7 +28,7 @@ public abstract class Tower : MonoBehaviour
     public Towers towerType;
     public List<GameObject> towerDesigns;
     public int damage;
-
+    public int displayCost;
     public float timeToDamage;
 
     public float cooldown;
@@ -51,6 +51,7 @@ public abstract class Tower : MonoBehaviour
     {
         mySphere = GetComponent<SphereCollider>();
         mySphere.radius = attackRadius;
+        displayCost = costToUpgrade[0];
     }
 
     public void LookAtTarget(Transform target)
@@ -224,15 +225,27 @@ public abstract class Tower : MonoBehaviour
         return true;
     }
 
+    public GameObject tr;
+
     public void Glow(bool on)
     {
         if (on)
         {
-            postProcessObj.SetActive(true);
+            tr = Instantiate(postProcessObj, parent: transform);
+            tr.transform.position += new Vector3(0, 20f, 0);
         }
         else
         {
-            postProcessObj.SetActive(false);
+            if (tr)
+            {
+                TrailRenderer tro = tr.GetComponentInChildren<TrailRenderer>();
+                if (tro)
+                {
+                    tro.time = 0f;
+                }
+                tr.SetActive(false);
+                DestroyImmediate(tr);
+            }
         }
     }
 }

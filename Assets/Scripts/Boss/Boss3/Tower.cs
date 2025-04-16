@@ -224,15 +224,27 @@ public abstract class Tower : MonoBehaviour
         return true;
     }
 
+    public GameObject tr;
+
     public void Glow(bool on)
     {
         if (on)
         {
-            postProcessObj.SetActive(true);
+            tr = Instantiate(postProcessObj, parent: transform);
+            tr.transform.position += new Vector3(0, 20f, 0);
         }
         else
         {
-            postProcessObj.SetActive(false);
+            if (tr)
+            {
+                TrailRenderer tro = tr.GetComponentInChildren<TrailRenderer>();
+                if (tro)
+                {
+                    tro.time = 0f;
+                }
+                tr.SetActive(false);
+                DestroyImmediate(tr);
+            }
         }
     }
 }

@@ -11,24 +11,29 @@ public class TowerManager : MonoBehaviour
     // Tower Management: Placing towers, making sure money/payment
     // is taken care of upon purchase
 
+    #region Public References
     public List<Tower> towerPrefabs;
     public Camera mainCamera;
     public LayerMask targetLayer;
     public readonly float maxDistance = 10000.0f;
     public bool placeMode = true;
-    private Tower pickedTower;
     public List<GameObject> placeableList = new();
     public GameObject parentBlock;
     public List<GameObject> PlayerTowers = new();
-    private Player player;
     public LayerMask towerLayer;
     public GameObject upgradeUIPrefab;
     public GameObject towerHit;
-
     public List<TMPro.TMP_Text> towerTexts;
+    #endregion Public References
+
+    private Player player;
+    private Tower pickedTower;
 
     public void Start()
     {
+        // ==========================================
+        // Instantiate The Text For Tower Purchase UI
+        // ==========================================
         List<Tower.Towers> types = new()
         {
             Tower.Towers.AOE,
@@ -77,8 +82,43 @@ public class TowerManager : MonoBehaviour
         Debug.Log("Selected Tower: " + pickedTower);
     }
 
+    public readonly List<string> defaults = new()
+    {
+        "Basic Cost: ",
+        "SlowDown Cost: ",
+        "Mage Cost: ",
+        "AOE Cost: ",
+        "Trapper Cost: ",
+    };
+
+    // Prefab Order | Txt Order
+    // Basic = 0, 1
+    // SlowDown = 1, 3
+    // Mage = 2, 2
+    // AOE = 3, 0
+    // Trapper = 4, 4
     public void ChooseTower(string number)
     {
+        // ====================================
+        // Confirm Whether To Select Or Upgrade
+        // ====================================
+
+        int i = 0;
+        foreach (TMPro.TMP_Text m in towerTexts)
+        {
+            if (!defaults.Contains(m.text))
+            {
+                if (int.Parse(number) == i)
+                {
+                    UpgradeUICallback();
+                }
+                return;
+            }
+            i++;
+        }
+        // ====================================
+        // Select The Desired Tower To Purchase
+        // ====================================
         switch (number)
         {
             // Fallthrough the cases, as code is identical
@@ -109,6 +149,9 @@ public class TowerManager : MonoBehaviour
         {
             Debug.Log("Raycast Success: " + hit);
             Debug.Assert(hit != null, "Incorrect Raycast, hit object not detected");
+            // ========================
+            // Transaction Confirmation
+            // ========================
             if (player.GetCurrency() >= pickedTower.costToUpgrade[0])
             {
                 Debug.Log("Calling Transacton");
@@ -118,8 +161,14 @@ public class TowerManager : MonoBehaviour
             {
                 return;
             }
-            CreateTower(hit);
-            PlayerTowers[^1].transform.SetParent(GetComponent<Transform>(), true);
+            // ==========================
+            // Tower Already Placed Here?
+            // ==========================
+            if (!hit.CompareTag("BadPostTD"))
+            {
+                CreateTower(hit);
+                PlayerTowers[^1].transform.SetParent(GetComponent<Transform>(), true);
+            }
         }
     }
 
@@ -137,17 +186,18 @@ public class TowerManager : MonoBehaviour
         // DEBUG: Turn ON if raycasts need to be drawn
         //Debug.DrawRay(ray.origin, ray.direction * maxDistance, Color.green, 15f);
 
+        // ==================================
+        // Raycast One: TowerPlacements Layer
+        // ==================================
         if (Physics.Raycast(ray, out RaycastHit hitInfo, maxDistance, targetLayer))
         {
             hitObject = hitInfo.collider.gameObject;
-            // Redundancy Check
-            //Debug.Assert(
-            //   hitObject.layer != LayerMask.NameToLayer("TowerPlacements"),
-            //  "BUT THIS IS THE WRONG LAYER YOU MORON HOW DARE YOU COLLIDE!"
-            //);
             hitObject.layer = LayerMask.NameToLayer("TowerUpgrade");
             return true;
         }
+        // ================================
+        // Raycast Two: TowerUpgrades Layer
+        // ================================
         else if (Physics.Raycast(ray, out RaycastHit hitI, maxDistance, towerLayer))
         {
             hitObject = hitI.collider.gameObject;
@@ -157,10 +207,13 @@ public class TowerManager : MonoBehaviour
                 return false;
             }
 
+            // ===============
+            // Upgrade Process
+            // ===============
             towerHit = hitObject;
             towerHit.GetComponent<Tower>().Glow(true);
             PromptUpgrade(towerHit.GetComponent<Tower>().towerType);
-            return true;
+            return false;
         }
         else
         {
@@ -170,6 +223,9 @@ public class TowerManager : MonoBehaviour
         }
     }
 
+    // ==============================
+    // Change UI To Show Upgrade Text
+    // ==============================
     public void PromptUpgrade(Tower.Towers type)
     {
         int level = towerHit.GetComponent<Tower>().level;
@@ -222,11 +278,39 @@ public class TowerManager : MonoBehaviour
     public void UpgradeUICallback()
     {
         UpgradeHitTower(towerHit);
+        SetDefaultUIText();
+    }
+
+    public void SetDefaultUIText()
+    {
+        //TODO: MAKE THE UI SHOW COST FOR PURCHASE
+
+
+        // ==========================================
+        // Instantiate The Text For Tower Purchase UI
+        // ==========================================
+        List<Tower.Towers> types = new()
+        {
+            Tower.Towers.AOE,
+            Tower.Towers.Basic,
+            Tower.Towers.Mage,
+            Tower.Towers.SlowDown,
+            Tower.Towers.Trapper,
+        };
+        pickedTower = towerPrefabs[0];
+        player = FindObjectOfType<Player>().GetComponent<Player>();
+        int i = 0;
+        foreach (TMPro.TMP_Text t in towerTexts)
+        {
+            t.text = types[i].ToString() + "\nCost: ";
+            i++;
+        }
     }
 
     public void CreateTower(GameObject parentBlock)
     {
         // Creating the tower
+        parentBlock.tag = "BadPostTD";
         PlayerTowers.Add(
             Instantiate(pickedTower.gameObject, parent: parentBlock.GetComponent<Transform>())
         );
@@ -246,6 +330,10 @@ public class TowerManager : MonoBehaviour
     public void UpgradeHitTower(GameObject tower)
     {
         Debug.Log("Starting Upgrade");
+
+        // ==============================
+        // Confirm Amount & Confirm Level
+        // ==============================
         if (
             player.GetCurrency()
             > tower.GetComponent<Tower>().costToUpgrade[tower.GetComponent<Tower>().level]
@@ -261,6 +349,9 @@ public class TowerManager : MonoBehaviour
             Transaction(tower.GetComponent<Tower>().level);
             tower.GetComponent<Tower>().level += 1;
 
+            // =================================
+            // Attempt Upgrade & Refund If Fails
+            // =================================
             if (!tower.GetComponent<Tower>().UpgradeTower())
             {
                 player.SetCurrency(

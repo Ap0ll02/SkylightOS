@@ -245,18 +245,50 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 58191292285033694}
+    - target: {fileID: 1432799378414618272, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 1432799378414618272, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2863757977203973372, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 58191292285033694}
+    - target: {fileID: 2863757977203973372, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 2863757977203973372, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 3931121255669435681, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 58191292285033694}
+    - target: {fileID: 3931121255669435681, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 3931121255669435681, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 5097557231542680704, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 58191292285033694}
+    - target: {fileID: 5097557231542680704, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 5097557231542680704, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 6035585231890149365, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -338,9 +370,21 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8024476232648685348, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024476232648685348, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 58191292285033694}
+    - target: {fileID: 8024476232648685348, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 8024476232648685348, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_StringArgument
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 9193271281119293063, guid: f16e9d299da39de329d00303a5bb9b0f, type: 3}
       propertyPath: m_Name
       value: TowerSelect

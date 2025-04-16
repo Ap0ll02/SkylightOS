@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 1628931661539310924}
   - component: {fileID: 58191292285033694}
   - component: {fileID: 7798512533513046529}
+  - component: {fileID: 5065986396469673433}
   m_Layer: 0
   m_Name: TowerManager
   m_TagString: Untagged
@@ -233,6 +234,23 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 261834362348260544, guid: 39fd3c9df9eac664d8339f9a2daba431, type: 3}
+--- !u!114 &5065986396469673433
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8375388993248038174}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: ed806c95d966d678b944b86f8031f3b4, type: 2}
+  isGlobal: 0
+  blendDistance: 0
+  weight: 1
+  priority: 0
 --- !u!1001 &4253869042456027430
 PrefabInstance:
   m_ObjectHideFlags: 0

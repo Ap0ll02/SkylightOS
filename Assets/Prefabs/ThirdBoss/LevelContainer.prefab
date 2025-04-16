@@ -300,6 +300,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 3831578835716232510}
     m_Modifications:
+    - target: {fileID: 974715610916547591, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4022845050652822663}
+    - target: {fileID: 974715610916547591, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
+      objectReference: {fileID: 0}
     - target: {fileID: 1628931661539310924, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -339,6 +347,22 @@ PrefabInstance:
     - target: {fileID: 1628931661539310924, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2069082894968585690, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4022845050652822663}
+    - target: {fileID: 2069082894968585690, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
+      objectReference: {fileID: 0}
+    - target: {fileID: 2948331817068046214, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4022845050652822663}
+    - target: {fileID: 2948331817068046214, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
       objectReference: {fileID: 0}
     - target: {fileID: 3030352020568361039, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_Pivot.x
@@ -420,9 +444,25 @@ PrefabInstance:
       propertyPath: m_SortingLayerID
       value: -329097359
       objectReference: {fileID: 0}
+    - target: {fileID: 6076602490492130818, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4022845050652822663}
+    - target: {fileID: 6076602490492130818, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
+      objectReference: {fileID: 0}
     - target: {fileID: 8375388993248038174, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_Name
       value: TowerManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 9058689454680333734, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 4022845050652822663}
+    - target: {fileID: 9058689454680333734, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ChooseTower
       objectReference: {fileID: 0}
     - target: {fileID: 9141585284899164101, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
       propertyPath: m_PresetInfoIsWorld
@@ -438,6 +478,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 1628931661539310924, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
   m_PrefabInstance: {fileID: 3970689355956228185}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4022845050652822663 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 58191292285033694, guid: de3771c2152d15d0eb56b4f4da6d582d, type: 3}
+  m_PrefabInstance: {fileID: 3970689355956228185}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 088493b0517d5570cba6a0f09ead2d9f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &4129902912257957378
 PrefabInstance:
   m_ObjectHideFlags: 0

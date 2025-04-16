@@ -28,7 +28,7 @@ public abstract class Tower : MonoBehaviour
     public Towers towerType;
     public List<GameObject> towerDesigns;
     public int damage;
-
+    public int displayCost;
     public float timeToDamage;
 
     public float cooldown;
@@ -51,6 +51,7 @@ public abstract class Tower : MonoBehaviour
     {
         mySphere = GetComponent<SphereCollider>();
         mySphere.radius = attackRadius;
+        displayCost = costToUpgrade[0];
     }
 
     public void LookAtTarget(Transform target)

@@ -34,22 +34,9 @@ public class TowerManager : MonoBehaviour
         // ==========================================
         // Instantiate The Text For Tower Purchase UI
         // ==========================================
-        List<Tower.Towers> types = new()
-        {
-            Tower.Towers.AOE,
-            Tower.Towers.Basic,
-            Tower.Towers.Mage,
-            Tower.Towers.SlowDown,
-            Tower.Towers.Trapper,
-        };
         pickedTower = towerPrefabs[0];
         player = FindObjectOfType<Player>().GetComponent<Player>();
-        int i = 0;
-        foreach (TMPro.TMP_Text t in towerTexts)
-        {
-            t.text = types[i].ToString() + "\nCost: ";
-            i++;
-        }
+        SetDefaultUIText();
     }
 
     // Left click, or attack keybind callback function
@@ -82,15 +69,6 @@ public class TowerManager : MonoBehaviour
         Debug.Log("Selected Tower: " + pickedTower);
     }
 
-    public readonly List<string> defaults = new()
-    {
-        "Basic Cost: ",
-        "SlowDown Cost: ",
-        "Mage Cost: ",
-        "AOE Cost: ",
-        "Trapper Cost: ",
-    };
-
     // Prefab Order | Txt Order
     // Basic = 0, 1
     // SlowDown = 1, 3
@@ -99,6 +77,14 @@ public class TowerManager : MonoBehaviour
     // Trapper = 4, 4
     public void ChooseTower(string number)
     {
+        List<string> defaults = new()
+        {
+            "Basic Cost: " + towerPrefabs[0].GetComponent<Tower>().displayCost,
+            "SlowDown Cost: " + towerPrefabs[1].GetComponent<Tower>().displayCost,
+            "Mage Cost: " + towerPrefabs[2].GetComponent<Tower>().displayCost,
+            "AOE Cost: " + towerPrefabs[3].GetComponent<Tower>().displayCost,
+            "Trapper Cost: " + towerPrefabs[4].GetComponent<Tower>().displayCost,
+        };
         // ====================================
         // Confirm Whether To Select Or Upgrade
         // ====================================
@@ -329,7 +315,6 @@ public class TowerManager : MonoBehaviour
     {
         //TODO: MAKE THE UI SHOW COST FOR PURCHASE
 
-
         // ==========================================
         // Instantiate The Text For Tower Purchase UI
         // ==========================================
@@ -346,7 +331,10 @@ public class TowerManager : MonoBehaviour
         int i = 0;
         foreach (TMPro.TMP_Text t in towerTexts)
         {
-            t.text = types[i].ToString() + "\nCost: ";
+            t.text =
+                types[i].ToString()
+                + "\nCost: "
+                + towerPrefabs[i].GetComponent<Tower>().displayCost;
             i++;
         }
     }

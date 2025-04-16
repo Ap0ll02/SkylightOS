@@ -628,7 +628,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
         if ((index < itemsCanAccess) && (nyanCatStruggling.transform.position.y > Line1Position.y) && (Line1On == false))
         {
             var spawnedItem = Instantiate(NyanCatItems[index]);
-            if (spawnedItem.name.Contains("BasicWindow"))
+            if (spawnedItem.GetComponent<BasicWindow>() != null)
             {
                 spawnedItem.transform.SetParent(canvas.transform, false);
             }
@@ -644,7 +644,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
         if ((index < itemsCanAccess) && (nyanCatStruggling.transform.position.y < Line2Position.y) && (Line2On == false))
         {
             var spawnedItem = Instantiate(NyanCatItems[index]);
-            if (spawnedItem.name.Contains("BasicWindow"))
+            if (spawnedItem.GetComponent<BasicWindow>() != null)
             {
                 spawnedItem.transform.SetParent(canvas.transform, false);
             }

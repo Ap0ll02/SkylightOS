@@ -313,8 +313,6 @@ public class TowerManager : MonoBehaviour
 
     public void SetDefaultUIText()
     {
-        //TODO: MAKE THE UI SHOW COST FOR PURCHASE
-
         // ==========================================
         // Instantiate The Text For Tower Purchase UI
         // ==========================================

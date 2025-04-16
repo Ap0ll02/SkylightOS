@@ -91,7 +91,8 @@ public abstract class AbstractEnemy : MonoBehaviour
         }
         else if (hasBeenSlowed)
         {
-            StopCoroutine(slowdownCoroutine);
+            if( slowdownCoroutine != null)
+                StopCoroutine(slowdownCoroutine);
             slowdownCoroutine = StartCoroutine(slowdown(time));
         }
         else

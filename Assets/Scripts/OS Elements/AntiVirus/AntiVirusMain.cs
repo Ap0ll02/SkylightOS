@@ -3,6 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
+
+// Garrett Shart
+// Fuckass antivirus script
+// Idk dawg just read this shit
+
 public class AntiVirusMain : MonoBehaviour
 {
     // Messages to let the task know that we have started and finished loading
@@ -23,6 +28,12 @@ public class AntiVirusMain : MonoBehaviour
 
     // Canvas
     public Canvas windowCanvas;
+
+    // Popup window count
+    private int popupCount = 0;
+    private int maxPopups = 8;
+
+    public BasicWindow evidenceWindow;
 
     // Start is called before the first frame update
     void Start()
@@ -56,7 +67,16 @@ public class AntiVirusMain : MonoBehaviour
 
     public void OnRemoveButton()
     {
-        SpawnPrefab();
+        if(popupCount == maxPopups)
+        {
+            popupCount++;
+            SpawnPrefab();
+        }
+        else
+        {
+            evidenceWindow.OpenWindow();
+        }
+
     }
 
     public void SetStatus(AntiVirusWindow.AntiVirusState state)
@@ -84,7 +104,14 @@ public class AntiVirusMain : MonoBehaviour
     {
         if (prefabToSpawn != null && windowCanvas != null)
         {
-            Instantiate(prefabToSpawn, windowCanvas.transform);
+            GameObject instance = Instantiate(prefabToSpawn, windowCanvas.transform);
+            RectTransform canvasRect = windowCanvas.GetComponent<RectTransform>();
+            RectTransform instanceRect = instance.GetComponent<RectTransform>();
+
+            float randomX = UnityEngine.Random.Range(0, canvasRect.rect.width) - canvasRect.rect.width / 2;
+            float randomY = UnityEngine.Random.Range(0, canvasRect.rect.height) - canvasRect.rect.height / 2;
+
+            instanceRect.anchoredPosition = new Vector2(randomX, randomY);
         }
     }
 }

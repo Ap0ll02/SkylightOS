@@ -6,6 +6,7 @@ public class MageTower : Tower
     public GameObject projectilePrefab;
     public GameObject projectile;
     public Coroutine ActivateTower;
+    public Animator animator;
 
     public new void Start()
     {
@@ -34,6 +35,7 @@ public class MageTower : Tower
 
     public override void Attack()
     {
+        animator.SetTrigger("Fire");
         Debug.Log("Attack");
         projectile = Instantiate(projectilePrefab, parent: GetComponent<Transform>());
     }

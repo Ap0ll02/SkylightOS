@@ -10,21 +10,21 @@ public class SpawnManagerBoss3 : MonoBehaviour
     public GameObject enemyContainer;
     public float defaultSpawnRate = 0.5f;
 
-    public bool spawnAmount(int index, int amount, float rate = 0.0f)
+    public IEnumerator spawnAmount(int index, int amount, float rate = 0.0f)
     {
         for (int i = 0; i < amount; i++)
         {
            var enemyReference = Instantiate(enemies[index],enemyContainer.transform );
            if (rate == 0.0f)
            {
-               StartCoroutine(coolDown(defaultSpawnRate));
+               yield return coolDown(defaultSpawnRate);
            }
            else
            {
-               StartCoroutine(coolDown(rate));
+               yield return coolDown(rate);
            }
         }
-        return true;
+        yield return null;
     }
 
 
@@ -34,23 +34,26 @@ public class SpawnManagerBoss3 : MonoBehaviour
         while (currentPoint > 0)
         {
             var index = Random.Range(minIndex,maxIndex);
-            var enemyReference = Instantiate(enemies[index],enemyContainer.transform);
-            currentPoint -= index;
+            currentPoint = (currentPoint - index);
             if (rate == 0.0f)
             {
                 Debug.Log("Default Cooling down time: " + defaultSpawnRate);
-                yield return StartCoroutine(coolDown(defaultSpawnRate));
+                var enemyReference = Instantiate(enemies[index],enemyContainer.transform);
+                yield return coolDown(defaultSpawnRate);
             }
             else if (currentPoint <= maxIndex)
             {
+                currentPoint = 0;
                 yield return null;
             }
             else
             {
                 Debug.Log("Cooling down time: " + rate);
-                yield return StartCoroutine(coolDown(rate));
+                var enemyReference = Instantiate(enemies[index],enemyContainer.transform);
+                yield return coolDown(rate);
             }
         }
+        yield return null;
     }
 
     IEnumerator coolDown(float time)

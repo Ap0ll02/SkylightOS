@@ -17,7 +17,7 @@ public class Stage1Boss3 : AbstractBossStage
         Debug.Log("Start Stage 1");
         Debug.Assert(spawnManager != null, "Spawn Manager is null");
         spawnManager.enemies = enemyArray;
-        StartCoroutine(spawnManager.SpawnRandom(100, 0, 7, 2.0f));
+        StartCoroutine(StartSpawning());
     }
 
     public override void BossEndStage()
@@ -28,6 +28,13 @@ public class Stage1Boss3 : AbstractBossStage
     IEnumerator seconds()
     {
         yield return new WaitForSeconds(1);
+        BossEndStage();
+    }
+
+    public IEnumerator StartSpawning()
+    {
+        //yield return spawnManager.spawnAmount(0, 1, 3.0f);
+        yield return spawnManager.SpawnRandom(20, 0, enemyArray.Count, 2.0f);
         BossEndStage();
     }
 

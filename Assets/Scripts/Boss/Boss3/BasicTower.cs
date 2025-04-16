@@ -6,7 +6,7 @@ public class BasicTower : Tower
     public GameObject projectilePrefab;
     public GameObject projectile;
     public Coroutine ActivateTower;
-
+    public Animator anim;
     public new void Start()
     {
         base.Start();
@@ -36,6 +36,7 @@ public class BasicTower : Tower
 
     public override void Attack()
     {
+        anim.SetTrigger("Fire");
         Debug.Log("Attacking: " + targetEnemy);
         projectile = Instantiate(projectilePrefab, parent: GetComponent<Transform>());
     }

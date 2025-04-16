@@ -229,12 +229,28 @@ public class TowerManager : MonoBehaviour
             if (!clicked)
             {
                 clicked = true;
+
+                foreach (GameObject t in PlayerTowers)
+                {
+                    if (t.TryGetComponent(out Tower tf))
+                    {
+                        tf.Glow(false);
+                    }
+                }
+
+                SetDefaultUIText();
                 towerHit.GetComponent<Tower>().Glow(true);
                 PromptUpgrade(towerHit.GetComponent<Tower>().towerType);
             }
             else
             {
-                towerHit.GetComponent<Tower>().Glow(false);
+                foreach (GameObject t in PlayerTowers)
+                {
+                    if (t.TryGetComponent(out Tower tf))
+                    {
+                        tf.Glow(false);
+                    }
+                }
                 SetDefaultUIText();
                 clicked = false;
             }

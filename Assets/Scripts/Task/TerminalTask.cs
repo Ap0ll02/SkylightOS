@@ -63,7 +63,8 @@ public class TerminalTask : AbstractTask
     [SerializeField] BasicWindow window;
 
     /// @brief Assign all of the terminal objects in the scene.
-    public void Awake() {
+    public void Awake()
+    {
         taskTitle = "Download and Install Antivirus";
         taskDescription = "Click to download the Antivirus Toolkit, and then access the files to install it.";
         arrowGame = FindObjectOfType<Arrowgame>().gameObject;
@@ -81,8 +82,9 @@ public class TerminalTask : AbstractTask
         agInput = ag.pInput;
         northstar = GameObject.Find("WindowCanvas").GetComponentInChildren<Northstar>();
         installBtn = GameObject.Find("InstallBtn");
+        installBtn.GetComponent<Button>().onClick.AddListener(CompleteTask);
     }
-
+    
     public new void Start() {
         window.ForceCloseWindow();
         base.Start();
@@ -129,11 +131,14 @@ public class TerminalTask : AbstractTask
                 ag.CanContinue = false;
                 break;
             }
-            else {
-                if(PThiefActive && !StopInputRunning) {
-                    StartCoroutine(StopInputTimer(PThiefDelay));
-                    break;
-                }
+            else if (PThiefActive && !StopInputRunning)
+            {
+                StartCoroutine(StopInputTimer(PThiefDelay));
+                break;
+            }
+            else
+            {
+                ag.CanContinue = true;
             }
         }
     }

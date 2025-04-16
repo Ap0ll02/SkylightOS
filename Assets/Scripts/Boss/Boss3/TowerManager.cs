@@ -329,12 +329,13 @@ public class TowerManager : MonoBehaviour
         pickedTower = towerPrefabs[0];
         player = FindObjectOfType<Player>().GetComponent<Player>();
         int i = 0;
+
+        int[] towerOrder = new int[] { 3, 0, 2, 1, 4 };
+
         foreach (TMPro.TMP_Text t in towerTexts)
         {
             t.text =
-                types[i].ToString()
-                + "\nCost: "
-                + towerPrefabs[i].GetComponent<Tower>().displayCost;
+                types[i].ToString() + "\nCost: " + towerPrefabs[towerOrder[i]].costToUpgrade[0];
             i++;
         }
     }

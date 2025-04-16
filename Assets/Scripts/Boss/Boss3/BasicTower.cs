@@ -18,6 +18,7 @@ public class BasicTower : Tower
         cooldowns = new float[] { 2, 1, 0.75f };
         isSpecials = new bool[] { false, false, true };
         radii = new float[] { attackRadius, 12, 17 };
+        durations = new float[] { 0, 0, 0 };
         // =======================================
     }
 

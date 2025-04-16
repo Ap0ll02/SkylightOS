@@ -17,6 +17,7 @@ public class TrapperTower : Tower
         cooldowns = new float[] { 8, 6, 3.5f };
         isSpecials = new bool[] { false, true, true };
         radii = new float[] { 20, 28, 40 };
+        durations = new float[] { 0, 0, 0 };
         // =======================================
     }
 

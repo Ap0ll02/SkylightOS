@@ -95,22 +95,9 @@ public class TowerManager : MonoBehaviour
             if (int.Parse(number) == i)
             {
                 UpgradeUICallback();
-            }
-            return;
-        }
-
-        /*foreach (TMPro.TMP_Text m in towerTexts)
-        {
-            if (!defaults.Contains(m.text))
-            {
-                if (int.Parse(number) == i)
-                {
-                    UpgradeUICallback();
-                }
                 return;
             }
-            i++;
-        }*/
+        }
 
         // ====================================
         // Select The Desired Tower To Purchase

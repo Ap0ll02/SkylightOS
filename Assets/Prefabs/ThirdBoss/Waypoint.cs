@@ -1,18 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class Waypoint : MonoBehaviour
 {
     public Transform nyanKittenTransform;
 
-    public Transform BugWaypoint()
+    public Quaternion nyanKittenRotation()
     {
-        return this.transform;
-    }
-
-    public Transform NyanKittenWaypoint()
-    {
-        return nyanKittenTransform;
+        return nyanKittenTransform.rotation;
     }
 }

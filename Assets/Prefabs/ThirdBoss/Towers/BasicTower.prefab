@@ -1381,7 +1381,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6061110870057843102, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
       propertyPath: m_Radius
-      value: 14
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 6061110870057843102, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
       propertyPath: m_IsTrigger
@@ -1494,7 +1494,7 @@ MonoBehaviour:
   durations: []
   slowDowns: []
   postProcessObj: {fileID: 8246642725693751444, guid: b236f55782810c2058dbff5cbb181412, type: 3}
-  attackRadius: 8
+  attackRadius: 100
   mySphere: {fileID: 0}
   towerType: 0
   towerDesigns:
@@ -1502,6 +1502,7 @@ MonoBehaviour:
   - {fileID: 8449380434481365290}
   - {fileID: 610142182361658196}
   damage: 35
+  displayCost: 0
   timeToDamage: 1
   cooldown: 1
   isSpecial: 0

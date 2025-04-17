@@ -7,6 +7,7 @@ public class BasicTower : Tower
     public GameObject projectile;
     public Coroutine ActivateTower;
     public Animator anim;
+
     public new void Start()
     {
         base.Start();
@@ -17,7 +18,7 @@ public class BasicTower : Tower
         timesToDamage = new float[] { 1, 1, 1 };
         cooldowns = new float[] { 2, 1, 0.75f };
         isSpecials = new bool[] { false, false, true };
-        radii = new float[] { attackRadius, 12, 17 };
+        radii = new float[] { 100, 120, 150 };
         durations = new float[] { 0, 0, 0 };
         // =======================================
     }

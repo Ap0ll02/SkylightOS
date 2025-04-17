@@ -95,22 +95,9 @@ public class TowerManager : MonoBehaviour
             if (int.Parse(number) == i)
             {
                 UpgradeUICallback();
-            }
-            return;
-        }
-
-        /*foreach (TMPro.TMP_Text m in towerTexts)
-        {
-            if (!defaults.Contains(m.text))
-            {
-                if (int.Parse(number) == i)
-                {
-                    UpgradeUICallback();
-                }
                 return;
             }
-            i++;
-        }*/
+        }
 
         // ====================================
         // Select The Desired Tower To Purchase
@@ -313,8 +300,6 @@ public class TowerManager : MonoBehaviour
 
     public void SetDefaultUIText()
     {
-        //TODO: MAKE THE UI SHOW COST FOR PURCHASE
-
         // ==========================================
         // Instantiate The Text For Tower Purchase UI
         // ==========================================
@@ -329,12 +314,13 @@ public class TowerManager : MonoBehaviour
         pickedTower = towerPrefabs[0];
         player = FindObjectOfType<Player>().GetComponent<Player>();
         int i = 0;
+
+        int[] towerOrder = new int[] { 3, 0, 2, 1, 4 };
+
         foreach (TMPro.TMP_Text t in towerTexts)
         {
             t.text =
-                types[i].ToString()
-                + "\nCost: "
-                + towerPrefabs[i].GetComponent<Tower>().displayCost;
+                types[i].ToString() + "\nCost: " + towerPrefabs[towerOrder[i]].costToUpgrade[0];
             i++;
         }
     }

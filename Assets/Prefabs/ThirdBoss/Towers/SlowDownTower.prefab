@@ -759,7 +759,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6061110870057843102, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
       propertyPath: m_Radius
-      value: 85
+      value: 350
       objectReference: {fileID: 0}
     - target: {fileID: 8444291395104816027, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
       propertyPath: m_LocalScale.x
@@ -867,7 +867,7 @@ MonoBehaviour:
   durations: []
   slowDowns: []
   postProcessObj: {fileID: 8246642725693751444, guid: b236f55782810c2058dbff5cbb181412, type: 3}
-  attackRadius: 85
+  attackRadius: 150
   mySphere: {fileID: 0}
   towerType: 1
   towerDesigns:
@@ -875,6 +875,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   damage: 5
+  displayCost: 0
   timeToDamage: 1
   cooldown: 3
   isSpecial: 0
@@ -885,6 +886,7 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   duration: 3
   slowPercent: 0.4
+  tr: {fileID: 0}
   projectilePrefab: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
   projectile: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
 --- !u!1001 &3089319405212804551

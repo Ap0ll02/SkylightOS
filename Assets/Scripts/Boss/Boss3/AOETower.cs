@@ -18,7 +18,7 @@ public class AOETower : Tower
         timesToDamage = new float[] { 4, 3, 2 };
         cooldowns = new float[] { 4, 3.25f, 2f };
         isSpecials = new bool[] { true, true, true };
-        radii = new float[] { 32, 37, 42 };
+        radii = new float[] { 300, 385, 500 };
         durations = new float[] { 0, 0, 0 };
         // =======================================
     }

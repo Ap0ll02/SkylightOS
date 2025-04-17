@@ -16,7 +16,7 @@ public class MageTower : Tower
         timesToDamage = new float[] { 2, 1.5f, 1 };
         cooldowns = new float[] { 2, 1.5f, 1.15f };
         isSpecials = new bool[] { true, true, true };
-        radii = new float[] { 18, 20, 23 };
+        radii = new float[] { 150, 300, 420 };
         durations = new float[] { 0, 0, 0 };
         // =======================================
     }

@@ -17,7 +17,7 @@ public class SlowDownTower : Tower
         timesToDamage = new float[] { 1, 1, 1 };
         cooldowns = new float[] { 3, 2, 1.25f };
         isSpecials = new bool[] { false, false, true };
-        radii = new float[] { 85, 95, 105 };
+        radii = new float[] { 150, 225, 300 };
         slowDowns = new float[] { 0.4f, 0.5f, 0.6f };
         durations = new float[] { 3, 5, 8 };
         // =======================================

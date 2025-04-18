@@ -34,6 +34,13 @@ public class PeripheralWindow : MonoBehaviour
     public event Action OnConnectComplete;
 
     private bool alreadyOpened;
+
+    public BasicWindow evidenceWindow;
+
+    public GameObject evidenceButton;
+
+    private bool evidenceOpened = false;
+
     public enum PeripheralState
     {
         Start,
@@ -163,6 +170,16 @@ public class PeripheralWindow : MonoBehaviour
         else
         {
             Debug.Log("This shit already opened bruh wtf wrong with u");
+        }
+    }
+
+    public void OnEvidenceButton()
+    {
+        if(!evidenceOpened)
+        {
+            evidenceButton.SetActive(false);
+            evidenceOpened = true;
+            evidenceWindow.OpenWindow();
         }
     }
 }

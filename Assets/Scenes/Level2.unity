@@ -259,7 +259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 803093847729059577, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -710.00006
+      value: -710
       objectReference: {fileID: 0}
     - target: {fileID: 977171719315574225, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_IsActive
@@ -319,7 +319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3845022594809898315, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -753.99976
+      value: -753.9997
       objectReference: {fileID: 0}
     - target: {fileID: 3885361645849253573, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchorMax.y
@@ -652,16 +652,16 @@ PrefabInstance:
       objectReference: {fileID: 364647388}
     - target: {fileID: 530421159202692348, guid: 29d7f0f3e494e9747ab5c488bd5861e3, type: 3}
       propertyPath: hazardManagers.Array.size
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 530421159202692348, guid: 29d7f0f3e494e9747ab5c488bd5861e3, type: 3}
       propertyPath: hazardManagers.Array.data[0]
       value: 
-      objectReference: {fileID: 466196721}
+      objectReference: {fileID: 466196720}
     - target: {fileID: 530421159202692348, guid: 29d7f0f3e494e9747ab5c488bd5861e3, type: 3}
       propertyPath: hazardManagers.Array.data[1]
       value: 
-      objectReference: {fileID: 466196722}
+      objectReference: {fileID: 466196721}
     - target: {fileID: 1883371629531905675, guid: 29d7f0f3e494e9747ab5c488bd5861e3, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -44,6 +44,7 @@ public class AntiVirusMain : MonoBehaviour
 
     public void OnScanButton()
     {
+        scanButton.SetActive(false);
         OnLoadingStart?.Invoke();
         loadingScript.StartLoading();
         StartCoroutine(CheckLoadingDone());
@@ -70,11 +71,12 @@ public class AntiVirusMain : MonoBehaviour
         if(popupCount == maxPopups)
         {
             popupCount++;
-            SpawnPrefab();
+            evidenceWindow.OpenWindow();
         }
         else
         {
-            evidenceWindow.OpenWindow();
+            popupCount++;
+            SpawnPrefab();
         }
 
     }

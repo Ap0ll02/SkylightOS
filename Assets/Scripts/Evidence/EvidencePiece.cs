@@ -16,6 +16,12 @@ public class EvidencePiece : MonoBehaviour
     public static event Action EvidenceCollected;
     public bool isCollected = false;
 
+    public void Start()
+    {
+        BasicWindow window = gameObject.GetComponent<BasicWindow>();
+        window.ForceCloseWindow();
+    }
+
     public void TriggerEvidence()
     {
         if(isCollected) return;

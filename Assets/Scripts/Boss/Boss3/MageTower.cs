@@ -35,7 +35,6 @@ public class MageTower : Tower
 
     public override void Attack()
     {
-        animator.SetTrigger("Fire");
         Debug.Log("Attack");
         projectile = Instantiate(projectilePrefab, parent: GetComponent<Transform>());
     }

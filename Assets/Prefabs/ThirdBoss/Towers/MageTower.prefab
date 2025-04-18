@@ -26,13 +26,13 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3019622052627904948}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0.7071068, z: -0, w: -0.7071068}
-  m_LocalPosition: {x: 8.2, y: 41.5, z: 22.8}
-  m_LocalScale: {x: 49.436005, y: 69.136154, z: 1}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -4.2179, y: 46.51, z: -0.64}
+  m_LocalScale: {x: 93.908295, y: 87.21733, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 2415233097272226371}
-  m_LocalEulerAnglesHint: {x: 0, y: 270, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!212 &8213268153918584758
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -74,15 +74,15 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: -1849061668, guid: 66e453799c5e55f408930e78c587074b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.32, y: 0.47}
+  m_Size: {x: 0.64, y: 0.64}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 0
+  m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!95 &4823269550552383273
@@ -3168,7 +3168,7 @@ MonoBehaviour:
   tr: {fileID: 0}
   projectilePrefab: {fileID: 2965605986013614288, guid: acddbe30a66a2ad3f9d043498db2a7bc, type: 3}
   projectile: {fileID: 2965605986013614288, guid: acddbe30a66a2ad3f9d043498db2a7bc, type: 3}
-  animator: {fileID: 0}
+  animator: {fileID: 4823269550552383273}
 --- !u!4 &2415233097272226371 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8444291395104816027, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}

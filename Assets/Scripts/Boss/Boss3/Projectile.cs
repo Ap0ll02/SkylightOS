@@ -9,7 +9,6 @@ public class Projectile : MonoBehaviour
     protected Vector3 myPosition;
     public float speed;
     public bool seeStealth;
-    public Animation anim;
 
     public void Start()
     {
@@ -55,8 +54,4 @@ public class Projectile : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // public void OnDestroy()
-    // {
-    //     anim.Play("impact");
-    // }
 }

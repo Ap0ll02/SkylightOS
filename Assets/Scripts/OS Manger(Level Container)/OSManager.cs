@@ -32,9 +32,6 @@ public class OSManager : MonoBehaviour
     // List to hold the task buttons
     private List<Button> taskButtons = new List<Button>();
 
-    // Reference to boss task button (temporary)
-    [SerializeField] public Button bossTaskButton;
-
     // Reference to the GameObject containing all tasks
     [SerializeField] public GameObject tasksContainer;
 
@@ -43,6 +40,12 @@ public class OSManager : MonoBehaviour
 
     // Reference to the basic window
     [SerializeField] public BasicWindow window;
+
+    // Reference to the level trans button
+    [SerializeField] public GameObject levelTransButton;
+
+    // Reference to the EvidenceManager
+    [SerializeField] public EvidenceManager evidenceManager;
 
     // Difficulty to be set in each task and hazard 
     public enum Difficulty
@@ -85,6 +88,14 @@ public class OSManager : MonoBehaviour
         window.ForceCloseWindow();
         CreateTaskButtons();
         SubscribeToTaskEvents();
+        if (levelTransButton != null)
+        {
+            levelTransButton.SetActive(false);
+        }
+        else
+        {
+            Debug.LogError("LevelTransition GameObject not found.");
+        }
 
     }
 
@@ -121,15 +132,33 @@ public class OSManager : MonoBehaviour
         bossTask.startTask();
     }
 
-    // Method to finish a task based on an index
+    // Method to finish a task based on an index  
     public void FinishTask()
     {
         if (currentTask != null)
         {
+            // Check if the current task is the boss task  
+            if (currentTask == bossTask)
+            {
+                if (levelTransButton != null)
+                {
+                    levelTransButton.SetActive(true);
+                    for(int i = 0; i < evidenceManager.EvidenceCount; i++)
+                    {
+                        SaveLoad.IncrementEvidence();
+                    }
+                }
+                else
+                {
+                    Debug.LogError("LevelTransition GameObject not found.");
+                }
+                return;
+            }
+
             currentTask.isComplete = true;
             currentTask = null;
 
-            // Enable all buttons except the completed task buttons
+            // Enable all buttons except the completed task buttons  
             for (int i = 0; i < taskButtons.Count; i++)
             {
                 if (tasks[i].isComplete)
@@ -143,13 +172,14 @@ public class OSManager : MonoBehaviour
                 taskButtons[i].interactable = !tasks[i].isComplete;
             }
 
-            // Check if all tasks are complete
+            // Check if all tasks are complete  
             if (AllTasksComplete())
             {
                 StartBossTask();
             }
         }
     }
+
 
     // Example method to handle button press and start a task
     public void OnTaskButtonPress(int taskIndex)

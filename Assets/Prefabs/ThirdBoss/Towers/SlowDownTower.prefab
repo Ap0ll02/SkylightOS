@@ -896,8 +896,8 @@ MonoBehaviour:
   towerType: 1
   towerDesigns:
   - {fileID: 8041622105834189095}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4751769761772891529}
+  - {fileID: 6113144630410426692}
   damage: 5
   displayCost: 0
   timeToDamage: 1
@@ -907,7 +907,7 @@ MonoBehaviour:
   costToUpgrade: 4b0000008c000000fa000000
   targetEnemy: {fileID: 0}
   enemyQueue: []
-  playerScript: {fileID: 0}
+  playerScript: {fileID: 2991891161658796891, guid: 3604e05b0b3756f3991702ec912ecc00, type: 3}
   duration: 3
   slowPercent: 0.4
   tr: {fileID: 0}

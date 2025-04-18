@@ -79,24 +79,22 @@ public class TowerManager : MonoBehaviour
     {
         List<string> defaults = new()
         {
-            "Basic Cost: " + towerPrefabs[0].GetComponent<Tower>().displayCost,
-            "SlowDown Cost: " + towerPrefabs[1].GetComponent<Tower>().displayCost,
-            "Mage Cost: " + towerPrefabs[2].GetComponent<Tower>().displayCost,
-            "AOE Cost: " + towerPrefabs[3].GetComponent<Tower>().displayCost,
-            "Trapper Cost: " + towerPrefabs[4].GetComponent<Tower>().displayCost,
+            "Basic Cost: " + towerPrefabs[0].GetComponent<Tower>().costToUpgrade[0],
+            "SlowDown Cost: " + towerPrefabs[1].GetComponent<Tower>().costToUpgrade[0],
+            "Mage Cost: " + towerPrefabs[2].GetComponent<Tower>().costToUpgrade[0],
+            "AOE Cost: " + towerPrefabs[3].GetComponent<Tower>().costToUpgrade[0],
+            "Trapper Cost: " + towerPrefabs[4].GetComponent<Tower>().costToUpgrade[0],
         };
         // ====================================
         // Confirm Whether To Select Or Upgrade
         // ====================================
-
-        int i = 0;
-        if (!defaults.Contains(towerTexts[int.Parse(number)].text))
+        int[] mapThing = new int[] { 1, 3, 2, 0, 4 };
+        if (!defaults.Contains(towerTexts[mapThing[int.Parse(number)]].text))
         {
-            if (int.Parse(number) == i)
-            {
-                UpgradeUICallback();
-                return;
-            }
+            // WHY IS THIS IF STATEMENT USED TIME TO FIND OUT
+            Debug.Log("We found a number correctly");
+            UpgradeUICallback();
+            return;
         }
 
         // ====================================
@@ -291,6 +289,7 @@ public class TowerManager : MonoBehaviour
 
     public void UpgradeUICallback()
     {
+        Debug.Log("Made It Past The Button Click");
         if (towerHit)
         {
             UpgradeHitTower(towerHit);
@@ -319,8 +318,7 @@ public class TowerManager : MonoBehaviour
 
         foreach (TMPro.TMP_Text t in towerTexts)
         {
-            t.text =
-                types[i].ToString() + "\nCost: " + towerPrefabs[towerOrder[i]].costToUpgrade[0];
+            t.text = types[i].ToString() + " Cost: " + towerPrefabs[towerOrder[i]].costToUpgrade[0];
             i++;
         }
     }
@@ -366,7 +364,8 @@ public class TowerManager : MonoBehaviour
         int tLevel = tower.GetComponent<Tower>().level;
         if (player.GetCurrency() > tower.GetComponent<Tower>().costToUpgrade[tLevel])
         {
-            if (tLevel >= 3)
+            Debug.Log("MONEY CORRECT");
+            if (tLevel > 3)
             {
                 return;
             }

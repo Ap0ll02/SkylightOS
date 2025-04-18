@@ -191,32 +191,32 @@ public abstract class Tower : MonoBehaviour
     public bool UpgradeTower()
     {
         // Ensure tower is appropriate level
-        if (level == 3)
+        if (level > 3)
         {
             Debug.Log("Cannot Upgrade Past Level 3");
             return false;
         }
 
         // Fix all standard attributes
-        damage = damages[level];
-        attackRadius = radii[level];
-        cooldown = cooldowns[level];
-        isSpecial = isSpecials[level];
-        timeToDamage = timesToDamage[level];
-        duration = durations[level];
+        damage = damages[level - 1];
+        attackRadius = radii[level - 1];
+        cooldown = cooldowns[level - 1];
+        isSpecial = isSpecials[level - 1];
+        timeToDamage = timesToDamage[level - 1];
+        duration = durations[level - 1];
 
         // Slowdown Stuff
         if (towerType == Towers.SlowDown)
         {
-            slowPercent = slowDowns[level];
+            slowPercent = slowDowns[level - 1];
         }
 
         // Tower Look Update
-        int i = 1;
+        int i = 0;
         foreach (GameObject t in towerDesigns)
         {
             t.SetActive(false);
-            if (i == level)
+            if (i == level - 1)
             {
                 t.SetActive(true);
             }

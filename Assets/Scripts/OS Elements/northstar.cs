@@ -33,9 +33,9 @@ public class Northstar : MonoBehaviour
     public string currentText;
     public bool canClose = true;
     private Coroutine pd;
-    private Coroutine twh;
-    private Coroutine isAct = null;
-    private Coroutine autoCloseCoroutine = null;
+
+    public string[] startDialogueLines;
+    public NorthstarDialogueSO startDialogueSO;
 
     public void Awake()
     {
@@ -54,12 +54,17 @@ public class Northstar : MonoBehaviour
     public void Start()
     {
         canClose = false;
-        string[] dialogue = new string[] {"Welcome To Skylight OS!", "I am your AI assistant Northstar! I am here to help at any time!",
-                          "Lets start getting to work, click my compass when you need me. Now, start by selecting a task!"};
 
-        if (pd == null)
+        if (startDialogueSO != null && startDialogueSO.dialogueLines.Length > 0)
         {
-            pd = StartCoroutine(PlayDialogue(dialogue, 2f));
+            if (pd == null)
+            {
+                pd = StartCoroutine(PlayDialogue(startDialogueSO.dialogueLines, 2f));
+            }
+        }
+        else
+        {
+            Debug.LogWarning("No dialogue lines found in the assigned NorthstarDialogueSO.");
         }
     }
 

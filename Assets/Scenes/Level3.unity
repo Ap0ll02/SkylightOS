@@ -270,6 +270,10 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1527278009025700679, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: startDialogueSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 2bc7fdddbd6a24540a92f390375cfd2f, type: 2}
     - target: {fileID: 1610149095427984785, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: LoadTransitionEnd

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Projectile : MonoBehaviour
@@ -9,8 +10,10 @@ public class Projectile : MonoBehaviour
     protected Vector3 myPosition;
     public float speed;
     public bool seeStealth;
+    public float projectileLifeTime = 10;
+    public Coroutine coroutineRef;
 
-    public void Start()
+    public virtual void Start()
     {
         if (tm == null)
         {
@@ -24,9 +27,10 @@ public class Projectile : MonoBehaviour
         seeStealth = tm.isSpecial;
         Debug.Log("Enemy Locked: " + temp);
         transform.SetParent(null, true);
+        coroutineRef = StartCoroutine(ProjectileLife());
     }
 
-    public void Update()
+    public virtual void Update()
     {
         Debug.Log("Projectile Update: ");
         transform.position = Vector3.MoveTowards(
@@ -36,7 +40,7 @@ public class Projectile : MonoBehaviour
         );
     }
 
-    public void OnTriggerEnter(Collider collision)
+    public virtual void OnTriggerEnter(Collider collision)
     {
         Debug.Log("Collision: " + collision.gameObject);
         if (
@@ -51,7 +55,14 @@ public class Projectile : MonoBehaviour
 
     public void CleanUp()
     {
+        if(coroutineRef != null)
+            StopCoroutine(coroutineRef);
         Destroy(gameObject);
     }
 
+    public IEnumerator ProjectileLife()
+    {
+        yield return new WaitForSeconds(projectileLifeTime);
+        CleanUp();
+    }
 }

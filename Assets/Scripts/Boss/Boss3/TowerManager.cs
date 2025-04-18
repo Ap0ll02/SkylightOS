@@ -187,9 +187,9 @@ public class TowerManager : MonoBehaviour
         // ================================
         else if (Physics.Raycast(ray, out RaycastHit hitI, maxDistance, towerLayer))
         {
-            hitObject = hitI.collider.gameObject;
+            hitObject = hitI.collider.gameObject.GetComponentInParent<Tower>().gameObject;
 
-            if (!PlayerTowers.Contains(hitI.collider.gameObject))
+            if (!PlayerTowers.Contains(hitObject))
             {
                 clicked = false;
                 return false;

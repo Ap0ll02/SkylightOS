@@ -761,6 +761,30 @@ PrefabInstance:
       propertyPath: m_Radius
       value: 350
       objectReference: {fileID: 0}
+    - target: {fileID: 7670105602368098002, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+      propertyPath: m_Size.x
+      value: 25.278336
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670105602368098002, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+      propertyPath: m_Size.y
+      value: 37.832623
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670105602368098002, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+      propertyPath: m_Size.z
+      value: 13.77581
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670105602368098002, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+      propertyPath: m_Center.x
+      value: -4.053026
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670105602368098002, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+      propertyPath: m_Center.y
+      value: 17.386381
+      objectReference: {fileID: 0}
+    - target: {fileID: 7670105602368098002, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+      propertyPath: m_Center.z
+      value: -4.329361
+      objectReference: {fileID: 0}
     - target: {fileID: 8444291395104816027, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
@@ -872,8 +896,8 @@ MonoBehaviour:
   towerType: 1
   towerDesigns:
   - {fileID: 8041622105834189095}
-  - {fileID: 0}
-  - {fileID: 0}
+  - {fileID: 4751769761772891529}
+  - {fileID: 6113144630410426692}
   damage: 5
   displayCost: 0
   timeToDamage: 1
@@ -883,7 +907,7 @@ MonoBehaviour:
   costToUpgrade: 4b0000008c000000fa000000
   targetEnemy: {fileID: 0}
   enemyQueue: []
-  playerScript: {fileID: 0}
+  playerScript: {fileID: 2991891161658796891, guid: 3604e05b0b3756f3991702ec912ecc00, type: 3}
   duration: 3
   slowPercent: 0.4
   tr: {fileID: 0}

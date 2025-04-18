@@ -37,8 +37,53 @@ Transform:
   - {fileID: 4358280225419237593}
   - {fileID: 7908003770202491471}
   - {fileID: 5359042666646364738}
+  - {fileID: 5066903698495127050}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &7313447524654142821
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5066903698495127050}
+  - component: {fileID: 1563858230322613727}
+  m_Layer: 0
+  m_Name: EvidenceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5066903698495127050
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7313447524654142821}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.07641806, y: -0.109787434, z: 3.7159884}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6651417099806281802}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1563858230322613727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7313447524654142821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ee618e3da202b124fb67607db4ff5f65, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &159827954544260415
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -243,6 +288,14 @@ PrefabInstance:
       propertyPath: bossTaskButton
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4471639263967297597, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+      propertyPath: evidenceManager
+      value: 
+      objectReference: {fileID: 1563858230322613727}
+    - target: {fileID: 4471639263967297597, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+      propertyPath: levelTransButton
+      value: 
+      objectReference: {fileID: 7222715571717670636}
     - target: {fileID: 4471639263967297597, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
       propertyPath: tasks.Array.size
       value: 4
@@ -1031,6 +1084,11 @@ PrefabInstance:
 --- !u!224 &4274194329784717294 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8612153868732281475, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
+  m_PrefabInstance: {fileID: 5536183193818217837}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &7222715571717670636 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2947681560875219841, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
   m_PrefabInstance: {fileID: 5536183193818217837}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6482813004115958984

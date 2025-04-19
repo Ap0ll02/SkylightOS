@@ -12,8 +12,15 @@ public class DogeBossFightManager : BossManager
     bool GameOver = false;
     private Northstar northstar;
     public GameObject[] objectsToActivate;
+    public BasicWindow window;
 
     // This method will call the Next stage and start the boss fight
+    public void Start()
+    {
+        window = gameObject.transform.parent.GetComponent<BasicWindow>();
+        window.ForceCloseWindow();
+    }
+
     public void StartBossFight()
     {
         if (!GameOver)
@@ -25,10 +32,6 @@ public class DogeBossFightManager : BossManager
         }
     }
 
-    private void Start()
-    {
-        StartBossFight();
-    }
     private void Update()
     {
         LevelMusic();

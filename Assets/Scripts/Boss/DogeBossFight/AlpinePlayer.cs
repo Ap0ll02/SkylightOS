@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using Random = UnityEngine.Random;
 
 public class AlpinePlayer : MonoBehaviour
 {
@@ -11,7 +12,6 @@ public class AlpinePlayer : MonoBehaviour
     // We want our catgirl to have a body we can reference
     public Rigidbody2D catGirlBody;
     //The sounds our catgirl will make when doing stuff
-    public AudioClip[] catGirlSounds;
 
     [Header("Varibles")]
     // Max health variable
@@ -23,56 +23,62 @@ public class AlpinePlayer : MonoBehaviour
     // Is the catgirl dead or alive
     public bool isDead;
     // The speed of our catgirl
-    public float moveSpeed = 10;
-    public float jumpSpeed = 5;
+    public float moveSpeed = 5;
+    public float jumpSpeed = 4.5f;
+    public bool isGrounded;
 
     [Header("Camera")]
     public Transform catGirlCamera;
     public float smoothSpeed = 0.5f;
     public Vector2 moveDirection;
+    Vector3 velocity = Vector3.zero;
     // Start is called before the first frame update
-    private void Update()
-    {
-        MoveDirection();
-        catGirlCamera.position = new Vector2(transform.position.x, transform.position.y);
 
+    [Header("Ground Check")]
+    public Transform groundCheckPosition;
+    public float groundCheckRadius = 0.2f;
+    public LayerMask groundLayer;
+
+    public AudioClip[] CatGirlJumpSounds;      // Reference to the sound to play when the lever is turned on
+    private AudioSource audioSource;
+
+
+    public void FixedUpdate()
+    {
+        catGirlCamera.position = Vector3.SmoothDamp(catGirlCamera.position, new Vector3(transform.position.x, transform.position.y, 0), ref velocity, 0.01f);
     }
 
-    #region Input
-    public InputActionReference move;
-    public InputActionReference jump;
-    public InputActionReference shoot;
+    public void CheckGroundStatus()
+    {
+        isGrounded = Physics2D.OverlapCircle(groundCheckPosition.position, groundCheckRadius, groundLayer);
+    }
 
-// These are the listeners the observers! that subscribe or observe the input action reference. So in short when a button is pressed this function will be called
-    public void OnShootPerformed(InputAction.CallbackContext context)
-    {
-        //CastSpell();
-    }
-    public void OnJumpPerformed(InputAction.CallbackContext context)
-    {
-        catGirlBody.velocity = new Vector2(catGirlBody.velocity.x, jumpSpeed);
-    }
-    #endregion
+    // These are the listeners the observers! that subscribe or observe the input action reference. So in short when a button is pressed this function will be called
+
     #region Gameplay
     // Controls the movement of our catgirl wizard and controls the animation controller this is also handled through the input controller
     public void MoveDirection()
     {
-        catGirlBody.velocity = new Vector2(move.action.ReadValue<Vector2>().x * moveSpeed, catGirlBody.velocity.y);
-        if (move.action.ReadValue<Vector2>().x > 0)
+        float xInput = 0f;
+
+        // Get movement input based on keys pressed
+        if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
-            // animator.SetTrigger("Right");
-            // animator.ResetTrigger("Left");
+            xInput = -1f; // Move left
         }
-        else if (move.action.ReadValue<Vector2>().x < 0)
+        if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
-            // animator.SetTrigger("Left");
-            // animator.ResetTrigger("Right");
+            xInput = 1f; // Move right
         }
-        else
+        if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow))
         {
-            // animator.ResetTrigger("Right");
-            // animator.ResetTrigger("Left");
+            if (isGrounded)
+            {
+                catGirlBody.velocity = new Vector2(catGirlBody.velocity.x, jumpSpeed);
+            }
         }
+        Vector2 newVelocity = new Vector2(xInput * moveSpeed, catGirlBody.velocity.y);
+        catGirlBody.velocity = newVelocity; // Set the character’s velocity
     }
 
     public IEnumerator PlayingGame()
@@ -80,6 +86,7 @@ public class AlpinePlayer : MonoBehaviour
         while (!isDead) // Keep looping unless the game ends.
         {
             MoveDirection();
+            CheckGroundStatus();
             yield return null; // Wait until the next frame.
         }
     }
@@ -88,17 +95,12 @@ public class AlpinePlayer : MonoBehaviour
     #region Start and End
     private void OnEnable()
     {
-        //subscribes to our events
-        jump.action.performed += OnJumpPerformed;
-        shoot.action.performed += OnShootPerformed;
-        //StartCoroutine(PlayingGame());
+        StartCoroutine(PlayingGame());
     }
 
     public void OnDisable()
     {
         // Unsubscribe from the movement events and disables input
-        jump.action.performed -= OnJumpPerformed;
-        shoot.action.performed -= OnShootPerformed;
     }
     #endregion
     #region PlayerFunctions

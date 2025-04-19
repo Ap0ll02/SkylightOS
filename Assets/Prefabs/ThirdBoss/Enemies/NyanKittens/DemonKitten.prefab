@@ -1,0 +1,104 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &5413692132425173936
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4577889617394634072, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_Name
+      value: DemonKitten
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 4577889617394634072, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: -1820537934561649894}
+  m_SourcePrefab: {fileID: 100100000, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+--- !u!95 &2342565380838837504 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 7756107316780418736, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+  m_PrefabInstance: {fileID: 5413692132425173936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &8405583967981799144 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4577889617394634072, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+  m_PrefabInstance: {fileID: 5413692132425173936}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &-1820537934561649894
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8405583967981799144}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 94c1c77059d859c4eb30b9cfd70d3f6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pointValue: 0
+  currentHealth: 0
+  maxHealth: 0
+  damage: 0
+  speed: 0
+  originalSpeed: 0
+  reward: 50
+  currentPosition: 0
+  navi: {fileID: 0}
+  nextWaypoint: {x: 0, y: 0, z: 0}
+  animator: {fileID: 2342565380838837504}
+  player: {fileID: 0}

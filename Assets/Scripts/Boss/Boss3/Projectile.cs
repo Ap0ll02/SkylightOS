@@ -49,8 +49,8 @@ public class Projectile : MonoBehaviour
         )
         {
             tm.HitEnemy(collision.gameObject);
+            CleanUp();
         }
-        CleanUp();
     }
 
     public void CleanUp()

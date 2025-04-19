@@ -52,7 +52,8 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage3Boss3
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 2932564780858777364, guid: d2fa28c85c9ada643bb9681c3383757e, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -78,3 +79,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossManager: {fileID: 0}
+  spawnManager: {fileID: 0}
+  enemyArray: []
+  LazerArray: []
+  NyanCatBoss: {fileID: 0}

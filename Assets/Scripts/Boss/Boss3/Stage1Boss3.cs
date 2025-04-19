@@ -33,8 +33,9 @@ public class Stage1Boss3 : AbstractBossStage
 
     public IEnumerator StartSpawning()
     {
-        //yield return spawnManager.spawnAmount(0, 1, 3.0f);
-        yield return spawnManager.SpawnRandom(20, 0, enemyArray.Count, 2.0f);
+        yield return spawnManager.spawnAmount(0, 4, 3.0f);
+        yield return spawnManager.spawnAmount(1, 2, 2.0f);
+        yield return spawnManager.SpawnRandom(40, 0, enemyArray.Count, 2.0f);
         BossEndStage();
     }
 

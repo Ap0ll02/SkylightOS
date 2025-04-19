@@ -82,6 +82,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -7008780118704124061, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
+      propertyPath: m_Constraints
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 2647017809876923545, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
       propertyPath: m_Height
       value: 47.39215
@@ -184,6 +188,7 @@ MonoBehaviour:
   targetPosition: {x: 0, y: 0, z: 0}
   speed: 200
   seeStealth: 0
+  projectileLifeTime: 10
   Penetration: 5
 --- !u!4 &6697961707820075117 stripped
 Transform:

@@ -2,36 +2,49 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Garrett Shart
+// The functionality for the system window
+// This is the main window that contains all the panels for the system
+// This is the main window that contains all the panels for the system
+// This is the main window that contains all the panels for the system
+// This is the main window that contains all the panels for the system
+
+// This is the main window that contains all the panels for the system
+// This is the main window that contains all the panels for the system
+// This is the main window that contains all the panels for the system
+
 public class SystemWindow : MonoBehaviour
 {
-    // Enum to track the state of the window
+    // Enum to track the state of the window  
     public enum WindowState
     {
         MAIN,
         RESOURCES,
         DRIVERS,
-        UPDATE
+        UPDATE,
+        INFO // New state for the Info panel  
     }
 
-    // Reference to the window
+    // Reference to the window  
     public BasicWindow window;
 
-    // Current state of the window
+    // Current state of the window  
     public WindowState currentState;
 
-    // The back button
+    // The back button  
     public GameObject backButton;
 
-    // The panels for each state
+    // The panels for each state  
     public BasicWindowPanel mainPanel;
     public BasicWindowPanel resourcesPanel;
     public BasicWindowPanel driversPanel;
     public BasicWindowPanel updatePanel;
+    public BasicWindowPanel infoPanel; // New Info panel  
 
-    // Reference to the current open panel
+    // Reference to the current open panel  
     public BasicWindowPanel currentPanel;
 
-    // Awake is called when the script instance is being loaded.
+    // Awake is called when the script instance is being loaded.  
     void Awake()
     {
         window = GetComponent<BasicWindow>();
@@ -44,11 +57,12 @@ public class SystemWindow : MonoBehaviour
         resourcesPanel.ClosePanel();
         driversPanel.ClosePanel();
         updatePanel.ClosePanel();
+        infoPanel.ClosePanel(); // Close the Info panel initially  
         backButton.SetActive(false);
         window.ForceCloseWindow();
     }
 
-    // Switches the state of the window
+    // Switches the state of the window  
     public void SwitchState(WindowState state)
     {
         if (currentPanel != null)
@@ -82,10 +96,16 @@ public class SystemWindow : MonoBehaviour
                 currentPanel = updatePanel;
                 currentState = WindowState.UPDATE;
                 break;
+            case WindowState.INFO: // Logic for the Info panel  
+                backButton.SetActive(true);
+                infoPanel.OpenPanel();
+                currentPanel = infoPanel;
+                currentState = WindowState.INFO;
+                break;
         }
     }
 
-    // Back button function
+    // Back button function  
     public void BackButton()
     {
         if (currentState != WindowState.MAIN)
@@ -94,25 +114,31 @@ public class SystemWindow : MonoBehaviour
         }
     }
 
-    // Open the Resources window
+    // Open the Resources window  
     public void OpenResources()
     {
         SwitchState(WindowState.RESOURCES);
     }
 
-    // Open the Drivers window
+    // Open the Drivers window  
     public void OpenDrivers()
     {
         SwitchState(WindowState.DRIVERS);
     }
 
-    // Open the Update window
+    // Open the Update window  
     public void OpenUpdate()
     {
         SwitchState(WindowState.UPDATE);
     }
 
-    // When the window is enabled, update the text
+    // Open the Info window  
+    public void OpenInfo()
+    {
+        SwitchState(WindowState.INFO);
+    }
+
+    // When the window is enabled, update the text  
     public void OnEnable()
     {
         window.OnWindowOpen += BackButton;

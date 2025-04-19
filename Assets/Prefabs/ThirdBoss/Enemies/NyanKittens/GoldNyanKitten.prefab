@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8470220480244435914, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_FlipY
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8470220480244435914, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
       propertyPath: m_Size.x
       value: 5.76
       objectReference: {fileID: 0}
@@ -101,3 +105,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: add7cc7aa198326439f75d6d52d4f2f3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  pointValue: 0
+  currentHealth: 0
+  maxHealth: 0
+  damage: 0
+  speed: 0
+  originalSpeed: 0
+  reward: 50
+  currentPosition: 0
+  navi: {fileID: 0}
+  nextWaypoint: {x: 0, y: 0, z: 0}
+  animator: {fileID: 0}
+  player: {fileID: 0}

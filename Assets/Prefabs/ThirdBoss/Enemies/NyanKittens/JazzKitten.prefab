@@ -8,6 +8,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -8470220480244435914, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_FlipY
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 247688939520816779, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
       propertyPath: m_LocalScale.x
       value: 10

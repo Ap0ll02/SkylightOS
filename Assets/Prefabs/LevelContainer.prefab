@@ -861,6 +861,18 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.x
       value: -184
       objectReference: {fileID: 0}
+    - target: {fileID: 3257815346959017404, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 6541472553148435901}
+    - target: {fileID: 3257815346959017404, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 3257815346959017404, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BasicWindow, Assembly-CSharp
+      objectReference: {fileID: 0}
     - target: {fileID: 3480643385404975387, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -408

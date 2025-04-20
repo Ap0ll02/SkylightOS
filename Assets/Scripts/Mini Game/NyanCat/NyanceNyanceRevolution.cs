@@ -851,7 +851,10 @@ public class NyanceNyanceRevolution : MonoBehaviour
     {
         StageTwoOff();
     }
-    // Destroy all of the stage four game objects
+    // Add an event to trigger after the game ends
+    public event Action OnGameEnd;
+
+    // Modify the EndGame method to invoke the event
     public void EndGame()
     {
         Destroy(Line1);
@@ -860,8 +863,11 @@ public class NyanceNyanceRevolution : MonoBehaviour
         Destroy(endCondition);
         Destroy(nyanCatStruggling);
         Destroy(nyanCatIcon);
-        Destroy(gameObject);
-        Application.Quit();
+        // Trigger the OnGameEnd event
+        canvas.SetActive(false);
+        OnGameEnd?.Invoke();
+        gameObject.SetActive(false);
+
     }
 }
 

@@ -22,6 +22,17 @@ public class NyanCatTask : AbstractBossTask
         nyanCatRevolution.StartNyanceNyanceRevolution();
     }
 
+    public void OnEnable()
+    {
+        nyanCatRevolution.OnGameEnd += CompleteTask;
+    }
+
+    public void OnDisable()
+    {
+        nyanCatRevolution.OnGameEnd -= CompleteTask;
+    }
+
+
     public override void startHazards()
     {
 

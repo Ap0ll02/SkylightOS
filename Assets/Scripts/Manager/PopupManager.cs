@@ -136,20 +136,20 @@ public class PopupManager : AbstractManager
     {
         if (difficulty == OSManager.Difficulty.Easy)
         {
-            spawnIntervalMin = 5;
-            spawnIntervalMax = 10;
+            spawnIntervalMin = 6;
+            spawnIntervalMax = 13;
             maxWindows = 3;
         }
         else if (difficulty == OSManager.Difficulty.Medium)
         {
-            spawnIntervalMin = 3;
-            spawnIntervalMax = 7;
+            spawnIntervalMin = 5;
+            spawnIntervalMax = 10;
             maxWindows = 5;
         }
         else if (difficulty == OSManager.Difficulty.Hard)
         {
-            spawnIntervalMin = 1;
-            spawnIntervalMax = 5;
+            spawnIntervalMin = 4;
+            spawnIntervalMax = 8;
             maxWindows = 7;
         }
     }

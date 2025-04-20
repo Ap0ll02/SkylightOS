@@ -85,11 +85,11 @@ public class LockdownManager : AbstractManager
     {
         if (difficulty == OSManager.Difficulty.Medium)
         {
-            return UnityEngine.Random.Range(minDelay / 2, maxDelay / 2);
+            return UnityEngine.Random.Range(minDelay / 1.5f, maxDelay / 1.5f);
         }
         else if (difficulty == OSManager.Difficulty.Hard)
         {
-            return UnityEngine.Random.Range(minDelay / 3, maxDelay / 3);
+            return UnityEngine.Random.Range(minDelay / 2, maxDelay / 2);
         }
         return UnityEngine.Random.Range(minDelay, maxDelay);
     }

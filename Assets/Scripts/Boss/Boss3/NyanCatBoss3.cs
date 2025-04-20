@@ -10,8 +10,8 @@ public class NyanCatBoss3 : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = Random.Range(100f, 120f);
-        maxHealth = 2000;
+        speed = 30;
+        maxHealth = 10000;
         currentHealth = maxHealth;
         pointValue = 100;
         damage = 1;

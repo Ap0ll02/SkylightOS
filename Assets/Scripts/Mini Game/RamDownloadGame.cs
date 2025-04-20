@@ -102,7 +102,7 @@ public class RamDownloadGame : AbstractMinigame
     // Spawn windows
     IEnumerator SpawnWindows()
     {
-        while (downloadCounter <= 5)
+        while (downloadCounter < totalDownloads)
         {
             SpawnNewWindow();
             int spawntime = UnityEngine.Random.Range(1, 10);
@@ -181,7 +181,7 @@ public class RamDownloadGame : AbstractMinigame
     public void OnFileDownloaded()
     {
         downloadCounterText.text = "Downloads: " + downloadCounter + "/" + totalDownloads;
-        if (downloadCounter > totalDownloads)
+        if (downloadCounter >= totalDownloads)
         {
             EndGame();
         }

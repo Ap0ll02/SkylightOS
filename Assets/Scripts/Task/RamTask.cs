@@ -41,6 +41,7 @@ public class RamTask : AbstractTask
     new void Start()
     {
         // Set the task title and description
+        systemResourcesWindow.currentRAMStatus = SystemResourcesWindow.RAMStatus.WARNING;
         gameObject.SetActive(false);
     }
 

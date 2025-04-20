@@ -35,7 +35,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: -0.5000018, y: -0.5000018}
+  m_SizeDelta: {x: -10, y: -10}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &244040197455214543
 CanvasRenderer:
@@ -94,7 +94,7 @@ PrefabInstance:
     - target: {fileID: 7168894472288002100, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 10907, guid: 0000000000000000f000000000000000, type: 0}
     - target: {fileID: 7168894472288002100, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_Color.a
       value: 1
@@ -153,11 +153,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8469657877142531085, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1
+      value: 77.43
       objectReference: {fileID: 0}
     - target: {fileID: 8469657877142531085, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 1
+      value: 77.43
       objectReference: {fileID: 0}
     - target: {fileID: 8469657877142531085, guid: e6cb57026b1461e4eb87dd995e22ef2b, type: 3}
       propertyPath: m_LocalPosition.x

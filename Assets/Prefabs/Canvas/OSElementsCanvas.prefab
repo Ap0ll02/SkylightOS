@@ -37,8 +37,8 @@ RectTransform:
   - {fileID: 5180285438488358662}
   - {fileID: 728898902237838232}
   - {fileID: 6936272356445398012}
-  - {fileID: 5165017901175098470}
   - {fileID: 38986268232028238}
+  - {fileID: 5165017901175098470}
   - {fileID: 3465483613980514598}
   - {fileID: 7207167826220177541}
   m_Father: {fileID: 0}
@@ -202,6 +202,10 @@ PrefabInstance:
     - target: {fileID: 8618196444782125449, guid: e5b5d24aa5dd47e4c98c773956b977ac, type: 3}
       propertyPath: m_Name
       value: DogeIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 8618196444782125449, guid: e5b5d24aa5dd47e4c98c773956b977ac, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -822,6 +826,10 @@ PrefabInstance:
     - target: {fileID: 6098789731565607414, guid: 7dcda0bf54fce0c439819daed3e5ab00, type: 3}
       propertyPath: m_Name
       value: NyanCatIcon
+      objectReference: {fileID: 0}
+    - target: {fileID: 6098789731565607414, guid: 7dcda0bf54fce0c439819daed3e5ab00, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

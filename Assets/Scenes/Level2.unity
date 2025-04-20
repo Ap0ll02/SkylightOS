@@ -134,6 +134,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: DogeRaycastBlockCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 1633724980614707434, guid: fc01fca816ab756499e4d30a0d2fc965, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1633724980614707434, guid: fc01fca816ab756499e4d30a0d2fc965, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3453796397359325015, guid: fc01fca816ab756499e4d30a0d2fc965, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -253,6 +261,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 264989602459454874, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 264989602459454874, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -2.842041
+      objectReference: {fileID: 0}
     - target: {fileID: 469977643374147393, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -62.166992
@@ -309,6 +325,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -6400.5
       objectReference: {fileID: 0}
+    - target: {fileID: 2527072773770363879, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.001953125
+      objectReference: {fileID: 0}
     - target: {fileID: 2839029093916426965, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: 41
@@ -320,6 +340,10 @@ PrefabInstance:
     - target: {fileID: 3388325847504965957, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: -60.19507
+      objectReference: {fileID: 0}
+    - target: {fileID: 3538937530829246655, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.001953125
       objectReference: {fileID: 0}
     - target: {fileID: 3845022594809898315, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.x
@@ -367,7 +391,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4915130101323574182, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -51.80017
+      value: -51.800293
       objectReference: {fileID: 0}
     - target: {fileID: 5151788133928465645, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -477,12 +501,21 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: -210.00006
       objectReference: {fileID: 0}
+    - target: {fileID: 8782690820683457489, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.001953125
+      objectReference: {fileID: 0}
+    - target: {fileID: 8893267659161956780, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.001953125
+      objectReference: {fileID: 0}
     - target: {fileID: 8978843641717979752, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 31.20996
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 5987175706447961325, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}

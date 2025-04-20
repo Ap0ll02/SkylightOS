@@ -5,9 +5,12 @@ using UnityEngine;
 public class DogeStage1 : AbstractBossStage
 {
     Lever lever;
+
+    public GameObject Player;
     // Start is called before the first frame update
     public override void BossStartStage()
     {
+        Player.SetActive(true);
         Debug.Log("Stage 1");
     }
 

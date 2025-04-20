@@ -492,6 +492,10 @@ PrefabInstance:
       propertyPath: m_AnchorMin.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8151422172123542844, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -210.00006
+      objectReference: {fileID: 0}
     - target: {fileID: 8496679994783934109, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
       propertyPath: m_IsActive
       value: 1
@@ -637,6 +641,17 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 5337146164265831593, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
   m_PrefabInstance: {fileID: 159827954544260415}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5680443353029383596 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5540324260637188243, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+  m_PrefabInstance: {fileID: 159827954544260415}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9bc7c29b6987a7e42ab124c287c46779, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5831683883384182069 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5969977833734643722, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
@@ -1060,6 +1075,18 @@ PrefabInstance:
     - target: {fileID: 8895000346957055671, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
       propertyPath: m_Name
       value: OSElementsCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035168378229759846, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 5680443353029383596}
+    - target: {fileID: 9035168378229759846, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: StartBossFight
+      objectReference: {fileID: 0}
+    - target: {fileID: 9035168378229759846, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: DogeBossFightManager, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 9129388381357475852, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target

@@ -9,7 +9,7 @@ public class DogeBossFightManager : BossManager
     public AudioClip bossMusic;
     public AudioSource currentMusic;
     public int currentMusicIndex = 0;
-    bool GameOver = false;
+    public bool isPlaying = false;
     private Northstar northstar;
     public GameObject[] objectsToActivate;
     public BasicWindow window;
@@ -23,8 +23,11 @@ public class DogeBossFightManager : BossManager
 
     public void StartBossFight()
     {
-        if (!GameOver)
+        if (!isPlaying)
         {
+            window.OpenWindow();
+            isPlaying = true;
+            //StartCoroutine(BossMusic());
             this.NextStage();
             currentMusic = GetComponent<AudioSource>();
             currentMusic.clip = musicArray[currentMusicIndex];
@@ -32,12 +35,6 @@ public class DogeBossFightManager : BossManager
         }
     }
 
-    private void Update()
-    {
-        LevelMusic();
-    }
-
-    #region Music
     public void LevelMusic()
     {
         if (currentMusic.isPlaying == false)
@@ -69,7 +66,6 @@ public class DogeBossFightManager : BossManager
     {
         currentMusic.Stop();
     }
-    #endregion Music
 
     void  OnEnable()
     {
@@ -77,5 +73,14 @@ public class DogeBossFightManager : BossManager
         {
             gameObject.SetActive(true);
         }
+    }
+
+    IEnumerator BossMusic()
+    {
+        while (isPlaying == true)
+        {
+            LevelMusic();
+        }
+        yield return null;
     }
 }

@@ -34,9 +34,11 @@ public class SystemResourcesWindow : MonoBehaviour
 
     // References to the GPU status text
     [SerializeField] TMP_Text GPUStatusText;
+    public GameObject GPUGraphs;
 
     // References to the RAM status text
     [SerializeField] TMP_Text RAMStatusText;
+    public GameObject RamGraphs;
 
     // References to the buttons
     [SerializeField] GameObject GPUButton;
@@ -94,14 +96,20 @@ public class SystemResourcesWindow : MonoBehaviour
             case (GPUStatus.OK):
                 GPUStatusText.text = "OK";
                 GPUButton.SetActive(false);
+                GPUGraphs.transform.GetChild(0).gameObject.SetActive(true);
+                GPUGraphs.transform.GetChild(1).gameObject.SetActive(false);
                 break;
             case (GPUStatus.WARNING):
                 GPUStatusText.text = "CRITICAL";
                 GPUButton.SetActive(false);
+                GPUGraphs.transform.GetChild(0).gameObject.SetActive(false);
+                GPUGraphs.transform.GetChild(1).gameObject.SetActive(true);
                 break;
             case (GPUStatus.CRITICAL):
                 GPUStatusText.text = "CRITICAL";
                 GPUButton.SetActive(true);
+                GPUGraphs.transform.GetChild(0).gameObject.SetActive(false);
+                GPUGraphs.transform.GetChild(1).gameObject.SetActive(true);
                 break;
         }
 
@@ -110,13 +118,20 @@ public class SystemResourcesWindow : MonoBehaviour
             case (RAMStatus.OK):
                 RAMStatusText.text = "OK";
                 RAMButton.SetActive(false);
+                RamGraphs.transform.GetChild(0).gameObject.SetActive(true);
+                RamGraphs.transform.GetChild(1).gameObject.SetActive(false);
                 break;
             case (RAMStatus.WARNING):
                 RAMStatusText.text = "CRITICAL";
+                RAMButton.SetActive(false);
+                RamGraphs.transform.GetChild(0).gameObject.SetActive(false);
+                RamGraphs.transform.GetChild(1).gameObject.SetActive(true);
                 break;
             case (RAMStatus.CRITICAL):
                 RAMStatusText.text = "CRITICAL";
                 RAMButton.SetActive(true);
+                RamGraphs.transform.GetChild(0).gameObject.SetActive(false);
+                RamGraphs.transform.GetChild(1).gameObject.SetActive(true);
                 break;
         }
     }

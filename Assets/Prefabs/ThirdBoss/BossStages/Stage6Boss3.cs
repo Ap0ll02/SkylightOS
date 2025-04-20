@@ -7,15 +7,24 @@ public class Stage6Boss3 : AbstractBossStage
     public SpawnManagerBoss3 spawnManager;
     public List<GameObject> enemyArray;
     private bool spawning;
+    public GameObject northstar;
+    public string Line1 = "I am detecting shiba inu activity with my dog monitoring system... Is that... <shake>Doge!</shake>";
+    public string Line2 = "Alright Operator! Finish this fight. Put down towers and buy me some more time. We are almost there!";
+
     public override void BossStartStage()
     {
-
-        Debug.Log("Start Stage 6");
-        Debug.Assert(spawnManager != null, "Spawn Manager is null");
-        spawnManager.enemies = enemyArray;
-        StartCoroutine(StartSpawning());
+        northstar.SetActive(true);
+        StartCoroutine(PlayStage());
     }
 
+    public IEnumerator PlayStage()
+    {
+        yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,1f);
+        yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,1f);
+        yield return StartSpawning();
+        yield return seconds();
+        BossEndStage();
+    }
     public override void BossEndStage()
     {
         //Debug.Log("Stage 1 End");
@@ -24,13 +33,11 @@ public class Stage6Boss3 : AbstractBossStage
     IEnumerator seconds()
     {
         yield return new WaitForSeconds(1);
-        BossEndStage();
     }
 
     public IEnumerator StartSpawning()
     {
         yield return spawnManager.spawnAmount(3, 3, 4.0f);
         yield return spawnManager.SpawnRandom(100, 0, enemyArray.Count, 1.0f);
-        BossEndStage();
     }
 }

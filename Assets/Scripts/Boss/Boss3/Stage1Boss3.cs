@@ -11,32 +11,44 @@ public class Stage1Boss3 : AbstractBossStage
     public SpawnManagerBoss3 spawnManager;
     public List<GameObject> enemyArray;
     private bool spawning;
+    public GameObject northstar;
+    public string Line1 = "<bounce>Welcome Operator! </bounce>We chased the viruses all the way to the mother board.They are desperate, and lunching a full on assualt on the GPU...";
+    public string Line2 =
+        "We Have to <shake>stop them!</shake> Im activating the computer defense system! Start grabbing towers and placing them down on the mother board.";
     public override void BossStartStage()
     {
+        northstar.SetActive(true);
+        StartCoroutine(PlayStage());
+    }
 
-        Debug.Log("Start Stage 1");
-        Debug.Assert(spawnManager != null, "Spawn Manager is null");
-        spawnManager.enemies = enemyArray;
-        StartCoroutine(StartSpawning());
+    public IEnumerator PlayStage()
+    {
+        yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,1f);
+        yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,1f);
+        yield return StartSpawning();
+        yield return seconds();
+        BossEndStage();
     }
 
     public override void BossEndStage()
     {
-        //Debug.Log("Stage 1 End");
         bossManager.NextStage();
     }
+
     IEnumerator seconds()
     {
         yield return new WaitForSeconds(1);
-        BossEndStage();
     }
 
     public IEnumerator StartSpawning()
     {
+        northstar.GetComponent<NorthStarAdvancedMode>().Turnoff();
+        Debug.Assert(spawnManager != null, "Spawn Manager is null");
+        spawnManager.enemies = enemyArray;
         yield return spawnManager.spawnAmount(0, 4, 3.0f);
         yield return spawnManager.spawnAmount(1, 2, 2.0f);
         yield return spawnManager.SpawnRandom(40, 0, enemyArray.Count, 2.0f);
-        BossEndStage();
     }
+
 
 }

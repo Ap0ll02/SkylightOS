@@ -1399,6 +1399,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stage1Boss3
       objectReference: {fileID: 0}
+    - target: {fileID: 4127000029605867736, guid: 11c0a2eb24bf6b6469192f8a767a32b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8421061715776883564, guid: 11c0a2eb24bf6b6469192f8a767a32b1, type: 3}
       propertyPath: bossManager
       value: 
@@ -1425,7 +1429,8 @@ PrefabInstance:
       objectReference: {fileID: 9193467776061685439, guid: bdc20e0a0d2e1a941b3748cac3956f61, type: 3}
     m_RemovedComponents:
     - {fileID: 7994892881958244619, guid: 11c0a2eb24bf6b6469192f8a767a32b1, type: 3}
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1606445195716147918, guid: 11c0a2eb24bf6b6469192f8a767a32b1, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 11c0a2eb24bf6b6469192f8a767a32b1, type: 3}

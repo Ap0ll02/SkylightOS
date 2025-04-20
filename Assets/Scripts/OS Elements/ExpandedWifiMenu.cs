@@ -24,11 +24,15 @@ public class ExpandedWifiMenu : MonoBehaviour
     // Reference to the window
     [SerializeField] BasicWindow window;
 
+    // Reference to the wifi icon
+    [SerializeField] GameObject wifiIcon;
+
     // Enum to track the state of the wifi
     public enum WifiState
     {
         Connected,
-        Disconnected
+        Disconnected,
+        DisconnectedInteractable
     }
 
     // Current state of the wifi
@@ -84,18 +88,29 @@ public class ExpandedWifiMenu : MonoBehaviour
         UpdateWifiState();
     }
 
-    // Method to update the TextMeshPro object with the current wifi state
+    // Method to update the TextMeshPro object with the current wifi state  
     void UpdateWifiState()
     {
         if (currentWifiState == WifiState.Connected)
         {
             wifiStateText.text = "Successfully Connected to Network";
             wifiButton.SetActive(false);
+            wifiIcon.transform.GetChild(0).gameObject.SetActive(true);
+            wifiIcon.transform.GetChild(1).gameObject.SetActive(false);
         }
         else if (currentWifiState == WifiState.Disconnected)
         {
             wifiStateText.text = "Unable to connect to network";
+            wifiButton.SetActive(false);
+            wifiIcon.transform.GetChild(0).gameObject.SetActive(false);
+            wifiIcon.transform.GetChild(1).gameObject.SetActive(true);
+        }
+        else if (currentWifiState == WifiState.DisconnectedInteractable)
+        {
+            wifiStateText.text = "Unable to connect to network";
             wifiButton.SetActive(true);
+            wifiIcon.transform.GetChild(0).gameObject.SetActive(false);
+            wifiIcon.transform.GetChild(1).gameObject.SetActive(true);
         }
         else
         {

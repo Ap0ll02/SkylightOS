@@ -23,8 +23,8 @@ public class AlpinePlayer : MonoBehaviour
     // Is the catgirl dead or alive
     public bool isDead;
     // The speed of our catgirl
-    public float moveSpeed = 5;
-    public float jumpSpeed = 4.5f;
+    public float moveSpeed = 4;
+    public float jumpSpeed = 5.2f;
     public bool isGrounded;
 
     [Header("Camera")]

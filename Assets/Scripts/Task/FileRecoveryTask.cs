@@ -1,23 +1,23 @@
 public class FileRecoveryTask : AbstractTask
 {
-    public FileSystemWindow status_text;
+    public FileSystemWindow fileSystemWindow;
     public FileRecoMazeMiniGame frS;
 
     void Awake()
     {
-        status_text = FindObjectOfType<FileSystemWindow>();
+        fileSystemWindow = FindObjectOfType<FileSystemWindow>();
         taskTitle = "Recover Lost Files";
         taskDescription = "Recover the EXT6 File System by visiting the file recovery software.";
     }
     new void Start()
     {
         // Broken, Non-Interactable State
-        status_text.UpdateStatus("EXT6 File System Corrupted.\n Please Recover File System", false);
+        fileSystemWindow.SetState(FileSystemWindow.WindowState.NotWorking);
     }
 
     public override void startTask(){
         // Interactable, Broken State
-        status_text.UpdateStatus("EXT6 File System Corrupted.\n Please Recover File System", true);
+        fileSystemWindow.SetState(FileSystemWindow.WindowState.NotWorkingInteractable);
     }
 
     void OnEnable()
@@ -37,7 +37,7 @@ public class FileRecoveryTask : AbstractTask
         // Fixed State
         stopHazards();
         base.CompleteTask();
-        status_text.UpdateStatus("File System Recovered", false);
+        fileSystemWindow.SetState(FileSystemWindow.WindowState.Working);
     }
     // Update is called once per frame
     public override void checkHazards(){

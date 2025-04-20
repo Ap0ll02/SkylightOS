@@ -42,6 +42,7 @@ public class InternetTaskOne : AbstractTask
     {
         // Automatically turn off the game object at the start of the scene.
         gameObject.SetActive(false);
+        wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Disconnected);
     }
 
     // Update is called once per frame
@@ -76,7 +77,7 @@ public class InternetTaskOne : AbstractTask
     public override void startTask()
     {
         diagnosisWindowScript.SetHeaderText("Skylight Network Diagnostic Tool");
-        wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.Disconnected);
+        wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.DisconnectedInteractable);
         northstar.WriteHint("Let's Diagnose This Wifi Issue, Perhaps Go To The Button Below?", Northstar.Style.hot);
     }
 

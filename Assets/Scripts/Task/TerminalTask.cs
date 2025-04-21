@@ -226,6 +226,7 @@ public class TerminalTask : AbstractTask
         }
         else if (termState == State.MazeGameOn)
         {
+            playerInput.SwitchCurrentActionMap("User");
             terminalText.text = terminalText.text;
         }
     }

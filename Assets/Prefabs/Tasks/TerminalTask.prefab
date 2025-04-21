@@ -97,7 +97,19 @@ MonoBehaviour:
       m_Calls: []
   m_ActionEvents:
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 3758131319260243321}
+        m_TargetAssemblyTypeName: TerminalTask, Assembly-CSharp
+        m_MethodName: MazeInput
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 351f2ccd-1f9f-44bf-9bec-d62ac5c5f408
     m_ActionName: Player/Move[/Keyboard/w,/Keyboard/upArrow,/Keyboard/s,/Keyboard/downArrow,/Keyboard/a,/Keyboard/leftArrow,/Keyboard/d,/Keyboard/rightArrow]
   - m_PersistentCalls:
@@ -192,10 +204,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 12e09c02-1338-41a9-bd1e-23612671bb6d
     m_ActionName: User/Arrows[/Keyboard/leftArrow,/Keyboard/rightArrow,/Keyboard/downArrow,/Keyboard/upArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: cf2c6cd7-4fe6-4dd2-bb1b-c6d616e80827
-    m_ActionName: User/ChoiceBACK[/Keyboard/period,/Keyboard/backspace]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: e55f7ba9-9378-4c1c-9674-f880366499ff

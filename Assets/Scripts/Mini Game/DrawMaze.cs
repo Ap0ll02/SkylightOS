@@ -14,7 +14,6 @@ using UnityEngine.InputSystem;
 public class DrawMaze : AbstractMinigame
 {
     public static event Action OnGameEnd;
-    public InputSystem_Actions pInput;
 
     // 0 = Not Allowed, 1 = Allowed, 2+ = Not Allowed Except Backspace
     public int inputAllowed = 0;
@@ -56,7 +55,6 @@ public class DrawMaze : AbstractMinigame
 
     public void Awake()
     {
-        pInput = new();
         terminalText = GameObject.Find("TInstructionTxt").GetComponent<TMP_Text>();
         fs = FindObjectOfType<FileSystem>();
         iMap = fs.inodeTable;
@@ -149,97 +147,104 @@ public class DrawMaze : AbstractMinigame
         return level;
     }
 
-    public void HandleA(InputAction.CallbackContext context)
+    public void HandleA()
     {
         Debug.Log("We even registered A");
         if (inputAllowed == 1)
         {
-            if (context.phase == InputActionPhase.Performed)
-            {
-                Debug.Log("INPUT: A " + curNode + " " + mp);
-                mp = CheckProgress(curNode, 'a');
-                Draw();
-            }
+            Debug.Log("INPUT: A " + curNode + " " + mp);
+            mp = CheckProgress(curNode, 'a');
+            Draw();
         }
     }
 
-    public void HandleB(InputAction.CallbackContext context)
+    public void HandleB()
     {
         if (inputAllowed == 1)
         {
-            if (context.phase == InputActionPhase.Performed)
-            {
-                mp = CheckProgress(curNode, 'b');
-                Draw();
-            }
+            mp = CheckProgress(curNode, 'b');
+            Draw();
         }
     }
 
-    public void HandleC(InputAction.CallbackContext context)
+    public void HandleC()
     {
         if (inputAllowed == 1)
         {
-            if (context.phase == InputActionPhase.Performed)
-            {
-                mp = CheckProgress(curNode, 'c');
-                Draw();
-            }
+            mp = CheckProgress(curNode, 'c');
+            Draw();
         }
     }
 
-    public void HandleD(InputAction.CallbackContext context)
+    public void HandleD()
     {
         if (inputAllowed == 1)
         {
-            if (context.phase == InputActionPhase.Performed)
-            {
-                mp = CheckProgress(curNode, 'd');
-                Draw();
-            }
+            mp = CheckProgress(curNode, 'd');
+            Draw();
         }
     }
 
-    public void HandleBack(InputAction.CallbackContext context)
+    public void HandleBack()
     {
         if (inputAllowed >= 1)
         {
-            if (context.phase == InputActionPhase.Performed)
+            if (iMap[curNode].iParent != null)
             {
-                if (iMap[curNode].iParent != null)
-                {
-                    Debug.Log("Current iNode Parent: " + curNode);
-                    curNode = iMap.IndexOf(iMap[curNode].iParent);
-                    Debug.Log("New iNode Parent: " + curNode);
-                }
-                else
-                    curNode = 0;
-                CheckProgress(curNode, 'x');
-                Draw();
+                Debug.Log("Current iNode Parent: " + curNode);
+                curNode = iMap.IndexOf(iMap[curNode].iParent);
+                Debug.Log("New iNode Parent: " + curNode);
             }
+            else
+                curNode = 0;
+            CheckProgress(curNode, 'x');
+            Draw();
         }
+    }
+
+    public void OnEnable()
+    {
+        TerminalTask.OnMazePress += HandleInputMaze;
+    }
+
+    public void OnDisable()
+    {
+        TerminalTask.OnMazePress -= HandleInputMaze;
     }
 
     public void HandleInputMaze(InputAction.CallbackContext context)
     {
         Debug.Log("Im a bitch and can't handle switch statemetns");
-        switch (context.control.name)
-        {
-            case "t":
-                Debug.Log("A Hit");
-                break;
-            case "b":
-                Debug.Log("B Hit");
-                break;
-            case "c":
-                Debug.Log("c Hit");
-                break;
 
-            case "v":
-                Debug.Log("d Hit");
-                break;
-            default:
-                Debug.Log("Nothing Was Recognized");
-                break;
+        if (context.phase == InputActionPhase.Performed)
+        {
+            switch (context.control.name)
+            {
+                case "a":
+                    Debug.Log("A Hit");
+                    HandleA();
+                    break;
+                case "b":
+                    Debug.Log("B Hit");
+                    HandleB();
+                    break;
+                case "c":
+                    Debug.Log("c Hit");
+                    HandleC();
+                    break;
+
+                case "d":
+                    Debug.Log("d Hit");
+                    HandleD();
+                    break;
+                case "backspace":
+                    Debug.Log("Backspace Hit");
+                    HandleBack();
+                    break;
+                default:
+                    Debug.Log("Nothing Was Recognized");
+                    break;
+            }
         }
     }
 

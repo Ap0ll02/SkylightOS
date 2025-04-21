@@ -134,6 +134,7 @@ public class DriverGame : AbstractMinigame
         }
     }
 
+    public void HandleInput(InputAction.CallbackContect context)
     void CheckBounds()
     {
         // Gave this function the copilot special, seems to work the same with slightly better performance

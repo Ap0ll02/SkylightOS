@@ -62,6 +62,7 @@ MonoBehaviour:
   arrowGame: {fileID: 0}
   ag: {fileID: 0}
   northstar: {fileID: 0}
+  playerInput: {fileID: 4055171886017575154}
   drawMaze: {fileID: 0}
   dm: {fileID: 0}
   musicAG: {fileID: 0}
@@ -177,9 +178,9 @@ MonoBehaviour:
     m_ActionName: UI/TrackedDeviceOrientation
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 289557652915536778, guid: 35a75b24ed39556ad9cff77c7388769b, type: 3}
-        m_TargetAssemblyTypeName: Arrowgame, Assembly-CSharp
-        m_MethodName: HandleInput
+      - m_Target: {fileID: 3758131319260243321}
+        m_TargetAssemblyTypeName: TerminalTask, Assembly-CSharp
+        m_MethodName: ArrowInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -191,22 +192,6 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 12e09c02-1338-41a9-bd1e-23612671bb6d
     m_ActionName: User/Arrows[/Keyboard/leftArrow,/Keyboard/rightArrow,/Keyboard/downArrow,/Keyboard/upArrow]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: e85c9754-4123-43ab-b97a-be1ced70a542
-    m_ActionName: User/ChoiceA[/Keyboard/a]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 96555da5-5ee0-4f30-95f7-d1657c756b91
-    m_ActionName: User/ChoiceB[/Keyboard/b]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 725b8049-0dc4-4fab-a37e-dadca1c5150e
-    m_ActionName: User/ChoiceC[/Keyboard/c]
-  - m_PersistentCalls:
-      m_Calls: []
-    m_ActionId: 00d83be4-0f1b-432d-8f23-d693e0d2f1aa
-    m_ActionName: User/ChoiceD[/Keyboard/d]
   - m_PersistentCalls:
       m_Calls: []
     m_ActionId: cf2c6cd7-4fe6-4dd2-bb1b-c6d616e80827
@@ -221,9 +206,9 @@ MonoBehaviour:
     m_ActionName: User/Pause[/Keyboard/escape]
   - m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2333111304329633965, guid: 0abe564c295f556349ba67f58ce788e9, type: 3}
-        m_TargetAssemblyTypeName: DrawMaze, Assembly-CSharp
-        m_MethodName: HandleInputMaze
+      - m_Target: {fileID: 3758131319260243321}
+        m_TargetAssemblyTypeName: TerminalTask, Assembly-CSharp
+        m_MethodName: MazeInput
         m_Mode: 0
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -235,8 +220,8 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b19afe2b-aa40-4974-83d6-3a242a3a2b1c
     m_ActionName: User/MazeNav[/Keyboard/t,/Keyboard/b,/Keyboard/c,/Keyboard/v]
-  m_NeverAutoSwitchControlSchemes: 0
+  m_NeverAutoSwitchControlSchemes: 1
   m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Player
+  m_DefaultActionMap: User
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}

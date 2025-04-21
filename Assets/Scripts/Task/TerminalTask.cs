@@ -1,7 +1,9 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 /**
@@ -41,13 +43,16 @@ public class TerminalTask : AbstractTask
     // References to the arrow game to control its start and stop from the task
     public GameObject arrowGame;
     public Arrowgame ag;
+
+    public static event Action<InputAction.CallbackContext> OnArrowPress;
+    public static event Action<InputAction.CallbackContext> OnMazePress;
     public Northstar northstar;
+
+    public PlayerInput playerInput;
 
     // Draw the maze for the LS Maze Game
     public GameObject drawMaze;
     public DrawMaze dm;
-
-    public InputSystem_Actions agInput;
 
     // Audio source reference on TerminalWindow to play music on games.
     public AudioSource musicAG;
@@ -85,7 +90,6 @@ public class TerminalTask : AbstractTask
         musicAG = FindObjectOfType<Terminal>().GetComponentInParent<AudioSource>();
         tasksDone.Add(false);
         tasksDone.Add(false);
-        agInput = ag.pInput;
         northstar = GameObject.Find("WindowCanvas").GetComponentInChildren<Northstar>();
         installBtn = GameObject.Find("InstallBtn");
         installBtn.GetComponent<Button>().onClick.AddListener(CompleteTask);
@@ -102,7 +106,7 @@ public class TerminalTask : AbstractTask
     /// @brief Subscription handling to all 3 button events from the terminal.
     public void OnEnable()
     {
-        Arrowgame.OnArrowPress += checkHazards;
+        //Arrowgame.OnArrowPress += checkHazards;
         Arrowgame.OnGameEnd += GameEnd;
         DrawMaze.OnGameEnd += GameEnd;
         Terminal.OnAVPressed += AVTask;
@@ -115,7 +119,7 @@ public class TerminalTask : AbstractTask
 
     public void OnDisable()
     {
-        Arrowgame.OnArrowPress -= checkHazards;
+        //Arrowgame.OnArrowPress -= checkHazards;
         Arrowgame.OnGameEnd -= GameEnd;
         DrawMaze.OnGameEnd -= GameEnd;
         Terminal.OnAVPressed -= AVTask;
@@ -150,6 +154,17 @@ public class TerminalTask : AbstractTask
                 ag.CanContinue = true;
             }
         }
+    }
+
+    public void ArrowInput(InputAction.CallbackContext context)
+    {
+        checkHazards();
+        OnArrowPress?.Invoke(context);
+    }
+
+    public void MazeInput(InputAction.CallbackContext context)
+    {
+        OnMazePress?.Invoke(context);
     }
 
     /// @brief Changes terminal information prompt and terminal state.
@@ -196,8 +211,10 @@ public class TerminalTask : AbstractTask
             arrowGame.SetActive(true);
             startHazards();
             //hGroup.SetActive(false);
+
+            playerInput.SwitchCurrentActionMap("User");
+
             ag.StartGame();
-            agInput = ag.pInput;
             if (!musicAG.isPlaying)
             {
                 musicAG.Play();

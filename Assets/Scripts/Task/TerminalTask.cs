@@ -48,8 +48,6 @@ public class TerminalTask : AbstractTask
     public static event Action<InputAction.CallbackContext> OnMazePress;
     public Northstar northstar;
 
-    public PlayerInput playerInput;
-
     // Draw the maze for the LS Maze Game
     public GameObject drawMaze;
     public DrawMaze dm;
@@ -212,7 +210,6 @@ public class TerminalTask : AbstractTask
             startHazards();
             //hGroup.SetActive(false);
 
-            playerInput.SwitchCurrentActionMap("User");
 
             ag.StartGame();
             if (!musicAG.isPlaying)
@@ -226,7 +223,6 @@ public class TerminalTask : AbstractTask
         }
         else if (termState == State.MazeGameOn)
         {
-            playerInput.SwitchCurrentActionMap("User");
             terminalText.text = terminalText.text;
         }
     }

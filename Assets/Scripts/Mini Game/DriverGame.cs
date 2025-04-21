@@ -26,6 +26,7 @@ public class DriverGame : AbstractMinigame
     // Consider redoing this as an array of possible obstacles to spawn.
     public GameObject obstacle;
 
+    public Vector2 target;
     public float percentage = 0;
     readonly float ob_speed = 30f;
     readonly int ob_max_spawn = 4;
@@ -48,7 +49,6 @@ public class DriverGame : AbstractMinigame
     public Action OnGameStart;
     public Action OnGameEnd;
     public int difficulty_p_reduction = 20;
-    public PlayerInput playerInput;
 
     // HazardManager shiet
     private bool popupContinue = true;
@@ -85,7 +85,6 @@ public class DriverGame : AbstractMinigame
         StartCoroutine(Progression());
         StartCoroutine(SpawnObstacle());
         window.OpenWindow();
-        playerInput.SwitchCurrentActionMap("Player");
     }
 
     public void OnEnable()
@@ -134,24 +133,33 @@ public class DriverGame : AbstractMinigame
             // Stop input if popup/lockdown is active
             if (popupContinue && lockdownContinue)
             {
-                //Vector2 moveValue = moveAction.ReadValue<Vector2>();
-                player.anchoredPosition = Vector2.Lerp(
-                    player.anchoredPosition,
-                    target,
-                    Time.deltaTime
-                );
+                player.anchoredPosition +=
+                    new Vector2(target.x * 3, target.y * 8) * Time.deltaTime * 100;
             }
             CheckBounds();
             HandleObs();
         }
     }
 
-    public Vector2 target;
-
     public void HandleInput(InputAction.CallbackContext context)
     {
-        Vector2 moveValue = context.ReadValue<Vector2>();
-        target = new Vector2(moveValue.x * 3, moveValue.y * 8);
+        switch (context.control.name)
+        {
+            case "a":
+                target = new Vector2(-1, 0);
+                break;
+            case "d":
+                target = new Vector2(1, 0);
+                break;
+            case "w":
+                target = new Vector2(0, 1);
+                break;
+            case "s":
+                target = new Vector2(0, -1);
+                break;
+            default:
+                break;
+        }
     }
 
     void CheckBounds()
@@ -245,4 +253,3 @@ public class DriverGame : AbstractMinigame
         window.CloseWindow();
     }
 }
-

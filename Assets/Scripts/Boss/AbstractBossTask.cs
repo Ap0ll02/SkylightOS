@@ -11,4 +11,17 @@ using UnityEngine;
 public abstract class AbstractBossTask : AbstractTask
 {
 
+    /// <summary>  
+    /// Event triggered when the boss task is finished.  
+    /// </summary>  
+    public event System.Action OnBossTaskFinished;
+
+    /// <summary>  
+    /// Method to invoke the boss finished event.  
+    /// </summary>  
+    protected void TriggerBossTaskFinished()
+    {
+        OnBossTaskFinished?.Invoke();
+    }
+
 }

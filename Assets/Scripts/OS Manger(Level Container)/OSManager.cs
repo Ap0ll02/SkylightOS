@@ -137,23 +137,6 @@ public class OSManager : MonoBehaviour
     {
         if (currentTask != null)
         {
-            // Check if the current task is the boss task  
-            if (currentTask == bossTask)
-            {
-                if (levelTransButton != null)
-                {
-                    levelTransButton.SetActive(true);
-                    for(int i = 0; i < evidenceManager.EvidenceCount; i++)
-                    {
-                        SaveLoad.IncrementEvidence();
-                    }
-                }
-                else
-                {
-                    Debug.LogError("LevelTransition GameObject not found.");
-                }
-                return;
-            }
 
             currentTask.isComplete = true;
             currentTask = null;
@@ -180,6 +163,23 @@ public class OSManager : MonoBehaviour
         }
     }
 
+
+    public void OnBossTaskFinished()
+    {
+        if (levelTransButton != null)
+        {
+            levelTransButton.SetActive(true);
+            for (int i = 0; i < evidenceManager.EvidenceCount; i++)
+            {
+                SaveLoad.IncrementEvidence();
+            }
+        }
+        else
+        {
+            Debug.LogError("LevelTransition GameObject not found.");
+        }
+        return;
+    }
 
     // Example method to handle button press and start a task
     public void OnTaskButtonPress(int taskIndex)
@@ -220,12 +220,14 @@ public class OSManager : MonoBehaviour
     void SubscribeToTaskEvents()
     {
         AbstractTask.OnTaskCompleted += FinishTask;
+        bossTask.OnBossTaskFinished += OnBossTaskFinished;
     }
 
     // Unsubscribe from events when the object is destroyed
     void OnDestroy()
     {
         AbstractTask.OnTaskCompleted -= FinishTask;
+        bossTask.OnBossTaskFinished -= OnBossTaskFinished;
     }
 
     // Method to get tasks from the tasksContainer GameObject

@@ -24,12 +24,12 @@ public class NyanCatTask : AbstractBossTask
 
     public void OnEnable()
     {
-        nyanCatRevolution.OnGameEnd += CompleteTask;
+        nyanCatRevolution.OnGameEnd += TriggerBossTaskFinished;
     }
 
     public void OnDisable()
     {
-        nyanCatRevolution.OnGameEnd -= CompleteTask;
+        nyanCatRevolution.OnGameEnd -= TriggerBossTaskFinished;
     }
 
 

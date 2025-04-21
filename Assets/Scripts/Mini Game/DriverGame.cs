@@ -62,8 +62,7 @@ public class DriverGame : AbstractMinigame
     // Start is called before the first frame update
     void Start()
     {
-        my_cg.alpha = 0;
-        my_cg.interactable = false;
+        window.ForceCloseWindow();
         difficulty_p_reduction = 20;
     }
 

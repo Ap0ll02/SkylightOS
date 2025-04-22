@@ -6,6 +6,7 @@ using TMPro;
 using Febucci.UI; 
 using Febucci.UI.Core;
 using Random = UnityEngine.Random;
+using UnityEditor.PackageManager.UI;
 
 /// <summary>
 /// Author Quinn Contaldi
@@ -125,6 +126,9 @@ public class NyanceNyanceRevolution : MonoBehaviour
     [SerializeField] public Color greatColor;
     [SerializeField] public Color goodColor;
     [SerializeField] public Color missColor;
+
+    public BasicWindow evidenceWindow;
+
     // We create a static variable so it only holds one NyanceNyanceRevalution variable at a time 
     private static NyanceNyanceRevolution NyanceNyanceRevolutionSingleton;
     // Its Contstructor is private so we can present others from instantiating the object.
@@ -628,10 +632,6 @@ public class NyanceNyanceRevolution : MonoBehaviour
         if ((index < itemsCanAccess) && (nyanCatStruggling.transform.position.y > Line1Position.y) && (Line1On == false))
         {
             var spawnedItem = Instantiate(NyanCatItems[index]);
-            if (spawnedItem.GetComponent<BasicWindow>() != null)
-            {
-                spawnedItem.transform.SetParent(canvas.transform, false);
-            }
             spawnedItem.SetActive(true);
             Destroy(spawnedItem, 5.0f);
             index++;
@@ -644,15 +644,16 @@ public class NyanceNyanceRevolution : MonoBehaviour
         if ((index < itemsCanAccess) && (nyanCatStruggling.transform.position.y < Line2Position.y) && (Line2On == false))
         {
             var spawnedItem = Instantiate(NyanCatItems[index]);
-            if (spawnedItem.GetComponent<BasicWindow>() != null)
-            {
-                spawnedItem.transform.SetParent(canvas.transform, false);
-            }
             spawnedItem.SetActive(true);
             Destroy(spawnedItem, 5.0f);
             index++;
             Line1On = false;
             Line2On = true;
+        }
+
+        if(index == 39)
+        {
+            evidenceWindow.OpenWindow();
         }
 
         if (index == itemsCanAccess)

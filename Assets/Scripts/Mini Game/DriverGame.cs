@@ -57,7 +57,6 @@ public class DriverGame : AbstractMinigame
     void Awake()
     {
         gameRunning = false;
-        dgTask = FindObjectOfType<DriverTask>();
     }
 
     // Start is called before the first frame update
@@ -69,10 +68,6 @@ public class DriverGame : AbstractMinigame
 
     public override void StartGame()
     {
-        if (!dgTask)
-        {
-            return;
-        }
         OnGameStart?.Invoke();
         pBar.text = "0%";
         bgs.Add(Instantiate(bg, parent: parent.GetComponent<RectTransform>()));

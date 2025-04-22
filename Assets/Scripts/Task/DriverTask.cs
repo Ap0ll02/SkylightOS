@@ -14,6 +14,7 @@ public class DriverTask : AbstractTask
     public TMP_Text driver_desc;
     public DriverGame driver_script;
     public GameObject driver_btn;
+    public driver driverPanel;
 
     // Get our references here
     void Awake()
@@ -27,6 +28,7 @@ public class DriverTask : AbstractTask
             .Find("WindowCanvas")
             .GetComponentInChildren<SystemWindow>()
             .gameObject;
+        driverPanel = FindObjectOfType<driver>();
         //driver_script = system_menu.GetComponentInChildren<DriverGame>();
         //driver_desc = driver_script.gameObject.GetComponentInChildren<TMP_Text>();
         //driver_btn = driver_script.GetComponentInChildren<Button>().gameObject;
@@ -35,21 +37,17 @@ public class DriverTask : AbstractTask
     // Broken, non-interactable state loaded here
     new void Start()
     {
-        driver_desc.text = "Drivers out of date. Updates required.";
+        driverPanel.UpdateState(driver.DriversState.NotWorking);
         // TODO: Steps towards system menu
         // prepare what you can even though the system menu isn't complete
         // Get states ready and design the game.
-        driver_btn.GetComponent<CanvasGroup>().alpha = 0;
-        driver_btn.GetComponent<CanvasGroup>().interactable = false;
     }
 
     // Interactable, broken state init here
     public override void startTask()
     {
         gameRunning = true;
-        driver_btn.GetComponent<CanvasGroup>().alpha = 1;
-        driver_btn.GetComponent<CanvasGroup>().interactable = true;
-        driver_desc.text = "Drivers out of date. Updates required.";
+        driverPanel.UpdateState(driver.DriversState.NotWorkingInteractable);
     }
 
     public void OnEnable()
@@ -69,10 +67,7 @@ public class DriverTask : AbstractTask
     {
         gameRunning = false;
         stopHazards();
-        driver_desc.text = "Thank you! Your drivers are up to date.";
-        driver_btn.GetComponent<CanvasGroup>().alpha = 0;
-        driver_btn.GetComponent<CanvasGroup>().interactable = false;
-
+        driverPanel.UpdateState(driver.DriversState.Working);
         base.CompleteTask();
     }
 

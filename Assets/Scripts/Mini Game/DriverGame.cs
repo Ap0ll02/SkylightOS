@@ -22,6 +22,7 @@ public class DriverGame : AbstractMinigame
     public RectTransform player;
     public player pscript;
     public GameObject bg;
+    public DriverTask dgTask;
 
     // Consider redoing this as an array of possible obstacles to spawn.
     public GameObject obstacle;
@@ -56,6 +57,7 @@ public class DriverGame : AbstractMinigame
     void Awake()
     {
         gameRunning = false;
+        dgTask = FindObjectOfType<DriverTask>();
     }
 
     // Start is called before the first frame update
@@ -67,6 +69,10 @@ public class DriverGame : AbstractMinigame
 
     public override void StartGame()
     {
+        if (!dgTask)
+        {
+            return;
+        }
         OnGameStart?.Invoke();
         pBar.text = "0%";
         bgs.Add(Instantiate(bg, parent: parent.GetComponent<RectTransform>()));
@@ -134,7 +140,6 @@ public class DriverGame : AbstractMinigame
                 Vector2 moveValue = moveAction.ReadValue<Vector2>();
                 player.anchoredPosition +=
                     new Vector2(moveValue.x * 3, moveValue.y * 8) * Time.deltaTime * 100;
-                Debug.Log("After: " + player.anchoredPosition);
             }
             CheckBounds();
             HandleObs();

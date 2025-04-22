@@ -21,12 +21,12 @@ public class DogeBossTask : AbstractBossTask
 
     public void OnEnable()
     {
-        //nyanCatRevolution.OnGameEnd += TriggerBossTaskFinished;
+        Doge.OnGameEnd += TriggerBossTaskFinished;
     }
 
     public void OnDisable()
     {
-        //nyanCatRevolution.OnGameEnd -= TriggerBossTaskFinished;
+        Doge.OnGameEnd -= TriggerBossTaskFinished;
     }
 
 

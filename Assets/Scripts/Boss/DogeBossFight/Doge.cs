@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Febucci.UI;
@@ -24,12 +25,18 @@ public class Doge : MonoBehaviour
         StartCoroutine(PlayOrder());
     }
 
+    // Add an event to trigger after the game ends
+    public static event Action OnGameEnd;
+
     public IEnumerator PlayOrder()
     {
         yield return PlayDialogueLine(LineOne, 0.5f);
         yield return PlayDialogueLine(LineTwo, 0.5f);
         yield return PlayDialogueLine(LineThree, 0.5f);
+
+        OnGameEnd?.Invoke();
         this.gameObject.SetActive(false);
+
     }
     private IEnumerator PlayDialogueLine(string dialogueLines, float t = 1f)
     {

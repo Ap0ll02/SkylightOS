@@ -25,7 +25,7 @@ public class DriverGame : AbstractMinigame
 
     // Consider redoing this as an array of possible obstacles to spawn.
     public GameObject obstacle;
-
+    InputAction moveAction;
     public Vector2 target;
     public float percentage = 0;
     readonly float ob_speed = 30f;
@@ -44,7 +44,6 @@ public class DriverGame : AbstractMinigame
     public List<GameObject> bgs = new();
     public TMP_Text pBar;
 
-    //InputAction moveAction;
     public CanvasGroup my_cg;
     public Action OnGameStart;
     public Action OnGameEnd;
@@ -73,7 +72,7 @@ public class DriverGame : AbstractMinigame
         pBar.text = "0%";
         bgs.Add(Instantiate(bg, parent: parent.GetComponent<RectTransform>()));
         bgs[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(244.5f, 0.91f, 90);
-        //moveAction = InputSystem.actions.FindAction("Move");
+        moveAction = InputSystem.actions.FindAction("Move");
         gameRunning = true;
         my_cg.alpha = 1;
         my_cg.interactable = true;
@@ -133,32 +132,13 @@ public class DriverGame : AbstractMinigame
             // Stop input if popup/lockdown is active
             if (popupContinue && lockdownContinue)
             {
+                Vector2 moveValue = moveAction.ReadValue<Vector2>();
                 player.anchoredPosition +=
-                    new Vector2(target.x * 3, target.y * 8) * Time.deltaTime * 100;
+                    new Vector2(moveValue.x * 3, moveValue.y * 8) * Time.deltaTime * 100;
+                Debug.Log("After: " + player.anchoredPosition);
             }
             CheckBounds();
             HandleObs();
-        }
-    }
-
-    public void HandleInput(InputAction.CallbackContext context)
-    {
-        switch (context.control.name)
-        {
-            case "a":
-                target = new Vector2(-1, 0);
-                break;
-            case "d":
-                target = new Vector2(1, 0);
-                break;
-            case "w":
-                target = new Vector2(0, 1);
-                break;
-            case "s":
-                target = new Vector2(0, -1);
-                break;
-            default:
-                break;
         }
     }
 

@@ -220,14 +220,16 @@ public class OSManager : MonoBehaviour
     void SubscribeToTaskEvents()
     {
         AbstractTask.OnTaskCompleted += FinishTask;
-        bossTask.OnBossTaskFinished += OnBossTaskFinished;
+        if(bossTask != null)
+            bossTask.OnBossTaskFinished += OnBossTaskFinished;
     }
 
     // Unsubscribe from events when the object is destroyed
     void OnDestroy()
     {
         AbstractTask.OnTaskCompleted -= FinishTask;
-        bossTask.OnBossTaskFinished -= OnBossTaskFinished;
+        if (bossTask != null)
+            bossTask.OnBossTaskFinished -= OnBossTaskFinished;
     }
 
     // Method to get tasks from the tasksContainer GameObject

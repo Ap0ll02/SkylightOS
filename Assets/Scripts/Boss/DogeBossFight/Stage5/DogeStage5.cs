@@ -10,13 +10,7 @@ public class DogeStage5 : AbstractBossStage
     public AlpinePlayer player;
     public override void BossStartStage()
     {
-        Doge.SetActive(true);
-        var doge = Doge.GetComponent<Doge>();
-        CameraShake();
-        //doge.StartDoge();
-        //window.ForceCloseWindow();
-        player.moveSpeed = 0;
-        player.jumpSpeed = 0;
+        StartCoroutine(PlayOrder());
     }
 
     public override void BossEndStage()
@@ -25,9 +19,15 @@ public class DogeStage5 : AbstractBossStage
         bossManager.NextStage();
     }
 
-    public void CameraShake()
+    public IEnumerator PlayOrder()
     {
-        StartCoroutine(Shake(4f, 0.6f));
+        player.moveSpeed = 0;
+        player.jumpSpeed = 0;
+       yield return Shake(4f, 0.6f);
+       window.ForceCloseWindow();
+       Doge.SetActive(true);
+       var doge = Doge.GetComponent<Doge>();
+       doge.StartDoge();
     }
 
 

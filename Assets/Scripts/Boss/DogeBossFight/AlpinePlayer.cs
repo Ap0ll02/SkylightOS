@@ -24,7 +24,7 @@ public class AlpinePlayer : MonoBehaviour
     public bool isDead;
     // The speed of our catgirl
     public float moveSpeed = 4;
-    public float jumpSpeed = 5.2f;
+    public float jumpSpeed = 5.4f;
     public bool isGrounded;
 
     [Header("Camera")]
@@ -45,7 +45,7 @@ public class AlpinePlayer : MonoBehaviour
 
     public void FixedUpdate()
     {
-        catGirlCamera.position = Vector3.SmoothDamp(catGirlCamera.position, new Vector3(transform.position.x, transform.position.y, 0), ref velocity, 0.01f);
+        catGirlCamera.position = Vector3.SmoothDamp(catGirlCamera.position, new Vector3(transform.position.x, transform.position.y, 0), ref velocity, 0.25f);
     }
 
     public void CheckGroundStatus()
@@ -60,15 +60,21 @@ public class AlpinePlayer : MonoBehaviour
     public void MoveDirection()
     {
         float xInput = 0f;
-
+        var animator = GetComponent<Animator>();
         // Get movement input based on keys pressed
         if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
         {
             xInput = -1f; // Move left
+            animator.SetBool("Left", true);
+            animator.SetBool("Idle", false);
+            animator.SetBool("Right", false);
         }
         if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
         {
             xInput = 1f; // Move right
+            animator.SetBool("Right", true);
+            animator.SetBool("Idle", false);
+            animator.SetBool("Left", false);
         }
         if (Input.GetKey(KeyCode.Space) || Input.GetKey(KeyCode.UpArrow))
         {
@@ -78,6 +84,12 @@ public class AlpinePlayer : MonoBehaviour
             }
         }
         Vector2 newVelocity = new Vector2(xInput * moveSpeed, catGirlBody.velocity.y);
+        if (Math.Abs(newVelocity.x) < 0.01f && Math.Abs(newVelocity.y) < 0.01f)
+        {
+            animator.SetBool("Left", false);
+            animator.SetBool("Right", false);
+            animator.SetBool("Idle", true);
+        }
         catGirlBody.velocity = newVelocity; // Set the character’s velocity
     }
 

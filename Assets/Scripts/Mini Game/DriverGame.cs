@@ -1,18 +1,15 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-
-using UnityEngine.InputSystem;
-
-using System;
 using TMPro;
 using Unity.VisualScripting;
-
+using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class DriverGame : AbstractMinigame
 {
     /*
-    Thoughts: 
+    Thoughts:
     ---
     Side scroller, dino game clone with:
     - Jump
@@ -25,9 +22,11 @@ public class DriverGame : AbstractMinigame
     public RectTransform player;
     public player pscript;
     public GameObject bg;
+
     // Consider redoing this as an array of possible obstacles to spawn.
     public GameObject obstacle;
-
+    InputAction moveAction;
+    public Vector2 target;
     public float percentage = 0;
     readonly float ob_speed = 30f;
     readonly int ob_max_spawn = 4;
@@ -45,7 +44,6 @@ public class DriverGame : AbstractMinigame
     public List<GameObject> bgs = new();
     public TMP_Text pBar;
 
-    InputAction moveAction;
     public CanvasGroup my_cg;
     public Action OnGameStart;
     public Action OnGameEnd;
@@ -55,7 +53,8 @@ public class DriverGame : AbstractMinigame
     private bool popupContinue = true;
     private bool lockdownContinue = true;
 
-    void Awake() {
+    void Awake()
+    {
         gameRunning = false;
     }
 
@@ -66,17 +65,18 @@ public class DriverGame : AbstractMinigame
         difficulty_p_reduction = 20;
     }
 
-    public override void StartGame() {
+    public override void StartGame()
+    {
         OnGameStart?.Invoke();
-        pBar.text = "0%";   
+        pBar.text = "0%";
         bgs.Add(Instantiate(bg, parent: parent.GetComponent<RectTransform>()));
         bgs[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(244.5f, 0.91f, 90);
-        moveAction = InputSystem.actions.FindAction("Move");           
+        moveAction = InputSystem.actions.FindAction("Move");
         gameRunning = true;
         my_cg.alpha = 1;
         my_cg.interactable = true;
-        obs = obstacle.GetComponentsInChildren<RectTransform>(); 
-        pBar.text = "0%";   
+        obs = obstacle.GetComponentsInChildren<RectTransform>();
+        pBar.text = "0%";
         bgs.Add(Instantiate(bg, parent: parent.GetComponent<RectTransform>()));
         bgs[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(244.5f, 0.91f, 90);
         obs_list.Add(Instantiate(obstacle_prefab, parent: obstacle.GetComponent<RectTransform>()));
@@ -85,7 +85,8 @@ public class DriverGame : AbstractMinigame
         window.OpenWindow();
     }
 
-    public void OnEnable() {
+    public void OnEnable()
+    {
         pscript.OnTObs += PlayerHit;
         PopupManager.PopupCanContinue += () => popupContinue = true;
         PopupManager.PopupCantContinue += () => popupContinue = false;
@@ -93,16 +94,21 @@ public class DriverGame : AbstractMinigame
         LockdownManager.LockdownCantContinue += () => lockdownContinue = false;
     }
 
-    public void OnDisable() {
-            pscript.OnTObs -= PlayerHit;
+    public void OnDisable()
+    {
+        pscript.OnTObs -= PlayerHit;
     }
-    public void PlayerHit(Collider2D ob_hit) {
+
+    public void PlayerHit(Collider2D ob_hit)
+    {
         obs_list.Remove(ob_hit.gameObject);
         Destroy(ob_hit.gameObject);
         pCount -= difficulty_p_reduction;
         pCount = pCount < 0 ? 0 : pCount;
     }
+
     public bool gameRunning = false;
+
     // Update is called once per frame
     void Update()
     {
@@ -126,7 +132,9 @@ public class DriverGame : AbstractMinigame
             if (popupContinue && lockdownContinue)
             {
                 Vector2 moveValue = moveAction.ReadValue<Vector2>();
-                player.anchoredPosition += new Vector2(moveValue.x * 3, moveValue.y * 8) * Time.deltaTime * 100;
+                player.anchoredPosition +=
+                    new Vector2(moveValue.x * 3, moveValue.y * 8) * Time.deltaTime * 100;
+                Debug.Log("After: " + player.anchoredPosition);
             }
             CheckBounds();
             HandleObs();
@@ -166,40 +174,54 @@ public class DriverGame : AbstractMinigame
         });
     }
 
-    void HandleObs() {
+    void HandleObs()
+    {
         foreach (var ob in obs_list)
         {
             ob.GetComponent<RectTransform>().anchoredPosition -= ob_speed * Time.deltaTime * speed;
         }
     }
 
-    public IEnumerator Progression() {
-        while(pCount < 100) {
+    public IEnumerator Progression()
+    {
+        while (pCount < 100)
+        {
             pCount++;
             pBar.text = pCount + "%";
-            yield return new WaitForSeconds(0.33f); 
-       }
-       GameEnd();
-       OnGameEnd?.Invoke();
+            yield return new WaitForSeconds(0.33f);
+        }
+        GameEnd();
+        OnGameEnd?.Invoke();
     }
 
-    public IEnumerator SpawnObstacle() {
-        while(true) {
+    public IEnumerator SpawnObstacle()
+    {
+        while (true)
+        {
             System.Random rnd = new();
             int to_spawn = rnd.Next(1, ob_max_spawn);
-            for(int i = 0; i < to_spawn; i++) {
+            for (int i = 0; i < to_spawn; i++)
+            {
                 float y_pos = rnd.Next(-1200, 1200);
                 float x_pos = rnd.Next(2300, 6000);
                 float spawn_time = rnd.Next((int)ob_spawntime, (int)(1.5f * ob_spawntime));
                 yield return new WaitForSeconds(spawn_time);
-                obs_list.Add(Instantiate(obstacle_prefab, parent: obstacle.GetComponent<RectTransform>()));
-                obs_list[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(x_pos, y_pos, 0);
+                obs_list.Add(
+                    Instantiate(obstacle_prefab, parent: obstacle.GetComponent<RectTransform>())
+                );
+                obs_list[^1].GetComponent<RectTransform>().anchoredPosition = new Vector3(
+                    x_pos,
+                    y_pos,
+                    0
+                );
             }
         }
     }
 
-    public void GameEnd() {
-        foreach (var b in bgs){
+    public void GameEnd()
+    {
+        foreach (var b in bgs)
+        {
             Destroy(b);
         }
         gameRunning = false;

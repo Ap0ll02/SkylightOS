@@ -153,31 +153,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""8180e8bd-4097-4f4e-ab88-4523101a6ce9"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""down"",
                     ""id"": ""320bffee-a40b-4347-ac70-c210eb8bc73a"",
                     ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""1c5327b5-f71c-4f60-99c7-4e737386f1d1"",
-                    ""path"": ""<Keyboard>/downArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -197,31 +175,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""2e46982e-44cc-431b-9f0b-c11910bf467a"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
                     ""name"": ""right"",
                     ""id"": ""fcfe95b8-67b9-4526-84b5-5d0bc98d6400"",
                     ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""77bff152-3580-4b21-b6de-dcd0c7e41164"",
-                    ""path"": ""<Keyboard>/rightArrow"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
@@ -992,51 +948,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""ChoiceA"",
-                    ""type"": ""Button"",
-                    ""id"": ""e85c9754-4123-43ab-b97a-be1ced70a542"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChoiceB"",
-                    ""type"": ""Button"",
-                    ""id"": ""96555da5-5ee0-4f30-95f7-d1657c756b91"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChoiceC"",
-                    ""type"": ""Button"",
-                    ""id"": ""725b8049-0dc4-4fab-a37e-dadca1c5150e"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChoiceD"",
-                    ""type"": ""Button"",
-                    ""id"": ""00d83be4-0f1b-432d-8f23-d693e0d2f1aa"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""ChoiceBACK"",
-                    ""type"": ""Button"",
-                    ""id"": ""cf2c6cd7-4fe6-4dd2-bb1b-c6d616e80827"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
                     ""name"": ""ctrlCQuit"",
                     ""type"": ""Button"",
                     ""id"": ""e55f7ba9-9378-4c1c-9674-f880366499ff"",
@@ -1053,6 +964,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""MazeNav"",
+                    ""type"": ""Button"",
+                    ""id"": ""b19afe2b-aa40-4974-83d6-3a242a3a2b1c"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -1123,72 +1043,6 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": """",
-                    ""id"": ""c8a81e90-3143-4e7e-a2d9-8e94b6b7d59e"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChoiceA"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""024ce37d-209b-461d-adae-157ebc0f8c08"",
-                    ""path"": ""<Keyboard>/b"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChoiceB"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""c2c7ed5c-e827-45e3-bd35-04d144f04c04"",
-                    ""path"": ""<Keyboard>/c"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChoiceC"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""054c90f4-f344-48fe-bf8f-3364568ae3fc"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChoiceD"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cd41ff23-8d1e-4c71-b74d-36ed4ea9f5a7"",
-                    ""path"": ""<Keyboard>/period"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChoiceBACK"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""8f8ad8bb-cdaa-4aa5-bcf6-469c17a89431"",
-                    ""path"": ""<Keyboard>/backspace"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ChoiceBACK"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
                     ""name"": ""ctrlc"",
                     ""id"": ""127ad53d-2769-487b-bedc-c06f63567cba"",
                     ""path"": ""OneModifier"",
@@ -1229,6 +1083,39 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a3d472fc-1ef7-4949-8f4a-58e218cb54a8"",
+                    ""path"": ""<Keyboard>/b"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MazeNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9fee8f53-12f6-4678-b010-ee3b7735732c"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MazeNav"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d6607a58-c1de-497b-998d-7208cca75dd8"",
+                    ""path"": ""<Keyboard>/backspace"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""MazeNav"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -1325,13 +1212,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         // User
         m_User = asset.FindActionMap("User", throwIfNotFound: true);
         m_User_Arrows = m_User.FindAction("Arrows", throwIfNotFound: true);
-        m_User_ChoiceA = m_User.FindAction("ChoiceA", throwIfNotFound: true);
-        m_User_ChoiceB = m_User.FindAction("ChoiceB", throwIfNotFound: true);
-        m_User_ChoiceC = m_User.FindAction("ChoiceC", throwIfNotFound: true);
-        m_User_ChoiceD = m_User.FindAction("ChoiceD", throwIfNotFound: true);
-        m_User_ChoiceBACK = m_User.FindAction("ChoiceBACK", throwIfNotFound: true);
         m_User_ctrlCQuit = m_User.FindAction("ctrlCQuit", throwIfNotFound: true);
         m_User_Pause = m_User.FindAction("Pause", throwIfNotFound: true);
+        m_User_MazeNav = m_User.FindAction("MazeNav", throwIfNotFound: true);
     }
 
     ~@InputSystem_Actions()
@@ -1637,25 +1520,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private readonly InputActionMap m_User;
     private List<IUserActions> m_UserActionsCallbackInterfaces = new List<IUserActions>();
     private readonly InputAction m_User_Arrows;
-    private readonly InputAction m_User_ChoiceA;
-    private readonly InputAction m_User_ChoiceB;
-    private readonly InputAction m_User_ChoiceC;
-    private readonly InputAction m_User_ChoiceD;
-    private readonly InputAction m_User_ChoiceBACK;
     private readonly InputAction m_User_ctrlCQuit;
     private readonly InputAction m_User_Pause;
+    private readonly InputAction m_User_MazeNav;
     public struct UserActions
     {
         private @InputSystem_Actions m_Wrapper;
         public UserActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Arrows => m_Wrapper.m_User_Arrows;
-        public InputAction @ChoiceA => m_Wrapper.m_User_ChoiceA;
-        public InputAction @ChoiceB => m_Wrapper.m_User_ChoiceB;
-        public InputAction @ChoiceC => m_Wrapper.m_User_ChoiceC;
-        public InputAction @ChoiceD => m_Wrapper.m_User_ChoiceD;
-        public InputAction @ChoiceBACK => m_Wrapper.m_User_ChoiceBACK;
         public InputAction @ctrlCQuit => m_Wrapper.m_User_ctrlCQuit;
         public InputAction @Pause => m_Wrapper.m_User_Pause;
+        public InputAction @MazeNav => m_Wrapper.m_User_MazeNav;
         public InputActionMap Get() { return m_Wrapper.m_User; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -1668,27 +1543,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Arrows.started += instance.OnArrows;
             @Arrows.performed += instance.OnArrows;
             @Arrows.canceled += instance.OnArrows;
-            @ChoiceA.started += instance.OnChoiceA;
-            @ChoiceA.performed += instance.OnChoiceA;
-            @ChoiceA.canceled += instance.OnChoiceA;
-            @ChoiceB.started += instance.OnChoiceB;
-            @ChoiceB.performed += instance.OnChoiceB;
-            @ChoiceB.canceled += instance.OnChoiceB;
-            @ChoiceC.started += instance.OnChoiceC;
-            @ChoiceC.performed += instance.OnChoiceC;
-            @ChoiceC.canceled += instance.OnChoiceC;
-            @ChoiceD.started += instance.OnChoiceD;
-            @ChoiceD.performed += instance.OnChoiceD;
-            @ChoiceD.canceled += instance.OnChoiceD;
-            @ChoiceBACK.started += instance.OnChoiceBACK;
-            @ChoiceBACK.performed += instance.OnChoiceBACK;
-            @ChoiceBACK.canceled += instance.OnChoiceBACK;
             @ctrlCQuit.started += instance.OnCtrlCQuit;
             @ctrlCQuit.performed += instance.OnCtrlCQuit;
             @ctrlCQuit.canceled += instance.OnCtrlCQuit;
             @Pause.started += instance.OnPause;
             @Pause.performed += instance.OnPause;
             @Pause.canceled += instance.OnPause;
+            @MazeNav.started += instance.OnMazeNav;
+            @MazeNav.performed += instance.OnMazeNav;
+            @MazeNav.canceled += instance.OnMazeNav;
         }
 
         private void UnregisterCallbacks(IUserActions instance)
@@ -1696,27 +1559,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Arrows.started -= instance.OnArrows;
             @Arrows.performed -= instance.OnArrows;
             @Arrows.canceled -= instance.OnArrows;
-            @ChoiceA.started -= instance.OnChoiceA;
-            @ChoiceA.performed -= instance.OnChoiceA;
-            @ChoiceA.canceled -= instance.OnChoiceA;
-            @ChoiceB.started -= instance.OnChoiceB;
-            @ChoiceB.performed -= instance.OnChoiceB;
-            @ChoiceB.canceled -= instance.OnChoiceB;
-            @ChoiceC.started -= instance.OnChoiceC;
-            @ChoiceC.performed -= instance.OnChoiceC;
-            @ChoiceC.canceled -= instance.OnChoiceC;
-            @ChoiceD.started -= instance.OnChoiceD;
-            @ChoiceD.performed -= instance.OnChoiceD;
-            @ChoiceD.canceled -= instance.OnChoiceD;
-            @ChoiceBACK.started -= instance.OnChoiceBACK;
-            @ChoiceBACK.performed -= instance.OnChoiceBACK;
-            @ChoiceBACK.canceled -= instance.OnChoiceBACK;
             @ctrlCQuit.started -= instance.OnCtrlCQuit;
             @ctrlCQuit.performed -= instance.OnCtrlCQuit;
             @ctrlCQuit.canceled -= instance.OnCtrlCQuit;
             @Pause.started -= instance.OnPause;
             @Pause.performed -= instance.OnPause;
             @Pause.canceled -= instance.OnPause;
+            @MazeNav.started -= instance.OnMazeNav;
+            @MazeNav.performed -= instance.OnMazeNav;
+            @MazeNav.canceled -= instance.OnMazeNav;
         }
 
         public void RemoveCallbacks(IUserActions instance)
@@ -1808,12 +1659,8 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     public interface IUserActions
     {
         void OnArrows(InputAction.CallbackContext context);
-        void OnChoiceA(InputAction.CallbackContext context);
-        void OnChoiceB(InputAction.CallbackContext context);
-        void OnChoiceC(InputAction.CallbackContext context);
-        void OnChoiceD(InputAction.CallbackContext context);
-        void OnChoiceBACK(InputAction.CallbackContext context);
         void OnCtrlCQuit(InputAction.CallbackContext context);
         void OnPause(InputAction.CallbackContext context);
+        void OnMazeNav(InputAction.CallbackContext context);
     }
 }

@@ -1,19 +1,20 @@
-using System.Collections.Generic;
-using UnityEngine;
-using TMPro;
-using UnityEngine.InputSystem;
 using System;
+using System.Collections.Generic;
 using System.Linq;
+using TMPro;
+using UnityEngine;
+using UnityEngine.InputSystem;
+
 /// <summary>
 /// Jack Ratermann
-/// Creates a maze drawn based on the filesystem. 
+/// Creates a maze drawn based on the filesystem.
 /// Depends on the file system, inode, the terminal, or area to draw it in.
 /// See further comments to learn how files could be displayed in terminal
 /// </summary>
 public class DrawMaze : AbstractMinigame
 {
     public static event Action OnGameEnd;
-    public InputSystem_Actions pInput;
+
     // 0 = Not Allowed, 1 = Allowed, 2+ = Not Allowed Except Backspace
     public int inputAllowed = 0;
     public int curNode = 0;
@@ -22,58 +23,120 @@ public class DrawMaze : AbstractMinigame
     public TMP_Text terminalText;
     public BasicWindow evidenceImage;
 
-    public enum MazeProg {
-        Confirm, Begin, 
-        A1, A2, A3, A4, A5,
-        B1, B2, B3, B4, B5, 
-        C1, C2, C3, C4, C5,
-        D1, D2, D3, D4, D5,
-        Ev, End
+    public enum MazeProg
+    {
+        Confirm,
+        Begin,
+        A1,
+        A2,
+        A3,
+        A4,
+        A5,
+        B1,
+        B2,
+        B3,
+        B4,
+        B5,
+        C1,
+        C2,
+        C3,
+        C4,
+        C5,
+        D1,
+        D2,
+        D3,
+        D4,
+        D5,
+        Ev,
+        End,
     }
+
     MazeProg mp = MazeProg.Confirm;
-    
-    public void Awake() {
-        pInput = new InputSystem_Actions();
+
+    public void Awake()
+    {
         terminalText = GameObject.Find("TInstructionTxt").GetComponent<TMP_Text>();
         fs = FindObjectOfType<FileSystem>();
         iMap = fs.inodeTable;
     }
 
-    public void  Start() {
+    public void Start()
+    {
         gameObject.SetActive(false);
         evidenceImage.ForceCloseWindow();
     }
 
-    public override void StartGame(){
+    public override void StartGame()
+    {
         gameObject.SetActive(true);
         inputAllowed = 1;
     }
+
     // Final Nodes So We Can Lock Input
-    public List<int> finalNodes = new List<int>() {5, 6, 7, 8, 10, 11, 12, 13,
-                    24, 25, 26, 27, 28, 29, 
-                    30, 31, 32, 33, 34, 35, 36, 37, 
-                    41, 42, 43, 44, 47, 48, 49, 
-                    50, 51, 52, 53, 54};
-    public string DrawLevel() {
+    public List<int> finalNodes = new List<int>()
+    {
+        5,
+        6,
+        7,
+        8,
+        10,
+        11,
+        12,
+        13,
+        24,
+        25,
+        26,
+        27,
+        28,
+        29,
+        30,
+        31,
+        32,
+        33,
+        34,
+        35,
+        36,
+        37,
+        41,
+        42,
+        43,
+        44,
+        47,
+        48,
+        49,
+        50,
+        51,
+        52,
+        53,
+        54,
+    };
+
+    public string DrawLevel()
+    {
         evidenceImage.ForceCloseWindow();
         string level = "--- SKYLIGHT FILES ---\n\n\n\n";
         int counter = 0;
-        char[] selector = new char[] {'A', 'B', 'C', 'D'};
-        if(curNode == 29) {
+        char[] selector = new char[] { 'A', 'B', 'C', 'D' };
+        if (curNode == 29)
+        {
             level = iMap[curNode].iName + "\n\n\n\n\n\n\n";
             evidenceImage.OpenWindow();
         }
-        if(curNode == 53) {
+        if (curNode == 53)
+        {
             level = "AntiVirus Installer.install";
             OnGameEnd?.Invoke();
         }
-        else if(iMap[curNode].numEntries == 0) {
+        else if (iMap[curNode].numEntries == 0)
+        {
             inputAllowed = 2;
             level += iMap[curNode].iName;
         }
-        else { 
+        else
+        {
             inputAllowed = 1;
-            foreach(var child in iMap[curNode].iChildren) {
+            foreach (var child in iMap[curNode].iChildren)
+            {
                 level += "-|";
                 level += selector[counter % 4] + ": " + child.iName;
                 level += "|-";
@@ -84,59 +147,109 @@ public class DrawMaze : AbstractMinigame
         return level;
     }
 
-    public void HandleA(InputAction.CallbackContext context) {
-        if(inputAllowed == 1) {
-            if(context.phase == InputActionPhase.Performed) {
-                Debug.Log("INPUT: A " + curNode + " " + mp);
-                mp = CheckProgress(curNode, 'a');
-                Draw();
-            }
-        }
-        
-    }
-
-    public void HandleB(InputAction.CallbackContext context) {
-        if(inputAllowed == 1) {
-            if(context.phase == InputActionPhase.Performed) {
-                mp = CheckProgress(curNode, 'b');
-                Draw(); 
-            }
+    public void HandleA()
+    {
+        Debug.Log("We even registered A");
+        if (inputAllowed == 1)
+        {
+            Debug.Log("INPUT: A " + curNode + " " + mp);
+            mp = CheckProgress(curNode, 'a');
+            Draw();
         }
     }
 
-    public void HandleC(InputAction.CallbackContext context) {
-        if(inputAllowed == 1) {
-            if(context.phase == InputActionPhase.Performed) {
-                mp = CheckProgress(curNode, 'c');
-                Draw();
-            }
+    public void HandleB()
+    {
+        if (inputAllowed == 1)
+        {
+            mp = CheckProgress(curNode, 'b');
+            Draw();
         }
     }
-    public void HandleD(InputAction.CallbackContext context) {
-        if(inputAllowed == 1) {
-            if(context.phase == InputActionPhase.Performed) {
-                mp = CheckProgress(curNode, 'd');
-                Draw();
+
+    public void HandleC()
+    {
+        if (inputAllowed == 1)
+        {
+            mp = CheckProgress(curNode, 'c');
+            Draw();
+        }
+    }
+
+    public void HandleD()
+    {
+        if (inputAllowed == 1)
+        {
+            mp = CheckProgress(curNode, 'd');
+            Draw();
+        }
+    }
+
+    public void HandleBack()
+    {
+        if (inputAllowed >= 1)
+        {
+            if (iMap[curNode].iParent != null)
+            {
+                Debug.Log("Current iNode Parent: " + curNode);
+                curNode = iMap.IndexOf(iMap[curNode].iParent);
+                Debug.Log("New iNode Parent: " + curNode);
+            }
+            else
+                curNode = 0;
+            CheckProgress(curNode, 'x');
+            Draw();
+        }
+    }
+
+    public void OnEnable()
+    {
+        TerminalTask.OnMazePress += HandleInputMaze;
+    }
+
+    public void OnDisable()
+    {
+        TerminalTask.OnMazePress -= HandleInputMaze;
+    }
+
+    public void HandleInputMaze(InputAction.CallbackContext context)
+    {
+        Debug.Log("Im a bitch and can't handle switch statemetns");
+
+        if (context.phase == InputActionPhase.Performed)
+        {
+            switch (context.control.name)
+            {
+                case "a":
+                    Debug.Log("A Hit");
+                    HandleA();
+                    break;
+                case "b":
+                    Debug.Log("B Hit");
+                    HandleB();
+                    break;
+                case "c":
+                    Debug.Log("c Hit");
+                    HandleC();
+                    break;
+
+                case "d":
+                    Debug.Log("d Hit");
+                    HandleD();
+                    break;
+                case "backspace":
+                    Debug.Log("Backspace Hit");
+                    HandleBack();
+                    break;
+                default:
+                    Debug.Log("Nothing Was Recognized");
+                    break;
             }
         }
     }
 
-    public void HandleBack(InputAction.CallbackContext context) {
-        if(inputAllowed >= 1) {
-            if(context.phase == InputActionPhase.Performed) {
-                if(iMap[curNode].iParent != null){ 
-                    Debug.Log("Current iNode Parent: " + curNode);
-                    curNode = iMap.IndexOf(iMap[curNode].iParent);
-                    Debug.Log("New iNode Parent: " + curNode);
-                }
-                else curNode = 0;
-                CheckProgress(curNode, 'x');
-                Draw();
-            }
-        }
-    }
-
-    public MazeProg CheckProgress(int cNode, char c) {
+    public MazeProg CheckProgress(int cNode, char c)
+    {
         (int, MazeProg) checkNodeA(int cNode) =>
             cNode switch
             {
@@ -164,7 +277,7 @@ public class DrawMaze : AbstractMinigame
                 40 => (cNode = 45, MazeProg.A3),
                 45 => (cNode = 48, MazeProg.A4),
                 46 => (cNode = 51, MazeProg.A4),
-                _ => (cNode = 0, MazeProg.Begin)
+                _ => (cNode = 0, MazeProg.Begin),
             };
         (int, MazeProg) checkNodeB(int cNode) =>
             cNode switch
@@ -190,7 +303,7 @@ public class DrawMaze : AbstractMinigame
                 40 => (cNode = 46, MazeProg.B3),
                 45 => (cNode = 49, MazeProg.B4),
                 46 => (cNode = 52, MazeProg.B4),
-                _ => (cNode = 0, MazeProg.Begin)
+                _ => (cNode = 0, MazeProg.Begin),
             };
         (int, MazeProg) checkNodeC(int cNode) =>
             cNode switch
@@ -209,7 +322,7 @@ public class DrawMaze : AbstractMinigame
                 38 => (cNode = 43, MazeProg.C3),
                 45 => (cNode = 50, MazeProg.C4),
                 46 => (cNode = 53, MazeProg.C4),
-                _ => (cNode = 0, MazeProg.Begin)
+                _ => (cNode = 0, MazeProg.Begin),
             };
         (int, MazeProg) checkNodeD(int cNode) =>
             cNode switch
@@ -222,26 +335,32 @@ public class DrawMaze : AbstractMinigame
                 3 => (cNode = 41, MazeProg.D2),
                 46 => (cNode = 54, MazeProg.D4),
                 41 => (cNode = 47, MazeProg.D3),
-                _ => (cNode = 0, MazeProg.Begin)
+                _ => (cNode = 0, MazeProg.Begin),
             };
-        if(mp == MazeProg.Confirm) return MazeProg.Begin;
-        else if(c == 'a') {
+        if (mp == MazeProg.Confirm)
+            return MazeProg.Begin;
+        else if (c == 'a')
+        {
             (curNode, mp) = checkNodeA(cNode);
         }
-        else if(c == 'b') {
+        else if (c == 'b')
+        {
             (curNode, mp) = checkNodeB(cNode);
         }
-        else if(c == 'c') {
+        else if (c == 'c')
+        {
             (curNode, mp) = checkNodeC(cNode);
         }
-        else if(c == 'd') {
+        else if (c == 'd')
+        {
             (curNode, mp) = checkNodeD(cNode);
         }
 
         return mp;
     }
 
-    public void Draw() {
+    public void Draw()
+    {
         // Determine maze progress before sending draw function request
         // Request a level to be drawn depending on the level and direction, or MazeProg
         terminalText.text = DrawLevel();

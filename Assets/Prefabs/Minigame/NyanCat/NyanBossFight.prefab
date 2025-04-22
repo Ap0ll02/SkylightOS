@@ -240,7 +240,7 @@ MonoBehaviour:
   - {fileID: 1158412644151240586, guid: 2069d8199b87abc45ac9d41e019fe88f, type: 3}
   - {fileID: 3639537945923414112, guid: 92b9ed0d560caf04fad3956a839839f9, type: 3}
   - {fileID: 2282382417136026312, guid: 004232322f4d44c4f95e34e1854e9d7a, type: 3}
-  - {fileID: 8078360160527031668, guid: f3a7e254bbb82d0418041f14bbf1308d, type: 3}
+  - {fileID: 2282382417136026312, guid: 004232322f4d44c4f95e34e1854e9d7a, type: 3}
   Stage: 1
   winGood: 4000
   winGreat: 6000
@@ -309,6 +309,7 @@ MonoBehaviour:
   greatColor: {r: 0, g: 0.14500093, b: 1, a: 1}
   goodColor: {r: 0, g: 1, b: 0.18419456, a: 1}
   missColor: {r: 1, g: 0.04185652, b: 0, a: 1}
+  evidenceWindow: {fileID: 0}
 --- !u!23 &4531514230799709005
 MeshRenderer:
   m_ObjectHideFlags: 0

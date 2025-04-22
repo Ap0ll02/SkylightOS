@@ -7,23 +7,43 @@ public class driver : MonoBehaviour
     public TMP_Text driver_desc;
     public DriverGame dgs;
     public GameObject update_panel;
+    public GameObject updateButton;
+
+    public enum DriversState
+    {
+        Working,
+        NotWorking,
+        NotWorkingInteractable
+    }
+
     void Awake() {
         // FIXME When Garrett updates this menu the reference will need to be reacquired
-        system_menu = GetComponentInParent<SystemWindow>().gameObject;
-        //dgs = GameObject.Find("DriverMGWindow").GetComponent<DriverGame>();
-        update_panel.GetComponent<CanvasGroup>().alpha = 1;
-        update_panel.GetComponent<CanvasGroup>().interactable = true;
+        UpdateState(DriversState.Working);
     }
 
     // Start is called before the first frame update
     void Start()
     {
-        update_panel.GetComponent<CanvasGroup>().alpha = 0;
-        update_panel.GetComponent<CanvasGroup>().interactable = false;
+
     }
 
-    public void GameOn() {
-        //dgs.gameObject.SetActive(true);
+    public void UpdateState(DriversState newState)
+    {
+        switch (newState)
+        {
+            case DriversState.Working:
+                driver_desc.text = "Drivers are working normally.";
+                updateButton.SetActive(false);
+                break;
+            case DriversState.NotWorking:
+                driver_desc.text = "Drivers out of date. Updates required.";
+                updateButton.SetActive(false);
+                break;
+            case DriversState.NotWorkingInteractable:
+                driver_desc.text = "Drivers out of date. Updates required.";
+                updateButton.SetActive(true);
+                break;
+        }
     }
 
 }

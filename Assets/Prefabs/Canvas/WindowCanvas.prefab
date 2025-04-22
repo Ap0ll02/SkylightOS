@@ -1506,14 +1506,14 @@ PrefabInstance:
     - target: {fileID: 47412371782571499, guid: c82efd5d10f6e954ba3e8317f9786f61, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 5969977833734643722}
     - target: {fileID: 47412371782571499, guid: c82efd5d10f6e954ba3e8317f9786f61, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: StartGame
+      value: TryStartGame
       objectReference: {fileID: 0}
     - target: {fileID: 47412371782571499, guid: c82efd5d10f6e954ba3e8317f9786f61, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
-      value: DriverGame, Assembly-CSharp
+      value: AbstractMinigame, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 1890653833119060387, guid: c82efd5d10f6e954ba3e8317f9786f61, type: 3}
       propertyPath: m_Pivot.x

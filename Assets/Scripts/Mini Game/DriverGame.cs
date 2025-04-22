@@ -54,6 +54,8 @@ public class DriverGame : AbstractMinigame
     private bool popupContinue = true;
     private bool lockdownContinue = true;
 
+    public GameObject boundingBox;
+
     void Awake()
     {
         gameRunning = false;
@@ -226,9 +228,13 @@ public class DriverGame : AbstractMinigame
         }
         gameRunning = false;
         bgs.RemoveRange(0, bgs.Count);
-        obs_list.RemoveRange(0, obs_list.Count);
+        foreach (var ob in obs_list)
+        {
+            Destroy(ob);
+        }
         StopCoroutine(Progression());
         StopCoroutine(SpawnObstacle());
+        boundingBox.SetActive(false);
         window.CloseWindow();
     }
 }

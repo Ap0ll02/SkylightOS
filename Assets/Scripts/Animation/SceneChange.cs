@@ -16,6 +16,12 @@ public class SceneChange : MonoBehaviour
     public void LoadTransition23(){
         SceneManager.LoadScene("2To3Cutscene");
     }
+
+    public void LoadTransition3Boss()
+    {
+        SceneManager.LoadScene("TowerDefense");
+    }
+
     public void LoadTransitionEnd(){
         SceneManager.LoadScene("EndingCutscene");
     }

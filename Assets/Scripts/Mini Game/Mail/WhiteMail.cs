@@ -13,7 +13,8 @@ public class NewBehaviourScript : AbstractMail
                 Destroy(gameObject);
             }
         }
-        void Start()
+
+        new void Start()
         {
             mailRect = GetComponent<RectTransform>();
             type = "White";
@@ -23,6 +24,7 @@ public class NewBehaviourScript : AbstractMail
             {
                 Debug.Log("Score Manager not found");
             }
+            base.Start();
         }
 
 }

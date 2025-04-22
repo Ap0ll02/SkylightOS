@@ -13,7 +13,7 @@ public class WarningSign : AbstractMail
             Destroy(gameObject);
         }
     }
-    void Start()
+    new void Start()
     {
         mailRect = GetComponent<RectTransform>();
         type = "Warning";
@@ -23,6 +23,7 @@ public class WarningSign : AbstractMail
         {
             Debug.Log("Score Manager not found");
         }
+        base.Start();
     }
 
 }

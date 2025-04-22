@@ -12,6 +12,11 @@ public class AbstractMail : MonoBehaviour
     public GameObject mailSound;
 
 
+    public void Start()
+    {
+        Destroy(gameObject, 5f);
+    }
+
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Player")
@@ -33,6 +38,8 @@ public class AbstractMail : MonoBehaviour
         Instantiate(mailSound);
         Destroy(gameObject);
     }
+
+
 
     // public void GameOver()
     // {

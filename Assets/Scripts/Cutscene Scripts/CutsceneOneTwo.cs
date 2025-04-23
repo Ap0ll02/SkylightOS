@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class CutsceneOneTwo : MonoBehaviour
 {
-    bool onVar = true;
-
     // Start is called before the first frame update
     void Start()
     {
@@ -16,12 +14,8 @@ public class CutsceneOneTwo : MonoBehaviour
 
     public IEnumerator FirstPart(float seconds, int x)
     {
-        while (onVar)
-        {
-            yield return new WaitForSeconds(seconds);
-            onVar = false;
-            Handler(x);
-        }
+        yield return new WaitForSeconds(seconds);
+        Handler(x);
     }
 
     public void Handler(int route)
@@ -34,6 +28,9 @@ public class CutsceneOneTwo : MonoBehaviour
             case 2:
                 DisplayMessage();
                 break;
+            case 3:
+                EndScene();
+                break;
             default:
                 break;
         }
@@ -44,8 +41,7 @@ public class CutsceneOneTwo : MonoBehaviour
     public void NewMessage()
     {
         newMsg.gameObject.SetActive(true);
-        onVar = true;
-        StartCoroutine(FirstPart(3f, 2));
+        StartCoroutine(FirstPart(4f, 2));
     }
 
     public TMPro.TMP_Text message;
@@ -54,5 +50,13 @@ public class CutsceneOneTwo : MonoBehaviour
     {
         newMsg.gameObject.SetActive(false);
         message.gameObject.SetActive(true);
+        StartCoroutine(FirstPart(7f, 3));
+    }
+
+    public SceneChange sc;
+
+    public void EndScene()
+    {
+        sc.LoadLevel2();
     }
 }

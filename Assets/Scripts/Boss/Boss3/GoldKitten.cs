@@ -10,11 +10,11 @@ public class GoldKitten : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = Random.Range(100f, 120f);
-        maxHealth = 5;
+        speed = Random.Range(80f, 100f);
+        maxHealth = 100;
         currentHealth = maxHealth;
-        pointValue = 100;
-        damage = 1;
+        damage = 3;
+        reward = 300;
     }
 
     public void Update()
@@ -26,7 +26,6 @@ public class GoldKitten : AbstractEnemy
     {
         var waypointGameObject = navi.NextWaypoint(currentPosition++);
         transform.rotation = waypointGameObject.GetComponent<Waypoint>().nyanKittenRotation();
-        // Debug.Log("Current Waypoint:" + waypointGameObject.name);
         nextWaypoint = waypointGameObject.transform.position;
     }
 

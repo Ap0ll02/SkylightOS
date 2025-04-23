@@ -45,6 +45,7 @@ public abstract class Tower : MonoBehaviour
     public Player playerScript;
     public float duration;
     public float slowPercent;
+    public float speed = 50;
     public abstract void Attack();
 
     public void Start()
@@ -56,7 +57,7 @@ public abstract class Tower : MonoBehaviour
 
     public void LookAtTarget(Transform target)
     {
-        float speed = 50f * Time.deltaTime;
+        speed = 50f * Time.deltaTime;
         Vector3 direction = target.position - transform.position;
         direction.y = 0f;
 

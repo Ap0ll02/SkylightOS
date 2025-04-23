@@ -11,6 +11,7 @@ public class BasicTower : Tower
     public new void Start()
     {
         base.Start();
+        speed = 70;
         ActivateTower = StartCoroutine(ActiveTower());
 
         // ========= Tower Upgrade Lists =========

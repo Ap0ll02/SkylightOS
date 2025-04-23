@@ -11,11 +11,11 @@ public class FastInsect : AbstractEnemy
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
         speed = Random.Range(130f, 150f);
-        maxHealth = 1;
+        maxHealth = 35;
         currentHealth = maxHealth;
-        pointValue = 150;
+        pointValue = 2;
         damage = 1;
-        reward = 1;
+        reward = 25;
     }
     // Update is called once per frame
     void Update()

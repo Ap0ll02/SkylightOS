@@ -10,8 +10,8 @@ public class Stage3Boss3 : AbstractBossStage
     private bool spawning;
     public List<GameObject> LazerArray;
     public GameObject northstar;
-    public string Line1 = "<incr>NICE!!!!!</incr> We Survived our Second wave! The MD5# Reading are off the chart <rainb> rainbow surge </rainb> Intensity is now <shake a = 2> 100%";
-    public string Line2 = "<shake>Nyan Cat is being detected!</shake> His army of early 2000's annoying kittens are on the way! Hyperclocking the CPU and elevating computer fluid. Add more towers, Quickly";
+    private string Line1 = "<incr>NICE!!!!!</incr> We Survived our Second wave! The MD5# Reading are off the chart <rainb> rainbow surge </rainb> Intensity is now <shake a = 2> 100%";
+    private string Line2 = "<shake>Nyan Cat is being detected!</shake> His army of early 2000's annoying kittens are on the way! Hyperclocking the CPU and elevating computer fluid. Add more towers, Quickly";
 
     public override void BossStartStage()
     {

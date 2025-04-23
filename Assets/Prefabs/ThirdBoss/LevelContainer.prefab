@@ -761,6 +761,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 2200326641307111779, guid: 389a307489553814ab2f64c2f326007f, type: 3}
+      propertyPath: northstar
+      value: 
+      objectReference: {fileID: 2466518318291610202}
+    - target: {fileID: 2200326641307111779, guid: 389a307489553814ab2f64c2f326007f, type: 3}
       propertyPath: spawnManager
       value: 
       objectReference: {fileID: 7644004621033748436}
@@ -777,38 +781,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2466518318291610202}
     - target: {fileID: 3278202163158847717, guid: 389a307489553814ab2f64c2f326007f, type: 3}
-      propertyPath: spawnManager
-      value: 
-      objectReference: {fileID: 7644004621033748436}
-    - target: {fileID: 3278202163158847717, guid: 389a307489553814ab2f64c2f326007f, type: 3}
-      propertyPath: enemyArray.Array.size
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 3278202163158847717, guid: 389a307489553814ab2f64c2f326007f, type: 3}
-      propertyPath: enemyArray.Array.data[0]
-      value: 
-      objectReference: {fileID: 8619020837726270443, guid: 01eb11bab974f9b44b0ced5e6af907d4, type: 3}
-    - target: {fileID: 3278202163158847717, guid: 389a307489553814ab2f64c2f326007f, type: 3}
-      propertyPath: enemyArray.Array.data[1]
-      value: 
-      objectReference: {fileID: 4291832494756360588, guid: 973b4f379c64f1549a5522491cdc5772, type: 3}
-    - target: {fileID: 3278202163158847717, guid: 389a307489553814ab2f64c2f326007f, type: 3}
-      propertyPath: enemyArray.Array.data[2]
-      value: 
-      objectReference: {fileID: 7400422503142029749, guid: af954a808d303ef4eab2a5cedefc8d57, type: 3}
-    - target: {fileID: 5398582220461582628, guid: 389a307489553814ab2f64c2f326007f, type: 3}
-      propertyPath: northstar
-      value: 
-      objectReference: {fileID: 2466518318291610202}
-    - target: {fileID: 5398582220461582628, guid: 389a307489553814ab2f64c2f326007f, type: 3}
-      propertyPath: spawnManager
-      value: 
-      objectReference: {fileID: 7644004621033748436}
-    - target: {fileID: 5517140333319428555, guid: 389a307489553814ab2f64c2f326007f, type: 3}
-      propertyPath: northstar
-      value: 
-      objectReference: {fileID: 2466518318291610202}
-    - target: {fileID: 5517140333319428555, guid: 389a307489553814ab2f64c2f326007f, type: 3}
       propertyPath: spawnManager
       value: 
       objectReference: {fileID: 7644004621033748436}
@@ -817,25 +789,13 @@ PrefabInstance:
       value: BossManager3
       objectReference: {fileID: 0}
     - target: {fileID: 6238606853933884810, guid: 389a307489553814ab2f64c2f326007f, type: 3}
-      propertyPath: spawnManager
-      value: 
-      objectReference: {fileID: 7644004621033748436}
-    - target: {fileID: 7392207773026707806, guid: 389a307489553814ab2f64c2f326007f, type: 3}
       propertyPath: northstar
       value: 
       objectReference: {fileID: 2466518318291610202}
-    - target: {fileID: 7392207773026707806, guid: 389a307489553814ab2f64c2f326007f, type: 3}
+    - target: {fileID: 6238606853933884810, guid: 389a307489553814ab2f64c2f326007f, type: 3}
       propertyPath: spawnManager
       value: 
       objectReference: {fileID: 7644004621033748436}
-    - target: {fileID: 7975758068211292012, guid: 389a307489553814ab2f64c2f326007f, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 249
-      objectReference: {fileID: 0}
-    - target: {fileID: 7975758068211292012, guid: 389a307489553814ab2f64c2f326007f, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 1154
-      objectReference: {fileID: 0}
     - target: {fileID: 8145491001940914458, guid: 389a307489553814ab2f64c2f326007f, type: 3}
       propertyPath: northstar
       value: 

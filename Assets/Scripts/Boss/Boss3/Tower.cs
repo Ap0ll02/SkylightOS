@@ -50,8 +50,14 @@ public abstract class Tower : MonoBehaviour
     public void Start()
     {
         mySphere = GetComponent<SphereCollider>();
-        mySphere.radius = attackRadius;
+        mySphere.radius = radii[0];
         displayCost = costToUpgrade[0];
+        damage = damages[0];
+        timeToDamage = timesToDamage[0];
+        cooldown = cooldowns[0];
+        isSpecial = isSpecials[0];
+        duration = durations[0];
+        slowPercent = slowDowns[0];
     }
 
     public void LookAtTarget(Transform target)

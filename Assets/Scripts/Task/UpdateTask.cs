@@ -8,7 +8,7 @@ public class UpdateTask : AbstractTask
     [SerializeField] UpdateGame updateGameWindow;
     public UpdatePanel updatePannel;
 
-    public void Awake()
+    public new void Start()
     {
         updatePannel.ChangeState(UpdatePanel.UpdateState.NotWorking);
     }

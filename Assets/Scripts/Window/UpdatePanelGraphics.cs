@@ -27,10 +27,11 @@ public class UpdatePanel : MonoBehaviour
 
 
     // Start is called before the first frame update
-    void Start()
+    void Awake()
     {
         ChangeState(UpdateState.Working);
     }
+
     public enum UpdateState
     {
         Working,

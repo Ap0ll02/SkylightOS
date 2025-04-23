@@ -36,8 +36,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 6.1000977, y: -238.80212}
-  m_SizeDelta: {x: -96.7, y: -561.903}
+  m_AnchoredPosition: {x: 6.1000977, y: -263.017}
+  m_SizeDelta: {x: -96.7, y: -640.894}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7679420057326672391
 CanvasRenderer:
@@ -96,12 +96,12 @@ MonoBehaviour:
     m_Bottom: 0
   m_ChildAlignment: 1
   m_Spacing: 0
-  m_ChildForceExpandWidth: 1
-  m_ChildForceExpandHeight: 1
+  m_ChildForceExpandWidth: 0
+  m_ChildForceExpandHeight: 0
   m_ChildControlWidth: 0
   m_ChildControlHeight: 0
   m_ChildScaleWidth: 0
-  m_ChildScaleHeight: 0
+  m_ChildScaleHeight: 1
   m_ReverseArrangement: 0
 --- !u!114 &3211817861408766068
 MonoBehaviour:
@@ -398,14 +398,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4be66d9961a345499ada282c70dec4a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tasks:
-  - {fileID: 0}
-  - {fileID: 0}
+  bossTask: {fileID: 0}
   buttonPrefab: {fileID: 1462099745475122951, guid: eb21ec5b5d7221145a4fd1777fe1917f, type: 3}
   buttonContainer: {fileID: 8691355661483237393}
   currentTask: {fileID: 0}
-  bossTask: {fileID: 0}
-  bossTaskButton: {fileID: 0}
+  tasksContainer: {fileID: 0}
+  hazardsContainer: {fileID: 0}
+  window: {fileID: 0}
+  levelTransButton: {fileID: 0}
+  evidenceManager: {fileID: 0}
+  difficulty: 0
 --- !u!224 &4656347351973318508 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1555171905985121423, guid: 365ac06d1c796aa4d90387fd463ea82a, type: 3}

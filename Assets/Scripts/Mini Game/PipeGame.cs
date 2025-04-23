@@ -18,20 +18,26 @@ public class PipeGame : AbstractMinigame
     public bool gameRunning = false;
 
     public List<GameObject> ConnectedPath;
+    public event Action GameStartEvent;
     public event Action GameOverEvent;
     public Coroutine GameUpdateCR;
     public Coroutine HeatUpCR;
     public TMP_Text temp;
     public int temp_val;
 
+    private BasicWindow window;
+
     public void Start()
     {
-        GetComponent<BasicWindow>().CloseWindow();
+        window = GetComponent<BasicWindow>();
+        window.ForceCloseWindow();
     }
 
     // MARK: - Initializations
     public override void StartGame()
     {
+        GameStartEvent?.Invoke();
+        window.isClosable = false;
         try
         {
             StopCoroutine(GameUpdateCR);
@@ -320,7 +326,7 @@ public class PipeGame : AbstractMinigame
     public IEnumerator DestroyAfterSeconds(float seconds)
     {
         yield return new WaitForSeconds(seconds);
-        gameObject.GetComponent<BasicWindow>().CloseWindow();
+        gameObject.GetComponent<BasicWindow>().ForceCloseWindow();
         foreach (var pipe in SpawnedPipes)
         {
             pipe.GetComponent<ParticleSystem>().Stop();

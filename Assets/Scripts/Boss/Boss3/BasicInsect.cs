@@ -13,11 +13,11 @@ public class BasicInsect : AbstractEnemy
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
         speed = Random.Range(100f, 120f);
-        maxHealth = 5;
+        maxHealth = 60;
         currentHealth = maxHealth;
-        pointValue = 100;
         damage = 1;
-        reward = 1;
+        pointValue = 1;
+        reward = 20;
     }
 
     public void Update()

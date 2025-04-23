@@ -44,11 +44,13 @@ public class OverheatGPUTask : AbstractTask
 
     private void OnEnable()
     {
+        pg.GameStartEvent += startHazards;
         pg.GameOverEvent += CompleteTask;        
     }
 
     private void OnDisable()
     {
+        pg.GameStartEvent -= startHazards;
         pg.GameOverEvent -= CompleteTask;
     }
 

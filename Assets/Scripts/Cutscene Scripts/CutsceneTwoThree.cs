@@ -50,7 +50,7 @@ public class CutsceneTwoThree : MonoBehaviour
     {
         newMsg.gameObject.SetActive(false);
         message.gameObject.SetActive(true);
-        StartCoroutine(FirstPart(7f, 3));
+        StartCoroutine(FirstPart(10f, 3));
     }
 
     public SceneChange sc;

@@ -24,6 +24,8 @@ public class PeripheralUpdateTask : AbstractTask
     private bool loadingBarStage;
     private bool wireConnectStage;
 
+    public List<AbstractManager> loadingHazards;  
+
     // I have risen
     private void Awake()
     {
@@ -75,13 +77,15 @@ public class PeripheralUpdateTask : AbstractTask
     // Basically whenever the loading bar starts
     void HandlePeripheralLoadingStarted()
     {
-        startHazards();
+        StartLoadingHazards();
         northstar.WriteHint("A loading bar, how original.", Northstar.Style.warm);
+
     }
 
     // Loading bar end or some shiet
     void HandlePeripheralLoadingEnded()
     {
+        StopLoadingHazards();
         northstar.WriteHint("Mom i got the virus but my pants slipped", Northstar.Style.warm);
     }
 
@@ -95,6 +99,7 @@ public class PeripheralUpdateTask : AbstractTask
     void HandleConnectMinigameEnded()
     {
         //northstar.WriteHint("You did it! You plugged in the wires!", Northstar.Style.warm, true);
+        stopHazards();
         CompleteTask();
     }
 
@@ -106,12 +111,34 @@ public class PeripheralUpdateTask : AbstractTask
 
     public override void startHazards()
     {
-        
+        foreach (AbstractManager hazard in hazardManagers)
+        {
+            hazard.StartHazard();
+        }
+    }
+
+    public void StartLoadingHazards()
+    {
+        foreach (AbstractManager hazard in loadingHazards)
+        {
+            hazard.StartHazard();
+        }
+    }
+
+    public void StopLoadingHazards()
+    {
+        foreach (AbstractManager hazard in loadingHazards)
+        {
+            hazard.StopHazard();
+        }
     }
 
     public override void stopHazards()
     {
-        
+        foreach (AbstractManager hazard in hazardManagers)
+        {
+            hazard.StopHazard();
+        }
     }
 
     public override void checkHazards()

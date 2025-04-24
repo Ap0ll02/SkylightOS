@@ -202,7 +202,7 @@ public class TowerManager : MonoBehaviour
             // Upgrade Process
             // ===============
             towerHit = hitObject;
-            if (!clicked)
+            if (!clicked && towerHit.GetComponent<Tower>().level < 3)
             {
                 clicked = true;
 
@@ -294,7 +294,6 @@ public class TowerManager : MonoBehaviour
 
     public void UpgradeUICallback()
     {
-        Debug.Log("Made It Past The Button Click");
         if (towerHit)
         {
             UpgradeHitTower(towerHit);
@@ -367,6 +366,9 @@ public class TowerManager : MonoBehaviour
         // ==============================
 
         int tLevel = tower.GetComponent<Tower>().level;
+        if(tLevel >= 3) {
+            return;
+        }
         if (player.GetCurrency() > tower.GetComponent<Tower>().costToUpgrade[tLevel])
         {
             Debug.Log("MONEY CORRECT");

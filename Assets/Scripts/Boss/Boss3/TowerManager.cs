@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 /// @author: Jack Ratermann
 /// @brief: This is the managing class for towers
@@ -110,9 +111,6 @@ public class TowerManager : MonoBehaviour
             case "2":
             case "3":
             case "4":
-              if(!unlockedTowers.Contains(int.Parse(number))){
-                return;
-              }
                 pickedTower = towerPrefabs[int.Parse(number)];
                 break;
             default:
@@ -396,5 +394,14 @@ public class TowerManager : MonoBehaviour
         tower.GetComponent<Tower>().Glow(false);
         SetDefaultUIText();
         clicked = false;
+    }
+    private int towInd = 0;
+    public void AddTower() {
+
+    int[] mapThing = new int[] { 1, 3, 2, 0, 4 };
+     TMPro.TMP_Text t = towerTexts[mapThing[towInd]];
+        t.GetComponentInParent<CanvasGroup>().interactable = true;
+        t.GetComponentInParent<CanvasGroup>().alpha = 1;
+      towInd++;
     }
 }

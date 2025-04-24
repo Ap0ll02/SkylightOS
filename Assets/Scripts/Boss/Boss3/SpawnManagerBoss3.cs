@@ -9,7 +9,7 @@ public class SpawnManagerBoss3 : MonoBehaviour
     public List<GameObject> enemies;
     public GameObject enemyContainer;
     public float defaultSpawnRate = 0.5f;
-
+    public TowerManager tm;
     public IEnumerator spawnAmount(int index, int amount, float rate = 0.0f)
     {
         for (int i = 0; i < amount; i++)

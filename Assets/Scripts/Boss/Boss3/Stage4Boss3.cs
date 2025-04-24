@@ -14,6 +14,7 @@ public class Stage4Boss3 : AbstractBossStage
     public override void BossStartStage()
     {
         northstar.SetActive(true);
+        spawnManager.tm.AddTower();
         StartCoroutine(PlayStage());
     }
     public IEnumerator PlayStage()

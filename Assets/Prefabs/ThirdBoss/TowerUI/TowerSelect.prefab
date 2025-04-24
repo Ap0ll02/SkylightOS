@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 3258992402294227925}
   - component: {fileID: 7314316464626457384}
   - component: {fileID: 2863757977203973372}
+  - component: {fileID: 3760204225929893620}
   m_Layer: 5
   m_Name: TrapperTower
   m_TagString: Untagged
@@ -267,6 +268,18 @@ MonoBehaviour:
           m_StringArgument: 4
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &3760204225929893620
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 928351265022403812}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2250357886590657815
 GameObject:
   m_ObjectHideFlags: 0
@@ -279,6 +292,7 @@ GameObject:
   - component: {fileID: 8700320649054763285}
   - component: {fileID: 5513823958012174312}
   - component: {fileID: 3931121255669435681}
+  - component: {fileID: 4478332533728432637}
   m_Layer: 5
   m_Name: AOETower
   m_TagString: Untagged
@@ -400,6 +414,18 @@ MonoBehaviour:
           m_StringArgument: 3
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &4478332533728432637
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2250357886590657815}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &2294255691386307371
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,6 +572,7 @@ GameObject:
   - component: {fileID: 4178444227755783839}
   - component: {fileID: 5061749317857447850}
   - component: {fileID: 8024476232648685348}
+  - component: {fileID: 3189855993245458938}
   m_Layer: 5
   m_Name: basicTowerBtn
   m_TagString: Untagged
@@ -667,6 +694,18 @@ MonoBehaviour:
           m_StringArgument: 0
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &3189855993245458938
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4510011192108927816}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &4738359441212564619
 GameObject:
   m_ObjectHideFlags: 0
@@ -679,6 +718,7 @@ GameObject:
   - component: {fileID: 281198300074609430}
   - component: {fileID: 7889848444466786243}
   - component: {fileID: 1432799378414618272}
+  - component: {fileID: 7419704613566505972}
   m_Layer: 5
   m_Name: slowTowerBtn
   m_TagString: Untagged
@@ -800,6 +840,18 @@ MonoBehaviour:
           m_StringArgument: 1
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &7419704613566505972
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4738359441212564619}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &5210045009832561067
 GameObject:
   m_ObjectHideFlags: 0
@@ -1080,6 +1132,7 @@ GameObject:
   - component: {fileID: 5853464946235473522}
   - component: {fileID: 4118303509130184249}
   - component: {fileID: 5097557231542680704}
+  - component: {fileID: 1162475554846803720}
   m_Layer: 5
   m_Name: MageTower
   m_TagString: Untagged
@@ -1201,6 +1254,18 @@ MonoBehaviour:
           m_StringArgument: 2
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!225 &1162475554846803720
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6701858594770552886}
+  m_Enabled: 1
+  m_Alpha: 0
+  m_Interactable: 0
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6734085938854240548
 GameObject:
   m_ObjectHideFlags: 0

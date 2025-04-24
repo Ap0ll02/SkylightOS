@@ -120,18 +120,21 @@ public class StartScreenScript : MonoBehaviour
     private void EasyButtonClicked()
     {
         SaveLoad.GameDifficulty = SaveLoad.Difficulty.Easy;
+        SaveLoad.ResetEvidence();
         SceneManager.LoadScene("IntroCutscene");
     }
 
     private void MediumButtonClicked()
     {
         SaveLoad.GameDifficulty = SaveLoad.Difficulty.Medium;
+        SaveLoad.ResetEvidence();
         SceneManager.LoadScene("IntroCutscene");
     }
 
     private void HardButtonClicked()
     {
         SaveLoad.GameDifficulty = SaveLoad.Difficulty.Hard;
+        SaveLoad.ResetEvidence();
         SceneManager.LoadScene("IntroCutscene");
     }
 

@@ -65,7 +65,7 @@ public class TerminalTask : AbstractTask
     // we need to refactor this, which would also allow other tasks to be activated from here
     [SerializeField]
     BasicWindow window;
-
+    public GameObject antiVirusIcon;
     /// @brief Assign all of the terminal objects in the scene.
     public void Awake()
     {
@@ -98,6 +98,7 @@ public class TerminalTask : AbstractTask
         window.ForceCloseWindow();
         base.Start();
         installBtn.SetActive(false);
+        antiVirusIcon.SetActive(false);
         gameObject.SetActive(false);
     }
 
@@ -311,6 +312,9 @@ public class TerminalTask : AbstractTask
         termState = State.Off;
         installBtn.SetActive(false);
         terminalText.text = "Successful Install Of Anti-Virus!";
+        antiVirusIcon.SetActive(true);
+        var antiVirusPanel = FindObjectOfType<AntiVirusWindow>();
+        antiVirusPanel.SetStatus(AntiVirusWindow.AntiVirusState.NeedsInstall);
         base.CompleteTask();
     }
 

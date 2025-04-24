@@ -66,6 +66,7 @@ public class Stage3Boss3 : AbstractBossStage
 
         TurnNyanLazerOn();
         yield return spawnManager.SpawnRandom(50, 0, enemyArray.Count-1, 1.0f);
+
     }
 
     public void TurnBasic1LazersOn()
@@ -73,7 +74,7 @@ public class Stage3Boss3 : AbstractBossStage
         foreach (var laz in LazerArray)
         {
             var lazer = laz.GameObject().GetComponent<Animator>();
-            lazer.SetBool("basic1",true);
+            lazer.SetBool("Basic1",true);
         }
     }
     public void TurnBasic2LazersOn()
@@ -109,8 +110,7 @@ public class Stage3Boss3 : AbstractBossStage
     {
         foreach (var laz in LazerArray)
         {
-            var lazer = laz.GameObject().GetComponent<Animator>();
-            lazer.SetBool("NyanLazer",false);
+            laz.SetActive(false);
         }
     }
 }

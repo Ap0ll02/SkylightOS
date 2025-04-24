@@ -8,8 +8,8 @@ public class Stage5Boss3 : AbstractBossStage
     public List<GameObject> enemyArray;
     private bool spawning;
     public GameObject northstar;
-    public string Line1 = "Heads up! It seems that the bugs are organizing for another wave. Hurry place down some more towers and get ready for the bugs";
-    public string Line2 = "We are more then half way there, you just need to hold them off until I am able to finish running the virus Exploder 3000 protocol";
+    private string Line1 = "Heads up! It seems that the bugs are organizing for another wave. Hurry place down some more towers and get ready for the bugs";
+    private string Line2 = "We are more then half way there, you just need to hold them off until I am able to finish running the virus Exploder 3000 protocol";
 
     public override void BossStartStage()
     {

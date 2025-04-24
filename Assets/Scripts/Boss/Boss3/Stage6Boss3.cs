@@ -8,8 +8,8 @@ public class Stage6Boss3 : AbstractBossStage
     public List<GameObject> enemyArray;
     private bool spawning;
     public GameObject northstar;
-    public string Line1 = "I am detecting shiba inu activity with my dog monitoring system... Is that... <shake>Doge!</shake>";
-    public string Line2 = "Alright Operator! Finish this fight. Put down towers and buy me some more time. We are almost there!";
+    private string Line1 = "I am detecting shiba inu activity with my dog monitoring system... Is that... <shake>Doge!</shake>";
+    private string Line2 = "Alright Operator! Finish this fight. Put down towers and buy me some more time. We are almost there!";
 
     public override void BossStartStage()
     {

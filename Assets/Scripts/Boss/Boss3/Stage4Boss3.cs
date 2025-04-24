@@ -8,8 +8,8 @@ public class Stage4Boss3 : AbstractBossStage
     public List<GameObject> enemyArray;
     private bool spawning;
     public GameObject northstar;
-    public string Line1 = "We are on wave four! I do not detect Nyan Cat... However there are lots of kittens remaining. I am detecting something strange. A dog? A Doge>";
-    public string Line2 = "Heads up Operator! I am detecting bugs. This is strange they seem to be organiszed. I think Doge is leading them. Get Ready!!!";
+    private string Line1 = "We are on wave four! I do not detect Nyan Cat... However there are lots of kittens remaining. I am detecting something strange. A dog? A Doge";
+    private string Line2 = "Heads up Operator! I am detecting bugs. This is strange they seem to be organiszed. I think Doge is leading them. Get Ready!!!";
 
     public override void BossStartStage()
     {

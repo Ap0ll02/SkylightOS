@@ -153,6 +153,7 @@ public class TowerManager : MonoBehaviour
             else
             {
                 clicked = true;
+                pickedTower = hit.GetComponent<Tower>();
             }
         }
     }

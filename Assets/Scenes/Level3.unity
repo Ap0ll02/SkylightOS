@@ -470,6 +470,10 @@ PrefabInstance:
       value: -6400.5
       objectReference: {fileID: 0}
     - target: {fileID: 4339682877038687490, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: bossTask
+      value: 
+      objectReference: {fileID: 1170424210}
+    - target: {fileID: 4339682877038687490, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: tasksContainer
       value: 
       objectReference: {fileID: 280091673}
@@ -477,6 +481,10 @@ PrefabInstance:
       propertyPath: hazardsContainer
       value: 
       objectReference: {fileID: 932737759}
+    - target: {fileID: 4600751446138956646, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4813046843243200975, guid: 59032f4f1f02f7b7dbdadce330ed79ca, type: 3}
       propertyPath: m_AnchoredPosition.x
       value: -8.415527
@@ -869,6 +877,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 95f0029e4f3ac0a408576612f19c5a92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1170424210 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: -7664277615421255941, guid: 3a9e660375e88194b80b13c2778c9d1f, type: 3}
+  m_PrefabInstance: {fileID: 1733043774}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6777ec88cc40f1e4e95002c5d8d6172a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &1733043774

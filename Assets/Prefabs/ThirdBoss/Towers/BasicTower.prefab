@@ -1526,7 +1526,7 @@ MonoBehaviour:
   - {fileID: 8449380434481365290}
   - {fileID: 610142182361658196}
   damage: 35
-  displayCost: 0
+  displayCost: 50
   timeToDamage: 1
   cooldown: 1
   isSpecial: 0
@@ -1537,7 +1537,7 @@ MonoBehaviour:
   playerScript: {fileID: 0}
   duration: 0
   slowPercent: 0
-  speed: 50
+  speed: 400
   tr: {fileID: 0}
   projectilePrefab: {fileID: 1303165563935883397, guid: a388c8387a3f2156d986e32238eea421, type: 3}
   projectile: {fileID: 1303165563935883397, guid: a388c8387a3f2156d986e32238eea421, type: 3}

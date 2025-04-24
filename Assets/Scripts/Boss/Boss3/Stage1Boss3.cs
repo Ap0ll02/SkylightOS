@@ -12,7 +12,7 @@ public class Stage1Boss3 : AbstractBossStage
     public List<GameObject> enemyArray;
     private bool spawning;
     public GameObject northstar;
-    private string Line1 = "<bounce>Welcome Operator! </bounce>We chased the viruses all the way to the mother board.They are desperate, and lunching a full on assualt on the GPU...";
+    private string Line1 = "<bounce>Welcome Operator! </bounce>We chased the viruses all the way to the mother board.They are desperate, and lunching a full on assualt on the GPU";
     private string Line2 =
         "We Have to <shake>stop them!</shake> Im activating the computer defense system! Start grabbing towers and placing them down on the mother board.";
     public override void BossStartStage()
@@ -23,10 +23,9 @@ public class Stage1Boss3 : AbstractBossStage
 
     public IEnumerator PlayStage()
     {
-        yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,1f);
-        yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,1f);
+        yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,0.25f);
+        yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,0.25f);
         yield return StartSpawning();
-        yield return seconds();
         BossEndStage();
     }
 

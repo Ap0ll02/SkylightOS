@@ -10,8 +10,9 @@ public class Projectile : MonoBehaviour
     protected Vector3 myPosition;
     public float speed;
     public bool seeStealth;
-    public float projectileLifeTime = 10;
+    public float projectileLifeTime = 3;
     public Coroutine coroutineRef;
+    public int pen = 1;
 
     public virtual void Start()
     {
@@ -48,8 +49,10 @@ public class Projectile : MonoBehaviour
             || (seeStealth && collision.CompareTag("StealthEnemyTD"))
         )
         {
+            pen -= 1;
             tm.HitEnemy(collision.gameObject);
-            CleanUp();
+            if(pen <= 0)
+                CleanUp();
         }
     }
 

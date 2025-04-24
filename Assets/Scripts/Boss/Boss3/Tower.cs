@@ -58,7 +58,8 @@ public abstract class Tower : MonoBehaviour
         cooldown = cooldowns[0];
         isSpecial = isSpecials[0];
         duration = durations[0];
-        slowPercent = slowDowns[0];
+        if(towerType == Towers.SlowDown)
+            slowPercent = slowDowns[0];
     }
 
     public void LookAtTarget(Transform target)

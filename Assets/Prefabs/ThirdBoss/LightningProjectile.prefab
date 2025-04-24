@@ -108,8 +108,13 @@ PrefabInstance:
       propertyPath: travelTime
       value: 0.7
       objectReference: {fileID: 0}
+    - target: {fileID: 6017794845964690385, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
+      propertyPath: projectileLifeTime
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 2374916478769409166, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4162189018943461028, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
       insertIndex: -1

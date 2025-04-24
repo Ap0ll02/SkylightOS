@@ -10,18 +10,18 @@ public class BasicTower : Tower
 
     public new void Start()
     {
-        base.Start();
-        speed = 70;
+        speed = 200;
         ActivateTower = StartCoroutine(ActiveTower());
-
         // ========= Tower Upgrade Lists =========
-        damages = new int[3] { 35, 60, 100 };
+        costToUpgrade = new int[3] { 50, 100, 200 };
+        damages = new int[3] { 40, 65, 90 };
         timesToDamage = new float[] { 1, 1, 1 };
-        cooldowns = new float[] { 2, 1, 0.75f };
+        cooldowns = new float[] { 2, 1.5f, 1f };
         isSpecials = new bool[] { false, false, true };
         radii = new float[] { 100, 120, 150 };
         durations = new float[] { 0, 0, 0 };
         // =======================================
+        base.Start();
     }
 
     public IEnumerator ActiveTower()

@@ -904,12 +904,13 @@ MonoBehaviour:
   cooldown: 3
   isSpecial: 0
   level: 0
-  costToUpgrade: 4b0000008c000000fa000000
+  costToUpgrade: 4b000000910000001d010000
   targetEnemy: {fileID: 0}
   enemyQueue: []
   playerScript: {fileID: 2991891161658796891, guid: 3604e05b0b3756f3991702ec912ecc00, type: 3}
   duration: 3
   slowPercent: 0.4
+  speed: 50
   tr: {fileID: 0}
   projectilePrefab: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}
   projectile: {fileID: 724972927920725988, guid: 65142183b6726c99e881d472353fbe52, type: 3}

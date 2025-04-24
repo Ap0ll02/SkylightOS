@@ -9,7 +9,6 @@ public class TrapperTower : Tower
 
     public new void Start()
     {
-        base.Start();
         ActivateTower = StartCoroutine(ActiveTower());
         // ========= Tower Upgrade Lists =========
         damages = new int[3] { 150, 400, 1000 };
@@ -18,6 +17,7 @@ public class TrapperTower : Tower
         isSpecials = new bool[] { false, true, true };
         radii = new float[] { 150, 250, 350 };
         durations = new float[] { 0, 0, 0 };
+        base.Start();
         // =======================================
     }
 

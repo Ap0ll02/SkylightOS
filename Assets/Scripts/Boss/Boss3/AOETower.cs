@@ -10,16 +10,16 @@ public class AOETower : Tower
 
     public new void Start()
     {
-        base.Start();
         ActivateTower = StartCoroutine(ActiveTower());
 
         // ========= Tower Upgrade Lists =========
-        damages = new int[3] { 280, 500, 950 };
+        damages = new int[3] { 150, 200, 250 };
         timesToDamage = new float[] { 4, 3, 2 };
-        cooldowns = new float[] { 4, 3.25f, 2f };
+        cooldowns = new float[] { 8, 7f, 5f };
         isSpecials = new bool[] { true, true, true };
         radii = new float[] { 300, 385, 500 };
         durations = new float[] { 0, 0, 0 };
+        base.Start();
         // =======================================
     }
 

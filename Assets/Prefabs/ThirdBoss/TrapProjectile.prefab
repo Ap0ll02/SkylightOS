@@ -104,7 +104,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4162189018943461028, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 3.6
       objectReference: {fileID: 0}
     - target: {fileID: 4162189018943461028, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
       propertyPath: m_LocalPosition.y
@@ -147,8 +147,16 @@ PrefabInstance:
       value: TrapProjectile
       objectReference: {fileID: 0}
     - target: {fileID: 6017794845964690385, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
+      propertyPath: pen
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017794845964690385, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
       propertyPath: speed
       value: 92
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017794845964690385, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
+      propertyPath: projectileLifeTime
+      value: 40
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects:

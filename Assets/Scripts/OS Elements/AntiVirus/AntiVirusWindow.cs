@@ -41,6 +41,9 @@ public class AntiVirusWindow : MonoBehaviour
     {
         bugSmashGame = FindObjectOfType<BugSmashGame>();
         window = GetComponent<BasicWindow>();
+        isInstalled = true;
+        SetStatus(AntiVirusState.InstalledRan);
+        isInstalled = false;
         wizardPanel.ClosePanel();
         antiVirusPanel.ClosePanel();
     }

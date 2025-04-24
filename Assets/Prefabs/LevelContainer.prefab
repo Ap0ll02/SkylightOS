@@ -1840,7 +1840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8151422172123542844, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -210.00006
+      value: -210.00012
       objectReference: {fileID: 0}
     - target: {fileID: 8496679994783934109, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
       propertyPath: m_IsActive
@@ -1885,6 +1885,10 @@ PrefabInstance:
     - target: {fileID: 8957470062190562676, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9028108106291474095, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -263.01697
       objectReference: {fileID: 0}
     - target: {fileID: 9114738351182972036, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
       propertyPath: isClosable
@@ -2002,6 +2006,17 @@ GameObject:
 --- !u!114 &6541472553148435901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6408666308089018498, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
+  m_PrefabInstance: {fileID: 159827954544260415}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9783ccd866ae124e8522c5e72231e24, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &8270663085894426945 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8138179264121263230, guid: 76802f36c739fa6f680fc6a1b4a09f6d, type: 3}
   m_PrefabInstance: {fileID: 159827954544260415}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
@@ -2438,6 +2453,18 @@ PrefabInstance:
     - target: {fileID: 8612153868732281475, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729326019066618911, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 8270663085894426945}
+    - target: {fileID: 8729326019066618911, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ToggleWindow
+      objectReference: {fileID: 0}
+    - target: {fileID: 8729326019066618911, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: BasicWindow, Assembly-CSharp
       objectReference: {fileID: 0}
     - target: {fileID: 8895000346957055671, guid: 61b26d9423d9a1441b754d0b6c630eaf, type: 3}
       propertyPath: m_Name

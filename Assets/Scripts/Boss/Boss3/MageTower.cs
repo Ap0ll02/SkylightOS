@@ -10,7 +10,6 @@ public class MageTower : Tower
 
     public new void Start()
     {
-        base.Start();
         // ========= Tower Upgrade Lists =========
         damages = new int[3] { 100, 200, 400 };
         timesToDamage = new float[] { 2, 1.5f, 1 };
@@ -18,6 +17,7 @@ public class MageTower : Tower
         isSpecials = new bool[] { true, true, true };
         radii = new float[] { 150, 300, 420 };
         durations = new float[] { 0, 0, 0 };
+        base.Start();
         // =======================================
     }
 

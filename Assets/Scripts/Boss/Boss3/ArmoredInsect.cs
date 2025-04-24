@@ -18,6 +18,7 @@ public class ArmoredInsect : AbstractEnemy
         pointValue = 100;
         damage = 2;
         reward = 10;
+        pointValue = 3;
     }
     // Update is called once per frame
     void Update()

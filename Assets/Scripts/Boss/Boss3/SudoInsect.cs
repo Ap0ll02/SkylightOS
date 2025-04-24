@@ -25,7 +25,7 @@ public class SudoInsect : AbstractEnemy
         speed = Random.Range(50f, 60f);
         maxHealth = 5;
         currentHealth = maxHealth;
-        pointValue = 100;
+        pointValue = 7;
         damage = 2;
         reward = 30;
         for (int i = 0; i < this.transform.childCount; i++)

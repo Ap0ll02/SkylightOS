@@ -14,6 +14,7 @@ public class JazzKitten : AbstractEnemy
         maxHealth = 150;
         currentHealth = maxHealth;
         damage = 1;
+        pointValue = 3;
         reward = 75;
     }
 

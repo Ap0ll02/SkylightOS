@@ -13,7 +13,7 @@ public class LargeSpider : AbstractEnemy
         speed = Random.Range(40f,50f);
         maxHealth = 15;
         currentHealth = maxHealth;
-        pointValue = 300;
+        pointValue = 5;
         reward = 25;
     }
     // Update is called once per frame

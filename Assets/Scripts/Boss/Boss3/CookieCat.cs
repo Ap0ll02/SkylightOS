@@ -14,6 +14,7 @@ public class CookieCat : AbstractEnemy
         maxHealth = 200;
         currentHealth = maxHealth;
         damage = 2;
+        pointValue = 4;
         reward = 100;
     }
 

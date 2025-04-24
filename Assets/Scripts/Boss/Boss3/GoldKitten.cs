@@ -13,6 +13,7 @@ public class GoldKitten : AbstractEnemy
         speed = Random.Range(80f, 100f);
         maxHealth = 100;
         currentHealth = maxHealth;
+        pointValue = 6;
         damage = 3;
         reward = 300;
     }

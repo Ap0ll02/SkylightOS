@@ -13,7 +13,7 @@ public class DemonKitten : AbstractEnemy
         speed = Random.Range(100f, 120f);
         maxHealth = 5;
         currentHealth = maxHealth;
-        pointValue = 100;
+        pointValue = 7;
         damage = 1;
     }
 

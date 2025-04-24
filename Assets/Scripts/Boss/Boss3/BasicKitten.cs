@@ -15,6 +15,7 @@ public class BasicKitten : AbstractEnemy
         currentHealth = maxHealth;
         damage = 1;
         reward = 25;
+        pointValue = 1;
     }
 
     public void Update()

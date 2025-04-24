@@ -14,6 +14,7 @@ public class ToastKitten : AbstractEnemy
         maxHealth = 275;
         currentHealth = maxHealth;
         damage = 3;
+        pointValue = 5;
         reward = 138;
     }
 

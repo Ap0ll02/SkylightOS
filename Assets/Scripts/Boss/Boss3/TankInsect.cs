@@ -19,6 +19,7 @@ public class TankInsect : AbstractEnemy
         damage = 1;
         damageNegatedMax = 400;
         reward = 10;
+        pointValue = 4;
     }
     // Update is called once per frame
     void Update()

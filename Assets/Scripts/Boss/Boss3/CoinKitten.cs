@@ -14,6 +14,7 @@ public class CoinKitten : AbstractEnemy
         maxHealth = 80;
         currentHealth = maxHealth;
         damage = 1;
+        pointValue = 2;
         reward = 40;
     }
 

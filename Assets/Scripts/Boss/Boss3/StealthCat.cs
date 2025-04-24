@@ -15,6 +15,7 @@ public class StealthCat : AbstractEnemy
         currentHealth = maxHealth;
         damage = 1;
         reward = 50;
+        pointValue = 2;
     }
 
     public void Update()

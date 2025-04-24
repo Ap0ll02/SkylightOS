@@ -16,6 +16,7 @@ public class StealthInsect : AbstractEnemy
         pointValue = 100;
         damage = 1;
         reward = 6;
+        pointValue = 2;
     }
 
     public void Update()

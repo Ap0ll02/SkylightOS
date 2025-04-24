@@ -12,17 +12,20 @@ public class SpawnManagerBoss3 : MonoBehaviour
 
     public IEnumerator spawnAmount(int index, int amount, float rate = 0.0f)
     {
-        for (int i = 0; i < amount; i++)
+        if (index < enemies.Count && amount > 0)
         {
-           var enemyReference = Instantiate(enemies[index],enemyContainer.transform );
-           if (rate == 0.0f)
-           {
-               yield return coolDown(defaultSpawnRate);
-           }
-           else
-           {
-               yield return coolDown(rate);
-           }
+            for (int i = 0; i < amount; i++)
+            {
+                var enemyReference = Instantiate(enemies[index], enemyContainer.transform);
+                if (rate == 0.0f)
+                {
+                    yield return coolDown(defaultSpawnRate);
+                }
+                else
+                {
+                    yield return coolDown(rate);
+                }
+            }
         }
         yield return null;
     }
@@ -33,12 +36,11 @@ public class SpawnManagerBoss3 : MonoBehaviour
         var currentPoint = maxPoint;
         while (currentPoint > 0)
         {
-            var index = Random.Range(minIndex,maxIndex);
-            currentPoint = (currentPoint - index);
             if (rate == 0.0f)
             {
                 Debug.Log("Default Cooling down time: " + defaultSpawnRate);
-                var enemyReference = Instantiate(enemies[index],enemyContainer.transform);
+                var enemyReference = Instantiate(enemies[Random.Range(minIndex,maxIndex)],enemyContainer.transform);
+                currentPoint -= enemyReference.GetComponent<AbstractEnemy>().pointValue;
                 yield return coolDown(defaultSpawnRate);
             }
             else if (currentPoint <= maxIndex)
@@ -49,7 +51,8 @@ public class SpawnManagerBoss3 : MonoBehaviour
             else
             {
                 Debug.Log("Cooling down time: " + rate);
-                var enemyReference = Instantiate(enemies[index],enemyContainer.transform);
+                var enemyReference = Instantiate(enemies[Random.Range(minIndex,maxIndex)],enemyContainer.transform);
+                currentPoint -= enemyReference.GetComponent<AbstractEnemy>().pointValue;
                 yield return coolDown(rate);
             }
         }

@@ -96,6 +96,7 @@ public class TowerManager : MonoBehaviour
         {
             // WHY IS THIS IF STATEMENT USED TIME TO FIND OUT
             Debug.Log("We found a number correctly");
+            pickedTower = towerPrefabs[int.Parse(number)];
             UpgradeUICallback();
             return;
         }

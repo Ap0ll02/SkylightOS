@@ -40,7 +40,8 @@ public class SpawnManagerBoss3 : MonoBehaviour
             {
                 Debug.Log("Default Cooling down time: " + defaultSpawnRate);
                 var enemyReference = Instantiate(enemies[Random.Range(minIndex,maxIndex)],enemyContainer.transform);
-                currentPoint -= enemyReference.GetComponent<AbstractEnemy>().pointValue;
+                currentPoint = (currentPoint - enemyReference.GetComponent<AbstractEnemy>().pointValue);
+                Debug.Log("Current Point: " + currentPoint);
                 yield return coolDown(defaultSpawnRate);
             }
             else if (currentPoint <= maxIndex)
@@ -52,7 +53,9 @@ public class SpawnManagerBoss3 : MonoBehaviour
             {
                 Debug.Log("Cooling down time: " + rate);
                 var enemyReference = Instantiate(enemies[Random.Range(minIndex,maxIndex)],enemyContainer.transform);
-                currentPoint -= enemyReference.GetComponent<AbstractEnemy>().pointValue;
+                var pointSpent = enemyReference.GetComponent<AbstractEnemy>().pointValue;
+                currentPoint = (currentPoint - pointSpent);
+                Debug.Log("Current Point: " + currentPoint);
                 yield return coolDown(rate);
             }
         }

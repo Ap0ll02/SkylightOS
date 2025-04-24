@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -28,7 +29,7 @@ public class TowerManager : MonoBehaviour
     private bool clicked = false;
     private Player player;
     private Tower pickedTower;
-
+    private List<int> unlockedTowers = new();
     public void Start()
     {
         // ==========================================
@@ -37,6 +38,7 @@ public class TowerManager : MonoBehaviour
         pickedTower = towerPrefabs[0];
         player = FindObjectOfType<Player>().GetComponent<Player>();
         SetDefaultUIText();
+        unlockedTowers.Add(0);
     }
 
     // Left click, or attack keybind callback function
@@ -108,6 +110,9 @@ public class TowerManager : MonoBehaviour
             case "2":
             case "3":
             case "4":
+              if(!unlockedTowers.Contains(int.Parse(number))){
+                return;
+              }
                 pickedTower = towerPrefabs[int.Parse(number)];
                 break;
             default:

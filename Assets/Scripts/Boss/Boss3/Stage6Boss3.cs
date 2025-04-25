@@ -39,6 +39,7 @@ public class Stage6Boss3 : AbstractBossStage
     {
         northstar.GetComponent<NorthStarAdvancedMode>().Turnoff();
         spawnManager.enemies = enemyArray;
-        yield return spawnManager.SpawnRandom(100, 0, enemyArray.Count-1, 1.0f);
+        yield return spawnManager.spawnAmount(16, 1, 1f);
+        yield return spawnManager.SpawnRandom(1000, 0, enemyArray.Count-2, 1.0f);
     }
 }

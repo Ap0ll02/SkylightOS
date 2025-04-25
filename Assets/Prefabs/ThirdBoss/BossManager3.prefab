@@ -676,7 +676,7 @@ PrefabInstance:
       objectReference: {fileID: 4316449901392555829}
     - target: {fileID: 8421061715776883564, guid: 11c0a2eb24bf6b6469192f8a767a32b1, type: 3}
       propertyPath: enemyArray.Array.size
-      value: 6
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 8421061715776883564, guid: 11c0a2eb24bf6b6469192f8a767a32b1, type: 3}
       propertyPath: enemyArray.Array.data[0]
@@ -685,23 +685,23 @@ PrefabInstance:
     - target: {fileID: 8421061715776883564, guid: 11c0a2eb24bf6b6469192f8a767a32b1, type: 3}
       propertyPath: enemyArray.Array.data[1]
       value: 
-      objectReference: {fileID: 4291832494756360588, guid: 973b4f379c64f1549a5522491cdc5772, type: 3}
+      objectReference: {fileID: 9193467776061685439, guid: bdc20e0a0d2e1a941b3748cac3956f61, type: 3}
     - target: {fileID: 8421061715776883564, guid: 11c0a2eb24bf6b6469192f8a767a32b1, type: 3}
       propertyPath: enemyArray.Array.data[2]
       value: 
-      objectReference: {fileID: 2633245476027413719, guid: 2ed85653b4edfaa4b9a42abb622e1f65, type: 3}
+      objectReference: {fileID: 8619020837726270443, guid: 01eb11bab974f9b44b0ced5e6af907d4, type: 3}
     - target: {fileID: 8421061715776883564, guid: 11c0a2eb24bf6b6469192f8a767a32b1, type: 3}
       propertyPath: enemyArray.Array.data[3]
       value: 
-      objectReference: {fileID: 9193467776061685439, guid: bdc20e0a0d2e1a941b3748cac3956f61, type: 3}
+      objectReference: {fileID: 7400422503142029749, guid: af954a808d303ef4eab2a5cedefc8d57, type: 3}
     - target: {fileID: 8421061715776883564, guid: 11c0a2eb24bf6b6469192f8a767a32b1, type: 3}
       propertyPath: enemyArray.Array.data[4]
       value: 
-      objectReference: {fileID: 8619020837726270443, guid: 01eb11bab974f9b44b0ced5e6af907d4, type: 3}
+      objectReference: {fileID: 2633245476027413719, guid: 2ed85653b4edfaa4b9a42abb622e1f65, type: 3}
     - target: {fileID: 8421061715776883564, guid: 11c0a2eb24bf6b6469192f8a767a32b1, type: 3}
       propertyPath: enemyArray.Array.data[5]
       value: 
-      objectReference: {fileID: 7400422503142029749, guid: af954a808d303ef4eab2a5cedefc8d57, type: 3}
+      objectReference: {fileID: 4291832494756360588, guid: 973b4f379c64f1549a5522491cdc5772, type: 3}
     m_RemovedComponents:
     - {fileID: 7994892881958244619, guid: 11c0a2eb24bf6b6469192f8a767a32b1, type: 3}
     m_RemovedGameObjects: []

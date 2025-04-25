@@ -56,6 +56,11 @@ public class DriverGame : AbstractMinigame
 
     public GameObject boundingBox;
 
+    public AudioSource loopSoundEffect; // Audio source for looping sound
+    public AudioClip[] obstacleHitSounds; // Array of sound effects for obstacle hits
+    public AudioClip startSound;
+    public AudioSource soundEffectSource; // Audio source for playing obstacle hit sounds
+
     void Awake()
     {
         gameRunning = false;
@@ -86,6 +91,24 @@ public class DriverGame : AbstractMinigame
         StartCoroutine(Progression());
         StartCoroutine(SpawnObstacle());
         window.OpenWindow();
+
+        if (startSound != null && soundEffectSource != null)
+        {
+            soundEffectSource.PlayOneShot(startSound);
+        }
+
+        // Start looping sound effect after a delay  
+        if (loopSoundEffect != null)
+        {
+            StartCoroutine(PlayLoopSoundWithDelay());
+        }
+    }
+
+    private IEnumerator PlayLoopSoundWithDelay()
+    {
+        yield return new WaitForSeconds(0.75f); // Delay for 1 second  
+        loopSoundEffect.loop = true;
+        loopSoundEffect.Play();
     }
 
     public void OnEnable()
@@ -108,17 +131,24 @@ public class DriverGame : AbstractMinigame
         Destroy(ob_hit.gameObject);
         pCount -= difficulty_p_reduction;
         pCount = pCount < 0 ? 0 : pCount;
+
+        // Play a random sound effect from the array
+        if (obstacleHitSounds != null && obstacleHitSounds.Length > 0 && soundEffectSource != null)
+        {
+            int randomIndex = UnityEngine.Random.Range(0, obstacleHitSounds.Length);
+            soundEffectSource.PlayOneShot(obstacleHitSounds[randomIndex]);
+        }
     }
 
     public bool gameRunning = false;
 
-    // Update is called once per frame
+    // Update is called once per frame  
     void Update()
     {
         if (gameRunning)
         {
-            // Gotta loop because ideal scrolling leaves 2 bg instances in scene
-            // at once.
+            // Gotta loop because ideal scrolling leaves 2 bg instances in scene  
+            // at once.  
             foreach (var b in bgs)
             {
                 try
@@ -131,12 +161,19 @@ public class DriverGame : AbstractMinigame
                 }
             }
 
-            // Stop input if popup/lockdown is active
+            // Stop input if popup/lockdown is active  
             if (popupContinue && lockdownContinue)
             {
                 Vector2 moveValue = moveAction.ReadValue<Vector2>();
                 player.anchoredPosition +=
                     new Vector2(moveValue.x * 3, moveValue.y * 8) * Time.deltaTime * 100;
+
+                // Adjust loop sound pitch based on movement input  
+                if (loopSoundEffect != null)
+                {
+                    float pitch = Mathf.Clamp(1 + moveValue.magnitude * 0.5f, 0.8f, 2.0f);
+                    loopSoundEffect.pitch = pitch;
+                }
             }
             CheckBounds();
             HandleObs();
@@ -236,5 +273,11 @@ public class DriverGame : AbstractMinigame
         StopCoroutine(SpawnObstacle());
         boundingBox.SetActive(false);
         window.CloseWindow();
+
+        // Stop looping sound effect
+        if (loopSoundEffect != null)
+        {
+            loopSoundEffect.Stop();
+        }
     }
 }

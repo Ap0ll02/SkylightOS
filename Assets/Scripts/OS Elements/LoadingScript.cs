@@ -15,6 +15,7 @@ using TMPro;
 /// and have it call the 'ClickLoading()' function.
 public class LoadingScript : MonoBehaviour
 {
+
     // Reference to the LoadingScriptTextSO asset
     public LoadingScriptTextSO loadingScriptTextSO;
 
@@ -46,6 +47,11 @@ public class LoadingScript : MonoBehaviour
     public TMP_Text loadingText;
     private List<string> loadingTextList; // List of loading text
 
+    // Audio source for looping sound during loading  
+    public bool useLoadingAudio = false;
+    public AudioSource loadingAudioSource;
+
+
     private void Start()
     {
         // Initialize the loadingTextList with the texts from the LoadingScriptTextSO
@@ -58,9 +64,19 @@ public class LoadingScript : MonoBehaviour
             Debug.LogWarning("LoadingScriptTextSO is null, but showLoadingText is true. Loading text will not be shown.");
         }
 
-        if(loadingText != null)
+        if (loadingText != null)
         {
             loadingText.text = "";
+        }
+
+        if(useLoadingAudio && loadingAudioSource!= null)
+        {
+            loadingAudioSource.loop = true;
+        }
+        else if (useLoadingAudio)
+        {
+            Debug.LogWarning("Loading audio source is null, but useLoadingAudio is true. Loading audio will not be played.");
+            useLoadingAudio = false;
         }
     }
 
@@ -75,6 +91,11 @@ public class LoadingScript : MonoBehaviour
         if (!isLoaded && clickToLoad)
         {
             StartCoroutine(DrainProgress());
+        }
+
+        if(useLoadingAudio && !clickToLoad)
+        {
+            loadingAudioSource.Play();
         }
     }
 
@@ -126,6 +147,12 @@ public class LoadingScript : MonoBehaviour
                 {
                     progBar.fillAmount += (float)(speed * Time.deltaTime);
                 }
+
+                // Adjust pitch based on progress bar fill percentage
+                if (useLoadingAudio && loadingAudioSource != null)
+                {
+                    loadingAudioSource.pitch = Mathf.Lerp(1.0f, 2.0f, progBar.fillAmount);
+                }
             }
             else
             {
@@ -133,6 +160,10 @@ public class LoadingScript : MonoBehaviour
             }
         }
         isLoaded = true;
+        if (useLoadingAudio && loadingAudioSource != null)
+        {
+            loadingAudioSource.Stop();
+        }
     }
 
     /// @brief Reset the progress bar to 0

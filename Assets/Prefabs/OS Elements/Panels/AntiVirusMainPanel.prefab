@@ -1063,6 +1063,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 525006514441537328}
     - target: {fileID: 5400345837391569311, guid: fbb264a6591859a45aee5bd2a268f3ee, type: 3}
+      propertyPath: useLoadingAudio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400345837391569311, guid: fbb264a6591859a45aee5bd2a268f3ee, type: 3}
       propertyPath: loadingScriptTextSO
       value: 
       objectReference: {fileID: 11400000, guid: c66edbfad548a6b48b951058be84c61c, type: 2}
@@ -1244,6 +1248,7 @@ MonoBehaviour:
   numViruses: 
   prefabToSpawn: {fileID: 7723375048563182176, guid: 8a15bf83ba49eb84e98e28b5beb2a92c, type: 3}
   windowCanvas: {fileID: 0}
+  evidenceWindow: {fileID: 0}
 --- !u!224 &8147185615298183445 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 7337865907692603752, guid: f2a043344e97d4d4f8fe205a6e117902, type: 3}

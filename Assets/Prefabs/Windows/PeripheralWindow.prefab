@@ -1671,6 +1671,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 8178466532150723070}
     - target: {fileID: 5400345837391569311, guid: fbb264a6591859a45aee5bd2a268f3ee, type: 3}
+      propertyPath: useLoadingAudio
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5400345837391569311, guid: fbb264a6591859a45aee5bd2a268f3ee, type: 3}
       propertyPath: loadingScriptTextSO
       value: 
       objectReference: {fileID: 11400000, guid: 4b494f6757b2ff546bf15bdb17054f50, type: 2}

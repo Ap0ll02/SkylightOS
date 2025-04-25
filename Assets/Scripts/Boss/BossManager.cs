@@ -12,7 +12,7 @@ public abstract class BossManager : MonoBehaviour
     public GameObject[] bossStagePrefabs;
 
     // This will start the next stage of the boss fight
-     public void NextStage()
+     public virtual void NextStage()
      {
          Debug.Log("currentBossStageIndex = " + currentBossStageIndex);
          if (currentBossStageIndex >= bossStagePrefabs.Length)

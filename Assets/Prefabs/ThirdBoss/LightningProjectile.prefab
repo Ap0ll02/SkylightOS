@@ -112,15 +112,42 @@ PrefabInstance:
       propertyPath: projectileLifeTime
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6017794845964690385, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
     m_RemovedGameObjects:
     - {fileID: 2374916478769409166, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 4162189018943461028, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1496550353144168062}
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 5967783903914127903, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2120478296909531323}
   m_SourcePrefab: {fileID: 100100000, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
+--- !u!1 &1303165563935883397 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5967783903914127903, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
+  m_PrefabInstance: {fileID: 4666879279512154778}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2120478296909531323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1303165563935883397}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bae77c7626a02a5f782a1058bb4c7c7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tm: {fileID: 0}
+  targetPosition: {x: 0, y: 0, z: 0}
+  speed: 1000
+  seeStealth: 0
+  projectileLifeTime: 2
+  pen: 1
 --- !u!4 &8720944867596559422 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4162189018943461028, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}

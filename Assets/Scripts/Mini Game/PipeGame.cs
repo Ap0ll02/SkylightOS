@@ -26,6 +26,7 @@ public class PipeGame : AbstractMinigame
     public int temp_val;
 
     private BasicWindow window;
+    private bool firstTry = true; // stupid variable but i dont wanna do the smart fix
 
     public void Start()
     {
@@ -36,7 +37,8 @@ public class PipeGame : AbstractMinigame
     // MARK: - Initializations
     public override void StartGame()
     {
-        GameStartEvent?.Invoke();
+        if(firstTry)
+            GameStartEvent?.Invoke();
         window.isClosable = false;
         try
         {
@@ -288,8 +290,20 @@ public class PipeGame : AbstractMinigame
     // Check if two pipes are connected
     private bool PipesConnected(int current, int neighbor)
     {
+        // Check if the current or neighbor pipe is null
+        if (SpawnedPipes[current] == null || SpawnedPipes[neighbor] == null)
+        {
+            return false;
+        }
+
         var currentPipe = SpawnedPipes[current].GetComponent<pipe>();
         var neighborPipe = SpawnedPipes[neighbor].GetComponent<pipe>();
+
+        // Ensure the components are not null
+        if (currentPipe == null || neighborPipe == null)
+        {
+            return false;
+        }
 
         int direction = neighbor - current;
         return direction switch
@@ -329,9 +343,13 @@ public class PipeGame : AbstractMinigame
         gameObject.GetComponent<BasicWindow>().ForceCloseWindow();
         foreach (var pipe in SpawnedPipes)
         {
-            pipe.GetComponent<ParticleSystem>().Stop();
-            Destroy(pipe);
+            if (pipe != null)
+            {
+                pipe.GetComponent<ParticleSystem>().Stop();
+                Destroy(pipe);
+            }
         }
+        SpawnedPipes.Clear(); // Clear the list to remove null references
     }
 
     public void ResetGame()
@@ -339,12 +357,22 @@ public class PipeGame : AbstractMinigame
         StopCoroutine(GameUpdateCR);
         foreach (var pipe in SpawnedPipes)
         {
-            pipe.GetComponent<ParticleSystem>().Stop();
-            Destroy(pipe);
+            if (pipe != null)
+            {
+                pipe.GetComponent<ParticleSystem>().Stop();
+                Destroy(pipe);
+            }
         }
+        SpawnedPipes.Clear(); // Clear the list to remove null references  
+        ConnectedPath.Clear(); // Clear the connected path  
         initial = 0;
         final = 0;
         a_amp = 0;
-        StartGame();
+        temp_val = 30; // Reset temperature value  
+        temp.text = "Temp: " + "<bounce a=1 f=3>" + temp_val + " </bounce>";
+        gameRunning = false;
+        firstTry = false;
+        window.ForceCloseWindow(); // Close the window  
+        StartGame(); // Restart the game  
     }
 }

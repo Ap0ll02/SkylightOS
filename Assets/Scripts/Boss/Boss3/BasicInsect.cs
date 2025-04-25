@@ -17,7 +17,7 @@ public class BasicInsect : AbstractEnemy
         currentHealth = maxHealth;
         damage = 1;
         pointValue = 1;
-        reward = 20;
+        reward = 5;
     }
 
     public void Update()

@@ -12,6 +12,7 @@ public class Stage3Boss3 : AbstractBossStage
     public GameObject northstar;
     private string Line1 = "<incr>NICE!!!!!</incr> We survived our second wave! The MD5# readings are off the charts — <rainb>rainbow surge</rainb> intensity is now at <shake a = 2>100%</shake>.";
     private string Line2 = "<shake>Nyan Cat is being detected!</shake> His army of early 2000s annoying kittens is on the way! Hyperclocking the CPU and elevating computer fluid. Add more towers — quickly!";
+    private string Line3 = "<rainb><shake a = 2>NYAN CAT IS HERE, Hurry up and place down more towers!</shake></rainb>";
 
     public override void BossStartStage()
     {
@@ -51,17 +52,18 @@ public class Stage3Boss3 : AbstractBossStage
         Debug.Log("Start Stage 3");
         Debug.Assert(spawnManager != null, "Spawn Manager is null");
         spawnManager.enemies = enemyArray;
-        yield return spawnManager.spawnAmount(9, 1, 2.0f);
-
+        yield return spawnManager.SpawnRandom(70, 0, enemyArray.Count-1, 2f);
         TurnBasic1LazersOn();
-        yield return spawnManager.spawnAmount(4, 3, 2.0f);
-        yield return spawnManager.spawnAmount(5, 2, 3.0f);
-
+        yield return spawnManager.SpawnRandom(70, 0, enemyArray.Count-1, 1.5f);
+        northstar.SetActive(true);
+        yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line3,0.1f);
+        northstar.SetActive(false);
+        yield return spawnManager.spawnAmount(9, 1, 110f);
         TurnBasic2LazersOn();
-        yield return spawnManager.SpawnRandom(50, 0, enemyArray.Count-1, 2f);
+        yield return spawnManager.SpawnRandom(50, 0, enemyArray.Count-1, 1.5f);
 
         TurnGreatLazerOn();
-        yield return spawnManager.SpawnRandom(50, 0, enemyArray.Count-1, 1.4f);
+        yield return spawnManager.SpawnRandom(50, 0, enemyArray.Count-1, 1.5f);
 
         TurnNyanLazerOn();
         yield return spawnManager.SpawnRandom(50, 0, enemyArray.Count-1, 1.0f);

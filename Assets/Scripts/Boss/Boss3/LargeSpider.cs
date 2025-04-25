@@ -11,10 +11,10 @@ public class LargeSpider : AbstractEnemy
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
         speed = Random.Range(40f,50f);
-        maxHealth = 15;
+        maxHealth = 700;
         currentHealth = maxHealth;
-        pointValue = 5;
-        reward = 25;
+        pointValue = 6;
+        reward = 70;
     }
     // Update is called once per frame
     void Update()

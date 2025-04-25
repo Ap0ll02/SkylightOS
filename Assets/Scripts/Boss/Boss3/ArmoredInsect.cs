@@ -12,13 +12,13 @@ public class ArmoredInsect : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = Random.Range(60f, 70f);
-        maxHealth = 200;
+        speed = Random.Range(50f, 60f);
+        maxHealth = 500;
         currentHealth = maxHealth;
         pointValue = 100;
         damage = 2;
-        reward = 10;
-        pointValue = 3;
+        reward = 20;
+        pointValue = 4;
     }
     // Update is called once per frame
     void Update()

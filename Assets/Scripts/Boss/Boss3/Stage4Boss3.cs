@@ -38,10 +38,10 @@ public class Stage4Boss3 : AbstractBossStage
     public IEnumerator StartSpawning()
     {
         northstar.GetComponent<NorthStarAdvancedMode>().Turnoff();
-        Debug.Log("Start Stage 4");
         Debug.Assert(spawnManager != null, "Spawn Manager is null");
         spawnManager.enemies = enemyArray;
-        yield return spawnManager.spawnAmount(3, 3, 4.0f);
-        yield return spawnManager.SpawnRandom(100, 0, enemyArray.Count -1, 1.0f);
+        yield return spawnManager.spawnAmount(9, 30, 0.25f);
+        yield return spawnManager.spawnAmount(0, 40, 0.15f);
+        yield return spawnManager.SpawnRandom(300, 0, enemyArray.Count -1, 1.0f);
     }
 }

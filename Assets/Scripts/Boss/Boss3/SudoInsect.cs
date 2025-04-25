@@ -22,12 +22,12 @@ public class SudoInsect : AbstractEnemy
 
         GetNewWaypoint();
 
-        speed = Random.Range(50f, 60f);
-        maxHealth = 5;
+        speed = Random.Range(90f, 100f);
+        maxHealth = 300;
         currentHealth = maxHealth;
         pointValue = 7;
         damage = 2;
-        reward = 30;
+        reward = 100;
         for (int i = 0; i < this.transform.childCount; i++)
         {
             // Debug.Log(this.transform.GetChild(i).gameObject.name);

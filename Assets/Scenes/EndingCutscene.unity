@@ -122,6 +122,11 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &135710732 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8314501984325984577, guid: 4e7411523180da950949f2e803ae77c4, type: 3}
+  m_PrefabInstance: {fileID: 9151998433902418246}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &135710737 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4618819691460381733, guid: 4e7411523180da950949f2e803ae77c4, type: 3}
@@ -195,6 +200,11 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &596123755 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 359870749270809067, guid: f9091fdf94e1cd1088434e418c2ded0d, type: 3}
+  m_PrefabInstance: {fileID: 1196227620004567516}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &596123760 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8198233597577081112, guid: f9091fdf94e1cd1088434e418c2ded0d, type: 3}
@@ -248,6 +258,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 655f869d58abeea61b16d1b5b064e75d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  endScene:
+  - {fileID: 1373080222}
+  - {fileID: 135710732}
+  - {fileID: 2142769605}
+  - {fileID: 596123755}
 --- !u!1 &1015971047
 GameObject:
   m_ObjectHideFlags: 0
@@ -340,10 +355,20 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1373080222 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4918713053491054812, guid: 2d1215f3db32fc078a6b138f13f5e17a, type: 3}
+  m_PrefabInstance: {fileID: 7549343184772349071}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &1373080226 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 8961337485946810550, guid: 2d1215f3db32fc078a6b138f13f5e17a, type: 3}
   m_PrefabInstance: {fileID: 7549343184772349071}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2142769605 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3404809687143691309, guid: e8d9992057494b6baad389d2a6fa1e7f, type: 3}
+  m_PrefabInstance: {fileID: 1752304237387800719}
   m_PrefabAsset: {fileID: 0}
 --- !u!224 &2142769610 stripped
 RectTransform:
@@ -361,6 +386,10 @@ PrefabInstance:
     - target: {fileID: 359870749270809067, guid: f9091fdf94e1cd1088434e418c2ded0d, type: 3}
       propertyPath: m_Name
       value: EvFullCutscene
+      objectReference: {fileID: 0}
+    - target: {fileID: 359870749270809067, guid: f9091fdf94e1cd1088434e418c2ded0d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8198233597577081112, guid: f9091fdf94e1cd1088434e418c2ded0d, type: 3}
       propertyPath: m_Pivot.x
@@ -459,6 +488,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EvHighCutscene
       objectReference: {fileID: 0}
+    - target: {fileID: 3404809687143691309, guid: e8d9992057494b6baad389d2a6fa1e7f, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7582713985278598785, guid: e8d9992057494b6baad389d2a6fa1e7f, type: 3}
       propertyPath: m_Pivot.x
       value: 0
@@ -555,6 +588,10 @@ PrefabInstance:
     - target: {fileID: 4918713053491054812, guid: 2d1215f3db32fc078a6b138f13f5e17a, type: 3}
       propertyPath: m_Name
       value: EvLowCutscene
+      objectReference: {fileID: 0}
+    - target: {fileID: 4918713053491054812, guid: 2d1215f3db32fc078a6b138f13f5e17a, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8961337485946810550, guid: 2d1215f3db32fc078a6b138f13f5e17a, type: 3}
       propertyPath: m_Pivot.x
@@ -732,6 +769,10 @@ PrefabInstance:
     - target: {fileID: 8314501984325984577, guid: 4e7411523180da950949f2e803ae77c4, type: 3}
       propertyPath: m_Name
       value: EvMedCutscene
+      objectReference: {fileID: 0}
+    - target: {fileID: 8314501984325984577, guid: 4e7411523180da950949f2e803ae77c4, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

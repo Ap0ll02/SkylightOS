@@ -227,7 +227,7 @@ PrefabInstance:
       objectReference: {fileID: 4316449901392555829}
     - target: {fileID: -1804530385785465306, guid: 1929e4fd4c6ff23498175e44b7b32386, type: 3}
       propertyPath: enemyArray.Array.size
-      value: 17
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: -1804530385785465306, guid: 1929e4fd4c6ff23498175e44b7b32386, type: 3}
       propertyPath: enemyArray.Array.data[0]
@@ -297,6 +297,10 @@ PrefabInstance:
       propertyPath: enemyArray.Array.data[16]
       value: 
       objectReference: {fileID: 5234396018583574633, guid: 3b09dcae8ed642e4a85eaa26addad951, type: 3}
+    - target: {fileID: -1804530385785465306, guid: 1929e4fd4c6ff23498175e44b7b32386, type: 3}
+      propertyPath: enemyArray.Array.data[17]
+      value: 
+      objectReference: {fileID: 1631393364129835364, guid: 338778d74491236498914e60d83f45f3, type: 3}
     - target: {fileID: 5788857750732678566, guid: 1929e4fd4c6ff23498175e44b7b32386, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

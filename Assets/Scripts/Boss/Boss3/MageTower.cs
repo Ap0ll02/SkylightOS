@@ -10,6 +10,8 @@ public class MageTower : Tower
 
     public new void Start()
     {
+        speed = 200;
+        ActivateTower = StartCoroutine(ActiveTower());
         // ========= Tower Upgrade Lists =========
         damages = new int[3] { 100, 200, 400 };
         timesToDamage = new float[] { 2, 1.5f, 1 };

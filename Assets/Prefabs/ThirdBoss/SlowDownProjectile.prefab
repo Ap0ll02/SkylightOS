@@ -147,6 +147,10 @@ PrefabInstance:
       value: 400
       objectReference: {fileID: 0}
     - target: {fileID: 6017794845964690385, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
+      propertyPath: seeStealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6017794845964690385, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}
       propertyPath: projectileLifeTime
       value: 40
       objectReference: {fileID: 0}

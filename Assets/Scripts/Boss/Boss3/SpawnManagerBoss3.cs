@@ -51,11 +51,9 @@ public class SpawnManagerBoss3 : MonoBehaviour
             }
             else
             {
-                Debug.Log("Cooling down time: " + rate);
                 var enemyReference = Instantiate(enemies[Random.Range(minIndex, maxIndex)],enemyContainer.transform);
                 var pointSpent = enemyReference.GetComponent<AbstractEnemy>().pointValue;
                 currentPoint = (currentPoint - pointSpent);
-                Debug.Log("Current Point: " + currentPoint);
                 yield return coolDown(rate);
             }
         }

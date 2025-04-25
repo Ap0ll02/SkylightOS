@@ -8,8 +8,8 @@ public class Stage2Boss3 : AbstractBossStage
     public List<GameObject> enemyArray;
     private bool spawning;
     public GameObject northstar;
-    private string Line1 = "We Survived our first wave! Im detecting <shake a = 2> Nyan cats pressence!</shake> The MD5# Protocol is detecting A <rainb> rainbow surge </rainb>";
-    private string Line2 = "More Nyan kittens are inbound operator! I recommend you upgrade our towers. Click on the tower and look for the upgrade button on the bottom of the screen.";
+    private string Line1 = "We survived our first wave! I'm detecting <shake a = 2>Nyan Cat's presence!</shake> The MD5# Protocol is detecting a <rainb>rainbow surge</rainb>.";
+    private string Line2 = "More Nyan kittens are inbound, Operator! I recommend you upgrade our towers. Click on a tower and look for the upgrade button at the bottom of the screen.";
 
     public override void BossStartStage()
     {

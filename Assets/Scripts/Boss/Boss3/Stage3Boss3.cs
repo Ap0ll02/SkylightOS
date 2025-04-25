@@ -30,7 +30,7 @@ public class Stage3Boss3 : AbstractBossStage
 
     public override void BossEndStage()
     {
-        //LazersOff();
+        LazersOff();
         bossManager.NextStage();
     }
     public IEnumerator Diologue()

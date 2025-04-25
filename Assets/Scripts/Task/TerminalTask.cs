@@ -215,7 +215,7 @@ public class TerminalTask : AbstractTask
             ag.StartGame();
             if (!musicAG.isPlaying)
             {
-                musicAG.Play();
+                //musicAG.Play();
             }
         }
         else if (termState == State.ArrowGameOn)

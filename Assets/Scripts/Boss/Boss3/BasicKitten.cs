@@ -10,11 +10,11 @@ public class BasicKitten : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = Random.Range(100f, 120f);
+        speed = Random.Range(80f, 100f);
         maxHealth = 60;
         currentHealth = maxHealth;
         damage = 1;
-        reward = 25;
+        reward = 5;
         pointValue = 1;
     }
 

@@ -9,6 +9,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: -8470220480244435914, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
+      propertyPath: m_FlipX
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -8470220480244435914, guid: 62403a4ff24a7c5499bbee4f295fc100, type: 3}
       propertyPath: m_FlipY
       value: 1
       objectReference: {fileID: 0}
@@ -95,7 +99,7 @@ MonoBehaviour:
   damage: 0
   speed: 0
   originalSpeed: 0
-  reward: 50
+  reward: 6
   currentPosition: 0
   navi: {fileID: 0}
   nextWaypoint: {x: 0, y: 0, z: 0}

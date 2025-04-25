@@ -10,12 +10,12 @@ public class CoinKitten : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = Random.Range(160f, 190f);
+        speed = Random.Range(170f, 200f);
         maxHealth = 80;
         currentHealth = maxHealth;
         damage = 1;
         pointValue = 2;
-        reward = 40;
+        reward = 10;
     }
 
     public void Update()

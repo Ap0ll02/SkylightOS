@@ -10,12 +10,12 @@ public class GoldKitten : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = Random.Range(80f, 100f);
+        speed = Random.Range(200f, 220f);
         maxHealth = 100;
         currentHealth = maxHealth;
         pointValue = 6;
-        damage = 3;
-        reward = 300;
+        damage = 1;
+        reward = 50;
     }
 
     public void Update()

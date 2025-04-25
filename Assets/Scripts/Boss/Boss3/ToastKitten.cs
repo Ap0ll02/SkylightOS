@@ -10,12 +10,12 @@ public class ToastKitten : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = Random.Range(80f, 100f);
-        maxHealth = 275;
+        speed = Random.Range(70f, 100f);
+        maxHealth = 200;
         currentHealth = maxHealth;
         damage = 3;
-        pointValue = 5;
-        reward = 138;
+        pointValue = 6;
+        reward = 35;
     }
 
     public void Update()

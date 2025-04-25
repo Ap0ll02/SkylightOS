@@ -11,9 +11,10 @@ public class DemonKitten : AbstractEnemy
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
         speed = Random.Range(100f, 120f);
-        maxHealth = 5;
+        maxHealth = 400;
         currentHealth = maxHealth;
-        pointValue = 7;
+        pointValue = 10;
+        reward = 50;
         damage = 1;
     }
 

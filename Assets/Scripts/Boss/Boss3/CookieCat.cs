@@ -10,12 +10,12 @@ public class CookieCat : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = Random.Range(130f, 140f);
-        maxHealth = 200;
+        speed = Random.Range(90f, 120f);
+        maxHealth = 250;
         currentHealth = maxHealth;
         damage = 2;
         pointValue = 4;
-        reward = 100;
+        reward = 25;
     }
 
     public void Update()

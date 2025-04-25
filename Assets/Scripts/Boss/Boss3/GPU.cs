@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Assertions;
 
 public class GPU : MonoBehaviour
@@ -92,7 +93,7 @@ public class GPU : MonoBehaviour
             // If we are out of ram end the game... maybe break the loop for good measure who the fuck knows
             else
             {
-                Debug.Log("No more ram sticks");
+                SceneManager.LoadScene("TDLossScreen");
                 break;
             }
         }

@@ -45,9 +45,14 @@ public class Stage1Boss3 : AbstractBossStage
         northstar.GetComponent<NorthStarAdvancedMode>().Turnoff();
         Debug.Assert(spawnManager != null, "Spawn Manager is null");
         spawnManager.enemies = enemyArray;
-        yield return spawnManager.spawnAmount(0, 6, 3.0f);
-        yield return spawnManager.spawnAmount(0, 10, 2.0f);
-        yield return spawnManager.SpawnRandom(50, 0, enemyArray.Count, 2.0f);
+        yield return spawnManager.spawnAmount(0, 10, 3.0f);
+        yield return spawnManager.spawnAmount(1, 1, 4.0f);
+        yield return spawnManager.spawnAmount(0, 10, 2.5f);
+        yield return spawnManager.spawnAmount(1, 1, 4.0f);
+        yield return spawnManager.spawnAmount(0, 10, 2f);
+        yield return spawnManager.spawnAmount(2, 1, 4.0f);
+        yield return spawnManager.spawnAmount(0, 10, 1.25f);
+        yield return spawnManager.spawnAmount(3, 1, 3.0f);
     }
 
 

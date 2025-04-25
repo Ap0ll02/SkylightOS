@@ -10,11 +10,11 @@ public class StealthCat : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = Random.Range(100f, 120f);
-        maxHealth = 100;
+        speed = Random.Range(80f, 100f);
+        maxHealth = 120;
         currentHealth = maxHealth;
         damage = 1;
-        reward = 50;
+        reward = 15;
         pointValue = 2;
     }
 

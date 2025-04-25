@@ -8,7 +8,7 @@ using UnityEngine;
 public class Player : MonoBehaviour
 {
     // Management of the players state and game stuff
-    private int currency = 100;
+    private int currency = 200;
     public TowerManager tm;
     public TMP_Text scoreTxt;
 

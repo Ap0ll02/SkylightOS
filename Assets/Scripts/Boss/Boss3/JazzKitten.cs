@@ -10,12 +10,12 @@ public class JazzKitten : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = Random.Range(110f, 130f);
+        speed = Random.Range(90f, 110f);
         maxHealth = 150;
         currentHealth = maxHealth;
         damage = 1;
         pointValue = 3;
-        reward = 75;
+        reward = 20;
     }
 
     public void Update()

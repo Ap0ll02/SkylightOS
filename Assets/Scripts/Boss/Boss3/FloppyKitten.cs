@@ -10,11 +10,12 @@ public class FloppyKitten : AbstractEnemy
         if(navi == null)
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
-        speed = Random.Range(80f, 100f);
-        maxHealth = 250;
+        speed = Random.Range(90f, 120f);
+        maxHealth = 300;
         currentHealth = maxHealth;
         damage = 2;
-        reward = 125;
+        pointValue = 5;
+        reward = 30;
     }
 
     public void Update()

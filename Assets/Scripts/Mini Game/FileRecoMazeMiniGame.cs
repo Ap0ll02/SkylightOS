@@ -34,6 +34,10 @@ public class FileRecoMazeMiniGame : AbstractMinigame
 
     public BasicWindow evidence;
 
+    // Audio source for movement  
+    public AudioSource movementAudioSource;
+    public AudioSource pickupSource;
+
     // Get any non-inspector references here  
     void Awake()
     {
@@ -78,6 +82,13 @@ public class FileRecoMazeMiniGame : AbstractMinigame
         {
             finalFilePiece.SetActive(false);
         }
+
+        // Ensure the movement audio source is set to loop and start playing  
+        if (movementAudioSource != null)
+        {
+            movementAudioSource.loop = true;
+            movementAudioSource.Play();
+        }
     }
 
     public void OnEnable()
@@ -105,6 +116,12 @@ public class FileRecoMazeMiniGame : AbstractMinigame
         Destroy(player);
         FileMazeOver?.Invoke();
         GetComponent<BasicWindow>().CloseWindow();
+
+        // Stop movement audio when the game is over  
+        if (movementAudioSource != null && movementAudioSource.isPlaying)
+        {
+            movementAudioSource.Stop();
+        }
     }
 
     Vector3 velocity = Vector3.zero;
@@ -120,6 +137,29 @@ public class FileRecoMazeMiniGame : AbstractMinigame
             {
                 var targetRotation = Mathf.Atan2(moveValue.y, moveValue.x) * Mathf.Rad2Deg;
                 player.transform.rotation = Quaternion.Slerp(player.transform.rotation, Quaternion.Euler(0, 0, targetRotation), turnSpeed);
+
+                // Adjust pitch based on cardinal direction
+                if (movementAudioSource != null)
+                {
+                    if (Mathf.Abs(moveValue.x) > Mathf.Abs(moveValue.y))
+                    {
+                        // Horizontal movement
+                        movementAudioSource.pitch = moveValue.x > 0 ? 1.2f : 0.8f; // Right: higher pitch, Left: lower pitch
+                    }
+                    else
+                    {
+                        // Vertical movement
+                        movementAudioSource.pitch = moveValue.y > 0 ? 1.5f : 0.6f; // Up: highest pitch, Down: lowest pitch
+                    }
+                }
+            }
+            else
+            {
+                // Reset pitch when not moving
+                if (movementAudioSource != null)
+                {
+                    movementAudioSource.pitch = 1.0f;
+                }
             }
             yield return new WaitForFixedUpdate();
         }
@@ -128,7 +168,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
     public void ExitUnlock()
     {
         ExitWall.GetComponent<BoxCollider2D>().isTrigger = true;
-
+        ExitWall.GetComponent<MeshRenderer>().enabled = false;
         // Enable the final file piece when the exit is unlocked  
         if (finalFilePiece != null)
         {
@@ -150,8 +190,11 @@ public class FileRecoMazeMiniGame : AbstractMinigame
                 filePiecesCount--;
                 break;
             case 0:
-                finalFilePiece.SetActive(false);
-                evidence.OpenWindow();
+                if (filePiece == finalFilePiece.GetComponent<Collider2D>())
+                {
+                    finalFilePiece.SetActive(false);
+                    evidence.OpenWindow();
+                }
                 break;
             default:
                 if (filePieces.Contains(filePiece.gameObject))
@@ -162,6 +205,7 @@ public class FileRecoMazeMiniGame : AbstractMinigame
                 filePiecesCount--;
                 break;
         }
+        pickupSource.Play();
         UpdateCounter();
     }
 

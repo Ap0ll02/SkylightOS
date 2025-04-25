@@ -14,7 +14,7 @@ public class AOETower : Tower
 
         // ========= Tower Upgrade Lists =========
         damages = new int[3] { 150, 200, 250 };
-        costToUpgrade = new int[3] { 500, 1000, 2000};
+        costToUpgrade = new int[3] { 500, 1000, 1500};
         timesToDamage = new float[] { 4, 3, 2 };
         cooldowns = new float[] { 8, 7f, 5f };
         isSpecials = new bool[] { true, true, true };

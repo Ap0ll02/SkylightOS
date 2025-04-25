@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Stage6Boss3 : AbstractBossStage
 {
@@ -27,7 +28,6 @@ public class Stage6Boss3 : AbstractBossStage
     }
     public override void BossEndStage()
     {
-        //Debug.Log("Stage 1 End");
         bossManager.NextStage();
     }
     IEnumerator seconds()
@@ -39,7 +39,7 @@ public class Stage6Boss3 : AbstractBossStage
     {
         northstar.GetComponent<NorthStarAdvancedMode>().Turnoff();
         spawnManager.enemies = enemyArray;
-        yield return spawnManager.spawnAmount(16, 1, 1f);
-        yield return spawnManager.SpawnRandom(1000, 0, enemyArray.Count-2, 1.0f);
+        yield return spawnManager.spawnAmount(17, 1, 1f);
+        yield return spawnManager.SpawnRandom(1000, 0, enemyArray.Count-2, 0.15f);
     }
 }

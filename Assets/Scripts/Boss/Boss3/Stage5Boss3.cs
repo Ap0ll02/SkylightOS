@@ -40,9 +40,9 @@ public class Stage5Boss3 : AbstractBossStage
         Debug.Log("Start Stage 5");
         Debug.Assert(spawnManager != null, "Spawn Manager is null");
         spawnManager.enemies = enemyArray;
-        yield return spawnManager.SpawnRandom(300, 0, enemyArray.Count-1, 1.0f);
+        yield return spawnManager.SpawnRandom(300, 0, enemyArray.Count-1, 0.25f);
         yield return spawnManager.spawnAmount(0, 20, 0.15f);
-        yield return spawnManager.SpawnRandom(300, 0, enemyArray.Count-1, 1.0f);
+        yield return spawnManager.SpawnRandom(300, 0, enemyArray.Count-1, 0.25f);
         BossEndStage();
     }
 }

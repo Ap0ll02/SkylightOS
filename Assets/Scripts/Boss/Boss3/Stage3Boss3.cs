@@ -58,7 +58,7 @@ public class Stage3Boss3 : AbstractBossStage
         northstar.SetActive(true);
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line3,0.1f);
         northstar.SetActive(false);
-        yield return spawnManager.spawnAmount(9, 1, 110f);
+        yield return spawnManager.spawnAmount(9, 1, 10f);
         TurnBasic2LazersOn();
         yield return spawnManager.SpawnRandom(50, 0, enemyArray.Count-1, 1.5f);
 

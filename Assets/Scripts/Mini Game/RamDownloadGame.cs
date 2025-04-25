@@ -32,6 +32,9 @@ public class RamDownloadGame : AbstractMinigame
     // The action that will notify the task that the minigame is done
     public static event Action RamMinigameEndNotify;
 
+    // Audio that is played when ram is collected
+    [SerializeField] AudioSource ramCollectedAudio;
+
     // Awake is called when the script instance is being loaded
     void Awake()
     {
@@ -47,6 +50,11 @@ public class RamDownloadGame : AbstractMinigame
         else
         {
             Debug.LogError("WindowCanvas not found");
+        }
+
+        if(ramCollectedAudio == null)
+        {
+            Debug.LogError("AudioSource not found");
         }
     }
 
@@ -180,6 +188,11 @@ public class RamDownloadGame : AbstractMinigame
     // When a file gets downloaded, check win condition
     public void OnFileDownloaded()
     {
+        if (ramCollectedAudio != null)
+        {
+            ramCollectedAudio.Play();
+        }
+
         downloadCounterText.text = "Downloads: " + downloadCounter + "/" + totalDownloads;
         if (downloadCounter >= totalDownloads)
         {

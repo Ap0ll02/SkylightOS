@@ -13,7 +13,7 @@ public class SlowDownTower : Tower
 
         // ========= Tower Upgrade Lists =========
         damages = new int[3] { 10, 15, 20 };
-        costToUpgrade = new int[3] { 75, 145, 285};
+        costToUpgrade = new int[3] { 125, 250, 500};
         timesToDamage = new float[] { 1, 1, 1 };
         cooldowns = new float[] { 3, 2, 1f };
         isSpecials = new bool[] { false, false, true };

@@ -67,7 +67,6 @@ public class Stage3Boss3 : AbstractBossStage
 
         TurnNyanLazerOn();
         yield return spawnManager.SpawnRandom(50, 0, enemyArray.Count-1, 1.0f);
-
     }
 
     public void TurnBasic1LazersOn()

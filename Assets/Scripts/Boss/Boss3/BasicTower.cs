@@ -13,8 +13,8 @@ public class BasicTower : Tower
         speed = 200;
         ActivateTower = StartCoroutine(ActiveTower());
         // ========= Tower Upgrade Lists =========
-        costToUpgrade = new int[3] { 50, 100, 200 };
-        damages = new int[3] { 40, 65, 90 };
+        costToUpgrade = new int[3] { 100, 200, 500 };
+        damages = new int[3] { 40, 65, 100 };
         timesToDamage = new float[] { 1, 1, 1 };
         cooldowns = new float[] { 2, 1.5f, 1f };
         isSpecials = new bool[] { false, false, true };

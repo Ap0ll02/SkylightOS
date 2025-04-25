@@ -42,6 +42,6 @@ public class Stage4Boss3 : AbstractBossStage
         spawnManager.enemies = enemyArray;
         yield return spawnManager.spawnAmount(9, 30, 0.25f);
         yield return spawnManager.spawnAmount(0, 40, 0.15f);
-        yield return spawnManager.SpawnRandom(300, 0, enemyArray.Count -1, 1.0f);
+        yield return spawnManager.SpawnRandom(300, 0, enemyArray.Count -1, .5f);
     }
 }

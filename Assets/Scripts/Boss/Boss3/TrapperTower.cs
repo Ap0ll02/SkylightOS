@@ -11,7 +11,7 @@ public class TrapperTower : Tower
     {
         ActivateTower = StartCoroutine(ActiveTower());
         // ========= Tower Upgrade Lists =========
-        damages = new int[3] { 150, 400, 1000 };
+        damages = new int[3] { 150, 300, 600 };
         timesToDamage = new float[] { 1, 1, 1 };
         cooldowns = new float[] { 8, 6, 3.5f };
         isSpecials = new bool[] { false, true, true };

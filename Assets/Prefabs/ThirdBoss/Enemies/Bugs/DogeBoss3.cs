@@ -1,9 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class DogeBoss3 : AbstractEnemy
 {
+
     public void Start()
     {
         animator = GetComponent<Animator>();
@@ -11,7 +13,7 @@ public class DogeBoss3 : AbstractEnemy
             navi = GameObject.Find("NavigationManager").GetComponent<NavigationManager>();
         GetNewWaypoint();
         speed = 30;
-        maxHealth = 20000;
+        maxHealth = 22000;
         currentHealth = maxHealth;
         pointValue = 100;
         damage = 20;
@@ -20,6 +22,8 @@ public class DogeBoss3 : AbstractEnemy
     public void Update()
     {
         Move();
+        if (currentHealth < 2000)
+            SceneManager.LoadScene("EndingCutscene");
     }
 
     public override void GetNewWaypoint()

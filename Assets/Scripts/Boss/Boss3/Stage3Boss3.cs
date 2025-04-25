@@ -25,13 +25,12 @@ public class Stage3Boss3 : AbstractBossStage
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,1f);
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,1f);
         yield return StartSpawning();
-        yield return seconds();
         BossEndStage();
     }
 
     public override void BossEndStage()
     {
-        LazersOff();
+        //LazersOff();
         bossManager.NextStage();
     }
     public IEnumerator Diologue()

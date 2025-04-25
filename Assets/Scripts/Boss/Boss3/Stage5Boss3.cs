@@ -22,7 +22,6 @@ public class Stage5Boss3 : AbstractBossStage
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,1f);
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,1f);
         yield return StartSpawning();
-        yield return seconds();
         BossEndStage();
     }
     public override void BossEndStage()
@@ -33,13 +32,15 @@ public class Stage5Boss3 : AbstractBossStage
     IEnumerator seconds()
     {
         yield return new WaitForSeconds(1);
-        BossEndStage();
     }
 
     public IEnumerator StartSpawning()
     {
-        yield return spawnManager.spawnAmount(3, 3, 4.0f);
-        yield return spawnManager.SpawnRandom(100, 0, enemyArray.Count, 1.0f);
+        northstar.GetComponent<NorthStarAdvancedMode>().Turnoff();
+        Debug.Log("Start Stage 5");
+        Debug.Assert(spawnManager != null, "Spawn Manager is null");
+        spawnManager.enemies = enemyArray;
+        yield return spawnManager.SpawnRandom(100, 0, enemyArray.Count-1, 1.0f);
         BossEndStage();
     }
 }

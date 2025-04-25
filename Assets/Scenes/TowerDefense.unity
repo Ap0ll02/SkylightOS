@@ -122,9 +122,69 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &1024444641 stripped
+--- !u!1 &287433230 stripped
 GameObject:
-  m_CorrespondingSourceObject: {fileID: 2466518318291610202, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+  m_CorrespondingSourceObject: {fileID: 2141638728547653662, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+  m_PrefabInstance: {fileID: 2085077890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &315488469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7240654748885332369, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+  m_PrefabInstance: {fileID: 2085077890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &760859068 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8025188851356539214, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+  m_PrefabInstance: {fileID: 2085077890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &812947734 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6945621622611830086, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+  m_PrefabInstance: {fileID: 2085077890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &930584855 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4861368104209286469, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+  m_PrefabInstance: {fileID: 2085077890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &930584859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930584855}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 937ca0aaf74e60d45a3c0bf4a72ffc76, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1997342120 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 5352772760126324541, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+  m_PrefabInstance: {fileID: 2085077890}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &2008750469 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4172866116582158249, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
   m_PrefabInstance: {fileID: 2085077890}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2085077890
@@ -139,10 +199,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: levelContainer
       objectReference: {fileID: 0}
-    - target: {fileID: 2166231050220887924, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
-      propertyPath: northstar
-      value: 
-      objectReference: {fileID: 1024444641}
     - target: {fileID: 2301388633457866719, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
       value: 0.13725491
@@ -179,6 +235,10 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2466518318291610202, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3146999092522151299, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
       propertyPath: m_Colors.m_PressedColor.b
       value: 0.13725491
@@ -214,6 +274,30 @@ PrefabInstance:
     - target: {fileID: 3146999092522151299, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583173848490735954, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 822.7145
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583173848490735954, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 629.9568
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583173848490735954, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583173848490735954, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583173848490735954, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 726
+      objectReference: {fileID: 0}
+    - target: {fileID: 3583173848490735954, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 3831578835716232510, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -303,6 +387,30 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4278915067432657186, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+      propertyPath: bossStagePrefabs.Array.data[0]
+      value: 
+      objectReference: {fileID: 812947734}
+    - target: {fileID: 4278915067432657186, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+      propertyPath: bossStagePrefabs.Array.data[1]
+      value: 
+      objectReference: {fileID: 315488469}
+    - target: {fileID: 4278915067432657186, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+      propertyPath: bossStagePrefabs.Array.data[2]
+      value: 
+      objectReference: {fileID: 287433230}
+    - target: {fileID: 4278915067432657186, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+      propertyPath: bossStagePrefabs.Array.data[3]
+      value: 
+      objectReference: {fileID: 760859068}
+    - target: {fileID: 4278915067432657186, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+      propertyPath: bossStagePrefabs.Array.data[4]
+      value: 
+      objectReference: {fileID: 2008750469}
+    - target: {fileID: 4278915067432657186, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+      propertyPath: bossStagePrefabs.Array.data[5]
+      value: 
+      objectReference: {fileID: 1997342120}
     - target: {fileID: 4654318587257286295, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
       propertyPath: m_Color.b
       value: 0.32941177
@@ -363,10 +471,6 @@ PrefabInstance:
       propertyPath: m_Colors.m_HighlightedColor.r
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 6202904901864778653, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
-      propertyPath: northstar
-      value: 
-      objectReference: {fileID: 1024444641}
     - target: {fileID: 7020022129960754876, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
       propertyPath: m_Color.b
       value: 0.32941177
@@ -427,7 +531,8 @@ PrefabInstance:
       propertyPath: m_Color.r
       value: 1
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 4008302585009974969, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -437,6 +542,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2862908290575138123, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
       insertIndex: -1
       addedObject: {fileID: 0}
+    - targetCorrespondingSourceObject: {fileID: 4861368104209286469, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 930584859}
   m_SourcePrefab: {fileID: 100100000, guid: a427fe5e577a40b4aad5e2e1df48171b, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

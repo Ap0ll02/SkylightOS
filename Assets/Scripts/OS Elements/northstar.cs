@@ -37,6 +37,8 @@ public class Northstar : MonoBehaviour
     public string[] startDialogueLines;
     public NorthstarDialogueSO startDialogueSO;
 
+    private Coroutine hintCoroutine;
+
     public void Awake()
     {
         personaOpen = true;
@@ -233,12 +235,17 @@ public class Northstar : MonoBehaviour
 
     public void StartHintCoroutine(string hint, float delay, Style s = Style.cold)
     {
-        StartCoroutine(WaitForHint(hint, delay, s));
+        hintCoroutine = StartCoroutine(WaitForHint(hint, delay, s));
     }
 
     public void InterruptHintCoroutine()
     {
-        StopCoroutine(WaitForHint);
+        if (hintCoroutine != null)
+        {
+            StopCoroutine(hintCoroutine);
+            hintCoroutine = null;
+        }
+
     }
 
     private IEnumerator WaitForHint(string hint, float delay, Style s = Style.cold)

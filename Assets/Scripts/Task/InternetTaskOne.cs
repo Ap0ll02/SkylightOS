@@ -68,8 +68,7 @@ public class InternetTaskOne : AbstractTask
     // When the diagnosis window is opened, start the hazards and loading bar
     void HandleDiagnosisWindowOpened()
     {
-        //loadingBarScript.StartLoading();
-        //loadingBarScript.perthiefTime = perTime;
+        northstar.InterruptHintCoroutine();
         startHazards();
     }
 
@@ -79,6 +78,7 @@ public class InternetTaskOne : AbstractTask
         diagnosisWindowScript.SetHeaderText("Skylight Network Diagnostic Tool");
         wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.DisconnectedInteractable);
         northstar.WriteHint("Let's Diagnose This Wifi Issue, Perhaps Go To The Button Below?", Northstar.Style.hot);
+        northstar.StartHintCoroutine("Maybe press on the wifi icon below?", 10f);
     }
 
     public override void CompleteTask()

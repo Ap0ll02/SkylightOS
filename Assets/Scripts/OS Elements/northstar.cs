@@ -37,6 +37,8 @@ public class Northstar : MonoBehaviour
     public string[] startDialogueLines;
     public NorthstarDialogueSO startDialogueSO;
 
+    private Coroutine hintCoroutine;
+
     public void Awake()
     {
         personaOpen = true;
@@ -59,7 +61,7 @@ public class Northstar : MonoBehaviour
         {
             if (pd == null)
             {
-                pd = StartCoroutine(PlayDialogue(startDialogueSO.dialogueLines, 2f));
+                pd = StartCoroutine(PlayMultipleLines(startDialogueSO.dialogueLines, 2f));
             }
         }
         else
@@ -120,6 +122,7 @@ public class Northstar : MonoBehaviour
             StopAllCoroutines();
         }
     }
+
     public void OnUserSummon()
     {
         transform.SetAsLastSibling();
@@ -128,7 +131,7 @@ public class Northstar : MonoBehaviour
         if (currentText != string.Empty)
         {
             OpenSpeechBubble();
-            StartCoroutine(PlayDialogueLine(currentText));
+            StartCoroutine(PlayLine(currentText));
         }
     }
 
@@ -137,7 +140,7 @@ public class Northstar : MonoBehaviour
         transform.SetAsLastSibling();
         OpenPersona();
         OpenSpeechBubble();
-        StartCoroutine(PlayDialogueLine(currentText));
+        StartCoroutine(PlayLine(currentText));
     }
 
     private IEnumerator Timer(float x = 2f, bool effect = false)
@@ -149,7 +152,7 @@ public class Northstar : MonoBehaviour
         yield return new WaitForSeconds(x);
     }
 
-    private IEnumerator PlayDialogue(string[] dialogueLines, float t = 1f)
+    private IEnumerator PlayMultipleLines(string[] dialogueLines, float t = 1f)
     {
         canClose = false;
         int count = 0;
@@ -177,7 +180,7 @@ public class Northstar : MonoBehaviour
         nsText.text = " ";
     }
 
-    private IEnumerator PlayDialogueLine(string dialogueLines, float t = 1f)
+    private IEnumerator PlayLine(string dialogueLines, float t = 1f)
     {
         canClose = false;
         tw.ShowText(dialogueLines);
@@ -194,7 +197,7 @@ public class Northstar : MonoBehaviour
     private IEnumerator AutoCloseUpdate()
     {
         yield return new WaitUntil(() => !tw.isShowingText);
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(0.5f);
         tw.StartDisappearingText();
     }
 
@@ -229,4 +232,26 @@ public class Northstar : MonoBehaviour
         speechBubbleCanvas.interactable = false;
         speechBubbleOpen = false;
     }
+
+    public void StartHintCoroutine(string hint, float delay, Style s = Style.cold)
+    {
+        hintCoroutine = StartCoroutine(WaitForHint(hint, delay, s));
+    }
+
+    public void InterruptHintCoroutine()
+    {
+        if (hintCoroutine != null)
+        {
+            StopCoroutine(hintCoroutine);
+            hintCoroutine = null;
+        }
+
+    }
+
+    private IEnumerator WaitForHint(string hint, float delay, Style s = Style.cold)
+    {
+        yield return new WaitForSeconds(delay);
+        WriteHint(hint, s, true);
+    }
+
 }

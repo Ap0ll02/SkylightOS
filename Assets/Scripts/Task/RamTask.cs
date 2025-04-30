@@ -55,7 +55,8 @@ public class RamTask : AbstractTask
     public override void startTask()
     {
         systemResourcesWindow.currentRAMStatus = SystemResourcesWindow.RAMStatus.CRITICAL;
-        northstar.WriteHint("Let's Diagnose This RAM Issue, Perhaps Go To The Process Manager Button Below?", Northstar.Style.warm);
+        northstar.WriteHint("Let's Diagnose This RAM Issue, find the resource window!", Northstar.Style.warm);
+        northstar.StartHintCoroutine("Check out the system icon below, it might hold the resource window", 10f, Northstar.Style.cold);
         systemResourcesWindow.UpdateSystemResourcesText();
     }
 
@@ -87,6 +88,7 @@ public class RamTask : AbstractTask
     void HandleMinigameStarted()
     {
         startHazards();
+        northstar.InterruptHintCoroutine();
         northstar.WriteHint("OH SHIT WE GOTTA PUT THE RAM IN THE RAM SLOTS", Northstar.Style.warm);
     }
 

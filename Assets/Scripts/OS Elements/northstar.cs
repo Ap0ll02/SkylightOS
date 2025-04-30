@@ -61,7 +61,7 @@ public class Northstar : MonoBehaviour
         {
             if (pd == null)
             {
-                pd = StartCoroutine(PlayMultipleLines(startDialogueSO.dialogueLines, 2f));
+                pd = StartCoroutine(PlayMultipleLines(startDialogueSO.dialogueLines, 0.5f));
             }
         }
         else
@@ -152,7 +152,7 @@ public class Northstar : MonoBehaviour
         yield return new WaitForSeconds(x);
     }
 
-    private IEnumerator PlayMultipleLines(string[] dialogueLines, float t = 1f)
+    private IEnumerator PlayMultipleLines(string[] dialogueLines, float t = 0.5f)
     {
         canClose = false;
         int count = 0;
@@ -173,11 +173,11 @@ public class Northstar : MonoBehaviour
             }
         }
         tw.StartDisappearingText();
+        canClose = true;
         yield return new WaitUntil(() => !tw.isHidingText);
         yield return new WaitForSeconds(t);
+        nsText.text = string.Empty;
         CloseSpeechBubble();
-        canClose = true;
-        nsText.text = " ";
     }
 
     private IEnumerator PlayLine(string dialogueLines, float t = 1f)
@@ -245,7 +245,6 @@ public class Northstar : MonoBehaviour
             StopCoroutine(hintCoroutine);
             hintCoroutine = null;
         }
-
     }
 
     private IEnumerator WaitForHint(string hint, float delay, Style s = Style.cold)

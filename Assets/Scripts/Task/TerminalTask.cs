@@ -175,9 +175,10 @@ public class TerminalTask : AbstractTask
             + "The AntiVirus toolkit is a helpful addition for getting rid of pesky malware!\n"
             + "Click On The Anti-Virus Download to start.";
         northstar.WriteHint(
-            "Let's try clicking the Download Anti-Virus button, open up the terminal first!",
+            "Let's try clicking the Download Anti-Virus button and enter the text, open up the terminal first!",
             Northstar.Style.chilly
         );
+        northstar.StartHintCoroutine("Find the terminal icon in the dock. When the install command is shown, click on it and hit enter!", 18f);
         termState = State.On;
         terminalText.text = termText;
     }
@@ -201,22 +202,15 @@ public class TerminalTask : AbstractTask
     /// @brief 3 Functions To Handle When The Terminal Buttons Are Pressed.
     public void AVTask()
     {
-        /// @var termLoadBar will be used for arrow game, how the loading progresses.
-        /// Different process and visual than the prefab loading bar.
+        northstar.InterruptHintCoroutine();
         if (termState == State.On)
         {
+            northstar.WriteHint("Route the packets to Dorothy's install location! Use your arrow keys!");
             terminalText.text = "";
             termState = State.ArrowGameOn;
             arrowGame.SetActive(true);
             startHazards();
-            //hGroup.SetActive(false);
-
-
             ag.StartGame();
-            if (!musicAG.isPlaying)
-            {
-                //musicAG.Play();
-            }
         }
         else if (termState == State.ArrowGameOn)
         {
@@ -283,6 +277,7 @@ public class TerminalTask : AbstractTask
             terminalText.text += "Please Press (A, B, C, or D) To Continue Into The File System\n";
             terminalText.text += "-----------------------------------\n";
             hGroup.SetActive(false);
+            northstar.WriteHint("Use BACKSPACE to go up a level in the maze!");
             dm.StartGame();
         }
         else if (termState == State.ArrowGameOn)

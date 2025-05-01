@@ -7,7 +7,6 @@ using UnityEngine.UI;
 // Main Internet Task 1 Script
 // Depends on Abstract Task
 // Interacts with multiple UI elements
-// 
 
 public class InternetTaskOne : AbstractTask
 {
@@ -77,8 +76,8 @@ public class InternetTaskOne : AbstractTask
     {
         diagnosisWindowScript.SetHeaderText("Skylight Network Diagnostic Tool");
         wifiPopUpMenuWifiState.SetWifiState(ExpandedWifiMenu.WifiState.DisconnectedInteractable);
-        northstar.WriteHint("Let's Diagnose This Wifi Issue, Perhaps Go To The Button Below?", Northstar.Style.hot);
-        northstar.StartHintCoroutine("Maybe press on the wifi icon below?", 10f);
+        northstar.WriteHint("Let's Diagnose This Wifi Issue, Explore Your Application Dock To Start", Northstar.Style.warm);
+        northstar.StartHintCoroutine("In our application dock below, find the Wi-Fi symbol and try clicking on it!", 18f);
     }
 
     public override void CompleteTask()

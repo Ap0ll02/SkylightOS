@@ -60,6 +60,7 @@ public class SpawnManagerBoss3 : MonoBehaviour
         yield return null;
     }
 
+
     IEnumerator coolDown(float time)
     {
         yield return new WaitForSeconds(time);

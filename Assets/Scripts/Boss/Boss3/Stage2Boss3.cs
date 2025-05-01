@@ -22,7 +22,6 @@ public class Stage2Boss3 : AbstractBossStage
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,1f);
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,1f);
         yield return StartSpawning();
-        yield return seconds();
         BossEndStage();
     }
 
@@ -31,26 +30,32 @@ public class Stage2Boss3 : AbstractBossStage
         //Debug.Log("Stage 1 End");
         bossManager.NextStage();
     }
-    IEnumerator seconds()
-    {
-        yield return new WaitForSeconds(1);
-    }
 
     public IEnumerator StartSpawning()
     {
         northstar.GetComponent<NorthStarAdvancedMode>().Turnoff();
         Debug.Assert(spawnManager != null, "Spawn Manager is null");
         spawnManager.enemies = enemyArray;
-        yield return spawnManager.spawnAmount(0, 10, 1.5f);
-        yield return spawnManager.spawnAmount(1, 1, 4f);
+        yield return spawnManager.spawnAmount(0, 15, 1.25f);
+        yield return spawnManager.spawnAmount(1, 1, 2f);
         yield return spawnManager.spawnAmount(0, 15, 1f);
-        yield return spawnManager.spawnAmount(2, 1, 4f);
-        yield return spawnManager.spawnAmount(0, 15, 0.75f);
-        yield return spawnManager.spawnAmount(3, 1, 4f);
+        yield return spawnManager.spawnAmount(2, 2, 2f);
         yield return spawnManager.spawnAmount(0, 20, 0.75f);
-        yield return spawnManager.spawnAmount(4, 1, 3f);
-        yield return spawnManager.spawnAmount(0, 15, 0.50f);
-        yield return spawnManager.spawnAmount(5, 1, 6f);
-        yield return spawnManager.spawnAmount(0, 25, 0.25f);
+        yield return spawnManager.spawnAmount(3, 2, 2f);
+        yield return spawnManager.spawnAmount(0, 30, 0.50f);
+        yield return spawnManager.spawnAmount(4, 2, 3f);
+        yield return spawnManager.spawnAmount(0, 10, 0.50f);
+        yield return spawnManager.SpawnRandom(25,0, enemyArray.Count -1, 1f);
+        yield return SpawnEnding();
+    }
+
+    public IEnumerator SpawnEnding()
+    {
+        bool stillEnemies = false;
+        while (spawnManager.enemyContainer.GetComponent<Transform>().childCount > 0)
+        {
+            yield return new WaitForSeconds(1);
+        }
+        yield return null;
     }
 }

@@ -22,7 +22,6 @@ public class Stage4Boss3 : AbstractBossStage
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,1f);
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,1f);
         yield return StartSpawning();
-        yield return seconds();
         BossEndStage();
     }
     public override void BossEndStage()
@@ -30,18 +29,27 @@ public class Stage4Boss3 : AbstractBossStage
         //Debug.Log("Stage 1 End");
         bossManager.NextStage();
     }
-    IEnumerator seconds()
-    {
-        yield return new WaitForSeconds(1);
-    }
 
     public IEnumerator StartSpawning()
     {
         northstar.GetComponent<NorthStarAdvancedMode>().Turnoff();
         Debug.Assert(spawnManager != null, "Spawn Manager is null");
         spawnManager.enemies = enemyArray;
-        yield return spawnManager.spawnAmount(9, 30, 0.25f);
-        yield return spawnManager.spawnAmount(0, 40, 0.15f);
+        yield return spawnManager.spawnAmount(9, 15, 0.25f);
+        yield return spawnManager.spawnAmount(0, 15, 0.25f);
+        yield return spawnManager.spawnAmount(9, 25, 0.25f);
+        yield return spawnManager.spawnAmount(0, 25, 0.25f);
         yield return spawnManager.SpawnRandom(300, 0, enemyArray.Count -1, .5f);
+        yield return SpawnEnding();
+    }
+
+    public IEnumerator SpawnEnding()
+    {
+        bool stillEnemies = false;
+        while (spawnManager.enemyContainer.GetComponent<Transform>().childCount > 0)
+        {
+            yield return new WaitForSeconds(1);
+        }
+        yield return null;
     }
 }

@@ -26,6 +26,8 @@ public class Stage3Boss3 : AbstractBossStage
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,1f);
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,1f);
         yield return StartSpawning();
+        if (bossManager is BossManager3 bossManager3)
+            bossManager3.musicManager.StartMusic();
         BossEndStage();
     }
 
@@ -38,7 +40,6 @@ public class Stage3Boss3 : AbstractBossStage
     {
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,0.2f);
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,0.2f);
-
     }
 
     IEnumerator seconds()
@@ -49,15 +50,17 @@ public class Stage3Boss3 : AbstractBossStage
     public IEnumerator StartSpawning()
     {
         northstar.GetComponent<NorthStarAdvancedMode>().Turnoff();
-        Debug.Log("Start Stage 3");
         Debug.Assert(spawnManager != null, "Spawn Manager is null");
         spawnManager.enemies = enemyArray;
+        yield return spawnManager.spawnAmount(0, 40, 0.25f);
         yield return spawnManager.SpawnRandom(70, 0, enemyArray.Count-1, 2f);
         TurnBasic1LazersOn();
         yield return spawnManager.SpawnRandom(70, 0, enemyArray.Count-1, 1.5f);
         northstar.SetActive(true);
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line3,0.1f);
         northstar.SetActive(false);
+        if (bossManager is BossManager3 bossManager3)
+            bossManager3.musicManager.NyanCatMusic();
         yield return spawnManager.spawnAmount(9, 1, 10f);
         TurnBasic2LazersOn();
         yield return spawnManager.SpawnRandom(50, 0, enemyArray.Count-1, 1.5f);
@@ -67,6 +70,8 @@ public class Stage3Boss3 : AbstractBossStage
 
         TurnNyanLazerOn();
         yield return spawnManager.SpawnRandom(50, 0, enemyArray.Count-1, 1.0f);
+
+        yield return SpawnEnding();
     }
 
     public void TurnBasic1LazersOn()
@@ -112,5 +117,15 @@ public class Stage3Boss3 : AbstractBossStage
         {
             laz.SetActive(false);
         }
+    }
+
+    public IEnumerator SpawnEnding()
+    {
+        bool stillEnemies = false;
+        while (spawnManager.enemyContainer.GetComponent<Transform>().childCount > 0)
+        {
+            yield return new WaitForSeconds(1);
+        }
+        yield return null;
     }
 }

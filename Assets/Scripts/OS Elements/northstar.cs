@@ -5,6 +5,7 @@ using System.Linq;
 using Febucci.UI;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 /// @Author Jack Ratermann
@@ -61,7 +62,7 @@ public class Northstar : MonoBehaviour
         {
             if (pd == null)
             {
-                pd = StartCoroutine(PlayMultipleLines(startDialogueSO.dialogueLines, 0.5f));
+                pd = StartCoroutine(PlayMultipleLines(startDialogueSO.dialogueLines, 2.5f));
             }
         }
         else
@@ -69,8 +70,6 @@ public class Northstar : MonoBehaviour
             Debug.LogWarning("No dialogue lines found in the assigned NorthstarDialogueSO.");
         }
     }
-
-
 
     public enum Style
     {
@@ -94,7 +93,7 @@ public class Northstar : MonoBehaviour
                 currentText = "<fade d=4>" + hint + "</fade>";
                 break;
             case Style.hot:
-                currentText = "<wave a=1 f=0.4><rainb>" + hint + "</rainb></wave>";
+                currentText = "<wave a=0.3 f=0.4><rainb>" + hint + "</rainb></wave>";
                 break;
             default:
                 break;
@@ -119,7 +118,7 @@ public class Northstar : MonoBehaviour
         else if (canClose && personaOpen)
         {
             ClosePersona();
-            StopAllCoroutines();
+            //StopAllCoroutines();
         }
     }
 
@@ -250,6 +249,8 @@ public class Northstar : MonoBehaviour
     private IEnumerator WaitForHint(string hint, float delay, Style s = Style.cold)
     {
         yield return new WaitForSeconds(delay);
+        CloseSpeechBubble();
+        OpenSpeechBubble();
         WriteHint(hint, s, true);
     }
 

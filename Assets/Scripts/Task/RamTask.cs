@@ -56,7 +56,7 @@ public class RamTask : AbstractTask
     {
         systemResourcesWindow.currentRAMStatus = SystemResourcesWindow.RAMStatus.CRITICAL;
         northstar.WriteHint("Let's Diagnose This RAM Issue, find the resource window!", Northstar.Style.warm);
-        northstar.StartHintCoroutine("Check out the system icon below, it might hold the resource window", 10f, Northstar.Style.cold);
+        northstar.StartHintCoroutine("Check out the system icon below, near the Wi-Fi icon, it might hold the resource window", 18f, Northstar.Style.cold);
         systemResourcesWindow.UpdateSystemResourcesText();
     }
 

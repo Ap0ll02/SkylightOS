@@ -51,7 +51,7 @@ public class Stage1Boss3 : AbstractBossStage
         yield return spawnManager.spawnAmount(0, 10, 1f);
         yield return spawnManager.spawnAmount(2, 1, 2.0f);
         yield return spawnManager.spawnAmount(0, 15, 1f);
-        yield return spawnManager.spawnAmount(3, 1, 3.0f);
+        yield return spawnManager.spawnAmount(2, 1, 3.0f);
         yield return SpawnEnding();
     }
 

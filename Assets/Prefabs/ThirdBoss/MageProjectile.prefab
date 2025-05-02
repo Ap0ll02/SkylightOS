@@ -201,10 +201,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tm: {fileID: 0}
   targetPosition: {x: 0, y: 0, z: 0}
-  speed: 888
+  speed: 1000
   seeStealth: 0
-  projectileLifeTime: 3
-  pen: 1
+  projectileLifeTime: 4
+  pen: 2
 --- !u!4 &4770774241214559339 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4162189018943461028, guid: 3e1405eaf4c66841da55645594d00e75, type: 3}

@@ -18,7 +18,7 @@ public class BasicTower : Tower
         timesToDamage = new float[] { 1, 1, 1 };
         cooldowns = new float[] { 2, 1.5f, 1f };
         isSpecials = new bool[] { false, false, true };
-        radii = new float[] { 100, 120, 150 };
+        radii = new float[] { 125, 150, 200 };
         durations = new float[] { 0, 0, 0 };
         // =======================================
         base.Start();

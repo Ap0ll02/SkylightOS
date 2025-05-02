@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Stage5Boss3 : AbstractBossStage
 {
+    public AudioSource audioSource;
+    public AudioClip clip;
     public SpawnManagerBoss3 spawnManager;
     public List<GameObject> enemyArray;
     private bool spawning;
@@ -19,6 +21,9 @@ public class Stage5Boss3 : AbstractBossStage
 
     public IEnumerator PlayStage()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.Play();
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,1f);
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,1f);
         yield return StartSpawning();
@@ -26,12 +31,7 @@ public class Stage5Boss3 : AbstractBossStage
     }
     public override void BossEndStage()
     {
-        //Debug.Log("Stage 1 End");
         bossManager.NextStage();
-    }
-    IEnumerator seconds()
-    {
-        yield return new WaitForSeconds(1);
     }
 
     public IEnumerator StartSpawning()
@@ -40,9 +40,19 @@ public class Stage5Boss3 : AbstractBossStage
         Debug.Log("Start Stage 5");
         Debug.Assert(spawnManager != null, "Spawn Manager is null");
         spawnManager.enemies = enemyArray;
-        yield return spawnManager.SpawnRandom(300, 0, enemyArray.Count-1, 0.25f);
+        yield return spawnManager.SpawnRandom(300, 0, enemyArray.Count-1, 0.5f);
         yield return spawnManager.spawnAmount(0, 20, 0.15f);
         yield return spawnManager.SpawnRandom(300, 0, enemyArray.Count-1, 0.25f);
-        BossEndStage();
+        yield return SpawnEnding();
+    }
+
+    public IEnumerator SpawnEnding()
+    {
+        bool stillEnemies = false;
+        while (spawnManager.enemyContainer.GetComponent<Transform>().childCount > 0)
+        {
+            yield return new WaitForSeconds(1);
+        }
+        yield return null;
     }
 }

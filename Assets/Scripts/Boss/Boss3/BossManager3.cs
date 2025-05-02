@@ -9,10 +9,12 @@ using UnityEngine.SceneManagement;
 ///
 public class BossManager3 : BossManager
 {
+    public Boss3MusicManager musicManager;
     public void Start()
     {
         currentBossStageIndex = 0;
         Debug.Log("Starting Boss Fight");
+        musicManager.StartMusic();
         NextStage();
     }
 

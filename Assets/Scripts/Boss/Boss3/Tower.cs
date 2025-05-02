@@ -46,6 +46,10 @@ public abstract class Tower : MonoBehaviour
     public float duration;
     public float slowPercent;
     public float speed = 50;
+
+    AudioSource audioSource;
+    public AudioClip clip;
+    public AudioClip clip2;
     public abstract void Attack();
 
     public void Start()
@@ -60,6 +64,13 @@ public abstract class Tower : MonoBehaviour
         duration = durations[0];
         if(towerType == Towers.SlowDown)
             slowPercent = slowDowns[0];
+        audioSource = GetComponent<AudioSource>();
+        if (audioSource != null)
+        {
+            audioSource.clip = clip;
+            if(audioSource.clip != null)
+                audioSource.Play();
+        }
     }
 
     public void LookAtTarget(Transform target)
@@ -204,7 +215,9 @@ public abstract class Tower : MonoBehaviour
             Debug.Log("Cannot Upgrade Past Level 3");
             return false;
         }
-
+        audioSource.clip = clip2;
+        if(audioSource.clip != null)
+            audioSource.Play();
         // Fix all standard attributes
         damage = damages[level - 1];
         attackRadius = radii[level - 1];

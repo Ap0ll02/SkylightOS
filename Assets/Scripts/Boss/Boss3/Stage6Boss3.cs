@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Stage6Boss3 : AbstractBossStage
 {
+    public AudioSource audioSource;
+    public AudioClip clip;
     public SpawnManagerBoss3 spawnManager;
     public List<GameObject> enemyArray;
     private bool spawning;
@@ -14,25 +16,27 @@ public class Stage6Boss3 : AbstractBossStage
 
     public override void BossStartStage()
     {
+        if (bossManager is BossManager3 bossManager3)
+            bossManager3.musicManager.DogeBossMusic();
         northstar.SetActive(true);
         StartCoroutine(PlayStage());
     }
 
     public IEnumerator PlayStage()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.Play();
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,1f);
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,1f);
         yield return StartSpawning();
-        yield return seconds();
         BossEndStage();
     }
     public override void BossEndStage()
     {
+        if (bossManager is BossManager3 bossManager3)
+            bossManager3.musicManager.StopMusic();
         bossManager.NextStage();
-    }
-    IEnumerator seconds()
-    {
-        yield return new WaitForSeconds(1);
     }
 
     public IEnumerator StartSpawning()
@@ -40,6 +44,16 @@ public class Stage6Boss3 : AbstractBossStage
         northstar.GetComponent<NorthStarAdvancedMode>().Turnoff();
         spawnManager.enemies = enemyArray;
         yield return spawnManager.spawnAmount(17, 1, 1f);
-        yield return spawnManager.SpawnRandom(1000, 0, enemyArray.Count-2, 0.15f);
+        yield return spawnManager.SpawnRandom(800, 0, enemyArray.Count-2, 0.25f);
+        yield return SpawnEnding();
+    }
+    public IEnumerator SpawnEnding()
+    {
+        bool stillEnemies = false;
+        while (spawnManager.enemyContainer.GetComponent<Transform>().childCount > 0)
+        {
+            yield return new WaitForSeconds(1);
+        }
+        yield return null;
     }
 }

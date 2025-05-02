@@ -3422,6 +3422,14 @@ PrefabInstance:
       propertyPath: m_ConstrainProportionsScale
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8825228937346861278, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8825228937346861278, guid: d5fd31345d9dabd64ac68e1b71046220, type: 3}
+      propertyPath: m_PlayOnAwake
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
@@ -3492,6 +3500,8 @@ MonoBehaviour:
   duration: 0
   slowPercent: 0
   speed: 50
+  clip: {fileID: 8300000, guid: 9610d892509906a4eb86ae2381962380, type: 3}
+  clip2: {fileID: 8300000, guid: 85cf7bb07c218fd4d8f2ed84cfb33d97, type: 3}
   tr: {fileID: 0}
   projectilePrefab: {fileID: 4026556322839833814, guid: 63b8c40622e214ceda5e9f1220482feb, type: 3}
   projectile: {fileID: 4026556322839833814, guid: 63b8c40622e214ceda5e9f1220482feb, type: 3}

@@ -9,6 +9,9 @@ using Random = System.Random;
 public class BugSmashGame : MonoBehaviour
 {
 
+    public AudioClip WeLost;
+    public AudioClip WeWon;
+    public AudioSource audioSource;
     // Controls the spawn of bugs
     // Time interval (in seconds) for spawning mail objects.
     public float spawnInterval = 0.5f;
@@ -119,13 +122,28 @@ public class BugSmashGame : MonoBehaviour
             // Wait until the next frame.
             yield return null;
         }
+
         if (player.GetComponent<CatGirlWizard>().isDead)
+        {
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource != null)
+            {
+                audioSource.clip = WeLost;
+                audioSource.Play();
+            }
             BugSmashGameEndLossNotify?.Invoke();
+        }
         else
+            audioSource = GetComponent<AudioSource>();
+            if (audioSource != null)
+            {
+                audioSource.clip = WeWon;
+                audioSource.Play();
+            }
             BugSmashGameEndWinNotify?.Invoke();
-        player.GetComponent<CatGirlWizard>().ResetCatgirl();
-        player.SetActive(false);
-        window.CloseWindow();
+            player.GetComponent<CatGirlWizard>().ResetCatgirl();
+            player.SetActive(false);
+            window.CloseWindow();
     }
 
     // Checks win and lose conditions by utilizing the UpdateGameScoreManager.

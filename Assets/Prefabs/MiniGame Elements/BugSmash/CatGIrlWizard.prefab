@@ -15,6 +15,7 @@ GameObject:
   - component: {fileID: 8330529152585894784}
   - component: {fileID: 7482978738759738038}
   - component: {fileID: 4441621900696011891}
+  - component: {fileID: 837457064798842587}
   m_Layer: 0
   m_Name: CatGIrlWizard
   m_TagString: CatGirlWizardPlayer
@@ -119,6 +120,8 @@ MonoBehaviour:
   move: {fileID: -5378659886672155917, guid: 442359ca11c1e694498afc1c226aa237, type: 3}
   shoot: {fileID: -1087443828360172019, guid: 442359ca11c1e694498afc1c226aa237, type: 3}
   catGirlBody: {fileID: 8330529152585894784}
+  audioSource: {fileID: 0}
+  weLost: {fileID: 8300000, guid: 4611b9616c7a50d4082e7ddf3718446f, type: 3}
   maxHearts: 10
   hearts: 0
   Mana: 10
@@ -134,7 +137,6 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 324f108f47e7b694bb5c7bc1cce8d8f5, type: 3}
   - {fileID: 8300000, guid: f79700a69db2451459505ef6982b196f, type: 3}
   - {fileID: 8300000, guid: b3942bc77f41f634c8144bc3d825a19b, type: 3}
-  WeLost: {fileID: 8300000, guid: eb82d44ebfc685e40ac3757675b4d925, type: 3}
 --- !u!114 &8801399018612505568
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -258,3 +260,99 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!82 &837457064798842587
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8003943716155599411}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    - serializedVersion: 3
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0.33333334
+      outWeight: 0.33333334
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4

@@ -24,6 +24,8 @@ public class CatGirlWizard : MonoBehaviour
     public InputActionReference shoot;
     public Rigidbody2D catGirlBody;
 
+    public AudioSource audioSource;
+    public AudioClip weLost;
 
     public int maxHearts = 10;
     public int hearts;
@@ -36,11 +38,26 @@ public class CatGirlWizard : MonoBehaviour
 
     // For when she cast a spell!
     public AudioClip[] catGirlSounds;
-    public AudioClip WeLost;
 
     private void Start()
     {
+        switch(SaveLoad.GameDifficulty)
+        {
+            case SaveLoad.Difficulty.Easy:
+                maxHearts = 30;
+                break;
+            case SaveLoad.Difficulty.Medium:
+                maxHearts = 20;
+                break;
+            case SaveLoad.Difficulty.Hard:
+                maxHearts = 10;
+                break;
+            default:
+                maxHearts = 30;
+                break;
+        }
 
+        audioSource = GetComponent<AudioSource>();
         // Reference the Animator component attached to the GameObject
         animator = GetComponent<Animator>();
         isDead = false;
@@ -66,6 +83,9 @@ public class CatGirlWizard : MonoBehaviour
         // Check if the spell is on cooldown
         if (isSpellOnCooldown)
             return;
+        // we pick a random audio source to play.
+        this.gameObject.GetComponent<AudioSource>().clip = catGirlSounds[UnityEngine.Random.Range(0,catGirlSounds.Length)];
+        this.gameObject.GetComponent<AudioSource>().Play();
         // Once the spell is cast we set the bool to true in order to signifiy the cool down is needed
         isSpellOnCooldown = true;
         // Mouse position stuff dont really fuck with this please
@@ -81,9 +101,7 @@ public class CatGirlWizard : MonoBehaviour
         // This is how we set the appropriate variables for the ice shard. The Ice shard will handle its travel and collision. This is a one time thing per iceshard
         iceBall.GetComponent<IceShard>().direction = dir;
         iceBall.GetComponent<IceShard>().transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-        // we pick a random audio source to play.
-        //this.gameObject.GetComponent<AudioSource>().clip = catGirlSounds[UnityEngine.Random.Range(0,catGirlSounds.Length)];
-        //this.gameObject.GetComponent<AudioSource>().Play();
+
         StartCoroutine(SpellCoolDown(spellCooldown));
         // This is what actually starts the cool down Coroutine
     }

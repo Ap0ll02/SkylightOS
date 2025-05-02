@@ -64,6 +64,7 @@ public class PeripheralUpdateTask : AbstractTask
     {
         biosWindow.SetState(SkyBIOSWindow.PeripheralState.NotWorkingInteractable);
         northstar.WriteHint("Your peripherals (except for mouse and keyboard ig) have stopped working.", Northstar.Style.warm, true);
+        northstar.StartHintCoroutine("Check the SKYBIOS window perhaps?",18f);
     }
 
     // CompleteTask is uppercase though (because I made it)
@@ -77,6 +78,7 @@ public class PeripheralUpdateTask : AbstractTask
     // Basically whenever the loading bar starts
     void HandlePeripheralLoadingStarted()
     {
+        northstar.InterruptHintCoroutine();
         StartLoadingHazards();
         northstar.WriteHint("A loading bar, how original.", Northstar.Style.warm);
 

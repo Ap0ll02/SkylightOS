@@ -17,7 +17,7 @@ public class Level3BossTask : AbstractBossTask
     {
         northstar = FindObjectOfType<Northstar>();
         northstar.WriteHint("A third <pend a=0.5 f=0.8>ominous</pend> button just dropped :(", Northstar.Style.cold, true);
-        northstar.StartHintCoroutine("Press the button so we can finish the game little bro", 10f);
+        northstar.StartHintCoroutine("Press the button so we can finish the game little bro", 18f);
         towerDefenseButton.SetActive(true);
     }
 

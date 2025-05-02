@@ -9,12 +9,15 @@ public class AntiVirusTask : AbstractTask
 
     public GameObject antiVirusIcon;
 
+    private Northstar northstar;
+
     void Awake()
     {
 
         taskTitle = "Fix and run antivirus";
         taskDescription = "The download of the antivirus is riddled with bugs. Use the desktop icon to access the wizard.";
         antiVirusWindow = FindObjectOfType<AntiVirusWindow>();
+        northstar = FindObjectOfType<Northstar>();
     }
 
     // Start is called before the first frame update
@@ -28,6 +31,8 @@ public class AntiVirusTask : AbstractTask
     {
         startHazards();
         antiVirusWindow.SetStatus(AntiVirusWindow.AntiVirusState.NeedsInstallInteractable);
+        northstar.WriteHint("Looks like we need to run the antivirus!", Northstar.Style.cold, true);
+        northstar.StartHintCoroutine("Press the antivirus button on the desktop!", 18f);
     }
 
     public override void CompleteTask()
@@ -64,7 +69,7 @@ public class AntiVirusTask : AbstractTask
 
     public void OnLoadingBegin()
     {
-
+        northstar.InterruptHintCoroutine();
     }
 
     public void OnLoadingComplete()

@@ -656,7 +656,11 @@ public class NyanceNyanceRevolution : MonoBehaviour
             evidenceWindow.OpenWindow();
         }
 
-        if (index == itemsCanAccess)
+        if (index == 0)
+        {
+            TrashCat();
+        }
+        else if (index == itemsCanAccess)
         {
             northstar.WriteHint("TAKE THAT Nyan Cat <incr a=1.2>Shake</incr> Nyan Cat Across the two red lines");
             TrashCat();

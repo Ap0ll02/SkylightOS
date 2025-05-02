@@ -4,39 +4,37 @@ using UnityEngine;
 
 public class MusicManager : MonoBehaviour
 {
-    private static MusicManager _instance;
+    private static MusicManager instance;
 
     public static MusicManager Instance
     {
         get
         {
-            if (_instance == null)
+            if (instance == null)
             {
-                _instance = FindObjectOfType<MusicManager>();
-                if (_instance == null)
+                instance = FindObjectOfType<MusicManager>();
+                if (instance == null)
                 {
                     GameObject singleton = new GameObject(typeof(MusicManager).Name);
-                    _instance = singleton.AddComponent<MusicManager>();
+                    instance = singleton.AddComponent<MusicManager>();
                     DontDestroyOnLoad(singleton);
                 }
             }
-            return _instance;
+            return instance;
         }
     }
 
-    private AudioSource audioSource;
+    public AudioSource audioSource;
 
     private void Awake()
     {
-        if (_instance != null && _instance != this)
+        if (instance != null && instance != this)
         {
             Destroy(gameObject);
             return;
         }
-        _instance = this;
-        DontDestroyOnLoad(gameObject);
-
-        audioSource = gameObject.AddComponent<AudioSource>();
+        instance = this;
+        //DontDestroyOnLoad(gameObject);
     }
 
     // Start is called before the first frame update  

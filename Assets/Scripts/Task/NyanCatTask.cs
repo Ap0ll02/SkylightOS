@@ -22,6 +22,7 @@ public class NyanCatTask : AbstractBossTask
     {
 
         NyanCatbutton.SetActive(true);
+        northstar = FindObjectOfType<Northstar>();
         northstar.WriteHint("What is that <pend a=0.5 f=0.8>ominous</pend> icon that just appeared!", Northstar.Style.cold, true);
 
         musicManager = MusicManager.Instance;

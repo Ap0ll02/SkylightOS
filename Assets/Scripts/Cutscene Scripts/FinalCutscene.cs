@@ -1,14 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class FinalCutscene : MonoBehaviour
 {
     public List<GameObject> endScene = new();
-    void Start() {
+    void Start()
+    {
         // ===============================================
         // Switch Based On Evidence For End Cutscene/Image
         // ===============================================
+        StartCoroutine(TransitionTimer());
         int evAmt = SaveLoad.GetEvidence();
         switch(evAmt) {
             case 0:
@@ -33,5 +36,11 @@ public class FinalCutscene : MonoBehaviour
             default:
                 break;                
         }
+    }
+
+    public IEnumerator TransitionTimer()
+    {
+        yield return new WaitForSeconds(15f);
+        SceneManager.LoadScene("Level0");
     }
 }

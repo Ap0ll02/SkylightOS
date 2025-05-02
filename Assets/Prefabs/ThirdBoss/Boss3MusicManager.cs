@@ -22,7 +22,6 @@ public class Boss3MusicManager : MonoBehaviour
 
     public void StartMusic()
     {
-        currentMusic.loop = false;
         musicCoroutine = StartCoroutine(Music());
     }
 
@@ -64,6 +63,7 @@ public class Boss3MusicManager : MonoBehaviour
 
     private void PlayNextTrack()
     {
+        currentMusic = GetComponent<AudioSource>();
         if (musicArray.Length > 0 && musicArray != null)
         {
             currentMusic.loop = false;

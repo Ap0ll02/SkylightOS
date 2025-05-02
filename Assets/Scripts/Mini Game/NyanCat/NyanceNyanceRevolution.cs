@@ -273,7 +273,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
     // This is the set up for the stage three it only needs to be called once 
     public void StageThree()
     {
-        northstar.WriteHint("<bounce a=0.5>TAKE THAT CAT!</bounce> Now lets see what files this pesky cat has been stealing.<waitfor=0.5> Shake him across the red lines",Northstar.Style.cold,true);
+        northstar.WriteHint(" TAKE THAT CAT! Now lets see what files this pesky cat has been stealing. Shake him across the red lines",Northstar.Style.cold,true);
         Stage = 3;
         StageTwoOff();
         nyanCatStruggling = Instantiate(nyanCatStrugglingPrefab);

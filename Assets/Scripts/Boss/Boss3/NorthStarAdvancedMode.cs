@@ -17,8 +17,8 @@ public class NorthStarAdvancedMode : MonoBehaviour
         tw.ShowText(dialogueLines);
         yield return new WaitUntil(() => !tw.isShowingText);
         yield return new WaitForSeconds(t);
-        tw.StartDisappearingText();
-        yield return new WaitUntil(() => !tw.isHidingText);
+        // tw.StartDisappearingText();
+        // yield return new WaitUntil(() => !tw.isHidingText);
         yield return new WaitForSeconds(t);
         currentText = string.Empty;
     }

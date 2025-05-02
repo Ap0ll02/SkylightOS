@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Stage6Boss3 : AbstractBossStage
 {
+    public AudioSource audioSource;
+    public AudioClip clip;
     public SpawnManagerBoss3 spawnManager;
     public List<GameObject> enemyArray;
     private bool spawning;
@@ -22,6 +24,9 @@ public class Stage6Boss3 : AbstractBossStage
 
     public IEnumerator PlayStage()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.Play();
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,1f);
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,1f);
         yield return StartSpawning();
@@ -29,6 +34,8 @@ public class Stage6Boss3 : AbstractBossStage
     }
     public override void BossEndStage()
     {
+        if (bossManager is BossManager3 bossManager3)
+            bossManager3.musicManager.StopMusic();
         bossManager.NextStage();
     }
 

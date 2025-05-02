@@ -12,6 +12,8 @@ public class Stage1Boss3 : AbstractBossStage
     public List<GameObject> enemyArray;
     private bool spawning;
     public GameObject northstar;
+    public AudioSource audioSource;
+    public AudioClip clip;
     private string Line1 = "<bounce>Welcome, Operator!</bounce> We chased the viruses all the way to the motherboard. They are desperate and launching a full-on assault on the GPU.";
     private string Line2 = "We have to <shake>stop them!</shake> I'm activating the computer defense system! Start grabbing towers and placing them down on the motherboard.";
     public override void BossStartStage()
@@ -23,6 +25,9 @@ public class Stage1Boss3 : AbstractBossStage
 
     public IEnumerator PlayStage()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.Play();
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,0.25f);
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,0.25f);
         yield return StartSpawning();

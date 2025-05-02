@@ -13,7 +13,7 @@ public class MageTower : Tower
         speed = 200;
         ActivateTower = StartCoroutine(ActiveTower());
         // ========= Tower Upgrade Lists =========
-        damages = new int[3] { 200, 400, 600 };
+        damages = new int[3] { 150, 300, 400 };
         timesToDamage = new float[] { 2, 1.5f, 1 };
         cooldowns = new float[] { 2, 1.5f, 1.15f };
         isSpecials = new bool[] { true, true, true };

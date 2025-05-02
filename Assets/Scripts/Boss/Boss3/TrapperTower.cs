@@ -15,7 +15,7 @@ public class TrapperTower : Tower
         timesToDamage = new float[] { 1, 1, 1 };
         cooldowns = new float[] { 8, 6, 3.5f };
         isSpecials = new bool[] { false, true, true };
-        radii = new float[] { 150, 250, 350 };
+        radii = new float[] { 150, 200, 250 };
         durations = new float[] { 0, 0, 0 };
         base.Start();
         // =======================================

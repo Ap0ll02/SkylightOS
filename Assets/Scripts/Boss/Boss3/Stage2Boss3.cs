@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Stage2Boss3 : AbstractBossStage
 {
+    public AudioSource audioSource;
+    public AudioClip clip;
     public SpawnManagerBoss3 spawnManager;
     public List<GameObject> enemyArray;
     private bool spawning;
@@ -19,6 +21,9 @@ public class Stage2Boss3 : AbstractBossStage
     }
     public IEnumerator PlayStage()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.Play();
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,1f);
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,1f);
         yield return StartSpawning();

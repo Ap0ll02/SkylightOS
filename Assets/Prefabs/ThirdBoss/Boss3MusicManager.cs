@@ -23,8 +23,7 @@ public class Boss3MusicManager : MonoBehaviour
     public void StartMusic()
     {
         currentMusic.loop = false;
-        if (musicCoroutine == null)
-            musicCoroutine = StartCoroutine(Music());
+        musicCoroutine = StartCoroutine(Music());
     }
 
     public void StopMusic()
@@ -59,7 +58,7 @@ public class Boss3MusicManager : MonoBehaviour
             {
                 PlayNextTrack();
             }
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.01f);
         }
     }
 
@@ -67,6 +66,7 @@ public class Boss3MusicManager : MonoBehaviour
     {
         if (musicArray.Length > 0 && musicArray != null)
         {
+            currentMusic.loop = false;
             // we increment the music index to be at the next track
             currentMusicIndex++;
             // Make sure it is with in the length of the array

@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class Stage3Boss3 : AbstractBossStage
 {
+    public AudioSource audioSource;
+    public AudioClip clip;
     public SpawnManagerBoss3 spawnManager;
     public List<GameObject> enemyArray;
     private bool spawning;
@@ -23,11 +25,17 @@ public class Stage3Boss3 : AbstractBossStage
     }
     public IEnumerator PlayStage()
     {
+        audioSource = GetComponent<AudioSource>();
+        audioSource.clip = clip;
+        audioSource.Play();
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line1,1f);
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line2,1f);
         yield return StartSpawning();
         if (bossManager is BossManager3 bossManager3)
+        {
+            bossManager3.musicManager.StopMusic();
             bossManager3.musicManager.StartMusic();
+        }
         BossEndStage();
     }
 
@@ -60,7 +68,10 @@ public class Stage3Boss3 : AbstractBossStage
         yield return northstar.GetComponent<NorthStarAdvancedMode>().PlayDialogueLine(Line3,0.1f);
         northstar.SetActive(false);
         if (bossManager is BossManager3 bossManager3)
+        {
+            bossManager3.musicManager.StopMusic();
             bossManager3.musicManager.NyanCatMusic();
+        }
         yield return spawnManager.spawnAmount(9, 1, 10f);
         TurnBasic2LazersOn();
         yield return spawnManager.SpawnRandom(50, 0, enemyArray.Count-1, 1.5f);
@@ -72,6 +83,7 @@ public class Stage3Boss3 : AbstractBossStage
         yield return spawnManager.SpawnRandom(50, 0, enemyArray.Count-1, 1.0f);
 
         yield return SpawnEnding();
+
     }
 
     public void TurnBasic1LazersOn()

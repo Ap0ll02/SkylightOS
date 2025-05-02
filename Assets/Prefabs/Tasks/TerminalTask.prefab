@@ -62,7 +62,6 @@ MonoBehaviour:
   arrowGame: {fileID: 0}
   ag: {fileID: 0}
   northstar: {fileID: 0}
-  playerInput: {fileID: 4055171886017575154}
   drawMaze: {fileID: 0}
   dm: {fileID: 0}
   musicAG: {fileID: 0}
@@ -71,6 +70,7 @@ MonoBehaviour:
   PThiefDelay: 0
   StopInputRunning: 0
   window: {fileID: 0}
+  antiVirusIcon: {fileID: 0}
 --- !u!114 &4055171886017575154
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -228,7 +228,7 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: b19afe2b-aa40-4974-83d6-3a242a3a2b1c
     m_ActionName: User/MazeNav[/Keyboard/t,/Keyboard/b,/Keyboard/c,/Keyboard/v]
-  m_NeverAutoSwitchControlSchemes: 1
+  m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard&Mouse
   m_DefaultActionMap: User
   m_SplitScreenIndex: -1

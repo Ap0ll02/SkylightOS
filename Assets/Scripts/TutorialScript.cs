@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class TutorialScript : MonoBehaviour
 {
@@ -8,6 +9,7 @@ public class TutorialScript : MonoBehaviour
     Coroutine arrowCrts = null;
     void Start()
     {
+        if(SceneManager.GetActiveScene().name != "Level1") return;
         cg = gameObject.GetComponent<CanvasGroup>();
         StartCoroutine(Timer(23f)); 
     }
@@ -66,5 +68,6 @@ public class TutorialScript : MonoBehaviour
             blinkCount++;
         }
         cg.alpha = 0;
+        Destroy(gameObject);
     }
 }

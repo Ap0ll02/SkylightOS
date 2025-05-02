@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class CutsceneTwoThree : MonoBehaviour
 {
+    AudioSource mySfx;
     // Start is called before the first frame update
     void Start()
     {
+        mySfx = GetComponent<AudioSource>();
         newMsg.gameObject.SetActive(false);
         message.gameObject.SetActive(false);
         StartCoroutine(FirstPart(9f, 1));
@@ -41,6 +43,7 @@ public class CutsceneTwoThree : MonoBehaviour
     public void NewMessage()
     {
         newMsg.gameObject.SetActive(true);
+        mySfx.Play();
         StartCoroutine(FirstPart(4f, 2));
     }
 

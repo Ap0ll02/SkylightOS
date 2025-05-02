@@ -240,7 +240,7 @@ public class PipeGame : AbstractMinigame
             temp_val++;
             temp.text = "Temp: " + "<bounce a=" + a_amp + "f=3>" + temp_val + " </bounce>";
             a_amp = Mathf.Lerp(initial, final, 0.1f);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.7f);
         }
     }
 

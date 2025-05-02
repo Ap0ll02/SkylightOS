@@ -8,13 +8,18 @@ public class UpdateTask : AbstractTask
     [SerializeField] UpdateGame updateGameWindow;
     public UpdatePanel updatePannel;
 
+    public Northstar northstar;
+
     public new void Start()
     {
         updatePannel.ChangeState(UpdatePanel.UpdateState.NotWorking);
+        northstar = FindObjectOfType<Northstar>();
     }
     public override void startTask()
     {
         updatePannel.ChangeState(UpdatePanel.UpdateState.NotWorkingInteractable);
+        northstar.WriteHint("Update the pc playa...", Northstar.Style.cold, true);
+        northstar.StartHintCoroutine("Use the system window boss", 18f);
     }
 
     public override void checkHazards()
@@ -47,6 +52,7 @@ public class UpdateTask : AbstractTask
 
     void HandleMinigameStarted()
     {
+        northstar.InterruptHintCoroutine();
         startHazards();
         //northstar.WriteHint("OH SHIT WE GOTTA PUT THE RAM IN THE RAM SLOTS", Northstar.Style.warm);
     }

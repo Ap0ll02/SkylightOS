@@ -6,10 +6,13 @@ public class OverheatGPUTask : AbstractTask
     public SystemResourcesWindow SystemStatus;
     public PipeGame pg;
 
+    public Northstar northstar;
+
     void Awake()
     {
         SystemStatus = FindObjectOfType<SystemResourcesWindow>();
         pg = FindObjectOfType<PipeGame>();
+        northstar = FindObjectOfType<Northstar>();
     }
 
     new void Start()
@@ -22,6 +25,9 @@ public class OverheatGPUTask : AbstractTask
     {
         SystemStatus.SetSystemResources(SystemResourcesWindow.GPUStatus.CRITICAL, SystemStatus.currentRAMStatus);
         SystemStatus.UpdateSystemResourcesText();
+        northstar.WriteHint("Looks like the GPU is overheating...", Northstar.Style.cold, true);
+        northstar.StartHintCoroutine("Check out the resources panel!",10f);
+
     }
 
     public override void checkHazards(){
@@ -37,6 +43,7 @@ public class OverheatGPUTask : AbstractTask
 
     public override void startHazards()
     {
+        northstar.InterruptHintCoroutine();
         foreach (var hazardManager in hazardManagers) {
             hazardManager.StartHazard();
         }

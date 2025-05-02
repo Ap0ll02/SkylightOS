@@ -50,7 +50,7 @@ public class NyanCatTask : AbstractBossTask
         base.TriggerBossTaskFinished();
         musicManager.ResumeMusic();
         northstar.WriteHint("That was <pend a=0.5 f=0.8>fun</pend>!", Northstar.Style.hot, true);
-        northstar.StartHintCoroutine("I should probably get back to work now...", 10f);
+        northstar.StartHintCoroutine("I should probably get back to work now...", 18f);
     }
 
     public override void startHazards()

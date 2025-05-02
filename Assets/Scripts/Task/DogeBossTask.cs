@@ -45,7 +45,7 @@ public class DogeBossTask : AbstractBossTask
         base.TriggerBossTaskFinished();
         musicManager.ResumeMusic();
         northstar.WriteHint("Don't make me jump on platforms like that again. My feet <pend a=0.5 f=0.8>hurt</pend>!", Northstar.Style.cold, true);
-        northstar.StartHintCoroutine("Press the power button to go to the next level :)", 10f);
+        northstar.StartHintCoroutine("Press the power button to go to the next level :)", 18f);
     }
 
     public override void startHazards()

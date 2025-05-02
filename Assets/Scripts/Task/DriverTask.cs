@@ -16,6 +16,8 @@ public class DriverTask : AbstractTask
     public GameObject driver_btn;
     public driver driverPanel;
 
+    public Northstar northstar;
+
     // Get our references here
     void Awake()
     {
@@ -29,6 +31,7 @@ public class DriverTask : AbstractTask
             .GetComponentInChildren<SystemWindow>()
             .gameObject;
         driverPanel = FindObjectOfType<driver>();
+        northstar = FindObjectOfType<Northstar>();
         //driver_script = system_menu.GetComponentInChildren<DriverGame>();
         //driver_desc = driver_script.gameObject.GetComponentInChildren<TMP_Text>();
         //driver_btn = driver_script.GetComponentInChildren<Button>().gameObject;
@@ -48,6 +51,8 @@ public class DriverTask : AbstractTask
     {
         gameRunning = true;
         driverPanel.UpdateState(driver.DriversState.NotWorkingInteractable);
+        northstar.WriteHint("Looks like the drivers are malfunctioning...", Northstar.Style.cold, true);
+        northstar.StartHintCoroutine("Check the resources panel!", 18f);
     }
 
     public void OnEnable()
@@ -83,6 +88,7 @@ public class DriverTask : AbstractTask
 
     public override void startHazards()
     {
+        northstar.InterruptHintCoroutine();
         foreach (var hazardManager in hazardManagers)
         {
             hazardManager.StartHazard();

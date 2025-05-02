@@ -24,12 +24,27 @@ public class PipeGame : AbstractMinigame
     public Coroutine HeatUpCR;
     public TMP_Text temp;
     public int temp_val;
+    private float timeToHeat;
 
     private BasicWindow window;
     private bool firstTry = true; // stupid variable but i dont wanna do the smart fix
 
     public void Start()
     {
+        switch(SaveLoad.GameDifficulty) {
+            case SaveLoad.Difficulty.Easy:
+                timeToHeat = 0.7f;
+                break;
+            case SaveLoad.Difficulty.Medium:
+                timeToHeat = 0.49f;
+                break;
+            case SaveLoad.Difficulty.Hard:
+                timeToHeat = 0.32f;
+                break;
+            default:
+                timeToHeat = 0.6f;
+                break;
+        }
         window = GetComponent<BasicWindow>();
         window.ForceCloseWindow();
     }
@@ -240,7 +255,7 @@ public class PipeGame : AbstractMinigame
             temp_val++;
             temp.text = "Temp: " + "<bounce a=" + a_amp + "f=3>" + temp_val + " </bounce>";
             a_amp = Mathf.Lerp(initial, final, 0.1f);
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(timeToHeat);
         }
     }
 

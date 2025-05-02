@@ -29,9 +29,9 @@ public class DriverGame : AbstractMinigame
     InputAction moveAction;
     public Vector2 target;
     public float percentage = 0;
-    readonly float ob_speed = 30f;
-    readonly int ob_max_spawn = 4;
-    readonly float ob_spawntime = 4f;
+    readonly float ob_speed = 34f;
+    readonly int ob_max_spawn = 8;
+    readonly float ob_spawntime = 2f;
 
     public GameObject parent;
     public Vector2 speed = new(80, 0);

@@ -628,7 +628,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
         }
         // (index < itemsCanAccess): Check if the current index is less than the number of items that can be accessed.
         // Check if the y-coordinate of the NyanCatStrugglingScript GameObject's position is greater than the y-coordinate of the lazer1 GameObject's position.
-        // •(Lazer1On == false): Check if Lazer1On is false (i.e., the first laser is not on).
+        // ï¿½(Lazer1On == false): Check if Lazer1On is false (i.e., the first laser is not on).
         if ((index < itemsCanAccess) && (nyanCatStruggling.transform.position.y > Line1Position.y) && (Line1On == false))
         {
             var spawnedItem = Instantiate(NyanCatItems[index]);
@@ -658,7 +658,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
 
         if (index == itemsCanAccess)
         {
-            northstar.WriteHint("TAKE THAT CAT <incr a=1.2>trash</incr>");
+            northstar.WriteHint("TAKE THAT Nyan Cat <incr a=1.2>Shake</incr> Nyan Cat Across the two red lines");
             TrashCat();
         }
     }
@@ -759,7 +759,7 @@ public class NyanceNyanceRevolution : MonoBehaviour
             // If player score is less than winGood then we lose
             else
             {
-                endText.text = "<bounce a=0.02>Game Over!!!!</bounce>";
+                endText.text = "<bounce a=0.02>Terrible Job!!!!</bounce>";
                 endText.color = missColor;
                 itemsCanAccess = itemsCanAccessFail;
             }

@@ -1,15 +1,7 @@
-# SkylightOS
+# SkylightOS - Senior Project for UNR 2024-2025
 [![Build project](https://github.com/Ap0ll02/WindowsProject/actions/workflows/build.yml/badge.svg)](https://github.com/Ap0ll02/WindowsProject/actions/workflows/build.yml)
 --- 
-## Stellar. Light. Speed. The Operating System of the Future.
-
-SkylightOS is looking for you! We need someone to help Dorothy Edith with her computer troubles! Fortunately, you are rocking the most advanced operating system in the solar system. 
-
-## Productive
-A whole suite of apps that allow you to debug, reconnect, develop and diagnose problems and solutions.
-
-## Speed
-No unneccesary bloatware of schedulers, virtual memory, or virtual processors. Just let your host OS take care of it. Clearly it will run faster not having to worry about these unimportant details. 
+Skylight OS is a (mostly) 2D puzzle game, with the player set in the theme of an upside down IT world, where a malevolent operating system poses threats and tasks the user must navigate and complete. Skylight OS has a great depth of features, including an inode based filesystem, a terminal, 3 different bosses, and more!
 
 ## Check Us Out
 [Our SkylightOS Website](https://skylightos.itch.io/skylight-os)
